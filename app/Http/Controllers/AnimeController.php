@@ -31,8 +31,6 @@ class AnimeController extends Controller
 			);
 		}
 
-		//$allAnime = $this->anime->getAllAnime()->paginate($this->paginate);
-
 		//dd(__METHOD__, $allAnime);
 
 		return view($this->frontend . 'anime.short', compact('allAnime'));

@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Models\Anime;
 use App\Models\Category;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 
