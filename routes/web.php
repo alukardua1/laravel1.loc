@@ -53,7 +53,3 @@ Route::group(
 		Route::get('/{category}', [CategoryController::class, 'show'])->name('currentCategory');
 	}
 );
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');

@@ -157,7 +157,7 @@ class DLEParseRepository implements DLEParse
 
     private function imageFunc($anime, $image)
     {
-    	$def = 'public/';
+    	$def = '/';
         $path_info = pathinfo($image);
         $Extension = $path_info['extension'];
         $fileName = 'anime_' . $anime->id . '.' . $Extension;

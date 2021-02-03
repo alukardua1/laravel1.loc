@@ -23,8 +23,8 @@ class CategoryController extends Controller
 
     public function show($category)
     {
-    	$currentCategory = $this->categories->getCategory($category)->get();
+    	$currentCategory = $this->categories->getCategory($category)->first();
 
-    	dd(__METHOD__, $currentCategory);
+    	dd(__METHOD__, $currentCategory['getAnime'][0]);
     }
 }

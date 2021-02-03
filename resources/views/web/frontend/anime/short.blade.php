@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('web.frontend.layout.app')
 
 @section('title', 'Все аниме')
 

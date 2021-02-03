@@ -16,4 +16,6 @@ class Controller extends BaseController
 
 	protected $paginate;
 	protected $keyCache;
+
+	protected $frontend = 'web.frontend.';
 }

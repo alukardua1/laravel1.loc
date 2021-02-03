@@ -12,7 +12,6 @@ class AnimeController extends Controller
 	private $anime;
 
 
-
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		$this->keyCache = 'anime_';
@@ -22,7 +21,7 @@ class AnimeController extends Controller
 
 	public function index(Request $request)
 	{
-		$page = 'page_'. $request->get('page', 1);
+		$page = 'page_' . $request->get('page', 1);
 		if (Cache::has($this->keyCache . $page)) {
 			$allAnime = Cache::get($this->keyCache . $page);
 		} else {
@@ -36,7 +35,7 @@ class AnimeController extends Controller
 
 		//dd(__METHOD__, $allAnime);
 
-		return view('anime.short', compact('allAnime'));
+		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
 
 	public function show($id, $url = null)
@@ -44,10 +43,7 @@ class AnimeController extends Controller
 		if (Cache::has($this->keyCache . $id)) {
 			$showAnime = Cache::get($this->keyCache . $id);
 		} else {
-			$showAnime = self::setCache(
-				$this->keyCache . $id,
-				$showAnime = $this->anime->getAnime($id)->first()
-			);
+			$showAnime = self::setCache($this->keyCache . $id, $this->anime->getAnime($id)->first());
 		}
 		//$showAnime = $this->anime->getAnime($id)->first();
 
@@ -58,6 +54,6 @@ class AnimeController extends Controller
 		}
 
 		//dd(__METHOD__, $showAnime);
-		return view('anime.full', compact('showAnime'));
+		return view($this->frontend . 'anime.full', compact('showAnime'));
 	}
 }

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('web.frontend.layout.app')
 
 @section('title', $showAnime->name)
 
@@ -9,5 +9,6 @@
 @endsection
 
 @section('content')
+	<img src="{{asset('storage/'.$showAnime->original_img)}}" alt="">
 	{{$showAnime->description}}
 @endsection

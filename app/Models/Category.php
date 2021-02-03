@@ -11,6 +11,6 @@ class Category extends Model
 
 	public function getAnime()
 	{
-		return $this->belongsToMany(Anime::class);
+		return $this->belongsToMany(Anime::class)->with('getCategory');
 	}
 }
