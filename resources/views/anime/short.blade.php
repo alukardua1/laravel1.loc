@@ -11,7 +11,7 @@
 @section('content')
 	<ul>
 		@foreach($allAnime as $value)
-			<li>{{$value->name}}</li>
+			<li><a href="{{route('showAnime', [$value->id, $value->url])}}">{{$value->name}}</a></li>
 		@endforeach
 	</ul>
 

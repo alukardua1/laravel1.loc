@@ -57,6 +57,7 @@ class AnimeController extends Controller
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
 		}
 
-		dd(__METHOD__, $showAnime);
+		//dd(__METHOD__, $showAnime);
+		return view('anime.full', compact('showAnime'));
 	}
 }
