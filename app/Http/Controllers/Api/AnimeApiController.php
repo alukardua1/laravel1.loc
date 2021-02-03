@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Repository\AnimeRepository;
+use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class AnimeApiController extends Controller
 {
 	protected $apiAnime;
 
-	public function __construct(AnimeRepository $animeRepository)
+	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->apiAnime = $animeRepository;
+		$this->apiAnime = $animeRepositoryInterfaces;
 		$this->paginate = env('APP_PAGINATE', 10);
 	}
 

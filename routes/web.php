@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ use Inertia\Inertia;
     ]);
 });*/
 
-Route::get('/', [AnimeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(
 	['prefix'=>'anime'],
