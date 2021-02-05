@@ -15,11 +15,11 @@ class ParseDbDLEController extends Controller
         $this->dleParseRepository = $DLEParse;
     }
 
-    public function index()
+    public function index($id)
     {
         $category = $this->dleParseRepository->parseCategory();
         $user = $this->dleParseRepository->parseUser();
-        $post = $this->dleParseRepository->parsePost();
+        $post = $this->dleParseRepository->parsePost($id);
         $animeCategory = $this->dleParseRepository->parsePostCategory();
         $studios = $this->dleParseRepository->parseStudio();
         /*foreach ($category as $cat)

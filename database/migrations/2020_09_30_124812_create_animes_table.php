@@ -26,8 +26,8 @@ class CreateAnimesTable extends Migration
             $table->foreignId('kind');
             $table->string('status');
             $table->string('broadcast')->nullable();
-            $table->integer('episodes')->default(0);
-            $table->integer('episodes_aired')->default(0);
+            $table->string('episodes')->nullable();
+            $table->string('episodes_aired')->nullable();
             $table->string('aired_season')->nullable();
             $table->date('aired_on')->nullable();
             $table->date('released_on')->nullable();
@@ -36,7 +36,7 @@ class CreateAnimesTable extends Migration
             $table->text('japanese')->nullable();
             $table->text('synonyms')->nullable();
             $table->string('license_name_ru')->nullable();
-            $table->integer('duration')->default(0);
+            $table->string('duration')->nullable();
             $table->text('description')->nullable();
             $table->text('description_html')->nullable();
             $table->text('description_source')->nullable();
@@ -46,7 +46,7 @@ class CreateAnimesTable extends Migration
             $table->boolean('blocking')->default(0);
             $table->string('region')->nullable();
             $table->string('player')->nullable();
-            $table->text('trailer')->nullable();
+            $table->string('trailer')->nullable();
             $table->boolean('posted_at')->default(1);
             $table->boolean('comment_at')->default(1);
             $table->timestamps();

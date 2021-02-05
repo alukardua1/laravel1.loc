@@ -72,10 +72,16 @@ class DLEParseRepository implements DLEParse
     /**
      * @return mixed
      */
-    public function parsePost()
+    public function parsePost($id = null)
     {
-        $posts = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
+        if ($id)
+        {
+	        $posts = DB::connection("mysql2")->table('dle_post')->select(['*'])->where('id', '=', $id)->get();
+        }else{
+	        $posts = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
+        }
         foreach ($posts as $post) {
+	        $xfield1 = [];
             $xfields = explode('||', $post->xfields);
             foreach ($xfields as $value) {
                 $xfield = explode('|', $value);
@@ -113,16 +119,19 @@ class DLEParseRepository implements DLEParse
                     $kind = 5;
                     break;
             }
-            preg_match_all('/[0-5][0-9]:[0-5][0-9]/', $xfield1['translyaciya'], $xfield1['broadcast']);
+            if (isset($xfield1['translyaciya']))
+            {
+	            preg_match_all('/[0-5][0-9]:[0-5][0-9]/', $xfield1['translyaciya'], $xfield1['broadcast']);
+            }
             $image = $this->imageFunc($post, 'http://anime-free.ru/uploads/posts/' . $xfield1['izobrazhenie']);
-
+	        //dd(__METHOD__, $xfield1);
             $result[] = [
                 'id'                 => $post->id,
                 'user_id'            => 1,
                 'original_img'       => $image['original_img'],
                 'preview_img'        => $image['preview_img'],
-                'anons'              => $xfield1['anons'],
-                'ongoing'            => $xfield1['ongoing'],
+                'anons'              => $xfield1['anons'] ?? 0,
+                'ongoing'            => $xfield1['ongoing'] ?? 0,
                 'metatitle'          => $post->metatitle,
                 'keywords'           => $post->keywords,
                 'name'               => $post->title,
@@ -130,23 +139,23 @@ class DLEParseRepository implements DLEParse
                 'url'                => $post->alt_name,
                 'kind'               => $kind,
                 'status'             => $xfield1['status'],
-                'broadcast'          => $xfield1['broadcast'][0][0] ?? '',
-                'aired_season'       => $xfield1['sezon'],
-                'episodes'           => $xfield1['serias-col'],
-                'episodes_aired'     => $xfield1['seriya'],
-                'aired_on'           => date('Y-m-d', strtotime($xfield1['data-vypuska'])),
-                'released_on'        => date('Y-m-d', strtotime($xfield1['data-okonchaniya'])),
+                'broadcast'          => $xfield1['broadcast'][0][0] ?? null,
+                'aired_season'       => $xfield1['sezon'] ?? null,
+                'episodes'           => $xfield1['serias-col'] ?? null,
+                'episodes_aired'     => $xfield1['seriya'] ?? null,
+                'aired_on'           => date('Y-m-d', strtotime($xfield1['data-vypuska'] ?? 0)),
+                'released_on'        => date('Y-m-d', strtotime($xfield1['data-okonchaniya']?? 0)),
                 'rating'             => $xfield1['rating'],
-                'english'            => $xfield1['po-angliyski'],
-                'japanese'           => $xfield1['po-yaponski'],
-                'synonyms'           => $xfield1['nazvanie-romadzi'],
-                'duration'           => $xfield1['dlitelnost'],
+                'english'            => $xfield1['po-angliyski'] ?? null,
+                'japanese'           => $xfield1['po-yaponski'] ?? null,
+                'synonyms'           => $xfield1['nazvanie-romadzi'] ?? null,
+                'duration'           => $xfield1['dlitelnost'] ?? null,
                 'description'        => $post->short_story,
                 'description_html'   => $post->short_story,
                 'description_source' => $post->short_story,
-                'franchise'          => '',
-                'player'             => $xfield1['kodik'],
-                'trailer'            => $xfield1['treyler'],
+                'franchise'          => null,
+                'player'             => $xfield1['kodik'] ?? null,
+                'trailer'            => $xfield1['treyler'] ?? null,
                 'created_at'         => date('Y-m-d', strtotime($post->date)),
                 'updated_at'         => date('Y-m-d', strtotime($post->date)),
             ];

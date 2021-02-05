@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 //Route::get('/', [HomeController::class, 'index'])->name('home');
+//Route::get('/dle/{id}', [\App\Http\Controllers\ParseDbDLEController::class, 'index']);
 Route::get('/', [AnimeController::class, 'index'])->name('home');
 
 Route::group(
@@ -64,21 +65,7 @@ Route::group(
 Route::group(
 	['prefix'=>'category'],
 	function () {
-		//Route::get('/', [CategoryController::class, 'index'])->name('categories');
 		Route::get('/{category}', [CategoryController::class, 'show'])->name('currentCategory');
 	}
 );
 Auth::routes();
-/*Route::group(
-	[],
-	function () {
-		Route::get('/register', [])->name('register');
-		Route::get('/login', [])->name('login');
-		Route::get('/logout', [])->name('logout');
-		Route::get('/reset-password', [])->name('reset-password');
-	}
-);*/
-
-Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
