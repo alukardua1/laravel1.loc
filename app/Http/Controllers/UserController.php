@@ -29,4 +29,14 @@ class UserController extends Controller
 
 		dd(__METHOD__, $currentUser);
 	}
+
+	public function edit($user)
+	{
+		dd(__METHOD__, $user);
+	}
+
+	public function update($user, Request $request)
+	{
+
+	}
 }

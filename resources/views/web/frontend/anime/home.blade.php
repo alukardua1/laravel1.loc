@@ -1,6 +1,6 @@
 @extends('web.frontend.layout.app')
 
-@section('title', 'Аниме')
+@section('title', 'Главная')
 
 @section('sidebar')
 	@parent
@@ -10,10 +10,8 @@
 
 @section('content')
 	<div class="contents">
-		@foreach($allAnime as $value)
+		@foreach($ongoing as $value)
 			@include('web.frontend.anime.component.short_post', ['value'=>$value])
 		@endforeach
 	</div>
-
-	{{$allAnime->links()}}
 @endsection

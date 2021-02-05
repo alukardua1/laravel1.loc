@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repository\AnimeRepository;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
+use Cache;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,13 +13,19 @@ class HomeController extends Controller
 
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
+		$this->keyCache = 'home';
 		$this->firstAnime = $animeRepositoryInterfaces;
 	}
 
 	public function index()
 	{
-		$ongoing = $this->firstAnime->getFirstPageAnime(5)->get();
+		if (Cache::has($this->keyCache))
+		{
+			$ongoing = Cache::get($this->keyCache);
+		}else{
+			$ongoing = self::setCache($this->keyCache, $this->firstAnime->getFirstPageAnime(5)->get());
+		}
 
-		dd(__METHOD__, $ongoing);
+		return view('web.frontend.anime.home', compact('ongoing'));
 	}
 }

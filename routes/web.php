@@ -1,12 +1,10 @@
 <?php
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +26,8 @@ use Inertia\Inertia;
     ]);
 });*/
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+//Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [AnimeController::class, 'index'])->name('home');
 
 Route::group(
 	['prefix'=>'anime'],
@@ -43,13 +42,38 @@ Route::group(
 	function () {
 		Route::get('/', [UserController::class, 'index'])->name('users');
 		Route::get('/{login}', [UserController::class, 'show'])->name('currentUser');
+		Route::get('/{login}/edit', [UserController::class, 'edit'])->name('editUser');
+		Route::get('/{login}/update', [UserController::class, 'update'])->name('updateUser');
+	}
+);
+
+Route::group(
+	['prefix' => 'team'],
+	function () {
+		Route::get('/', [])->name('team');
+		Route::get('/{team}', [])->name('currentTeam');
+		Route::get('/add', [])->name('addUserTeam');
+		Route::get('/create', [])->name('createTeam');
+		Route::get('/remove', [])->name('removeUserTeam');
+		Route::get('/delete', [])->name('deleteTeam');
+		Route::get('/update', [])->name('updateTeam');
 	}
 );
 
 Route::group(
 	['prefix'=>'category'],
 	function () {
-		Route::get('/', [CategoryController::class, 'index'])->name('categories');
+		//Route::get('/', [CategoryController::class, 'index'])->name('categories');
 		Route::get('/{category}', [CategoryController::class, 'show'])->name('currentCategory');
+	}
+);
+
+Route::group(
+	[],
+	function () {
+		Route::get('/register', [])->name('register');
+		Route::get('/login', [])->name('login');
+		Route::get('/logout', [])->name('logout');
+		Route::get('/reset-password', [])->name('reset-password');
 	}
 );
