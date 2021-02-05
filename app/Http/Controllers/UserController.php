@@ -27,12 +27,15 @@ class UserController extends Controller
 
 		$this->isNotNull($currentUser);
 
-		dd(__METHOD__, $currentUser);
+		return view('web.frontend.user.profile', compact('currentUser'));
 	}
 
 	public function edit($user)
 	{
-		dd(__METHOD__, $user);
+		$currentUser = $this->user->getUser($user)->first();
+
+		$this->isNotNull($currentUser);
+		dd(__METHOD__, $currentUser);
 	}
 
 	public function update($user, Request $request)

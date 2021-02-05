@@ -41,8 +41,7 @@
 		[/not-available]
 		<div class="content">
 			<div class="side">
-				@include('web.frontend.layout.menu')
-				{include file="modules/side.tpl"}
+				@include('web.frontend.layout.side')
 			</div>
 			<div class="el1">
 				<div class="main">
