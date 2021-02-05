@@ -19,10 +19,9 @@ class HomeController extends Controller
 
 	public function index()
 	{
-		if (Cache::has($this->keyCache))
-		{
+		if (Cache::has($this->keyCache)) {
 			$ongoing = Cache::get($this->keyCache);
-		}else{
+		} else {
 			$ongoing = self::setCache($this->keyCache, $this->firstAnime->getFirstPageAnime(5)->get());
 		}
 

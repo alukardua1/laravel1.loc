@@ -68,8 +68,8 @@ Route::group(
 		Route::get('/{category}', [CategoryController::class, 'show'])->name('currentCategory');
 	}
 );
-
-Route::group(
+Auth::routes();
+/*Route::group(
 	[],
 	function () {
 		Route::get('/register', [])->name('register');
@@ -77,4 +77,8 @@ Route::group(
 		Route::get('/logout', [])->name('logout');
 		Route::get('/reset-password', [])->name('reset-password');
 	}
-);
+);*/
+
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

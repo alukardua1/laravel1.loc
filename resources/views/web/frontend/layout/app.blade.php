@@ -13,12 +13,7 @@
 </head>
 <body>
 <header>
-	<navigate>
-		@include('web.frontend.layout.nav')
-	</navigate>
-	@section('sidebar')
-		This is the master sidebar.
-	@show
+	@include('web.frontend.layout.nav')
 </header>
 
 <main class="container">
@@ -35,7 +30,9 @@
 				<div id="search"></div>
 				<input type="hidden" name="do" value="search">
 				<input type="hidden" name="subaction" value="search">
-				{*<button class="btn btn-outline-success" type="submit">Поиск</button>*}
+				{*
+				<button class="btn btn-outline-success" type="submit">Поиск</button>
+				*}
 			</form>
 		</div>
 		[/not-available]
@@ -45,36 +42,16 @@
 			</div>
 			<div class="el1">
 				<div class="main">
-					[available=cat]
-					[category-title]
-					<div class="category-title">
-						<h1>{category-title}</h1>
-					</div>
-					[/category-title]
-					[category-description]
-					<div class="category-description">
-						<p>{category-description}</p>
-					</div>
-					[/category-description]
-					[/available]
-					[not-available=cat]
-					[page-title]
-					<div class="category-title">
-						<h1>{page-title}</h1>
-					</div>
-					[page-description]
-					<div class="category-description">
-						<p>{page-description}</p>
-					</div>
-					[/page-description]
-					[/page-title]
-					[/not-available]
+					@section('category-title')
+					@show
+					@section('category-description')
+					@show
 					{info}
 					@yield('content')
 				</div>
 				[not-available=showfull]
 				<div class="info-footer">
-					{include file="modules/info-footer.tpl"}
+					@include('web.frontend.layout.info-footer')
 				</div>
 				[/not-available]
 			</div>

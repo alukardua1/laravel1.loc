@@ -179,6 +179,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
 
         App\Providers\ComposerServiceProvider::class,
+        App\Providers\BladeProvider::class,
 
     ],
 

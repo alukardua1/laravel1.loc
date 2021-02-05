@@ -31,8 +31,6 @@ class AnimeController extends Controller
 			);
 		}
 
-		//dd(__METHOD__, $allAnime);
-
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
 
@@ -43,7 +41,6 @@ class AnimeController extends Controller
 		} else {
 			$showAnime = self::setCache($this->keyCache . $id, $this->anime->getAnime($id)->first());
 		}
-		//$showAnime = $this->anime->getAnime($id)->first();
 
 		$this->isNotNull($showAnime);
 
@@ -51,7 +48,6 @@ class AnimeController extends Controller
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
 		}
 
-		//dd(__METHOD__, $showAnime);
 		return view($this->frontend . 'anime.full', compact('showAnime'));
 	}
 }

@@ -1,11 +1,21 @@
 @extends('web.frontend.layout.app')
 
-@section('title', 'Аниме')
+@section('title', $currentCategory->title ?? 'Аниме')
 
-@section('sidebar')
-	@parent
+@section('category-title')
+	@if(!empty($currentCategory->title))
+		<div class="category-title">
+			<h1>{{$currentCategory->title}}</h1>
+		</div>
+	@endif
+@endsection
 
-	<p>This is appended to the master sidebar.</p>
+@section('category-description')
+	@if(!empty($currentCategory->description))
+		<div class="category-description">
+			<p>{{$currentCategory->description}}</p>
+		</div>
+	@endif
 @endsection
 
 @section('content')
@@ -14,6 +24,7 @@
 			@include('web.frontend.anime.component.short_post', ['value'=>$value])
 		@endforeach
 	</div>
-
-	{{$allAnime->links()}}
+	<div>
+		{{$allAnime->links()}}
+	</div>
 @endsection
