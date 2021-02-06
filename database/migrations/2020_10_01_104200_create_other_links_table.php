@@ -16,7 +16,7 @@ class CreateOtherLinksTable extends Migration
         Schema::create('other_links', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anime_id');
-            $table->string('kind');
+            $table->string('title');
             $table->string('url');
             $table->timestamps();
         });

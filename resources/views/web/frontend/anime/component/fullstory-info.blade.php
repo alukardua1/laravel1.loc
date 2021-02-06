@@ -12,8 +12,17 @@
 	[xfgiven_proizvodstvo]
 	<li><span>Страна: </span><span>[xfvalue_proizvodstvo]</span></li>
 	[/xfgiven_proizvodstvo]
-	<li><span>Жанр: </span><span>{link-category}</span></li>
-	<li><span>Выпуск: </span><span>[xfgiven_data-okonchaniya]с[/xfgiven_data-okonchaniya] [xfvalue_data-vypuska][xfgiven_data-okonchaniya] по [xfvalue_data-okonchaniya][/xfgiven_data-okonchaniya]</span></li>
+	<li><span>Жанр: </span><span>
+			@foreach($showAnime->getCategory as $value)
+				@if ($loop->last)
+					<a href="/category/{{$value->url}}">{{$value->title}}</a>
+				@else
+					<a href="/category/{{$value->url}}">{{$value->title}}</a> /
+				@endif
+			@endforeach
+		</span></li>
+	<li><span>Выпуск: </span><span>[xfgiven_data-okonchaniya]с[/xfgiven_data-okonchaniya] [xfvalue_data-vypuska][xfgiven_data-okonchaniya] по [xfvalue_data-okonchaniya][/xfgiven_data-okonchaniya]</span>
+	</li>
 	[xfgiven_rating]
 	<li><span>Рейтинг MPAA: </span><span>[xfvalue_rating]</span></li>
 	[/xfgiven_rating]
@@ -32,18 +41,9 @@
 	<li><span>Озвучка: </span><span>[xfvalue_ozvuchka][xfnotgiven_ozvuchka] Не указана [/xfnotgiven_ozvuchka]</span></li>
 	<li><span>На других сайтах: </span>
 		<span class="other-title">
-            [xfgiven_url_world_art]
-            <a itemprop="url" href="[xfvalue_url_world_art]" target="_blank" rel="nofollow">World-Art</a>
-            [/xfgiven_url_world_art]
-            [xfgiven_kinopoisk_id]
-            <a itemprop="url" href="https://www.kinopoisk.ru/film/[xfvalue_kinopoisk_id]" target="_blank" rel="nofollow">КиноПоиск</a>
-            [/xfgiven_kinopoisk_id]
-            [xfgiven_myanimelist-id]
-            <a itemprop="url" href="https://myanimelist.net/anime/[xfvalue_myanimelist-id]" target="_blank" rel="nofollow">MyAnimeList</a>
-            [/xfgiven_myanimelist-id]
-            [xfgiven_shikimori_id]
-            <a itemprop="url" href="https://shikimori.one/animes/[xfvalue_shikimori_id]" target="_blank" rel="nofollow">Shikimori</a>
-            [/xfgiven_shikimori_id]
+			@foreach($showAnime->getOtherLink as $value)
+				<a itemprop="url" href="{{$value->url}}" target="_blank" rel="nofollow">{{$value->title}}</a>
+			@endforeach
         </span>
 	</li>
 	<li><span>Другие названия: </span>

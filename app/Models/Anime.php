@@ -67,4 +67,9 @@ class Anime extends Model
     {
     	return $this->belongsTo(Kind::class, 'kind');
     }
+
+    public function getOtherLink()
+    {
+    	return $this->hasMany(OtherLink::class, 'anime_id', 'id');
+    }
 }

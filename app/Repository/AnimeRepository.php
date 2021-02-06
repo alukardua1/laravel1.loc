@@ -22,7 +22,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getAnime($id)
 	{
 		return Anime::where('id', $id)
-			->with(['getCategory:id,title,description,url', 'getUser:id,login,group_id', 'getKind']);
+			->with(['getCategory:id,title,description,url', 'getUser:id,login,group_id', 'getKind', 'getOtherLink']);
 	}
 
 	/**
@@ -33,12 +33,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getAllAnime($isAdmin = null)
 	{
 		if ($isAdmin) {
-			return Anime::with(['getCategory:id,title', 'getUser:id,login'])
+			return Anime::with(['getCategory:id,title', 'getUser:id,login', 'getOtherLink'])
 				->orderBy('updated_at', 'DESC');
 		}
 
 		return Anime::where('posted_at', 1)
-			->with(['getCategory:id,title,description,url', 'getUser:id,login,group_id', 'getKind'])
+			->with(['getCategory:id,title,description,url', 'getUser:id,login,group_id', 'getKind', 'getOtherLink'])
 			->orderBy('updated_at', 'DESC');
 	}
 
