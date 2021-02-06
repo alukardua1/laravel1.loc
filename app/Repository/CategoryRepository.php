@@ -13,7 +13,7 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 
 	public function getCategories()
 	{
-		return Category::with(['getAnime']);
+		return Category::with(['getAnime'])->where('posted_at', '=', 1);
 	}
 
 	public function getCategory($category)

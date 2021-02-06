@@ -34,4 +34,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->limit($count)
 			->orderBy('updated_at', 'DESC');
 	}
+
+	public function getCustomAnime($columns, $custom)
+	{
+		return Anime::where($columns, $custom)
+			->with(['getCategory:id,title,description,url', 'getUser:id,login,group_id', 'getKind'])
+			->orderBy('updated_at', 'DESC');
+	}
 }

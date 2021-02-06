@@ -11,4 +11,6 @@ interface AnimeRepositoryInterfaces
 	public function getAllAnime();
 
 	public function getFirstPageAnime($count);
+
+	public function getCustomAnime($columns, $custom);
 }

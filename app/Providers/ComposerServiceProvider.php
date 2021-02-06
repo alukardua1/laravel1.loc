@@ -27,5 +27,9 @@ class ComposerServiceProvider extends ServiceProvider
 		    'web.frontend.layout.menu',
 		    'App\Http\ViewComposers\MenuComposer'
 	    );
+	    view()->composer(
+	    	'web.frontend.anime.component.carousel',
+		    'App\Http\ViewComposers\CarouselAnimeComposer'
+	    );
     }
 }
