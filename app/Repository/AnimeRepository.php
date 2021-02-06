@@ -6,15 +6,30 @@ namespace App\Repository;
 use App\Models\Anime;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
+/**
+ * Class AnimeRepository
+ *
+ * @package App\Repository
+ */
 class AnimeRepository implements AnimeRepositoryInterfaces
 {
 
+	/**
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
 	public function getAnime($id)
 	{
 		return Anime::where('id', $id)
 			->with(['getCategory:id,title,description,url', 'getUser:id,login,group_id', 'getKind']);
 	}
 
+	/**
+	 * @param  null  $isAdmin
+	 *
+	 * @return \Illuminate\Database\Eloquent\Builder|mixed
+	 */
 	public function getAllAnime($isAdmin = null)
 	{
 		if ($isAdmin) {
@@ -27,6 +42,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->orderBy('updated_at', 'DESC');
 	}
 
+	/**
+	 * @param $count
+	 *
+	 * @return mixed
+	 */
 	public function getFirstPageAnime($count)
 	{
 		return Anime::where('status', 'ongoing')
@@ -35,6 +55,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->orderBy('updated_at', 'DESC');
 	}
 
+	/**
+	 * @param $columns
+	 * @param $custom
+	 *
+	 * @return mixed
+	 */
 	public function getCustomAnime($columns, $custom)
 	{
 		return Anime::where($columns, $custom)

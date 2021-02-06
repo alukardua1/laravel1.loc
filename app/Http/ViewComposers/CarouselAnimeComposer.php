@@ -7,6 +7,11 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Illuminate\View\View;
 
+/**
+ * Class CarouselAnimeComposer
+ *
+ * @package App\Http\ViewComposers
+ */
 class CarouselAnimeComposer
 {
 	protected $anime;

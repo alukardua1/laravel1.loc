@@ -9,12 +9,29 @@ use App\Traits\CacheTrait;
 use Cache;
 use Illuminate\View\View;
 
+/**
+ * Class MenuComposer
+ *
+ * @package App\Http\ViewComposers
+ */
 class MenuComposer
 {
+	/**
+	 * @var mixed
+	 */
 	public $menu;
+	/**
+	 * @var mixed
+	 */
 	public $path;
 
+	/**
+	 * @var \App\Repository\Interfaces\CategoryRepositoryInterfaces
+	 */
 	protected $category;
+	/**
+	 * @var string
+	 */
 	protected $key = 'menu';
 
 	use CacheTrait;
@@ -31,11 +48,17 @@ class MenuComposer
 		$this->path = $this->path();
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function path()
 	{
 		return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function menu()
 	{
 		if (Cache::has($this->key)) {

@@ -11,6 +11,11 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Class User
+ *
+ * @package App\Models
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -59,12 +64,18 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function getGroup()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function getGroup()
     {
     	return $this->hasOne(Group::class, 'id', 'group_id');
     }
 
-    public function getAnime()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getAnime()
     {
     	return $this->hasMany(Anime::class);
     }

@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 class Anime extends Model
 {
     use HasFactory;
+
+	/**
+	 * @var string[]
+	 */
 	protected $fillable = [
 		'name',
 		'russian',
@@ -40,17 +44,26 @@ class Anime extends Model
 		'broadcast',
 	];
 
-    public function getCategory()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function getCategory()
     {
 	    return $this->belongsToMany(Category::class);
     }
 
-    public function getUser()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function getUser()
     {
     	return $this->belongsTo(User::class, 'user_id')->with(['getGroup']);
     }
 
-    public function getKind()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function getKind()
     {
     	return $this->belongsTo(Kind::class, 'kind');
     }

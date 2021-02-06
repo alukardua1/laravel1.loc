@@ -6,11 +6,27 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use Cache;
 use Illuminate\Http\Request;
 
+/**
+ * Class CategoryController
+ *
+ * @package App\Http\Controllers
+ */
 class CategoryController extends Controller
 {
+	/**
+	 * @var \App\Repository\Interfaces\CategoryRepositoryInterfaces
+	 */
 	private   $categories;
+	/**
+	 * @var
+	 */
 	protected $pagination;
 
+	/**
+	 * CategoryController constructor.
+	 *
+	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepository
+	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepository)
 	{
 		$this->keyCache = 'category_';
@@ -18,6 +34,9 @@ class CategoryController extends Controller
 		$this->categories = $categoryRepository;
 	}
 
+	/**
+	 *
+	 */
 	public function index()
 	{
 		$categoryAll = $this->categories->getCategories()->get();
@@ -25,6 +44,12 @@ class CategoryController extends Controller
 		dd(__METHOD__, $categoryAll);
 	}
 
+	/**
+	 * @param                            $category
+	 * @param  \Illuminate\Http\Request  $request
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
 	public function show($category, Request $request)
 	{
 		$page = 'page_' . $request->get('page', 1);
