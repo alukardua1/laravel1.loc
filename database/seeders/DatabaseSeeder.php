@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AnimeSeeder::class);
         $this->call(AnimeCategorySeeder::class);
         $this->call(StudiosSeeder::class);
+        $this->call(QualitySeeder::class);
     }
 }
