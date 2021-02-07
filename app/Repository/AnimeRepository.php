@@ -13,14 +13,6 @@ use App\Repository\Interfaces\AnimeRepositoryInterfaces;
  */
 class AnimeRepository implements AnimeRepositoryInterfaces
 {
-	protected $withArr = [
-		'getCategory:id,title,description,url',
-		'getUser:id,login,group_id',
-		'getKind',
-		'getOtherLink',
-		'getStudio',
-	];
-
 	/**
 	 * @param $id
 	 *
@@ -28,8 +20,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getAnime($id)
 	{
-		return Anime::where('id', $id)
-			->with($this->withArr);
+		return Anime::where('id', $id);
 	}
 
 	/**
@@ -40,12 +31,10 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getAllAnime($isAdmin = null)
 	{
 		if ($isAdmin) {
-			return Anime::with($this->withArr)
-				->orderBy('updated_at', 'DESC');
+			return Anime::orderBy('updated_at', 'DESC');
 		}
 
 		return Anime::where('posted_at', 1)
-			->with($this->withArr)
 			->orderBy('updated_at', 'DESC');
 	}
 
@@ -57,7 +46,6 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getFirstPageAnime($count)
 	{
 		return Anime::where('status', 'ongoing')
-			->with($this->withArr)
 			->limit($count)
 			->orderBy('updated_at', 'DESC');
 	}
@@ -71,7 +59,6 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getCustomAnime($columns, $custom)
 	{
 		return Anime::where($columns, $custom)
-			->with($this->withArr)
 			->orderBy('updated_at', 'DESC');
 	}
 }

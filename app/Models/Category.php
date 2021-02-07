@@ -14,11 +14,15 @@ class Category extends Model
 {
 	use HasFactory;
 
+	protected $with = [
+		'getAnime',
+	];
+
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
 	public function getAnime()
 	{
-		return $this->belongsToMany(Anime::class)->with('getCategory');
+		return $this->belongsToMany(Anime::class);
 	}
 }

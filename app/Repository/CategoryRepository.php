@@ -21,7 +21,7 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	 */
 	public function getCategories()
 	{
-		return Category::with(['getAnime'])->where('posted_at', '=', 1);
+		return Category::where('posted_at', '=', 1)->get();
 	}
 
 	/**
@@ -31,6 +31,6 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	 */
 	public function getCategory($category)
 	{
-		return Category::with(['getAnime'])->where('url', $category);
+		return Category::where('url', $category)->first();
 	}
 }

@@ -39,7 +39,7 @@ class UserController extends Controller
 		if (Cache::has($this->keyCache . $user)) {
 			$currentUser = Cache::get($this->keyCache . $user);
 		} else {
-			$currentUser = self::setCache($this->keyCache . $user, $this->user->getUser($user)->first());
+			$currentUser = self::setCache($this->keyCache . $user, $this->user->getUser($user));
 		}
 		$this->isNotNull($currentUser);
 
@@ -51,7 +51,7 @@ class UserController extends Controller
 	 */
 	public function index()
 	{
-		$users = $this->user->getUsers()->get();
+		$users = $this->user->getUsers();
 
 		dd(__METHOD__, $users);
 	}

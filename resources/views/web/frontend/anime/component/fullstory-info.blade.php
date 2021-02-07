@@ -13,13 +13,7 @@
 	<li><span>Страна: </span><span>[xfvalue_proizvodstvo]</span></li>
 	[/xfgiven_proizvodstvo]
 	<li><span>Жанр: </span><span>
-			@foreach($showAnime->getCategory as $value)
-				@if ($loop->last)
-					<a href="/category/{{$value->url}}">{{$value->title}}</a>
-				@else
-					<a href="/category/{{$value->url}}">{{$value->title}}</a> /
-				@endif
-			@endforeach
+			{!! $showAnime->category !!}
 		</span></li>
 	<li><span>Выпуск: </span><span>[xfgiven_data-okonchaniya]с[/xfgiven_data-okonchaniya] [xfvalue_data-vypuska][xfgiven_data-okonchaniya] по [xfvalue_data-okonchaniya][/xfgiven_data-okonchaniya]</span>
 	</li>

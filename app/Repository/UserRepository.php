@@ -21,7 +21,7 @@ class UserRepository implements UserRepositoryInterfaces
 	 */
 	public function getUser($user)
 	{
-		return User::with(['getGroup:id,title,description', 'getAnime'])->where('login', $user);
+		return User::where('login', $user)->first();
 	}
 
 	/**
@@ -29,6 +29,6 @@ class UserRepository implements UserRepositoryInterfaces
 	 */
 	public function getUsers()
 	{
-		return User::with(['getGroup:id,title,description', 'getAnime']);
+		return User::get();
 	}
 }

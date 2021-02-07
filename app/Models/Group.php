@@ -13,4 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
+
+    public function getUser()
+    {
+    	return $this->hasMany(User::class);
+    }
 }

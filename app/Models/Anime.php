@@ -44,6 +44,24 @@ class Anime extends Model
 		'broadcast',
 	];
 
+	protected $appends = [
+		'category',
+	];
+
+	/**
+	 * @todo Временное решение придумать как изменить
+	 */
+	public function getCategoryAttribute()
+	{
+		$result = [];
+		$category = $this->getCategory()->get();
+		foreach ($category as $value) {
+			$result[] = "<a href=\"/category/{$value->url}\">{$value->title}</a>";
+		}
+		$result = implode(' / ', $result);
+		return $result;
+	}
+
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
@@ -52,12 +70,9 @@ class Anime extends Model
 		return $this->belongsToMany(Category::class);
 	}
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
 	public function getUser()
 	{
-		return $this->belongsTo(User::class, 'user_id')->with(['getGroup']);
+		return $this->hasOne(User::class, 'id', 'user_id');
 	}
 
 	/**

@@ -5,6 +5,8 @@ namespace App\Http\ViewComposers;
 
 
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
+use App\Traits\CacheTrait;
+use Cache;
 use Illuminate\View\View;
 
 /**
@@ -14,8 +16,11 @@ use Illuminate\View\View;
  */
 class CarouselAnimeComposer
 {
+	protected $key = 'carousel';
 	protected $anime;
 	protected $animeAll;
+
+	use CacheTrait;
 
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
@@ -25,7 +30,12 @@ class CarouselAnimeComposer
 
 	public function anime()
 	{
-		$item = $this->animeAll->getCustomAnime('status', 'ongoing')->get();
+		if (Cache::has($this->key)) {
+			$item = Cache::get($this->key);
+		} else {
+			$item = self::setCache($this->key, $this->animeAll->getCustomAnime('status', 'ongoing')->get());
+		}
+
 		return $item;
 	}
 
