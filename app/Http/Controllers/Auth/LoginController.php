@@ -23,10 +23,11 @@ class LoginController extends Controller
 
     /**
      * Where to redirect users after login.
-     *
+     * @todo Сделать возврат на текущую страницу
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
 
     /**
      * Create a new controller instance.

@@ -1,6 +1,6 @@
 <div class="side-nav">
 	<div>
-		{login}
+		@include('web.frontend.auth.login')
 	</div>
 	<div class="money">
 		[banner_yandex-money]
