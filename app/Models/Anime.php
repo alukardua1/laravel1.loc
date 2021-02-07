@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Anime extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
 	/**
 	 * @var string[]
@@ -48,28 +48,33 @@ class Anime extends Model
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
 	public function getCategory()
-    {
-	    return $this->belongsToMany(Category::class);
-    }
+	{
+		return $this->belongsToMany(Category::class);
+	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 	public function getUser()
-    {
-    	return $this->belongsTo(User::class, 'user_id')->with(['getGroup']);
-    }
+	{
+		return $this->belongsTo(User::class, 'user_id')->with(['getGroup']);
+	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 	public function getKind()
-    {
-    	return $this->belongsTo(Kind::class, 'kind');
-    }
+	{
+		return $this->belongsTo(Kind::class, 'kind');
+	}
 
-    public function getOtherLink()
-    {
-    	return $this->hasMany(OtherLink::class, 'anime_id', 'id');
-    }
+	public function getOtherLink()
+	{
+		return $this->hasMany(OtherLink::class, 'anime_id', 'id');
+	}
+
+	public function getStudio()
+	{
+		return $this->belongsToMany(Studio::class);
+	}
 }
