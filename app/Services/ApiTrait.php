@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Traits;
+namespace App\Services;
 
 
 /**
@@ -58,10 +58,10 @@ trait ApiTrait
 			$category[] = [
 				'id'    => $value->id,
 				'title' => $value->title,
-				'url'   => $value->url,
+				'url'   => '/' . $value->url . '/',
 			];
 		}
-		//dd(__METHOD__, $anime, $anime->getKind);
+
 		return [
 			'id'       => $anime->id,
 			'image'    => [

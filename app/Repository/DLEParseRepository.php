@@ -5,7 +5,7 @@ namespace App\Repository;
 
 
 use App\Repository\Interfaces\DLEParse;
-use App\Traits\CurlTrait;
+use App\Services\CurlTrait;
 use File;
 use Illuminate\Support\Facades\DB;
 use Storage;

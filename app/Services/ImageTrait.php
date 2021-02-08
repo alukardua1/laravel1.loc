@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Traits;
+namespace App\Services;
 
 use Intervention\Image\Facades\Image;
 use Storage;

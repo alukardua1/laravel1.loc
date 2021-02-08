@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\ApiTrait;
-use App\Traits\CacheTrait;
-use App\Traits\FunctionTrait;
+use App\Services\ApiTrait;
+use App\Services\CacheTrait;
+use App\Services\FunctionTrait;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;

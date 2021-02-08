@@ -21,7 +21,7 @@ class UserRepository implements UserRepositoryInterfaces
 	 */
 	public function getUser($user)
 	{
-		return User::where('login', $user)->first();
+		return User::where('login', $user)->firstOrFail();
 	}
 
 	/**

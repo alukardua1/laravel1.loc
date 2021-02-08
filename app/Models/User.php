@@ -65,20 +65,20 @@ class User extends Authenticatable
 	 */
 	protected $appends = [
 		'profile_photo_url',
+		'getGroup',
 	];
 
 	protected $with = [
-		'getAnime'
+		'getAnime',
 	];
-
 
 	public function getGroup()
 	{
-		return $this->belongsTo(Group::class, 'group_id');
+		return $this->belongsTo(Group::class, 'group_id', 'id');
 	}
 
 	public function getAnime()
 	{
-		return $this->hasMany(Anime::class, 'user_id');
+		return $this->hasMany(Anime::class);
 	}
 }

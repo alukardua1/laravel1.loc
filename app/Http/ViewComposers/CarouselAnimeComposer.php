@@ -5,7 +5,7 @@ namespace App\Http\ViewComposers;
 
 
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
-use App\Traits\CacheTrait;
+use App\Services\CacheTrait;
 use Cache;
 use Illuminate\View\View;
 
