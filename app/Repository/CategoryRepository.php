@@ -21,7 +21,8 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	 */
 	public function getCategories()
 	{
-		return Category::where('posted_at', '=', 1)->get();
+		return Category::where('posted_at', '=', 1)
+			->get();
 	}
 
 	/**

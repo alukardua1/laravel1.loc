@@ -48,6 +48,17 @@ class MenuComposer
 		$this->path = $this->path();
 	}
 
+	private function getCache()
+	{
+		if (Cache::has($this->key)) {
+			$item = Cache::get($this->key);
+		} else {
+			$item = self::setCache($this->key, $this->category->getCategories());
+		}
+
+		return $item;
+	}
+
 	/**
 	 * @return mixed
 	 */
@@ -61,13 +72,7 @@ class MenuComposer
 	 */
 	public function menu()
 	{
-		if (Cache::has($this->key)) {
-			$item = Cache::get($this->key);
-		} else {
-			$item = self::setCache($this->key, $this->category->getCategories());
-		}
-
-		return $item;
+		return $this->getCache();
 	}
 
 	/**

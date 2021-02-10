@@ -14,7 +14,7 @@ class Category extends Model
 {
 	use HasFactory;
 
-	protected $with = [
+	protected $withCount = [
 		'getAnime',
 	];
 
