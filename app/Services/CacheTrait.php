@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use Cache;
+use Config;
 
 trait CacheTrait
 {
@@ -18,7 +19,7 @@ trait CacheTrait
 	 */
 	public static function setCache(string $key, $post)
 	{
-		$ttl = env('APP_CACHE_TIME', 10);
+		$ttl = Config::get('secondConfig.cache_time');
 
 		return Cache::remember(
 			$key,

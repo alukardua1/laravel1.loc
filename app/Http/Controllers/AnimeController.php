@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repository\AnimeRepository;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Cache;
+use Config;
 use Illuminate\Http\Request;
 
 /**
@@ -29,7 +30,7 @@ class AnimeController extends Controller
 	{
 		$this->keyCache = 'anime_';
 		$this->anime = $animeRepositoryInterfaces;
-		$this->paginate = env('APP_PAGINATE', 10);
+		$this->paginate = Config::get('secondConfig.paginate');
 	}
 
 	/**
@@ -40,7 +41,7 @@ class AnimeController extends Controller
 	public function index(Request $request)
 	{
 		$page = 'page_' . $request->get('page', 1);
-		if (Cache::has($this->keyCache . $page)) {
+		if (Cache::has($this->keyCache . $page) and (Config::get('secondConfig.cache_time') > 0)) {
 			$allAnime = Cache::get($this->keyCache . $page);
 		} else {
 			$allAnime = self::setCache(
@@ -60,7 +61,7 @@ class AnimeController extends Controller
 	 */
 	public function show($id, $url = null)
 	{
-		if (Cache::has($this->keyCache . $id)) {
+		if (Cache::has($this->keyCache . $id) and (Config::get('secondConfig.cache_time') > 0)) {
 			$showAnime = Cache::get($this->keyCache . $id);
 		} else {
 			$showAnime = self::setCache($this->keyCache . $id, $this->anime->getAnime($id)->first());

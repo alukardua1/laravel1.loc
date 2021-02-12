@@ -24,7 +24,7 @@
 			@include('web.frontend.anime.component.short_post', ['value'=>$value])
 		@endforeach
 	</div>
-	<div>
-		{{$allAnime->links()}}
+	<div class="align-content-center">
+		{{$allAnime->links('web.frontend.vendor.pagination.semantic-ui')}}
 	</div>
 @endsection

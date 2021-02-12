@@ -6,53 +6,83 @@ namespace App\Services;
 use Intervention\Image\Facades\Image;
 use Storage;
 use Str;
+
 trait ImageTrait
 {
-    private $originalImg = 'original_img';
-    private $previewImg = 'preview_img';
-    private $imgNamePrefix = 'anime_';
-    private $patchImgStorage = 'storage/anime/';
-    private $thumb = 'thumb';
-    private $imgColumns = '';
-    private $extension = ['jpg', 'png', 'bmp', 'webp'];
-    private $patchSeparator = '/';
+	private $config = [
+		'imgColumns'        => 'poster',
+		'patchImgPublic'    => 'public/anime/',
+		'imgNamePrefix'     => 'poster_',
+		'patchImgStorage'   => 'storage/anime/',
+		'imgPostDir'        => 'anime/',
+		'watermarkImg'      => 'admin/images/watermark.png',
+		'watermarkPosition' => 'bottom-right',
+		'watermark'         => [
+			'X' => 10,
+			'Y' => 10,
+		],
+		'thumb'             => 'thumb/',
+		'img'               => [
+			'Width'  => 232,
+			'Height' => 322,
+		],
+		'extension'         => [
+			'jpg',
+			'png',
+			'bmp',
+			'webp',
+		],
+	];
 
-    public function uploadImages($updateAnime, $requestForm)
-    {
-        $Extension = $requestForm[$this->originalImg]->getClientOriginalExtension();//Получает расширение файла
-        if (in_array($Extension, $this->extension)) {
-            $fileName = $this->imgNamePrefix . $updateAnime->id . '.' . $Extension;// формирует имя файла
-            $pathImg = $this->patchImgStorage . Str::slug(
-                    $updateAnime->title
-                ) . $this->patchSeparator;          //путь к большой картинке
-            $pathImgThumb = $pathImg . $this->thumb;//путь к уменьшеной картинке
-            $pathImgSave = $this->patchImgStorage . Str::slug(
-                    $updateAnime->title
-                ) . $this->patchSeparator;
-            $pathImgSaveThumb = $pathImgSave . $this->thumb;
+	public function __construct()
+	{
+		$this->config['patchSeparator'] = config('secondConfig.patchSeparator');
+	}
 
-            Storage::putFileAs($pathImg, $requestForm[$this->originalImg], $fileName);//запись картинки
-            Storage::putFileAs(
-                $pathImgThumb,
-                $requestForm[$this->originalImg],
-                $fileName
-            );//запись уменьшеной картинки
+	/**
+	 * Загружает постер к записи
+	 *
+	 * @param  Anime    $updateAnime
+	 * @param  Request  $requestForm
+	 *
+	 * @return mixed
+	 */
+	public function uploadImages($updateAnime, $requestForm)
+	{
+		$Extension = $requestForm[$this->config['imgColumns']]->getClientOriginalExtension();//Получает расширение файла
+		if (in_array($Extension, $this->config['extension'])) {
+			$fileName = $this->config['imgNamePrefix'] . $updateAnime->id . '.' . $Extension;// формирует имя файла
+			$pathImg = $this->config['patchImgPublic'] . Str::slug(
+					$updateAnime->title
+				) . $this->config['patchSeparator'];          //путь к большой картинке
+			$pathImgThumb = $pathImg . $this->config['thumb'];//путь к уменьшеной картинке
+			$pathImgSave = $this->config['patchImgStorage'] . Str::slug(
+					$updateAnime->title
+				) . $this->config['patchSeparator'];
+			$pathImgSaveThumb = $pathImgSave . $this->config['thumb'];
 
-            $requestForm[$this->originalImg] = $fileName;//Запись в базу
-            $img = Image::make($pathImgSave . $fileName);
-            $img->insert(
-                self::$config['watermarkImg'],
-                self::$config['watermarkPosition'],
-                self::$config['watermark']['X'],
-                self::$config['watermark']['Y']
-            );
-            $img->save($pathImgSave . $fileName);
-            $imgThumb = Image::make($pathImgSaveThumb . $fileName);
-            $imgThumb->resize(self::$config['img']['Width'], self::$config['img']['Height']);
-            $imgThumb->save($pathImgSaveThumb . $fileName);
+			Storage::putFileAs($pathImg, $requestForm[$this->config['imgColumns']], $fileName);//запись картинки
+			Storage::putFileAs(
+				$pathImgThumb,
+				$requestForm[$this->config['imgColumns']],
+				$fileName
+			);//запись уменьшеной картинки
 
-            return $requestForm;
-        }
-        return 'error';
-    }
+			$requestForm[$this->config['imgColumns']] = $fileName;//Запись в базу
+			$img = Image::make($pathImgSave . $fileName);
+			$img->insert(
+				$this->config['watermarkImg'],
+				$this->config['watermarkPosition'],
+				$this->config['watermark']['X'],
+				$this->config['watermark']['Y']
+			);
+			$img->save($pathImgSave . $fileName);
+			$imgThumb = Image::make($pathImgSaveThumb . $fileName);
+			$imgThumb->resize($this->config['img']['Width'], $this->config['img']['Height']);
+			$imgThumb->save($pathImgSaveThumb . $fileName);
+
+			return $requestForm;
+		}
+		return 'error';
+	}
 }

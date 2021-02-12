@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use Cache;
+use Config;
 use Illuminate\Http\Request;
 
 /**
@@ -30,7 +31,7 @@ class CategoryController extends Controller
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
 		$this->keyCache = 'category_';
-		$this->paginate = env('APP_PAGINATE', 10);
+		$this->paginate = Config::get('secondConfig.paginate');
 		$this->categories = $categoryRepositoryInterfaces;
 	}
 
@@ -53,7 +54,7 @@ class CategoryController extends Controller
 	public function show($category, Request $request)
 	{
 		$page = 'page_' . $request->get('page', 1);
-		if (Cache::has($this->keyCache . $page) and Cache::has($this->keyCache . $category)) {
+		if (Cache::has($this->keyCache . $page) and Cache::has($this->keyCache . $category) and (Config::get('secondConfig.cache_time') > 0)) {
 			$currentCategory = Cache::get($this->keyCache . $category);
 			$allAnime = Cache::get($this->keyCache . $page);
 		} else {

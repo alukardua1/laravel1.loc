@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\MutationTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Anime extends Model
 {
-	use HasFactory;
+	use HasFactory, MutationTrait;
 
 	/**
 	 * @var string[]
@@ -53,13 +54,7 @@ class Anime extends Model
 	 */
 	public function getCategoryAttribute()
 	{
-		$result = [];
-		$category = $this->getCategory()->get();
-		foreach ($category as $value) {
-			$result[] = "<a href=\"/category/{$value->url}\">{$value->title}</a>";
-		}
-		$result = implode(' / ', $result);
-		return $result;
+		return $this->categoryMutation($this->getCategory()->get());
 	}
 
 	/**
