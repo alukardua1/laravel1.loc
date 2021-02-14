@@ -59,10 +59,12 @@ Route::group(
 		Route::get('/{login}', [UserController::class, 'show'])->name('currentUser');
 		Route::get('/{login}/edit', [UserController::class, 'edit'])->name('editUser');
 		Route::get('/{login}/update', [UserController::class, 'update'])->name('updateUser');
+		Route::get('/{login}/favorite', [FavoritesController::class, 'index'])->name('favorite');
 	}
 );
 Route::post('/favorites_add/{id}', [FavoritesController::class, 'add'])->name('favorite_add')->middleware('auth');
 Route::post('/favorites_del/{id}', [FavoritesController::class, 'delete'])->name('favorite_del')->middleware('auth');
+
 Route::group(
 	['prefix' => 'team'],
 	function () {

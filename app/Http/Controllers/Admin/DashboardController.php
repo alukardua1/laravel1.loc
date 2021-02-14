@@ -16,7 +16,7 @@ class DashboardController extends Controller
 	 * Главная страница админки
 	 */
 	public function index()
-    {
-
-    }
+	{
+		dd(__METHOD__, \Auth::user());
+	}
 }

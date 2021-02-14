@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Interfaces\FavoritesRepositoryInterface;
+use Cache;
+use Config;
 use Illuminate\Http\Request;
 
 class FavoritesController extends Controller
@@ -10,7 +12,7 @@ class FavoritesController extends Controller
 	/**
 	 * @var FavoritesRepositoryInterface $favoriteRepository
 	 */
-	private static $favoriteRepository;
+	private $favoriteRepository;
 
 	/**
 	 * FavoriteController constructor.
@@ -19,7 +21,25 @@ class FavoritesController extends Controller
 	 */
 	public function __construct(FavoritesRepositoryInterface $favoriteRepositoryInterfaces)
 	{
-		self::$favoriteRepository = $favoriteRepositoryInterfaces;
+		$this->keyCache = 'favorite_';
+		$this->favoriteRepository = $favoriteRepositoryInterfaces;
+		$this->paginate = Config::get('secondConfig.paginate');
+	}
+
+	public function index($user, Request $request)
+	{
+		$page = 'page_' . $request->get('page', 1);
+		if (Cache::has($this->keyCache . $page) and (Config::get('secondConfig.cache_time') > 0)) {
+			$allAnime = Cache::get($this->keyCache . $page);
+		} else {
+			$allAnime = self::setCache(
+				$this->keyCache . $page,
+				$this->favoriteRepository->getFavorite($user)->favorites()->paginate($this->paginate)
+			);
+		}
+
+		return view($this->frontend . 'anime.short', compact('allAnime'));
+		//dd($this->favoriteRepository->getFavorite($user)->favorites()->paginate($this->paginate));
 	}
 
 	/**
@@ -31,7 +51,7 @@ class FavoritesController extends Controller
 	 */
 	public function add($id): string
 	{
-		self::$favoriteRepository->favorite($id);
+		$this->favoriteRepository->favorite($id);
 
 		return url()->previous();
 	}
@@ -45,7 +65,7 @@ class FavoritesController extends Controller
 	 */
 	public function delete($id): string
 	{
-		self::$favoriteRepository->unFavorite($id);
+		$this->favoriteRepository->unFavorite($id);
 
 		return url()->previous();
 	}

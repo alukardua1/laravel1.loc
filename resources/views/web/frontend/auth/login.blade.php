@@ -10,10 +10,10 @@
 		   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти <i class="fas fa-sign-in ml-1"></i></a>
 		<ul class="urls">
 			[admin-link]
-			<li><a href="{admin-link}">Админпанель</a></li>
+			<li><a target="_blank" href="{{route('dashboard')}}">Админпанель</a></li>
 			[/admin-link]
-			<li><a href="{profile-link}">Мой профиль</a></li>
-			<li><a href="{favorites-link}">Закладки<span>{favorite-count}</span></a></li>
+			<li><a href="{{route('users')}}">Мой профиль</a></li>
+			<li><a href="{{route('favorite', Auth::user()->login)}}">Закладки<span>{favorite-count}</span></a></li>
 			<li><a href="{pm-link}">Сообщения<span>{new-pm} из {all-pm}</span></a></li>
 		</ul>
 	</div>

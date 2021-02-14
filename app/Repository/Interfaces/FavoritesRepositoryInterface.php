@@ -28,4 +28,6 @@ interface FavoritesRepositoryInterface
      * @return mixed
      */
     public function unFavorite($id);
+
+    public function getFavorite($user_id);
 }

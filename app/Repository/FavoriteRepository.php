@@ -8,6 +8,7 @@
 namespace App\Repository;
 
 
+use App\Models\User;
 use App\Repository\Interfaces\FavoritesRepositoryInterface;
 use Auth;
 
@@ -36,5 +37,10 @@ class FavoriteRepository implements FavoritesRepositoryInterface
 	public function unFavorite($id)
 	{
 		return Auth::user()->favorites()->detach($id);
+	}
+
+	public function getFavorite($user_id)
+	{
+		return User::where('login', $user_id)->first();
 	}
 }
