@@ -12,8 +12,8 @@
 			[admin-link]
 			<li><a target="_blank" href="{{route('dashboard')}}">Админпанель</a></li>
 			[/admin-link]
-			<li><a href="{{route('users')}}">Мой профиль</a></li>
-			<li><a href="{{route('favorite', Auth::user()->login)}}">Закладки<span>{favorite-count}</span></a></li>
+			<li><a href="{{route('currentUser', Auth::user()->login)}}">Мой профиль</a></li>
+			<li><a href="{{route('favorite', Auth::user()->login)}}">Закладки<span>{{Auth::user()->favorites_count}}</span></a></li>
 			<li><a href="{pm-link}">Сообщения<span>{new-pm} из {all-pm}</span></a></li>
 		</ul>
 	</div>

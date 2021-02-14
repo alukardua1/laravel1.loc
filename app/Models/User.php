@@ -71,6 +71,9 @@ class User extends Authenticatable
 	protected $with = [
 		'getAnime',
 	];
+	protected $withCount = [
+		'favorites',
+	];
 
 	public function getGroup()
 	{
