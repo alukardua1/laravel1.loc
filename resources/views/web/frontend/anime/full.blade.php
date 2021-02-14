@@ -6,10 +6,15 @@
 	<article class="fullstory">
 		<div class="full-title">
 			<h1>{{$showAnime->name}}</h1>
-			<div class="favor">
+<!--			<div class="favor">
 				<span class="favor-add">[add-favorites][/add-favorites]</span>
 				<span class="favor-del">[del-favorites][/del-favorites]</span>
-			</div>
+			</div>-->
+			@if (Auth::check())
+				<favorite
+						:post={{ $showAnime->id }} :favorited={{ $showAnime->favorited() ? 'true' : 'false' }}>
+				</favorite>
+			@endif
 			<div id="edit">
 				[edit]<i class="far fa-edit"></i>[/edit]
 			</div>
@@ -27,14 +32,14 @@
 						[/rating-minus]
 					</div>
 				</div>
-				<div class="cos-but mt-3">
+<!--				<div class="cos-but mt-3">
 					<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 					<script src="https://yastatic.net/share2/share.js"></script>
 					<div class="ya-share2 bottom" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,whatsapp,skype,telegram" data-counter="ig"></div>
-				</div>
+				</div>-->
 			</div>
 			<div class="full-description">
-				<i class="fas fa-file-alt"></i> {{$showAnime->description}}
+				<i class="fas fa-file-alt"></i> {!! $showAnime->description !!}
 			</div>
 			@include('web.frontend.anime.component.fullstory-info')
 		</div>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\MutationTrait;
+use Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -86,5 +87,13 @@ class Anime extends Model
 	public function getStudio()
 	{
 		return $this->belongsToMany(Studio::class);
+	}
+
+	public function favorited(): bool
+	{
+		return (bool)$this->hasMany(Favorites::class)
+			->where('user_id', Auth::id())
+			->where('anime_id', $this->id)
+			->first();
 	}
 }

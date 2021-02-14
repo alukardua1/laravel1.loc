@@ -66,8 +66,14 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'login'=>$data['login'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    protected function redirectTo()
+    {
+    	return url()->previous();
     }
 }

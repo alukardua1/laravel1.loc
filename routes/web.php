@@ -4,6 +4,7 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,10 +33,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AnimeController::class, 'index'])->name('home');
 
 Route::group(
-	['prefix'=>'anime'],
+	['prefix' => 'anime'],
 	function () {
 		Route::get('/', [AnimeController::class, 'index'])->name('animeAll');
 		Route::get('/{id}-{url?}', [AnimeController::class, 'show'])->name('showAnime');
+	}
+);
+
+Route::group(
+	['prefix' => 'news'],
+	function () {
+	}
+);
+
+Route::group(
+	['prefix' => 'blog'],
+	function () {
 	}
 );
 
@@ -48,7 +61,8 @@ Route::group(
 		Route::get('/{login}/update', [UserController::class, 'update'])->name('updateUser');
 	}
 );
-
+Route::post('/favorites_add/{id}', [FavoritesController::class, 'add'])->name('favorite_add')->middleware('auth');
+Route::post('/favorites_del/{id}', [FavoritesController::class, 'delete'])->name('favorite_del')->middleware('auth');
 Route::group(
 	['prefix' => 'team'],
 	function () {
@@ -63,7 +77,7 @@ Route::group(
 );
 
 Route::group(
-	['prefix'=>'category'],
+	['prefix' => 'category'],
 	function () {
 		Route::get('/{category}', [CategoryController::class, 'show'])->name('currentCategory');
 	}

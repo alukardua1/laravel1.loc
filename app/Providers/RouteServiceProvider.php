@@ -61,10 +61,6 @@ class RouteServiceProvider extends ServiceProvider
 			}
 		);
 	}
-	public function redirectPath()
-	{
-		return back();
-	}
 	/**
 	 * Configure the rate limiters for the application.
 	 *

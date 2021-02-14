@@ -81,4 +81,14 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Anime::class);
 	}
+
+	public function favorites()
+	{
+		return $this->belongsToMany(Anime::class, 'favorites')->withTimeStamps();
+	}
+
+	public function vote()
+	{
+		return $this->belongsToMany(Anime::class, 'votes')->withTimestamps();
+	}
 }

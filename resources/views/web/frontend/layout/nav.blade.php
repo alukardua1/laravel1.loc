@@ -15,15 +15,15 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/pravoobladatelyam.html">© Правообладателям</a>
 				</li>
-				{*<li class="nav-item">
-					<a class="nav-link" href="/xfsearch/ongoing/">Онгоинги</a>
-				</li>*}
+{{--				<li class="nav-item">--}}
+{{--					<a class="nav-link" href="/xfsearch/ongoing/">Онгоинги</a>--}}
+{{--				</li>--}}
 				<li class="nav-item dropdown d-block d-xl-none">
 					<a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
 						По жанрам
 					</a>
 					<ul class="genre genre-dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuLink">
-						{catmenu id="1-22"}
+						@include('web.frontend.layout.menu')
 					</ul>
 				</li>
 				<li class="nav-item">
