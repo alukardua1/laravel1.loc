@@ -1,6 +1,6 @@
 @extends('web.frontend.layout.app')
 
-@section('title', $showAnime->name)
+@section('title', $showAnime->metatitle)
 
 @section('content')
 	<article class="fullstory">

@@ -6,7 +6,7 @@
 	<div class="user-prof">
 		<div class="up-first">
 			<h1 class="nowrap">Пользователь: {{$currentUser->login}}</h1>
-			<div class="up-group">Группа: {status} [time_limit]&nbsp;В группе до: {time_limit}[/time_limit]</div>
+			<div class="up-group">Группа: {{$currentUser->getGroup->title}}[time_limit]&nbsp;В группе до: {time_limit}[/time_limit]</div>
 			<div class="up-img img-box avatar"><img src="{foto}" alt=""/></div>
 			<div class="up-status">
 				[online]<p class="online">В сети</p>[/online]
@@ -14,9 +14,9 @@
 			</div>
 		</div>
 		<ul class="up-second fx-row">
-			<li>{news-num} <p>Публикаций</p></li>
+			<li>{{$currentUser->get_anime_count}} <p>Публикаций</p></li>
 			<li>{comm-num} <p>Комментариев</p></li>
-			<li>{email}</li>
+			<li>{{$currentUser->email}}</li>
 			[not-group=5]<li>{pm}</li>[/not-group]
 		</ul>
 		<ul class="up-third">

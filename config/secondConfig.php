@@ -3,5 +3,6 @@
 return [
 	'paginate'   => 120,
 	'cache_time' => 0,
-	'patchSeparator' => '/'
+	'patchSeparator' => '/',
+	'login_email'=>'email',
 ];

@@ -200,6 +200,10 @@ form[name="registration"] input[type="email"], form[name="registration"] textare
 	background-color: #000000;
 }
 
+.form-check-input{
+	border: 1px solid #ced4da;
+}
+
 .form-control:focus {
 	color: #ffffff;
 	background-color: #0b2a41;

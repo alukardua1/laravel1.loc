@@ -26,23 +26,36 @@
 		<form class="form-login mb-3" method="post" action="{{ route('login') }}">
 			@csrf
 			<div class="mb-3">
-				<label for="login_name" class="form-label">{login-method}</label>
-				<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
-					   required autocomplete="email" autofocus>
+				<label for="{{Config::get('secondConfig.login_email')}}" class="form-label">E-mail</label>
+				<input id="{{Config::get('secondConfig.login_email')}}" type="text" class="form-control @error(Config::get('secondConfig.login_email')) is-invalid @enderror" name="{{Config::get('secondConfig.login_email')}}" value="{{ old(Config::get('secondConfig.login_email')) }}"
+					   required autocomplete="{{Config::get('secondConfig.login_email')}}" autofocus>
+				@error(Config::get('secondConfig.login_email'))
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+				@enderror
 			</div>
 			<div class="mb-3">
-				<label for="login_password" class="form-label">Пароль:</label>
+				<label for="password" class="form-label">Пароль:</label>
 				<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required
 					   autocomplete="current-password">
+				@error('password')
+				<span class="invalid-feedback" role="alert">
+					<strong>{{ $message }}</strong>
+				</span>
+				@enderror
+			</div>
+			<div class="mb-3 form-check">
+				<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+				<label class="form-check-label" for="remember">Запомнить</label>
 			</div>
 			<div class="mb-3">
 				<p>Забыли <a href="{lostpassword-link}" class="blue-text ml-1">пароль?</a></p>
-				<p><a class="right" href="{registration-link}">Регистрация</a></p>
+				<p><a class="right" href="{{route('register')}}">Регистрация</a></p>
 			</div>
 			<div class="row">
 				<div class="col-3">
-					<button type="submit" onclick="submit();" class="btn btn-outline-light mb-3">Войти</button>
-					<input name="login" type="hidden" id="login" value="submit">
+					<button type="submit" class="btn btn-outline-light mb-3">Войти</button>
 				</div>
 				<div class="col cocial">
 					[facebook]
