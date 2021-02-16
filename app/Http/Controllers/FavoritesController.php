@@ -21,25 +21,14 @@ class FavoritesController extends Controller
 	 */
 	public function __construct(FavoritesRepositoryInterface $favoriteRepositoryInterfaces)
 	{
-		$this->keyCache = 'favorite_';
 		$this->favoriteRepository = $favoriteRepositoryInterfaces;
 		$this->paginate = Config::get('secondConfig.paginate');
 	}
 
-	public function index($user, Request $request)
+	public function index($user)
 	{
-		$page = 'page_' . $request->get('page', 1);
-		if (Cache::has($this->keyCache . $page) and (Config::get('secondConfig.cache_time') > 0)) {
-			$allAnime = Cache::get($this->keyCache . $page);
-		} else {
-			$allAnime = self::setCache(
-				$this->keyCache . $page,
-				$this->favoriteRepository->getFavorite($user)->favorites()->paginate($this->paginate)
-			);
-		}
-
+		$allAnime = $this->favoriteRepository->getFavorite($user)->favorites()->paginate($this->paginate);
 		return view($this->frontend . 'anime.short', compact('allAnime'));
-		//dd($this->favoriteRepository->getFavorite($user)->favorites()->paginate($this->paginate));
 	}
 
 	/**

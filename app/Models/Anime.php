@@ -4,15 +4,24 @@ namespace App\Models;
 
 use App\Services\MutationTrait;
 use Auth;
+use Config;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * @method static where(string $string, $id)
  */
 class Anime extends Model
 {
-	use HasFactory, MutationTrait;
+	use HasFactory, MutationTrait, QueryCacheable;
+	protected $cacheFor;
+
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+		$this->cacheFor = Config::get('secondConfig.cache_time');
+	}
 
 	/**
 	 * @var string[]

@@ -20,7 +20,8 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getAnime($id)
 	{
-		return Anime::where('id', $id);
+		return Anime::latest()
+			->where('id', $id);
 	}
 
 	/**
@@ -31,10 +32,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getAllAnime($isAdmin = null)
 	{
 		if ($isAdmin) {
-			return Anime::orderBy('updated_at', 'DESC');
+			return Anime::latest()
+				->orderBy('updated_at', 'DESC');
 		}
 
-		return Anime::where('posted_at', 1)
+		return Anime::latest()
+			->where('posted_at', 1)
 			->orderBy('updated_at', 'DESC');
 	}
 
@@ -45,7 +48,8 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getFirstPageAnime($count)
 	{
-		return Anime::where('status', 'ongoing')
+		return Anime::latest()
+			->where('status', 'ongoing')
 			->limit($count)
 			->orderBy('updated_at', 'DESC');
 	}
@@ -58,7 +62,8 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getCustomAnime($columns, $custom)
 	{
-		return Anime::where($columns, $custom)
+		return Anime::latest()
+			->where($columns, $custom)
 			->orderBy('updated_at', 'DESC');
 	}
 }

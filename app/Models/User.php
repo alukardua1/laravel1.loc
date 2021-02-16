@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Config;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,6 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
  * Class User
@@ -24,6 +26,7 @@ class User extends Authenticatable
 	use HasTeams;
 	use Notifiable;
 	use TwoFactorAuthenticatable;
+	use QueryCacheable;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -72,6 +75,14 @@ class User extends Authenticatable
 		'favorites',
 		'getAnime',
 	];
+
+	protected $cacheFor;
+
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+		$this->cacheFor = Config::get('secondConfig.cache_time');
+	}
 
 	public function getGroup()
 	{

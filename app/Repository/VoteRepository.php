@@ -23,7 +23,9 @@ class VoteRepository implements VoteRepositoryInterface
 	 */
 	public function plusVotes($id)
 	{
-		Auth::user()->vote()->attach($id, ['votes' => 1]);
+		Auth::user()
+			->vote()
+			->attach($id, ['votes' => 1]);
 	}
 
 	/**
@@ -31,6 +33,8 @@ class VoteRepository implements VoteRepositoryInterface
 	 */
 	public function minusVotes($id)
 	{
-		Auth::user()->vote()->attach($id, ['votes' => -1]);
+		Auth::user()
+			->vote()
+			->attach($id, ['votes' => -1]);
 	}
 }

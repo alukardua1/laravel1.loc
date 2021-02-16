@@ -41,6 +41,8 @@ class FavoriteRepository implements FavoritesRepositoryInterface
 
 	public function getFavorite($user_id)
 	{
-		return User::where('login', $user_id)->first();
+		return User::latest()
+			->where('login', $user_id)
+			->first();
 	}
 }

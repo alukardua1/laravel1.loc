@@ -26,7 +26,13 @@
 		<form class="form-login mb-3" method="post" action="{{ route('login') }}">
 			@csrf
 			<div class="mb-3">
-				<label for="{{Config::get('secondConfig.login_email')}}" class="form-label">E-mail</label>
+				<label for="{{Config::get('secondConfig.login_email')}}" class="form-label">
+					@if (Config::get('secondConfig.login_email') == 'login')
+						Логин
+					@else
+						E-mail
+					@endif
+				</label>
 				<input id="{{Config::get('secondConfig.login_email')}}" type="text" class="form-control @error(Config::get('secondConfig.login_email')) is-invalid @enderror" name="{{Config::get('secondConfig.login_email')}}" value="{{ old(Config::get('secondConfig.login_email')) }}"
 					   required autocomplete="{{Config::get('secondConfig.login_email')}}" autofocus>
 				@error(Config::get('secondConfig.login_email'))

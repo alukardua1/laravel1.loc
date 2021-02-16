@@ -50,13 +50,7 @@ class MenuComposer
 
 	private function getCache()
 	{
-		if (Cache::has($this->key)) {
-			$item = Cache::get($this->key);
-		} else {
-			$item = self::setCache($this->key, $this->category->getCategories());
-		}
-
-		return $item;
+		return $this->category->getCategories();
 	}
 
 	/**

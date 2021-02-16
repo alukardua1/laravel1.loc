@@ -20,13 +20,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, FunctionTrait, ApiTrait, CacheTrait;
 
-	/**
-	 * @var
-	 */
 	protected $paginate;
-	/**
-	 * @var
-	 */
 	protected $keyCache;
 
 	/**

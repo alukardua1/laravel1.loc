@@ -30,13 +30,7 @@ class CarouselAnimeComposer
 
 	public function anime()
 	{
-		if (Cache::has($this->key)) {
-			$item = Cache::get($this->key);
-		} else {
-			$item = self::setCache($this->key, $this->animeAll->getCustomAnime('status', 'ongoing')->get());
-		}
-
-		return $item;
+		return $this->animeAll->getCustomAnime('status', 'ongoing')->get();
 	}
 
 	public function compose(View $view)

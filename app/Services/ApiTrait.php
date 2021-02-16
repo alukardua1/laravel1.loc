@@ -35,11 +35,12 @@ trait ApiTrait
 	public function userMutations($users)
 	{
 		return [
-			'id'    => $users->id,
-			'login' => $users->login,
-			'name'  => $users->name,
-			'email' => $users->email,
-			'group' => $users->getGroup->title,
+			'id'        => $users->id,
+			'login'     => $users->login,
+			'name'      => $users->name,
+			'email'     => $users->email,
+			'group'     => $users->getGroup->title,
+			'favorites' => $users->favorites,
 		];
 	}
 

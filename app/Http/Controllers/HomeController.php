@@ -26,7 +26,6 @@ class HomeController extends Controller
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->keyCache = 'home';
 		$this->firstAnime = $animeRepositoryInterfaces;
 	}
 
@@ -35,12 +34,7 @@ class HomeController extends Controller
 	 */
 	public function index()
 	{
-		if (Cache::has($this->keyCache)) {
-			$ongoing = Cache::get($this->keyCache);
-		} else {
-			$ongoing = self::setCache($this->keyCache, $this->firstAnime->getFirstPageAnime(5)->get());
-		}
-
+		$ongoing = $this->firstAnime->getFirstPageAnime(5)->get();
 		return view('web.frontend.anime.home', compact('ongoing'));
 	}
 }

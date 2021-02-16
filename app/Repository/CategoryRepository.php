@@ -22,6 +22,7 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	public function getCategories()
 	{
 		return Category::where('posted_at', '=', 1)
+			->latest()
 			->get();
 	}
 
@@ -32,6 +33,8 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	 */
 	public function getCategory($category)
 	{
-		return Category::where('url', $category)->first();
+		return Category::latest()
+			->where('url', $category)
+			->first();
 	}
 }

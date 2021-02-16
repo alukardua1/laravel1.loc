@@ -30,7 +30,6 @@ class CategoryController extends Controller
 	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
-		$this->keyCache = 'category_';
 		$this->paginate = Config::get('secondConfig.paginate');
 		$this->categories = $categoryRepositoryInterfaces;
 	}
@@ -46,21 +45,14 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * @param                            $category
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param $category
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show($category, Request $request)
+	public function show($category)
 	{
-		$page = 'page_' . $request->get('page', 1);
-		if (Cache::has($this->keyCache . $page) and Cache::has($this->keyCache . $category) and (Config::get('secondConfig.cache_time') > 0)) {
-			$currentCategory = Cache::get($this->keyCache . $category);
-			$allAnime = Cache::get($this->keyCache . $page);
-		} else {
-			$currentCategory = self::setCache($this->keyCache . $category, $this->categories->getCategory($category));
-			$allAnime = self::setCache($this->keyCache . $page, $currentCategory->getAnime()->paginate($this->paginate));
-		}
+		$currentCategory = $this->categories->getCategory($category);
+		$allAnime = $currentCategory->getAnime()->paginate($this->paginate);
 
 		return view('web.frontend.anime.short', compact('currentCategory', 'allAnime'));
 	}
