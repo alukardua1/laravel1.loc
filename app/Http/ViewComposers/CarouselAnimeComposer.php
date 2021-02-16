@@ -16,7 +16,6 @@ use Illuminate\View\View;
  */
 class CarouselAnimeComposer
 {
-	protected $key = 'carousel';
 	protected $anime;
 	protected $animeAll;
 

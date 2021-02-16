@@ -16,23 +16,11 @@ use Illuminate\View\View;
  */
 class MenuComposer
 {
-	/**
-	 * @var mixed
-	 */
 	public $menu;
-	/**
-	 * @var mixed
-	 */
+
 	public $path;
 
-	/**
-	 * @var \App\Repository\Interfaces\CategoryRepositoryInterfaces
-	 */
 	protected $category;
-	/**
-	 * @var string
-	 */
-	protected $key = 'menu';
 
 	use CacheTrait;
 
@@ -48,11 +36,6 @@ class MenuComposer
 		$this->path = $this->path();
 	}
 
-	private function getCache()
-	{
-		return $this->category->getCategories();
-	}
-
 	/**
 	 * @return mixed
 	 */
@@ -66,7 +49,7 @@ class MenuComposer
 	 */
 	public function menu()
 	{
-		return $this->getCache();
+		return $this->category->getCategories();
 	}
 
 	/**

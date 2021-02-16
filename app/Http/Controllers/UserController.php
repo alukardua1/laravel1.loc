@@ -25,6 +25,7 @@ class UserController extends Controller
 	 */
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
+		parent::__construct();
 		$this->user = $userRepositoryInterfaces;
 	}
 
@@ -47,7 +48,7 @@ class UserController extends Controller
 	{
 		$currentUser = $this->user->getUser($user);
 
-		return view('web.frontend.user.profile', compact('currentUser'));
+		return view($this->frontend . 'user.profile', compact('currentUser'));
 	}
 
 	/**

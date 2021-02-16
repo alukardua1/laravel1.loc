@@ -21,10 +21,11 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, FunctionTrait, ApiTrait, CacheTrait;
 
 	protected $paginate;
-	protected $keyCache;
 
-	/**
-	 * @var string
-	 */
 	protected $frontend = 'web.frontend.';
+
+	public function __construct()
+	{
+		$this->paginate = Config::get('secondConfig.paginate');
+	}
 }

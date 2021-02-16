@@ -28,8 +28,8 @@ class AnimeController extends Controller
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
+		parent::__construct();
 		$this->anime = $animeRepositoryInterfaces;
-		$this->paginate = Config::get('secondConfig.paginate');
 	}
 
 	/**

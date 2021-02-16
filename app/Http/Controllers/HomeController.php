@@ -26,6 +26,7 @@ class HomeController extends Controller
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
+		parent::__construct();
 		$this->firstAnime = $animeRepositoryInterfaces;
 	}
 
@@ -35,6 +36,6 @@ class HomeController extends Controller
 	public function index()
 	{
 		$ongoing = $this->firstAnime->getFirstPageAnime(5)->get();
-		return view('web.frontend.anime.home', compact('ongoing'));
+		return view($this->frontend . 'anime.home', compact('ongoing'));
 	}
 }

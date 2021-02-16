@@ -21,8 +21,8 @@ class FavoritesController extends Controller
 	 */
 	public function __construct(FavoritesRepositoryInterface $favoriteRepositoryInterfaces)
 	{
+		parent::__construct();
 		$this->favoriteRepository = $favoriteRepositoryInterfaces;
-		$this->paginate = Config::get('secondConfig.paginate');
 	}
 
 	public function index($user)

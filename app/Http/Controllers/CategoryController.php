@@ -30,7 +30,7 @@ class CategoryController extends Controller
 	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
-		$this->paginate = Config::get('secondConfig.paginate');
+		parent::__construct();
 		$this->categories = $categoryRepositoryInterfaces;
 	}
 
@@ -54,6 +54,6 @@ class CategoryController extends Controller
 		$currentCategory = $this->categories->getCategory($category);
 		$allAnime = $currentCategory->getAnime()->paginate($this->paginate);
 
-		return view('web.frontend.anime.short', compact('currentCategory', 'allAnime'));
+		return view($this->frontend . 'anime.short', compact('currentCategory', 'allAnime'));
 	}
 }
