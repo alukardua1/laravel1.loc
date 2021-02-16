@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\AnimeRepository;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
-use Cache;
-use Config;
-use Illuminate\Http\Request;
 
 /**
  * Class AnimeController
@@ -19,7 +15,6 @@ class AnimeController extends Controller
 	 * @var \App\Repository\Interfaces\AnimeRepositoryInterfaces
 	 */
 	private $anime;
-
 
 	/**
 	 * AnimeController constructor.
@@ -42,12 +37,12 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @param        $id
+	 * @param  int   $id
 	 * @param  null  $url
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
-	public function show($id, $url = null)
+	public function show(int $id, $url = null)
 	{
 		$showAnime = $this->anime->getAnime($id)->first();
 

@@ -14,15 +14,17 @@ use Laravel\Jetstream\Rules\Role;
 
 class InviteTeamMember implements InvitesTeamMembers
 {
-    /**
-     * Invite a new team member to the given team.
-     *
-     * @param  mixed  $user
-     * @param  mixed  $team
-     * @param  string  $email
-     * @param  string|null  $role
-     * @return void
-     */
+	/**
+	 * Invite a new team member to the given team.
+	 *
+	 * @param  mixed        $user
+	 * @param  mixed        $team
+	 * @param  string       $email
+	 * @param  string|null  $role
+	 *
+	 * @throws \Illuminate\Auth\Access\AuthorizationException
+	 * @return void
+	 */
     public function invite($user, $team, string $email, string $role = null)
     {
         Gate::forUser($user)->authorize('addTeamMember', $team);
@@ -39,14 +41,16 @@ class InviteTeamMember implements InvitesTeamMembers
         Mail::to($email)->send(new TeamInvitation($invitation));
     }
 
-    /**
-     * Validate the invite member operation.
-     *
-     * @param  mixed  $team
-     * @param  string  $email
-     * @param  string|null  $role
-     * @return void
-     */
+	/**
+	 * Validate the invite member operation.
+	 *
+	 * @param  mixed        $team
+	 * @param  string       $email
+	 * @param  string|null  $role
+	 *
+	 * @throws \Illuminate\Validation\ValidationException
+	 * @return void
+	 */
     protected function validate($team, string $email, ?string $role)
     {
         Validator::make([

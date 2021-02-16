@@ -5,8 +5,6 @@ namespace App\Http\ViewComposers;
 
 
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
-use App\Services\CacheTrait;
-use Cache;
 use Illuminate\View\View;
 
 /**
@@ -21,8 +19,6 @@ class MenuComposer
 	public $path;
 
 	protected $category;
-
-	use CacheTrait;
 
 	/**
 	 * Create a menu composer.

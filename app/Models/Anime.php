@@ -2,30 +2,17 @@
 
 namespace App\Models;
 
-use App\Services\MutationTrait;
 use Auth;
-use Config;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Rennokki\QueryCache\Traits\QueryCacheable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @method static where(string $string, $id)
  */
 class Anime extends Model
 {
-	use HasFactory, MutationTrait, QueryCacheable;
-	protected $cacheFor;
-
-	public function __construct(array $attributes = [])
-	{
-		parent::__construct($attributes);
-		$this->cacheFor = Config::get('secondConfig.cache_time');
-	}
-
-	/**
-	 * @var string[]
-	 */
 	protected $fillable = [
 		'name',
 		'russian',
@@ -54,10 +41,14 @@ class Anime extends Model
 		'comment_at',
 		'broadcast',
 	];
-
 	protected $appends = [
 		'category',
 	];
+
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+	}
 
 	/**
 	 * @todo Временное решение придумать как изменить
@@ -70,12 +61,12 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getCategory()
+	public function getCategory(): BelongsToMany
 	{
 		return $this->belongsToMany(Category::class);
 	}
 
-	public function getUser()
+	public function getUser(): HasOne
 	{
 		return $this->hasOne(User::class, 'id', 'user_id');
 	}
@@ -83,17 +74,17 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getKind()
+	public function getKind(): BelongsTo
 	{
 		return $this->belongsTo(Kind::class, 'kind');
 	}
 
-	public function getOtherLink()
+	public function getOtherLink(): HasMany
 	{
 		return $this->hasMany(OtherLink::class, 'anime_id', 'id');
 	}
 
-	public function getStudio()
+	public function getStudio(): BelongsToMany
 	{
 		return $this->belongsToMany(Studio::class);
 	}

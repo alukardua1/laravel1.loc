@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Interfaces\UserRepositoryInterfaces;
-use Cache;
 use Illuminate\Http\Request;
 
 /**
@@ -13,9 +12,6 @@ use Illuminate\Http\Request;
  */
 class UserController extends Controller
 {
-	/**
-	 * @var \App\Repository\Interfaces\UserRepositoryInterfaces
-	 */
 	private $user;
 
 	/**

@@ -6,7 +6,7 @@ namespace App\Services;
 
 trait MutationTrait
 {
-	public function categoryMutation($category)
+	public function categoryMutation($category): string
 	{
 		$result = [];
 		foreach ($category as $value) {

@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Group
@@ -12,9 +11,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Group extends Model
 {
-    use HasFactory;
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+	}
 
-    public function getUser()
+	public function getUser(): HasMany
     {
     	return $this->hasMany(User::class);
     }

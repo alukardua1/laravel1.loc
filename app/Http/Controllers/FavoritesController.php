@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Interfaces\FavoritesRepositoryInterface;
-use Cache;
-use Config;
-use Illuminate\Http\Request;
 
 class FavoritesController extends Controller
 {
-	/**
-	 * @var FavoritesRepositoryInterface $favoriteRepository
-	 */
 	private $favoriteRepository;
 
 	/**
@@ -25,6 +19,11 @@ class FavoritesController extends Controller
 		$this->favoriteRepository = $favoriteRepositoryInterfaces;
 	}
 
+	/**
+	 * @param $user
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
 	public function index($user)
 	{
 		$allAnime = $this->favoriteRepository->getFavorite($user)->favorites()->paginate($this->paginate);
@@ -38,7 +37,7 @@ class FavoritesController extends Controller
 	 *
 	 * @return string
 	 */
-	public function add($id): string
+	public function add(int $id): string
 	{
 		$this->favoriteRepository->favorite($id);
 
@@ -52,7 +51,7 @@ class FavoritesController extends Controller
 	 *
 	 * @return string
 	 */
-	public function delete($id): string
+	public function delete(int $id): string
 	{
 		$this->favoriteRepository->unFavorite($id);
 

@@ -5,6 +5,9 @@ namespace App\Models;
 use Config;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -84,22 +87,22 @@ class User extends Authenticatable
 		$this->cacheFor = Config::get('secondConfig.cache_time');
 	}
 
-	public function getGroup()
+	public function getGroup(): BelongsTo
 	{
 		return $this->belongsTo(Group::class, 'group_id', 'id');
 	}
 
-	public function getAnime()
+	public function getAnime(): HasMany
 	{
 		return $this->hasMany(Anime::class);
 	}
 
-	public function favorites()
+	public function favorites(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class, 'favorites')->withTimeStamps();
 	}
 
-	public function vote()
+	public function vote(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class, 'votes')->withTimestamps();
 	}

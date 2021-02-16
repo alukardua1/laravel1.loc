@@ -3,6 +3,8 @@
 
 namespace App\Services;
 
+use App\Models\Anime;
+use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Storage;
 use Str;
@@ -47,7 +49,7 @@ trait ImageTrait
 	 *
 	 * @return mixed
 	 */
-	public function uploadImages($updateAnime, $requestForm)
+	public function uploadImages(Anime $updateAnime, Request $requestForm)
 	{
 		$Extension = $requestForm[$this->config['imgColumns']]->getClientOriginalExtension();//Получает расширение файла
 		if (in_array($Extension, $this->config['extension'])) {

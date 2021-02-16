@@ -10,13 +10,16 @@ use Laravel\Jetstream\Jetstream;
 
 class CreateTeam implements CreatesTeams
 {
-    /**
-     * Validate and create a new team for the given user.
-     *
-     * @param  mixed  $user
-     * @param  array  $input
-     * @return mixed
-     */
+	/**
+	 * Validate and create a new team for the given user.
+	 *
+	 * @param  mixed  $user
+	 * @param  array  $input
+	 *
+	 * @throws \Illuminate\Auth\Access\AuthorizationException
+	 * @throws \Illuminate\Validation\ValidationException
+	 * @return mixed
+	 */
     public function create($user, array $input)
     {
         Gate::forUser($user)->authorize('create', Jetstream::newTeamModel());

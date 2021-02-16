@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Services\ApiTrait;
-use App\Services\CacheTrait;
 use App\Services\FunctionTrait;
 use Config;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -18,7 +17,7 @@ use Illuminate\Routing\Controller as BaseController;
  */
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, FunctionTrait, ApiTrait, CacheTrait;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, FunctionTrait, ApiTrait;
 
 	protected $paginate;
 

@@ -26,8 +26,8 @@ class AnimeApiController extends Controller
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
+		parent::__construct();
 		$this->apiAnime = $animeRepositoryInterfaces;
-		$this->paginate = env('APP_PAGINATE', 10);
 	}
 
 	/**

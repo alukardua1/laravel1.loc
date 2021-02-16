@@ -16,7 +16,7 @@ trait ApiTrait
 	 *
 	 * @return array
 	 */
-	public function error404()
+	public function error404(): array
 	{
 		return [
 			'error code'    => 404,
@@ -32,7 +32,7 @@ trait ApiTrait
 	 * @return array
 	 * @todo Разобратся почему такая ошибка
 	 */
-	public function userMutations($users)
+	public function userMutations($users): array
 	{
 		return [
 			'id'        => $users->id,
@@ -52,7 +52,7 @@ trait ApiTrait
 	 * @return array
 	 * @todo Разобратся почему такая ошибка
 	 */
-	public function animeMutations($anime)
+	public function animeMutations($anime): array
 	{
 		$category = [];
 		foreach ($anime->getCategory as $value) {

@@ -6,8 +6,6 @@ trait FunctionTrait
 {
 	public function isNotNull($post)
 	{
-		if (empty($post)) {
-			return abort(404);
-		}
+		abort_if(empty($post), 404);
 	}
 }

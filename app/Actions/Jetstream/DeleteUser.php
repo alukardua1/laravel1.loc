@@ -26,12 +26,14 @@ class DeleteUser implements DeletesUsers
         $this->deletesTeams = $deletesTeams;
     }
 
-    /**
-     * Delete the given user.
-     *
-     * @param  mixed  $user
-     * @return void
-     */
+	/**
+	 * Delete the given user.
+	 *
+	 * @param  mixed  $user
+	 *
+	 * @throws \Throwable
+	 * @return void
+	 */
     public function delete($user)
     {
         DB::transaction(function () use ($user) {

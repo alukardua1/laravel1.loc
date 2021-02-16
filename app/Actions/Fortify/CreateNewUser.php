@@ -14,12 +14,15 @@ class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
-    /**
-     * Create a newly registered user.
-     *
-     * @param  array  $input
-     * @return \App\Models\User
-     */
+	/**
+	 * Create a newly registered user.
+	 *
+	 * @param  array  $input
+	 *
+	 * @throws \Illuminate\Validation\ValidationException
+	 * @throws \Throwable
+	 * @return \App\Models\User
+	 */
     public function create(array $input)
     {
         Validator::make($input, [

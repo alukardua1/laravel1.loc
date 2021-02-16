@@ -12,15 +12,17 @@ use Laravel\Jetstream\Rules\Role;
 
 class AddTeamMember implements AddsTeamMembers
 {
-    /**
-     * Add a new team member to the given team.
-     *
-     * @param  mixed  $user
-     * @param  mixed  $team
-     * @param  string  $email
-     * @param  string|null  $role
-     * @return void
-     */
+	/**
+	 * Add a new team member to the given team.
+	 *
+	 * @param  mixed        $user
+	 * @param  mixed        $team
+	 * @param  string       $email
+	 * @param  string|null  $role
+	 *
+	 * @throws \Illuminate\Auth\Access\AuthorizationException
+	 * @return void
+	 */
     public function add($user, $team, string $email, string $role = null)
     {
         Gate::forUser($user)->authorize('addTeamMember', $team);
@@ -38,14 +40,16 @@ class AddTeamMember implements AddsTeamMembers
         TeamMemberAdded::dispatch($team, $newTeamMember);
     }
 
-    /**
-     * Validate the add member operation.
-     *
-     * @param  mixed  $team
-     * @param  string  $email
-     * @param  string|null  $role
-     * @return void
-     */
+	/**
+	 * Validate the add member operation.
+	 *
+	 * @param  mixed        $team
+	 * @param  string       $email
+	 * @param  string|null  $role
+	 *
+	 * @throws \Illuminate\Validation\ValidationException
+	 * @return void
+	 */
     protected function validate($team, string $email, ?string $role)
     {
         Validator::make([

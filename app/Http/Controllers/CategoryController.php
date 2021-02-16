@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
-use Cache;
-use Config;
-use Illuminate\Http\Request;
 
 /**
  * Class CategoryController
@@ -14,14 +11,7 @@ use Illuminate\Http\Request;
  */
 class CategoryController extends Controller
 {
-	/**
-	 * @var \App\Repository\Interfaces\CategoryRepositoryInterfaces
-	 */
 	private   $categories;
-	/**
-	 * @var
-	 */
-	protected $pagination;
 
 	/**
 	 * CategoryController constructor.
@@ -34,9 +24,6 @@ class CategoryController extends Controller
 		$this->categories = $categoryRepositoryInterfaces;
 	}
 
-	/**
-	 *
-	 */
 	public function index()
 	{
 		$categoryAll = $this->categories->getCategories()->get();
