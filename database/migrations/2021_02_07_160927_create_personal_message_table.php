@@ -17,9 +17,11 @@ class CreatePersonalMessageTable extends Migration
             $table->id();
             $table->foreignId('author_id');
             $table->foreignId('recipient_id');
+            $table->date('date_pm')->default(date('Y-m-d'));
             $table->string('title');
             $table->text('description');
             $table->boolean('is_read')->default(0);
+            $table->date('date_read')->nullable();
             $table->timestamps();
         });
     }

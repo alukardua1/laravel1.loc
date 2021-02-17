@@ -43,5 +43,12 @@ class BladeProvider extends ServiceProvider
 				return Auth::user()->group_id <> $string;
 			}
 		);
+		Blade::if(
+			'admin_link',
+			function () {
+				//dd(__METHOD__, Auth::user()->getGroup);
+				return Auth::user()->getGroup->is_dashboard == 1;
+			}
+		);
 	}
 }

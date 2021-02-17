@@ -1,7 +1,7 @@
 @if (Auth::user())
 	<div class="mb-3 card-person">
 		<div class="avatar">
-			<img src="{foto}" alt="{login}" data-toggle="tooltip" data-html="true" title='{group}: {login}'>
+			<img src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->login}}" data-toggle="tooltip" data-html="true" title='{group}: {{Auth::user()->login}}'>
 		</div>
 		<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 			@csrf
@@ -9,9 +9,9 @@
 		<a href="{{route('logout')}}" type="button" class="btn btn-outline-light logout"
 		   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти <i class="fas fa-sign-in ml-1"></i></a>
 		<ul class="urls">
-			[admin-link]
+			@admin_link
 			<li><a target="_blank" href="{{route('dashboard')}}">Админпанель</a></li>
-			[/admin-link]
+			@endadmin_link
 			<li><a href="{{route('currentUser', Auth::user()->login)}}">Мой профиль</a></li>
 			<li><a href="{{route('favorite', Auth::user()->login)}}">Закладки<span>{{Auth::user()->favorites_count}}</span></a></li>
 			<li><a href="{pm-link}">Сообщения<span>{new-pm} из {all-pm}</span></a></li>
