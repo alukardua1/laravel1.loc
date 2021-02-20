@@ -17,11 +17,11 @@ class CreateCharactersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('russian');
-            $table->string('original_img');
-            $table->string('preview_img');
+            $table->string('original_img')->nullable();
+            $table->string('preview_img')->nullable();
             $table->string('url');
             $table->string('altname');
-            $table->string('japanese');
+            $table->string('japanese')->nullable();
             $table->text('description')->nullable();
             $table->text('description_html')->nullable();
             $table->text('description_source')->nullable();

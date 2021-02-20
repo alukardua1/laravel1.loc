@@ -15,13 +15,12 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('russian');
-            $table->string('original_img');
-            $table->string('preview_img');
+            $table->string('name')->index();
+            $table->string('russian')->nullable();
+            $table->string('original_img')->nullable();
+            $table->string('preview_img')->nullable();
             $table->string('url');
-            $table->string('japanese');
-            $table->string('job_title');
+            $table->string('japanese')->nullable();
             $table->date('birthday');
             $table->string('website')->nullable();
             $table->boolean('producer')->default(0);

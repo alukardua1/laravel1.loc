@@ -23,6 +23,8 @@ class Controller extends BaseController
 
 	protected $frontend = 'web.frontend.';
 
+	protected $backend = 'web.backend.';
+
 	public function __construct()
 	{
 		$this->paginate = Config::get('secondConfig.paginate');
