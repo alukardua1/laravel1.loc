@@ -6,10 +6,10 @@
 	<article class="fullstory">
 		<div class="full-title">
 			<h1>{{$showAnime->name}}</h1>
-<!--			<div class="favor">
-				<span class="favor-add">[add-favorites][/add-favorites]</span>
-				<span class="favor-del">[del-favorites][/del-favorites]</span>
-			</div>-->
+			<!--			<div class="favor">
+							<span class="favor-add">[add-favorites][/add-favorites]</span>
+							<span class="favor-del">[del-favorites][/del-favorites]</span>
+						</div>-->
 			@if (Auth::check())
 				<favorite
 						:post={{ $showAnime->id }} :favorited={{ $showAnime->favorited() ? 'true' : 'false' }}>
@@ -22,7 +22,8 @@
 		<div class="inform">
 			<div class="poster">
 				<div class="view">
-					<img itemprop="image" src="{{asset('storage/'.$showAnime->preview_img)}}" data-src="{{asset('storage/'.$showAnime->original_img)}}" class="card-img lazy" alt="{title}">
+					<img itemprop="image" src="{{asset('storage/'.$showAnime->preview_img)}}"
+						 data-src="{{asset('storage/'.$showAnime->original_img)}}" class="card-img lazy" alt="{title}">
 					<div class="rating-full">
 						[rating-plus]
 						<span>{likes}</span>
@@ -32,11 +33,11 @@
 						[/rating-minus]
 					</div>
 				</div>
-<!--				<div class="cos-but mt-3">
-					<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-					<script src="https://yastatic.net/share2/share.js"></script>
-					<div class="ya-share2 bottom" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,whatsapp,skype,telegram" data-counter="ig"></div>
-				</div>-->
+				<!--				<div class="cos-but mt-3">
+									<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+									<script src="https://yastatic.net/share2/share.js"></script>
+									<div class="ya-share2 bottom" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,whatsapp,skype,telegram" data-counter="ig"></div>
+								</div>-->
 			</div>
 			<div class="full-description">
 				<i class="fas fa-file-alt"></i> {!! $showAnime->description !!}
@@ -49,66 +50,40 @@
 		<div class="player">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				@if($showAnime->trailer)
-				<li class="nav-item" role="presentation">
-					<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer" aria-selected="true">Трейлер</a>
-				</li>
+					<li class="nav-item" role="presentation">
+						<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
+						   aria-selected="true">Трейлер</a>
+					</li>
 				@endif
-				[xfgiven_kodik]
-				[blockplayer]
-				<li class="nav-item" role="presentation">
-					<a class="nav-link @if(!$showAnime->trailer) active @endif" id="player-tab" data-toggle="tab" href="#player" role="tab" aria-controls="player" aria-selected="false">Плеер</a>
-				</li>
-				[/blockplayer]
-				[/xfgiven_kodik]
+				@if ($showAnime->player)
+					<li class="nav-item" role="presentation">
+						<a class="nav-link @if(!$showAnime->trailer) active @endif" id="player-tab" data-toggle="tab" href="#player" role="tab"
+						   aria-controls="player" aria-selected="false">Плеер</a>
+					</li>
+				@endif
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				@if($showAnime->trailer)
-				<div class="tab-pane fade show active" id="trailer" role="tabpanel" aria-labelledby="trailer-tab">
-					<div class="embed-responsive embed-responsive-16by9">
-						<iframe class="embed-responsive-item" src="{{$showAnime->trailer}}" allowfullscreen></iframe>
+					<div class="tab-pane fade show active" id="trailer" role="tabpanel" aria-labelledby="trailer-tab">
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" src="{{$showAnime->trailer}}" allowfullscreen></iframe>
+						</div>
+						@if(Auth::user())
+							<div>
+								{brokenLink}
+							</div>
+						@endif
 					</div>
-					@if(Auth::user())
-					<div>
-						{brokenLink}
-					</div>
-					@endif
-				</div>
 				@endif
-				[xfgiven_kodik]
-				[blockplayer]
-				<div class="tab-pane fade [xfnotgiven_treyler]show active[/xfnotgiven_treyler]" id="player" role="tabpanel" aria-labelledby="player-tab">
-					[catlist=20-21,23-25]
-					[group=5]
-					<div class="alert alert-danger" role="alert">
-						<h4 class="alert-heading">Внимание! Обнаружена ошибка</h4>
-						<p>Для просмотра видео войдите под своим логином или зарегистрируйтесь.</p>
+				@if($showAnime->player)
+					<div class="tab-pane fade @if(!$showAnime->trailer)show active @endif" id="player" role="tabpanel"
+						 aria-labelledby="player-tab">
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" src="{{$showAnime->player}}" frameborder="0" allowfullscreen
+									allow="autoplay *; fullscreen *"></iframe>
+						</div>
 					</div>
-					[/group]
-					[/catlist]
-					[not-catlist=20-21,23-25]
-					[group=5]
-					<div class="embed-responsive embed-responsive-16by9">
-						{blockplayer}
-					</div>
-					[/group]
-					[/not-catlist]
-					[catlist=20-25]
-					[not-group=5]
-					<div class="embed-responsive embed-responsive-16by9">
-						{blockplayer}
-					</div>
-					[/not-group]
-					[/catlist]
-					[not-catlist=20-25]
-					[not-group=5]
-					<div class="embed-responsive embed-responsive-16by9">
-						{blockplayer}
-					</div>
-					[/not-group]
-					[/not-catlist]
-				</div>
-				[/blockplayer]
-				[/xfgiven_kodik]
+				@endif
 			</div>
 		</div>
 		<div class="">
@@ -123,10 +98,12 @@
 		<div class="franch">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
-					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#franchise" role="tab" aria-controls="franchise" aria-selected="true">Франшиза</a>
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#franchise" role="tab" aria-controls="franchise"
+					   aria-selected="true">Франшиза</a>
 				</li>
 				<li class="nav-item" role="presentation">
-					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#chronology" role="tab" aria-controls="chronology" aria-selected="false">Хронология</a>
+					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#chronology" role="tab" aria-controls="chronology"
+					   aria-selected="false">Хронология</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">

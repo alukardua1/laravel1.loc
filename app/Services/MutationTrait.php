@@ -15,4 +15,13 @@ trait MutationTrait
 		$result = implode(' / ', $result);
 		return $result;
 	}
+	
+	public function blockPlayer($anime)
+	{
+		if ($anime->blocking == 1) {
+		    $anime->player = null;
+		    $anime->blockText = 'Анме заблокировано по просьбе правообладателя';
+		}
+		return $anime;
+	}
 }

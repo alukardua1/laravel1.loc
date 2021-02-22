@@ -44,7 +44,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-	protected function redirectTo()
+	protected function redirectTo(): string
 	{
 		return url()->previous();
 	}
@@ -54,7 +54,7 @@ class LoginController extends Controller
 		return Config::get('secondConfig.login_email');
 	}
 
-	protected function credentials(Request $request)
+	protected function credentials(Request $request): array
 	{
 		return $request->only($this->username(), 'password');
 	}

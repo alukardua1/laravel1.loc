@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ApiTrait;
 use App\Services\FunctionTrait;
+use App\Services\MutationTrait;
 use Config;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -17,7 +18,7 @@ use Illuminate\Routing\Controller as BaseController;
  */
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, FunctionTrait, ApiTrait;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, FunctionTrait, ApiTrait, MutationTrait;
 
 	protected $paginate;
 
