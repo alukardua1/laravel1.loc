@@ -32,6 +32,13 @@ Route::group(
 );
 
 Route::group(
+	['prefix'=>'custom'],
+	function () {
+		Route::get('/{custom}')->name('custom');
+	}
+);
+
+Route::group(
 	['prefix' => 'news'],
 	function () {
 	}

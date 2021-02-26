@@ -23,7 +23,8 @@ class CreateAnimesTable extends Migration
             $table->string('original_img')->nullable();
             $table->string('preview_img')->nullable();
             $table->string('url');
-            $table->foreignId('kind');
+            $table->foreignId('kind_id');
+            $table->foreignId('channel_id');
             $table->string('status');
             $table->string('broadcast')->nullable();
             $table->string('episodes')->nullable();

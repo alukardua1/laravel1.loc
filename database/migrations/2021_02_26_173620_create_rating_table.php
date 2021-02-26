@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnimeChannelTable extends Migration
+class CreateRatingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateAnimeChannelTable extends Migration
      */
     public function up()
     {
-        Schema::create('anime_channel', function (Blueprint $table) {
+        Schema::create('rating', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anime_id');
-            $table->foreignId('channel_id');
+            $table->foreignId('user_id');
+            $table->integer('rating');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateAnimeChannelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anime_channel');
+        Schema::dropIfExists('rating');
     }
 }

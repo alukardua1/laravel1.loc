@@ -43,6 +43,9 @@ class Anime extends Model
 	];
 	protected $appends = [
 		'category',
+		'getKind',
+		'getChannel',
+		'getStudio',
 	];
 
 	public function __construct(array $attributes = [])
@@ -76,7 +79,7 @@ class Anime extends Model
 	 */
 	public function getKind(): BelongsTo
 	{
-		return $this->belongsTo(Kind::class, 'kind');
+		return $this->belongsTo(Kind::class, 'kind_id');
 	}
 
 	public function getOtherLink(): HasMany
@@ -87,6 +90,11 @@ class Anime extends Model
 	public function getStudio(): BelongsToMany
 	{
 		return $this->belongsToMany(Studio::class);
+	}
+
+	public function getChannel()
+	{
+		return $this->belongsTo(Channel::class, 'channel_id');
 	}
 
 	public function favorited(): bool
