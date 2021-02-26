@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('login')->unique()->index();
             $table->string('email')->unique()->index();
             $table->boolean('hide_email')->default(0);
-            $table->string('land')->nullable();
+            $table->foreignId('country_id');
             $table->string('city')->nullable();
             $table->date('birthday');
             $table->timestamp('email_verified_at')->nullable();
