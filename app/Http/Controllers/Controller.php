@@ -28,6 +28,6 @@ class Controller extends BaseController
 
 	public function __construct()
 	{
-		$this->paginate = Config::get('secondConfig.paginate');
+		$this->paginate = Config::get('secondConfig.paginate', 10);
 	}
 }

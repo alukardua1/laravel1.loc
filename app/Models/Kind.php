@@ -14,4 +14,13 @@ class Kind extends Model
     {
 	    parent::__construct($attributes);
     }
+
+	protected $withCount = [
+		'getAnime',
+	];
+
+    public function getAnime()
+    {
+    	return $this->hasMany(Anime::class);
+    }
 }

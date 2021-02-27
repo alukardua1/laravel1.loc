@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Repository\Interfaces\KindRepositoryInterfaces;
+use Illuminate\Http\Request;
+
+class KindController extends Controller
+{
+	protected $kind;
+
+	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
+	{
+		$this->kind = $kindRepositoryInterfaces;
+		parent::__construct();
+	}
+
+	/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+    	$showKind = $this->kind->getAnime($id);
+	    $this->isNotNull($showKind);
+    	$title = $showKind->full_name;
+	    $description = $showKind->description;
+	    $allAnime = $showKind->getAnime()->paginate($this->paginate);
+
+	    return view($this->frontend . 'anime.short', compact('showKind', 'allAnime', 'title', 'description'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

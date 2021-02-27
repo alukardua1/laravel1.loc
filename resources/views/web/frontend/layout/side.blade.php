@@ -25,7 +25,7 @@
 					По типам
 				</div>
 				<ul class="collapse genre" id="tip">
-					{include file="/engine/modules/xflist.php?xfname=tip"}
+					@include('web.frontend.layout.kind')
 				</ul>
 			</div>
 			<div class="cat-slave">

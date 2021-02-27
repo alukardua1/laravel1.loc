@@ -39,8 +39,11 @@ class CategoryController extends Controller
 	public function show($category)
 	{
 		$currentCategory = $this->categories->getCategory($category);
+		$this->isNotNull($currentCategory);
+		$title = $currentCategory->title;
+		$description = $currentCategory->description;
 		$allAnime = $currentCategory->getAnime()->paginate($this->paginate);
 
-		return view($this->frontend . 'anime.short', compact('currentCategory', 'allAnime'));
+		return view($this->frontend . 'anime.short', compact('currentCategory', 'allAnime', 'title', 'description'));
 	}
 }

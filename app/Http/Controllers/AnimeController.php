@@ -33,6 +33,7 @@ class AnimeController extends Controller
 	public function index()
 	{
 		$allAnime = $this->anime->getAllAnime()->paginate($this->paginate);
+
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
 
@@ -54,7 +55,7 @@ class AnimeController extends Controller
 		if ($url !== $showAnime->url) {
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
 		}
-		//dd(__METHOD__, $showAnime);
+
 		return view($this->frontend . 'anime.full', compact('showAnime'));
 	}
 }

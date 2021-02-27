@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Repository\FavoriteRepository;
 use App\Repository\Interfaces\FavoritesRepositoryInterface;
+use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\VoteRepositoryInterface;
+use App\Repository\KindRepository;
 use App\Repository\VoteRepository;
 use App\Repository\AnimeRepository;
 use App\Repository\CategoryRepository;
@@ -31,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CategoryRepositoryInterfaces::class, CategoryRepository::class);
         $this->app->bind(FavoritesRepositoryInterface::class, FavoriteRepository::class);
         $this->app->bind(VoteRepositoryInterface::class, VoteRepository::class);
+        $this->app->bind(KindRepositoryInterfaces::class, KindRepository::class);
     }
 
     /**

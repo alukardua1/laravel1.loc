@@ -5,6 +5,7 @@ use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\KindController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,7 @@ Route::group(
 		Route::get('channel/{custom}')->name('channel');
 		Route::get('studio/{custom}')->name('studio');
 		Route::get('quality/{custom}')->name('quality');
-		Route::get('kind/{custom}')->name('kind');
+		Route::get('kind/{custom}', [KindController::class, 'show'])->name('kind');
 		Route::get('country/{custom}')->name('country');
 	}
 );

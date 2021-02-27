@@ -1,7 +1,8 @@
 @if (Auth::user())
 	<div class="mb-3 card-person">
 		<div class="avatar">
-			<img src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->login}}" data-toggle="tooltip" data-html="true" title='{group}: {{Auth::user()->login}}'>
+			<img src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->login}}" data-toggle="tooltip" data-html="true"
+				 title='{{Auth::user()->getGroup->title}}: {{Auth::user()->login}}'>
 		</div>
 		<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 			@csrf
@@ -33,7 +34,9 @@
 						E-mail
 					@endif
 				</label>
-				<input id="{{Config::get('secondConfig.login_email')}}" type="text" class="form-control @error(Config::get('secondConfig.login_email')) is-invalid @enderror" name="{{Config::get('secondConfig.login_email')}}" value="{{ old(Config::get('secondConfig.login_email')) }}"
+				<input id="{{Config::get('secondConfig.login_email')}}" type="text"
+					   class="form-control @error(Config::get('secondConfig.login_email')) is-invalid @enderror"
+					   name="{{Config::get('secondConfig.login_email')}}" value="{{ old(Config::get('secondConfig.login_email')) }}"
 					   required autocomplete="{{Config::get('secondConfig.login_email')}}" autofocus>
 				@error(Config::get('secondConfig.login_email'))
 				<span class="invalid-feedback" role="alert">

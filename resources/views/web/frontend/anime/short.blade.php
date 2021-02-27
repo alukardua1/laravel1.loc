@@ -1,19 +1,19 @@
 @extends('web.frontend.layout.app')
 
-@section('title', $currentCategory->title ?? 'Аниме')
+@section('title', $title ?? 'Аниме')
 
 @section('category-title')
-	@if(!empty($currentCategory->title))
+	@if(!empty($title))
 		<div class="category-title">
-			<h1>{{$currentCategory->title}}</h1>
+			<h1>{{$title}}</h1>
 		</div>
 	@endif
 @endsection
 
 @section('category-description')
-	@if(!empty($currentCategory->description))
+	@if(!empty($description))
 		<div class="category-description">
-			<p>{{$currentCategory->description}}</p>
+			<p>{!! $description !!}</p>
 		</div>
 	@endif
 @endsection
