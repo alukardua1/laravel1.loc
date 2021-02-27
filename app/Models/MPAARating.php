@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-class Channel extends Model
+
+class MPAARating extends Model
 {
 	public function __construct(array $attributes = [])
 	{

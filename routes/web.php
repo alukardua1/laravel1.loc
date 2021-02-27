@@ -32,9 +32,13 @@ Route::group(
 );
 
 Route::group(
-	['prefix'=>'custom'],
+	[],
 	function () {
-		Route::get('/{custom}')->name('custom');
+		Route::get('channel/{custom}')->name('channel');
+		Route::get('studio/{custom}')->name('studio');
+		Route::get('quality/{custom}')->name('quality');
+		Route::get('kind/{custom}')->name('kind');
+		Route::get('country/{custom}')->name('country');
 	}
 );
 

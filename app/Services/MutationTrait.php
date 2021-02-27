@@ -42,8 +42,9 @@ trait MutationTrait
 	public function unknown($unknown)
 	{
 		if (!$unknown) {
-			$unknown = collect('name');
+			$unknown = collect(['name', 'url']);
 			$unknown->name = 'не известно';
+			$unknown->url = '';
 			return $unknown;
 		}
 		return $unknown;

@@ -32,7 +32,7 @@ class CreateAnimesTable extends Migration
             $table->string('aired_season')->nullable();
             $table->date('aired_on')->nullable();
             $table->date('released_on')->nullable();
-            $table->string('rating')->nullable();
+            $table->foreignId('rating_id');
             $table->text('english')->nullable()->index();
             $table->text('japanese')->nullable()->index();
             $table->text('synonyms')->nullable()->index();

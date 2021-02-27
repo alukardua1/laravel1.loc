@@ -24,7 +24,7 @@
 					0
 				</div>
 				<div class="age">
-					<span>{{$value->rating}}</span>
+					<span>{{$value->getRating ? $value->getRating->name:'нет'}}</span>
 				</div>
 			</div>
 		</a>

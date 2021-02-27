@@ -41,11 +41,14 @@ class Anime extends Model
 		'comment_at',
 		'broadcast',
 	];
-	protected $appends = [
+	protected $appends  = [
 		'category',
 		'getKind',
 		'getChannel',
 		'getStudio',
+		'getQuality',
+		'getRating',
+		'getCountry',
 	];
 
 	public function __construct(array $attributes = [])
@@ -95,6 +98,21 @@ class Anime extends Model
 	public function getChannel()
 	{
 		return $this->belongsTo(Channel::class, 'channel_id');
+	}
+
+	public function getQuality()
+	{
+		return $this->belongsToMany(Quality::class);
+	}
+
+	public function getRating()
+	{
+		return $this->belongsTo(MPAARating::class, 'rating_id');
+	}
+
+	public function getCountry()
+	{
+		return $this->belongsToMany(Country::class);
 	}
 
 	public function favorited(): bool

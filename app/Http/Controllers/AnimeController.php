@@ -49,7 +49,6 @@ class AnimeController extends Controller
 		$this->isNotNull($showAnime);
 		$this->blockPlayer($showAnime);
 		$showAnime->broadcastTitle = $this->broadcast($showAnime->broadcast);
-		$showAnime->getChannel = $this->unknown($showAnime->getChannel);
 		$showAnime->seasonAired = $this->seasonAired($showAnime->aired_on);
 
 		if ($url !== $showAnime->url) {
