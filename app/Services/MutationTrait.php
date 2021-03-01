@@ -47,11 +47,11 @@ trait MutationTrait
 	/**
 	 * Формирование сеанса показа
 	 *
-	 * @param  string  $broadcast
+	 * @param $broadcast
 	 *
 	 * @return string
 	 */
-	public function broadcast(string $broadcast): string
+	public function broadcast($broadcast): string
 	{
 		switch ($broadcast) {
 			case $broadcast >= '21.00' && $broadcast < '06.00':
@@ -87,11 +87,11 @@ trait MutationTrait
 	/**
 	 * Формирование сезона показа
 	 *
-	 * @param  string  $aired
+	 * @param $aired
 	 *
 	 * @return string
 	 */
-	public function seasonAired(string $aired): string
+	public function seasonAired($aired): string
 	{
 		$month = date('m', strtotime($aired));
 		$year = date('Y', strtotime($aired));

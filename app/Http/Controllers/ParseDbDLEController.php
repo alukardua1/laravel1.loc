@@ -22,6 +22,7 @@ class ParseDbDLEController extends Controller
         $post = $this->dleParseRepository->parsePost($id);
         $animeCategory = $this->dleParseRepository->parsePostCategory();
         $studios = $this->dleParseRepository->parseStudio();
+        $channel = $this->dleParseRepository->parseChannel();
         /*foreach ($category as $cat)
         {
             DB::table('categories')->insert($cat);
@@ -34,6 +35,6 @@ class ParseDbDLEController extends Controller
         {
             DB::table('anime_category')->insert($value);
         }*/
-        dd(__METHOD__, $post);
+        dd(__METHOD__, $channel);
     }
 }

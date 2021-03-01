@@ -45,4 +45,6 @@ interface DLEParse
      * @return mixed
      */
     public function parsePerson();
+
+	public function parseChannel();
 }

@@ -16,6 +16,7 @@ class CreateMPAARatingsTable extends Migration
         Schema::create('m_p_a_a_ratings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('url');
             $table->text('description')->nullable();
             $table->timestamps();
         });

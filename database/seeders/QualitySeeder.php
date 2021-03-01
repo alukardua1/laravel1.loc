@@ -49,7 +49,7 @@ class QualitySeeder extends Seeder
 	{
 		foreach ($this->arr as $item) {
 			$data[] = [
-				'title' => $item,
+				'name' => $item,
 				'url' => \Str::slug($item)
 			];
 		}

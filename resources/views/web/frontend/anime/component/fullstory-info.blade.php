@@ -14,12 +14,11 @@
 			</span>
 		</li>
 	@endif
+	@if (!$showAnime->getStudio)
 	<li>
 		<span>Студия: </span>
 		<span>
-			@if (!$showAnime->getStudio)
-				не указана
-			@endif
+
 			@foreach($showAnime->getStudio as $value)
 				@if ($loop->last)
 					<a href="{{route('studio', $value->url)}}">{{$value->name}}</a>
@@ -29,18 +28,21 @@
 			@endforeach
 		</span>
 	</li>
+	@endif
 	<li><span>Сезон: </span> <span>{{$showAnime->seasonAired}}</span></li>
-	<li><span>Страна: </span>
-		<span>
+	@if (!$showAnime->getCountry)
+		<li><span>Страна: </span>
+			<span>
 			@foreach($showAnime->getCountry as $value)
-				@if($loop->last)
-					<a href="{{route('country', $value->url)}}">{{$value->name}}</a>
-				@else
-					<a href="{{route('country', $value->url)}}">{{$value->name}}</a>,
-				@endif
-			@endforeach
+					@if($loop->last)
+						<a href="{{route('country', $value->url)}}">{{$value->name}}</a>
+					@else
+						<a href="{{route('country', $value->url)}}">{{$value->name}}</a>,
+					@endif
+				@endforeach
 		</span>
-	</li>
+		</li>
+	@endif
 	<li>
 		<span>Жанр: </span><span>
 			{!! $showAnime->category !!}
