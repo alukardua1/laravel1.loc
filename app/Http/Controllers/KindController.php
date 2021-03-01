@@ -5,10 +5,20 @@ namespace App\Http\Controllers;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use Illuminate\Http\Request;
 
+/**
+ * Class KindController
+ *
+ * @package App\Http\Controllers
+ */
 class KindController extends Controller
 {
 	protected $kind;
 
+	/**
+	 * KindController constructor.
+	 *
+	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces
+	 */
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
 		$this->kind = $kindRepositoryInterfaces;

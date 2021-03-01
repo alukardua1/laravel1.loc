@@ -25,6 +25,8 @@ class HomeController extends Controller
 	}
 
 	/**
+	 * Вывод постов на главной странице
+	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
 	public function index()

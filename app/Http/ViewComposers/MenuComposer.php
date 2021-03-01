@@ -14,10 +14,8 @@ use Illuminate\View\View;
  */
 class MenuComposer
 {
-	public $menu;
-
-	public $path;
-
+	public    $menu;
+	public    $path;
 	protected $category;
 
 	/**

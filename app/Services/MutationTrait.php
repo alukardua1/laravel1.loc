@@ -4,8 +4,20 @@
 namespace App\Services;
 
 
+/**
+ * Trait MutationTrait
+ *
+ * @package App\Services
+ */
 trait MutationTrait
 {
+	/**
+	 * Формирование ссылки категорий
+	 *
+	 * @param  mixed  $category
+	 *
+	 * @return string
+	 */
 	public function categoryMutation($category): string
 	{
 		$result = [];
@@ -16,6 +28,13 @@ trait MutationTrait
 		return $result;
 	}
 
+	/**
+	 * Блокировка плеера
+	 *
+	 * @param  mixed  $anime
+	 *
+	 * @return mixed
+	 */
 	public function blockPlayer($anime)
 	{
 		if ($anime->blocking == 1) {
@@ -25,7 +44,14 @@ trait MutationTrait
 		return $anime;
 	}
 
-	public function broadcast($broadcast)
+	/**
+	 * Формирование сеанса показа
+	 *
+	 * @param  string  $broadcast
+	 *
+	 * @return string
+	 */
+	public function broadcast(string $broadcast): string
 	{
 		switch ($broadcast) {
 			case $broadcast >= '21.00' && $broadcast < '06.00':
@@ -39,7 +65,15 @@ trait MutationTrait
 		}
 	}
 
-	public function unknown($unknown)
+	/**
+	 * Проверка на пустое значение
+	 *
+	 * @param  mixed  $unknown
+	 *
+	 * @return \Illuminate\Support\Collection
+	 * @todo Решить нужно ли
+	 */
+	public function unknown($unknown): \Illuminate\Support\Collection
 	{
 		if (!$unknown) {
 			$unknown = collect(['name', 'url']);
@@ -50,7 +84,14 @@ trait MutationTrait
 		return $unknown;
 	}
 
-	public function seasonAired($aired)
+	/**
+	 * Формирование сезона показа
+	 *
+	 * @param  string  $aired
+	 *
+	 * @return string
+	 */
+	public function seasonAired(string $aired): string
 	{
 		$month = date('m', strtotime($aired));
 		$year = date('Y', strtotime($aired));

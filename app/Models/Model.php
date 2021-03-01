@@ -8,13 +8,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 
+/**
+ * Class Model
+ *
+ * @package App\Models
+ */
 class Model extends BaseModel
 {
 	use HasFactory, MutationTrait, QueryCacheable;
 
 	protected $cacheFor;
 
-    public function __construct(array $attributes = [])
+	/**
+	 * Model constructor.
+	 *
+	 * @param  array  $attributes
+	 */
+	public function __construct(array $attributes = [])
     {
 	    parent::__construct($attributes);
 	    $this->cacheFor = Config::get('secondConfig.cache_time') * 1440;

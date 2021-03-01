@@ -29,5 +29,10 @@ interface FavoritesRepositoryInterface
      */
     public function unFavorite($id);
 
-    public function getFavorite($user_id);
+	/**
+	 * @param $user_id
+	 *
+	 * @return mixed
+	 */
+	public function getFavorite($user_id);
 }

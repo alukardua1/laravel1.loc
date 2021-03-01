@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\MPAARating;
 use Illuminate\Http\Request;
 
+/**
+ * Class MPAARatingController
+ *
+ * @package App\Http\Controllers
+ */
 class MPAARatingController extends Controller
 {
-    /**
+	/**
+	 * MPAARatingController constructor.
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

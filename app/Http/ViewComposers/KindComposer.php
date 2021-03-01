@@ -9,10 +9,8 @@ use Illuminate\View\View;
 
 class KindComposer
 {
-	public $menu;
-
-	public $path;
-
+	public    $menu;
+	public    $path;
 	protected $kind;
 
 	/**

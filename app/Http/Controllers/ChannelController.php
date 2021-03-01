@@ -4,8 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/**
+ * Class ChannelController
+ *
+ * @package App\Http\Controllers
+ */
 class ChannelController extends Controller
 {
+	private $channel;
+
+	/**
+	 * ChannelController constructor.
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+	}
     /**
      * Display a listing of the resource.
      *

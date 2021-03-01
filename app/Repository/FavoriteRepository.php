@@ -43,6 +43,11 @@ class FavoriteRepository implements FavoritesRepositoryInterface
 			->detach($id);
 	}
 
+	/**
+	 * @param $user_id
+	 *
+	 * @return mixed
+	 */
 	public function getFavorite($user_id)
 	{
 		return User::latest()

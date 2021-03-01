@@ -10,16 +10,23 @@ namespace App\Models;
  */
 class Kind extends Model
 {
-    public function __construct(array $attributes = [])
+	protected $withCount = [
+		'getAnime',
+	];
+	/**
+	 * Kind constructor.
+	 *
+	 * @param  array  $attributes
+	 */
+	public function __construct(array $attributes = [])
     {
 	    parent::__construct($attributes);
     }
 
-	protected $withCount = [
-		'getAnime',
-	];
-
-    public function getAnime()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getAnime()
     {
     	return $this->hasMany(Anime::class);
     }

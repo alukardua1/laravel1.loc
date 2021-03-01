@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @method static where(string $string, $id)
+ * @property mixed title
+ * @property mixed id
  */
 class Anime extends Model
 {
@@ -51,6 +53,11 @@ class Anime extends Model
 		'getCountry',
 	];
 
+	/**
+	 * Anime constructor.
+	 *
+	 * @param  array  $attributes
+	 */
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
@@ -72,6 +79,9 @@ class Anime extends Model
 		return $this->belongsToMany(Category::class);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
 	public function getUser(): HasOne
 	{
 		return $this->hasOne(User::class, 'id', 'user_id');
@@ -85,36 +95,57 @@ class Anime extends Model
 		return $this->belongsTo(Kind::class, 'kind_id');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function getOtherLink(): HasMany
 	{
 		return $this->hasMany(OtherLink::class, 'anime_id', 'id');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function getStudio(): BelongsToMany
 	{
 		return $this->belongsToMany(Studio::class);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function getChannel()
 	{
 		return $this->belongsTo(Channel::class, 'channel_id');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function getQuality()
 	{
 		return $this->belongsToMany(Quality::class);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function getRating()
 	{
 		return $this->belongsTo(MPAARating::class, 'rating_id');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function getCountry()
 	{
 		return $this->belongsToMany(Country::class);
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function favorited(): bool
 	{
 		return (bool)$this->hasMany(Favorites::class)

@@ -63,17 +63,10 @@ class User extends Authenticatable
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 	];
-
-	/**
-	 * The accessors to append to the model's array form.
-	 *
-	 * @var array
-	 */
 	protected $appends = [
 		'profile_photo_url',
 		'getGroup',
 	];
-
 	protected $withCount = [
 		'favorites',
 		'getAnime',
@@ -81,27 +74,44 @@ class User extends Authenticatable
 
 	protected $cacheFor;
 
+	/**
+	 * User constructor.
+	 *
+	 * @param  array  $attributes
+	 */
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
 		$this->cacheFor = Config::get('secondConfig.cache_time');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function getGroup(): BelongsTo
 	{
 		return $this->belongsTo(Group::class, 'group_id', 'id');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function getAnime(): HasMany
 	{
 		return $this->hasMany(Anime::class);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function favorites(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class, 'favorites')->withTimeStamps();
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function vote(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class, 'votes')->withTimestamps();
