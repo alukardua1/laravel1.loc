@@ -2,10 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Translate extends Model
 {
-    use HasFactory;
+	protected $withCount = [
+		'getAnime',
+	];
+	/**
+	 * MPAARating constructor.
+	 *
+	 * @param  array  $attributes
+	 */
+	public function __construct(array $attributes = [])
+	{
+		parent::__construct($attributes);
+	}
+
+	public function getAnime()
+	{
+		return $this->belongsToMany(Anime::class);
+	}
 }

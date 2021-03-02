@@ -41,7 +41,7 @@
 					По озвучкам
 				</div>
 				<ul class="collapse genre" id="scoring">
-					{include file="/engine/modules/xflist.php?xfname=ozvuchka"}
+					@include('web.frontend.layout.translate')
 				</ul>
 			</div>
 			<div class="cat-slave">

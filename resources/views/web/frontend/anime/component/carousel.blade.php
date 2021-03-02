@@ -12,10 +12,10 @@
 						<span>{{$value->episodes_aired}} серия</span>
 					</div>
 					<div class="rating">
-						0
+						{!! $value->vote['rating'] !!}
 					</div>
 					<div class="vote">
-						0
+						{{$value->get_vote_count}}
 					</div>
 					<div class="age">
 						<span data-bs-toggle="tooltip" data-bs-placement="top" title="{{$value->getRating->description}}">{{$value->getRating->name}}</span>

@@ -39,5 +39,9 @@ class ComposerServiceProvider extends ServiceProvider
 		    'web.frontend.layout.mpaa',
 		    'App\Http\ViewComposers\MpaaRatingComposer'
 	    );
+	    view()->composer(
+		    'web.frontend.layout.translate',
+		    'App\Http\ViewComposers\TranslateComposer'
+	    );
     }
 }
