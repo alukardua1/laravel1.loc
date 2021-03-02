@@ -109,4 +109,30 @@ trait MutationTrait
 				return 'осень - ' . $year;
 		}
 	}
+
+	public function votePlusMinus($vote)
+	{
+		$result['plus'] = 0;
+		$result['minus'] = 0;
+
+		foreach ($vote as $value)
+		{
+			if ($value->votes > 0) {
+				$result['plus'] += $value->votes;
+			}else{
+				$result['minus'] += $value->votes;
+			}
+		}
+		$summ = $result['plus'] + $result['minus'];
+		if ($summ > 0) {
+			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingplus\">+ {$summ}</span>";
+		}elseif ($summ<0){
+			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingminus\">{$summ}</span>";
+		}else {
+			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingzero\">{$summ}</span>";
+		}
+
+
+		return $result;
+	}
 }

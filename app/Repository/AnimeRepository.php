@@ -66,4 +66,5 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->where($columns, $custom)
 			->orderBy('updated_at', 'DESC');
 	}
+
 }

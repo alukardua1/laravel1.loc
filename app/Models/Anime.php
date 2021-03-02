@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Anime extends Model
 {
-	protected $fillable = [
+	protected $fillable  = [
 		'name',
 		'russian',
 		'original_img',
@@ -43,7 +43,10 @@ class Anime extends Model
 		'comment_at',
 		'broadcast',
 	];
-	protected $appends  = [
+	protected $withCount = [
+		'getVote',
+	];
+	protected $appends   = [
 		'category',
 		'getKind',
 		'getChannel',
@@ -52,6 +55,8 @@ class Anime extends Model
 		'getRating',
 		'getCountry',
 		'getTranslate',
+		'getVote',
+		'vote',
 	];
 
 	/**
@@ -64,6 +69,10 @@ class Anime extends Model
 		parent::__construct($attributes);
 	}
 
+	public function getVoteAttribute()
+	{
+		return $this->votePlusMinus($this->getVote()->get());
+	}
 	/**
 	 * @todo Временное решение придумать как изменить
 	 */
@@ -158,5 +167,18 @@ class Anime extends Model
 			->where('user_id', Auth::id())
 			->where('anime_id', $this->id)
 			->first();
+	}
+
+	public function votes()
+	{
+		return (bool)$this->hasMany(Vote::class)
+			->where('user_id', Auth::id())
+			->where('anime_id', $this->id)
+			->first();
+	}
+
+	public function getVote()
+	{
+		return $this->hasMany(Vote::class);
 	}
 }

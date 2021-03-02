@@ -9,6 +9,7 @@ use App\Http\Controllers\KindController;
 use App\Http\Controllers\MPAARatingController;
 use App\Http\Controllers\ParseDbDLEController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +72,8 @@ Route::group(
 );
 Route::post('/favorites_add/{id}', [FavoritesController::class, 'add'])->name('favorite_add')->middleware('auth');
 Route::post('/favorites_del/{id}', [FavoritesController::class, 'delete'])->name('favorite_del')->middleware('auth');
+Route::post('/plus/{id}', [VoteController::class, 'plus'])->name('votes_plus')->middleware('auth');
+Route::post('/minus/{id}', [VoteController::class, 'minus'])->name('votes_minus')->middleware('auth');
 
 Route::group(
 	['prefix' => 'team'],

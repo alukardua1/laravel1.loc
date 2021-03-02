@@ -6,17 +6,13 @@
 	<article class="fullstory">
 		<div class="full-title">
 			<h1>{{$showAnime->name}}</h1>
-			<!--			<div class="favor">
-							<span class="favor-add">[add-favorites][/add-favorites]</span>
-							<span class="favor-del">[del-favorites][/del-favorites]</span>
-						</div>-->
 			@if (Auth::check())
 				<favorite
 						:post={{ $showAnime->id }} :favorited={{ $showAnime->favorited() ? 'true' : 'false' }}>
 				</favorite>
 			@endif
 			<div id="edit">
-				[edit]<i class="far fa-edit"></i>[/edit]
+				<i class="far fa-edit"></i>
 			</div>
 		</div>
 		<div class="inform">
@@ -25,19 +21,19 @@
 					<img itemprop="image" src="{{asset('storage/'.$showAnime->preview_img)}}"
 						 data-src="{{asset('storage/'.$showAnime->original_img)}}" class="card-img lazy" alt="{title}">
 					<div class="rating-full">
-						[rating-plus]
-						<span>{likes}</span>
-						[/rating-plus]
-						[rating-minus]
-						<span>{dislikes}</span>
-						[/rating-minus]
+						@if (Auth::check())
+							<div class="col-md-12">
+								<votes :post={{ $showAnime->id }} :votes={{ $showAnime->votes() ? 'true' : 'false' }} :count_plus={{$plus}} :count_minus={{$minus}}></votes>
+							</div>
+						@endif
 					</div>
 				</div>
-				<!--				<div class="cos-but mt-3">
-									<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-									<script src="https://yastatic.net/share2/share.js"></script>
-									<div class="ya-share2 bottom" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,whatsapp,skype,telegram" data-counter="ig"></div>
-								</div>-->
+				<div class="cos-but mt-3">
+					<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+					<script src="https://yastatic.net/share2/share.js"></script>
+					<div class="ya-share2 bottom" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,whatsapp,skype,telegram"
+						 data-counter="ig"></div>
+				</div>
 			</div>
 			<div class="full-description">
 				<i class="fas fa-file-alt"></i> {!! $showAnime->description !!}

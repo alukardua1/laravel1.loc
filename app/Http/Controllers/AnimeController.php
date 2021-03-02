@@ -46,9 +46,10 @@ class AnimeController extends Controller
 	public function show(int $id, $url = null)
 	{
 		$showAnime = $this->anime->getAnime($id)->first();
-
 		$this->isNotNull($showAnime);
 		$this->blockPlayer($showAnime);
+		$plus = $showAnime->vote['plus'];
+		$minus = $showAnime->vote['plus'];
 		$showAnime->broadcastTitle = $this->broadcast($showAnime->broadcast);
 		$showAnime->seasonAired = $this->seasonAired($showAnime->aired_on);
 
@@ -56,6 +57,6 @@ class AnimeController extends Controller
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
 		}
 
-		return view($this->frontend . 'anime.full', compact('showAnime'));
+		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus'));
 	}
 }

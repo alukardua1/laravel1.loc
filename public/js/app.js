@@ -5058,8 +5058,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['post', 'votes'],
+  props: ['post', 'votes', 'count_plus', 'count_minus'],
   data: function data() {
     return {
       isVoted: ''
@@ -41338,82 +41342,66 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.isVoted
-    ? _c(
-        "div",
-        {
-          staticClass: "btn-group btn-group-lg mb-4",
-          attrs: { role: "group", "aria-label": "Basic example" }
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success btn-sm",
-              attrs: { type: "button", disabled: "" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.plusVote(_vm.post)
-                }
+    ? _c("div", { staticClass: "rating-full" }, [
+        _c(
+          "a",
+          {
+            staticClass: "disabled",
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.plusVote(_vm.post)
               }
-            },
-            [_c("i", { staticClass: "far fa-thumbs-up" })]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger btn-sm",
-              attrs: { type: "button", disabled: "" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.minusVote(_vm.post)
-                }
+            }
+          },
+          [_c("span", [_vm._v(" " + _vm._s(_vm.count_plus))])]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "disabled",
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.minusVote(_vm.post)
               }
-            },
-            [_c("i", { staticClass: "far fa-thumbs-down" })]
-          )
-        ]
-      )
-    : _c(
-        "div",
-        {
-          staticClass: "btn-group btn-group-lg mb-4",
-          attrs: { role: "group", "aria-label": "Basic example" }
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success btn-sm",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.plusVote(_vm.post)
-                }
+            }
+          },
+          [_c("span", [_vm._v(" " + _vm._s(_vm.count_minus))])]
+        )
+      ])
+    : _c("div", { staticClass: "rating-full" }, [
+        _c(
+          "a",
+          {
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.plusVote(_vm.post)
               }
-            },
-            [_c("i", { staticClass: "far fa-thumbs-up" })]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger btn-sm",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.minusVote(_vm.post)
-                }
+            }
+          },
+          [_c("span", [_vm._v(" " + _vm._s(_vm.count_plus))])]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.minusVote(_vm.post)
               }
-            },
-            [_c("i", { staticClass: "far fa-thumbs-down" })]
-          )
-        ]
-      )
+            }
+          },
+          [_c("span", [_vm._v(" " + _vm._s(_vm.count_minus))])]
+        )
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true

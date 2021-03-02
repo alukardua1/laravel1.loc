@@ -5,51 +5,55 @@
   -->
 
 <template>
-    <div v-if="isVoted" class="btn-group btn-group-lg mb-4" role="group" aria-label="Basic example">
-        <button type="button" @click.prevent="plusVote(post)" class="btn btn-success btn-sm" disabled>
-            <i class="far fa-thumbs-up"></i></button>
-        <button type="button" @click.prevent="minusVote(post)" class="btn btn-danger btn-sm" disabled>
-            <i class="far fa-thumbs-down"></i></button>
-    </div>
-    <div v-else class="btn-group btn-group-lg mb-4" role="group" aria-label="Basic example">
-        <button type="button" @click.prevent="plusVote(post)" class="btn btn-success btn-sm">
-            <i class="far fa-thumbs-up"></i></button>
-        <button type="button" @click.prevent="minusVote(post)" class="btn btn-danger btn-sm">
-            <i class="far fa-thumbs-down"></i></button>
-    </div>
+  <div v-if="isVoted" class="rating-full">
+    <a href="#" @click.prevent="plusVote(post)" class="disabled">
+      <span> {{count_plus}}</span>
+    </a>
+    <a href="#" @click.prevent="minusVote(post)" class="disabled">
+      <span> {{count_minus}}</span>
+    </a>
+  </div>
+  <div v-else class="rating-full">
+    <a href="#" @click.prevent="plusVote(post)">
+      <span> {{count_plus}}</span>
+    </a>
+    <a href="#" @click.prevent="minusVote(post)">
+      <span> {{count_minus}}</span>
+    </a>
+  </div>
 </template>
 
 <script>
-    export default {
-        props: ['post', 'votes'],
+export default {
+  props: ['post', 'votes', 'count_plus', 'count_minus'],
 
-        data: function () {
-            return {
-                isVoted: '',
-            }
-        },
-
-        mounted() {
-            this.isVoted = !!this.isVotes;
-        },
-
-        computed: {
-            isVotes() {
-                return this.votes;
-            },
-        },
-
-        methods: {
-            plusVote(post) {
-                axios.post('/plus/' + post)
-                    .then(response => this.isVoted = true)
-                    .catch(response => console.log(response.data));
-            },
-            minusVote(post) {
-                axios.post('/minus/' + post)
-                    .then(response => this.isVoted = true)
-                    .catch(response => console.log(response.data));
-            },
-        }
+  data: function () {
+    return {
+      isVoted: '',
     }
+  },
+
+  mounted() {
+    this.isVoted = !!this.isVotes;
+  },
+
+  computed: {
+    isVotes() {
+      return this.votes;
+    },
+  },
+
+  methods: {
+    plusVote(post) {
+      axios.post('/plus/' + post)
+          .then(response => this.isVoted = true)
+          .catch(response => console.log(response.data));
+    },
+    minusVote(post) {
+      axios.post('/minus/' + post)
+          .then(response => this.isVoted = true)
+          .catch(response => console.log(response.data));
+    },
+  }
+}
 </script>
