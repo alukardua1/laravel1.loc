@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anime;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
 /**
@@ -58,5 +59,19 @@ class AnimeController extends Controller
 		}
 
 		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus'));
+	}
+
+	public function showYear($year)
+	{
+		//$allAnime = $this->anime->getCustomAnime('aired_on', [$year . '-01-01', $year . '-12-31'])->paginate($this->paginate);
+		$allAnime = Anime::latest()
+			->whereBetween('aired_on', [$year . '-01-01', $year . '-12-31'])
+			->orderBy('updated_at', 'DESC')
+			->paginate($this->paginate);
+
+		$title = $year;
+		$description = null;
+
+		return view($this->frontend . 'anime.short', compact('allAnime', 'title', 'description'));
 	}
 }

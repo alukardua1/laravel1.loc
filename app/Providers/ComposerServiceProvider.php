@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposers\CarouselAnimeComposer;
+use App\Http\ViewComposers\KindComposer;
+use App\Http\ViewComposers\MenuComposer;
+use App\Http\ViewComposers\MpaaRatingComposer;
+use App\Http\ViewComposers\TranslateComposer;
+use App\Http\ViewComposers\YearComposer;
 use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
@@ -23,25 +29,11 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-	    view()->composer(
-		    'web.frontend.layout.menu',
-		    'App\Http\ViewComposers\MenuComposer'
-	    );
-	    view()->composer(
-		    'web.frontend.layout.kind',
-		    'App\Http\ViewComposers\KindComposer'
-	    );
-	    view()->composer(
-	    	'web.frontend.anime.component.carousel',
-		    'App\Http\ViewComposers\CarouselAnimeComposer'
-	    );
-	    view()->composer(
-		    'web.frontend.layout.mpaa',
-		    'App\Http\ViewComposers\MpaaRatingComposer'
-	    );
-	    view()->composer(
-		    'web.frontend.layout.translate',
-		    'App\Http\ViewComposers\TranslateComposer'
-	    );
+    	\View::composer('web.frontend.layout.menu', MenuComposer::class);
+	    \View::composer('web.frontend.layout.kind', KindComposer::class);
+	    \View::composer('web.frontend.anime.component.carousel', CarouselAnimeComposer::class);
+	    \View::composer('web.frontend.layout.mpaa', MpaaRatingComposer::class);
+	    \View::composer('web.frontend.layout.translate', TranslateComposer::class);
+	    \View::composer('web.frontend.layout.year', YearComposer::class);
     }
 }

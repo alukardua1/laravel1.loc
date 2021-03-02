@@ -46,6 +46,7 @@ Route::group(
 		Route::get('country/{custom}')->name('country');
 		Route::get('translate/{custom}', [TranslateController::class, 'show'])->name('translate');
 		Route::get('rating/{custom}', [MPAARatingController::class, 'show'])->name('rating');
+		Route::get('year/{custom}', [AnimeController::class, 'showYear'])->name('year');
 	}
 );
 

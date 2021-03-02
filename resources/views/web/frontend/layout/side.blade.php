@@ -49,7 +49,7 @@
 					По годам
 				</div>
 				<ul class="collapse genre season" id="season">
-					{include file="/engine/modules/xflist.php?xfname=sezon"}
+					@include('web.frontend.layout.year')
 				</ul>
 			</div>
 			<div class="cat-slave">
