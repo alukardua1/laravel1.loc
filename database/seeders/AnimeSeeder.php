@@ -6,6 +6,11 @@ use App\Repository\Interfaces\DLEParse;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class AnimeSeeder
+ *
+ * @package Database\Seeders
+ */
 class AnimeSeeder extends Seeder
 {
 	protected $anime;

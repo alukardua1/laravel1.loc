@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+/**
+ * Class UsersSeeder
+ *
+ * @package Database\Seeders
+ */
 class UsersSeeder extends Seeder
 {
 	/**

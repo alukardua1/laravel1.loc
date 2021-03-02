@@ -29,18 +29,6 @@ class DLEParseRepository implements DLEParse
 	use CurlTrait;
 
 	/**
-	 * @var string[]
-	 */
-	protected static $array_tip = [
-		'ТВ'                => 'tv',
-		'OVA'               => 'ova',
-		'фильм'             => 'movie',
-		'ONA'               => 'ona',
-		'спешл'             => 'special',
-		'музыкальное видео' => 'music',
-	];
-
-	/**
 	 * @return mixed
 	 */
 	public function parseCategory()
@@ -227,6 +215,13 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
+	/**
+	 * @param $xfield
+	 * @param $post
+	 * @param $columns
+	 * @param $model
+	 * @param $table
+	 */
 	private function addBelongs($xfield, $post, $columns, $model, $table)
 	{
 		$data = [];
@@ -241,6 +236,11 @@ class DLEParseRepository implements DLEParse
 		//return $data;
 	}
 
+	/**
+	 * @param $dates
+	 *
+	 * @return false|string|null
+	 */
 	private function dates($dates)
 	{
 		if ($dates) {
@@ -249,6 +249,12 @@ class DLEParseRepository implements DLEParse
 		return null;
 	}
 
+	/**
+	 * @param $anime
+	 * @param $image
+	 *
+	 * @return string[]
+	 */
 	private function imageFunc($anime, $image)
 	{
 		$def = '/';
@@ -274,6 +280,9 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
+	/**
+	 * @return mixed|void
+	 */
 	public function parseQualityAnime()
 	{
 	}
@@ -297,6 +306,9 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
+	/**
+	 * @return array|mixed
+	 */
 	public function parseChannel()
 	{
 		$channel = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
@@ -308,8 +320,7 @@ class DLEParseRepository implements DLEParse
 				$xfield1[$xfield['0']] = $xfield['1'];
 			}
 			$channels = explode(', ', $xfield1['kanal']);
-			//$channels = array_unique($channels);
-			//dd(__METHOD__, $channels);
+
 			foreach ($channels as $values) {
 				$result[] = [
 					'name'          => $values,
@@ -322,6 +333,12 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
+	/**
+	 * @param $array
+	 * @param $key
+	 *
+	 * @return array
+	 */
 	protected function array_unique_key($array, $key)
 	{
 		$tmp = $key_array = [];
@@ -373,9 +390,13 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
+	/**
+	 * @param $url
+	 *
+	 * @return array
+	 */
 	public function parseKodik($url)
 	{
-		//$url = 'https://kodikapi.com/translations/v2?token=16b2ff25feb8e53b0aded1ebb0fff2c1';
 		$result = [];
 		$kodik = $this->getCurl($url);
 
@@ -386,9 +407,13 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
+	/**
+	 * @param $url
+	 *
+	 * @return array
+	 */
 	public function parseKodikQuality($url)
 	{
-		//$url = 'https://kodikapi.com/translations/v2?token=16b2ff25feb8e53b0aded1ebb0fff2c1';
 		$result = [];
 		$kodik = $this->getCurl($url);
 

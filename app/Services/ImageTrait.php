@@ -9,10 +9,18 @@ use Intervention\Image\Facades\Image;
 use Storage;
 use Str;
 
+/**
+ * Trait ImageTrait
+ *
+ * @package App\Services
+ */
 trait ImageTrait
 {
 	private $config = [];
 
+	/**
+	 * ImageTrait constructor.
+	 */
 	public function __construct()
 	{
 		$this->config = config('imgConfig');

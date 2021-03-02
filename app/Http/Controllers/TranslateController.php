@@ -17,13 +17,21 @@ class TranslateController extends Controller
 	}
 
 	/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+	 * Display a listing of the resource.
+	 *
+	 * @param $translate
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 */
+    public function index($translate)
     {
-        //
+	    $showTranslate = $this->translate->getAnime($translate);
+	    $this->isNotNull($showTranslate);
+	    $title = $showTranslate->name;
+	    $description = $showTranslate->description;
+	    $allAnime = $showTranslate->getAnime()->paginate($this->paginate);
+
+	    return view($this->frontend . 'anime.short', compact('showTranslate', 'allAnime', 'title', 'description'));
     }
 
     /**
@@ -50,19 +58,13 @@ class TranslateController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param $id
+	 * @param  \App\Models\Translate  $translate
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 * @return \Illuminate\Http\Response
 	 */
-    public function show($id)
+    public function show(Translate $translate)
     {
-	    $showTranslate = $this->translate->getAnime($id);
-	    $this->isNotNull($showTranslate);
-	    $title = $showTranslate->name;
-	    $description = $showTranslate->description;
-	    $allAnime = $showTranslate->getAnime()->paginate($this->paginate);
-
-	    return view($this->frontend . 'anime.short', compact('showTranslate', 'allAnime', 'title', 'description'));
+	    //
     }
 
     /**

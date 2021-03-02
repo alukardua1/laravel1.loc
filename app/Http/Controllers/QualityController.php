@@ -25,14 +25,23 @@ class QualityController extends Controller
 		parent::__construct();
 		$this->quality = $qualityRepositoryInterfaces;
 	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @param $quality
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
 	 */
-	public function index()
+	public function index($quality)
 	{
-		//
+		$showQuality = $this->quality->getAnime($quality);
+		$this->isNotNull($showQuality);
+		$title = $showQuality->name;
+		$description = $showQuality->description;
+		$allAnime = $showQuality->getAnime()->paginate($this->paginate);
+
+		return view($this->frontend . 'anime.short', compact('showQuality', 'allAnime', 'title', 'description'));
 	}
 
 	/**
@@ -59,19 +68,13 @@ class QualityController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param $id
+	 * @param  \App\Models\Quality  $quality
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show(Quality $quality)
 	{
-		$showQuality = $this->quality->getAnime($id);
-		$this->isNotNull($showQuality);
-		$title = $showQuality->name;
-		$description = $showQuality->description;
-		$allAnime = $showQuality->getAnime()->paginate($this->paginate);
-
-		return view($this->frontend . 'anime.short', compact('showQuality', 'allAnime', 'title', 'description'));
+		//
 	}
 
 	/**

@@ -110,6 +110,11 @@ trait MutationTrait
 		}
 	}
 
+	/**
+	 * @param $vote
+	 *
+	 * @return array
+	 */
 	public function votePlusMinus($vote)
 	{
 		$result['plus'] = 0;

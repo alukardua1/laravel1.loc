@@ -6,11 +6,21 @@ use App\Repository\Interfaces\DLEParse;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class CategorySeeder
+ *
+ * @package Database\Seeders
+ */
 class CategorySeeder extends Seeder
 {
     protected $category;
 
-    public function __construct(DLEParse $DLEParse)
+	/**
+	 * CategorySeeder constructor.
+	 *
+	 * @param  \App\Repository\Interfaces\DLEParse  $DLEParse
+	 */
+	public function __construct(DLEParse $DLEParse)
     {
         $this->category = $DLEParse;
     }

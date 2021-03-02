@@ -22,6 +22,9 @@ class Quality extends Model
 		parent::__construct($attributes);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function getAnime()
 	{
 		return $this->belongsToMany(Anime::class);

@@ -46,9 +46,27 @@ interface DLEParse
      */
     public function parsePerson();
 
+	/**
+	 * @return mixed
+	 */
 	public function parseChannel();
 
+	/**
+	 * @param $url
+	 *
+	 * @return mixed
+	 */
 	public function parseKodik($url);
+
+	/**
+	 * @return mixed
+	 */
 	public function parseQualityAnime();
+
+	/**
+	 * @param $url
+	 *
+	 * @return mixed
+	 */
 	public function parseKodikQuality($url);
 }

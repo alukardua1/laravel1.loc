@@ -69,6 +69,9 @@ class Anime extends Model
 		parent::__construct($attributes);
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getVoteAttribute()
 	{
 		return $this->votePlusMinus($this->getVote()->get());
@@ -153,6 +156,9 @@ class Anime extends Model
 		return $this->belongsToMany(Country::class);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function getTranslate()
 	{
 		return $this->belongsToMany(Translate::class);
@@ -169,6 +175,9 @@ class Anime extends Model
 			->first();
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function votes()
 	{
 		return (bool)$this->hasMany(Vote::class)
@@ -177,6 +186,9 @@ class Anime extends Model
 			->first();
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function getVote()
 	{
 		return $this->hasMany(Vote::class);

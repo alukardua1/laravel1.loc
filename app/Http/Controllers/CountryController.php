@@ -26,11 +26,19 @@ class CountryController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @param $country
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
 	 */
-	public function index()
+	public function index($country)
 	{
-		//
+		$showCountry = $this->country->getAnime($country);
+		$this->isNotNull($showCountry);
+		$title = $showCountry->name;
+		$description = $showCountry->description;
+		$allAnime = $showCountry->getAnime()->paginate($this->paginate);
+
+		return view($this->frontend . 'anime.short', compact('showCountry', 'allAnime', 'title', 'description'));
 	}
 
 	/**
@@ -58,19 +66,13 @@ class CountryController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param $id
+	 * @param  \App\Models\Country  $country
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show(Country $country)
 	{
-		$showCountry = $this->country->getAnime($id);
-		$this->isNotNull($showCountry);
-		$title = $showCountry->name;
-		$description = $showCountry->description;
-		$allAnime = $showCountry->getAnime()->paginate($this->paginate);
-
-		return view($this->frontend . 'anime.short', compact('showCountry', 'allAnime', 'title', 'description'));
+		//
 	}
 
 	/**

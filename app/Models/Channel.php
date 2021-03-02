@@ -9,6 +9,9 @@ namespace App\Models;
  */
 class Channel extends Model
 {
+	protected $withCount = [
+		'getAnime',
+	];
 	/**
 	 * Channel constructor.
 	 *
@@ -17,5 +20,13 @@ class Channel extends Model
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getAnime()
+	{
+		return $this->hasMany(Anime::class);
 	}
 }

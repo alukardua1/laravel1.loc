@@ -5,6 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class RatingSeeder
+ *
+ * @package Database\Seeders
+ */
 class RatingSeeder extends Seeder
 {
 	/**

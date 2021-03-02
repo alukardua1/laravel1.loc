@@ -6,10 +6,20 @@ use App\Repository\DLEParseRepository;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class CountrySeeder
+ *
+ * @package Database\Seeders
+ */
 class CountrySeeder extends Seeder
 {
 	protected $kodikRepository;
 
+	/**
+	 * CountrySeeder constructor.
+	 *
+	 * @param  \App\Repository\DLEParseRepository  $DLEParseRepository
+	 */
 	public function __construct(DLEParseRepository $DLEParseRepository)
 	{
 		$this->kodikRepository = $DLEParseRepository;

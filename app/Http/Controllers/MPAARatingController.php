@@ -24,13 +24,21 @@ class MPAARatingController extends Controller
 	}
 
 	/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+	 * Display a listing of the resource.
+	 *
+	 * @param $mPAARating
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+    public function index($mPAARating)
     {
-        //
+	    $showMpaa = $this->mpaaRepository->getAnime($mPAARating);
+	    $this->isNotNull($showMpaa);
+	    $title = $showMpaa->name;
+	    $description = $showMpaa->description;
+	    $allAnime = $showMpaa->getAnime()->paginate($this->paginate);
+
+	    return view($this->frontend . 'anime.short', compact('showMpaa', 'allAnime', 'title', 'description'));
     }
 
     /**
@@ -59,17 +67,11 @@ class MPAARatingController extends Controller
      *
      * @param  \App\Models\MPAARating  $mPAARating
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(MPAARating $mPAARating)
     {
-	    $showMpaa = $this->mpaaRepository->getAnime($id);
-	    $this->isNotNull($showMpaa);
-	    $title = $showMpaa->name;
-	    $description = $showMpaa->description;
-	    $allAnime = $showMpaa->getAnime()->paginate($this->paginate);
-
-	    return view($this->frontend . 'anime.short', compact('showMpaa', 'allAnime', 'title', 'description'));
+	    //
     }
 
     /**

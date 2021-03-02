@@ -6,11 +6,21 @@ use App\Repository\DLEParseRepository;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class StudiosSeeder
+ *
+ * @package Database\Seeders
+ */
 class StudiosSeeder extends Seeder
 {
     protected $studiosRepository;
 
-    public function __construct(DLEParseRepository $DLEParseRepository)
+	/**
+	 * StudiosSeeder constructor.
+	 *
+	 * @param  \App\Repository\DLEParseRepository  $DLEParseRepository
+	 */
+	public function __construct(DLEParseRepository $DLEParseRepository)
     {
         $this->studiosRepository = $DLEParseRepository;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 
 /**
@@ -24,19 +25,7 @@ class CategoryController extends Controller
 		$this->categories = $categoryRepositoryInterfaces;
 	}
 
-	public function index()
-	{
-		$categoryAll = $this->categories->getCategories()->get();
-
-		dd(__METHOD__, $categoryAll);
-	}
-
-	/**
-	 * @param $category
-	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-	 */
-	public function show($category)
+	public function index($category)
 	{
 		$currentCategory = $this->categories->getCategory($category);
 		$this->isNotNull($currentCategory);
@@ -45,5 +34,15 @@ class CategoryController extends Controller
 		$allAnime = $currentCategory->getAnime()->paginate($this->paginate);
 
 		return view($this->frontend . 'anime.short', compact('currentCategory', 'allAnime', 'title', 'description'));
+	}
+
+	/**
+	 * @param  \App\Models\Category  $category
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
+	public function show(Category $category)
+	{
+		//
 	}
 }

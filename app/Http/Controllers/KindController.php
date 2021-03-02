@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kind;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use Illuminate\Http\Request;
 
@@ -26,13 +27,21 @@ class KindController extends Controller
 	}
 
 	/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+	 * Display a listing of the resource.
+	 *
+	 * @param $kind
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 */
+    public function index($kind)
     {
-        //
+	    $showKind = $this->kind->getAnime($kind);
+	    $this->isNotNull($showKind);
+	    $title = $showKind->full_name;
+	    $description = $showKind->description;
+	    $allAnime = $showKind->getAnime()->paginate($this->paginate);
+
+	    return view($this->frontend . 'anime.short', compact('showKind', 'allAnime', 'title', 'description'));
     }
 
     /**
@@ -56,22 +65,16 @@ class KindController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
-    public function show($id)
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  \App\Models\Kind  $kind
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+    public function show(Kind $kind)
     {
-    	$showKind = $this->kind->getAnime($id);
-	    $this->isNotNull($showKind);
-    	$title = $showKind->full_name;
-	    $description = $showKind->description;
-	    $allAnime = $showKind->getAnime()->paginate($this->paginate);
-
-	    return view($this->frontend . 'anime.short', compact('showKind', 'allAnime', 'title', 'description'));
+    	//
     }
 
     /**

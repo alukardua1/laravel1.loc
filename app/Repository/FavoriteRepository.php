@@ -26,7 +26,7 @@ class FavoriteRepository implements FavoritesRepositoryInterface
 	 */
 	public function favorite($id)
 	{
-		return Auth::user()
+		Auth::user()
 			->favorites()
 			->attach($id);
 	}
@@ -38,7 +38,7 @@ class FavoriteRepository implements FavoritesRepositoryInterface
 	 */
 	public function unFavorite($id)
 	{
-		return Auth::user()
+		Auth::user()
 			->favorites()
 			->detach($id);
 	}

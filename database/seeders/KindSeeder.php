@@ -5,6 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
+/**
+ * Class KindSeeder
+ *
+ * @package Database\Seeders
+ */
 class KindSeeder extends Seeder
 {
     /**

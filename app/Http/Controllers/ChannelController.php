@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Channel;
+use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 /**
@@ -15,19 +17,31 @@ class ChannelController extends Controller
 
 	/**
 	 * ChannelController constructor.
+	 *
+	 * @param  \App\Repository\Interfaces\ChannelRepositoryInterfaces  $channelRepositoryInterfaces
 	 */
-	public function __construct()
+	public function __construct(ChannelRepositoryInterfaces $channelRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->channel = $channelRepositoryInterfaces;
 	}
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @param $channel
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 */
+    public function index($channel)
     {
-        //
+	    $showChannel = $this->channel->getAnime($channel);
+	    $this->isNotNull($showChannel);
+	    $title = $showChannel->name;
+	    $description = $showChannel->description;
+	    $allAnime = $showChannel->getAnime()->paginate($this->paginate);
+
+	    return view($this->frontend . 'anime.short', compact('showChannel', 'allAnime', 'title', 'description'));
     }
 
     /**
@@ -51,15 +65,16 @@ class ChannelController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  \App\Models\Channel  $channel
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+    public function show(Channel $channel)
     {
-        //
+	    //
     }
 
     /**

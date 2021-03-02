@@ -7,6 +7,11 @@ namespace App\Repository;
 use App\Models\Translate;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 
+/**
+ * Class TranslateRepository
+ *
+ * @package App\Repository
+ */
 class TranslateRepository implements TranslateRepositoryInterfaces
 {
 	/**

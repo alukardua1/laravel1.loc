@@ -4,12 +4,14 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MPAARatingController;
 use App\Http\Controllers\ParseDbDLEController;
 use App\Http\Controllers\QualityController;
+use App\Http\Controllers\StudioController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoteController;
@@ -27,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/dle/{id?}', [ParseDbDLEController::class, 'index']);
+//Route::get('/dle/{id?}', [ParseDbDLEController::class, 'index']);
 Route::get('/', [AnimeController::class, 'index'])->name('home');
 
 Route::group(
@@ -41,13 +43,13 @@ Route::group(
 Route::group(
 	[],
 	function () {
-		Route::get('channel/{custom}')->name('channel');
-		Route::get('studio/{custom}')->name('studio');
-		Route::get('quality/{custom}', [QualityController::class, 'show'])->name('quality');
-		Route::get('kind/{custom}', [KindController::class, 'show'])->name('kind');
-		Route::get('country/{custom}', [CountryController::class, 'show'])->name('country');
-		Route::get('translate/{custom}', [TranslateController::class, 'show'])->name('translate');
-		Route::get('rating/{custom}', [MPAARatingController::class, 'show'])->name('rating');
+		Route::get('channel/{custom}', [ChannelController::class, 'index'])->name('channel');
+		Route::get('studio/{custom}', [StudioController::class, 'index'])->name('studio');
+		Route::get('quality/{custom}', [QualityController::class, 'index'])->name('quality');
+		Route::get('kind/{custom}', [KindController::class, 'index'])->name('kind');
+		Route::get('country/{custom}', [CountryController::class, 'index'])->name('country');
+		Route::get('translate/{custom}', [TranslateController::class, 'index'])->name('translate');
+		Route::get('rating/{custom}', [MPAARatingController::class, 'index'])->name('rating');
 		Route::get('year/{custom}', [AnimeController::class, 'showYear'])->name('year');
 	}
 );
@@ -95,7 +97,7 @@ Route::group(
 Route::group(
 	['prefix' => 'category'],
 	function () {
-		Route::get('/{category}', [CategoryController::class, 'show'])->name('currentCategory');
+		Route::get('/{category}', [CategoryController::class, 'index'])->name('currentCategory');
 	}
 );
 Auth::routes();

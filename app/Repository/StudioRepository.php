@@ -4,16 +4,17 @@
 namespace App\Repository;
 
 
-use App\Models\MPAARating;
-use App\Repository\Interfaces\MpaaRepositoryInterface;
+use App\Models\Studio;
+use App\Repository\Interfaces\StudioRepositoryInterfaces;
 
 /**
- * Class MpaaRepository
+ * Class StudioRepository
  *
  * @package App\Repository
  */
-class MpaaRepository implements MpaaRepositoryInterface
+class StudioRepository implements StudioRepositoryInterfaces
 {
+
 	/**
 	 * @param $kind
 	 *
@@ -21,7 +22,7 @@ class MpaaRepository implements MpaaRepositoryInterface
 	 */
 	public function getAnime($kind)
 	{
-		return MPAARating::latest()
+		return Studio::latest()
 			->where('url', $kind)
 			->first();
 	}
@@ -29,9 +30,9 @@ class MpaaRepository implements MpaaRepositoryInterface
 	/**
 	 * @return mixed
 	 */
-	public function getMpaa()
+	public function getStudio()
 	{
-		return MPAARating::latest()
+		return Studio::latest()
 			->get();
 	}
 }

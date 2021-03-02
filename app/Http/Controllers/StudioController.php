@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Studio;
+use App\Repository\Interfaces\StudioRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 /**
@@ -12,22 +13,35 @@ use Illuminate\Http\Request;
  */
 class StudioController extends Controller
 {
+	protected $studio;
+
 	/**
 	 * StudioController constructor.
+	 *
+	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
 	 */
-	public function __construct()
+	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->studio = $studioRepositoryInterfaces;
 	}
 
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @param $studios
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
 	 */
-	public function index()
+	public function index($studios)
 	{
-		//
+		$showStudio = $this->studio->getAnime($studios);
+		$this->isNotNull($showStudio);
+		$title = $showStudio->name;
+		$description = $showStudio->description;
+		$allAnime = $showStudio->getAnime()->paginate($this->paginate);
+
+		return view($this->frontend . 'anime.short', compact('showStudio', 'allAnime', 'title', 'description'));
 	}
 
 	/**

@@ -23,6 +23,9 @@ class MPAARating extends Model
 		parent::__construct($attributes);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function getAnime()
 	{
 		return $this->hasMany(Anime::class, 'rating_id');

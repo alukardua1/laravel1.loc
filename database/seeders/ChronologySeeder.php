@@ -4,6 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+/**
+ * Class ChronologySeeder
+ *
+ * @package Database\Seeders
+ */
 class ChronologySeeder extends Seeder
 {
     /**
