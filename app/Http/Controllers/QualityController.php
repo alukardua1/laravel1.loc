@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quality;
+use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 /**
@@ -12,12 +13,17 @@ use Illuminate\Http\Request;
  */
 class QualityController extends Controller
 {
+	protected $quality;
+
 	/**
 	 * QualityController constructor.
+	 *
+	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
 	 */
-	public function __construct()
+	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->quality = $qualityRepositoryInterfaces;
 	}
 	/**
 	 * Display a listing of the resource.
@@ -53,13 +59,19 @@ class QualityController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Quality  $quality
+	 * @param $id
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
 	 */
-	public function show(Quality $quality)
+	public function show($id)
 	{
-		//
+		$showQuality = $this->quality->getAnime($id);
+		$this->isNotNull($showQuality);
+		$title = $showQuality->name;
+		$description = $showQuality->description;
+		$allAnime = $showQuality->getAnime()->paginate($this->paginate);
+
+		return view($this->frontend . 'anime.short', compact('showQuality', 'allAnime', 'title', 'description'));
 	}
 
 	/**

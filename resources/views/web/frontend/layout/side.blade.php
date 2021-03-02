@@ -57,7 +57,7 @@
 					По странам
 				</div>
 				<ul class="collapse genre" id="country">
-					{include file="/engine/modules/xflist.php?xfname=proizvodstvo"}
+					@include('web.frontend.layout.country')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -65,7 +65,7 @@
 					По качеству
 				</div>
 				<ul class="collapse genre" id="quality">
-					{include file="/engine/modules/xflist.php?xfname=quality"}
+					@include('web.frontend.layout.quality')
 				</ul>
 			</div>
 		</div>

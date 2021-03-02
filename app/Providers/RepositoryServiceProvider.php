@@ -2,14 +2,18 @@
 
 namespace App\Providers;
 
+use App\Repository\CountryRepository;
 use App\Repository\FavoriteRepository;
+use App\Repository\Interfaces\CountryRepositoryInterfaces;
 use App\Repository\Interfaces\FavoritesRepositoryInterface;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\MpaaRepositoryInterface;
+use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 use App\Repository\Interfaces\VoteRepositoryInterface;
 use App\Repository\KindRepository;
 use App\Repository\MpaaRepository;
+use App\Repository\QualityRepository;
 use App\Repository\TranslateRepository;
 use App\Repository\VoteRepository;
 use App\Repository\AnimeRepository;
@@ -40,6 +44,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(KindRepositoryInterfaces::class, KindRepository::class);
         $this->app->bind(MpaaRepositoryInterface::class, MpaaRepository::class);
         $this->app->bind(TranslateRepositoryInterfaces::class, TranslateRepository::class);
+        $this->app->bind(CountryRepositoryInterfaces::class, CountryRepository::class);
+        $this->app->bind(QualityRepositoryInterfaces::class, QualityRepository::class);
     }
 
     /**

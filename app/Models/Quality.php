@@ -9,6 +9,9 @@ namespace App\Models;
  */
 class Quality extends Model
 {
+	protected $withCount = [
+		'getAnime',
+	];
 	/**
 	 * Quality constructor.
 	 *
@@ -17,5 +20,10 @@ class Quality extends Model
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
+	}
+
+	public function getAnime()
+	{
+		return $this->belongsToMany(Anime::class);
 	}
 }

@@ -4,10 +4,12 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MPAARatingController;
 use App\Http\Controllers\ParseDbDLEController;
+use App\Http\Controllers\QualityController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoteController;
@@ -41,9 +43,9 @@ Route::group(
 	function () {
 		Route::get('channel/{custom}')->name('channel');
 		Route::get('studio/{custom}')->name('studio');
-		Route::get('quality/{custom}')->name('quality');
+		Route::get('quality/{custom}', [QualityController::class, 'show'])->name('quality');
 		Route::get('kind/{custom}', [KindController::class, 'show'])->name('kind');
-		Route::get('country/{custom}')->name('country');
+		Route::get('country/{custom}', [CountryController::class, 'show'])->name('country');
 		Route::get('translate/{custom}', [TranslateController::class, 'show'])->name('translate');
 		Route::get('rating/{custom}', [MPAARatingController::class, 'show'])->name('rating');
 		Route::get('year/{custom}', [AnimeController::class, 'showYear'])->name('year');

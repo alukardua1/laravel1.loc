@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use App\Repository\Interfaces\CountryRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 /**
@@ -12,12 +13,14 @@ use Illuminate\Http\Request;
  */
 class CountryController extends Controller
 {
+	protected $country;
 	/**
 	 * CountryController constructor.
 	 */
-	public function __construct()
+	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->country = $countryRepositoryInterfaces;
 	}
 
 	/**
@@ -55,13 +58,19 @@ class CountryController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Country  $country
+	 * @param $id
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
 	 */
-	public function show(Country $country)
+	public function show($id)
 	{
-		//
+		$showCountry = $this->country->getAnime($id);
+		$this->isNotNull($showCountry);
+		$title = $showCountry->name;
+		$description = $showCountry->description;
+		$allAnime = $showCountry->getAnime()->paginate($this->paginate);
+
+		return view($this->frontend . 'anime.short', compact('showCountry', 'allAnime', 'title', 'description'));
 	}
 
 	/**
