@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
 		$this->call(ChannelSeeder::class);
 		$this->call(StudiosSeeder::class);
 		$this->call(QualitySeeder::class);
+		$this->call(TranslateSeeder::class);
 		$this->call(AnimeSeeder::class);
-		$this->call(AnimeCategorySeeder::class);
+		//$this->call(AnimeCategorySeeder::class);
 	}
 }

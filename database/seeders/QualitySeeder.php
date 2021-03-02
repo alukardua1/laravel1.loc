@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Repository\DLEParseRepository;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -40,6 +41,13 @@ class QualitySeeder extends Seeder
 		'WEB-DLRip 720p',
 		'Workprint-AVC',
 	];
+
+	protected $kodikRepository;
+
+	public function __construct(DLEParseRepository $DLEParseRepository)
+	{
+		$this->kodikRepository = $DLEParseRepository;
+	}
 	/**
 	 * Run the database seeds.
 	 *
@@ -47,10 +55,13 @@ class QualitySeeder extends Seeder
 	 */
 	public function run()
 	{
-		foreach ($this->arr as $item) {
+		$quality = $this->kodikRepository->parseKodikQuality('https://kodikapi.com/qualities?token=16b2ff25feb8e53b0aded1ebb0fff2c1');
+
+		foreach ($quality as $value)
+		{
 			$data[] = [
-				'name' => $item,
-				'url' => \Str::slug($item)
+				'name' => $value,
+				'url'  => \Str::slug($value),
 			];
 		}
 

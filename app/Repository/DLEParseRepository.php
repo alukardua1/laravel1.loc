@@ -4,8 +4,14 @@
 namespace App\Repository;
 
 
+use App\Models\Category;
 use App\Models\Channel;
+use App\Models\Country;
+use App\Models\Model;
 use App\Models\MPAARating;
+use App\Models\Quality;
+use App\Models\Studio;
+use App\Models\Translate;
 use App\Repository\Interfaces\DLEParse;
 use App\Services\CurlTrait;
 use File;
@@ -127,6 +133,50 @@ class DLEParseRepository implements DLEParse
 			}
 			$image = $this->imageFunc($post, 'http://anime-free.ru/uploads/posts/' . $xfield1['izobrazhenie']);
 			$mpaa = MPAARating::where('name', $xfield1['rating'])->first();
+			$categ = explode(',', $post->category);
+			foreach ($categ as $value) {
+				$catAnime = [
+					'anime_id'    => $post->id,
+					'category_id' => $value,
+				];
+				DB::table('anime_category')->insert($catAnime);
+			}
+			if (array_key_exists('url_world_art', $xfield1)) {
+				$link['anime_id'] = $post->id;
+				$link['title'] = 'world-art';
+				$link['url'] = $xfield1['url_world_art'];
+				DB::table('other_links')->insert($link);
+			}
+			if (array_key_exists('shikimori_id', $xfield1)) {
+				$link['anime_id'] = $post->id;
+				$link['title'] = 'shikimori';
+				$link['url'] = 'https://shikimori.one/animes/' . $xfield1['shikimori_id'];
+				DB::table('other_links')->insert($link);
+			}
+			if (array_key_exists('myanimelist-id', $xfield1)) {
+				$link['anime_id'] = $post->id;
+				$link['title'] = 'myanimelist';
+				$link['url'] = 'https://myanimelist.net/anime/' . $xfield1['myanimelist-id'];
+				DB::table('other_links')->insert($link);
+			}
+			if (array_key_exists('kinopoisk_id', $xfield1)) {
+				$link['anime_id'] = $post->id;
+				$link['title'] = 'kinopoisk';
+				$link['url'] = 'https://www.kinopoisk.ru/series/' . $xfield1['kinopoisk_id'];
+				DB::table('other_links')->insert($link);
+			}
+			if (array_key_exists('studiya', $xfield1)) {
+				$this->addBelongs($xfield1['studiya'], $post, 'studio_id', Studio::class, 'anime_studio');
+			}
+			if (array_key_exists('proizvodstvo', $xfield1)) {
+				$this->addBelongs($xfield1['proizvodstvo'], $post, 'country_id', Country::class, 'anime_country');
+			}
+			if (array_key_exists('quality', $xfield1)) {
+				$this->addBelongs($xfield1['quality'], $post, 'quality_id', Quality::class, 'anime_quality');
+			}
+			if (array_key_exists('ozvuchka', $xfield1)) {
+				$this->addBelongs($xfield1['ozvuchka'], $post, 'translate_id', Translate::class, 'anime_translate');
+			}
 			if (array_key_exists('kanal', $xfield1)) {
 				$channel = Channel::where('name', $xfield1['kanal'])->first();
 			} else {
@@ -177,6 +227,20 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
+	private function addBelongs($xfield, $post, $columns, $model, $table)
+	{
+		$data = [];
+		$xfieldDle = explode(', ', $xfield);
+		foreach ($xfieldDle as $value) {
+			$result = $model::where('name', $value)->first();
+			if ($result) {
+				$data[] = ['anime_id' => $post->id, $columns => $result->id];
+			}
+		}
+		DB::table($table)->insert($data);
+		//return $data;
+	}
+
 	private function dates($dates)
 	{
 		if ($dates) {
@@ -208,6 +272,10 @@ class DLEParseRepository implements DLEParse
 		];
 
 		return $result;
+	}
+
+	public function parseQualityAnime()
+	{
 	}
 
 	/**
@@ -300,6 +368,32 @@ class DLEParseRepository implements DLEParse
 				'filtered_name' => $studio['filtered_name'],
 				'url'           => Str::slug($studio['name']),
 			];
+		}
+
+		return $result;
+	}
+
+	public function parseKodik($url)
+	{
+		//$url = 'https://kodikapi.com/translations/v2?token=16b2ff25feb8e53b0aded1ebb0fff2c1';
+		$result = [];
+		$kodik = $this->getCurl($url);
+
+		foreach ($kodik['results'] as $value) {
+			$result[] = $value['title'];
+		}
+
+		return $result;
+	}
+
+	public function parseKodikQuality($url)
+	{
+		//$url = 'https://kodikapi.com/translations/v2?token=16b2ff25feb8e53b0aded1ebb0fff2c1';
+		$result = [];
+		$kodik = $this->getCurl($url);
+
+		foreach ($kodik as $value) {
+			$result[] = $value['title'];
 		}
 
 		return $result;

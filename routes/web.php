@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/dle/{id}', [\App\Http\Controllers\ParseDbDLEController::class, 'index']);
+Route::get('/dle/{id?}', [\App\Http\Controllers\ParseDbDLEController::class, 'index']);
 Route::get('/', [AnimeController::class, 'index'])->name('home');
 
 Route::group(
@@ -40,6 +40,8 @@ Route::group(
 		Route::get('quality/{custom}')->name('quality');
 		Route::get('kind/{custom}', [KindController::class, 'show'])->name('kind');
 		Route::get('country/{custom}')->name('country');
+		Route::get('translate/{custom}')->name('translate');
+		Route::get('rating/{custom}')->name('rating');
 	}
 );
 

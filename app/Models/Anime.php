@@ -51,6 +51,7 @@ class Anime extends Model
 		'getQuality',
 		'getRating',
 		'getCountry',
+		'getTranslate',
 	];
 
 	/**
@@ -141,6 +142,11 @@ class Anime extends Model
 	public function getCountry()
 	{
 		return $this->belongsToMany(Country::class);
+	}
+
+	public function getTranslate()
+	{
+		return $this->belongsToMany(Translate::class);
 	}
 
 	/**

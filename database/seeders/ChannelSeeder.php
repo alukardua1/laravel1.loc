@@ -14,16 +14,15 @@ class ChannelSeeder extends Seeder
 	{
 		$this->channelRepository = $DLEParseRepository;
 	}
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-	    $channel = $this->channelRepository->parseChannel();
-	    foreach ($channel as $value) {
-		    DB::table('channels')->insert($value);
-	    }
-    }
+
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		$channel = $this->channelRepository->parseChannel();
+		DB::table('channels')->insert($channel);
+	}
 }

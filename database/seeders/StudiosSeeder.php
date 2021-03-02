@@ -23,8 +23,7 @@ class StudiosSeeder extends Seeder
     public function run()
     {
         $studios = $this->studiosRepository->parseStudio();
-        foreach ($studios as $studio) {
-            DB::table('studios')->insert($studio);
-        }
+
+	    DB::table('studios')->insert($studios);
     }
 }

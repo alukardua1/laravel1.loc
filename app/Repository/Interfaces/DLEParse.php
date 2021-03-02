@@ -47,4 +47,8 @@ interface DLEParse
     public function parsePerson();
 
 	public function parseChannel();
+
+	public function parseKodik($url);
+	public function parseQualityAnime();
+	public function parseKodikQuality($url);
 }

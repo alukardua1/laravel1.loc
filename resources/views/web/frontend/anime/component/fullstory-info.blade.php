@@ -14,23 +14,22 @@
 			</span>
 		</li>
 	@endif
-	@if (!$showAnime->getStudio)
-	<li>
-		<span>Студия: </span>
-		<span>
-
+	@if ($showAnime->getStudio)
+		<li>
+			<span>Студия: </span>
+			<span>
 			@foreach($showAnime->getStudio as $value)
-				@if ($loop->last)
-					<a href="{{route('studio', $value->url)}}">{{$value->name}}</a>
-				@else
-					<a href="{{route('studio', $value->url)}}">{{$value->name}}</a>,
-				@endif
-			@endforeach
+					@if ($loop->last)
+						<a href="{{route('studio', $value->url)}}">{{$value->name}}</a>
+					@else
+						<a href="{{route('studio', $value->url)}}">{{$value->name}}</a>,
+					@endif
+				@endforeach
 		</span>
-	</li>
+		</li>
 	@endif
 	<li><span>Сезон: </span> <span>{{$showAnime->seasonAired}}</span></li>
-	@if (!$showAnime->getCountry)
+	@if ($showAnime->getCountry)
 		<li><span>Страна: </span>
 			<span>
 			@foreach($showAnime->getCountry as $value)
@@ -59,7 +58,16 @@
 			@endif
 		</span>
 	</li>
-	<li><span>Рейтинг MPAA: </span><span>{{!empty($showAnime->getRating) ? $showAnime->getRating->name: 'нет'}}</span></li>
+	@if ($showAnime->getRating)
+		<li>
+			<span>Рейтинг MPAA: </span>
+			<span>
+				<a href="{{route('rating', $showAnime->getRating->url)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$showAnime->getRating->description}}">
+					{{$showAnime->getRating->name}}
+				</a>
+			</span>
+		</li>
+	@endif
 	<li><span>Качество видео: </span>
 		<span>
 			@foreach($showAnime->getQuality as $value)
@@ -74,7 +82,16 @@
 	<li><span>Режиссер: </span><span>[xfvalue_rezhisser]</span></li>
 	<li><span>Актеры: </span><span>[xfvalue_actors]</span></li>
 	<li><span>Автор оригинала: </span><span>[xfvalue_avtor-originala]</span></li>
-	<li><span>Озвучка: </span><span>Не указана</span></li>
+	<li><span>Озвучка: </span>
+		<span>
+			@foreach($showAnime->getTranslate as $value)
+				@if ($loop->last)
+					<a href="{{route('translate', $value->url)}}">{{$value->name}}</a>
+				@else
+					<a href="{{route('translate', $value->url)}}">{{$value->name}}</a>,
+				@endif
+			@endforeach
+		</span></li>
 	<li><span>На других сайтах: </span>
 		<span class="other-title">
 			@foreach($showAnime->getOtherLink as $value)

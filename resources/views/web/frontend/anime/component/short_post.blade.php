@@ -24,7 +24,10 @@
 					0
 				</div>
 				<div class="age">
-					<span>{{$value->getRating ? $value->getRating->name:'нет'}}</span>
+					<span>
+						<a href="{{route('rating', $value->getRating->url)}}" data-bs-toggle="tooltip" data-bs-placement="top"
+							 title="{{$value->getRating->description}}">{{$value->getRating->name}}</a>
+					</span>
 				</div>
 			</div>
 		</a>
