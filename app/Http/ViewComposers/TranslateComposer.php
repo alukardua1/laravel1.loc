@@ -39,7 +39,7 @@ class TranslateComposer
 	 */
 	public function menu()
 	{
-		return $this->translate->getTranslate();
+		return $this->translate->getTranslate()->sort();
 	}
 
 	/**

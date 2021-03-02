@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Translate;
+use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class TranslateController extends Controller
 {
-    /**
+	protected $translate;
+
+	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
+	{
+		parent::__construct();
+		$this->translate = $translateRepositoryInterfaces;
+	}
+
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,15 +47,22 @@ class TranslateController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Translate  $translate
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Translate $translate)
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param $id
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 */
+    public function show($id)
     {
-        //
+	    $showTranslate = $this->translate->getAnime($id);
+	    $this->isNotNull($showTranslate);
+	    $title = $showTranslate->name;
+	    $description = $showTranslate->description;
+	    $allAnime = $showTranslate->getAnime()->paginate($this->paginate);
+
+	    return view($this->frontend . 'anime.short', compact('showTranslate', 'allAnime', 'title', 'description'));
     }
 
     /**

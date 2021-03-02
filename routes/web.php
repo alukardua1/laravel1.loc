@@ -8,6 +8,7 @@ use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MPAARatingController;
 use App\Http\Controllers\ParseDbDLEController;
+use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,7 @@ Route::group(
 		Route::get('quality/{custom}')->name('quality');
 		Route::get('kind/{custom}', [KindController::class, 'show'])->name('kind');
 		Route::get('country/{custom}')->name('country');
-		Route::get('translate/{custom}')->name('translate');
+		Route::get('translate/{custom}', [TranslateController::class, 'show'])->name('translate');
 		Route::get('rating/{custom}', [MPAARatingController::class, 'show'])->name('rating');
 	}
 );
