@@ -51,16 +51,19 @@ trait MutationTrait
 	 *
 	 * @return string
 	 */
-	public function broadcast($broadcast): string
+	public function broadcast($broadcast)
 	{
+		$broadcast = new \DateTime($broadcast);
+
 		switch ($broadcast) {
-			case $broadcast >= '21.00' && $broadcast < '06.00':
+			case $broadcast >= new \DateTime('23:00'):
+			case $broadcast < new \DateTime('6:00'):
 				return $broadcast = '[Ночной сеанс]';
-			case $broadcast >= '06.00' && $broadcast < '12.00':
+			case $broadcast >= new \DateTime('06:00')&& $broadcast < new \DateTime('12:00'):
 				return $broadcast = '[Утрений сеанс]';
-			case $broadcast >= '12.00' && $broadcast < '18.00':
+			case $broadcast >= new \DateTime('12:00')&& $broadcast < new \DateTime('18:00'):
 				return $broadcast = '[Дневной сеанс]';
-			case $broadcast >= '18.00' && $broadcast < '23.00':
+			case $broadcast >= new \DateTime('18:00')&& $broadcast < new \DateTime('23:00'):
 				return $broadcast = '[Вечерний сеанс]';
 		}
 	}

@@ -35,5 +35,9 @@ class ComposerServiceProvider extends ServiceProvider
 	    	'web.frontend.anime.component.carousel',
 		    'App\Http\ViewComposers\CarouselAnimeComposer'
 	    );
+	    view()->composer(
+		    'web.frontend.layout.mpaa',
+		    'App\Http\ViewComposers\MpaaRatingComposer'
+	    );
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MPAARating;
+use App\Repository\Interfaces\MpaaRepositoryInterface;
 use Illuminate\Http\Request;
 
 /**
@@ -12,12 +13,14 @@ use Illuminate\Http\Request;
  */
 class MPAARatingController extends Controller
 {
+	protected $mpaaRepository;
 	/**
 	 * MPAARatingController constructor.
 	 */
-	public function __construct()
+	public function __construct(MpaaRepositoryInterface $mpaaRepository)
 	{
 		parent::__construct();
+		$this->mpaaRepository = $mpaaRepository;
 	}
 
 	/**
@@ -55,11 +58,18 @@ class MPAARatingController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\MPAARating  $mPAARating
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function show(MPAARating $mPAARating)
+    public function show($id)
     {
-        //
+	    $showMpaa = $this->mpaaRepository->getAnime($id);
+	    $this->isNotNull($showMpaa);
+	    $title = $showMpaa->name;
+	    $description = $showMpaa->description;
+	    $allAnime = $showMpaa->getAnime()->paginate($this->paginate);
+
+	    return view($this->frontend . 'anime.short', compact('showMpaa', 'allAnime', 'title', 'description'));
     }
 
     /**

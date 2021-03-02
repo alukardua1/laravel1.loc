@@ -29,6 +29,14 @@
 				</ul>
 			</div>
 			<div class="cat-slave">
+				<div class="side-cat-slave" data-toggle="collapse" data-target="#rating" role="button" aria-expanded="false" aria-controls="tip">
+					По рейтингу
+				</div>
+				<ul class="collapse genre" id="rating">
+					@include('web.frontend.layout.mpaa')
+				</ul>
+			</div>
+			<div class="cat-slave">
 				<div class="side-cat-slave" data-toggle="collapse" data-target="#scoring" role="button" aria-expanded="false" aria-controls="scoring">
 					По озвучкам
 				</div>

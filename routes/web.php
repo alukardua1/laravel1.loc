@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\KindController;
+use App\Http\Controllers\MPAARatingController;
+use App\Http\Controllers\ParseDbDLEController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/dle/{id?}', [\App\Http\Controllers\ParseDbDLEController::class, 'index']);
+Route::get('/dle/{id?}', [ParseDbDLEController::class, 'index']);
 Route::get('/', [AnimeController::class, 'index'])->name('home');
 
 Route::group(
@@ -41,7 +43,7 @@ Route::group(
 		Route::get('kind/{custom}', [KindController::class, 'show'])->name('kind');
 		Route::get('country/{custom}')->name('country');
 		Route::get('translate/{custom}')->name('translate');
-		Route::get('rating/{custom}')->name('rating');
+		Route::get('rating/{custom}', [MPAARatingController::class, 'show'])->name('rating');
 	}
 );
 

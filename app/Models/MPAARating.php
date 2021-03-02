@@ -10,6 +10,9 @@ namespace App\Models;
  */
 class MPAARating extends Model
 {
+	protected $withCount = [
+		'getAnime',
+	];
 	/**
 	 * MPAARating constructor.
 	 *
@@ -18,5 +21,10 @@ class MPAARating extends Model
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
+	}
+
+	public function getAnime()
+	{
+		return $this->hasMany(Anime::class, 'rating_id');
 	}
 }
