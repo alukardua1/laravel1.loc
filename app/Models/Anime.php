@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -70,12 +71,33 @@ class Anime extends Model
 	}
 
 	/**
+	 * @param $value
+	 *
+	 * @return string
+	 */
+	public function getAiredOnAttribute($value)
+	{
+		return $this->attributes['aired_on'] = (new Carbon($value))->format('d.m.Y');
+	}
+
+	/**
+	 * @param $value
+	 *
+	 * @return string
+	 */
+	public function getReleasedOnAttribute($value)
+	{
+		return $this->attributes['released_on'] = (new Carbon($value))->format('d.m.Y');
+	}
+
+	/**
 	 * @return array
 	 */
 	public function getVoteAttribute()
 	{
 		return $this->votePlusMinus($this->getVote()->get());
 	}
+
 	/**
 	 * @todo Временное решение придумать как изменить
 	 */

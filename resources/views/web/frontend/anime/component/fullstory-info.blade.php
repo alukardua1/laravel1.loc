@@ -51,10 +51,10 @@
 		<span>Выпуск: </span>
 		<span>
 			@if ($showAnime->aired_on)
-				c {{date('d.m.Y', strtotime($showAnime->aired_on))}}
+				c {{$showAnime->aired_on}}
 			@endif
 			@if ($showAnime->released_on)
-				по {{date('d.m.Y', strtotime($showAnime->released_on))}}
+				по {{$showAnime->released_on}}
 			@endif
 		</span>
 	</li>
@@ -107,5 +107,7 @@
         	<span itemprop="name">{{$showAnime->english}}</span>
     	</span>
 	</li>
-	<li><span>Название лицензии в России: </span><span>{{$showAnime->license_name_ru}}</span></li>
+	@if ($showAnime->license_name_ru)
+		<li><span>Название лицензии в России: </span><span>{{$showAnime->license_name_ru}}</span></li>
+	@endif
 </ul>

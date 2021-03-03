@@ -20,13 +20,13 @@
 				<div class="view">
 					<img itemprop="image" src="{{asset('storage/'.$showAnime->preview_img)}}"
 						 data-src="{{asset('storage/'.$showAnime->original_img)}}" class="card-img lazy" alt="{title}">
-					<div class="rating-full">
-						@if (Auth::check())
+					@if (Auth::check())
+						<div class="rating-full">
 							<div class="col-md-12">
 								<votes :post={{ $showAnime->id }} :votes={{ $showAnime->votes() ? 'true' : 'false' }} :count_plus={{$plus}} :count_minus={{$minus}}></votes>
 							</div>
-						@endif
-					</div>
+						</div>
+					@endif
 				</div>
 				<div class="cos-but mt-3">
 					<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>

@@ -53,6 +53,7 @@ class AnimeController extends Controller
 		$minus = $showAnime->vote['plus'];
 		$showAnime->broadcastTitle = $this->broadcast($showAnime->broadcast);
 		$showAnime->seasonAired = $this->seasonAired($showAnime->aired_on);
+		event('postHasViewed', $showAnime);
 
 		if ($url !== $showAnime->url) {
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
