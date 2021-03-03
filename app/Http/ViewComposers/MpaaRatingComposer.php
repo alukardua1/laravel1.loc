@@ -5,7 +5,7 @@ namespace App\Http\ViewComposers;
 
 
 use App\Repository\Interfaces\KindRepositoryInterfaces;
-use App\Repository\Interfaces\MpaaRepositoryInterface;
+use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use Illuminate\View\View;
 
 class MpaaRatingComposer
@@ -17,9 +17,9 @@ class MpaaRatingComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterface  $mpaaRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
 	 */
-	public function __construct(MpaaRepositoryInterface $mpaaRepositoryInterfaces)
+	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
 		$this->mpaa = $mpaaRepositoryInterfaces;
 		$this->menu = $this->menu();

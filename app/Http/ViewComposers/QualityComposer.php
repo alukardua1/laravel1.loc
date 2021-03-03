@@ -17,7 +17,7 @@ class QualityComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\CountryRepositoryInterfaces  $countryRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
 	 */
 	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{

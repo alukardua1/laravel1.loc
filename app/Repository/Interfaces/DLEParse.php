@@ -21,9 +21,11 @@ interface DLEParse
      */
     public function parseUser();
 
-    /**
-     * @return mixed
-     */
+	/**
+	 * @param  null  $id
+	 *
+	 * @return mixed
+	 */
     public function parsePost($id = null);
 
     /**

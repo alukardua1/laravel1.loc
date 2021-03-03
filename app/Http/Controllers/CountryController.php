@@ -14,8 +14,11 @@ use Illuminate\Http\Request;
 class CountryController extends Controller
 {
 	protected $country;
+
 	/**
 	 * CountryController constructor.
+	 *
+	 * @param  \App\Repository\Interfaces\CountryRepositoryInterfaces  $countryRepositoryInterfaces
 	 */
 	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{

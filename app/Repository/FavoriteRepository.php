@@ -9,7 +9,7 @@ namespace App\Repository;
 
 
 use App\Models\User;
-use App\Repository\Interfaces\FavoritesRepositoryInterface;
+use App\Repository\Interfaces\FavoritesRepositoryInterfaces;
 use Auth;
 
 /**
@@ -17,7 +17,7 @@ use Auth;
  *
  * @package App\Repositories
  */
-class FavoriteRepository implements FavoritesRepositoryInterface
+class FavoriteRepository implements FavoritesRepositoryInterfaces
 {
 	/**
 	 * @param $id

@@ -13,7 +13,7 @@ namespace App\Repository\Interfaces;
  *
  * @package App\Repositories\Interfaces
  */
-interface FavoritesRepositoryInterface
+interface FavoritesRepositoryInterfaces
 {
     /**
      * @param $id

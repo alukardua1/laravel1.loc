@@ -39,7 +39,7 @@ class CategoryController extends Controller
 	/**
 	 * @param  \App\Models\Category  $category
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return \Illuminate\Contracts\View\View
 	 */
 	public function show(Category $category)
 	{

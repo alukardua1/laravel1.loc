@@ -14,8 +14,11 @@ use Illuminate\Http\Request;
 class VoteController extends Controller
 {
 	protected $voteRepository;
+
 	/**
 	 * VoteController constructor.
+	 *
+	 * @param  \App\Repository\Interfaces\VoteRepositoryInterface  $voteRepositoryInterface
 	 */
 	public function __construct(VoteRepositoryInterface $voteRepositoryInterface)
 	{

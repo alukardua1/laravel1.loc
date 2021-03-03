@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\Interfaces\FavoritesRepositoryInterface;
+use App\Repository\Interfaces\FavoritesRepositoryInterfaces;
 
 class FavoritesController extends Controller
 {
@@ -11,9 +11,9 @@ class FavoritesController extends Controller
 	/**
 	 * FavoriteController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\FavoritesRepositoryInterface  $favoriteRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\FavoritesRepositoryInterfaces  $favoriteRepositoryInterfaces
 	 */
-	public function __construct(FavoritesRepositoryInterface $favoriteRepositoryInterfaces)
+	public function __construct(FavoritesRepositoryInterfaces $favoriteRepositoryInterfaces)
 	{
 		parent::__construct();
 		$this->favoriteRepository = $favoriteRepositoryInterfaces;

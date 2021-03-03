@@ -14,14 +14,13 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
  */
 class CategoryRepository implements CategoryRepositoryInterfaces
 {
-
 	/**
 	 * @return \Illuminate\Database\Eloquent\Builder|mixed
 	 */
 	public function getCategories()
 	{
-		return Category::where('posted_at', '=', 1)
-			->latest()
+		return Category::latest()
+			->where('posted_at', '=', 1)
 			->get();
 	}
 

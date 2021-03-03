@@ -4,7 +4,7 @@
 namespace App\Repository\Interfaces;
 
 
-interface MpaaRepositoryInterface
+interface MpaaRepositoryInterfaces
 {
 	/**
 	 * @param $kind

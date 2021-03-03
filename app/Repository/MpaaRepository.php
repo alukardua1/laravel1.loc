@@ -5,14 +5,14 @@ namespace App\Repository;
 
 
 use App\Models\MPAARating;
-use App\Repository\Interfaces\MpaaRepositoryInterface;
+use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 
 /**
  * Class MpaaRepository
  *
  * @package App\Repository
  */
-class MpaaRepository implements MpaaRepositoryInterface
+class MpaaRepository implements MpaaRepositoryInterfaces
 {
 	/**
 	 * @param $kind
