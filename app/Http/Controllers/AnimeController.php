@@ -64,11 +64,7 @@ class AnimeController extends Controller
 
 	public function showYear($year)
 	{
-		$allAnime = Anime::latest()
-			->whereBetween('aired_on', [$year . '-01-01', $year . '-12-31'])
-			->orderBy('updated_at', 'DESC')
-			->paginate($this->paginate);
-
+		$allAnime = $this->anime->getYear($year)->paginate($this->paginate);
 		$title = $year;
 		$description = null;
 

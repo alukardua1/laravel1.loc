@@ -71,4 +71,10 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->orderBy('updated_at', 'DESC');
 	}
 
+	public function getYear($year)
+	{
+		return Anime::latest()
+			->whereBetween('aired_on', [$year . '-01-01', $year . '-12-31'])
+			->orderBy('updated_at', 'DESC');
+	}
 }

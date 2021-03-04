@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\MutationTrait;
 use Config;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,6 +31,7 @@ class User extends Authenticatable
 	use Notifiable;
 	use TwoFactorAuthenticatable;
 	use QueryCacheable;
+	use MutationTrait;
 
 	/**
 	 * The attributes that are mass assignable.

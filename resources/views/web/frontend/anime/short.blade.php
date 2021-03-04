@@ -20,9 +20,7 @@
 
 @section('content')
 	<div class="contents">
-		@foreach($allAnime as $value)
-			@include('web.frontend.anime.component.short_post', ['value'=>$value])
-		@endforeach
+		@include('web.frontend.anime.component.short_post', ['allAnime'=>$allAnime])
 	</div>
 	<div class="align-content-center">
 		{{$allAnime->links('web.frontend.vendor.pagination.semantic-ui')}}

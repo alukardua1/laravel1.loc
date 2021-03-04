@@ -11,7 +11,6 @@ use Illuminate\View\View;
 class YearComposer
 {
 	public    $menu;
-	public    $path;
 	protected $year;
 
 	/**
@@ -23,15 +22,6 @@ class YearComposer
 	{
 		$this->year = $animeRepositoryInterfaces;
 		$this->menu = $this->menu();
-		$this->path = $this->path();
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function path()
-	{
-		return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 	}
 
 	/**
@@ -39,7 +29,7 @@ class YearComposer
 	 */
 	public function menu()
 	{
-		$yearDate = Anime::select('aired_on')->get();
+		$yearDate = $this->year->getAllAnime()->get();
 		foreach ($yearDate as $value)
 		{
 			$years[] = date('Y', strtotime($value->aired_on));
@@ -66,6 +56,5 @@ class YearComposer
 	public function compose(View $view)
 	{
 		$view->with('menu', $this->menu);
-		$view->with('path', $this->path);
 	}
 }

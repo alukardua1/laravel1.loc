@@ -65,6 +65,42 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
+	private function status($xfieldStatus)
+	{
+		switch ($xfieldStatus) {
+			case 'released':
+				$result['anons'] = 0;
+				$result['ongoing'] = 0;
+				break;
+			case 'ongoing':
+				$result['ongoing'] = 1;
+				break;
+			case 'anons':
+				$result['anons'] = 1;
+				break;
+		}
+
+		return $result;
+	}
+
+	private function kind($tip)
+	{
+		switch ($tip) {
+			case 'OVA':
+				return 1;
+			case 'фильм':
+				return 2;
+			case 'ТВ':
+				return 3;
+			case 'ONA':
+				return 4;
+			case 'музыкальное видео':
+				return 5;
+			case 'спешл':
+				return 6;
+		}
+	}
+
 	/**
 	 * @param  null  $id
 	 *
@@ -84,38 +120,8 @@ class DLEParseRepository implements DLEParse
 				$xfield = explode('|', $value);
 				$xfield1[$xfield['0']] = $xfield['1'];
 			}
-			switch ($xfield1['status']) {
-				case 'released':
-					$xfield1['anons'] = 0;
-					$xfield1['ongoing'] = 0;
-					break;
-				case 'ongoing':
-					$xfield1['ongoing'] = 1;
-					break;
-				case 'anons':
-					$xfield1['anons'] = 1;
-					break;
-			}
-			switch ($xfield1['tip']) {
-				case 'ТВ':
-					$kind = 3;
-					break;
-				case 'OVA':
-					$kind = 1;
-					break;
-				case 'фильм':
-					$kind = 2;
-					break;
-				case 'ONA':
-					$kind = 4;
-					break;
-				case 'спешл':
-					$kind = 6;
-					break;
-				case 'музыкальное видео':
-					$kind = 5;
-					break;
-			}
+			$xfield1 = $this->status($xfield1['status']);
+			$kind = $this->kind($xfield1['tip']);
 			if (isset($xfield1['translyaciya'])) {
 				preg_match_all('/[0-5][0-9]:[0-5][0-9]/', $xfield1['translyaciya'], $xfield1['broadcast']);
 			}

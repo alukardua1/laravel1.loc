@@ -28,7 +28,6 @@ class LoginController extends Controller
 
     /**
      * Where to redirect users after login.
-     * @todo Сделать возврат на текущую страницу
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
@@ -57,5 +56,10 @@ class LoginController extends Controller
 	protected function credentials(Request $request): array
 	{
 		return $request->only($this->username(), 'password');
+	}
+
+	public function showLoginForm()
+	{
+		return view('web.backend.auth.login');
 	}
 }

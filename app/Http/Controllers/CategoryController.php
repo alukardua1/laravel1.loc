@@ -32,7 +32,7 @@ class CategoryController extends Controller
 	 */
 	public function index($category)
 	{
-		$currentCategory = $this->categories->getCategory($category);
+		$currentCategory = $this->categories->getCategory($category)->first();
 		$this->isNotNull($currentCategory);
 		$title = $currentCategory->title;
 		$description = $currentCategory->description;

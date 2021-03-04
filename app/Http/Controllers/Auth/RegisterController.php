@@ -72,9 +72,4 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
-    protected function redirectTo(): string
-    {
-    	return url()->previous();
-    }
 }

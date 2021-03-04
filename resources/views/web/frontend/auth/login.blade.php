@@ -4,11 +4,12 @@
 			<img src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->login}}" data-toggle="tooltip" data-html="true"
 				 title='{{Auth::user()->getGroup->title}}: {{Auth::user()->login}}'>
 		</div>
-		<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-			@csrf
+		<form id="logout-form" action="{{ route('logout') }}" method="POST">
+			{{ csrf_field() }}
+			<button class="btn btn-outline-light logout">Выйти <i class="fas fa-sign-in ml-1"></i></button>
 		</form>
-		<a href="{{route('logout')}}" type="button" class="btn btn-outline-light logout"
-		   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти <i class="fas fa-sign-in ml-1"></i></a>
+<!--		<a href="{{route('logout')}}" type="button" class="btn btn-outline-light logout disabled"
+		   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти <i class="fas fa-sign-in ml-1"></i></a>-->
 		<ul class="urls">
 			@admin_link
 			<li><a target="_blank" href="{{route('dashboard')}}">Админпанель</a></li>
@@ -25,7 +26,7 @@
 
 	<div class="collapse" id="login">
 		<form class="form-login mb-3" method="post" action="{{ route('login') }}">
-			@csrf
+			{{ csrf_field() }}
 			<div class="mb-3">
 				<label for="{{Config::get('secondConfig.login_email')}}" class="form-label">
 					@if (Config::get('secondConfig.login_email') == 'login')

@@ -43,7 +43,7 @@ class MenuComposer
 	 */
 	public function menu()
 	{
-		return $this->category->getCategories();
+		return $this->category->getCategories()->get();
 	}
 
 	/**
