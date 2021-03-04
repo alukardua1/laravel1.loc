@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 /**
  * Class Quality
  *
@@ -25,7 +27,7 @@ class Quality extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getAnime()
+	public function getAnime(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class);
 	}

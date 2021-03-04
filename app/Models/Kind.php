@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 /**
  * Class Kind
  *
@@ -26,8 +28,8 @@ class Kind extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getAnime()
-    {
+	public function getAnime(): HasMany
+	{
     	return $this->hasMany(Anime::class);
     }
 }

@@ -25,6 +25,11 @@ class CategoryController extends Controller
 		$this->categories = $categoryRepositoryInterfaces;
 	}
 
+	/**
+	 * @param $category
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
 	public function index($category)
 	{
 		$currentCategory = $this->categories->getCategory($category);

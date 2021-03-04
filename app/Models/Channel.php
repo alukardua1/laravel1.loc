@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 /**
  * Class Channel
  *
@@ -25,7 +27,7 @@ class Channel extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getAnime()
+	public function getAnime(): HasMany
 	{
 		return $this->hasMany(Anime::class);
 	}

@@ -26,6 +26,9 @@ class Controller extends BaseController
 
 	protected $backend = 'web.backend.';
 
+	/**
+	 * Controller constructor.
+	 */
 	public function __construct()
 	{
 		$this->paginate = Config::get('secondConfig.paginate', 10);

@@ -13,6 +13,10 @@ use App\Repository\Interfaces\AnimeRepositoryInterfaces;
  */
 class AnimeRepository implements AnimeRepositoryInterfaces
 {
+	public function __construct()
+	{
+	}
+
 	/**
 	 * @param $id
 	 *

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 /**
  * Class Country
  *
@@ -27,7 +29,7 @@ class Country extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getAnime()
+	public function getAnime(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class);
 	}

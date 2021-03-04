@@ -50,6 +50,7 @@ class Anime extends Model
 	protected $appends   = [
 		'category',
 		'getKind',
+		'getUser',
 		'getChannel',
 		'getStudio',
 		'getQuality',
@@ -115,11 +116,11 @@ class Anime extends Model
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|\Illuminate\Database\Eloquent\Relations\HasOne
 	 */
-	public function getUser(): HasOne
+	public function getUser()
 	{
-		return $this->hasOne(User::class, 'id', 'user_id');
+		return $this->belongsTo(User::class, 'user_id');
 	}
 
 	/**

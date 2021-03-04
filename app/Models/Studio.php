@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 /**
  * Class Studio
  *
@@ -26,7 +28,7 @@ class Studio extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getAnime()
+	public function getAnime(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class);
 	}

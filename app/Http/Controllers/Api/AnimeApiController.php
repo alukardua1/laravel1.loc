@@ -32,28 +32,32 @@ class AnimeApiController extends Controller
 
 	/**
 	 * Вывод всех аниме
+	 *
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function index()
-    {
-    	$anime = $this->apiAnime->getAllAnime()->paginate($this->paginate);
+	{
+		$anime = $this->apiAnime->getAllAnime()->paginate($this->paginate);
+		$anime = $this->animesMutations($anime);
 
-	    return response()->json($anime);
-    }
+		return response()->json($anime);
+	}
 
 	/**
 	 * Вывод аниме по $id
 	 *
 	 * @param $id
 	 *
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return array|\Illuminate\Http\JsonResponse
 	 */
 	public function show($id)
-    {
-    	$thisAnime = $this->apiAnime->getAnime($id)->first();
+	{
+		$thisAnime = $this->apiAnime->getAnime($id)->first();
+		if (empty($thisAnime)) {
+			return response()->json($this->error404());
+		}
+		$thisAnime = $this->animeMutations($thisAnime);
 
-    	$thisAnime = $this->animeMutations($thisAnime);
-
-    	return response()->json($thisAnime);
-    }
+		return response()->json($thisAnime);
+	}
 }

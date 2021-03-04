@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 /**
  * Class MPAARating
  *
@@ -26,7 +28,7 @@ class MPAARating extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getAnime()
+	public function getAnime(): HasMany
 	{
 		return $this->hasMany(Anime::class, 'rating_id');
 	}
