@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AnimeEvent;
 use App\Models\Anime;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
@@ -50,10 +51,10 @@ class AnimeController extends Controller
 		$this->isNotNull($showAnime);
 		$this->blockPlayer($showAnime);
 		$plus = $showAnime->vote['plus'];
-		$minus = $showAnime->vote['plus'];
+		$minus = $showAnime->vote['minus'];
 		$showAnime->broadcastTitle = $this->broadcast($showAnime->broadcast);
 		$showAnime->seasonAired = $this->seasonAired($showAnime->aired_on);
-		event('postHasViewed', $showAnime);
+		event(new AnimeEvent($showAnime));
 
 		if ($url !== $showAnime->url) {
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);

@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\AnimeEvent;
+use App\Listeners\AnimeViewNotification;
+use App\Listeners\LastLoginNotification;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        Login::class => [
+	        LastLoginNotification::class,
+        ],
+        AnimeEvent::class => [
+	        AnimeViewNotification::class,
+        ]
     ];
 
     /**
@@ -27,8 +37,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-	    Event::listen('postHasViewed', function ($post) {
+	    /*Event::listen('postHasViewed', function ($post) {
 		    $post->increment('read_count');
-	    });
+	    });*/
     }
 }

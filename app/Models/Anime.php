@@ -43,6 +43,7 @@ class Anime extends Model
 		'posted_at',
 		'comment_at',
 		'broadcast',
+		'last_login',
 	];
 	protected $withCount = [
 		'getVote',
