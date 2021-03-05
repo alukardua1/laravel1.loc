@@ -77,4 +77,18 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->whereBetween('aired_on', [$year . '-01-01', $year . '-12-31'])
 			->orderBy('updated_at', 'DESC');
 	}
+
+	public function getAnons($count)
+	{
+		return Anime::latest()
+			->where('anons', 1)
+			->limit($count)
+			->orderBy('read_count', 'DESC');
+	}
+
+	public function getPopular($count)
+	{
+		return Anime::latest()
+			->limit($count);
+	}
 }

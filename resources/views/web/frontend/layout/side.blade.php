@@ -74,7 +74,7 @@
 				Популярное
 			</div>
 			<div class="soon">
-				{custom template="modules/populare" order="reads" days="30" aviable="global" limit="10" from="0" cache="no"}
+				@include('web.frontend.anime.component.popular')
 			</div>
 		</div>
 		<div class="side-cat">
@@ -82,7 +82,7 @@
 				Скоро на AF
 			</div>
 			<div class="soon">
-				{custom template="modules/soon" xfields="anons" order="rating" aviable="global" limit="100" from="0" cache="no"}
+				@include('web.frontend.anime.component.anons')
 			</div>
 		</div>
 		<div class="side-cat">

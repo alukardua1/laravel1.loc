@@ -44,4 +44,18 @@ interface AnimeRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function getYear($year);
+
+	/**
+	 * @param $count
+	 *
+	 * @return mixed
+	 */
+	public function getAnons($count);
+
+	/**
+	 * @param $count
+	 *
+	 * @return mixed
+	 */
+	public function getPopular($count);
 }

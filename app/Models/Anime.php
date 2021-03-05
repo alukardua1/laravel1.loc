@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Anime extends Model
 {
-	protected $fillable  = [
+	protected $fillable = [
 		'name',
 		'russian',
 		'original_img',
@@ -40,10 +40,12 @@ class Anime extends Model
 		'comment_at',
 		'broadcast',
 	];
+
 	protected $withCount = [
 		'getVote',
 	];
-	protected $appends   = [
+
+	protected $appends = [
 		'category',
 		'getKind',
 		'getUser',
@@ -58,6 +60,7 @@ class Anime extends Model
 		'getTrailer',
 		'getPlayer',
 		'getRegionBlock',
+		'getYear',
 	];
 
 	/**
