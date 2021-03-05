@@ -66,7 +66,6 @@ class User extends Authenticatable
 		'email_verified_at' => 'datetime',
 	];
 	protected $appends = [
-		'profile_photo_url',
 		'getGroup',
 	];
 	protected $withCount = [
@@ -85,6 +84,16 @@ class User extends Authenticatable
 	{
 		parent::__construct($attributes);
 		$this->cacheFor = Config::get('secondConfig.cache_time');
+	}
+
+	/**
+	 * Аватар по умолчанию
+	 *
+	 * @return string
+	 */
+	protected function defaultProfilePhotoUrl()
+	{
+		return '/images/no_avatar_lightstat.png';
 	}
 
 	/**
