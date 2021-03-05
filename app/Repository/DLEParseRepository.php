@@ -69,18 +69,18 @@ class DLEParseRepository implements DLEParse
 	{
 		switch ($xfieldStatus) {
 			case 'released':
-				$result['anons'] = 0;
-				$result['ongoing'] = 0;
+				$xfield1['anons'] = 0;
+				$xfield1['ongoing'] = 0;
 				break;
 			case 'ongoing':
-				$result['ongoing'] = 1;
+				$xfield1['ongoing'] = 1;
 				break;
 			case 'anons':
-				$result['anons'] = 1;
+				$xfield1['anons'] = 1;
 				break;
 		}
 
-		return $result;
+		return $xfield1;
 	}
 
 	private function kind($tip)
@@ -120,7 +120,8 @@ class DLEParseRepository implements DLEParse
 				$xfield = explode('|', $value);
 				$xfield1[$xfield['0']] = $xfield['1'];
 			}
-			$xfield1 = $this->status($xfield1['status']);
+			$this->status($xfield1['status']);
+			//dd(__METHOD__, $this->status($xfield1['status']));
 			$kind = $this->kind($xfield1['tip']);
 			if (isset($xfield1['translyaciya'])) {
 				preg_match_all('/[0-5][0-9]:[0-5][0-9]/', $xfield1['translyaciya'], $xfield1['broadcast']);
@@ -171,6 +172,13 @@ class DLEParseRepository implements DLEParse
 			if (array_key_exists('ozvuchka', $xfield1)) {
 				$this->addBelongs($xfield1['ozvuchka'], $post, 'translate_id', Translate::class, 'anime_translate');
 			}
+			if (array_key_exists('treyler', $xfield1)) {
+				$data = [
+					'anime_id'=>$post->id,
+					'trailer'=>$xfield1['treyler'],
+				];
+				DB::table('trailers')->insert($data);
+			}
 			if (array_key_exists('kanal', $xfield1)) {
 				$channel = Channel::where('name', $xfield1['kanal'])->first();
 			} else {
@@ -212,9 +220,9 @@ class DLEParseRepository implements DLEParse
 				'description_source' => $post->short_story,
 				'franchise'          => null,
 				'player'             => $xfield1['kodik'] ?? null,
-				'trailer'            => $xfield1['treyler'] ?? null,
-				'created_at'         => date('Y-m-d', strtotime($post->date)),
-				'updated_at'         => date('Y-m-d', strtotime($post->date)),
+				/*'trailer'            => $xfield1['treyler'] ?? null,*/
+				'created_at'         => $post->date,
+				'updated_at'         => $post->date,
 			];
 		}
 

@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', [HomeController::class, 'index'])->name('home');
-//Route::get('/dle/{id?}', [ParseDbDLEController::class, 'index']);
+Route::get('/dle/{id?}', [ParseDbDLEController::class, 'index']);
 Route::get('/', [AnimeController::class, 'index'])->name('home');
 
 Route::group(

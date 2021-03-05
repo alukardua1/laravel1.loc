@@ -47,7 +47,6 @@ class CreateAnimesTable extends Migration
             $table->boolean('blocking')->default(0);
             $table->string('region')->nullable();
             $table->string('player')->nullable();
-            $table->string('trailer')->nullable();
             $table->boolean('posted_at')->default(1);
             $table->boolean('posted_rss')->default(1);
             $table->boolean('comment_at')->default(1);

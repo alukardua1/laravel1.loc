@@ -60,6 +60,7 @@ class Anime extends Model
 		'getTranslate',
 		'getVote',
 		'vote',
+		'getTrailer',
 	];
 
 	/**
@@ -216,5 +217,10 @@ class Anime extends Model
 	public function getVote()
 	{
 		return $this->hasMany(Vote::class);
+	}
+
+	public function getTrailer()
+	{
+		return $this->belongsTo(Trailer::class);
 	}
 }
