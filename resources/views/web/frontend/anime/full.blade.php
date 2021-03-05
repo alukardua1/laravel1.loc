@@ -45,7 +45,7 @@
 		</div>
 		<div class="player">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				@if($showAnime->trailer)
+				@if($showAnime->getTrailer[0])
 					<li class="nav-item" role="presentation">
 						<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
 						   aria-selected="true">Трейлер</a>
@@ -53,16 +53,16 @@
 				@endif
 				@if ($showAnime->player)
 					<li class="nav-item" role="presentation">
-						<a class="nav-link @if(!$showAnime->trailer) active @endif" id="player-tab" data-toggle="tab" href="#player" role="tab"
+						<a class="nav-link @if(!$showAnime->getTrailer[0]) active @endif" id="player-tab" data-toggle="tab" href="#player" role="tab"
 						   aria-controls="player" aria-selected="false">Плеер</a>
 					</li>
 				@endif
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				@if($showAnime->trailer)
+				@if($showAnime->getTrailer[0])
 					<div class="tab-pane fade show active" id="trailer" role="tabpanel" aria-labelledby="trailer-tab">
 						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" src="{{$showAnime->trailer}}" allowfullscreen></iframe>
+							<iframe class="embed-responsive-item" src="{{$showAnime->getTrailer[0]->trailer}}" allowfullscreen></iframe>
 						</div>
 						@if(Auth::user())
 							<div>
@@ -72,7 +72,7 @@
 					</div>
 				@endif
 				@if($showAnime->player)
-					<div class="tab-pane fade @if(!$showAnime->trailer)show active @endif" id="player" role="tabpanel"
+					<div class="tab-pane fade @if(!$showAnime->getTrailer[0])show active @endif" id="player" role="tabpanel"
 						 aria-labelledby="player-tab">
 						<div class="embed-responsive embed-responsive-16by9">
 							<iframe class="embed-responsive-item" src="{{$showAnime->player}}" frameborder="0" allowfullscreen

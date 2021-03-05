@@ -14,6 +14,7 @@ use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 use App\Repository\Interfaces\VoteRepositoryInterface;
+use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
 use App\Repository\KindRepository;
 use App\Repository\MpaaRepository;
 use App\Repository\QualityRepository;
@@ -28,6 +29,7 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use App\Repository\Interfaces\DLEParse;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
 use App\Repository\UserRepository;
+use App\Repository\YearAiredRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -52,6 +54,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(QualityRepositoryInterfaces::class, QualityRepository::class);
         $this->app->bind(ChannelRepositoryInterfaces::class, ChannelRepository::class);
 	    $this->app->bind(StudioRepositoryInterfaces::class, StudioRepository::class);
+	    $this->app->bind(YearAiredRepositoryInterfaces::class, YearAiredRepository::class);
 
     }
 

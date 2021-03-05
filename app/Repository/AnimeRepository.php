@@ -53,7 +53,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getFirstPageAnime($count)
 	{
 		return Anime::latest()
-			->where('status', 'ongoing')
+			->where('ongoing', 1)
 			->limit($count)
 			->orderBy('updated_at', 'DESC');
 	}

@@ -2,7 +2,7 @@
 
 return [
 	'paginate'   => 120,
-	'cache_time' => 100,
+	'cache_time' => 0,
 	'patchSeparator' => '/',
 	'login_email'=>'email',
 ];

@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Models\Anime;
 use App\Models\Category;
 use App\Models\Channel;
 use App\Models\Country;
@@ -12,6 +13,7 @@ use App\Models\MPAARating;
 use App\Models\Quality;
 use App\Models\Studio;
 use App\Models\Translate;
+use App\Models\YearAired;
 use App\Repository\Interfaces\DLEParse;
 use App\Services\CurlTrait;
 use File;
@@ -69,18 +71,18 @@ class DLEParseRepository implements DLEParse
 	{
 		switch ($xfieldStatus) {
 			case 'released':
-				$xfield1['anons'] = 0;
-				$xfield1['ongoing'] = 0;
+				$result['anons'] = 0;
+				$result['ongoing'] = 0;
 				break;
 			case 'ongoing':
-				$xfield1['ongoing'] = 1;
+				$result['ongoing'] = 1;
 				break;
 			case 'anons':
-				$xfield1['anons'] = 1;
+				$result['anons'] = 1;
 				break;
 		}
 
-		return $xfield1;
+		return $result;
 	}
 
 	private function kind($tip)
@@ -108,6 +110,7 @@ class DLEParseRepository implements DLEParse
 	 */
 	public function parsePost($id = null)
 	{
+		$i = 0;
 		if ($id) {
 			$posts = DB::connection("mysql2")->table('dle_post')->select(['*'])->where('id', '=', $id)->get();
 		} else {
@@ -120,8 +123,6 @@ class DLEParseRepository implements DLEParse
 				$xfield = explode('|', $value);
 				$xfield1[$xfield['0']] = $xfield['1'];
 			}
-			$this->status($xfield1['status']);
-			//dd(__METHOD__, $this->status($xfield1['status']));
 			$kind = $this->kind($xfield1['tip']);
 			if (isset($xfield1['translyaciya'])) {
 				preg_match_all('/[0-5][0-9]:[0-5][0-9]/', $xfield1['translyaciya'], $xfield1['broadcast']);
@@ -179,6 +180,22 @@ class DLEParseRepository implements DLEParse
 				];
 				DB::table('trailers')->insert($data);
 			}
+			if (array_key_exists('kodik', $xfield1)) {
+			    $data = [
+			    	'anime_id'=>$post->id,
+				    'name_player'=>'kodik',
+				    'url_player'=>$xfield1['kodik'],
+			    ];
+				DB::table('players')->insert($data);
+			}
+			if (array_key_exists('blokirovat', $xfield1) and ($xfield1['blokirovat']==1)) {
+				$data = [
+					'anime_id'=>$post->id,
+					'region'=>$xfield1['geoblock'],
+					'copyright_holder'=>'Wakanim',
+				];
+				DB::table('region_blocks')->insert($data);
+			}
 			if (array_key_exists('kanal', $xfield1)) {
 				$channel = Channel::where('name', $xfield1['kanal'])->first();
 			} else {
@@ -189,13 +206,25 @@ class DLEParseRepository implements DLEParse
 				$mpaa = collect('id');
 				$mpaa->id = 1;
 			}
+			if (array_key_exists('sezon', $xfield1)) {
+				$yearAired = YearAired::where('name', $xfield1['sezon'])->first();
+				if (!$yearAired) {
+					DB::table('year_aireds')->insert(['name'=>$xfield1['sezon']]);
+					$yearAired = YearAired::where('name', $xfield1['sezon'])->first();
+				}
+			}else{
+				$yearAired = collect('id');
+				$yearAired->id = 0;
+			}
+
+			//dd(__METHOD__, $yearAired);
 			$result[] = [
 				'id'                 => $post->id,
 				'user_id'            => 1,
 				'original_img'       => $image['original_img'],
 				'preview_img'        => $image['preview_img'],
-				'anons'              => $xfield1['anons'] ?? 0,
-				'ongoing'            => $xfield1['ongoing'] ?? 0,
+				'anons'              => $this->status($xfield1['status'])['anons'] ?? 0,
+				'ongoing'            => $this->status($xfield1['status'])['ongoing'] ?? 0,
 				'metatitle'          => $post->metatitle,
 				'keywords'           => $post->keywords,
 				'name'               => $post->title,
@@ -203,9 +232,8 @@ class DLEParseRepository implements DLEParse
 				'url'                => $post->alt_name,
 				'kind_id'            => $kind,
 				'channel_id'         => $channel->id,
-				'status'             => $xfield1['status'],
 				'broadcast'          => $xfield1['broadcast'][0][0] ?? null,
-				'aired_season'       => $xfield1['sezon'] ?? null,
+				'aired_season'       => $yearAired->id,
 				'episodes'           => $xfield1['serias-col'] ?? null,
 				'episodes_aired'     => $xfield1['seriya'] ?? null,
 				'aired_on'           => $this->dates($xfield1['data-vypuska'] ?? null),
@@ -218,12 +246,10 @@ class DLEParseRepository implements DLEParse
 				'description'        => $post->short_story,
 				'description_html'   => $post->short_story,
 				'description_source' => $post->short_story,
-				'franchise'          => null,
-				'player'             => $xfield1['kodik'] ?? null,
-				/*'trailer'            => $xfield1['treyler'] ?? null,*/
 				'created_at'         => $post->date,
 				'updated_at'         => $post->date,
 			];
+			var_dump($i++);
 		}
 
 		return $result;

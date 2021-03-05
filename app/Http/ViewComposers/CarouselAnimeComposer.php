@@ -33,7 +33,7 @@ class CarouselAnimeComposer
 	 */
 	public function anime()
 	{
-		return $this->animeAll->getCustomAnime('status', 'ongoing')->get();
+		return $this->animeAll->getFirstPageAnime(100)->get();
 	}
 
 	/**

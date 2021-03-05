@@ -15,6 +15,7 @@ use App\Http\Controllers\StudioController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\YearAiredController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,7 +51,7 @@ Route::group(
 		Route::get('country/{custom}', [CountryController::class, 'index'])->name('country');
 		Route::get('translate/{custom}', [TranslateController::class, 'index'])->name('translate');
 		Route::get('rating/{custom}', [MPAARatingController::class, 'index'])->name('rating');
-		Route::get('year/{custom}', [AnimeController::class, 'showYear'])->name('year');
+		Route::get('year/{custom}', [YearAiredController::class, 'index'])->name('year');
 	}
 );
 

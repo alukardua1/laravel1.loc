@@ -43,6 +43,7 @@ class User extends Authenticatable
 		'login',
 		'email',
 		'password',
+		'last_login',
 	];
 
 	/**

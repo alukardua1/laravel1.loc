@@ -62,13 +62,4 @@ class AnimeController extends Controller
 
 		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus'));
 	}
-
-	public function showYear($year)
-	{
-		$allAnime = $this->anime->getYear($year)->paginate($this->paginate);
-		$title = $year;
-		$description = null;
-
-		return view($this->frontend . 'anime.short', compact('allAnime', 'title', 'description'));
-	}
 }

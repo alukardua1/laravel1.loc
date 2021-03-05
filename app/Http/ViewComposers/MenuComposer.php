@@ -17,6 +17,7 @@ class MenuComposer
 	public    $menu;
 	public    $path;
 	protected $category;
+	public $i = 0;
 
 	/**
 	 * Create a menu composer.

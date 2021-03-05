@@ -21,7 +21,6 @@ class Anime extends Model
 		'russian',
 		'original_img',
 		'preview_img',
-		'status',
 		'episodes',
 		'episodes_aired',
 		'aired_on',
@@ -35,15 +34,11 @@ class Anime extends Model
 		'description',
 		'description_html',
 		'description_source',
-		'franchise',
 		'anons',
 		'ongoing',
-		'blocking',
-		'region',
 		'posted_at',
 		'comment_at',
 		'broadcast',
-		'last_login',
 	];
 	protected $withCount = [
 		'getVote',
@@ -61,6 +56,8 @@ class Anime extends Model
 		'getVote',
 		'vote',
 		'getTrailer',
+		'getPlayer',
+		'getRegionBlock',
 	];
 
 	/**
@@ -219,8 +216,32 @@ class Anime extends Model
 		return $this->hasMany(Vote::class);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function getTrailer()
 	{
-		return $this->belongsTo(Trailer::class);
+		return $this->hasMany(Trailer::class);
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getPlayer()
+	{
+		return $this->hasMany(Player::class);
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getRegionBlock()
+	{
+		return $this->hasMany(RegionBlock::class);
+	}
+
+	public function getYear()
+	{
+		return $this->hasOne(YearAired::class);
 	}
 }
