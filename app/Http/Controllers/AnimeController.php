@@ -39,6 +39,14 @@ class AnimeController extends Controller
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
 
+	public function indexOngoing()
+	{
+		$allAnime = $this->anime->getCustomAnime('ongoing', 1)->paginate($this->paginate);
+		$title = 'Онгоинг';
+
+		return view($this->frontend . 'anime.short', compact('allAnime', 'title'));
+	}
+
 	/**
 	 * @param  int   $id
 	 * @param  null  $url

@@ -39,13 +39,6 @@ interface AnimeRepositoryInterfaces
 	public function getCustomAnime($columns, $custom);
 
 	/**
-	 * @param $year
-	 *
-	 * @return mixed
-	 */
-	public function getYear($year);
-
-	/**
 	 * @param $count
 	 *
 	 * @return mixed

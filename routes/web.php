@@ -52,6 +52,7 @@ Route::group(
 		Route::get('translate/{custom}', [TranslateController::class, 'index'])->name('translate');
 		Route::get('rating/{custom}', [MPAARatingController::class, 'index'])->name('rating');
 		Route::get('year/{custom}', [YearAiredController::class, 'index'])->name('year');
+		Route::get('ongoing', [AnimeController::class, 'indexOngoing'])->name('ongoing');
 	}
 );
 

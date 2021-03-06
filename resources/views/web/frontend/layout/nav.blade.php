@@ -10,7 +10,7 @@
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 			<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link" aria-current="page" href="/xfsearch/ongoing/">Онгоинги</a>
+					<a class="nav-link" aria-current="page" href="{{route('ongoing')}}">Онгоинги</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/pravoobladatelyam.html">© Правообладателям</a>
