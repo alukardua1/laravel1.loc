@@ -30,18 +30,18 @@ class VoteController extends Controller
 	{
 		$this->voteRepository->plusVotes($id);
 
-		return back();
+		return url()->previous();
 	}
 
 	/**
 	 * @param  int  $id
 	 *
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @return \Illuminate\Http\RedirectResponse|string
 	 */
 	public function minus($id)
 	{
 		$this->voteRepository->minusVotes($id);
 
-		return back();
+		return url()->previous();
 	}
 }
