@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\AnimeEvent;
 use App\Models\Anime;
+use Illuminate\Http\Request;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
 /**
@@ -70,4 +71,25 @@ class AnimeController extends Controller
 
 		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus'));
 	}
+
+	public function search(Request $request)
+	{
+		if($request->ajax())
+		{
+			$output="";
+			$animeSearch = Anime::where('name', 'LIKE', "%{$request->search}%")->get();
+			//$products=DB::table('products')->where('title','LIKE','%'.$request->search."%")->get();
+			if($animeSearch)
+			{
+				foreach ($animeSearch as $key => $value) {
+					$output.="<a href=\"/anime/{$value->id}-{$value->url}\">
+					<span class=\"searchheading\">{$value->name}</span>
+					<span>{$value->description}</span>
+					</a>";
+				}
+				return Response($output);
+			}
+		}
+	}
+
 }
