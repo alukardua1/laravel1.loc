@@ -77,8 +77,14 @@ class AnimeController extends Controller
 		if($request->ajax())
 		{
 			$output="";
-			$animeSearch = Anime::where('name', 'LIKE', "%{$request->search}%")->get();
-			//$products=DB::table('products')->where('title','LIKE','%'.$request->search."%")->get();
+			$animeSearch = Anime::where('name', 'LIKE', "%{$request->search}%")
+				->orWhere('english', 'LIKE', "%{$request->search}%")
+				->orWhere('japanese', 'LIKE', "%{$request->search}%")
+				->orWhere('synonyms', 'LIKE', "%{$request->search}%")
+				->orWhere('license_name_ru', 'LIKE', "%{$request->search}%")
+				->orWhere('description', 'LIKE', "%{$request->search}%")
+				->limit(5)
+				->get();
 			if($animeSearch)
 			{
 				foreach ($animeSearch as $key => $value) {
