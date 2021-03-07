@@ -60,7 +60,7 @@ class AnimeController extends Controller
 		$this->isNotNull($showAnime);
 		$this->blockPlayer($showAnime);
 		$plus = $showAnime->vote['plus'];
-		$minus = $showAnime->vote['minus'];
+		$minus = -$showAnime->vote['minus'];
 		$showAnime->broadcastTitle = $this->broadcast($showAnime->broadcast);
 		$showAnime->seasonAired = $this->seasonAired($showAnime->aired_on);
 		event(new AnimeEvent($showAnime));

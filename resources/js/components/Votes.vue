@@ -5,19 +5,11 @@
   -->
 
 <template>
-  <div v-if="isVoted" class="rating-full">
-    <a href="#" @click.prevent="plusVote(post)" class="disabled">
+  <div class="rating-full">
+    <a id="plus" href="#" @click.prevent="plusVote(post)" v-bind:class="{ disabled: isVoted }">
       <span> {{count_plus}}</span>
     </a>
-    <a href="#" @click.prevent="minusVote(post)" class="disabled">
-      <span> {{count_minus}}</span>
-    </a>
-  </div>
-  <div v-else class="rating-full">
-    <a href="#" @click.prevent="plusVote(post)">
-      <span> {{count_plus}}</span>
-    </a>
-    <a href="#" @click.prevent="minusVote(post)">
+    <a id="minus" href="#" @click.prevent="minusVote(post)" v-bind:class="{ disabled: isVoted }">
       <span> {{count_minus}}</span>
     </a>
   </div>
