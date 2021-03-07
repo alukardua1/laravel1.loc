@@ -10,6 +10,7 @@ use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MPAARatingController;
 use App\Http\Controllers\ParseDbDLEController;
+use App\Http\Controllers\PersonalMessageController;
 use App\Http\Controllers\QualityController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\TranslateController;
@@ -77,6 +78,7 @@ Route::group(
 		Route::get('/{login}/edit', [UserController::class, 'edit'])->name('editUser');
 		Route::get('/{login}/update', [UserController::class, 'update'])->name('updateUser');
 		Route::get('/{login}/favorite', [FavoritesController::class, 'index'])->name('favorite');
+		Route::get('/{login}/PM', [PersonalMessageController::class, 'index'])->name('PM');
 	}
 );
 Route::post('/favorites_add/{id}', [FavoritesController::class, 'add'])->name('favorite_add')->middleware('auth');

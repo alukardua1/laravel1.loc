@@ -22,4 +22,6 @@ interface UserRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function getUsers();
+
+	public function getPM($user);
 }

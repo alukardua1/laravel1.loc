@@ -34,4 +34,9 @@ class UserRepository implements UserRepositoryInterfaces
 		return User::latest()
 			->get();
 	}
+
+	public function getPM($user)
+	{
+		dd(__METHOD__, \Auth::id(), 11);
+	}
 }

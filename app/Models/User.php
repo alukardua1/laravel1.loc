@@ -72,6 +72,8 @@ class User extends Authenticatable
 	protected $withCount = [
 		'favorites',
 		'getAnime',
+		'getPersonalMessageAuthor',
+		'getPersonalMessageRecipient',
 	];
 
 	protected $cacheFor;
@@ -85,6 +87,11 @@ class User extends Authenticatable
 	{
 		parent::__construct($attributes);
 		$this->cacheFor = Config::get('secondConfig.cache_time');
+	}
+
+	public function getNotReadMessageAttribute()
+	{
+		return $this->getPersonalMessageRecipient()->where('is_read', '=', 0)->count();
 	}
 
 	/**
@@ -127,5 +134,15 @@ class User extends Authenticatable
 	public function vote(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class, 'votes')->withTimestamps();
+	}
+
+	public function getPersonalMessageAuthor()
+	{
+		return $this->hasMany(PersonalMessage::class, 'author_id');
+	}
+
+	public function getPersonalMessageRecipient()
+	{
+		return $this->hasMany(PersonalMessage::class, 'recipient_id');
 	}
 }

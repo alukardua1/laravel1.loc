@@ -13,7 +13,7 @@ class CreatePersonalMessageTable extends Migration
      */
     public function up()
     {
-        Schema::create('personal_message', function (Blueprint $table) {
+        Schema::create('personal_messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('author_id');
             $table->foreignId('recipient_id');
@@ -33,6 +33,6 @@ class CreatePersonalMessageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_message');
+        Schema::dropIfExists('personal_messages');
     }
 }
