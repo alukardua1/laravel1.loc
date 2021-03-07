@@ -76,9 +76,11 @@ class DLEParseRepository implements DLEParse
 				break;
 			case 'ongoing':
 				$result['ongoing'] = 1;
+				$result['anons'] = 0;
 				break;
 			case 'anons':
 				$result['anons'] = 1;
+				$result['ongoing'] = 0;
 				break;
 		}
 
@@ -100,6 +102,18 @@ class DLEParseRepository implements DLEParse
 				return 5;
 			case 'спешл':
 				return 6;
+		}
+	}
+
+	protected function createAnimeCategory($category, $id_anime)
+	{
+		$categ = explode(',', $category);
+		foreach ($categ as $value) {
+			$catAnime = [
+				'anime_id'    => $id_anime,
+				'category_id' => $value,
+			];
+			DB::table('anime_category')->insert($catAnime);
 		}
 	}
 
@@ -129,14 +143,7 @@ class DLEParseRepository implements DLEParse
 			}
 			$image = $this->imageFunc($post, 'http://anime-free.ru/uploads/posts/' . $xfield1['izobrazhenie']);
 			$mpaa = MPAARating::where('name', $xfield1['rating'])->first();
-			$categ = explode(',', $post->category);
-			foreach ($categ as $value) {
-				$catAnime = [
-					'anime_id'    => $post->id,
-					'category_id' => $value,
-				];
-				DB::table('anime_category')->insert($catAnime);
-			}
+			$this->createAnimeCategory($post->category, $post->id);
 			if (array_key_exists('url_world_art', $xfield1)) {
 				$link['anime_id'] = $post->id;
 				$link['title'] = 'world-art';
@@ -223,8 +230,8 @@ class DLEParseRepository implements DLEParse
 				'user_id'            => 1,
 				'original_img'       => $image['original_img'],
 				'preview_img'        => $image['preview_img'],
-				'anons'              => $this->status($xfield1['status'])['anons'] ?? 0,
-				'ongoing'            => $this->status($xfield1['status'])['ongoing'] ?? 0,
+				'anons'              => $this->status($xfield1['status'])['anons'],
+				'ongoing'            => $this->status($xfield1['status'])['ongoing'],
 				'metatitle'          => $post->metatitle,
 				'keywords'           => $post->keywords,
 				'name'               => $post->title,
@@ -243,15 +250,69 @@ class DLEParseRepository implements DLEParse
 				'japanese'           => $xfield1['po-yaponski'] ?? null,
 				'synonyms'           => $xfield1['nazvanie-romadzi'] ?? null,
 				'duration'           => $xfield1['dlitelnost'] ?? null,
-				'description'        => $post->short_story,
+				'description'        => strip_tags($post->short_story),
 				'description_html'   => $post->short_story,
-				'description_source' => $post->short_story,
+				'description_source' => $this->replaceHTML($post->short_story),
 				'created_at'         => $post->date,
 				'updated_at'         => $post->date,
 			];
 			var_dump($i++);
 		}
 
+		return $result;
+	}
+
+	protected function replaceHTML($text_post){
+		$str_search = [
+			'#<a href="([^"]+)">([^<]+)</a>#',
+			"#<br>#",
+		];
+		$str_replace = [
+			"[url=$1]$2[/url]",
+			'\n',
+		];
+		return preg_replace($str_search, $str_replace, $text_post);
+	}
+
+	protected function replaceBBCode($text_post) {
+		$str_search= array(
+			"#\\\n#is",
+			"#\[b\](.+?)\[\/b\]#is",
+			"#\[i\](.+?)\[\/i\]#is",
+			"#\[u\](.+?)\[\/u\]#is",
+			"#\[code\](.+?)\[\/code\]#is",
+			"#\[quote\](.+?)\[\/quote\]#is",
+			"#\[url=(.+?)\](.+?)\[\/url\]#is",
+			"#\[url\](.+?)\[\/url\]#is",
+			"#\[img\](.+?)\[\/img\]#is",
+			"#\[size=(.+?)\](.+?)\[\/size\]#is",
+			"#\[color=(.+?)\](.+?)\[\/color\]#is",
+			"#\[list\](.+?)\[\/list\]#is",
+			"#\[listn](.+?)\[\/listn\]#is",
+			"#\[\*\](.+?)\[\/\*\]#"
+		);
+		$str_replace = array(
+			"<br />",
+			"<b>\\1</b>",
+			"<i>\\1</i>",
+			"<span style='text-decoration:underline'>\\1</span>",
+			"<code class='code'>\\1</code>",
+			"<table width = '95%'><tr><td>Цитата</td></tr><tr><td class='quote'>\\1</td></tr></table>",
+			"<a href='\\1'>\\2</a>",
+			"<a href='\\1'>\\1</a>",
+			"<img src='\\1' alt = 'Изображение' />",
+			"<span style='font-size:\\1%'>\\2</span>",
+			"<span style='color:\\1'>\\2</span>",
+			"<ul>\\1</ul>",
+			"<ol>\\1</ol>",
+			"<li>\\1</li>"
+		);
+		return preg_replace($str_search, $str_replace, $text_post);
+	}
+
+	protected function delBBcode($data)
+	{
+		$result = preg_replace('/\[[^\]]+\]/', '', $data);
 		return $result;
 	}
 
@@ -273,7 +334,6 @@ class DLEParseRepository implements DLEParse
 			}
 		}
 		DB::table($table)->insert($data);
-		//return $data;
 	}
 
 	/**

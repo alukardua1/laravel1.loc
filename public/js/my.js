@@ -98,6 +98,35 @@ $(function () {
 /*
 new WOW().init();*/
 
+function setMonth() {
+	var now = new Date(),
+		month = now.getMonth()
+	switch (month) {
+		case 11:
+		case 0:
+		case 1:
+			document.body.classList.add('winter');
+			break;
+		case 2:
+		case 3:
+		case 4:
+			document.body.classList.add('spring');
+			break;
+		case 5:
+		case 6:
+		case 7:
+			document.body.classList.add('summer');
+			break;
+		case 8:
+		case 9:
+		case 10:
+			document.body.classList.add('autumn');
+			break;
+	}
+}
+
+setMonth();
+
 $('#search').on('keyup', function () {
 	$("#search").attr("autocomplete", "off");
 	$value = $(this).val();

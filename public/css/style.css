@@ -75,9 +75,24 @@ a {
 	}
 }
 
+.winter{
+	background: url('../images/background_winter.jpg') fixed;
+}
+.spring{
+	background: url('../images/background_spring.jpg') fixed;
+}
+.summer{
+	background: url('../images/background_summer.jpg') fixed;
+}
+.autumn{
+	background: url('../images/background_autumn.jpg') fixed;
+}
+
 body {
 	font-family: "Font Awesome 5 Free";
-	background: url('../images/background_winter.jpg') fixed;
+	background-color: #000000;
+	background-size: cover;
+	background-position: center center;
 	display: grid;
 	grid-template-rows: [header] max-content [content] max-content [footer] max-content;
 	grid-row-gap: 10px;

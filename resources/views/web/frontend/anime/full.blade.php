@@ -36,7 +36,7 @@
 				</div>
 			</div>
 			<div class="full-description">
-				<i class="fas fa-file-alt"></i> {!! $showAnime->description !!}
+				<i class="fas fa-file-alt"></i> {!! $showAnime->description_html !!}
 			</div>
 			@include('web.frontend.anime.component.fullstory-info')
 		</div>
@@ -45,25 +45,35 @@
 		</div>
 		<div class="player">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				@if($showAnime->getTrailer[0])
+				@if($showAnime->getTrailer->isNotEmpty())
 					<li class="nav-item" role="presentation">
 						<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
 						   aria-selected="true">Трейлер</a>
 					</li>
 				@endif
-				@if ($showAnime->player)
+				@if ($showAnime->getPlayer->isNotEmpty())
 					<li class="nav-item" role="presentation">
-						<a class="nav-link @if(!$showAnime->getTrailer[0]) active @endif" id="player-tab" data-toggle="tab" href="#player" role="tab"
+						<a class="nav-link @if($showAnime->getTrailer->isEmpty()) active @endif" id="player-tab" data-toggle="tab" href="#player"
+						   role="tab"
 						   aria-controls="player" aria-selected="false">Плеер</a>
 					</li>
 				@endif
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				@if($showAnime->getTrailer[0])
+				@if($showAnime->getTrailer->isNotEmpty())
 					<div class="tab-pane fade show active" id="trailer" role="tabpanel" aria-labelledby="trailer-tab">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" src="{{$showAnime->getTrailer[0]->trailer}}" allowfullscreen></iframe>
-						</div>
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<?php $i = 1 ?>
+							@foreach($showAnime->getTrailer as $trailer)
+								<li class="nav-item" role="presentation">
+									<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
+									   aria-selected="true">Трейлер {{ $i++ }}</a>
+								</li>
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item" src="{{$trailer->trailer}}" allowfullscreen></iframe>
+								</div>
+							@endforeach
+						</ul>
 						@if(Auth::user())
 							<div>
 								{brokenLink}
@@ -71,13 +81,22 @@
 						@endif
 					</div>
 				@endif
-				@if($showAnime->player)
-					<div class="tab-pane fade @if(!$showAnime->getTrailer[0])show active @endif" id="player" role="tabpanel"
+				@if($showAnime->getPlayer->isNotEmpty())
+					<div class="tab-pane fade @if($showAnime->getTrailer->isEmpty())show active @endif" id="player" role="tabpanel"
 						 aria-labelledby="player-tab">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" src="{{$showAnime->player}}" frameborder="0" allowfullscreen
-									allow="autoplay *; fullscreen *"></iframe>
-						</div>
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<?php $i = 1 ?>
+							@foreach($showAnime->getPlayer as $player)
+								<li class="nav-item" role="presentation">
+									<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
+									   aria-selected="true">{{$player->name_player}}</a>
+								</li>
+									<div class="embed-responsive embed-responsive-16by9">
+										<iframe class="embed-responsive-item" src="{{$player->url_player}}" frameborder="0" allowfullscreen
+												allow="autoplay *; fullscreen *"></iframe>
+									</div>
+							@endforeach
+						</ul>
 					</div>
 				@endif
 			</div>
