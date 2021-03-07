@@ -16321,6 +16321,21 @@
      
 }
 
+    namespace Laravelium\Feed { 
+            /**
+     * Feed generator class for laravel-feed package.
+     *
+     * @author Rumen Damyanov <r@alfamatter.com>
+     * @version 7.0.1
+     * @link https://laravelium.com
+     * @license http://opensource.org/licenses/mit-license.php MIT License
+     */ 
+        class Feed {
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -19643,6 +19658,7 @@ namespace  {
             class Image extends \Intervention\Image\Facades\Image {}
             class Clockwork extends \Clockwork\Support\Laravel\Facade {}
             class Agent extends \Jenssegers\Agent\Facades\Agent {}
+            class Feed extends \Laravelium\Feed\Feed {}
      
 }
 
