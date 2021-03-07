@@ -95,6 +95,7 @@ $(function () {
             }
         )
 })*/
+
 /*
 new WOW().init();*/
 
@@ -149,7 +150,18 @@ $('#search').on('keyup', function () {
 
 $(document).mouseup(function (e) {
 	var container = $("#searchsuggestions");
-	if (container.has(e.target).length === 0){
+	if (container.has(e.target).length === 0) {
 		container.hide();
 	}
+});
+
+$(document).ready(function () {
+	$("#editBtn").click(function () {
+		if ($("#options").is(":hidden")) {
+			$("#options").show("slow");
+		} else {
+			$("#options").hide("slow");
+		}
+		return false;
+	});
 });

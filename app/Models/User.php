@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\MutationTrait;
+use Carbon\Carbon;
 use Config;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -89,6 +90,16 @@ class User extends Authenticatable
 		$this->cacheFor = Config::get('secondConfig.cache_time');
 	}
 
+	public function getLastLoginAttribute($value)
+	{
+		return $this->attributes['last_login'] = (new Carbon($value))->format('d.m.Y');
+	}
+
+	public function getCreatedAtAttribute($value)
+	{
+		return $this->attributes['created_at'] = (new Carbon($value))->format('d.m.Y');
+	}
+
 	public function getNotReadMessageAttribute()
 	{
 		return $this->getPersonalMessageRecipient()->where('is_read', '=', 0)->count();
@@ -144,5 +155,10 @@ class User extends Authenticatable
 	public function getPersonalMessageRecipient()
 	{
 		return $this->hasMany(PersonalMessage::class, 'recipient_id');
+	}
+
+	public function getCountry()
+	{
+		return $this->hasOne(Country::class, 'id', 'country_id');
 	}
 }

@@ -57,7 +57,7 @@ class UserController extends Controller
 	{
 		$currentUser = $this->user->getUser($user);
 
-		return view('web.frontend.user.edit', compact($currentUser));
+		return view('web.frontend.user.edit', compact('currentUser'));
 	}
 
 	/**
@@ -66,5 +66,16 @@ class UserController extends Controller
 	 */
 	public function update($user, Request $request)
 	{
+	}
+
+	public function showAnime($user)
+	{
+		$currentUser = $this->user->getUser($user);
+		$this->isNotNull($currentUser);
+		$title = "Аниме добавленое пользователем {$currentUser->login}";
+		$description = '';
+		$allAnime = $currentUser->getAnime()->paginate($this->paginate);
+
+		return view($this->frontend . 'anime.short', compact('currentUser', 'allAnime', 'title', 'description'));
 	}
 }

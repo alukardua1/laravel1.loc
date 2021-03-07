@@ -55,11 +55,9 @@
 					{info}
 					@yield('content')
 				</div>
-				[not-available=showfull]
 				<div class="info-footer">
 					@include('web.frontend.layout.info-footer')
 				</div>
-				[/not-available]
 			</div>
 		</div>
 	</div>

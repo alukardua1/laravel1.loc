@@ -79,6 +79,8 @@ Route::group(
 		Route::get('/{login}/update', [UserController::class, 'update'])->name('updateUser');
 		Route::get('/{login}/favorite', [FavoritesController::class, 'index'])->name('favorite');
 		Route::get('/{login}/PM', [PersonalMessageController::class, 'index'])->name('PM');
+		Route::get('/{login}/anime', [UserController::class, 'showAnime'])->name('currentUserAnime');
+		Route::get('/{login}/rss', [UserController::class, 'showAnime'])->name('currentUserRss');
 	}
 );
 Route::post('/favorites_add/{id}', [FavoritesController::class, 'add'])->name('favorite_add')->middleware('auth');
