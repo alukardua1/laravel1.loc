@@ -66,6 +66,7 @@ class UserController extends Controller
 	 */
 	public function update($user, Request $request)
 	{
+		dd(__METHOD__, $user, $request);
 	}
 
 	public function showAnime($user)

@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/selectize.bootstrap4.css') }}">
 	<title>@yield('title')</title>
 </head>
 <body>
@@ -69,6 +70,7 @@
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/owl.carousel.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/my.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/selectize.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"

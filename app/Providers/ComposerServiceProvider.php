@@ -39,7 +39,7 @@ class ComposerServiceProvider extends ServiceProvider
 	    \View::composer('web.frontend.layout.mpaa', MpaaRatingComposer::class);
 	    \View::composer('web.frontend.layout.translate', TranslateComposer::class);
 	    \View::composer('web.frontend.layout.year', YearComposer::class);
-	    \View::composer('web.frontend.layout.country', CountryComposer::class);
+	    \View::composer(['web.frontend.layout.country','web.frontend.user.profile'], CountryComposer::class);
 	    \View::composer('web.frontend.layout.quality', QualityComposer::class);
 	    \View::composer('web.frontend.anime.component.anons', AnonsComposer::class);
 	    \View::composer('web.frontend.anime.component.popular', PopularComposer::class);

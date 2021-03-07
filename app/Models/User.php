@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\MutationTrait;
+use Cache;
 use Carbon\Carbon;
 use Config;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -88,6 +89,11 @@ class User extends Authenticatable
 	{
 		parent::__construct($attributes);
 		$this->cacheFor = Config::get('secondConfig.cache_time');
+	}
+
+	public function getisOnlineAttribute()
+	{
+		return Cache::has('user-is-online-' . $this->id);
 	}
 
 	public function getLastLoginAttribute($value)

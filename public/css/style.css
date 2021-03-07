@@ -1737,9 +1737,17 @@ input, select {
 	vertical-align: middle !important;
 }
 
-.form-item > input[type="text"], .form-item > input[type="password"], .form-item > input[type="file"] {
+.form-item > input[type="text"], .form-item > input[type="password"], .form-item > input[type="file"], .form-item > select[name="land"] {
 	float: left;
 	max-width: 600px;
+}
+
+.form-item > select[name="land"] {
+	background-color: #000000;
+	border-width: 2px;
+	border-style: inset;
+	border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+	border-image: initial;
 }
 
 .form-textarea > label {
