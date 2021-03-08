@@ -1,6 +1,7 @@
 @extends('web.frontend.layout.app')
 
 @section('title', $showAnime->metatitle)
+@section('description', $showAnime->metatitle)
 
 @section('content')
 	<article class="fullstory">
@@ -85,7 +86,6 @@
 					<div class="tab-pane fade @if($showAnime->getTrailer->isEmpty())show active @endif" id="player" role="tabpanel"
 						 aria-labelledby="player-tab">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							<?php $i = 1 ?>
 							@foreach($showAnime->getPlayer as $player)
 								<li class="nav-item" role="presentation">
 									<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"

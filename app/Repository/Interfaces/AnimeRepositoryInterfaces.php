@@ -51,4 +51,6 @@ interface AnimeRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function getPopular($count);
+
+	public function getSearchAnime($request);
 }

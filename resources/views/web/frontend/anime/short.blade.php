@@ -1,6 +1,7 @@
 @extends('web.frontend.layout.app')
 
-@section('title', $title ?? 'Аниме')
+@section('title', $title ?? env('APP_NAME'))
+@section('description', $description ?? env('APP_DESCRIPTION'))
 
 @section('category-title')
 	@if(!empty($title))

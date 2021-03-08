@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/selectize.bootstrap4.css') }}">
 	<title>@yield('title')</title>
+	<meta name="description" content="@yield('description')">
 </head>
 <body>
 <header>

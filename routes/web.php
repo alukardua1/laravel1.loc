@@ -33,12 +33,13 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dle/{id?}', [ParseDbDLEController::class, 'index']);
 Route::get('/', [AnimeController::class, 'index'])->name('home');
-Route::get('/animerss', [AnimeController::class, 'animeRss'])->name('animeRss');
+
 Route::group(
 	['prefix' => 'anime'],
 	function () {
 		Route::get('/', [AnimeController::class, 'index'])->name('animeAll');
-		Route::get('/{id}-{url?}', [AnimeController::class, 'show'])->name('showAnime');
+		Route::get('/{id}-{url?}', [AnimeController::class, 'show'])->name('showAnime')->where('id', '[0-9]+');
+		Route::get('/animerss', [AnimeController::class, 'animeRss'])->name('animeRss');
 	}
 );
 

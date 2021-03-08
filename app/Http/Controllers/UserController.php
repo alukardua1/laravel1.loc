@@ -66,7 +66,13 @@ class UserController extends Controller
 	 */
 	public function update($user, Request $request)
 	{
-		dd(__METHOD__, $user, $request);
+		$requestUser = $this->user->setUsers($request, $user);
+
+		if ($requestUser) {
+			return redirect()->route('currentUser', $user);
+		}
+
+		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
 	}
 
 	public function showAnime($user)

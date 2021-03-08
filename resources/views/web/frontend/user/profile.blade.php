@@ -50,7 +50,7 @@
 				</li>
 				<li>О себе: {{$currentUser->description}}</li>
 				@if ($currentUser->signature)
-					<li>Подпись: {{$currentUser->signature}}</li>[/signature]
+					<li>Подпись: {{$currentUser->signature}}</li>
 				@endif
 			@endif
 		</ul>
@@ -67,7 +67,7 @@
 				<h1>Редактирование профиля:</h1>
 				<div class="form-item clearfix">
 					<label>Ваше Имя:</label>
-					<input type="text" name="fullname" value="{{$currentUser->name}}" placeholder="Ваше Имя"/>
+					<input type="text" name="name" value="{{$currentUser->name}}" placeholder="Ваше Имя"/>
 				</div>
 				<div class="form-checks">
 					{hidemail}
@@ -108,11 +108,7 @@
 				</div>
 				<div class="form-item clearfix">
 					<label>Аватар:</label>
-					<input type="file" name="image" size="28"/>
-				</div>
-				<div class="form-item clearfix">
-					<label>Сервис <a href="http://www.gravatar.com/" target="_blank">Gravatar</a>:</label>
-					<input type="text" name="gravatar" value="{gravatar}" placeholder="Укажите E-Mail в этом сервисе"/>
+					<input type="file" name="profile_photo_path"/>
 				</div>
 				<div class="form-checks">
 					<input type="checkbox" name="del_foto" id="del_foto" value="yes"/>
@@ -120,7 +116,7 @@
 				</div>
 				<div class="form-textarea">
 					<label>О себе:</label>
-					<textarea name="info" rows="5">{{$currentUser->description}}</textarea>
+					<textarea name="description" rows="5">{{$currentUser->description}}</textarea>
 				</div>
 				<div class="form-textarea">
 					<label>Подпись:</label>

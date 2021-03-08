@@ -84,4 +84,16 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		return Anime::latest()
 			->limit($count);
 	}
+
+	public function getSearchAnime($request)
+	{
+		return Anime::where('name', 'LIKE', "%{$request->search}%")
+			->orWhere('english', 'LIKE', "%{$request->search}%")
+			->orWhere('japanese', 'LIKE', "%{$request->search}%")
+			->orWhere('synonyms', 'LIKE', "%{$request->search}%")
+			->orWhere('license_name_ru', 'LIKE', "%{$request->search}%")
+			->orWhere('description', 'LIKE', "%{$request->search}%")
+			->limit(5)
+			->get();
+	}
 }

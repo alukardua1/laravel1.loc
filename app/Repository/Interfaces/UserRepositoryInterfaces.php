@@ -24,4 +24,6 @@ interface UserRepositoryInterfaces
 	public function getUsers();
 
 	public function getPM($user);
+
+	public function setUsers($request, $currentUser);
 }

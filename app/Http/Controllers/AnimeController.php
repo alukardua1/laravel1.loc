@@ -76,14 +76,7 @@ class AnimeController extends Controller
 	{
 		if ($request->ajax()) {
 			$output = "";
-			$animeSearch = Anime::where('name', 'LIKE', "%{$request->search}%")
-				->orWhere('english', 'LIKE', "%{$request->search}%")
-				->orWhere('japanese', 'LIKE', "%{$request->search}%")
-				->orWhere('synonyms', 'LIKE', "%{$request->search}%")
-				->orWhere('license_name_ru', 'LIKE', "%{$request->search}%")
-				->orWhere('description', 'LIKE', "%{$request->search}%")
-				->limit(5)
-				->get();
+			$animeSearch = $this->anime->getSearchAnime($request);
 			if ($animeSearch) {
 				foreach ($animeSearch as $key => $value) {
 					$output .= "<a href=\"/anime/{$value->id}-{$value->url}\">
@@ -99,33 +92,22 @@ class AnimeController extends Controller
 	public function animeRss()
 	{
 		$feed = \App::make("feed");
-
-		// multiple feeds are supported
-		// if you are using caching you should set different cache keys for your feeds
-
-		// cache the feed for 60 minutes (second parameter is optional)
 		$feed->setCache(config('secondConfig.cache_time'), 'laravelFeedKey');
-
-		// check if there is cached feed and build new only if is not
 		if (!$feed->isCached()) {
-			// creating rss feed with our most recent 20 posts
 			$posts = $this->anime->getAllAnime()->limit(config('secondConfig.limitRss'))->get();
 
-			// set your feed's title, description, link, pubdate and language
 			$feed->title = 'Your title';
 			$feed->description = 'Your description';
 			$feed->logo = 'http://yoursite.tld/logo.jpg';
 			$feed->link = url('feed');
-			$feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+			$feed->setDateFormat('datetime');
 			$feed->pubdate = $posts[0]->created_at;
 			$feed->lang = 'en';
-			$feed->setShortening(true); // true or false
-			$feed->setTextLimit(100);   // maximum length of description text
+			$feed->setShortening(true);
+			$feed->setTextLimit(100);
 			$feed->setCustomView($this->frontend . 'feed.rss_yandex');
 
 			foreach ($posts as $post) {
-				// set item's title, author, url, pubdate, description, content, enclosure (optional)*
-				//$feed->add([$post->name, $post->getUser->login, \URL::to("/anime/{$post->id}-{$post->slug}"), $post->update_at, $post->description, $post->description_html]);
 				$feed->addItem(
 					[
 						'title'       => $post->name,
@@ -141,13 +123,7 @@ class AnimeController extends Controller
 			}
 		}
 
-		// first param is the feed format
-		// optional: second param is cache duration (value of 0 turns off caching)
-		// optional: you can set custom cache key with 3rd param as string
 		return $feed->render('rss');
-
-		// to return your feed as a string set second param to -1
-		// $xml = $feed->render('atom', -1);
 	}
 
 }

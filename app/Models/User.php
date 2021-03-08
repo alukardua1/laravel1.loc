@@ -46,6 +46,11 @@ class User extends Authenticatable
 		'email',
 		'password',
 		'last_login',
+		'description',
+		'signature',
+		'city',
+		'country_id',
+		'profile_photo_path'
 	];
 
 	/**
