@@ -24,8 +24,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getAnime($id)
 	{
-		return Anime::latest()
-			->where('id', $id);
+		return Anime::where('id', $id);
 	}
 
 	/**
@@ -36,12 +35,10 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getAllAnime($isAdmin = null)
 	{
 		if ($isAdmin) {
-			return Anime::latest()
-				->orderBy('updated_at', 'DESC');
+			return Anime::orderBy('updated_at', 'DESC');
 		}
 
-		return Anime::latest()
-			->where('posted_at', 1)
+		return Anime::where('posted_at', 1)
 			->orderBy('updated_at', 'DESC');
 	}
 
@@ -52,8 +49,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getFirstPageAnime($count)
 	{
-		return Anime::latest()
-			->where('ongoing', 1)
+		return Anime::where('ongoing', 1)
 			->limit($count)
 			->orderBy('updated_at', 'DESC');
 	}
@@ -66,23 +62,20 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getCustomAnime($columns, $custom)
 	{
-		return Anime::latest()
-			->where($columns, $custom)
+		return Anime::where($columns, $custom)
 			->orderBy('updated_at', 'DESC');
 	}
 
 	public function getAnons($count)
 	{
-		return Anime::latest()
-			->where('anons', 1)
+		return Anime::where('anons', 1)
 			->limit($count)
 			->orderBy('read_count', 'DESC');
 	}
 
 	public function getPopular($count)
 	{
-		return Anime::latest()
-			->limit($count);
+		return Anime::limit($count);
 	}
 
 	public function getSearchAnime($request)

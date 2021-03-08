@@ -13,6 +13,9 @@ class Translate extends Model
 	protected $withCount = [
 		'getAnime',
 	];
+
+	public $cacheTags = ['translate'];
+	public $cachePrefix = 'translate_';
 	/**
 	 * MPAARating constructor.
 	 *
@@ -28,6 +31,6 @@ class Translate extends Model
 	 */
 	public function getAnime()
 	{
-		return $this->belongsToMany(Anime::class);
+		return $this->belongsToMany(Anime::class)->latest();
 	}
 }

@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Group extends Model
 {
+	public $cacheTags = ['group'];
+	public $cachePrefix = 'group_';
 	/**
 	 * Group constructor.
 	 *
@@ -26,6 +28,6 @@ class Group extends Model
 	 */
 	public function getUser(): HasMany
     {
-    	return $this->hasMany(User::class);
+    	return $this->hasMany(User::class)->latest();
     }
 }

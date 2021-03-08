@@ -15,6 +15,9 @@ class Category extends Model
 		'getAnime',
 	];
 
+	public $cacheTags = ['category'];
+	public $cachePrefix = 'category_';
+
 	/**
 	 * Category constructor.
 	 *
@@ -30,6 +33,6 @@ class Category extends Model
 	 */
 	public function getAnime(): BelongsToMany
 	{
-		return $this->belongsToMany(Anime::class);
+		return $this->belongsToMany(Anime::class)->latest();
 	}
 }

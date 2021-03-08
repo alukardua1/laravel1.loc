@@ -18,6 +18,7 @@ class Model extends BaseModel
 	use HasFactory, MutationTrait, QueryCacheable;
 
 	protected $cacheFor;
+	//protected static $flushCacheOnUpdate = true;
 
 	/**
 	 * Model constructor.

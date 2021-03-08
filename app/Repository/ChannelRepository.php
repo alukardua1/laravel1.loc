@@ -22,8 +22,7 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	 */
 	public function getAnime($kind)
 	{
-		return Channel::latest()
-			->where('url', $kind)
+		return Channel::where('url', $kind)
 			->first();
 	}
 
@@ -32,7 +31,6 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	 */
 	public function getChannel()
 	{
-		return Channel::latest()
-			->get();
+		return Channel::get();
 	}
 }

@@ -50,8 +50,7 @@ class FavoriteRepository implements FavoritesRepositoryInterfaces
 	 */
 	public function getFavorite($user_id)
 	{
-		return User::latest()
-			->where('login', $user_id)
+		return User::where('login', $user_id)
 			->first();
 	}
 }

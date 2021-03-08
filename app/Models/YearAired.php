@@ -13,6 +13,9 @@ class YearAired extends Model
 		'getAnime',
 	];
 
+	public $cacheTags = ['year'];
+	public $cachePrefix = 'year_';
+
 	/**
 	 * YearAired constructor.
 	 *
@@ -28,6 +31,6 @@ class YearAired extends Model
 	 */
 	public function getAnime()
     {
-    	return $this->belongsTo(Anime::class, 'id', 'aired_season');
+    	return $this->belongsTo(Anime::class, 'id', 'aired_season')->latest();
     }
 }

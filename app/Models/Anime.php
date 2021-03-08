@@ -62,6 +62,9 @@ class Anime extends Model
 		'getYear',
 	];
 
+	public $cacheTags = ['anime'];
+	public $cachePrefix = 'anime_';
+
 	/**
 	 * Anime constructor.
 	 *
@@ -113,7 +116,7 @@ class Anime extends Model
 	 */
 	public function getCategory(): BelongsToMany
 	{
-		return $this->belongsToMany(Category::class);
+		return $this->belongsToMany(Category::class)->latest();
 	}
 
 	/**
@@ -121,7 +124,7 @@ class Anime extends Model
 	 */
 	public function getUser()
 	{
-		return $this->hasOne(User::class, 'id', 'user_id');
+		return $this->hasOne(User::class, 'id', 'user_id')->latest();
 	}
 
 	/**
@@ -129,7 +132,7 @@ class Anime extends Model
 	 */
 	public function getKind(): BelongsTo
 	{
-		return $this->belongsTo(Kind::class, 'kind_id');
+		return $this->belongsTo(Kind::class, 'kind_id')->latest();
 	}
 
 	/**
@@ -137,7 +140,7 @@ class Anime extends Model
 	 */
 	public function getOtherLink(): HasMany
 	{
-		return $this->hasMany(OtherLink::class, 'anime_id', 'id');
+		return $this->hasMany(OtherLink::class, 'anime_id', 'id')->latest();
 	}
 
 	/**
@@ -145,7 +148,7 @@ class Anime extends Model
 	 */
 	public function getStudio(): BelongsToMany
 	{
-		return $this->belongsToMany(Studio::class);
+		return $this->belongsToMany(Studio::class)->latest();
 	}
 
 	/**
@@ -153,7 +156,7 @@ class Anime extends Model
 	 */
 	public function getChannel()
 	{
-		return $this->belongsTo(Channel::class, 'channel_id');
+		return $this->belongsTo(Channel::class, 'channel_id')->latest();
 	}
 
 	/**
@@ -161,7 +164,7 @@ class Anime extends Model
 	 */
 	public function getQuality()
 	{
-		return $this->belongsToMany(Quality::class);
+		return $this->belongsToMany(Quality::class)->latest();
 	}
 
 	/**
@@ -169,7 +172,7 @@ class Anime extends Model
 	 */
 	public function getRating()
 	{
-		return $this->belongsTo(MPAARating::class, 'rating_id');
+		return $this->belongsTo(MPAARating::class, 'rating_id')->latest();
 	}
 
 	/**
@@ -177,7 +180,7 @@ class Anime extends Model
 	 */
 	public function getCountry()
 	{
-		return $this->belongsToMany(Country::class);
+		return $this->belongsToMany(Country::class)->latest();
 	}
 
 	/**
@@ -185,7 +188,7 @@ class Anime extends Model
 	 */
 	public function getTranslate()
 	{
-		return $this->belongsToMany(Translate::class);
+		return $this->belongsToMany(Translate::class)->latest();
 	}
 
 	/**
@@ -194,6 +197,7 @@ class Anime extends Model
 	public function favorited(): bool
 	{
 		return (bool)$this->hasMany(Favorites::class)
+			->latest()
 			->where('user_id', Auth::id())
 			->where('anime_id', $this->id)
 			->first();
@@ -205,6 +209,7 @@ class Anime extends Model
 	public function votes()
 	{
 		return (bool)$this->hasMany(Vote::class)
+			->latest()
 			->where('user_id', Auth::id())
 			->where('anime_id', $this->id)
 			->first();
@@ -215,7 +220,7 @@ class Anime extends Model
 	 */
 	public function getVote()
 	{
-		return $this->hasMany(Vote::class);
+		return $this->hasMany(Vote::class)->latest();
 	}
 
 	/**
@@ -223,7 +228,7 @@ class Anime extends Model
 	 */
 	public function getTrailer()
 	{
-		return $this->hasMany(Trailer::class);
+		return $this->hasMany(Trailer::class)->latest();
 	}
 
 	/**
@@ -231,7 +236,7 @@ class Anime extends Model
 	 */
 	public function getPlayer()
 	{
-		return $this->hasMany(Player::class);
+		return $this->hasMany(Player::class)->latest();
 	}
 
 	/**
@@ -239,11 +244,11 @@ class Anime extends Model
 	 */
 	public function getRegionBlock()
 	{
-		return $this->hasMany(RegionBlock::class);
+		return $this->hasMany(RegionBlock::class)->latest();
 	}
 
 	public function getYear()
 	{
-		return $this->hasOne(YearAired::class);
+		return $this->hasOne(YearAired::class)->latest();
 	}
 }

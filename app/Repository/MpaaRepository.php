@@ -21,8 +21,7 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	 */
 	public function getAnime($kind)
 	{
-		return MPAARating::latest()
-			->where('url', $kind)
+		return MPAARating::where('url', $kind)
 			->first();
 	}
 
@@ -31,7 +30,6 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	 */
 	public function getMpaa()
 	{
-		return MPAARating::latest()
-			->get();
+		return MPAARating::get();
 	}
 }

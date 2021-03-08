@@ -9,6 +9,8 @@ namespace App\Models;
  */
 class OtherLink extends Model
 {
+	public $cacheTags = ['otherlink'];
+	public $cachePrefix = 'otherlink_';
 	/**
 	 * OtherLink constructor.
 	 *

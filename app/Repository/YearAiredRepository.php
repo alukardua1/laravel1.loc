@@ -22,8 +22,7 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	 */
 	public function getAnime($year)
 	{
-		return YearAired::latest()
-			->where('name', $year)
+		return YearAired::where('name', $year)
 			->first();
 	}
 
@@ -32,7 +31,6 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	 */
 	public function getYearAired()
 	{
-		return YearAired::latest()
-			->get();
+		return YearAired::get();
 	}
 }

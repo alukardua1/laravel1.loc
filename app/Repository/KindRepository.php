@@ -22,8 +22,7 @@ class KindRepository implements KindRepositoryInterfaces
 	 */
 	public function getAnime($kind)
 	{
-		return Kind::latest()
-			->where('url', $kind)
+		return Kind::where('url', $kind)
 			->first();
 	}
 
@@ -32,7 +31,6 @@ class KindRepository implements KindRepositoryInterfaces
 	 */
 	public function getKind()
 	{
-		return Kind::latest()
-			->get();
+		return Kind::get();
 	}
 }

@@ -16,7 +16,7 @@
 			@endadmin_link
 			<li><a href="{{route('currentUser', Auth::user()->login)}}">Мой профиль</a></li>
 			<li><a href="{{route('favorite', Auth::user()->login)}}">Закладки<span>{{Auth::user()->favorites_count}}</span></a></li>
-			<li><a href="{{route('PM', Auth::user()->login)}}">Сообщения<span>{{Auth::user()->not_read_message}} из {{Auth::user()->get_personal_message_recipient_count}}</span></a></li>
+			<li><a href="{{route('PM', Auth::user()->login)}}">Сообщения<span>{{Auth::user()->not_read_message}} из {{Auth::user()->p_m_count}}</span></a></li>
 		</ul>
 	</div>
 @else

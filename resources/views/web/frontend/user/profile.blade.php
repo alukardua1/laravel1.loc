@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<ul class="up-second fx-row">
-			<li>{{$currentUser->get_anime_count}} <p>Публикаций</p></li>
+			<li>{{$currentUser->anime_count}} <p>Публикаций</p></li>
 			<li>{comm-num} <p>Комментариев</p></li>
 			<li>{{$currentUser->email}}</li>
 			@if (Auth::user())

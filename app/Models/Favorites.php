@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Favorites extends Model
 {
+	public $cacheTags = ['favorites'];
+	public $cachePrefix = 'favorites_';
 	/**
 	 * Favorites constructor.
 	 *
@@ -26,7 +28,7 @@ class Favorites extends Model
 	 */
 	public function getUser(): BelongsTo
     {
-    	return $this->belongsTo(User::class);
+    	return $this->belongsTo(User::class)->latest();
     }
 
 	/**

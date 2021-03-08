@@ -15,6 +15,8 @@ class Studio extends Model
 	protected $withCount = [
 		'getAnime',
 	];
+	public $cacheTags = ['studio'];
+	public $cachePrefix = 'studio_';
 	/**
 	 * Channel constructor.
 	 *
@@ -30,6 +32,6 @@ class Studio extends Model
 	 */
 	public function getAnime(): BelongsToMany
 	{
-		return $this->belongsToMany(Anime::class);
+		return $this->belongsToMany(Anime::class)->latest();
 	}
 }

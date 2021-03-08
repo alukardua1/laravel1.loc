@@ -15,6 +15,9 @@ class Kind extends Model
 	protected $withCount = [
 		'getAnime',
 	];
+
+	public $cacheTags = ['kind'];
+	public $cachePrefix = 'kind_';
 	/**
 	 * Kind constructor.
 	 *
@@ -30,6 +33,6 @@ class Kind extends Model
 	 */
 	public function getAnime(): HasMany
 	{
-    	return $this->hasMany(Anime::class);
+    	return $this->hasMany(Anime::class)->latest();
     }
 }

@@ -23,8 +23,7 @@ class UserRepository implements UserRepositoryInterfaces
 	 */
 	public function getUser($user)
 	{
-		return User::latest()
-			->where('login', $user)
+		return User::where('login', $user)
 			->firstOrFail();
 	}
 
@@ -33,8 +32,7 @@ class UserRepository implements UserRepositoryInterfaces
 	 */
 	public function getUsers()
 	{
-		return User::latest()
-			->get();
+		return User::get();
 	}
 
 	public function getPM($user)
@@ -59,8 +57,8 @@ class UserRepository implements UserRepositoryInterfaces
 			if ($request->hasFile('profile_photo_path')) {
 				$requestForm = $this->uploadAvatar($updateUser, $requestForm);
 			}
+			User::flushQueryCache(['user']);
 
-			//dd(__METHOD__, $requestForm, $updateUser);
 			return $updateUser->update($requestForm);
 		}
 	}

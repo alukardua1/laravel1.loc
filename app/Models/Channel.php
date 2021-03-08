@@ -14,6 +14,9 @@ class Channel extends Model
 	protected $withCount = [
 		'getAnime',
 	];
+
+	public $cacheTags = ['channel'];
+	public $cachePrefix = 'channel_';
 	/**
 	 * Channel constructor.
 	 *
@@ -29,6 +32,6 @@ class Channel extends Model
 	 */
 	public function getAnime(): HasMany
 	{
-		return $this->hasMany(Anime::class);
+		return $this->hasMany(Anime::class)->latest();
 	}
 }

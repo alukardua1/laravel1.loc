@@ -22,8 +22,7 @@ class StudioRepository implements StudioRepositoryInterfaces
 	 */
 	public function getAnime($kind)
 	{
-		return Studio::latest()
-			->where('url', $kind)
+		return Studio::where('url', $kind)
 			->first();
 	}
 
@@ -32,7 +31,6 @@ class StudioRepository implements StudioRepositoryInterfaces
 	 */
 	public function getStudio()
 	{
-		return Studio::latest()
-			->get();
+		return Studio::get();
 	}
 }

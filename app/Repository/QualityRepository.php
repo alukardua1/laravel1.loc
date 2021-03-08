@@ -22,8 +22,7 @@ class QualityRepository implements QualityRepositoryInterfaces
 	 */
 	public function getAnime($kind)
 	{
-		return Quality::latest()
-			->where('url', $kind)
+		return Quality::where('url', $kind)
 			->first();
 	}
 
@@ -32,7 +31,6 @@ class QualityRepository implements QualityRepositoryInterfaces
 	 */
 	public function getQuality()
 	{
-		return Quality::latest()
-			->get();
+		return Quality::get();
 	}
 }

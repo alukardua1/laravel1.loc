@@ -3,18 +3,12 @@
 namespace App\Models;
 
 use App\Services\MutationTrait;
-use Cache;
-use Carbon\Carbon;
+use App\Services\UserModelTrait;
 use Config;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Rennokki\QueryCache\Traits\QueryCacheable;
@@ -26,14 +20,19 @@ use Rennokki\QueryCache\Traits\QueryCacheable;
  */
 class User extends Authenticatable
 {
+	use UserModelTrait;
 	use HasApiTokens;
 	use HasFactory;
-	use HasProfilePhoto;
 	use HasTeams;
 	use Notifiable;
 	use TwoFactorAuthenticatable;
 	use QueryCacheable;
 	use MutationTrait;
+
+
+	protected $cacheFor;
+	public $cacheTags = ['user'];
+	public $cachePrefix = 'user_';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -76,14 +75,6 @@ class User extends Authenticatable
 	protected $appends = [
 		'getGroup',
 	];
-	protected $withCount = [
-		'favorites',
-		'getAnime',
-		'getPersonalMessageAuthor',
-		'getPersonalMessageRecipient',
-	];
-
-	protected $cacheFor;
 
 	/**
 	 * User constructor.
@@ -96,80 +87,50 @@ class User extends Authenticatable
 		$this->cacheFor = Config::get('secondConfig.cache_time');
 	}
 
-	public function getisOnlineAttribute()
-	{
-		return Cache::has('user-is-online-' . $this->id);
-	}
-
-	public function getLastLoginAttribute($value)
-	{
-		return $this->attributes['last_login'] = (new Carbon($value))->format('d.m.Y');
-	}
-
-	public function getCreatedAtAttribute($value)
-	{
-		return $this->attributes['created_at'] = (new Carbon($value))->format('d.m.Y');
-	}
-
-	public function getNotReadMessageAttribute()
-	{
-		return $this->getPersonalMessageRecipient()->where('is_read', '=', 0)->count();
-	}
-
-	/**
-	 * Аватар по умолчанию
-	 *
-	 * @return string
-	 */
-	protected function defaultProfilePhotoUrl()
-	{
-		return '/images/no_avatar_lightstat.png';
-	}
-
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getGroup(): BelongsTo
+	public function getGroup()
 	{
-		return $this->belongsTo(Group::class, 'group_id', 'id');
+		return $this->belongsTo(Group::class, 'group_id', 'id')->latest();
 	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getAnime(): HasMany
+	public function getAnime()
 	{
-		return $this->hasMany(Anime::class);
+		return $this->hasMany(Anime::class)->latest();
 	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function favorites(): BelongsToMany
+	public function favorites()
 	{
-		return $this->belongsToMany(Anime::class, 'favorites')->withTimeStamps();
+		return $this->belongsToMany(Anime::class, 'favorites')->latest()->withTimeStamps();
 	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function vote(): BelongsToMany
+	public function vote()
 	{
-		return $this->belongsToMany(Anime::class, 'votes')->withTimestamps();
+		return $this->belongsToMany(Anime::class, 'votes')->latest()->withTimestamps();
 	}
 
 	public function getPersonalMessageAuthor()
 	{
-		return $this->hasMany(PersonalMessage::class, 'author_id');
+		return $this->hasMany(PersonalMessage::class, 'author_id')->latest();
 	}
 
 	public function getPersonalMessageRecipient()
 	{
-		return $this->hasMany(PersonalMessage::class, 'recipient_id');
+		return $this->hasMany(PersonalMessage::class, 'recipient_id')->latest();
 	}
 
 	public function getCountry()
 	{
-		return $this->hasOne(Country::class, 'id', 'country_id');
+		return $this->hasOne(Country::class, 'id', 'country_id')->latest();
 	}
 }

@@ -21,8 +21,7 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	 */
 	public function getAnime($kind)
 	{
-		return Translate::latest()
-			->where('url', $kind)
+		return Translate::where('url', $kind)
 			->first();
 	}
 
@@ -31,7 +30,6 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	 */
 	public function getTranslate()
 	{
-		return Translate::latest()
-			->get();
+		return Translate::get();
 	}
 }

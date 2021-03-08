@@ -14,6 +14,9 @@ class Quality extends Model
 	protected $withCount = [
 		'getAnime',
 	];
+
+	public $cacheTags = ['quality'];
+	public $cachePrefix = 'quality_';
 	/**
 	 * Quality constructor.
 	 *
@@ -29,6 +32,6 @@ class Quality extends Model
 	 */
 	public function getAnime(): BelongsToMany
 	{
-		return $this->belongsToMany(Anime::class);
+		return $this->belongsToMany(Anime::class)->latest();
 	}
 }

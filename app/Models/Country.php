@@ -16,6 +16,9 @@ class Country extends Model
 		'getAnime',
 	];
 
+	public $cacheTags = ['country'];
+	public $cachePrefix = 'country_';
+
 	/**
 	 * Country constructor.
 	 *
@@ -31,6 +34,6 @@ class Country extends Model
 	 */
 	public function getAnime(): BelongsToMany
 	{
-		return $this->belongsToMany(Anime::class);
+		return $this->belongsToMany(Anime::class)->latest();
 	}
 }
