@@ -31,12 +31,12 @@ trait UsersTrait
      */
     public function uploadAvatar($updateUser, $requestForm)
     {
-        if (file_exists('avatars/' . $updateUser->photo)) {
+        if (file_exists('storage/'.$updateUser->profile_photo_path)) {
             $requestForm = $this->deleteAvatar($updateUser, $requestForm);
         }
 
         $Extension = $requestForm['profile_photo_path']->getClientOriginalExtension();
-        $fileName = 'avatar_' . $updateUser->id . '.' . $Extension;
+        $fileName = 'avatar_' . $updateUser->id . '_' . date(time()) . '.' . $Extension;
 
         Storage::putFileAs(
 	        'avatars/' . $updateUser->login . '/',
@@ -59,8 +59,10 @@ trait UsersTrait
      */
     private function deleteAvatar($updateUser, $requestForm): array
     {
-        Storage::delete('public/avatars/' . $updateUser->photo);
-        $requestForm['profile_photo_url'] = '';
+        Storage::delete($updateUser->profile_photo_path);
+        if (isset($requestForm['del_foto'])) {
+	        $requestForm['profile_photo_path'] = '';
+        }
 
         return $requestForm;
     }
@@ -78,7 +80,7 @@ trait UsersTrait
         if (Hash::check($requestForm['altpass'], $updateUser['password1'])) {
             return $requestForm['password1'] = Hash::make($requestForm['password2']);
         }
-        return back()->withErrors(['msg' => Lang::get('errors.passError')])->withInput();
+        return back()->withErrors(['msg' => 'Введите правильный пароль'])->withInput();
     }
 
     /**
@@ -101,7 +103,7 @@ trait UsersTrait
         }
         $user->age = Carbon::now()->diffInYears($user->date_of_birth);
         if (!isset($user->name)) {
-            $user->name = Lang::get('errors.noInputs');
+            $user->name = 'Не указано';
         }
         $user->date_of_birth = Carbon::parse($user->date_of_birth)->format('d.m.Y');
         $user->register = Carbon::parse($user->created_at)->format('d.m.Y');

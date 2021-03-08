@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
 use App\Services\UsersTrait;
@@ -16,6 +17,7 @@ use App\Services\UsersTrait;
 class UserRepository implements UserRepositoryInterfaces
 {
 	use UsersTrait;
+
 	/**
 	 * @param $user
 	 *
@@ -35,6 +37,11 @@ class UserRepository implements UserRepositoryInterfaces
 		return User::get();
 	}
 
+	/**
+	 * @param $user
+	 *
+	 * @return mixed|void
+	 */
 	public function getPM($user)
 	{
 		dd(__METHOD__, \Auth::id(), 11);
@@ -53,8 +60,8 @@ class UserRepository implements UserRepositoryInterfaces
 			if (isset($requestForm['del_foto'])) {
 				$requestForm = $this->deleteAvatar($updateUser, $requestForm);
 			}
-
 			if ($request->hasFile('profile_photo_path')) {
+				$validated = $request->validated();
 				$requestForm = $this->uploadAvatar($updateUser, $requestForm);
 			}
 			User::flushQueryCache(['user']);

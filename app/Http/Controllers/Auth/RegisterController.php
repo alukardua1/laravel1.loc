@@ -72,4 +72,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /** @todo Сделать форму регистрации */
+	public function showRegistrationForm()
+	{
+		return abort(404);
+	}
 }

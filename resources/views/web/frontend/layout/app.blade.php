@@ -13,8 +13,8 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-		  integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+		  crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.css') }}">
@@ -34,15 +34,15 @@
 			@include('web.frontend.anime.component.carousel')
 		</div>
 		<div class="search">
-				<div class="form-group" id="q_search">
-					<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="search" name="search">
-				</div>
+			<div class="form-group" id="q_search">
+				<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="search" name="search">
+			</div>
 			{{--			<form class="d-flex" id="q_search" method="post">--}}
-{{--				<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="story" name="story">--}}
-{{--				<input type="hidden" name="do" value="search">--}}
-{{--				<input type="hidden" name="subaction" value="search">--}}
-{{--				--}}{{--				<button class="btn btn-outline-success" type="submit">Поиск</button>--}}
-{{--			</form>--}}
+			{{--				<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="story" name="story">--}}
+			{{--				<input type="hidden" name="do" value="search">--}}
+			{{--				<input type="hidden" name="subaction" value="search">--}}
+			{{--				--}}{{--				<button class="btn btn-outline-success" type="submit">Поиск</button>--}}
+			{{--			</form>--}}
 		</div>
 		<div class="content">
 			<div class="side">
@@ -54,7 +54,8 @@
 					@show
 					@section('category-description')
 					@show
-					{info}
+					@section('error')
+					@show
 					@yield('content')
 				</div>
 				<div class="info-footer">

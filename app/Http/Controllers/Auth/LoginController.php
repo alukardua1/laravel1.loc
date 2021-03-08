@@ -63,7 +63,7 @@ class LoginController extends Controller
 
 	public function showLoginForm()
 	{
-		return view('web.backend.auth.login');
+		return abort(404);
 	}
 
 	public function logout(Request $request)

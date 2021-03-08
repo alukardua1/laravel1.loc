@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
 use Illuminate\Http\Request;
@@ -61,10 +62,12 @@ class UserController extends Controller
 	}
 
 	/**
-	 * @param                            $user
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param                                  $user
+	 * @param  \App\Http\Requests\UserRequest  $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update($user, Request $request)
+	public function update($user, UserRequest $request)
 	{
 		$requestUser = $this->user->setUsers($request, $user);
 

@@ -2,6 +2,19 @@
 
 @section('title', $currentUser->login)
 
+@section('error')
+	@error('profile_photo_path')
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		@foreach($errors->all() as $error)
+			{{$error}}
+		@endforeach
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	@enderror
+@endsection
+
 @section('content')
 	<div class="user-prof">
 		<div class="up-first">
@@ -76,7 +89,7 @@
 				</div>
 				<div class="form-item clearfix">
 					<label>Страна:</label>
-					<select name="land" class="js-selectize" aria-label="Место жительства">
+					<select name="land" class="js-selectize" aria-label="Место жительства" placeholder="Выберите страну...">
 						@foreach($menu as $item)
 							<option @if($currentUser->getCountry->id == $item->id) selected @endif value="{{$item->id}}">{{$item->name}}</option>
 						@endforeach

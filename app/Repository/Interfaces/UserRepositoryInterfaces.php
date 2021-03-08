@@ -4,6 +4,8 @@
 namespace App\Repository\Interfaces;
 
 
+use App\Http\Requests\UserRequest;
+
 /**
  * Interface UserRepositoryInterfaces
  *
@@ -23,7 +25,17 @@ interface UserRepositoryInterfaces
 	 */
 	public function getUsers();
 
+	/**
+	 * @param $user
+	 *
+	 * @return mixed
+	 */
 	public function getPM($user);
 
+	/**
+	 * @param                                        $currentUser
+	 *
+	 * @return mixed
+	 */
 	public function setUsers($request, $currentUser);
 }
