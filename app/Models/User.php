@@ -49,7 +49,11 @@ class User extends Authenticatable
 		'signature',
 		'city',
 		'country_id',
-		'profile_photo_path'
+		'profile_photo_path',
+		'hide_email',
+		'allow_mail',
+		'comments_reply_subscribe',
+		'anime_subscribe',
 	];
 
 	/**

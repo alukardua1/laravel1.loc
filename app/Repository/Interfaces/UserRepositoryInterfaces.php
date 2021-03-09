@@ -33,7 +33,8 @@ interface UserRepositoryInterfaces
 	public function getPM($user);
 
 	/**
-	 * @param                                        $currentUser
+	 * @param $request
+	 * @param $currentUser
 	 *
 	 * @return mixed
 	 */

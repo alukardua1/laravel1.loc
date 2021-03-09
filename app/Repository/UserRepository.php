@@ -53,9 +53,15 @@ class UserRepository implements UserRepositoryInterfaces
 			$updateUser = User::where('login', $currentUser)->first();
 			$requestForm = $request->all();
 			$requestForm['country_id'] = $requestForm['land'];
+
 			if ($requestForm['altpass']) {
 				$this->updatePasswords($updateUser, $requestForm);
 			}
+
+			$requestForm['allow_mail'] = $this->check($requestForm, 'allow_mail');
+			$requestForm['comments_reply_subscribe'] = $this->check($requestForm, 'comments_reply_subscribe');
+			$requestForm['anime_subscribe'] = $this->check($requestForm, 'anime_subscribe');
+			$requestForm['hide_email'] = $this->check($requestForm, 'hide_email');
 
 			if (isset($requestForm['del_foto'])) {
 				$requestForm = $this->deleteAvatar($updateUser, $requestForm);
@@ -68,5 +74,13 @@ class UserRepository implements UserRepositoryInterfaces
 
 			return $updateUser->update($requestForm);
 		}
+	}
+
+	protected function check($requestCheck, $name)
+	{
+		if (!isset($requestCheck[$name])) {
+		    return 0;
+		}
+		return $requestCheck[$name];
 	}
 }

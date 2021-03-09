@@ -17,11 +17,12 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->foreignId('anime_id');
             $table->foreignId('parent_comment_id')->default(0);
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->default(0);
             $table->foreignId('author_id');
             $table->text('description')->nullable();
             $table->text('description_html');
             $table->text('description_source')->nullable();
+            $table->string('rating')->default(0);
             $table->timestamps();
         });
     }

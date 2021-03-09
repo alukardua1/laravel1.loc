@@ -37,6 +37,11 @@ class UserController extends Controller
 		dd(__METHOD__, $users);
 	}
 
+	private function users()
+	{
+
+	}
+
 	/**
 	 * @param $user
 	 *
@@ -45,8 +50,22 @@ class UserController extends Controller
 	public function show($user)
 	{
 		$currentUser = $this->user->getUser($user);
+		$currentUser->created = $currentUser->created_at;
+		$currentUser->last_logins = $currentUser->last_login;
 
 		return view($this->frontend . 'user.profile', compact('currentUser'));
+	}
+
+	public function showComment($user)
+	{
+		$currentUser = $this->user->getUser($user);
+		$this->isNotNull($currentUser);
+		$title = "Комментарии пользователя {$currentUser->login}";
+		$description = '';
+
+		$allComments = $currentUser->getComments()->paginate($this->paginate);
+
+		return view($this->frontend . 'user.all_user_comments', compact('currentUser', 'allComments', 'title', 'description'));
 	}
 
 	/**

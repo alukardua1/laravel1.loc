@@ -1645,7 +1645,7 @@ img {
 	font-weight: 700;
 }
 
-.up-second li a {
+.up-second li a, .up-third li a{
 	padding: 0 30px;
 	display: inline-block;
 	height: 40px;

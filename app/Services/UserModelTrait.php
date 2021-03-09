@@ -27,6 +27,11 @@ trait UserModelTrait
 		return $this->attributes['comments_count'] = $this->getComments()->count();
 	}
 
+	public function getCommentsReplyCountAttribute()
+	{
+		return $this->attributes['comments_reply_count'] = $this->getComments()->where('user_id', '>', 0)->count();
+	}
+
 	public function getPMCountAttribute()
 	{
 		return $this->attributes['pm_count'] = $this->getPersonalMessageRecipient()->count();
@@ -37,14 +42,14 @@ trait UserModelTrait
 		return Cache::has('user-is-online-' . $this->id);
 	}
 
-	public function getLastLoginAttribute($value)
+	public function setLastLoginsAttribute($value)
 	{
-		return $this->attributes['last_login'] = (new Carbon($value))->format('d.m.Y');
+		return $this->attributes['last_logins'] = (new Carbon($value))->format('d.m.Y');
 	}
 
-	public function getCreatedAtAttribute($value)
+	public function setCreatedAttribute($value)
 	{
-		return $this->attributes['created_at'] = (new Carbon($value))->format('d.m.Y');
+		return $this->attributes['created'] = (new Carbon($value))->format('d.m.Y');
 	}
 
 	public function getNotReadMessageAttribute()
