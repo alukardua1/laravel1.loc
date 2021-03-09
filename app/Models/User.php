@@ -133,4 +133,9 @@ class User extends Authenticatable
 	{
 		return $this->hasOne(Country::class, 'id', 'country_id')->latest();
 	}
+
+	public function getComments()
+	{
+		return $this->belongsTo(Comment::class, 'id', 'author_id')->latest();
+	}
 }

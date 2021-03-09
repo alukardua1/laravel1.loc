@@ -21,6 +21,12 @@ trait UserModelTrait
 	{
 		return $this->attributes['anime_count'] = $this->getAnime()->count();
 	}
+
+	public function getCommentsCountAttribute()
+	{
+		return $this->attributes['comments_count'] = $this->getComments()->count();
+	}
+
 	public function getPMCountAttribute()
 	{
 		return $this->attributes['pm_count'] = $this->getPersonalMessageRecipient()->count();

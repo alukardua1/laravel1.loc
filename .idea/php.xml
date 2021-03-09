@@ -138,6 +138,7 @@
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
       <path value="$PROJECT_DIR$/vendor/rennokki/laravel-eloquent-query-cache" />
       <path value="$PROJECT_DIR$/vendor/roumen/feed" />
+      <path value="$PROJECT_DIR$/vendor/drandin/declension-nouns" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
