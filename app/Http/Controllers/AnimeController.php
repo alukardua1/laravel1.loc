@@ -67,7 +67,7 @@ class AnimeController extends Controller
 		if ($showAnime->released_on) {
 			$showAnime->released = $showAnime->released_on;
 		}
-		$comments = $this->showComments($showAnime->getComments()->get());
+		$comments = $this->showComments($showAnime->getComments()->withTrashed()->get());
 
 		event(new AnimeEvent($showAnime));
 
@@ -111,13 +111,23 @@ class AnimeController extends Controller
 	public function setComments($id, CommentRequest $request)
 	{
 		$requestAnime = $this->anime->setComment($id, $request);
-		$showAnime = $this->anime->getAnime($id)->first();
 
 		if ($requestAnime) {
-			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
+			return redirect()->back();
 		}
 
 		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
+	}
+
+	public function softDeleteComments($id, $comment)
+	{
+		$del = $this->anime->delComments($comment);
+
+		if ($del) {
+			return redirect()->back();
+		}
+
+		return back()->withErrors(['msg' => 'Ошибка удаления'])->withInput();
 	}
 
 }

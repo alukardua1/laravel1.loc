@@ -29,36 +29,34 @@
 				</div>
 				<div class="comm">
 					@if ($comment->getParrentComment)
-						<blockquote class="quote-block">
-							<div class="title_quote">
-								К коментарию <span>{{$comment->getParrentComment->getUser->login}}</span> от {{$comment->getParrentComment->created}}
-							</div>
-							<div class="quote">
-								{!! $comment->getParrentComment->description_html !!}
-							</div>
-						</blockquote>
-					@endif
-					{!! $comment->description_html !!}
+						<span>{{$comment->getParrentComment->getAuthorComment->login}}</span>,
+					@endif {!! $comment->description_html !!}
 				</div>
 				@if ($comment->getAuthorComment->signature)
 					<p class="signature mb-10">
 						Подпись: {{$comment->getAuthorComment->signature}}
 					</p>
 				@endif
-				<div class="comment-instrument">
+				<div class="comment-instrument fx-row">
 					@if (Auth::user())
-						@if (Auth::user()->id <> $comment->getAuthorComment->id)
-							<a href="#">Цитировать</a>
-							<a href="#">Ответить</a>
-							<a href="#">Жалоба</a>
-						@endif
-						@if ((Auth::user()->id = $comment->getAuthorComment->id)or(in_array(Auth::user()->getGroup->id, [1,2])))
-							<a href="#">Редактировать</a>
-						@endif
-						@if (in_array(Auth::user()->getGroup->id, [1,2]))
-							<a href="#">Спамер</a>
-							<a href="#">Удалить</a>
-						@endif
+						<div>
+							@if ((Auth::user()->id == $comment->getAuthorComment->id)or(in_array(Auth::user()->getGroup->id, [1,2])))
+								<a href="#">Редактировать</a>
+							@endif
+						</div>
+						<div>
+							@if (Auth::user()->id <> $comment->getAuthorComment->id)
+								<a href="#">Цитировать</a>
+								<a href="#">Ответить</a>
+								<a href="#">Жалоба</a>
+							@endif
+						</div>
+						<div>
+							@if (in_array(Auth::user()->getGroup->id, [1,2]))
+								<a href="#">Спамер</a>
+								<a href="{{route('softDelComments', [$comment->getAnime->id, $comment->id])}}">Удалить</a>
+							@endif
+						</div>
 					@endif
 				</div>
 			</div>

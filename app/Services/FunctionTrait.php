@@ -55,6 +55,9 @@ trait FunctionTrait
 		// Изменяем коллекцию.
 		$comments->transform(function ($comment) use ($comments) {
 			// Добавляем к каждому комментарию дочерние комментарии.
+			if ($comment->trashed()) {
+				$comment->description_html = 'комментарий удален';
+			}
 			$comment->children = $comments->where('parent_comment_id', '=', $comment->id);
 
 			return $comment;

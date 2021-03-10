@@ -23,6 +23,7 @@ class CreateCommentsTable extends Migration
             $table->text('description_html');
             $table->text('description_source')->nullable();
             $table->string('rating')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

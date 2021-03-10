@@ -55,4 +55,6 @@ interface AnimeRepositoryInterfaces
 	public function getSearchAnime($request);
 
 	public function setComment($id, $request);
+
+	public function delComments($id);
 }

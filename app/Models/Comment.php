@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
+	use SoftDeletes;
+
 	public $cacheTags = ['comments'];
 	public $cachePrefix = 'comments_';
 

@@ -159,6 +159,7 @@
 					<button type="button" class="btn btn-danger" onclick='document.querySelector("textarea[name=description_html]").value=""'>Отменить</button>
 				</div>
 			</form>
+		@endif
 			@if ($comments)
 				<div class="">
 					<h5>Комментарии</h5>
@@ -167,6 +168,5 @@
 					@include('web.frontend.comments.area', $comments)
 				</div>
 			@endif
-		@endif
 	</article>
 @endsection

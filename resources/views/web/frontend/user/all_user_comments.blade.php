@@ -71,12 +71,12 @@
 								<a href="#">Ответить</a>
 								<a href="#">Жалоба</a>
 							@endif
-							@if ((Auth::user()->id = $comment->getAuthorComment->id)or(in_array(Auth::user()->getGroup->id, [1,2])))
+							@if ((Auth::user()->id == $comment->getAuthorComment->id)or(in_array(Auth::user()->getGroup->id, [1,2])))
 								<a href="#">Редактировать</a>
 							@endif
 							@if (in_array(Auth::user()->getGroup->id, [1,2]))
 								<a href="#">Спамер</a>
-								<a href="#">Удалить</a>
+								<a href="{{route('softDelComments', [$comment->getAnime->id, $comment->id])}}">Удалить</a>
 							@endif
 						@endif
 					</div>

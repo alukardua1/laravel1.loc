@@ -41,6 +41,7 @@ Route::group(
 		Route::get('/{id}-{url?}', [AnimeController::class, 'show'])->name('showAnime')->where('id', '[0-9]+');
 		Route::get('/rss', [AnimeController::class, 'animeRss'])->name('animeRss');
 		Route::post('/{id}/addComment', [AnimeController::class, 'setComments'])->name('addCommentAnime')->middleware('auth');
+		Route::get('/{id}/delComment/{comment}', [AnimeController::class, 'softDeleteComments'])->name('softDelComments')->middleware('auth');
 	}
 );
 

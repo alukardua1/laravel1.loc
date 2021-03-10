@@ -96,4 +96,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		$validated = $request->validated();
 		return Comment::create($request->all());
 	}
+
+	public function delComments($id)
+	{
+		$deleteComment = Comment::where('id', $id)->first();
+		if ($deleteComment) {
+			return $deleteComment->delete();
+		}
+	}
 }
