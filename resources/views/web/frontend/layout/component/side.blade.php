@@ -17,7 +17,7 @@
 					По жанрам
 				</div>
 				<ul class="genre">
-					@include('web.frontend.layout.menu')
+					@include('web.frontend.layout.component.menu')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -25,7 +25,7 @@
 					По типам
 				</div>
 				<ul class="collapse genre" id="tip">
-					@include('web.frontend.layout.kind')
+					@include('web.frontend.layout.component.kind')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -33,7 +33,7 @@
 					По рейтингу
 				</div>
 				<ul class="collapse genre" id="rating">
-					@include('web.frontend.layout.mpaa')
+					@include('web.frontend.layout.component.mpaa')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -41,7 +41,7 @@
 					По озвучкам
 				</div>
 				<ul class="collapse genre" id="scoring">
-					@include('web.frontend.layout.translate')
+					@include('web.frontend.layout.component.translate')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -49,7 +49,7 @@
 					По годам
 				</div>
 				<ul class="collapse genre season" id="season">
-					@include('web.frontend.layout.year')
+					@include('web.frontend.layout.component.year')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -57,7 +57,7 @@
 					По странам
 				</div>
 				<ul class="collapse genre" id="country">
-					@include('web.frontend.layout.country')
+					@include('web.frontend.layout.component.country')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -65,7 +65,7 @@
 					По качеству
 				</div>
 				<ul class="collapse genre" id="quality">
-					@include('web.frontend.layout.quality')
+					@include('web.frontend.layout.component.quality')
 				</ul>
 			</div>
 		</div>

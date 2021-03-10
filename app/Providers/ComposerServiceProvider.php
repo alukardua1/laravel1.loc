@@ -33,14 +33,14 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-    	\View::composer('web.frontend.layout.menu', MenuComposer::class);
-	    \View::composer('web.frontend.layout.kind', KindComposer::class);
+    	\View::composer('web.frontend.layout.component.menu', MenuComposer::class);
+	    \View::composer('web.frontend.layout.component.kind', KindComposer::class);
 	    \View::composer('web.frontend.anime.component.carousel', CarouselAnimeComposer::class);
-	    \View::composer('web.frontend.layout.mpaa', MpaaRatingComposer::class);
-	    \View::composer('web.frontend.layout.translate', TranslateComposer::class);
-	    \View::composer('web.frontend.layout.year', YearComposer::class);
-	    \View::composer(['web.frontend.layout.country','web.frontend.user.profile'], CountryComposer::class);
-	    \View::composer('web.frontend.layout.quality', QualityComposer::class);
+	    \View::composer('web.frontend.layout.component.mpaa', MpaaRatingComposer::class);
+	    \View::composer('web.frontend.layout.component.translate', TranslateComposer::class);
+	    \View::composer('web.frontend.layout.component.year', YearComposer::class);
+	    \View::composer(['web.frontend.layout.component.country','web.frontend.user.profile'], CountryComposer::class);
+	    \View::composer('web.frontend.layout.component.quality', QualityComposer::class);
 	    \View::composer('web.frontend.anime.component.anons', AnonsComposer::class);
 	    \View::composer('web.frontend.anime.component.popular', PopularComposer::class);
     }

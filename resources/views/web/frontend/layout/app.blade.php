@@ -25,7 +25,7 @@
 </head>
 <body>
 <header>
-	@include('web.frontend.layout.nav')
+	@include('web.frontend.layout.component.nav')
 </header>
 
 <main id="app" class="container">
@@ -46,7 +46,7 @@
 		</div>
 		<div class="content">
 			<div class="side">
-				@include('web.frontend.layout.side')
+				@include('web.frontend.layout.component.side')
 			</div>
 			<div class="el1">
 				<div class="main">
@@ -59,7 +59,7 @@
 					@yield('content')
 				</div>
 				<div class="info-footer">
-					@include('web.frontend.layout.info-footer')
+					@include('web.frontend.layout.component.info-footer')
 				</div>
 			</div>
 		</div>
@@ -78,10 +78,14 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
 		integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/translations/ru.js"></script>
+
 <script>
-	ClassicEditor
-		.create(document.querySelector('textarea'), {
-			toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'blockQuote', 'undo', 'redo' ],
+	var allEditors = document.querySelectorAll('.ckeditor');
+	for (var i = 0; i < allEditors.length; ++i) {
+		ClassicEditor.create(allEditors[i], {
+			toolbar: [ 'heading', '|', 'bold', 'italic', 'bulletedList', 'numberedList', '|', 'blockQuote', 'undo', 'redo' ],
+			language: 'ru',
 			heading: {
 				options: [
 					{ model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
@@ -89,15 +93,8 @@
 					{ model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
 				]
 			}
-		})
-		/*.then(editor => {
-			const toolbarContainer = document.querySelector('#toolbar-container');
-			toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-		})*/
-		.catch(error => {
-			console.error(error);
 		});
-
+	}
 </script>
 </body>
 </html>

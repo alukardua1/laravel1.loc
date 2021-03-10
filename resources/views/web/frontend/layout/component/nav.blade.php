@@ -23,7 +23,7 @@
 						По жанрам
 					</a>
 					<ul class="genre genre-dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuLink">
-						@include('web.frontend.layout.menu')
+						@include('web.frontend.layout.component.menu')
 					</ul>
 				</li>
 				<li class="nav-item">

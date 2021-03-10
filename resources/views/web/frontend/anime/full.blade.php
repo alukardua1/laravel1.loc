@@ -150,7 +150,8 @@
 			<form action="{{route('addCommentAnime', $showAnime->id)}}" method="POST">
 				@csrf
 				<div class="add-comment form-textarea mb-3">
-					<textarea class="form-control" name="description_html" id="" cols="30" rows="10"></textarea>
+					<label for="addComment">Добавить комментарий</label>
+					<textarea class="form-control ckeditor" name="description_html" id="addComment" cols="30" rows="10"></textarea>
 					<input name="anime_id" type="hidden" value="{{$showAnime->id}}">
 					<input name="author_id" type="hidden" value="{{Auth::user()->id}}">
 				</div>
@@ -170,3 +171,9 @@
 			@endif
 	</article>
 @endsection
+<script>
+	import Label from "@/Jetstream/Label";
+	export default {
+		components: {Label}
+	}
+</script>
