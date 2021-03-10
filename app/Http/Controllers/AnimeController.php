@@ -119,9 +119,9 @@ class AnimeController extends Controller
 		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
 	}
 
-	public function softDeleteComments($id, $comment)
+	public function deleteComments($id, $commentId, $fullDel = false)
 	{
-		$del = $this->anime->delComments($comment);
+		$del = $this->anime->delComments($commentId, $fullDel);
 
 		if ($del) {
 			return redirect()->back();

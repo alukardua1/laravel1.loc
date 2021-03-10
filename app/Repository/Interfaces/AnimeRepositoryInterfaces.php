@@ -56,5 +56,5 @@ interface AnimeRepositoryInterfaces
 
 	public function setComment($id, $request);
 
-	public function delComments($id);
+	public function delComments($id, $fullDel);
 }

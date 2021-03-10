@@ -70,4 +70,9 @@ trait FunctionTrait
 
 		return $comments;
 	}
+
+	public function delParent($parent, $id)
+	{
+
+	}
 }

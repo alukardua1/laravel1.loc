@@ -6,6 +6,7 @@ namespace App\Repository;
 use App\Models\Anime;
 use App\Models\Comment;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
+use App\Services\FunctionTrait;
 
 /**
  * Class AnimeRepository
@@ -14,6 +15,8 @@ use App\Repository\Interfaces\AnimeRepositoryInterfaces;
  */
 class AnimeRepository implements AnimeRepositoryInterfaces
 {
+	use FunctionTrait;
+
 	public function __construct()
 	{
 	}
@@ -97,11 +100,25 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		return Comment::create($request->all());
 	}
 
-	public function delComments($id)
+	public function delComments($id, $fullDel)
 	{
-		$deleteComment = Comment::where('id', $id)->first();
-		if ($deleteComment) {
+		$deleteComment = Comment::withTrashed()->where('id', $id)->first();
+		$deleteParentComment = Comment::withTrashed()->where('parent_comment_id', $id)->get();
+
+		if (!empty($fullDel)) {
+			if ($deleteParentComment) {
+				foreach ($deleteParentComment as $value) {
+					if ($value->parent_comment_id = $id) {
+						$deleteComment = $this->delComments($value->id, true);
+					}
+				}
+			}
+		}
+
+		if ($deleteComment and empty($fullDel)) {
 			return $deleteComment->delete();
+		}else {
+			return $deleteComment->forceDelete();
 		}
 	}
 }

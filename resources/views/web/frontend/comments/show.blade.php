@@ -29,7 +29,7 @@
 				</div>
 				<div class="comm">
 					@if ($comment->getParrentComment)
-						<span>{{$comment->getParrentComment->getAuthorComment->login}}</span>,
+						<span><a href="{{route('currentUser', $comment->getParrentComment->getAuthorComment->login)}}">{{$comment->getParrentComment->getAuthorComment->login}}</a></span>,
 					@endif {!! $comment->description_html !!}
 				</div>
 				@if ($comment->getAuthorComment->signature)
@@ -54,7 +54,8 @@
 						<div>
 							@if (in_array(Auth::user()->getGroup->id, [1,2]))
 								<a href="#">Спамер</a>
-								<a href="{{route('softDelComments', [$comment->getAnime->id, $comment->id])}}">Удалить</a>
+								<a href="{{route('delComments', [$comment->getAnime->id, $comment->id])}}">Удалить</a>
+								<a href="{{route('delComments', [$comment->getAnime->id, $comment->id, true])}}">Удалить полностью</a>
 							@endif
 						</div>
 					@endif
