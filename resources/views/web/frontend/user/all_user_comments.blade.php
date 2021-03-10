@@ -69,13 +69,13 @@
 							@if (Auth::user()->id <> $comment->getAuthorComment->id)
 								<a href="#">Цитировать</a>
 								<a href="#">Ответить</a>
-								<a href="#">Спамер</a>
 								<a href="#">Жалоба</a>
 							@endif
 							@if ((Auth::user()->id = $comment->getAuthorComment->id)or(in_array(Auth::user()->getGroup->id, [1,2])))
 								<a href="#">Редактировать</a>
 							@endif
 							@if (in_array(Auth::user()->getGroup->id, [1,2]))
+								<a href="#">Спамер</a>
 								<a href="#">Удалить</a>
 							@endif
 						@endif

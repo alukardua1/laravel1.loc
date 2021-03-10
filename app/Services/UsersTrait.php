@@ -80,6 +80,7 @@ trait UsersTrait
         if (Hash::check($requestForm['altpass'], $updateUser['password1'])) {
             return $requestForm['password1'] = Hash::make($requestForm['password2']);
         }
+
         return back()->withErrors(['msg' => 'Введите правильный пароль'])->withInput();
     }
 

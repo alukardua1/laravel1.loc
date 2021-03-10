@@ -27,7 +27,6 @@ class UserRequest extends FormRequest
 			'profile_photo_path' => ['dimensions:width=100,height=100'],
 			'altpass'            => ['sometimes', 'nullable', 'between:8,15', 'regex:/[a-zA-Z0-9_]+/'],
 			'password1'          => ['same:confirm_password', 'different:old_password', 'regex:/[a-zA-Z0-9_]+/', 'sometimes', 'nullable', 'between:8,15',],
-			'password2'          => ['same:new_password', 'different:old_password', 'regex:/[a-zA-Z0-9_]+/', 'sometimes', 'nullable', 'between:8,15'],
 		];
 	}
 
@@ -41,10 +40,6 @@ class UserRequest extends FormRequest
 			'password1.same'                => 'Новый пароль и пароль подтверждения должны совпадать..',
 			'password1.different'           => 'Новый пароль и старый пароль должны отличаться..',
 			'password1.between'             => 'Новый пароль должен содержать от :min до :max символов..',
-			'password2.regex'               => 'Недопустимый формат подтверждения пароля..',
-			'password2.same'                => 'Пароль подтверждения и новый пароль должны совпадать..',
-			'password2.different'           => 'Пароль подтверждения и старый пароль должны отличаться..',
-			'password2.between'             => 'Пароль подтверждения должен содержать от :min до :max символов..',
 		];
 	}
 }

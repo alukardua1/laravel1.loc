@@ -151,5 +151,6 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="popper.js" level="application" />
     <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="typeahead.js" level="application" />
   </component>
 </module>

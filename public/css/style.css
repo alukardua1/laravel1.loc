@@ -459,7 +459,7 @@ form[name="registration"] input[type="email"], form[name="registration"] textare
 	background-color: rgba(62, 69, 81, .5);
 }
 
-.zoom img, .genre a, .card-person .urls a, .avatar img, .up-second li a {
+.zoom img, .genre a, .card-person .urls a, .avatar img, .up-second li a, .post-comments li a:hover {
 	transition: all 0.2s linear;
 }
 
@@ -467,7 +467,7 @@ form[name="registration"] input[type="email"], form[name="registration"] textare
 	transform: scale(1.5);
 }
 
-.up-second li a:hover {
+.up-second li a:hover, .post-comments li a:hover {
 	transform: scale(1.1);
 }
 
@@ -1631,6 +1631,17 @@ img {
 	background-color: #f6f6f6;
 	padding: 20px 30px 20px 150px;
 }
+.post-comments {
+
+}
+.post-comments li {
+	width: calc(100% / 3);
+	display: flex !important;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	font-weight: 700;
+}
 
 .up-second li:first-child {
 	border-right: 1px solid #dddddd;
@@ -1646,7 +1657,7 @@ img {
 }
 
 .up-second li a, .up-third li a{
-	padding: 0 30px;
+	padding: 0 10px;
 	display: inline-block;
 	height: 40px;
 	line-height: 40px;
@@ -2026,4 +2037,8 @@ a.disabled {
 	pointer-events: none; /* делаем ссылку некликабельной */
 	cursor: default;  /* устанавливаем курсор в виде стрелки */
 	color: #999; /* цвет текста для нективной ссылки */
+}
+
+.ck-editor__editable_inline {
+	min-height: 300px;
 }

@@ -2,10 +2,10 @@
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/"
 	 xmlns:turbo="http://turbo.yandex.ru" version="2.0">
 	<channel>
-		<title>{{env('APP_NAME')}}</title>
-		<link>{{env('APP_URL')}}</link>
+		<title>{{$channel['title']}}</title>
+		<link>{{$channel['rssLink']}}</link>
 		<language>{{config('app.locale')}}</language>
-		<description>{{env('APP_DESCRIPTION')}}</description>
+		<description>{{$channel['description']}}</description>
 		<generator>{{env('APP_NAME')}}</generator>
 		@foreach($items as $item)
 			<item turbo="true">

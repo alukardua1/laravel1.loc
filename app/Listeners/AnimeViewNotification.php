@@ -14,6 +14,7 @@ class AnimeViewNotification
      */
     public function handle(AnimeEvent $event)
     {
+	    $event->anime->timestamps = false;
 	    $event->anime->increment('read_count');
     }
 }

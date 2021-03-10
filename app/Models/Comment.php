@@ -10,6 +10,14 @@ class Comment extends Model
 	public $cacheTags = ['comments'];
 	public $cachePrefix = 'comments_';
 
+	protected $fillable = [
+	'anime_id',
+	'parent_comment_id',
+	'user_id',
+	'author_id',
+	'description_html'
+	];
+
     public function __construct(array $attributes = [])
     {
 	    parent::__construct($attributes);

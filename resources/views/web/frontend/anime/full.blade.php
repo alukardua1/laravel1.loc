@@ -3,6 +3,19 @@
 @section('title', $showAnime->metatitle)
 @section('description', $showAnime->metatitle)
 
+@section('error')
+	@if ($errors->any())
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			@foreach($errors->all() as $error)
+				{{$error}}
+			@endforeach
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	@endif
+@endsection
+
 @section('content')
 	<article class="fullstory">
 		<div class="full-title">
@@ -91,10 +104,10 @@
 									<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
 									   aria-selected="true">{{$player->name_player}}</a>
 								</li>
-									<div class="embed-responsive embed-responsive-16by9">
-										<iframe class="embed-responsive-item" src="{{$player->url_player}}" frameborder="0" allowfullscreen
-												allow="autoplay *; fullscreen *"></iframe>
-									</div>
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item" src="{{$player->url_player}}" frameborder="0" allowfullscreen
+											allow="autoplay *; fullscreen *"></iframe>
+								</div>
 							@endforeach
 						</ul>
 					</div>
@@ -130,19 +143,30 @@
 				</div>
 			</div>
 		</div>
-		<div class="">
-			<h5>Добавить комментарий</h5>
-		</div>
-		<div class="add-comment">
-			{addcomments}
-		</div>
-		[comments]
-		<div class="">
-			<h5>Комментарии</h5>
-		</div>
-		<div class="comment">
-			{comments}
-		</div>
-		[/comments]
+		@if (Auth::user())
+			<div class="">
+				<h5>Добавить комментарий</h5>
+			</div>
+			<form action="{{route('addCommentAnime', $showAnime->id)}}" method="POST">
+				@csrf
+				<div class="add-comment form-textarea mb-3">
+					<textarea class="form-control" name="description_html" id="" cols="30" rows="10"></textarea>
+					<input name="anime_id" type="hidden" value="{{$showAnime->id}}">
+					<input name="author_id" type="hidden" value="{{Auth::user()->id}}">
+				</div>
+				<div class="btn-group" role="group" aria-label="Basic example">
+					<button type="submit" class="btn btn-success">Оставить комментарий</button>
+					<button type="button" class="btn btn-danger" onclick='document.querySelector("textarea[name=description_html]").value=""'>Отменить</button>
+				</div>
+			</form>
+			@if ($comments)
+				<div class="">
+					<h5>Комментарии</h5>
+				</div>
+				<div class="comment">
+					@include('web.frontend.comments.area', $comments)
+				</div>
+			@endif
+		@endif
 	</article>
 @endsection

@@ -50,11 +50,11 @@
 	<li>
 		<span>Выпуск: </span>
 		<span>
-			@if ($showAnime->aired_on)
-				c {{$showAnime->aired_on}}
+			@if ($showAnime->aired)
+				c {{$showAnime->aired}}
 			@endif
-			@if ($showAnime->released_on)
-				по {{$showAnime->released_on}}
+			@if ($showAnime->released)
+				по {{$showAnime->released}}
 			@endif
 		</span>
 	</li>

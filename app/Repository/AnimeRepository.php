@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 use App\Models\Anime;
+use App\Models\Comment;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
 /**
@@ -88,5 +89,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->orWhere('description', 'LIKE', "%{$request->search}%")
 			->limit(5)
 			->get();
+	}
+
+	public function setComment($id, $request)
+	{
+		$validated = $request->validated();
+		return Comment::create($request->all());
 	}
 }

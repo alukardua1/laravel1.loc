@@ -67,9 +67,11 @@ class UserRepository implements UserRepositoryInterfaces
 				$requestForm = $this->deleteAvatar($updateUser, $requestForm);
 			}
 			if ($request->hasFile('profile_photo_path')) {
-				$validated = $request->validated();
 				$requestForm = $this->uploadAvatar($updateUser, $requestForm);
 			}
+
+			$validated = $request->validated();
+
 			User::flushQueryCache(['user']);
 
 			return $updateUser->update($requestForm);

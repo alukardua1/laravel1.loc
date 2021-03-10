@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\AnimeModelTrait;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Anime extends Model
 {
+	use AnimeModelTrait;
 	protected $fillable = [
 		'name',
 		'russian',
@@ -73,42 +75,6 @@ class Anime extends Model
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
-	}
-
-	/**
-	 * @param $value
-	 *
-	 * @return string
-	 */
-	public function getAiredOnAttribute($value)
-	{
-		return $this->attributes['aired_on'] = (new Carbon($value))->format('d.m.Y');
-	}
-
-	/**
-	 * @param $value
-	 *
-	 * @return string
-	 */
-	public function getReleasedOnAttribute($value)
-	{
-		return $this->attributes['released_on'] = (new Carbon($value))->format('d.m.Y');
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getVoteAttribute()
-	{
-		return $this->votePlusMinus($this->getVote()->get());
-	}
-
-	/**
-	 * @todo Временное решение придумать как изменить
-	 */
-	public function getCategoryAttribute()
-	{
-		return $this->categoryMutation($this->getCategory()->get());
 	}
 
 	/**
@@ -250,5 +216,10 @@ class Anime extends Model
 	public function getYear()
 	{
 		return $this->hasOne(YearAired::class)->latest();
+	}
+
+	public function getComments()
+	{
+		return $this->belongsTo(Comment::class, 'id', 'anime_id')->latest();
 	}
 }

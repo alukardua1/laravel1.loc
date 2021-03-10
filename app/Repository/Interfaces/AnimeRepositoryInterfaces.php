@@ -53,4 +53,6 @@ interface AnimeRepositoryInterfaces
 	public function getPopular($count);
 
 	public function getSearchAnime($request);
+
+	public function setComment($id, $request);
 }

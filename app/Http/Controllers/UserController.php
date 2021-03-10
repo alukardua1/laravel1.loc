@@ -107,4 +107,18 @@ class UserController extends Controller
 
 		return view($this->frontend . 'anime.short', compact('currentUser', 'allAnime', 'title', 'description'));
 	}
+
+	public function userRss($user)
+	{
+		$feed = \App::make("feed");
+		$feed->setCache(config('secondConfig.cache_time'), 'laravelFeedKey');
+		if (!$feed->isCached()) {
+			$currentUser = $this->user->getUser($user);
+			$posts = $currentUser->getAnime()->limit(config('secondConfig.limitRss'))->get();
+
+			$feed = $this->getRss($feed, $posts, $currentUser->login);
+		}
+
+		return $feed->render('rss');
+	}
 }

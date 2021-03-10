@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\AnimeEvent;
-use App\Models\Anime;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
@@ -63,13 +63,19 @@ class AnimeController extends Controller
 		$minus = -$showAnime->vote['minus'];
 		$showAnime->broadcastTitle = $this->broadcast($showAnime->broadcast);
 		$showAnime->seasonAired = $this->seasonAired($showAnime->aired_on);
+		$showAnime->aired = $showAnime->aired_on;
+		if ($showAnime->released_on) {
+			$showAnime->released = $showAnime->released_on;
+		}
+		$comments = $this->showComments($showAnime->getComments()->get());
+
 		event(new AnimeEvent($showAnime));
 
 		if ($url !== $showAnime->url) {
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
 		}
 
-		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus'));
+		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus', 'comments'));
 	}
 
 	public function search(Request $request)
@@ -96,34 +102,22 @@ class AnimeController extends Controller
 		if (!$feed->isCached()) {
 			$posts = $this->anime->getAllAnime()->limit(config('secondConfig.limitRss'))->get();
 
-			$feed->title = 'Your title';
-			$feed->description = 'Your description';
-			$feed->logo = 'http://yoursite.tld/logo.jpg';
-			$feed->link = url('feed');
-			$feed->setDateFormat('datetime');
-			$feed->pubdate = $posts[0]->created_at;
-			$feed->lang = 'en';
-			$feed->setShortening(true);
-			$feed->setTextLimit(100);
-			$feed->setCustomView($this->frontend . 'feed.rss_yandex');
-
-			foreach ($posts as $post) {
-				$feed->addItem(
-					[
-						'title'       => $post->name,
-						'author'      => $post->getUser->login,
-						'link'        => \URL::to("/anime/{$post->id}-{$post->url}"),
-						'pubdate'     => date("r", strtotime($post->updated_at)),
-						'description' => $post->description,
-						'content'     => $post->description_html,
-						'category'    => $post->getCategory,
-						'poster'      => asset('storage/' . $post->original_img),
-					]
-				);
-			}
+			$feed = $this->getRss($feed, $posts);
 		}
 
 		return $feed->render('rss');
+	}
+
+	public function setComments($id, CommentRequest $request)
+	{
+		$requestAnime = $this->anime->setComment($id, $request);
+		$showAnime = $this->anime->getAnime($id)->first();
+
+		if ($requestAnime) {
+			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
+		}
+
+		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
 	}
 
 }

@@ -39,7 +39,8 @@ Route::group(
 	function () {
 		Route::get('/', [AnimeController::class, 'index'])->name('animeAll');
 		Route::get('/{id}-{url?}', [AnimeController::class, 'show'])->name('showAnime')->where('id', '[0-9]+');
-		Route::get('/animerss', [AnimeController::class, 'animeRss'])->name('animeRss');
+		Route::get('/rss', [AnimeController::class, 'animeRss'])->name('animeRss');
+		Route::post('/{id}/addComment', [AnimeController::class, 'setComments'])->name('addCommentAnime')->middleware('auth');
 	}
 );
 
@@ -81,7 +82,7 @@ Route::group(
 		Route::get('/{login}/favorite', [FavoritesController::class, 'index'])->name('favorite');
 		Route::get('/{login}/PM', [PersonalMessageController::class, 'index'])->name('PM');
 		Route::get('/{login}/anime', [UserController::class, 'showAnime'])->name('currentUserAnime');
-		Route::get('/{login}/rss', [UserController::class, 'showAnime'])->name('currentUserRss');
+		Route::get('/{login}/rss', [UserController::class, 'userRss'])->name('currentUserRss');
 		Route::post('/{login}', [UserController::class, 'update'])->name('currentUserUpdate');
 		Route::get('/{login}/comments', [UserController::class, 'showComment'])->name('currentUserComments');
 	}

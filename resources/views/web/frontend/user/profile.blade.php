@@ -3,16 +3,16 @@
 @section('title', 'Профиль пользователя '.$currentUser->login)
 
 @section('error')
-	@error('profile_photo_path')
+	@if ($errors->any())
 	<div class="alert alert-danger alert-dismissible fade show" role="alert">
 		@foreach($errors->all() as $error)
-			{{$error}}
+			<p>{{$error}}</p>
 		@endforeach
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
-	@enderror
+	@endif
 @endsection
 
 @section('content')
@@ -35,29 +35,29 @@
 				<div>{{$currentUser->comments_count}} <span>{{Lang::choice('комментарий|комментария|комментариев', $currentUser->comments_count, [], 'ru')}}</span></div>
 				<div>{{$currentUser->comments_reply_count}} <span>{{Lang::choice('ответ|ответа|ответов', $currentUser->comments_reply_count, [], 'ru')}}</span></div>
 			</li>
-			@if (!$currentUser->hide_email)
-			<li><a href="#">{{$currentUser->email}}</a></li>
+			<li>
+			@if ((!$currentUser->hide_email)and(Auth::user()->id <> $currentUser->id))
+			<a href="mailto:{{$currentUser->email}}">{{$currentUser->email}}</a>
 			@endif
-			@if (Auth::user())
-				<li><a href="#">написать ПС</a></li>
+			</li>
+			<li>
+			@if ((Auth::user())and(Auth::user()->id <> $currentUser->id))
+				<a target="_blank" href="#">написать ПС</a>
 			@endif
+			</li>
 		</ul>
 		<ul class="up-third">
 			@if (!$currentUser->hide_email)
-				<li>Ваш E-mail: {{$currentUser->email}}</li>
+				<li>E-mail: {{$currentUser->email}}</li>
 			@endif
 			<li>Регистрация: {{$currentUser->created}}</li>
 			<li>Заходил(а): {{$currentUser->last_logins}}</li>
 			<li>
-				<a href="{{route('currentUserAnime', $currentUser->login)}}">
-					Просмотреть все публикации
-				</a>,
-				<a href="{{route('currentUserRss', $currentUser->login)}}" title="Отслеживание всех статей пользователя по RSS">
-					Отслеживание всех статей пользователя по RSS
-				</a>,
-				<a href="{{route('currentUserComments', $currentUser->login)}}">
-					Последние комментарии
-				</a>
+				<ul class="post-comments fx-row">
+					<li><a target="_blank" href="{{route('currentUserAnime', $currentUser->login)}}">Просмотреть все публикации</a></li>
+					<li><a target="_blank" href="{{route('currentUserRss', $currentUser->login)}}" title="RSS {{$currentUser->login}}">RSS {{$currentUser->login}}</a></li>
+					<li><a target="_blank" href="{{route('currentUserComments', $currentUser->login)}}">Последние комментарии</a></li>
+				</ul>
 			</li>
 			@if (Auth::user())
 				@if($currentUser->name)
@@ -75,7 +75,7 @@
 			@endif
 		</ul>
 		@if (Auth::user())
-			@if((Auth::id() == $currentUser->id)or(Auth::user()->getGroup->id == 1))
+			@if((Auth::id() == $currentUser->id) or (Auth::user()->getGroup->id == 1))
 				<div class="up-edit">
 					<a href="#" id="editBtn">редактировать профиль</a>
 				</div>
@@ -83,7 +83,7 @@
 		@endif
 	</div>
 	@if (Auth::user())
-		@if((Auth::id() == $currentUser->id)or(Auth::user()->getGroup->id == 1))
+		@if((Auth::id() == $currentUser->id) or (Auth::user()->getGroup->id == 1))
 			<form id="userinfo" action="{{route('currentUserUpdate', $currentUser->login)}}" enctype="multipart/form-data" method="POST">
 				@csrf
 				<div id="options" style="display:none; margin-bottom: 30px" class="form-wrap">
@@ -134,7 +134,6 @@
 							<input type="file" class="form-file-input" name="profile_photo_path" id="profile_photo_path">
 							<label class="form-file-label" for="profile_photo_path">
 								<span class="form-file-text">Загрузите автар...</span>
-								<span class="form-file-button">Выбрать</span>
 							</label>
 						</div>
 
