@@ -6,7 +6,7 @@ use Blade;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
-class BladeProvider extends ServiceProvider
+class BladeServiceProvider extends ServiceProvider
 {
 	/**
 	 * Register services.
