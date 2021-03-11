@@ -143,36 +143,47 @@
 				</div>
 			</div>
 		</div>
+		<div class="">
+			<h5>Добавить комментарий</h5>
+		</div>
 		@if (Auth::user())
-			<div class="">
-				<h5>Добавить комментарий</h5>
-			</div>
-			<form action="{{route('addCommentAnime', $showAnime->id)}}" method="POST">
-				@csrf
-				<div class="add-comment form-textarea mb-3">
-					<label for="addComment">Добавить комментарий</label>
-					<textarea class="form-control ckeditor" name="description_html" id="addComment" cols="30" rows="10"></textarea>
-					<input name="anime_id" type="hidden" value="{{$showAnime->id}}">
-					<input name="author_id" type="hidden" value="{{Auth::user()->id}}">
-				</div>
-				<div class="btn-group" role="group" aria-label="Basic example">
-					<button type="submit" class="btn btn-success">Оставить комментарий</button>
-					<button type="button" class="btn btn-danger" onclick='document.querySelector("textarea[name=description_html]").value=""'>Отменить</button>
-				</div>
-			</form>
-		@endif
-			@if ($comments)
-				<div class="">
-					<h5>Комментарии</h5>
-				</div>
-				<div class="comment">
-					@include('web.frontend.comments.area', $comments)
+			@if ($showAnime->comment_at)
+				<form action="{{route('addCommentAnime', $showAnime->id)}}" method="POST">
+					@csrf
+					<div class="add-comment form-textarea mb-3">
+						<label for="addComment">Добавить комментарий</label>
+						<textarea class="form-control ckeditor" name="description_html" id="addComment" cols="30" rows="10"></textarea>
+						<input name="anime_id" type="hidden" value="{{$showAnime->id}}">
+						<input name="author_id" type="hidden" value="{{Auth::user()->id}}">
+					</div>
+					<div class="btn-group" role="group" aria-label="Basic example">
+						<button type="submit" class="btn btn-success">Оставить комментарий</button>
+						<button type="button" class="btn btn-danger" onclick='document.querySelector("textarea[name=description_html]").value=""'>Отменить</button>
+					</div>
+				</form>
+			@else
+				<div class="alert alert-danger" role="alert">
+					Комментирование отключено
 				</div>
 			@endif
+		@else
+			<div class="alert alert-danger" role="alert">
+				Для комментирования <a href="/login">войдите</a> или <a href="/register">зарегистрируйтесь</a> на сайте
+			</div>
+		@endif
+		@if ($comments)
+			<div class="">
+				<h5>Комментарии</h5>
+			</div>
+			<div class="comment">
+				@include('web.frontend.comments.area', $comments)
+			</div>
+		@endif
 	</article>
 @endsection
 <script>
 	import Label from "@/Jetstream/Label";
+
 	export default {
 		components: {Label}
 	}

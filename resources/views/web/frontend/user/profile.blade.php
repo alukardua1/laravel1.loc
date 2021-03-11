@@ -4,14 +4,14 @@
 
 @section('error')
 	@if ($errors->any())
-	<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		@foreach($errors->all() as $error)
-			<p>{{$error}}</p>
-		@endforeach
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			@foreach($errors->all() as $error)
+				<p>{{$error}}</p>
+			@endforeach
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
 	@endif
 @endsection
 
@@ -36,18 +36,20 @@
 				<div>{{$currentUser->comments_reply_count}} <span>{{Lang::choice('ответ|ответа|ответов', $currentUser->comments_reply_count, [], 'ru')}}</span></div>
 			</li>
 			<li>
-			@if ((!$currentUser->hide_email)and(Auth::user()->id <> $currentUser->id))
-			<a href="mailto:{{$currentUser->email}}">{{$currentUser->email}}</a>
-			@endif
+				@if (Auth::user())
+					@if ((!$currentUser->hide_email)and(Auth::user()->id <> $currentUser->id))
+						<a href="mailto:{{$currentUser->email}}">{{$currentUser->email}}</a>
+					@endif
+				@endif
 			</li>
 			<li>
-			@if ((Auth::user())and(Auth::user()->id <> $currentUser->id))
-				<a target="_blank" href="#">написать ПС</a>
-			@endif
+				@if ((Auth::user())and(Auth::user()->id <> $currentUser->id))
+					<a target="_blank" href="#">написать ПС</a>
+				@endif
 			</li>
 		</ul>
 		<ul class="up-third">
-			@if (!$currentUser->hide_email)
+			@if ((!$currentUser->hide_email) and (Auth::user()))
 				<li>E-mail: {{$currentUser->email}}</li>
 			@endif
 			<li>Регистрация: {{$currentUser->created}}</li>
