@@ -270,9 +270,14 @@ form[name="registration"] input[type="email"], form[name="registration"] textare
 	padding: 10px;
 }
 
-.side-cat, .side-cat-slave, .form-login, .full-title, .full-description, .inform, .player, .related, .comments-tree-item, .user-title, .pm h1 {
+.side-cat, .side-cat-slave, .form-login, .full-title, .full-description, .inform, .player, .related, .comment, .user-title, .pm h1 {
 	border-bottom: 1px dashed #e3e3e3;
 	padding-bottom: 10px;
+}
+
+.comments_list__children .comment, .comment:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
 }
 
 .side-cat {
@@ -2028,6 +2033,7 @@ input#searchinput {
 
 .comments {
 	width: 100%;
+	border-top: 1px dashed #e3e3e3;
 }
 
 .nav-link-social {
@@ -2051,4 +2057,7 @@ a.disabled {
 
 .ck-content, .comm{
 	word-break: break-word;
+}
+.comments_list__children {
+	padding-inline-start: 0;
 }

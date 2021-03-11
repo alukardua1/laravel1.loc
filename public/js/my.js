@@ -166,6 +166,40 @@ $(document).ready(function () {
 	});
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
 	$('.js-selectize').selectize();
 });
+
+function ClassicEditorCk(windows, selector){
+	ClassicEditor.create(windows.querySelector(selector), {
+		toolbar: ['heading', '|', 'bold', 'italic', 'bulletedList', 'numberedList', '|', 'blockQuote', 'undo', 'redo'],
+		language: 'ru',
+		heading: {
+			options: [
+				{model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph'},
+				{model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1'},
+				{model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2'}
+			]
+		}
+	});
+}
+
+ClassicEditorCk(window['comments'], '#addComment');
+
+function textarea(key, login = null, text = null) {
+	var div = '#edit_quote_reply_comment-' + key;
+	var message = '#description_html-' + key;
+	let logins;
+	if (login) {
+		logins = '<a target="_blank" href="/user/' + login + '">' + login + '</a>' + ', ';
+	}
+	if ($(div).is(":hidden")) {
+		$(message).val(logins);
+		ClassicEditorCk(window['edit_quote_reply_comment-' + key], message);
+		$(div).show();
+	} else {
+		$(div).hide();
+		window['edit_quote_reply_comment-' + key].querySelector('.ck-rounded-corners').remove();
+	}
+	return false;
+}

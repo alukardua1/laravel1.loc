@@ -68,11 +68,6 @@ trait FunctionTrait
 			return $comment->parent_comment_id !== 0;
 		});
 
-		return $comments;
-	}
-
-	public function delParent($parent, $id)
-	{
-
+		return $comments->sortByDesc('created_at');
 	}
 }

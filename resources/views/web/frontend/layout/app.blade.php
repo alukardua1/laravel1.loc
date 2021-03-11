@@ -69,6 +69,8 @@
 
 </footer>
 <!--<script src="{{ asset('js/jquery.min.js') }}"></script>-->
+<script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/translations/ru.js"></script>
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/owl.carousel.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/my.js') }}"></script>
@@ -77,13 +79,9 @@
 		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
 		integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/translations/ru.js"></script>
 
-<script>
-	var allEditors = document.querySelectorAll('.ckeditor');
-	for (var i = 0; i < allEditors.length; ++i) {
-		ClassicEditor.create(allEditors[i], {
+<!--<script>
+		ClassicEditor.create(document.querySelector('#addComment'), {
 			toolbar: [ 'heading', '|', 'bold', 'italic', 'bulletedList', 'numberedList', '|', 'blockQuote', 'undo', 'redo' ],
 			language: 'ru',
 			heading: {
@@ -94,7 +92,6 @@
 				]
 			}
 		});
-	}
-</script>
+</script>-->
 </body>
 </html>

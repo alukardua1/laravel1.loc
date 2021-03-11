@@ -1,6 +1,6 @@
 <li class="comment">
 	<div class="container comments-tree-item" id="{{$comment->id}}">
-		<div class="media d-block d-md-flex mt-4">
+		<div class="media d-block d-md-flex">
 			<div class="avatar">
 				<img src="{{$comment->getAuthorComment->profile_photo_url}}" alt="{{$comment->getAuthorComment->login}}"/>
 			</div>
@@ -28,43 +28,53 @@
 					<span>{{$comment->getAuthorComment->comments_reply_count}} {{Lang::choice('ответ|ответа|ответов', $comment->getAuthorComment->comments_reply_count, [], 'ru')}}</span>
 				</div>
 				<div class="comm">
-					@if ($comment->getParrentComment)
-						<span><a href="{{route('currentUser', $comment->getParrentComment->getAuthorComment->login)}}">{{$comment->getParrentComment->getAuthorComment->login}}</a></span>,
-					@endif {!! $comment->description_html !!}
+					{!! $comment->description_html !!}
 				</div>
 				@if ($comment->getAuthorComment->signature)
 					<p class="signature mb-10">
-						Подпись: {{$comment->getAuthorComment->signature}}
+						{{$comment->getAuthorComment->signature}}
 					</p>
 				@endif
-				<div class="comment-instrument fx-row">
-					@if (Auth::user())
+				@if (Auth::user())
+					<div class="comment-instrument fx-row">
 						<div>
 							@if ((Auth::user()->id == $comment->getAuthorComment->id)or(in_array(Auth::user()->getGroup->id, [1,2])))
-								<a href="#">Редактировать</a>
+								<a id="edit-{{$comment->id}}" href="#">Редактировать</a>
 							@endif
 						</div>
 						<div>
 							@if (Auth::user()->id <> $comment->getAuthorComment->id)
-								<a href="#">Цитировать</a>
-								<a href="#">Ответить</a>
-								<a href="#">Жалоба</a>
+<!--								<a id="quote-{{$comment->id}}" href="#">Цитировать</a>-->
+								<a id="reply-{{$comment->id}}" onclick="textarea({{$comment->id}}, '{{$comment->getAuthorComment->login}}'); return false; {{$comment->parent = $comment->id}}" href="#">Ответить</a>
+								<a id="complaint-{{$comment->getAuthorComment->id}}" href="#">Жалоба</a>
 							@endif
 						</div>
 						<div>
 							@if (in_array(Auth::user()->getGroup->id, [1,2]))
-								<a href="#">Спамер</a>
+								<a id="spam-{{$comment->getAuthorComment->id}}" href="#">Спамер</a>
 								<a href="{{route('delComments', [$comment->getAnime->id, $comment->id])}}">Удалить</a>
 								<a href="{{route('delComments', [$comment->getAnime->id, $comment->id, true])}}">Удалить полностью</a>
 							@endif
 						</div>
-					@endif
-				</div>
+					</div>
+					<div id="edit_quote_reply_comment-{{$comment->id}}" style="display: none">
+						<form action="{{route('addCommentAnime', $comment->getAnime->id)}}" method="POST">
+							@csrf
+							<textarea class="form-control ckeditor" name="description_html" id="description_html-{{$comment->id}}" cols="30" rows="10"></textarea>
+							<input type="hidden" name="parent_comment_id" value="{{$comment->parent}}">
+							<input name="anime_id" type="hidden" value="{{$comment->getAnime->id}}">
+							<input name="author_id" type="hidden" value="{{Auth::user()->id}}">
+							<input name="user_id" type="hidden" value="{{$comment->getAuthorComment->id}}">
+							<button type="submit" class="btn btn-success">Ответить</button>
+							<button type="button" class="btn btn-danger" onclick='textarea({{$comment->id}})'>Отменить</button>
+						</form>
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>
 	<!-- Рекурсивное подключение шаблона дочерних комментариев. -->
 	<ul class="comments_list__children">
-		@each('web.frontend.comments.show', $comment->children, 'comment')
+		@each('web.frontend.anime.comments.show', $comment->children->sort(), 'comment')
 	</ul>
 </li>

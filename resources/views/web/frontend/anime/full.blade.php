@@ -150,7 +150,7 @@
 			@if ($showAnime->comment_at)
 				<form action="{{route('addCommentAnime', $showAnime->id)}}" method="POST">
 					@csrf
-					<div class="add-comment form-textarea mb-3">
+					<div id="comments" class="add-comment form-textarea mb-3">
 						<label for="addComment">Добавить комментарий</label>
 						<textarea class="form-control ckeditor" name="description_html" id="addComment" cols="30" rows="10"></textarea>
 						<input name="anime_id" type="hidden" value="{{$showAnime->id}}">
@@ -176,7 +176,7 @@
 				<h5>Комментарии</h5>
 			</div>
 			<div class="comment">
-				@include('web.frontend.comments.area', $comments)
+				@include('web.frontend.anime.comments.area', $comments)
 			</div>
 		@endif
 	</article>

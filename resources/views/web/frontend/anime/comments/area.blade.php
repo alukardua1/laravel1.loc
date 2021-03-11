@@ -2,7 +2,7 @@
 	<div class="comments__inner">
 		<!-- Рекурсивное подключение шаблона комментариев. -->
 		<ol class="comments__list">
-			@each('web.frontend.comments.show', $comments, 'comment')
+			@each('web.frontend.anime.comments.show', $comments, 'comment')
 		</ol>
 
 		<form ...>
