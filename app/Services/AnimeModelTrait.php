@@ -45,4 +45,9 @@ trait AnimeModelTrait
 	{
 		return $this->categoryMutation($this->getCategory()->get());
 	}
+
+	public function setCommentsCountAttribute($value)
+	{
+		return $this->attributes['comments_count'] = $value;
+	}
 }

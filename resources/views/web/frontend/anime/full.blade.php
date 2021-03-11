@@ -163,7 +163,7 @@
 		@endif
 		@if ($comments)
 			<div class="listing mt-3 mb-3">
-				<label>Комментарии</label>
+				<label>{{$showAnime->comments_count}} {{Lang::choice('комментарий|комментария|комментариев', $showAnime->comments_count, [], 'ru')}}</label>
 			</div>
 			<div class="comment">
 				@include('web.frontend.anime.comments.area', $comments)

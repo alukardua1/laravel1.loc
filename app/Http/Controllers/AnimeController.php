@@ -68,6 +68,7 @@ class AnimeController extends Controller
 			$showAnime->released = $showAnime->released_on;
 		}
 		$comments = $this->showComments($showAnime->getComments()->withTrashed()->get());
+		$showAnime->comments_count = $showAnime->getComments()->count();
 
 		event(new AnimeEvent($showAnime));
 
