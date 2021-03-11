@@ -167,6 +167,19 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+	$("#sides").click(function () {
+		if ($(".side").is(":hidden")) {
+			$(".side").show("slow");
+			$(".el1").hide("slow");
+		} else {
+			$(".side").hide("slow");
+			$(".el1").show("slow");
+		}
+		return false;
+	});
+});
+
+$(document).ready(function () {
 	$('.js-selectize').selectize();
 });
 

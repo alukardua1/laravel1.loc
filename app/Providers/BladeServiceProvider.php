@@ -5,6 +5,7 @@ namespace App\Providers;
 use Blade;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use Route;
 
 class BladeServiceProvider extends ServiceProvider
 {
@@ -47,6 +48,22 @@ class BladeServiceProvider extends ServiceProvider
 			'admin_link',
 			function () {
 				return Auth::user()->getGroup->is_dashboard == 1;
+			}
+		);
+		Blade::if(
+			'available',
+			function ($expression) {
+				$routeName = explode('|', $expression);
+
+				return in_array(Route::currentRouteName(), $routeName, true);
+			}
+		);
+		Blade::if(
+			'not_available',
+			function ($expression) {
+				$routeName = explode('|', $expression);
+
+				return !in_array(Route::currentRouteName(), $routeName, true);
 			}
 		);
 	}

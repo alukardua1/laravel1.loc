@@ -30,9 +30,12 @@
 
 <main id="app" class="container">
 	<div class="main-content">
+		@not_available('showAnime')
 		<div id="carousel" class="owl-carousel owl-theme">
 			@include('web.frontend.anime.component.carousel')
 		</div>
+		@endnot_available
+		@not_available('showAnime')
 		<div class="search">
 			<div class="form-group" id="q_search">
 				<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="search" name="search">
@@ -44,6 +47,7 @@
 			{{--				--}}{{--				<button class="btn btn-outline-success" type="submit">Поиск</button>--}}
 			{{--			</form>--}}
 		</div>
+		@endnot_available
 		<div class="content">
 			<div class="side">
 				@include('web.frontend.layout.component.side')
@@ -77,6 +81,8 @@
 		integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/translations/ru.js"></script>
+<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script src="https://yastatic.net/share2/share.js"></script>
 <script type="text/javascript" src="{{ asset('js/selectize.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/my.js') }}"></script>
 </body>

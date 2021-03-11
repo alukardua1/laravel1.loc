@@ -22,50 +22,30 @@ a {
 	text-decoration: none;
 }
 
-.contents{
+.contents {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
 	.shortstory-img {
 		width: 100%;
 		height: 200px;
 	}
-
-	.desctop {
-		display: grid !important;
-	}
-
-	.mobile {
-		display: none !important;
-	}
-
-	.content {
-		grid-template-columns: 350px 1fr;
-	}
+	/*#carousel, .side, .el1 {
+		display: block;
+	}*/
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 959px) {
 	.shortstory-img {
 		width: 100%;
 		height: 200px;
-	}
-
-	.desctop {
-		display: none !important;
-	}
-
-	.mobile {
-		display: grid !important;
-	}
-
-	.content {
-		grid-template-columns: 1fr;
 	}
 
 	#carousel, .side {
 		display: none;
+		max-width: 100% !important;
 	}
 
 	.bd-example {
@@ -75,16 +55,27 @@ a {
 	}
 }
 
-.winter{
+.content {
+	grid-template-columns: auto auto;
+}
+
+.side {
+	max-width: 350px;
+}
+
+.winter {
 	background: url('../images/background_winter.jpg') fixed;
 }
-.spring{
+
+.spring {
 	background: url('../images/background_spring.jpg') fixed;
 }
-.summer{
+
+.summer {
 	background: url('../images/background_summer.jpg') fixed;
 }
-.autumn{
+
+.autumn {
 	background: url('../images/background_autumn.jpg') fixed;
 }
 
@@ -215,7 +206,7 @@ form[name="registration"] input[type="email"], form[name="registration"] textare
 	background-color: #000000;
 }
 
-.form-check-input{
+.form-check-input {
 	border: 1px solid #ced4da;
 }
 
@@ -270,7 +261,7 @@ form[name="registration"] input[type="email"], form[name="registration"] textare
 	padding: 10px;
 }
 
-.side-cat, .side-cat-slave, .form-login, .full-title, .full-description, .inform, .player, .related, .comment, .user-title, .pm h1 {
+.side-cat, .side-cat-slave, .form-login, .full-title, .full-description, .comment, .user-title, .pm h1 {
 	border-bottom: 1px dashed #e3e3e3;
 	padding-bottom: 10px;
 }
@@ -860,7 +851,7 @@ fieldset div select {
 
 .full-title {
 	display: grid;
-	grid-template-columns: 90% max-content max-content;
+	grid-template-columns: auto max-content max-content;
 }
 
 .full-title .favor {
@@ -1647,9 +1638,10 @@ img {
 	font-weight: 700;
 }
 
-.post-comments li{
+.post-comments li {
 	display: flex !important;
 }
+
 .comment-instrument div {
 	flex-direction: column;
 }
@@ -1667,7 +1659,7 @@ img {
 	font-weight: 700;
 }
 
-.up-second li a, .up-third li a{
+.up-second li a, .up-third li a {
 	padding: 0 10px;
 	display: inline-block;
 	height: 40px;
@@ -1753,7 +1745,7 @@ input, select {
 	vertical-align: middle !important;
 }
 
-.form-textarea > label, .tester >label {
+.form-textarea > label, .listing > label {
 	display: block;
 	padding: 10px 20px;
 	background-color: #444444;
@@ -2047,17 +2039,22 @@ input#searchinput {
 
 a.disabled {
 	pointer-events: none; /* делаем ссылку некликабельной */
-	cursor: default;  /* устанавливаем курсор в виде стрелки */
-	color: #999; /* цвет текста для нективной ссылки */
+	cursor: default; /* устанавливаем курсор в виде стрелки */
+	color: #999999; /* цвет текста для нективной ссылки */
 }
 
 .ck-editor__editable_inline {
 	min-height: 300px;
 }
 
-.ck-content, .comm{
+.ck-content, .comm {
 	word-break: break-word;
 }
+
 .comments_list__children {
 	padding-inline-start: 0;
+}
+
+.editing{
+	margin-left: 5px;
 }

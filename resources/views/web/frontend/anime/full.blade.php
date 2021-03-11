@@ -25,9 +25,9 @@
 						:post={{ $showAnime->id }} :favorited={{ $showAnime->favorited() ? 'true' : 'false' }}>
 				</favorite>
 			@endif
-			<div id="edit">
-				<i class="far fa-edit"></i>
-			</div>
+			@if (Auth::user()->getGroup->is_dashboard)
+				<a href="#" type="button" class="btn btn-danger editing"><i class="far fa-edit"></i></a>
+			@endif
 		</div>
 		<div class="inform">
 			<div class="poster">
@@ -43,8 +43,6 @@
 					@endif
 				</div>
 				<div class="cos-but mt-3">
-					<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-					<script src="https://yastatic.net/share2/share.js"></script>
 					<div class="ya-share2 bottom" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,whatsapp,skype,telegram"
 						 data-counter="ig"></div>
 				</div>
@@ -54,8 +52,8 @@
 			</div>
 			@include('web.frontend.anime.component.fullstory-info')
 		</div>
-		<div class="">
-			<h5>Смотреть онлайн</h5>
+		<div class="listing mt-3 mb-3">
+			<label>Смотреть онлайн</label>
 		</div>
 		<div class="player">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -88,11 +86,6 @@
 								</div>
 							@endforeach
 						</ul>
-						@if(Auth::user())
-							<div>
-								{brokenLink}
-							</div>
-						@endif
 					</div>
 				@endif
 				@if($showAnime->getPlayer->isNotEmpty())
@@ -114,13 +107,13 @@
 				@endif
 			</div>
 		</div>
-		<div class="">
-			<h5>Смотрите так же</h5>
+		<div class="listing mt-3 mb-3">
+			<label>Смотрите так же</label>
 		</div>
 		<div class="related">
 			{related-news}
 		</div>
-		<div class="">
+		<div class="listing mt-3 mb-3">
 			<label>Связанное</label>
 		</div>
 		<div class="franch">
@@ -169,8 +162,8 @@
 			</div>
 		@endif
 		@if ($comments)
-			<div class="">
-				<h5>Комментарии</h5>
+			<div class="listing mt-3 mb-3">
+				<label>Комментарии</label>
 			</div>
 			<div class="comment">
 				@include('web.frontend.anime.comments.area', $comments)
