@@ -121,7 +121,7 @@
 			{related-news}
 		</div>
 		<div class="">
-			<h5>Связанное</h5>
+			<label>Связанное</label>
 		</div>
 		<div class="franch">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -142,9 +142,6 @@
 					{chronology}
 				</div>
 			</div>
-		</div>
-		<div class="">
-			<h5>Добавить комментарий</h5>
 		</div>
 		@if (Auth::user())
 			@if ($showAnime->comment_at)
@@ -181,10 +178,3 @@
 		@endif
 	</article>
 @endsection
-<script>
-	import Label from "@/Jetstream/Label";
-
-	export default {
-		components: {Label}
-	}
-</script>

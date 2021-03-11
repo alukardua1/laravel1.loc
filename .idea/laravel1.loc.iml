@@ -153,5 +153,6 @@
     <orderEntry type="library" name="all" level="application" />
     <orderEntry type="library" name="typeahead.js" level="application" />
     <orderEntry type="library" name="ckeditor" level="application" />
+    <orderEntry type="library" name="ru" level="application" />
   </component>
 </module>

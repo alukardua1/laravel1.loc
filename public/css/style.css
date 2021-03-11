@@ -1753,7 +1753,7 @@ input, select {
 	vertical-align: middle !important;
 }
 
-.form-textarea > label {
+.form-textarea > label, .tester >label {
 	display: block;
 	padding: 10px 20px;
 	background-color: #444444;
