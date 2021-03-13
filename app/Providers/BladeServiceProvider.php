@@ -27,9 +27,10 @@ class BladeServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		Blade::directive(
-			'test',
+			'declination',
 			function ($string) {
-				return "<?php echo $string; ?>";
+				[$string, $text] = explode(', ', $string);
+				return "<?php echo Lang::choice($text, $string, [], 'ru'); ?>";
 			}
 		);
 		Blade::if(

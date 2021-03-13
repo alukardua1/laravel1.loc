@@ -24,8 +24,8 @@
 					</div>
 				</div>
 				<div class="user-comments mb-3 mt-3" itemprop="commentCount" itemscope itemtype="http://schema.org/Comment">
-					<span>{{$comment->getAuthorComment->comments_count}} {{Lang::choice('комментарий|комментария|комментариев', $comment->getAuthorComment->comments_count, [], 'ru')}}</span>
-					<span>{{$comment->getAuthorComment->comments_reply_count}} {{Lang::choice('ответ|ответа|ответов', $comment->getAuthorComment->comments_reply_count, [], 'ru')}}</span>
+					<span>{{$comment->getAuthorComment->comments_count}} @declination($comment->getAuthorComment->comments_count, 'комментарий|комментария|комментариев')</span>
+					<span>{{$comment->getAuthorComment->comments_reply_count}} @declination($comment->getAuthorComment->comments_reply_count, 'ответ|ответа|ответов')</span>
 				</div>
 				<div class="comm">
 					{!! $comment->description_html !!}
@@ -46,7 +46,7 @@
 							@if (Auth::user()->id <> $comment->getAuthorComment->id)
 <!--								<a id="quote-{{$comment->id}}" href="#">Цитировать</a>-->
 								<a id="reply-{{$comment->id}}" onclick="textarea({{$comment->id}}, '{{$comment->getAuthorComment->login}}'); return false; {{$comment->parent = $comment->id}}" href="#">Ответить</a>
-								<a id="complaint-{{$comment->getAuthorComment->id}}" href="#">Жалоба</a>
+								<a id="complaint-{{$comment->getAuthorComment->id}}" href="#" data-toggle="modal" data-target="#complaint">Жалоба</a>
 							@endif
 						</div>
 						<div>

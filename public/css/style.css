@@ -238,7 +238,7 @@ form[name="registration"] input[type="email"], form[name="registration"] textare
 	border-right: 0;
 }
 
-.side, .main, .navbar, .search, footer, .info-footer, .genre-dropdown-menu, .login-dropdown-menu {
+.side, .main, .navbar, .search, footer, .info-footer, .genre-dropdown-menu, .login-dropdown-menu, .complaint {
 	background: url("../images/fon_blokov.png");
 }
 

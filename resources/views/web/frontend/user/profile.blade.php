@@ -32,8 +32,8 @@
 		<ul class="up-second fx-row">
 			<li>{{$currentUser->anime_count}} <p>Публикаций</p></li>
 			<li>
-				<div>{{$currentUser->comments_count}} <span>{{Lang::choice('комментарий|комментария|комментариев', $currentUser->comments_count, [], 'ru')}}</span></div>
-				<div>{{$currentUser->comments_reply_count}} <span>{{Lang::choice('ответ|ответа|ответов', $currentUser->comments_reply_count, [], 'ru')}}</span></div>
+				<div>{{$currentUser->comments_count}} <span>@declination($currentUser->comments_count, 'комментарий|комментария|комментариев')</span></div>
+				<div>{{$currentUser->comments_reply_count}} <span>declination($currentUser->comments_reply_count, 'ответ|ответа|ответов')</span></div>
 			</li>
 			<li>
 				@if (Auth::user())
