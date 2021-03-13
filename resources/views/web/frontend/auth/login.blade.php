@@ -60,7 +60,7 @@
 				<label class="form-check-label" for="remember">Запомнить</label>
 			</div>
 			<div class="mb-3">
-				<p>Забыли <a href="{lostpassword-link}" class="blue-text ml-1">пароль?</a></p>
+				<p>Забыли <a href="#" class="blue-text ml-1">пароль?</a></p>
 				<p><a class="right" href="{{route('register')}}">Регистрация</a></p>
 			</div>
 			<div class="row">

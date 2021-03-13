@@ -16,12 +16,12 @@ class CreateAnimesTable extends Migration
         Schema::create('animes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('metatitle');
+            $table->text('metatitle');
             $table->text('keywords');
             $table->string('name')->index();
             $table->string('russian')->index();
-            $table->string('original_img')->nullable();
-            $table->string('preview_img')->nullable();
+            $table->text('original_img')->nullable();
+            $table->text('preview_img')->nullable();
             $table->string('url');
             $table->foreignId('kind_id');
             $table->foreignId('channel_id')->default(0);
