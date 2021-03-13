@@ -39,7 +39,7 @@ trait ImageTrait
 	{
 		$Extension = $requestForm[$this->config['imgColumns']]->getClientOriginalExtension();//Получает расширение файла
 		if (in_array($Extension, $this->config['extension'])) {
-			$fileName = $this->config['imgNamePrefix'] . $updateAnime->id . '.' . $Extension;// формирует имя файла
+			$fileName = strtotime(time()) . '_' . $this->config['imgNamePrefix'] . $updateAnime->id . '_' . $updateAnime->name . '.' . $Extension;// формирует имя файла
 			$pathImg = $this->config['patchImgPublic'] . Str::slug(
 					$updateAnime->title
 				) . $this->config['patchSeparator'];          //путь к большой картинке

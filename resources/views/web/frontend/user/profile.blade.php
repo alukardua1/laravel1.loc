@@ -33,7 +33,7 @@
 			<li>{{$currentUser->anime_count}} <p>Публикаций</p></li>
 			<li>
 				<div>{{$currentUser->comments_count}} <span>@declination($currentUser->comments_count, 'комментарий|комментария|комментариев')</span></div>
-				<div>{{$currentUser->comments_reply_count}} <span>declination($currentUser->comments_reply_count, 'ответ|ответа|ответов')</span></div>
+				<div>{{$currentUser->comments_reply_count}} <span>@declination($currentUser->comments_reply_count, 'ответ|ответа|ответов')</span></div>
 			</li>
 			<li>
 				@if (Auth::user())

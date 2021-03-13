@@ -360,7 +360,7 @@ class DLEParseRepository implements DLEParse
 		$def = '/';
 		$path_info = pathinfo($image);
 		$Extension = $path_info['extension'];
-		$fileName = 'anime_' . $anime->id . '.' . $Extension;
+		$fileName = strtotime($anime->date).'_anime_' . $anime->id. '_' . Str::slug($anime->title) . '.' . $Extension;
 		$pathImg = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';//путь к большой картинке
 		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке
 		$pathImgSave = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';
