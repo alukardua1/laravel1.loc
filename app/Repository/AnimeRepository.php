@@ -32,11 +32,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  null  $isAdmin
+	 * @param  bool  $isAdmin
 	 *
 	 * @return \Illuminate\Database\Eloquent\Builder|mixed
 	 */
-	public function getAllAnime($isAdmin = null)
+	public function getAllAnime($isAdmin = false)
 	{
 		if ($isAdmin) {
 			return Anime::orderBy('updated_at', 'DESC');

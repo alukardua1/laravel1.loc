@@ -20,6 +20,16 @@ trait AnimeModelTrait
 		return $this->attributes['aired'] = (new Carbon($value))->format('d.m.Y');
 	}
 
+	public function setUpdateAttribute($value)
+	{
+		return $this->attributes['update'] = (new Carbon($value))->format('d.m.Y');
+	}
+
+	public function setCreateAttribute($value)
+	{
+		return $this->attributes['create'] = (new Carbon($value))->format('d.m.Y');
+	}
+
 	/**
 	 * @param $value
 	 *

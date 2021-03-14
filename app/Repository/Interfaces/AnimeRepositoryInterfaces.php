@@ -19,9 +19,11 @@ interface AnimeRepositoryInterfaces
 	public function getAnime($id);
 
 	/**
+	 * @param  bool  $isAdmin
+	 *
 	 * @return mixed
 	 */
-	public function getAllAnime();
+	public function getAllAnime($isAdmin = false);
 
 	/**
 	 * @param $count

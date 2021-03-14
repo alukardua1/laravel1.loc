@@ -109,3 +109,28 @@ body {
 		font-size: 3.5rem;
 	}
 }
+
+.sidebar .nav-link {
+	color: #fff !important;
+}
+
+.table-dark a {
+	color: #fff !important;
+	text-decoration: none;
+}
+
+.table-dark a:hover {
+	color: #6574cd !important;
+}
+
+.fa-check-circle {
+	color: green;
+}
+
+.fa-exclamation-circle {
+	color: red;
+}
+
+.list-group-item {
+	background-color: #343a40!important;
+}

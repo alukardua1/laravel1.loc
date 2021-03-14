@@ -1,8 +1,8 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
 	<div class="position-sticky pt-3">
 		<ul class="nav flex-column">
 			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="#">
+				<a class="nav-link active" aria-current="page" href="{{route('dashboard')}}">
 					<span data-feather="home"></span>
 					Главная
 				</a>
@@ -17,20 +17,18 @@
 					Редактирование
 				</a>
 				<div class="collapse" id="edit">
-					<div class="card card-body">
-						<ul class="nav flex-column">
-							<li class="nav-item">
-								<a class="nav-link" href="#">
+						<ul class="list-group list-group-flush bg-dark">
+							<li class="list-group-item">
+								<a class="nav-link" href="{{route('showAllAnimeAdmin')}}">
 									Аниме
 								</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
+							<li class="list-group-item">
+								<a class="nav-link" href="{{route('showAllCategoryAdmin')}}">
 									Категории
 								</a>
 							</li>
 						</ul>
-					</div>
 				</div>
 			</li>
 			<li class="nav-item">
