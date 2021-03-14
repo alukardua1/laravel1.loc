@@ -111,7 +111,7 @@
 			<label>Смотрите так же</label>
 		</div>
 		<div class="related">
-			{related-news}
+			@each('web.frontend.anime.component.related', $related, 'relates')
 		</div>
 		<div class="listing mt-3 mb-3">
 			<label>Связанное</label>

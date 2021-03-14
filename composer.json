@@ -13,7 +13,7 @@
     "ext-json": "*",
     "fideloper/proxy": "^4.4",
     "fruitcake/laravel-cors": "^2.0",
-    "guzzlehttp/guzzle": "^7.0.1",
+    "guzzlehttp/guzzle": "^7.2",
     "inertiajs/inertia-laravel": "^0.3.5",
     "intervention/image": "^2.5",
     "itsgoingd/clockwork": "^5.0",

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\AnimeEvent;
 use App\Http\Requests\CommentRequest;
+use App\Models\AnimeRelated;
 use Illuminate\Http\Request;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
@@ -69,6 +70,11 @@ class AnimeController extends Controller
 		}
 		$comments = $this->showComments($showAnime->getComments()->withTrashed()->get());
 		$showAnime->comments_count = $showAnime->getComments()->count();
+		/**
+		 * @var $related
+		 * @todo Придумать как сделать в relations
+		 */
+		$related = $showAnime->load('getCategory.getAnime')->inRandomOrder()->limit(6)->get();
 
 		event(new AnimeEvent($showAnime));
 
@@ -76,7 +82,7 @@ class AnimeController extends Controller
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
 		}
 
-		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus', 'comments'));
+		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus', 'comments', 'related'));
 	}
 
 	public function search(Request $request)

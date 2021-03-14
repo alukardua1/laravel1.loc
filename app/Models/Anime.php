@@ -222,4 +222,9 @@ class Anime extends Model
 	{
 		return $this->belongsTo(Comment::class, 'id', 'anime_id')->latest();
 	}
+
+	public function getRelationAnime()
+	{
+		return $this->belongsToMany($this, 'anime_related', 'anime_id', 'relation_id', 'id', 'id')->latest();
+	}
 }
