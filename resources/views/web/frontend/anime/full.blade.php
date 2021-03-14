@@ -26,7 +26,7 @@
 				</favorite>
 			@endif
 			@if (Auth::user()->getGroup->is_dashboard)
-				<a href="#" type="button" class="btn btn-danger editing"><i class="far fa-edit"></i></a>
+				<a target="_blank" href="{{route('editAnimeAdmin', $showAnime->id)}}" type="button" class="btn btn-danger editing"><i class="far fa-edit"></i></a>
 			@endif
 		</div>
 		<div class="inform">

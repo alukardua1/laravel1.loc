@@ -1,6 +1,6 @@
 @extends('web.backend.layout.app')
 
-@section('title', 'admin')
+@section('title', 'Админка')
 
 @section('content')
 

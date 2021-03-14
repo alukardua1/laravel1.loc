@@ -1,7 +1,9 @@
 @extends('web.backend.layout.app')
 
+@section('title', 'Редактирование новостей опубликованных на сайте')
+
 @section('content')
-	<table class="table table-dark">
+	<table class="table table-dark table-striped table-sm">
 		<thead>
 		<tr>
 			<th scope="col">Обновлено / Добавлено</th>
@@ -11,6 +13,7 @@
 			<th scope="col">Опубликовано</th>
 			<th scope="col">Категория</th>
 			<th scope="col">Автор</th>
+			<th scope="col">Действия</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -42,6 +45,10 @@
 				</td>
 				<td>
 					{{$anime->getUser->login}}
+				</td>
+				<td>
+					<i class="far fa-edit"></i>
+					<i class="far fa-trash-alt"></i>
 				</td>
 			</tr>
 		@endforeach
