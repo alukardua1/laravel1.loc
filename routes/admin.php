@@ -10,9 +10,5 @@ use App\Http\Controllers\Auth\LoginAdminController;
 Route::group(
 	['prefix' => 'dashboard'],
 	function () {
-		Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth.admin');
+		Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth.admin', 'is_admin']);
 	});
-
-
-Route::get('login', [LoginAdminController::class, 'showLoginForm'])->name('loginAdmin');
-Route::post('login', [LoginAdminController::class, 'login']);

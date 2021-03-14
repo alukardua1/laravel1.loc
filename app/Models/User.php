@@ -91,6 +91,11 @@ class User extends Authenticatable
 		$this->cacheFor = Config::get('secondConfig.cache_time');
 	}
 
+	public function isAdmin()
+	{
+		return $this->getGroup->is_dashboard === 1;
+	}
+
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
