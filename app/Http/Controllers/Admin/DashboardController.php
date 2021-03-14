@@ -17,6 +17,6 @@ class DashboardController extends Controller
 	 */
 	public function index()
 	{
-		return view($this->backend . 'layout.home');
+		return view($this->backend . 'layout.components.home');
 	}
 }
