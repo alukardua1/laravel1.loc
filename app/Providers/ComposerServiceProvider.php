@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\ViewComposers\AnonsComposer;
 use App\Http\ViewComposers\CarouselAnimeComposer;
 use App\Http\ViewComposers\CategoryComposer;
+use App\Http\ViewComposers\ChannelComposer;
 use App\Http\ViewComposers\CountryComposer;
 use App\Http\ViewComposers\KindComposer;
 use App\Http\ViewComposers\MenuComposer;
@@ -44,5 +45,6 @@ class ComposerServiceProvider extends ServiceProvider
 	    \View::composer('*', QualityComposer::class);
 	    \View::composer('*', AnonsComposer::class);
 	    \View::composer('*', PopularComposer::class);
+	    \View::composer('*', ChannelComposer::class);
     }
 }

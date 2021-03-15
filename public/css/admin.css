@@ -202,3 +202,14 @@ body {
 	width: 100% !important;
 	color: #000;
 }
+
+.input-group-text {
+	background-color: transparent;
+	color: #fff;
+	border: none;
+}
+
+form .card {
+	border: none;
+	background-color: transparent !important;
+}

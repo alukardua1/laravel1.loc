@@ -52,7 +52,9 @@
 	})
 })()
 
-$('.js-selectize').selectize({
+$('.js-selectize').selectize();
+
+$('.js-selectize-multiple').selectize({
 	plugins: ['remove_button'],
 	delimiter: ',',
 	persist: false,
