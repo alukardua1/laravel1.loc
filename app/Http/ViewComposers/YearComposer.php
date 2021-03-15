@@ -8,8 +8,8 @@ use Illuminate\View\View;
 
 class YearComposer
 {
-	public    $menu;
-	protected $year;
+	public    $year;
+	protected $yearRepository;
 
 	/**
 	 * Create a menu composer.
@@ -18,8 +18,8 @@ class YearComposer
 	 */
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{
-		$this->year = $yearAiredRepositoryInterfaces;
-		$this->menu = $this->menu();
+		$this->yearRepository = $yearAiredRepositoryInterfaces;
+		$this->year = $this->menu();
 	}
 
 	/**
@@ -27,7 +27,7 @@ class YearComposer
 	 */
 	public function menu()
 	{
-		return $this->year->getYearAired()->sortBy('name');
+		return $this->yearRepository->getYearAired()->sortBy('name');
 	}
 
 	/**
@@ -39,6 +39,6 @@ class YearComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('menu', $this->menu);
+		$view->with('year', $this->year);
 	}
 }

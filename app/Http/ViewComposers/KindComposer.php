@@ -9,9 +9,8 @@ use Illuminate\View\View;
 
 class KindComposer
 {
-	public    $menu;
-	public    $path;
-	protected $kind;
+	public    $kind;
+	protected $kindRepository;
 
 	/**
 	 * Create a menu composer.
@@ -20,17 +19,8 @@ class KindComposer
 	 */
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
-		$this->kind = $kindRepositoryInterfaces;
-		$this->menu = $this->menu();
-		$this->path = $this->path();
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function path()
-	{
-		return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+		$this->kindRepository = $kindRepositoryInterfaces;
+		$this->kind = $this->menu();
 	}
 
 	/**
@@ -38,7 +28,7 @@ class KindComposer
 	 */
 	public function menu()
 	{
-		return $this->kind->getKind();
+		return $this->kindRepository->getKind();
 	}
 
 	/**
@@ -50,7 +40,6 @@ class KindComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('menu', $this->menu);
-		$view->with('path', $this->path);
+		$view->with('kind', $this->kind);
 	}
 }

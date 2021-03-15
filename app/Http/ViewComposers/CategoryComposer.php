@@ -12,11 +12,10 @@ use Illuminate\View\View;
  *
  * @package App\Http\ViewComposers
  */
-class MenuComposer
+class CategoryComposer
 {
-	public    $menu;
-	public    $path;
-	protected $category;
+	public    $category;
+	protected $categoryRepository;
 	public $i = 0;
 
 	/**
@@ -26,17 +25,8 @@ class MenuComposer
 	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
-		$this->category = $categoryRepositoryInterfaces;
-		$this->menu = $this->menu();
-		$this->path = $this->path();
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function path()
-	{
-		return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+		$this->categoryRepository = $categoryRepositoryInterfaces;
+		$this->category = $this->menu();
 	}
 
 	/**
@@ -44,7 +34,7 @@ class MenuComposer
 	 */
 	public function menu()
 	{
-		return $this->category->getCategories()->get();
+		return $this->categoryRepository->getCategories()->get();
 	}
 
 	/**
@@ -56,7 +46,6 @@ class MenuComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('menu', $this->menu);
-		$view->with('path', $this->path);
+		$view->with('category', $this->category);
 	}
 }

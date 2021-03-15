@@ -10,9 +10,8 @@ use Illuminate\View\View;
 
 class MpaaRatingComposer
 {
-	public    $menu;
-	public    $path;
-	protected $mpaa;
+	public    $mpaa;
+	protected $mpaaRepository;
 
 	/**
 	 * Create a menu composer.
@@ -21,17 +20,8 @@ class MpaaRatingComposer
 	 */
 	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
-		$this->mpaa = $mpaaRepositoryInterfaces;
-		$this->menu = $this->menu();
-		$this->path = $this->path();
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function path()
-	{
-		return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+		$this->mpaaRepository = $mpaaRepositoryInterfaces;
+		$this->mpaa = $this->menu();
 	}
 
 	/**
@@ -39,7 +29,7 @@ class MpaaRatingComposer
 	 */
 	public function menu()
 	{
-		return $this->mpaa->getMpaa();
+		return $this->mpaaRepository->getMpaa();
 	}
 
 	/**
@@ -51,7 +41,6 @@ class MpaaRatingComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('menu', $this->menu);
-		$view->with('path', $this->path);
+		$view->with('mpaa', $this->mpaa);
 	}
 }

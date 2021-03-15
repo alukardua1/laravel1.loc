@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class PopularComposer
 {
-	protected $anime;
+	protected $popular;
 	protected $animeAll;
 
 	/**
@@ -20,7 +20,7 @@ class PopularComposer
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		$this->animeAll = $animeRepositoryInterfaces;
-		$this->anime = $this->anime();
+		$this->popular = $this->anime();
 	}
 
 	/**
@@ -36,6 +36,6 @@ class PopularComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeAnons', $this->anime);
+		$view->with('animeAnons', $this->popular);
 	}
 }

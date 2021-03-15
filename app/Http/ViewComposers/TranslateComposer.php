@@ -10,9 +10,8 @@ use Illuminate\View\View;
 
 class TranslateComposer
 {
-	public    $menu;
-	public    $path;
-	protected $translate;
+	public    $translate;
+	protected $translateRepository;
 
 	/**
 	 * Create a menu composer.
@@ -21,17 +20,8 @@ class TranslateComposer
 	 */
 	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{
-		$this->translate = $translateRepositoryInterfaces;
-		$this->menu = $this->menu();
-		$this->path = $this->path();
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function path()
-	{
-		return parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+		$this->translateRepository = $translateRepositoryInterfaces;
+		$this->translate = $this->menu();
 	}
 
 	/**
@@ -39,7 +29,7 @@ class TranslateComposer
 	 */
 	public function menu()
 	{
-		return $this->translate->getTranslate()->sort();
+		return $this->translateRepository->getTranslate()->sort();
 	}
 
 	/**
@@ -51,7 +41,6 @@ class TranslateComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('menu', $this->menu);
-		$view->with('path', $this->path);
+		$view->with('translate', $this->translate);
 	}
 }

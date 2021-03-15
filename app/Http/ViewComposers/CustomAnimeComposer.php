@@ -8,7 +8,7 @@ use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
 class CustomAnimeComposer
 {
-	protected $anime;
+	protected $custom;
 	protected $animeAll;
 
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)

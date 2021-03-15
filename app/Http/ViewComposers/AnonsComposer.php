@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class AnonsComposer
 {
-	protected $anime;
+	protected $anons;
 	protected $animeAll;
 
 	/**
@@ -20,7 +20,7 @@ class AnonsComposer
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		$this->animeAll = $animeRepositoryInterfaces;
-		$this->anime = $this->anime();
+		$this->anons = $this->anime();
 	}
 
 	/**
@@ -36,6 +36,6 @@ class AnonsComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeAnons', $this->anime);
+		$view->with('animeAnons', $this->anons);
 	}
 }

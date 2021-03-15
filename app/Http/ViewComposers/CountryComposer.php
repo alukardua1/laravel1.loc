@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class CountryComposer
 {
-	public    $menu;
-	protected $country;
+	public    $country;
+	protected $countryRepository;
 
 	/**
 	 * Create a menu composer.
@@ -19,8 +19,8 @@ class CountryComposer
 	 */
 	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{
-		$this->country = $countryRepositoryInterfaces;
-		$this->menu = $this->menu();
+		$this->countryRepository = $countryRepositoryInterfaces;
+		$this->country = $this->menu();
 	}
 
 	/**
@@ -28,7 +28,7 @@ class CountryComposer
 	 */
 	public function menu()
 	{
-		return $this->country->getCountry();
+		return $this->countryRepository->getCountry();
 	}
 
 	/**
@@ -40,6 +40,6 @@ class CountryComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('menu', $this->menu);
+		$view->with('country', $this->country);
 	}
 }

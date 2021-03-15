@@ -14,7 +14,7 @@ use Illuminate\View\View;
  */
 class CarouselAnimeComposer
 {
-	protected $anime;
+	protected $carousel;
 	protected $animeAll;
 
 	/**
@@ -25,7 +25,7 @@ class CarouselAnimeComposer
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		$this->animeAll = $animeRepositoryInterfaces;
-		$this->anime = $this->anime();
+		$this->carousel = $this->anime();
 	}
 
 	/**
@@ -41,6 +41,6 @@ class CarouselAnimeComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeCarousel', $this->anime);
+		$view->with('animeCarousel', $this->carousel);
 	}
 }
