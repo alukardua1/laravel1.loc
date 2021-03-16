@@ -3,6 +3,11 @@
 @section('title', 'Редактирование новостей опубликованных на сайте')
 
 @section('content')
+		<div class="input-group mb-3">
+			<input type="text" id="name" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="name">
+			<a type="button" class="btn btn-primary btn-sm" id="nameBtn" href="#">Поиск</a>
+		</div>
+		<div class="alert alert-success" role="alert" id='searchsuggestions' style="display: none"></div>
 	<table class="table table-dark table-striped table-sm">
 		<thead>
 		<tr>

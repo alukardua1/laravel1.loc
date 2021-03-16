@@ -105,7 +105,7 @@ class AnimeAdminController extends Controller
 			if ($animeSearch) {
 				$output .= "<ul class=\"list-group\">";
 				foreach ($animeSearch as $key => $value) {
-					$output .= "<li class=\"list-group-item\"><a href=\"/anime/{$value->id}-{$value->url}\">
+					$output .= "<li class=\"list-group-item\"><a href=\"/anime/{$value->id}/edit\">
 					<span class=\"searchheading\">{$value->name}</span>
 					</a></li>";
 				}

@@ -7,7 +7,7 @@
 		@csrf
 		<div class="input-group mb-3">
 			<label for="name" class="input-group-text">Заголовок</label>
-			<input type="text" id="name" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="name" value="{{$currentAnime->name}}">
+			<input type="text" id="name" class="form-control" placeholder="Заголовок" aria-label="Заголовок" aria-describedby="name" value="{{$currentAnime->name}}">
 			<a type="button" class="btn btn-primary btn-sm" id="nameBtn" href="#">Найти похожее</a>
 		</div>
 		<div class="alert alert-success" role="alert" id='searchsuggestions' style="display: none"></div>
