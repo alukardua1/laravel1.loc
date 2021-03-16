@@ -213,3 +213,8 @@ form .card {
 	border: none;
 	background-color: transparent !important;
 }
+
+#searchsuggestions .list-group .list-group-item a {
+	text-decoration: none;
+	color: #fff;
+}

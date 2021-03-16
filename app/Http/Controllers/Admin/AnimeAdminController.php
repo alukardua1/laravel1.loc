@@ -96,4 +96,22 @@ class AnimeAdminController extends Controller
     {
         //
     }
+
+	public function search(Request $request)
+	{
+		if ($request->ajax()) {
+			$output = "";
+			$animeSearch = $this->animeRepository->getSearchAnime($request);
+			if ($animeSearch) {
+				$output .= "<ul class=\"list-group\">";
+				foreach ($animeSearch as $key => $value) {
+					$output .= "<li class=\"list-group-item\"><a href=\"/anime/{$value->id}-{$value->url}\">
+					<span class=\"searchheading\">{$value->name}</span>
+					</a></li>";
+				}
+				$output .= "</ul>";
+				return Response($output);
+			}
+		}
+	}
 }

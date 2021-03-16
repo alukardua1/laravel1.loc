@@ -15,6 +15,7 @@ class CreateChronologiesTable extends Migration
     {
         Schema::create('chronologies', function (Blueprint $table) {
             $table->id();
+            $table->string('positions');
             $table->foreignId('source_id');
             $table->foreignId('target_id');
             $table->string('relation');

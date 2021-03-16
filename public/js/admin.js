@@ -81,3 +81,18 @@ function ClassicEditorCk(windows, selector){
 }
 
 ClassicEditorCk(window['descript'], '#description_html');
+
+$('#nameBtn').click(function () {
+	var $value = $("#name").val();
+	console.log($value)
+	if ($value.length >= 4) {
+		$.ajax({
+			type: 'get',
+			url: '/searchAdmin',
+			data: {'search': $value},
+			success: function (data) {
+				$("#searchsuggestions").html(data).fadeIn()
+			}
+		});
+	}
+})

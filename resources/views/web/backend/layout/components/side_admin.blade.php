@@ -17,24 +17,78 @@
 					Редактирование
 				</a>
 				<div class="collapse" id="edit">
-						<ul class="list-group list-group-flush bg-dark">
-							<li class="list-group-item">
-								<a class="nav-link" href="{{route('showAllAnimeAdmin')}}">
-									Аниме
-								</a>
-							</li>
-							<li class="list-group-item">
-								<a class="nav-link" href="{{route('showAllCategoryAdmin')}}">
-									Категории
-								</a>
-							</li>
-						</ul>
+					<ul class="list-group list-group-flush bg-dark">
+						<li class="list-group-item">
+							<a class="nav-link" href="{{route('showAllAnimeAdmin')}}">
+								Аниме
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="{{route('showAllCategoryAdmin')}}">
+								Категории
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Люди
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Персонажи
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Страны
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								MPAA рейтинг
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Тип
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Каналы
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Франшиза
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Хронология
+							</a>
+						</li>
+					</ul>
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" data-toggle="collapse" href="#user" role="button" aria-expanded="false" aria-controls="user">
 					Пользователи
 				</a>
+				<div class="collapse" id="user">
+					<ul class="list-group list-group-flush bg-dark">
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Пользователи
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Группы
+							</a>
+						</li>
+					</ul>
+				</div>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">

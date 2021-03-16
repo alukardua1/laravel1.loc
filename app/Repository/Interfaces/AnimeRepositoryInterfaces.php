@@ -54,7 +54,7 @@ interface AnimeRepositoryInterfaces
 	 */
 	public function getPopular($count);
 
-	public function getSearchAnime($request);
+	public function getSearchAnime($request, $limit = 5);
 
 	public function setComment($id, $request);
 

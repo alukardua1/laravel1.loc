@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Fortify\CreateNewUser;
+use App\Http\Controllers\Admin\AnimeAdminController;
 use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
@@ -58,6 +59,7 @@ Route::group(
 		Route::get('year/{custom}', [YearAiredController::class, 'index'])->name('year');
 		Route::get('ongoing', [AnimeController::class, 'indexOngoing'])->name('ongoing');
 		Route::get('search', [AnimeController::class, 'search'])->name('search');
+		Route::get('searchAdmin', [AnimeAdminController::class, 'search'])->name('searchAdmin');
 	}
 );
 

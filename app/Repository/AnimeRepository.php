@@ -82,7 +82,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		return Anime::limit($count);
 	}
 
-	public function getSearchAnime($request)
+	public function getSearchAnime($request, $limit = 5)
 	{
 		return Anime::where('name', 'LIKE', "%{$request->search}%")
 			->orWhere('english', 'LIKE', "%{$request->search}%")
@@ -90,7 +90,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->orWhere('synonyms', 'LIKE', "%{$request->search}%")
 			->orWhere('license_name_ru', 'LIKE', "%{$request->search}%")
 			->orWhere('description', 'LIKE', "%{$request->search}%")
-			->limit(5)
+			->limit($limit)
 			->get();
 	}
 

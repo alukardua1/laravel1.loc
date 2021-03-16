@@ -13,6 +13,7 @@ use App\Http\ViewComposers\MpaaRatingComposer;
 use App\Http\ViewComposers\PopularComposer;
 use App\Http\ViewComposers\QualityComposer;
 use App\Http\ViewComposers\TranslateComposer;
+use App\Http\ViewComposers\UserComposer;
 use App\Http\ViewComposers\YearComposer;
 use Illuminate\Support\ServiceProvider;
 
@@ -46,5 +47,6 @@ class ComposerServiceProvider extends ServiceProvider
 	    \View::composer('*', AnonsComposer::class);
 	    \View::composer('*', PopularComposer::class);
 	    \View::composer('*', ChannelComposer::class);
+	    \View::composer('*', UserComposer::class);
     }
 }
