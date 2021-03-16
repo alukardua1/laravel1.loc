@@ -52,8 +52,8 @@
 					{{$anime->getUser->login}}
 				</td>
 				<td>
-					<i class="far fa-edit"></i>
-					<i class="far fa-trash-alt"></i>
+					<a href="{{route('editAnimeAdmin', $anime->id)}}"><i class="far fa-edit"></i></a>
+					<a href="#"><i class="far fa-trash-alt"></i></a>
 				</td>
 			</tr>
 		@endforeach

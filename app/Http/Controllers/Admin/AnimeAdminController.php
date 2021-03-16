@@ -84,6 +84,7 @@ class AnimeAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+	   // \Artisan::call('cache:clear');
        $requestAnime = $this->animeRepository->setAnime($request, $id);
 
 	    if ($requestAnime) {

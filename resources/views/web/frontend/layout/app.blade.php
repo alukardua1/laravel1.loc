@@ -72,7 +72,6 @@
 <footer>
 
 </footer>
-<!--<script src="{{ asset('js/jquery.min.js') }}"></script>-->
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/owl.carousel.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

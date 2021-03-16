@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\IsAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -41,6 +40,7 @@ class Kernel extends HttpKernel
 			\App\Http\Middleware\HandleInertiaRequests::class,
 			\App\Http\Middleware\UserActivity::class,
 			//\App\Http\Middleware\IsAdmin::class,
+			\App\Http\Middleware\HtmlMifier::class,
 		],
 
 		'api' => [
