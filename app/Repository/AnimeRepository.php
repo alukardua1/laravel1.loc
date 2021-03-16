@@ -121,4 +121,9 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			return $deleteComment->forceDelete();
 		}
 	}
+
+	public function setAnime($request, $id)
+	{
+		dd(__METHOD__, $request, $id);
+	}
 }

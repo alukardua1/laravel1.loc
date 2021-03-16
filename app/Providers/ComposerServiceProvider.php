@@ -12,6 +12,7 @@ use App\Http\ViewComposers\MenuComposer;
 use App\Http\ViewComposers\MpaaRatingComposer;
 use App\Http\ViewComposers\PopularComposer;
 use App\Http\ViewComposers\QualityComposer;
+use App\Http\ViewComposers\StudioComposer;
 use App\Http\ViewComposers\TranslateComposer;
 use App\Http\ViewComposers\UserComposer;
 use App\Http\ViewComposers\YearComposer;
@@ -48,5 +49,6 @@ class ComposerServiceProvider extends ServiceProvider
 	    \View::composer('*', PopularComposer::class);
 	    \View::composer('*', ChannelComposer::class);
 	    \View::composer('*', UserComposer::class);
+	    \View::composer('*', StudioComposer::class);
     }
 }

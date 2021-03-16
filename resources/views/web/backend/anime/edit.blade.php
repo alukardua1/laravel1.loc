@@ -3,11 +3,11 @@
 @section('title', 'Редактирование ' . $currentAnime->name)
 
 @section('content')
-	<form action="" class="bg-dark p-3" method="post" multiple>
+	<form action="{{route('updateAnimeAdmin', $currentAnime->id)}}" class="bg-dark p-3" method="post" multiple>
 		@csrf
 		<div class="input-group mb-3">
 			<label for="name" class="input-group-text">Заголовок</label>
-			<input type="text" id="name" class="form-control" placeholder="Заголовок" aria-label="Заголовок" aria-describedby="name" value="{{$currentAnime->name}}">
+			<input type="text" name="name" id="name" class="form-control" placeholder="Заголовок" aria-label="Заголовок" aria-describedby="name" value="{{$currentAnime->name}}">
 			<a type="button" class="btn btn-primary btn-sm" id="nameBtn" href="#">Найти похожее</a>
 		</div>
 		<div class="alert alert-success" role="alert" id='searchsuggestions' style="display: none"></div>
@@ -42,7 +42,7 @@
 		<div class="row mb-3">
 			<div class="col-4">
 				<label for="category" class="form-label">Категории</label>
-				<select class="js-selectize" multiple aria-label="category" name="category[]" id="category">
+				<select class="js-selectize-multiple" multiple aria-label="category" name="category[]" id="category">
 					@foreach($category as $value)
 						<option value="{{$value->id}}" @if($currentAnime->getCategory->contains($value->id)) selected @endif>{{$value->title}}</option>
 					@endforeach
@@ -70,6 +70,47 @@
 				</select>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-4">
+				<label for="country" class="form-label">Выберите страну</label>
+				<select class="js-selectize-multiple" multiple aria-label="country" name="country[]" id="country">
+					@foreach($country as $value)
+						@if ($currentAnime->getCountry)
+							<option value="{{$value->id}}" @if($currentAnime->getCountry->contains($value->id) == $value->id) selected @endif>{{$value->name}}</option>
+						@else
+							<option value="0">нет</option>
+						@endif
+						<option value="{{$value->id}}">{{$value->name}}</option>
+					@endforeach
+				</select>
+			</div>
+			<div class="col-4">
+				<label for="studios" class="form-label">Выберите студию</label>
+				<select class="js-selectize-multiple" multiple aria-label="studios" name="studios[]" id="studios">
+					@foreach($studios as $value)
+						@if ($currentAnime->getStudio)
+							<option value="{{$value->id}}" @if($currentAnime->getStudio->contains($value->id) == $value->id) selected @endif>{{$value->name}}</option>
+						@else
+							<option value="0">нет</option>
+						@endif
+						<option value="{{$value->id}}">{{$value->name}}</option>
+					@endforeach
+				</select>
+			</div>
+			<div class="col-4">
+				<label for="quality" class="form-label">Выберите качество</label>
+				<select class="js-selectize-multiple" multiple aria-label="quality" name="quality[]" id="quality">
+					@foreach($quality as $value)
+						@if ($currentAnime->getQuality)
+							<option value="{{$value->id}}" @if($currentAnime->getQuality->contains($value->id) == $value->id) selected @endif>{{$value->name}}</option>
+						@else
+							<option value="0">нет</option>
+						@endif
+						<option value="{{$value->id}}">{{$value->name}}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
 		<div class="row mb-3">
 			<div class="col-3">
 				<div class="input-group mb-3">
@@ -80,13 +121,13 @@
 			<div class="col-3">
 				<div class="input-group mb-3">
 					<label for="episodes" class="input-group-text">Количество эпизодов</label>
-					<input type="text" id="episodes" class="form-control" name="episodes" value="{{$currentAnime->episodes}}">
+					<input type="number" id="episodes" class="form-control" name="episodes" value="{{$currentAnime->episodes}}">
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="input-group mb-3">
 					<label for="duration" class="input-group-text">Длительность (мин)</label>
-					<input type="text" id="duration" class="form-control" name="duration" value="{{$currentAnime->duration}}">
+					<input type="number" id="duration" class="form-control" name="duration" value="{{$currentAnime->duration}}">
 				</div>
 			</div>
 			<div class="col-3 row">
@@ -119,12 +160,57 @@
 			</div>
 		</div>
 		<div class="mb-3">
-			<label for="original_img" class="form-label">Выберите постер</label>
-			<input class="form-control form-control-sm" name="original_img" id="original_img" type="file" value="{{$currentAnime->original_img}}">
+			<label for="img" class="form-label">Выберите постер</label>
+			<input class="form-control form-control-sm" name="img" id="img" type="file" accept="image/*">
+			<input type="hidden" id="original_img" name="original_img" value="{{$currentAnime->original_img}}">
 		</div>
 		<div id="descript" class="row mb-3">
 			<label for="description_html" class="form-label">Описание</label>
 			<textarea class="form-control ckeditor" id="description_html" name="description_html" rows="3">{{$currentAnime->description_html}}</textarea>
+		</div>
+		<div class="row">
+			<div class="mb-3">
+				<label for="trailer" class="form-label">Трейлер</label> <button class="btn btn-primary btn-sm" type="button" id="addTrailer"><i class="far fa-plus-square"></i></button>
+				@foreach($currentAnime->getTrailer as $trailer)
+					<input type="hidden" name="trailer_id[]" value="{{$trailer->id}}">
+					<input type="text" id="trailer[]" class="form-control" name="trailer[]" value="{{$trailer->trailer}}">
+				@endforeach
+				<div id="Trailer"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="mb-3">
+				<label for="player" class="form-label">Плеер</label> <button class="btn btn-primary btn-sm" type="button" id="addPlayer"><i class="far fa-plus-square"></i></button>
+				@foreach($currentAnime->getPlayer as $player)
+					<div class="row">
+						<div class="col-2">
+							<input type="hidden" name="player_id[]" value="{{$player->id}}">
+							<input type="text" id="player_name[]" class="form-control" name="player_name[]" value="{{$player->name_player}}">
+						</div>
+						<div class="col">
+							<input type="text" id="player_url[]" class="form-control" name="player_url[]" value="{{$player->url_player}}">
+						</div>
+					</div>
+				@endforeach
+				<div id="Player"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="mb-3">
+				<label for="OtherLink" class="form-label">Ссылки на другие сайты</label> <button class="btn btn-primary btn-sm" type="button" id="addOtherLink"><i class="far fa-plus-square"></i></button>
+				@foreach($currentAnime->getOtherLink as $otherLink)
+					<div class="row">
+						<div class="col-2">
+							<input type="hidden" name="otherLink_id[]" value="{{$otherLink->id}}">
+							<input type="text" id="otherLink_title[]" class="form-control" name="otherLink_title[]" value="{{$otherLink->title}}">
+						</div>
+						<div class="col">
+							<input type="text" id="otherLink_url[]" class="form-control" name="otherLink_url[]" value="{{$otherLink->url}}">
+						</div>
+					</div>
+				@endforeach
+				<div id="OtherLink"></div>
+			</div>
 		</div>
 		<div class="row mb-3">
 			<div class="col-6">
@@ -136,7 +222,7 @@
 			<div class="col-6">
 				<div class="input-group">
 					<label for="created_at" class="input-group-text">Дата добавления</label>
-					<input type="date" id="created_at" class="form-control" name="created_at" value="{{\Carbon\Carbon::parse($currentAnime->created_at)->format('Y-m-d')}}">
+					<input type="date" id="created_at" class="form-control" name="created_at" value="{{\Carbon\Carbon::parse($currentAnime->created_at)->format('Y-m-d')}}" disabled>
 				</div>
 			</div>
 		</div>

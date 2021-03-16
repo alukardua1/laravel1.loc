@@ -99,3 +99,33 @@ $('#nameBtn').click(function () {
 		});
 	}
 })
+
+$('#addTrailer').click(function () {
+	$("#Trailer").append('<input type="text" id="trailer" class="form-control" name="trailer[]" value="">')
+})
+
+$('#addPlayer').click(function () {
+	$("#Player").append(
+		'<div class="row">\n' +
+		'<div class="col-2">\n' +
+		'<input type="text" id="name_player" class="form-control" name="name_player[]" value="">\n' +
+		'</div>\n' +
+		'<div class="col">\n' +
+		'<input type="text" id="url_player" class="form-control" name="url_player[]" value="">\n' +
+		'</div>\n' +
+		'</div>'
+	)
+})
+
+$('#addOtherLink').click(function () {
+	$("#OtherLink").append(
+		'<div class="row">\n' +
+		'<div class="col-2">\n' +
+		'<input type="text" id="otherLink_title" class="form-control" name="otherLink_title[]" value="">\n' +
+		'</div>\n' +
+		'<div class="col">\n' +
+		'<input type="text" id="otherLink_url" class="form-control" name="otherLink_url[]" value="">\n' +
+		'</div>\n' +
+		'</div>'
+	)
+})

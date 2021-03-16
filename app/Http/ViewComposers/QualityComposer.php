@@ -4,14 +4,12 @@
 namespace App\Http\ViewComposers;
 
 
-use App\Repository\Interfaces\CountryRepositoryInterfaces;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use Illuminate\View\View;
 
 class QualityComposer
 {
 	public    $quality;
-	public    $path;
 	protected $qualityRepository;
 
 	/**

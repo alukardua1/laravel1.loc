@@ -4,7 +4,6 @@
 namespace App\Http\ViewComposers;
 
 
-use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 use Illuminate\View\View;
 

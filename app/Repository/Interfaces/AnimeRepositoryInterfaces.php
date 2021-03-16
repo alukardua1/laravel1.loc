@@ -54,9 +54,35 @@ interface AnimeRepositoryInterfaces
 	 */
 	public function getPopular($count);
 
+	/**
+	 * @param       $request
+	 * @param  int  $limit
+	 *
+	 * @return mixed
+	 */
 	public function getSearchAnime($request, $limit = 5);
 
+	/**
+	 * @param $id
+	 * @param $request
+	 *
+	 * @return mixed
+	 */
 	public function setComment($id, $request);
 
+	/**
+	 * @param $id
+	 * @param $fullDel
+	 *
+	 * @return mixed
+	 */
 	public function delComments($id, $fullDel);
+
+	/**
+	 * @param $request
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
+	public function setAnime($request, $id);
 }

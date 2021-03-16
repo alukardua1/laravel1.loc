@@ -79,11 +79,18 @@ class AnimeAdminController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+       $requestAnime = $this->animeRepository->setAnime($request, $id);
+
+	    if ($requestAnime) {
+		    return redirect()->route('editAnimeAdmin', $id);
+	    }
+
+	    return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
     }
 
     /**
