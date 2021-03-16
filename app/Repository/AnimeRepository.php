@@ -5,6 +5,8 @@ namespace App\Repository;
 
 use App\Models\Anime;
 use App\Models\Comment;
+use App\Models\OtherLink;
+use App\Models\Player;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use App\Services\FunctionTrait;
 
@@ -117,13 +119,18 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 
 		if ($deleteComment and empty($fullDel)) {
 			return $deleteComment->delete();
-		}else {
+		} else {
 			return $deleteComment->forceDelete();
 		}
 	}
 
 	public function setAnime($request, $id)
 	{
-		dd(__METHOD__, $request, $id);
+		$formRequest = $request->all();
+		$update = Anime::findOrNew($id);
+		$this->setOtherLink($formRequest, $id);
+		$this->setPlayer($formRequest, $id);
+
+		dd(__METHOD__, $formRequest, $id);
 	}
 }

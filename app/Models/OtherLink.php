@@ -11,6 +11,12 @@ class OtherLink extends Model
 {
 	public $cacheTags = ['otherlink'];
 	public $cachePrefix = 'otherlink_';
+
+	protected $fillable = [
+		'anime_id',
+		'title',
+		'url'
+	];
 	/**
 	 * OtherLink constructor.
 	 *

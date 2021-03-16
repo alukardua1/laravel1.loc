@@ -2,6 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\OtherLink;
+use App\Models\Player;
+
 /**
  * Trait FunctionTrait
  *
@@ -69,5 +72,31 @@ trait FunctionTrait
 		});
 
 		return $comments->sortByDesc('created_at');
+	}
+
+	public function setOtherLink($formRequest, $id)
+	{
+		foreach ($formRequest['otherLink_title'] as $key => $value) {
+			if ($formRequest['otherLink_url'][$key]) {
+				$formRequest['otherLink'][$key]['anime_id'] = $id;
+				$formRequest['otherLink'][$key]['title'] = $formRequest['otherLink_title'][$key];
+				$formRequest['otherLink'][$key]['url'] = $formRequest['otherLink_url'][$key];
+			}
+			$find = ['anime_id' => $id, 'title' => $formRequest['otherLink'][$key]['title']];
+			$OtherLink[] = OtherLink::updateOrCreate($find, $formRequest['otherLink'][$key]);
+		}
+	}
+
+	public function setPlayer($formRequest, $id)
+	{
+		foreach ($formRequest['player_name'] as $key => $value) {
+			if ($formRequest['player_url'][$key]) {
+				$formRequest['player'][$key]['anime_id'] = $id;
+				$formRequest['player'][$key]['name_player'] = $formRequest['player_name'][$key];
+				$formRequest['player'][$key]['url_player'] = $formRequest['player_url'][$key];
+			}
+			$find = ['anime_id' => $id, 'name_player' => $formRequest['player'][$key]['name_player']];
+			$player[] = Player::updateOrCreate($find, $formRequest['player'][$key]);
+		}
 	}
 }

@@ -172,7 +172,6 @@
 			<div class="mb-3">
 				<label for="trailer" class="form-label">Трейлер</label> <button class="btn btn-primary btn-sm" type="button" id="addTrailer"><i class="far fa-plus-square"></i></button>
 				@foreach($currentAnime->getTrailer as $trailer)
-					<input type="hidden" name="trailer_id[]" value="{{$trailer->id}}">
 					<input type="text" id="trailer[]" class="form-control" name="trailer[]" value="{{$trailer->trailer}}">
 				@endforeach
 				<div id="Trailer"></div>
@@ -184,7 +183,6 @@
 				@foreach($currentAnime->getPlayer as $player)
 					<div class="row">
 						<div class="col-2">
-							<input type="hidden" name="player_id[]" value="{{$player->id}}">
 							<input type="text" id="player_name[]" class="form-control" name="player_name[]" value="{{$player->name_player}}">
 						</div>
 						<div class="col">
@@ -201,11 +199,10 @@
 				@foreach($currentAnime->getOtherLink as $otherLink)
 					<div class="row">
 						<div class="col-2">
-							<input type="hidden" name="otherLink_id[]" value="{{$otherLink->id}}">
-							<input type="text" id="otherLink_title[]" class="form-control" name="otherLink_title[]" value="{{$otherLink->title}}">
+							<input type="text" class="form-control" name="otherLink_title[]" value="{{$otherLink->title}}">
 						</div>
 						<div class="col">
-							<input type="text" id="otherLink_url[]" class="form-control" name="otherLink_url[]" value="{{$otherLink->url}}">
+							<input type="text" class="form-control" name="otherLink_url[]" value="{{$otherLink->url}}">
 						</div>
 					</div>
 				@endforeach
