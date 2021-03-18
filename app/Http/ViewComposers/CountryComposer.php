@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class CountryComposer
 {
-	public    $country;
-	protected $countryRepository;
+	public                                $country;
+	protected CountryRepositoryInterfaces $countryRepository;
 
 	/**
 	 * Create a menu composer.

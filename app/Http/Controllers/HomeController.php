@@ -11,7 +11,7 @@ use App\Repository\Interfaces\AnimeRepositoryInterfaces;
  */
 class HomeController extends Controller
 {
-	private $firstAnime;
+	private AnimeRepositoryInterfaces $firstAnime;
 
 	/**
 	 * HomeController constructor.

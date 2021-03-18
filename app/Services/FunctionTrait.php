@@ -22,6 +22,14 @@ trait FunctionTrait
 		abort_if(empty($post), 404);
 	}
 
+	/**
+	 * @param          $feed
+	 * @param          $posts
+	 * @param  string  $title
+	 * @param  string  $description
+	 *
+	 * @return mixed
+	 */
 	public function getRss($feed, $posts, $title = '', $description = '')
 	{
 		$feed->title = $title ?? '☆AnimeFree☆ - смотреть аниме в русской озвучке';
@@ -53,6 +61,11 @@ trait FunctionTrait
 		return $feed;
 	}
 
+	/**
+	 * @param $comments
+	 *
+	 * @return mixed
+	 */
 	public function showComments($comments)
 	{
 		// Изменяем коллекцию.
@@ -74,6 +87,10 @@ trait FunctionTrait
 		return $comments->sortByDesc('created_at');
 	}
 
+	/**
+	 * @param $formRequest
+	 * @param $id
+	 */
 	public function setOtherLink($formRequest, $id)
 	{
 		foreach ($formRequest['otherLink_title'] as $key => $value) {
@@ -87,6 +104,10 @@ trait FunctionTrait
 		}
 	}
 
+	/**
+	 * @param $formRequest
+	 * @param $id
+	 */
 	public function setPlayer($formRequest, $id)
 	{
 		foreach ($formRequest['player_name'] as $key => $value) {
@@ -98,5 +119,19 @@ trait FunctionTrait
 			$find = ['anime_id' => $id, 'name_player' => $formRequest['player'][$key]['name_player']];
 			$player[] = Player::updateOrCreate($find, $formRequest['player'][$key]);
 		}
+	}
+
+	/**
+	 * @param $requestCheck
+	 * @param $name
+	 *
+	 * @return int
+	 */
+	protected function check($requestCheck, $name)
+	{
+		if (!isset($requestCheck[$name])) {
+			return 0;
+		}
+		return $requestCheck[$name];
 	}
 }

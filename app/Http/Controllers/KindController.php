@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
  */
 class KindController extends Controller
 {
-	protected $kind;
+	protected KindRepositoryInterfaces $kind;
 
 	/**
 	 * KindController constructor.

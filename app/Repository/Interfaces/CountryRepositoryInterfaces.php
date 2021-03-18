@@ -4,6 +4,11 @@
 namespace App\Repository\Interfaces;
 
 
+/**
+ * Interface CountryRepositoryInterfaces
+ *
+ * @package App\Repository\Interfaces
+ */
 interface CountryRepositoryInterfaces
 {
 	/**

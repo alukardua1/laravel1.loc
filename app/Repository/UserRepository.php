@@ -7,6 +7,7 @@ namespace App\Repository;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
+use App\Services\FunctionTrait;
 use App\Services\UsersTrait;
 
 /**
@@ -16,7 +17,7 @@ use App\Services\UsersTrait;
  */
 class UserRepository implements UserRepositoryInterfaces
 {
-	use UsersTrait;
+	use UsersTrait, FunctionTrait;
 
 	/**
 	 * @param $user
@@ -47,6 +48,12 @@ class UserRepository implements UserRepositoryInterfaces
 		dd(__METHOD__, \Auth::id(), 11);
 	}
 
+	/**
+	 * @param $request
+	 * @param $currentUser
+	 *
+	 * @return mixed
+	 */
 	public function setUsers($request, $currentUser)
 	{
 		if ($request->user()) {
@@ -76,13 +83,5 @@ class UserRepository implements UserRepositoryInterfaces
 
 			return $updateUser->update($requestForm);
 		}
-	}
-
-	protected function check($requestCheck, $name)
-	{
-		if (!isset($requestCheck[$name])) {
-		    return 0;
-		}
-		return $requestCheck[$name];
 	}
 }

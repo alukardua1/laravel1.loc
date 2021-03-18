@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class PopularComposer
 {
-	protected $popular;
-	protected $animeAll;
+	protected                           $popular;
+	protected AnimeRepositoryInterfaces $animeRepository;
 
 	/**
 	 * CarouselAnimeComposer constructor.
@@ -19,7 +19,7 @@ class PopularComposer
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->animeAll = $animeRepositoryInterfaces;
+		$this->animeRepository = $animeRepositoryInterfaces;
 		$this->popular = $this->anime();
 	}
 
@@ -28,7 +28,7 @@ class PopularComposer
 	 */
 	public function anime()
 	{
-		return $this->animeAll->getPopular(10)->get()->sortByDesc('read_count');
+		return $this->animeRepository->getPopular(10)->get()->sortByDesc('read_count');
 	}
 
 	/**

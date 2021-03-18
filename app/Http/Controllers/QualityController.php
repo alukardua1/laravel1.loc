@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
  */
 class QualityController extends Controller
 {
-	protected $quality;
+	protected QualityRepositoryInterfaces $quality;
 
 	/**
 	 * QualityController constructor.

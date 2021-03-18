@@ -8,8 +8,8 @@ use Illuminate\View\View;
 
 class YearComposer
 {
-	public    $year;
-	protected $yearRepository;
+	public                                  $year;
+	protected YearAiredRepositoryInterfaces $yearRepository;
 
 	/**
 	 * Create a menu composer.

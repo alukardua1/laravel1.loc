@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Events\AnimeEvent;
 use App\Http\Requests\CommentRequest;
-use App\Models\AnimeRelated;
 use Illuminate\Http\Request;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
@@ -15,10 +15,7 @@ use App\Repository\Interfaces\AnimeRepositoryInterfaces;
  */
 class AnimeController extends Controller
 {
-	/**
-	 * @var \App\Repository\Interfaces\AnimeRepositoryInterfaces
-	 */
-	private $anime;
+	private AnimeRepositoryInterfaces $anime;
 
 	/**
 	 * AnimeController constructor.
@@ -104,7 +101,7 @@ class AnimeController extends Controller
 
 	public function animeRss()
 	{
-		$feed = \App::make("feed");
+		$feed = App::make("feed");
 		$feed->setCache(config('secondConfig.cache_time'), 'laravelFeedKey');
 		if (!$feed->isCached()) {
 			$posts = $this->anime->getAllAnime()->limit(config('secondConfig.limitRss'))->get();

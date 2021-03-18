@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class KindComposer
 {
-	public    $kind;
-	protected $kindRepository;
+	public                             $kind;
+	protected KindRepositoryInterfaces $kindRepository;
 
 	/**
 	 * Create a menu composer.

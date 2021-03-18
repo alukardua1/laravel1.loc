@@ -138,8 +138,12 @@ body {
 	}
 }
 
-.sidebar .nav-link, .edit-table-dark input {
+.sidebar .nav-link, .edit-table-dark input, #settings .nav-link {
 	color: #ffffff !important;
+}
+
+#settings .nav-link.active {
+	color: #495057 !important;
 }
 
 .table-dark a {

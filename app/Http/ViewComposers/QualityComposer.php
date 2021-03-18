@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class QualityComposer
 {
-	public    $quality;
-	protected $qualityRepository;
+	public                                $quality;
+	protected QualityRepositoryInterfaces $qualityRepository;
 
 	/**
 	 * Create a menu composer.

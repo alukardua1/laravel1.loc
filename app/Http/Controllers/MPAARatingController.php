@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
  */
 class MPAARatingController extends Controller
 {
-	protected $mpaaRepository;
+	protected MpaaRepositoryInterfaces $mpaaRepository;
 
 	/**
 	 * MPAARatingController constructor.

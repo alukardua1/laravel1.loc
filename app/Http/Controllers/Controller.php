@@ -22,9 +22,9 @@ class Controller extends BaseController
 
 	protected $paginate;
 
-	protected $frontend = 'web.frontend.';
+	protected string $frontend = 'web.frontend.';
 
-	protected $backend = 'web.backend.';
+	protected string $backend = 'web.backend.';
 
 	/**
 	 * Controller constructor.

@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
  */
 class ChannelController extends Controller
 {
-	private $channel;
+	private ChannelRepositoryInterfaces $channel;
 
 	/**
 	 * ChannelController constructor.

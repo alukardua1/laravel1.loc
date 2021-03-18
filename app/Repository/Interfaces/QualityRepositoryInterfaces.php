@@ -4,6 +4,11 @@
 namespace App\Repository\Interfaces;
 
 
+/**
+ * Interface QualityRepositoryInterfaces
+ *
+ * @package App\Repository\Interfaces
+ */
 interface QualityRepositoryInterfaces
 {
 	/**

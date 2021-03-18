@@ -10,8 +10,8 @@ use Illuminate\View\View;
 
 class UserComposer
 {
-	public    $user;
-	protected $userRepository;
+	public                             $user;
+	protected UserRepositoryInterfaces $userRepository;
 
 	/**
 	 * Create a menu composer.

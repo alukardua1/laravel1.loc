@@ -8,12 +8,6 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">
-					<span data-feather="settings"></span>
-					Настройки
-				</a>
-			</li>
-			<li class="nav-item">
 				<a class="nav-link" data-toggle="collapse" href="#edit" role="button" aria-expanded="false" aria-controls="edit">
 					<span data-feather="edit"></span>
 					Редактирование

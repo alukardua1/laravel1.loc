@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
  */
 class VoteController extends Controller
 {
-	protected $voteRepository;
+	protected VoteRepositoryInterface $voteRepository;
 
 	/**
 	 * VoteController constructor.

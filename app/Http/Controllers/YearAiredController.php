@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class YearAiredController extends Controller
 {
-	protected $yearAired;
+	protected YearAiredRepositoryInterfaces $yearAired;
 
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{

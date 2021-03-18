@@ -4,6 +4,11 @@
 namespace App\Repository\Interfaces;
 
 
+/**
+ * Interface StudioRepositoryInterfaces
+ *
+ * @package App\Repository\Interfaces
+ */
 interface StudioRepositoryInterfaces
 {
 	/**

@@ -4,6 +4,11 @@
 namespace App\Repository\Interfaces;
 
 
+/**
+ * Interface MpaaRepositoryInterfaces
+ *
+ * @package App\Repository\Interfaces
+ */
 interface MpaaRepositoryInterfaces
 {
 	/**

@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class MpaaRatingComposer
 {
-	public    $mpaa;
-	protected $mpaaRepository;
+	public                             $mpaa;
+	protected MpaaRepositoryInterfaces $mpaaRepository;
 
 	/**
 	 * Create a menu composer.

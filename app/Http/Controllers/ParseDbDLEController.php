@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ParseDbDLEController extends Controller
 {
-	private $dleParseRepository;
+	private DLEParse $dleParseRepository;
 
 	public function __construct(DLEParse $DLEParse)
 	{

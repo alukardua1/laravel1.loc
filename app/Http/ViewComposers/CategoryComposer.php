@@ -14,9 +14,9 @@ use Illuminate\View\View;
  */
 class CategoryComposer
 {
-	public    $category;
-	protected $categoryRepository;
-	public $i = 0;
+	public                                 $category;
+	protected CategoryRepositoryInterfaces $categoryRepository;
+	public int                             $i = 0;
 
 	/**
 	 * Create a menu composer.

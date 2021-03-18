@@ -12,6 +12,7 @@ namespace App\Repository\Interfaces;
 interface AnimeRepositoryInterfaces
 {
 	/**
+	 * Получает аниме по ID
 	 * @param $id
 	 *
 	 * @return mixed
@@ -19,6 +20,7 @@ interface AnimeRepositoryInterfaces
 	public function getAnime($id);
 
 	/**
+	 * Получает все аниме с проверкой для админпанели или для сайта
 	 * @param  bool  $isAdmin
 	 *
 	 * @return mixed
@@ -26,6 +28,7 @@ interface AnimeRepositoryInterfaces
 	public function getAllAnime($isAdmin = false);
 
 	/**
+	 * Формирует для главной страницы (в разработке)
 	 * @param $count
 	 *
 	 * @return mixed
@@ -33,6 +36,7 @@ interface AnimeRepositoryInterfaces
 	public function getFirstPageAnime($count);
 
 	/**
+	 * Вывод варимативного
 	 * @param $columns
 	 * @param $custom
 	 *
@@ -41,6 +45,7 @@ interface AnimeRepositoryInterfaces
 	public function getCustomAnime($columns, $custom);
 
 	/**
+	 * Вывод анонса
 	 * @param $count
 	 *
 	 * @return mixed
@@ -48,6 +53,7 @@ interface AnimeRepositoryInterfaces
 	public function getAnons($count);
 
 	/**
+	 * Вывод популярного
 	 * @param $count
 	 *
 	 * @return mixed
@@ -55,6 +61,7 @@ interface AnimeRepositoryInterfaces
 	public function getPopular($count);
 
 	/**
+	 * Поиск
 	 * @param       $request
 	 * @param  int  $limit
 	 *
@@ -63,6 +70,7 @@ interface AnimeRepositoryInterfaces
 	public function getSearchAnime($request, $limit = 5);
 
 	/**
+	 * Добавление/обновление комментариев
 	 * @param $id
 	 * @param $request
 	 *
@@ -71,6 +79,7 @@ interface AnimeRepositoryInterfaces
 	public function setComment($id, $request);
 
 	/**
+	 * Удаление комментариев
 	 * @param $id
 	 * @param $fullDel
 	 *
@@ -79,6 +88,7 @@ interface AnimeRepositoryInterfaces
 	public function delComments($id, $fullDel);
 
 	/**
+	 * Добавление/обновление аниме
 	 * @param $request
 	 * @param $id
 	 *

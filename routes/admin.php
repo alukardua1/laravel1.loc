@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AnimeAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Auth\LoginAdminController;
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 	return Inertia::render('Dashboard');

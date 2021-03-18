@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class AnonsComposer
 {
-	protected $anons;
-	protected $animeAll;
+	protected                           $anons;
+	protected AnimeRepositoryInterfaces $animeRepository;
 
 	/**
 	 * CarouselAnimeComposer constructor.
@@ -19,7 +19,7 @@ class AnonsComposer
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->animeAll = $animeRepositoryInterfaces;
+		$this->animeRepository = $animeRepositoryInterfaces;
 		$this->anons = $this->anime();
 	}
 
@@ -28,7 +28,7 @@ class AnonsComposer
 	 */
 	public function anime()
 	{
-		return $this->animeAll->getAnons(100)->get();
+		return $this->animeRepository->getAnons(100)->get();
 	}
 
 	/**

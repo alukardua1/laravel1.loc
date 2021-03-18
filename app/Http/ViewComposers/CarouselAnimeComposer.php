@@ -14,8 +14,8 @@ use Illuminate\View\View;
  */
 class CarouselAnimeComposer
 {
-	protected $carousel;
-	protected $animeAll;
+	protected                           $carousel;
+	protected AnimeRepositoryInterfaces $animeRepository;
 
 	/**
 	 * CarouselAnimeComposer constructor.
@@ -24,7 +24,7 @@ class CarouselAnimeComposer
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->animeAll = $animeRepositoryInterfaces;
+		$this->animeRepository = $animeRepositoryInterfaces;
 		$this->carousel = $this->anime();
 	}
 
@@ -33,7 +33,7 @@ class CarouselAnimeComposer
 	 */
 	public function anime()
 	{
-		return $this->animeAll->getFirstPageAnime(100)->get();
+		return $this->animeRepository->getFirstPageAnime(100)->get();
 	}
 
 	/**

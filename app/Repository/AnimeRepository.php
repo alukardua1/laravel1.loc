@@ -19,10 +19,6 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 {
 	use FunctionTrait;
 
-	public function __construct()
-	{
-	}
-
 	/**
 	 * @param $id
 	 *
@@ -72,6 +68,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->orderBy('updated_at', 'DESC');
 	}
 
+	/**
+	 * @param $count
+	 *
+	 * @return mixed
+	 */
 	public function getAnons($count)
 	{
 		return Anime::where('anons', 1)
@@ -79,11 +80,22 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->orderBy('read_count', 'DESC');
 	}
 
+	/**
+	 * @param $count
+	 *
+	 * @return mixed
+	 */
 	public function getPopular($count)
 	{
 		return Anime::limit($count);
 	}
 
+	/**
+	 * @param       $request
+	 * @param  int  $limit
+	 *
+	 * @return mixed
+	 */
 	public function getSearchAnime($request, $limit = 5)
 	{
 		return Anime::where('name', 'LIKE', "%{$request->search}%")
@@ -96,12 +108,24 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->get();
 	}
 
+	/**
+	 * @param $id
+	 * @param $request
+	 *
+	 * @return mixed
+	 */
 	public function setComment($id, $request)
 	{
 		$validated = $request->validated();
 		return Comment::create($request->all());
 	}
 
+	/**
+	 * @param $id
+	 * @param $fullDel
+	 *
+	 * @return mixed
+	 */
 	public function delComments($id, $fullDel)
 	{
 		$deleteComment = Comment::withTrashed()->where('id', $id)->first();
@@ -124,6 +148,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		}
 	}
 
+	/**
+	 * @param $request
+	 * @param $id
+	 *
+	 * @return mixed|void
+	 */
 	public function setAnime($request, $id)
 	{
 		$formRequest = $request->all();

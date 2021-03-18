@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 
 class PersonalMessageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @param  \App\Models\User  $user
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
     public function index(User $user)
     {
         dd(__METHOD__, $user);

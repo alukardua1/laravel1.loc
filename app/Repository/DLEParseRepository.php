@@ -30,9 +30,6 @@ class DLEParseRepository implements DLEParse
 {
 	use CurlTrait;
 
-	/**
-	 * @return mixed
-	 */
 	public function parseCategory()
 	{
 		$categories = DB::connection("mysql2")->table('dle_category')->select(
@@ -49,9 +46,6 @@ class DLEParseRepository implements DLEParse
 		return $category;
 	}
 
-	/**
-	 * @return mixed
-	 */
 	public function parseUser()
 	{
 		$users = DB::connection("mysql2")->table('dle_users')->select(['*'])->get();
@@ -117,11 +111,6 @@ class DLEParseRepository implements DLEParse
 		}
 	}
 
-	/**
-	 * @param  null  $id
-	 *
-	 * @return mixed
-	 */
 	public function parsePost($id = null)
 	{
 		$i = 0;
@@ -224,7 +213,6 @@ class DLEParseRepository implements DLEParse
 				$yearAired->id = 0;
 			}
 
-			//dd(__METHOD__, $yearAired);
 			$result[] = [
 				'id'                 => $post->id,
 				'user_id'            => 1,
@@ -316,13 +304,6 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	/**
-	 * @param $xfield
-	 * @param $post
-	 * @param $columns
-	 * @param $model
-	 * @param $table
-	 */
 	private function addBelongs($xfield, $post, $columns, $model, $table)
 	{
 		$data = [];
@@ -336,11 +317,6 @@ class DLEParseRepository implements DLEParse
 		DB::table($table)->insert($data);
 	}
 
-	/**
-	 * @param $dates
-	 *
-	 * @return false|string|null
-	 */
 	private function dates($dates)
 	{
 		if ($dates) {
@@ -349,12 +325,6 @@ class DLEParseRepository implements DLEParse
 		return null;
 	}
 
-	/**
-	 * @param $anime
-	 * @param $image
-	 *
-	 * @return string[]
-	 */
 	private function imageFunc($anime, $image)
 	{
 		$def = '/';
@@ -380,16 +350,10 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	/**
-	 * @return mixed|void
-	 */
 	public function parseQualityAnime()
 	{
 	}
 
-	/**
-	 * @return mixed
-	 */
 	public function parsePostCategory()
 	{
 		$category = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
@@ -406,9 +370,6 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	/**
-	 * @return array|mixed
-	 */
 	public function parseChannel()
 	{
 		$channel = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
@@ -433,12 +394,6 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	/**
-	 * @param $array
-	 * @param $key
-	 *
-	 * @return array
-	 */
 	protected function array_unique_key($array, $key)
 	{
 		$tmp = $key_array = [];
@@ -454,25 +409,16 @@ class DLEParseRepository implements DLEParse
 		return $tmp;
 	}
 
-	/**
-	 * @return mixed|void
-	 */
 	public function parseComments()
 	{
 		//$comments = DB::connection("mysql2")->table('dle_comments')->select(['*'])->get();
 	}
 
-	/**
-	 * @return mixed|void
-	 */
 	public function parsePerson()
 	{
 		// TODO: Implement parsePerson() method.
 	}
 
-	/**
-	 * @return mixed|void
-	 */
 	public function parseStudio()
 	{
 		$url = 'https://shikimori.one/api/studios';
@@ -490,11 +436,6 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	/**
-	 * @param $url
-	 *
-	 * @return array
-	 */
 	public function parseKodik($url)
 	{
 		$result = [];
@@ -507,11 +448,6 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	/**
-	 * @param $url
-	 *
-	 * @return array
-	 */
 	public function parseKodikQuality($url)
 	{
 		$result = [];

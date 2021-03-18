@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TranslateController extends Controller
 {
-	protected $translate;
+	protected TranslateRepositoryInterfaces $translate;
 
 	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{

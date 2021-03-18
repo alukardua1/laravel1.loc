@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
  */
 class CountryController extends Controller
 {
-	protected $country;
+	protected CountryRepositoryInterfaces $country;
 
 	/**
 	 * CountryController constructor.

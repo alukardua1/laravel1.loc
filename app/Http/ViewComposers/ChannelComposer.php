@@ -9,9 +9,8 @@ use Illuminate\View\View;
 
 class ChannelComposer
 {
-	public    $channel;
-	protected $channelRepository;
-	public $i = 0;
+	public                                $channel;
+	protected ChannelRepositoryInterfaces $channelRepository;
 
 	/**
 	 * Create a menu composer.

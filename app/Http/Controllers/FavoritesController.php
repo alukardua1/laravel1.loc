@@ -6,7 +6,7 @@ use App\Repository\Interfaces\FavoritesRepositoryInterfaces;
 
 class FavoritesController extends Controller
 {
-	private $favoriteRepository;
+	private FavoritesRepositoryInterfaces $favoriteRepository;
 
 	/**
 	 * FavoriteController constructor.

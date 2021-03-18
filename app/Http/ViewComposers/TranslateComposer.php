@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class TranslateComposer
 {
-	public    $translate;
-	protected $translateRepository;
+	public                                  $translate;
+	protected TranslateRepositoryInterfaces $translateRepository;
 
 	/**
 	 * Create a menu composer.

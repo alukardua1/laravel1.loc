@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
  */
 class StudioController extends Controller
 {
-	protected $studio;
+	protected StudioRepositoryInterfaces $studio;
 
 	/**
 	 * StudioController constructor.

@@ -9,8 +9,8 @@ use Illuminate\View\View;
 
 class StudioComposer
 {
-	public    $studio;
-	protected $studioRepository;
+	public                               $studio;
+	protected StudioRepositoryInterfaces $studioRepository;
 
 	/**
 	 * Create a menu composer.

@@ -12,7 +12,7 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
  */
 class CategoryController extends Controller
 {
-	private   $categories;
+	private CategoryRepositoryInterfaces $categories;
 
 	/**
 	 * CategoryController constructor.
