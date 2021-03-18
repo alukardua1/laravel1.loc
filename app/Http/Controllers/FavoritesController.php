@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\Interfaces\FavoritesRepositoryInterfaces;
+use App\Repository\Interfaces\FavoriteRepositoryInterfaces;
 
 class FavoritesController extends Controller
 {
-	private FavoritesRepositoryInterfaces $favoriteRepository;
+	private FavoriteRepositoryInterfaces $favoriteRepository;
 
 	/**
 	 * FavoriteController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\FavoritesRepositoryInterfaces  $favoriteRepositoryInterfaces
+	 * @param  FavoriteRepositoryInterfaces  $favoriteRepositoryInterfaces
 	 */
-	public function __construct(FavoritesRepositoryInterfaces $favoriteRepositoryInterfaces)
+	public function __construct(FavoriteRepositoryInterfaces $favoriteRepositoryInterfaces)
 	{
 		parent::__construct();
 		$this->favoriteRepository = $favoriteRepositoryInterfaces;
 	}
 
 	/**
-	 * @param $user
+	 * @param string $login
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return mixed
 	 */
-	public function index($user)
+	public function index(string $login)
 	{
-		$allAnime = $this->favoriteRepository->getFavorite($user)->favorites()->paginate($this->paginate);
+		$allAnime = $this->favoriteRepository->getFavorite($login)->favorites()->paginate($this->paginate);
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
 
@@ -35,9 +35,9 @@ class FavoritesController extends Controller
 	 *
 	 * @param  int  $id
 	 *
-	 * @return string
+	 * @return mixed
 	 */
-	public function add(int $id): string
+	public function add(int $id)
 	{
 		$this->favoriteRepository->favorite($id);
 
@@ -49,9 +49,9 @@ class FavoritesController extends Controller
 	 *
 	 * @param  int  $id
 	 *
-	 * @return string
+	 * @return mixed
 	 */
-	public function delete(int $id): string
+	public function delete(int $id)
 	{
 		$this->favoriteRepository->unFavorite($id);
 

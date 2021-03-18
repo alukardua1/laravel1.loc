@@ -12,42 +12,32 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
  */
 class CategoryController extends Controller
 {
-	private CategoryRepositoryInterfaces $categories;
+	private CategoryRepositoryInterfaces $categoryRepository;
 
 	/**
 	 * CategoryController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
+	 * @param  CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
 	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->categories = $categoryRepositoryInterfaces;
+		$this->categoryRepository = $categoryRepositoryInterfaces;
 	}
 
 	/**
-	 * @param $category
+	 * @param string $categoryUrl
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return mixed
 	 */
-	public function index($category)
+	public function index(string $categoryUrl)
 	{
-		$currentCategory = $this->categories->getCategory($category)->first();
+		$currentCategory = $this->categoryRepository->getCategory($categoryUrl)->first();
 		$this->isNotNull($currentCategory);
 		$title = $currentCategory->title;
 		$description = $currentCategory->description;
 		$allAnime = $currentCategory->getAnime()->paginate($this->paginate);
 
 		return view($this->frontend . 'anime.short', compact('currentCategory', 'allAnime', 'title', 'description'));
-	}
-
-	/**
-	 * @param  \App\Models\Category  $category
-	 *
-	 * @return \Illuminate\Contracts\View\View
-	 */
-	public function show(Category $category)
-	{
-		//
 	}
 }

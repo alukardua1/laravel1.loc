@@ -12,11 +12,11 @@ namespace App\Repository\Interfaces;
 interface YearAiredRepositoryInterfaces
 {
 	/**
-	 * @param $year
+	 * @param string $yearUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($year);
+	public function getAnime(string $yearUrl);
 
 	/**
 	 * @return mixed

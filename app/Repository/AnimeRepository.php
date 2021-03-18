@@ -5,10 +5,9 @@ namespace App\Repository;
 
 use App\Models\Anime;
 use App\Models\Comment;
-use App\Models\OtherLink;
-use App\Models\Player;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use App\Services\FunctionTrait;
+use Illuminate\Http\Request;
 
 /**
  * Class AnimeRepository
@@ -20,11 +19,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	use FunctionTrait;
 
 	/**
-	 * @param $id
+	 * @param  int  $id
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($id)
+	public function getAnime(int $id)
 	{
 		return Anime::where('id', $id);
 	}
@@ -32,9 +31,9 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	/**
 	 * @param  bool  $isAdmin
 	 *
-	 * @return \Illuminate\Database\Eloquent\Builder|mixed
+	 * @return mixed
 	 */
-	public function getAllAnime($isAdmin = false)
+	public function getAllAnime(bool $isAdmin = false)
 	{
 		if ($isAdmin) {
 			return Anime::orderBy('updated_at', 'DESC');
@@ -45,58 +44,58 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param $count
+	 * @param  int  $limit
 	 *
 	 * @return mixed
 	 */
-	public function getFirstPageAnime($count)
+	public function getFirstPageAnime(int $limit)
 	{
 		return Anime::where('ongoing', 1)
-			->limit($count)
+			->limit($limit)
 			->orderBy('updated_at', 'DESC');
 	}
 
 	/**
-	 * @param $columns
-	 * @param $custom
+	 * @param  string  $columns
+	 * @param  string  $custom
 	 *
 	 * @return mixed
 	 */
-	public function getCustomAnime($columns, $custom)
+	public function getCustomAnime(string $columns, string $custom)
 	{
 		return Anime::where($columns, $custom)
 			->orderBy('updated_at', 'DESC');
 	}
 
 	/**
-	 * @param $count
-	 *
-	 * @return mixed
-	 */
-	public function getAnons($count)
-	{
-		return Anime::where('anons', 1)
-			->limit($count)
-			->orderBy('read_count', 'DESC');
-	}
-
-	/**
-	 * @param $count
-	 *
-	 * @return mixed
-	 */
-	public function getPopular($count)
-	{
-		return Anime::limit($count);
-	}
-
-	/**
-	 * @param       $request
 	 * @param  int  $limit
 	 *
 	 * @return mixed
 	 */
-	public function getSearchAnime($request, $limit = 5)
+	public function getAnons(int $limit)
+	{
+		return Anime::where('anons', 1)
+			->limit($limit)
+			->orderBy('read_count', 'DESC');
+	}
+
+	/**
+	 * @param  int  $limit
+	 *
+	 * @return mixed
+	 */
+	public function getPopular(int $limit)
+	{
+		return Anime::limit($limit);
+	}
+
+	/**
+	 * @param  Request  $request
+	 * @param  int      $limit
+	 *
+	 * @return mixed
+	 */
+	public function getSearchAnime(Request $request, int $limit = 5)
 	{
 		return Anime::where('name', 'LIKE', "%{$request->search}%")
 			->orWhere('english', 'LIKE', "%{$request->search}%")
@@ -109,24 +108,25 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param $id
-	 * @param $request
+	 * @param  int                       $id
+	 * @param  \Illuminate\Http\Request  $request
 	 *
 	 * @return mixed
 	 */
-	public function setComment($id, $request)
+	public function setComment(int $id, Request $request)
 	{
 		$validated = $request->validated();
 		return Comment::create($request->all());
 	}
 
 	/**
-	 * @param $id
-	 * @param $fullDel
+	 * @param  int   $id
+	 * @param  bool  $fullDel
 	 *
+	 * @throws \Exception
 	 * @return mixed
 	 */
-	public function delComments($id, $fullDel)
+	public function delComments(int $id, bool $fullDel)
 	{
 		$deleteComment = Comment::withTrashed()->where('id', $id)->first();
 		$deleteParentComment = Comment::withTrashed()->where('parent_comment_id', $id)->get();
@@ -149,12 +149,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param $request
-	 * @param $id
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int                       $id
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function setAnime($request, $id)
+	public function setAnime(Request $request, int $id)
 	{
 		$formRequest = $request->all();
 		$update = Anime::findOrNew($id);

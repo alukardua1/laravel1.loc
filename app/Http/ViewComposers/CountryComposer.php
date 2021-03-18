@@ -15,18 +15,18 @@ class CountryComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\CountryRepositoryInterfaces  $countryRepositoryInterfaces
+	 * @param  CountryRepositoryInterfaces  $countryRepositoryInterfaces
 	 */
 	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{
 		$this->countryRepository = $countryRepositoryInterfaces;
-		$this->country = $this->menu();
+		$this->country = $this->country();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function country()
 	{
 		return $this->countryRepository->getCountry();
 	}

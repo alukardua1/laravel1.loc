@@ -10,8 +10,8 @@ namespace App\Models;
  */
 class Job extends Model
 {
-	public $cacheTags = ['job'];
-	public $cachePrefix = 'job_';
+	public array  $cacheTags   = ['job'];
+	public string $cachePrefix = 'job_';
 	/**
 	 * Job constructor.
 	 *

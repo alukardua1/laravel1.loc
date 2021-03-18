@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class UserApiController extends Controller
 {
-	protected $user;
+	protected UserRepositoryInterfaces $userRepository;
 
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->user = $userRepositoryInterfaces;
+		$this->userRepository = $userRepositoryInterfaces;
 	}
 
 	/**
@@ -59,7 +59,7 @@ class UserApiController extends Controller
 	 */
 	public function show($login, $custom = null)
 	{
-		$user = $this->user->getUser($login);
+		$user = $this->userRepository->getUser($login);
 		if (empty($user)) {
 			return response()->json($this->error404());
 		}

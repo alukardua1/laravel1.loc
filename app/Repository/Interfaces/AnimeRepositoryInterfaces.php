@@ -4,6 +4,8 @@
 namespace App\Repository\Interfaces;
 
 
+use Illuminate\Http\Request;
+
 /**
  * Interface AnimeRepositoryInterfaces
  *
@@ -13,86 +15,96 @@ interface AnimeRepositoryInterfaces
 {
 	/**
 	 * Получает аниме по ID
-	 * @param $id
+	 *
+	 * @param  int  $id
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($id);
+	public function getAnime(int $id);
 
 	/**
 	 * Получает все аниме с проверкой для админпанели или для сайта
+	 *
 	 * @param  bool  $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getAllAnime($isAdmin = false);
+	public function getAllAnime(bool $isAdmin = false);
 
 	/**
 	 * Формирует для главной страницы (в разработке)
-	 * @param $count
 	 *
-	 * @return mixed
-	 */
-	public function getFirstPageAnime($count);
-
-	/**
-	 * Вывод варимативного
-	 * @param $columns
-	 * @param $custom
-	 *
-	 * @return mixed
-	 */
-	public function getCustomAnime($columns, $custom);
-
-	/**
-	 * Вывод анонса
-	 * @param $count
-	 *
-	 * @return mixed
-	 */
-	public function getAnons($count);
-
-	/**
-	 * Вывод популярного
-	 * @param $count
-	 *
-	 * @return mixed
-	 */
-	public function getPopular($count);
-
-	/**
-	 * Поиск
-	 * @param       $request
 	 * @param  int  $limit
 	 *
 	 * @return mixed
 	 */
-	public function getSearchAnime($request, $limit = 5);
+	public function getFirstPageAnime(int $limit);
+
+	/**
+	 * Вывод варимативного
+	 *
+	 * @param  string  $columns
+	 * @param  string  $custom
+	 *
+	 * @return mixed
+	 */
+	public function getCustomAnime(string $columns, string $custom);
+
+	/**
+	 * Вывод анонса
+	 *
+	 * @param  int  $limit
+	 *
+	 * @return mixed
+	 */
+	public function getAnons(int $limit);
+
+	/**
+	 * Вывод популярного
+	 *
+	 * @param  int  $limit
+	 *
+	 * @return mixed
+	 */
+	public function getPopular(int $limit);
+
+	/**
+	 * Поиск
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int                       $limit
+	 *
+	 * @return mixed
+	 */
+	public function getSearchAnime(Request $request, int $limit = 5);
 
 	/**
 	 * Добавление/обновление комментариев
-	 * @param $id
-	 * @param $request
+	 *
+	 * @param  int                       $id
+	 * @param  \Illuminate\Http\Request  $request
 	 *
 	 * @return mixed
 	 */
-	public function setComment($id, $request);
+	public function setComment(int $id, Request $request);
 
 	/**
 	 * Удаление комментариев
-	 * @param $id
-	 * @param $fullDel
+	 *
+	 * @param  int   $id
+	 * @param  bool  $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delComments($id, $fullDel);
+	public function delComments(int $id, bool $fullDel);
 
 	/**
 	 * Добавление/обновление аниме
-	 * @param $request
-	 * @param $id
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int                       $id
 	 *
 	 * @return mixed
 	 */
-	public function setAnime($request, $id);
+	public function setAnime(Request $request, int $id);
 }

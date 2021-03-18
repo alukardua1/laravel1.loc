@@ -12,11 +12,11 @@ namespace App\Repository\Interfaces;
 interface CountryRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param string $countryUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind);
+	public function getAnime(string $countryUrl);
 
 	/**
 	 * @return mixed

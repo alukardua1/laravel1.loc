@@ -15,18 +15,18 @@ class QualityComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
+	 * @param  QualityRepositoryInterfaces  $qualityRepositoryInterfaces
 	 */
 	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{
 		$this->qualityRepository = $qualityRepositoryInterfaces;
-		$this->quality = $this->menu();
+		$this->quality = $this->quality();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function quality()
 	{
 		return $this->qualityRepository->getQuality();
 	}

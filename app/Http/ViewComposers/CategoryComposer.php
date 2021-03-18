@@ -16,23 +16,22 @@ class CategoryComposer
 {
 	public                                 $category;
 	protected CategoryRepositoryInterfaces $categoryRepository;
-	public int                             $i = 0;
 
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
+	 * @param  CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
 	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
 		$this->categoryRepository = $categoryRepositoryInterfaces;
-		$this->category = $this->menu();
+		$this->category = $this->category();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function category()
 	{
 		return $this->categoryRepository->getCategories()->get();
 	}

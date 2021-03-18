@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 /**
  * Class YearAired
  *
@@ -13,8 +15,8 @@ class YearAired extends Model
 		'getAnime',
 	];
 
-	public $cacheTags = ['year'];
-	public $cachePrefix = 'year_';
+	public array  $cacheTags   = ['year'];
+	public string $cachePrefix = 'year_';
 
 	/**
 	 * YearAired constructor.
@@ -29,8 +31,8 @@ class YearAired extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getAnime()
-    {
+	public function getAnime(): BelongsTo
+	{
     	return $this->belongsTo(Anime::class, 'id', 'aired_season')->latest();
     }
 }

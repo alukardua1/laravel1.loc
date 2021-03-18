@@ -15,8 +15,10 @@ class MPAARating extends Model
 	protected $withCount = [
 		'getAnime',
 	];
-	public $cacheTags = ['mpaa'];
-	public $cachePrefix = 'mpaa_';
+
+	public array  $cacheTags   = ['mpaa'];
+	public string $cachePrefix = 'mpaa_';
+
 	/**
 	 * MPAARating constructor.
 	 *

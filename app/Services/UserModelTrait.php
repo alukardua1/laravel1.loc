@@ -18,7 +18,7 @@ trait UserModelTrait
 	use HasProfilePhoto;
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
 	public function getFavoritesCountAttribute()
 	{
@@ -26,7 +26,7 @@ trait UserModelTrait
 	}
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
 	public function getAnimeCountAttribute()
 	{
@@ -34,7 +34,7 @@ trait UserModelTrait
 	}
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
 	public function getCommentsCountAttribute()
 	{
@@ -42,7 +42,7 @@ trait UserModelTrait
 	}
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
 	public function getCommentsReplyCountAttribute()
 	{
@@ -50,7 +50,7 @@ trait UserModelTrait
 	}
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
 	public function getPMCountAttribute()
 	{
@@ -60,7 +60,7 @@ trait UserModelTrait
 	/**
 	 * @return bool
 	 */
-	public function getisOnlineAttribute()
+	public function getIsOnlineAttribute(): bool
 	{
 		return Cache::has('user-is-online-' . $this->id);
 	}
@@ -68,7 +68,7 @@ trait UserModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function setLastLoginsAttribute($value)
 	{
@@ -78,7 +78,7 @@ trait UserModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function setCreatedAttribute($value)
 	{
@@ -88,7 +88,7 @@ trait UserModelTrait
 	/**
 	 * @return int
 	 */
-	public function getNotReadMessageAttribute()
+	public function getNotReadMessageAttribute(): int
 	{
 		return $this->getPersonalMessageRecipient()->where('is_read', '=', 0)->count();
 	}
@@ -98,7 +98,7 @@ trait UserModelTrait
 	 *
 	 * @return string
 	 */
-	protected function defaultProfilePhotoUrl()
+	protected function defaultProfilePhotoUrl(): string
 	{
 		return '/images/no_avatar_lightstat.png';
 	}

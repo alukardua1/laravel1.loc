@@ -20,24 +20,24 @@ class CarouselAnimeComposer
 	/**
 	 * CarouselAnimeComposer constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		$this->animeRepository = $animeRepositoryInterfaces;
-		$this->carousel = $this->anime();
+		$this->carousel = $this->carousel();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function anime()
+	public function carousel()
 	{
 		return $this->animeRepository->getFirstPageAnime(100)->get();
 	}
 
 	/**
-	 * @param  \Illuminate\View\View  $view
+	 * @param  View  $view
 	 */
 	public function compose(View $view)
 	{

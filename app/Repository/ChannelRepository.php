@@ -16,13 +16,13 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 {
 
 	/**
-	 * @param $kind
+	 * @param  string  $channelUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind)
+	public function getAnime(string $channelUrl)
 	{
-		return Channel::where('url', $kind)
+		return Channel::where('url', $channelUrl)
 			->first();
 	}
 

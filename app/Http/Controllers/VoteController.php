@@ -18,7 +18,7 @@ class VoteController extends Controller
 	/**
 	 * VoteController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\VoteRepositoryInterface  $voteRepositoryInterface
+	 * @param  VoteRepositoryInterface  $voteRepositoryInterface
 	 */
 	public function __construct(VoteRepositoryInterface $voteRepositoryInterface)
 	{
@@ -26,7 +26,12 @@ class VoteController extends Controller
 		$this->voteRepository = $voteRepositoryInterface;
 	}
 
-	public function plus($id)
+	/**
+	 * @param int $id
+	 *
+	 * @return mixed
+	 */
+	public function plus(int $id)
 	{
 		$this->voteRepository->plusVotes($id);
 
@@ -34,11 +39,11 @@ class VoteController extends Controller
 	}
 
 	/**
-	 * @param  int  $id
+	 * @param int $id
 	 *
-	 * @return \Illuminate\Http\RedirectResponse|string
+	 * @return mixed
 	 */
-	public function minus($id)
+	public function minus(int $id)
 	{
 		$this->voteRepository->minusVotes($id);
 

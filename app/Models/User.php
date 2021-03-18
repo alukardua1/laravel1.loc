@@ -6,6 +6,10 @@ use App\Services\MutationTrait;
 use App\Services\UserModelTrait;
 use Config;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -31,8 +35,9 @@ class User extends Authenticatable
 
 
 	protected $cacheFor;
-	public $cacheTags = ['user'];
-	public $cachePrefix = 'user_';
+
+	public array  $cacheTags   = ['user'];
+	public string $cachePrefix = 'user_';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -73,7 +78,7 @@ class User extends Authenticatable
 	 *
 	 * @var array
 	 */
-	protected $casts = [
+	protected $casts   = [
 		'email_verified_at' => 'datetime',
 	];
 	protected $appends = [
@@ -91,7 +96,7 @@ class User extends Authenticatable
 		$this->cacheFor = Config::get('secondConfig.cache_time');
 	}
 
-	public function isAdmin()
+	public function isAdmin(): bool
 	{
 		return $this->getGroup->is_dashboard === 1;
 	}
@@ -99,7 +104,7 @@ class User extends Authenticatable
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getGroup()
+	public function getGroup(): BelongsTo
 	{
 		return $this->belongsTo(Group::class, 'group_id', 'id')->latest();
 	}
@@ -107,7 +112,7 @@ class User extends Authenticatable
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getAnime()
+	public function getAnime(): HasMany
 	{
 		return $this->hasMany(Anime::class)->latest();
 	}
@@ -115,7 +120,7 @@ class User extends Authenticatable
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function favorites()
+	public function favorites(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class, 'favorites')->latest()->withTimeStamps();
 	}
@@ -123,27 +128,27 @@ class User extends Authenticatable
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function vote()
+	public function vote(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class, 'votes')->latest()->withTimestamps();
 	}
 
-	public function getPersonalMessageAuthor()
+	public function getPersonalMessageAuthor(): HasMany
 	{
 		return $this->hasMany(PersonalMessage::class, 'author_id')->latest();
 	}
 
-	public function getPersonalMessageRecipient()
+	public function getPersonalMessageRecipient(): HasMany
 	{
 		return $this->hasMany(PersonalMessage::class, 'recipient_id')->latest();
 	}
 
-	public function getCountry()
+	public function getCountry(): HasOne
 	{
 		return $this->hasOne(Country::class, 'id', 'country_id')->latest();
 	}
 
-	public function getComments()
+	public function getComments(): BelongsTo
 	{
 		return $this->belongsTo(Comment::class, 'id', 'author_id')->latest();
 	}

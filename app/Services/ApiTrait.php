@@ -4,6 +4,9 @@
 namespace App\Services;
 
 
+use App\Models\Anime;
+use App\Models\User;
+
 /**
  * Trait ApiTrait
  *
@@ -27,26 +30,27 @@ trait ApiTrait
 	/**
 	 * Мутатор Апи пользователя
 	 *
-	 * @param        $users
-	 * @param  null  $custom
+	 * @param               $user
+	 * @param  string|null  $custom
 	 *
 	 * @return array
 	 */
-	public function userMutations($users, $custom = null): array
+	public function userMutations($user, string $custom = null): array
 	{
-		foreach ($users->favorites as $value) {
-			$favorite[] = $this->animeMutations($value);
+		$favorite = [];
+		foreach ($user->favorites as $value) {
+			$favorite[] = $this->animeAllMutations($value);
 		}
 		switch ($custom) {
 			case 'favorite':
 				return $favorite;
 			case null:
 				return [
-					'id'    => $users->id,
-					'login' => $users->login,
-					'name'  => $users->name,
-					'email' => $users->email,
-					'group' => $users->getGroup->title,
+					'id'    => $user->id,
+					'login' => $user->login,
+					'name'  => $user->name,
+					'email' => $user->email,
+					'group' => $user->getGroup->title,
 				];
 		}
 
@@ -60,8 +64,9 @@ trait ApiTrait
 	 *
 	 * @return array
 	 */
-	public function animesMutations($anime): array
+	public function animeAllMutations($anime): array
 	{
+		$result = [];
 		foreach ($anime as $item) {
 			$result[] = [
 				'id'       => $item->id,
@@ -91,7 +96,7 @@ trait ApiTrait
 	 *
 	 * @return array
 	 */
-	private function animeCategory($category)
+	private function animeCategory($category): array
 	{
 		$result = [];
 		foreach ($category as $value) {
@@ -113,7 +118,7 @@ trait ApiTrait
 	 * @return array
 	 * @todo Разобратся почему такая ошибка
 	 */
-	public function animeMutations($anime): array
+	public function animeOneMutations($anime): array
 	{
 		return [
 			'id'       => $anime->id,

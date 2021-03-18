@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
 use App\Services\FunctionTrait;
 use App\Services\UsersTrait;
+use Auth;
+use Illuminate\Http\Request;
 
 /**
  * Class UserRepository
@@ -20,18 +22,18 @@ class UserRepository implements UserRepositoryInterfaces
 	use UsersTrait, FunctionTrait;
 
 	/**
-	 * @param $user
+	 * @param  string  $login
 	 *
-	 * @return \Illuminate\Database\Eloquent\Builder|mixed
+	 * @return mixed
 	 */
-	public function getUser($user)
+	public function getUser(string $login)
 	{
-		return User::where('login', $user)
+		return User::where('login', $login)
 			->firstOrFail();
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Builder|mixed
+	 * @return mixed
 	 */
 	public function getUsers()
 	{
@@ -39,25 +41,25 @@ class UserRepository implements UserRepositoryInterfaces
 	}
 
 	/**
-	 * @param $user
-	 *
-	 * @return mixed|void
-	 */
-	public function getPM($user)
-	{
-		dd(__METHOD__, \Auth::id(), 11);
-	}
-
-	/**
-	 * @param $request
-	 * @param $currentUser
+	 * @param  string  $login
 	 *
 	 * @return mixed
 	 */
-	public function setUsers($request, $currentUser)
+	public function getPM(string $login)
+	{
+		dd(__METHOD__, Auth::id(), 11);
+	}
+
+	/**
+	 * @param  Request  $request
+	 * @param  string   $login
+	 *
+	 * @return mixed
+	 */
+	public function setUsers(Request $request, string $login)
 	{
 		if ($request->user()) {
-			$updateUser = User::where('login', $currentUser)->first();
+			$updateUser = User::where('login', $login)->first();
 			$requestForm = $request->all();
 			$requestForm['country_id'] = $requestForm['land'];
 

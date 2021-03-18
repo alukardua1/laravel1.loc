@@ -18,14 +18,24 @@ use Auth;
  */
 class VoteRepository implements VoteRepositoryInterface
 {
-	public function plusVotes($id)
+	/**
+	 * @param  int  $id
+	 *
+	 * @return mixed
+	 */
+	public function plusVotes(int $id)
 	{
 		Auth::user()
 			->vote()
 			->attach($id, ['votes' => 1]);
 	}
 
-	public function minusVotes($id)
+	/**
+	 * @param  int  $id
+	 *
+	 * @return mixed
+	 */
+	public function minusVotes(int $id)
 	{
 		Auth::user()
 			->vote()

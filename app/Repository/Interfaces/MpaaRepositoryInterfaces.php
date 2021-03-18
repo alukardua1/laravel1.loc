@@ -12,11 +12,11 @@ namespace App\Repository\Interfaces;
 interface MpaaRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param string $mpaaUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind);
+	public function getAnime(string $mpaaUrl);
 
 	/**
 	 * @return mixed

@@ -9,8 +9,8 @@ namespace App\Models;
  */
 class OtherLink extends Model
 {
-	public $cacheTags = ['otherlink'];
-	public $cachePrefix = 'otherlink_';
+	public array  $cacheTags   = ['otherlink'];
+	public string $cachePrefix = 'otherlink_';
 
 	protected $fillable = [
 		'anime_id',

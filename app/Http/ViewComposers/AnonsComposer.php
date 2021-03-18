@@ -15,24 +15,24 @@ class AnonsComposer
 	/**
 	 * CarouselAnimeComposer constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		$this->animeRepository = $animeRepositoryInterfaces;
-		$this->anons = $this->anime();
+		$this->anons = $this->anons();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function anime()
+	public function anons()
 	{
 		return $this->animeRepository->getAnons(100)->get();
 	}
 
 	/**
-	 * @param  \Illuminate\View\View  $view
+	 * @param  View  $view
 	 */
 	public function compose(View $view)
 	{

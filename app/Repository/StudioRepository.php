@@ -16,13 +16,13 @@ class StudioRepository implements StudioRepositoryInterfaces
 {
 
 	/**
-	 * @param $kind
+	 * @param  string  $studioUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind)
+	public function getAnime(string $studioUrl)
 	{
-		return Studio::where('url', $kind)
+		return Studio::where('url', $studioUrl)
 			->first();
 	}
 

@@ -24,12 +24,12 @@ trait UsersTrait
     /**
      * Загружает аватар в профиль
      *
-     * @param User  $updateUser  Current users
-     * @param array $requestForm Request
+     * @param $updateUser
+     * @param $requestForm
      *
-     * @return mixed Updated request
+     * @return mixed
      */
-    public function uploadAvatar($updateUser, $requestForm)
+    public function uploadAvatar($updateUser, $requestForm): array
     {
         if (file_exists('storage/'.$updateUser->profile_photo_path)) {
             $requestForm = $this->deleteAvatar($updateUser, $requestForm);
@@ -52,8 +52,8 @@ trait UsersTrait
     /**
      * Удаляет текущий аватар
      *
-     * @param User  $updateUser  Current users
-     * @param array $requestForm Request
+     * @param $updateUser
+     * @param $requestForm
      *
      * @return array
      */
@@ -70,12 +70,12 @@ trait UsersTrait
     /**
      * Обновляет пароль
      *
-     * @param User  $updateUser  Current users
-     * @param array $requestForm Request
+     * @param $updateUser
+     * @param $requestForm
      *
      * @return string
      */
-    public function updatePasswords($updateUser, $requestForm): string
+    public function updatePasswords($updateUser, &$requestForm): string
     {
         if (Hash::check($requestForm['altpass'], $updateUser['password1'])) {
             return $requestForm['password1'] = Hash::make($requestForm['password2']);
@@ -85,11 +85,11 @@ trait UsersTrait
     }
 
     /**
-     * @param User $user
+     * @param $user
      *
      * @return mixed
      */
-    public function refactoringUser($user)
+    public function refactoringUser($user): User
     {
         switch ($user->getGroup->id) {
             case 1:

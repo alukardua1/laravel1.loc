@@ -20,7 +20,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, FunctionTrait, ApiTrait, MutationTrait;
 
-	protected $paginate;
+	protected int $paginate;
 
 	protected string $frontend = 'web.frontend.';
 

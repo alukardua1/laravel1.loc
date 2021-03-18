@@ -15,13 +15,13 @@ use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 class MpaaRepository implements MpaaRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param  string  $mpaaUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind)
+	public function getAnime(string $mpaaUrl)
 	{
-		return MPAARating::where('url', $kind)
+		return MPAARating::where('url', $mpaaUrl)
 			->first();
 	}
 

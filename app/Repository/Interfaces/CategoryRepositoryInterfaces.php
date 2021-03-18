@@ -11,15 +11,16 @@ namespace App\Repository\Interfaces;
  */
 interface CategoryRepositoryInterfaces
 {
+
 	/**
 	 * @return mixed
 	 */
 	public function getCategories();
 
 	/**
-	 * @param $category
+	 * @param  string  $categoryUrl
 	 *
 	 * @return mixed
 	 */
-	public function getCategory($category);
+	public function getCategory(string $categoryUrl);
 }

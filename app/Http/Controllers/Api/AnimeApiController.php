@@ -14,10 +14,7 @@ use Illuminate\Http\Request;
  */
 class AnimeApiController extends Controller
 {
-	/**
-	 * @var \App\Repository\Interfaces\AnimeRepositoryInterfaces
-	 */
-	protected $apiAnime;
+	protected AnimeRepositoryInterfaces $apiAnimeRepository;
 
 	/**
 	 * AnimeApiController constructor.
@@ -27,7 +24,7 @@ class AnimeApiController extends Controller
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->apiAnime = $animeRepositoryInterfaces;
+		$this->apiAnimeRepository = $animeRepositoryInterfaces;
 	}
 
 	/**
@@ -37,8 +34,8 @@ class AnimeApiController extends Controller
 	 */
 	public function index()
 	{
-		$anime = $this->apiAnime->getAllAnime()->paginate($this->paginate);
-		$anime = $this->animesMutations($anime);
+		$anime = $this->apiAnimeRepository->getAllAnime()->paginate($this->paginate);
+		$anime = $this->animeAllMutations($anime);
 
 		return response()->json($anime);
 	}
@@ -46,17 +43,17 @@ class AnimeApiController extends Controller
 	/**
 	 * Вывод аниме по $id
 	 *
-	 * @param $id
+	 * @param int $id
 	 *
 	 * @return array|\Illuminate\Http\JsonResponse
 	 */
-	public function show($id)
+	public function show(int $id)
 	{
-		$thisAnime = $this->apiAnime->getAnime($id)->first();
+		$thisAnime = $this->apiAnimeRepository->getAnime($id)->first();
 		if (empty($thisAnime)) {
 			return response()->json($this->error404());
 		}
-		$thisAnime = $this->animeMutations($thisAnime);
+		$thisAnime = $this->animeOneMutations($thisAnime);
 
 		return response()->json($thisAnime);
 	}

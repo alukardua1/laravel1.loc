@@ -15,18 +15,18 @@ class ChannelComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\ChannelRepositoryInterfaces  $channelRepositoryInterfaces
+	 * @param  ChannelRepositoryInterfaces  $channelRepositoryInterfaces
 	 */
 	public function __construct(ChannelRepositoryInterfaces $channelRepositoryInterfaces)
 	{
 		$this->channelRepository = $channelRepositoryInterfaces;
-		$this->channel = $this->menu();
+		$this->channel = $this->channel();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function channel()
 	{
 		return $this->channelRepository->getChannel();
 	}

@@ -15,10 +15,11 @@ trait AnimeModelTrait
 {
 
 	use MutationTrait;
+
 	/**
 	 * @param $value
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function setAiredAttribute($value)
 	{
@@ -28,7 +29,7 @@ trait AnimeModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function setUpdateAttribute($value)
 	{
@@ -38,7 +39,7 @@ trait AnimeModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function setCreateAttribute($value)
 	{
@@ -48,7 +49,7 @@ trait AnimeModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function setReleasedAttribute($value)
 	{
@@ -56,7 +57,7 @@ trait AnimeModelTrait
 	}
 
 	/**
-	 * @return array
+	 * @return mixed
 	 */
 	public function getVoteAttribute()
 	{
@@ -66,7 +67,7 @@ trait AnimeModelTrait
 	/**
 	 * @todo Временное решение придумать как изменить
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function getCategoryAttribute()
 	{

@@ -13,7 +13,8 @@ use Config;
 class LoginAdminController extends Controller
 {
 	use AuthenticatesUsers;
-	protected $redirectTo = RouteServiceProvider::HOME;
+
+	protected string $redirectTo = RouteServiceProvider::HOME;
 
 	public function __construct()
 	{
@@ -37,6 +38,6 @@ class LoginAdminController extends Controller
 
 	public function showLoginForm()
 	{
-		return view('web.backend.auth.login');
+		return view($this->backend . 'auth.login');
 	}
 }

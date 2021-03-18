@@ -15,13 +15,13 @@ use App\Repository\Interfaces\CountryRepositoryInterfaces;
 class CountryRepository implements CountryRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param  string  $countryUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind)
+	public function getAnime(string $countryUrl)
 	{
-		return Country::where('url', $kind)
+		return Country::where('url', $countryUrl)
 			->first();
 	}
 

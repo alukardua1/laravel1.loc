@@ -16,13 +16,13 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 {
 
 	/**
-	 * @param $year
+	 * @param  string  $yearUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($year)
+	public function getAnime(string $yearUrl)
 	{
-		return YearAired::where('name', $year)
+		return YearAired::where('name', $yearUrl)
 			->first();
 	}
 

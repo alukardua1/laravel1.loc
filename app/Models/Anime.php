@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Anime extends Model
 {
 	use AnimeModelTrait;
+
 	protected $fillable = [
 		'name',
 		'russian',
@@ -64,8 +65,8 @@ class Anime extends Model
 		'getYear',
 	];
 
-	public $cacheTags = ['anime'];
-	public $cachePrefix = 'anime_';
+	public array  $cacheTags   = ['anime'];
+	public string $cachePrefix = 'anime_';
 
 	/**
 	 * Anime constructor.
@@ -86,9 +87,9 @@ class Anime extends Model
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|\Illuminate\Database\Eloquent\Relations\HasOne
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
 	 */
-	public function getUser()
+	public function getUser(): HasOne
 	{
 		return $this->hasOne(User::class, 'id', 'user_id')->latest();
 	}
@@ -120,7 +121,7 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getChannel()
+	public function getChannel(): BelongsTo
 	{
 		return $this->belongsTo(Channel::class, 'channel_id')->latest();
 	}
@@ -128,7 +129,7 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getQuality()
+	public function getQuality(): BelongsToMany
 	{
 		return $this->belongsToMany(Quality::class)->latest();
 	}
@@ -136,7 +137,7 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getRating()
+	public function getRating(): BelongsTo
 	{
 		return $this->belongsTo(MPAARating::class, 'rating_id')->latest();
 	}
@@ -144,7 +145,7 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getCountry()
+	public function getCountry(): BelongsToMany
 	{
 		return $this->belongsToMany(Country::class)->latest();
 	}
@@ -152,7 +153,7 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getTranslate()
+	public function getTranslate(): BelongsToMany
 	{
 		return $this->belongsToMany(Translate::class)->latest();
 	}
@@ -172,7 +173,7 @@ class Anime extends Model
 	/**
 	 * @return bool
 	 */
-	public function votes()
+	public function votes(): bool
 	{
 		return (bool)$this->hasMany(Vote::class)
 			->latest()
@@ -184,7 +185,7 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getVote()
+	public function getVote(): HasMany
 	{
 		return $this->hasMany(Vote::class)->latest();
 	}
@@ -192,7 +193,7 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getTrailer()
+	public function getTrailer(): HasMany
 	{
 		return $this->hasMany(Trailer::class)->latest();
 	}
@@ -200,7 +201,7 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getPlayer()
+	public function getPlayer(): HasMany
 	{
 		return $this->hasMany(Player::class)->latest();
 	}
@@ -208,22 +209,31 @@ class Anime extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function getRegionBlock()
+	public function getRegionBlock(): HasMany
 	{
 		return $this->hasMany(RegionBlock::class)->latest();
 	}
 
-	public function getYear()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function getYear(): HasOne
 	{
 		return $this->hasOne(YearAired::class)->latest();
 	}
 
-	public function getComments()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function getComments(): BelongsTo
 	{
 		return $this->belongsTo(Comment::class, 'id', 'anime_id')->latest();
 	}
 
-	public function getRelationAnime()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function getRelationAnime(): BelongsToMany
 	{
 		return $this->belongsToMany($this, 'anime_related', 'anime_id', 'relation_id', 'id', 'id')->latest();
 	}

@@ -15,8 +15,8 @@ class Quality extends Model
 		'getAnime',
 	];
 
-	public $cacheTags = ['quality'];
-	public $cachePrefix = 'quality_';
+	public array  $cacheTags   = ['quality'];
+	public string $cachePrefix = 'quality_';
 	/**
 	 * Quality constructor.
 	 *

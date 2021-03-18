@@ -12,11 +12,11 @@ namespace App\Repository\Interfaces;
 interface QualityRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param string $qualityUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind);
+	public function getAnime(string $qualityUrl);
 
 	/**
 	 * @return mixed

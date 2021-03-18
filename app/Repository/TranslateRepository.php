@@ -15,13 +15,13 @@ use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 class TranslateRepository implements TranslateRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param $translateUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind)
+	public function getAnime($translateUrl)
 	{
-		return Translate::where('url', $kind)
+		return Translate::where('url', $translateUrl)
 			->first();
 	}
 

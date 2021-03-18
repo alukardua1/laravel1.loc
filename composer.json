@@ -25,7 +25,8 @@
     "rennokki/laravel-eloquent-query-cache": "^2.6",
     "roumen/feed": "^8.0",
     "tightenco/ziggy": "^1.0",
-    "twbs/bootstrap": "5.0.0-alpha1"
+    "twbs/bootstrap": "5.0.0-alpha1",
+	"ext-http": "*"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.5",

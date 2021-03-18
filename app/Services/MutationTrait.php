@@ -4,6 +4,9 @@
 namespace App\Services;
 
 
+use DateTime;
+use Illuminate\Support\Collection;
+
 /**
  * Trait MutationTrait
  *
@@ -14,7 +17,7 @@ trait MutationTrait
 	/**
 	 * Формирование ссылки категорий
 	 *
-	 * @param  mixed  $category
+	 * @param $category
 	 *
 	 * @return string
 	 */
@@ -31,7 +34,7 @@ trait MutationTrait
 	/**
 	 * Блокировка плеера
 	 *
-	 * @param  mixed  $anime
+	 * @param $anime
 	 *
 	 * @return mixed
 	 */
@@ -51,19 +54,19 @@ trait MutationTrait
 	 *
 	 * @return string
 	 */
-	public function broadcast($broadcast)
+	public function broadcast($broadcast): string
 	{
-		$broadcast = new \DateTime($broadcast);
+		$broadcast = new DateTime($broadcast);
 
 		switch ($broadcast) {
-			case $broadcast >= new \DateTime('23:00'):
-			case $broadcast < new \DateTime('6:00'):
+			case $broadcast >= new DateTime('23:00'):
+			case $broadcast < new DateTime('6:00'):
 				return $broadcast = '[Ночной сеанс]';
-			case $broadcast >= new \DateTime('06:00')&& $broadcast < new \DateTime('12:00'):
+			case $broadcast >= new DateTime('06:00')&& $broadcast < new DateTime('12:00'):
 				return $broadcast = '[Утрений сеанс]';
-			case $broadcast >= new \DateTime('12:00')&& $broadcast < new \DateTime('18:00'):
+			case $broadcast >= new DateTime('12:00')&& $broadcast < new DateTime('18:00'):
 				return $broadcast = '[Дневной сеанс]';
-			case $broadcast >= new \DateTime('18:00')&& $broadcast < new \DateTime('23:00'):
+			case $broadcast >= new DateTime('18:00')&& $broadcast < new DateTime('23:00'):
 				return $broadcast = '[Вечерний сеанс]';
 		}
 	}
@@ -71,12 +74,12 @@ trait MutationTrait
 	/**
 	 * Проверка на пустое значение
 	 *
-	 * @param  mixed  $unknown
+	 * @param $unknown
 	 *
 	 * @return \Illuminate\Support\Collection
 	 * @todo Решить нужно ли
 	 */
-	public function unknown($unknown): \Illuminate\Support\Collection
+	public function unknown($unknown): Collection
 	{
 		if (!$unknown) {
 			$unknown = collect(['name', 'url']);
@@ -90,11 +93,11 @@ trait MutationTrait
 	/**
 	 * Формирование сезона показа
 	 *
-	 * @param $aired
+	 * @param string $aired
 	 *
 	 * @return string
 	 */
-	public function seasonAired($aired): string
+	public function seasonAired(string $aired): string
 	{
 		$month = date('m', strtotime($aired));
 		$year = date('Y', strtotime($aired));
@@ -115,7 +118,7 @@ trait MutationTrait
 	 *
 	 * @return array
 	 */
-	public function votePlusMinus($vote)
+	public function votePlusMinus($vote): array
 	{
 		$result['plus'] = 0;
 		$result['minus'] = 0;

@@ -15,8 +15,8 @@ class Category extends Model
 		'getAnime',
 	];
 
-	public $cacheTags = ['category'];
-	public $cachePrefix = 'category_';
+	public array  $cacheTags   = ['category'];
+	public string $cachePrefix = 'category_';
 
 	/**
 	 * Category constructor.

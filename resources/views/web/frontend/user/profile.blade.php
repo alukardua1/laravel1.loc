@@ -108,8 +108,8 @@
 					</div>
 					<div class="form-item clearfix">
 						<label for="land">Страна:</label>
-						<select id="land" name="land" class="js-selectize" aria-label="Место жительства" placeholder="Выберите страну...">
-							@foreach($menu as $item)
+						<select id="land" name="land" class="js-selectize" aria-label="Место жительства">
+							@foreach($country as $item)
 								<option @if($currentUser->getCountry->id == $item->id) selected @endif value="{{$item->id}}">{{$item->name}}</option>
 							@endforeach
 						</select>

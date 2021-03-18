@@ -6,8 +6,20 @@ use App\Models\PersonalMessage;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * Class PersonalMessageController
+ *
+ * @package App\Http\Controllers
+ */
 class PersonalMessageController extends Controller
 {
+	/**
+	 * PersonalMessageController constructor.
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+	}
 	/**
 	 * Display a listing of the resource.
 	 *

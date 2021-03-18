@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
@@ -14,51 +15,45 @@ use Illuminate\Http\Request;
  */
 class UserController extends Controller
 {
-	private UserRepositoryInterfaces $user;
+	private UserRepositoryInterfaces $userRepository;
+	private int                      $limitRss;
+	private int                      $timeCacheRss;
 
 	/**
 	 * UserController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepositoryInterfaces
+	 * @param  UserRepositoryInterfaces  $userRepositoryInterfaces
 	 */
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->user = $userRepositoryInterfaces;
+		$this->userRepository = $userRepositoryInterfaces;
+		$this->limitRss = config('secondConfig.limitRss');
+		$this->timeCacheRss = config('secondConfig.cache_time');
 	}
 
 	/**
+	 * @param  string  $login
 	 *
+	 * @return mixed
 	 */
-	public function index()
+	public function show(string $login)
 	{
-		$users = $this->user->getUsers();
-
-		dd(__METHOD__, $users);
-	}
-
-	private function users()
-	{
-
-	}
-
-	/**
-	 * @param $user
-	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-	 */
-	public function show($user)
-	{
-		$currentUser = $this->user->getUser($user);
+		$currentUser = $this->userRepository->getUser($login);
 		$currentUser->created = $currentUser->created_at;
 		$currentUser->last_logins = $currentUser->last_login;
 
 		return view($this->frontend . 'user.profile', compact('currentUser'));
 	}
 
-	public function showComment($user)
+	/**
+	 * @param  string  $login
+	 *
+	 * @return mixed
+	 */
+	public function showComment(string $login)
 	{
-		$currentUser = $this->user->getUser($user);
+		$currentUser = $this->userRepository->getUser($login);
 		$this->isNotNull($currentUser);
 		$title = "Комментарии пользователя {$currentUser->login}";
 		$description = '';
@@ -69,37 +64,43 @@ class UserController extends Controller
 	}
 
 	/**
-	 * @param $user
+	 * @param  string  $login
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return mixed
 	 */
-	public function edit($user)
+	public function edit(string $login)
 	{
-		$currentUser = $this->user->getUser($user);
+		$currentUser = $this->userRepository->getUser($login);
 
-		return view('web.frontend.user.edit', compact('currentUser'));
+		return view($this->frontend . 'user.edit', compact('currentUser'));
 	}
 
 	/**
-	 * @param                                  $user
-	 * @param  \App\Http\Requests\UserRequest  $request
+	 * @param  string                          $login
+	 * @param  UserRequest  $request
 	 *
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @return mixed
 	 */
-	public function update($user, UserRequest $request)
+	public function update(string $login, UserRequest $request)
 	{
-		$requestUser = $this->user->setUsers($request, $user);
+		unset($request['login'], $request['email']);
+		$requestUser = $this->userRepository->setUsers($request, $login);
 
 		if ($requestUser) {
-			return redirect()->route('currentUser', $user);
+			return redirect()->route('currentUser', $login);
 		}
 
 		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
 	}
 
-	public function showAnime($user)
+	/**
+	 * @param  string  $login
+	 *
+	 * @return mixed
+	 */
+	public function showAnime(string $login)
 	{
-		$currentUser = $this->user->getUser($user);
+		$currentUser = $this->userRepository->getUser($login);
 		$this->isNotNull($currentUser);
 		$title = "Аниме добавленое пользователем {$currentUser->login}";
 		$description = '';
@@ -108,13 +109,18 @@ class UserController extends Controller
 		return view($this->frontend . 'anime.short', compact('currentUser', 'allAnime', 'title', 'description'));
 	}
 
-	public function userRss($user)
+	/**
+	 * @param  string  $login
+	 *
+	 * @return mixed
+	 */
+	public function userRss(string $login)
 	{
-		$feed = \App::make("feed");
-		$feed->setCache(config('secondConfig.cache_time'), 'laravelFeedKey');
+		$feed = App::make("feed");
+		$feed->setCache($this->timeCacheRss, 'laravelFeedKey');
 		if (!$feed->isCached()) {
-			$currentUser = $this->user->getUser($user);
-			$posts = $currentUser->getAnime()->limit(config('secondConfig.limitRss'))->get();
+			$currentUser = $this->userRepository->getUser($login);
+			$posts = $currentUser->getAnime()->limit($this->limitRss)->get();
 
 			$feed = $this->getRss($feed, $posts, $currentUser->login);
 		}

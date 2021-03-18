@@ -16,13 +16,13 @@ class QualityRepository implements QualityRepositoryInterfaces
 {
 
 	/**
-	 * @param $kind
+	 * @param $qualityUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind)
+	public function getAnime(string $qualityUrl)
 	{
-		return Quality::where('url', $kind)
+		return Quality::where('url', $qualityUrl)
 			->first();
 	}
 

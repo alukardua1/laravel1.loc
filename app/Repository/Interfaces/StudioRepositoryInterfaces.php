@@ -12,11 +12,11 @@ namespace App\Repository\Interfaces;
 interface StudioRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param  string  $studioUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind);
+	public function getAnime(string $studioUrl);
 
 	/**
 	 * @return mixed

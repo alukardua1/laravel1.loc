@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AnimeAdminController extends Controller
 {
-	protected $animeRepository;
+	protected AnimeRepositoryInterfaces $animeRepository;
 
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
@@ -25,7 +25,7 @@ class AnimeAdminController extends Controller
     {
         $showAnime = $this->animeRepository->getAllAnime(true)->paginate(50);
 
-        return view('web.backend.anime.show_all', compact('showAnime'));
+        return view($this->backend . 'anime.show_all', compact('showAnime'));
     }
 
     /**
@@ -71,7 +71,7 @@ class AnimeAdminController extends Controller
     {
         $currentAnime = $this->animeRepository->getAnime($id)->first();
 
-        return view('web.backend.anime.edit', compact('currentAnime'));
+        return view($this->backend . 'anime.edit', compact('currentAnime'));
     }
 
     /**

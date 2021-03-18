@@ -12,11 +12,11 @@ namespace App\Repository\Interfaces;
 interface ChannelRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param string $channelUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind);
+	public function getAnime(string $channelUrl);
 
 	/**
 	 * @return mixed

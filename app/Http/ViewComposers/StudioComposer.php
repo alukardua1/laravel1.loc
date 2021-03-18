@@ -15,18 +15,18 @@ class StudioComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
+	 * @param  StudioRepositoryInterfaces  $studioRepositoryInterfaces
 	 */
 	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
 		$this->studioRepository = $studioRepositoryInterfaces;
-		$this->studio = $this->menu();
+		$this->studio = $this->studio();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function studio()
 	{
 		return $this->studioRepository->getStudio();
 	}

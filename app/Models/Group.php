@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Group extends Model
 {
-	public $cacheTags = ['group'];
-	public $cachePrefix = 'group_';
+	public array  $cacheTags   = ['group'];
+	public string $cachePrefix = 'group_';
 	/**
 	 * Group constructor.
 	 *

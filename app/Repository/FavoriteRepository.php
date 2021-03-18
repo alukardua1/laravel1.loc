@@ -20,11 +20,11 @@ use Auth;
 class FavoriteRepository implements FavoritesRepositoryInterfaces
 {
 	/**
-	 * @param $id
+	 * @param  int  $id
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function favorite($id)
+	public function favorite(int $id)
 	{
 		Auth::user()
 			->favorites()
@@ -32,11 +32,11 @@ class FavoriteRepository implements FavoritesRepositoryInterfaces
 	}
 
 	/**
-	 * @param $id
+	 * @param  int  $id
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function unFavorite($id)
+	public function unFavorite(int $id)
 	{
 		Auth::user()
 			->favorites()
@@ -44,13 +44,13 @@ class FavoriteRepository implements FavoritesRepositoryInterfaces
 	}
 
 	/**
-	 * @param $user_id
+	 * @param  string  $login
 	 *
 	 * @return mixed
 	 */
-	public function getFavorite($user_id)
+	public function getFavorite(string $login)
 	{
-		return User::where('login', $user_id)
+		return User::where('login', $login)
 			->first();
 	}
 }

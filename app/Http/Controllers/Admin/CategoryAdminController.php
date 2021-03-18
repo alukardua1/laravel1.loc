@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CategoryAdminController extends Controller
 {
-	private $categoryRepository;
+	private CategoryRepositoryInterfaces $categoryRepository;
 
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
@@ -25,7 +25,7 @@ class CategoryAdminController extends Controller
     {
         $allCategory = $this->categoryRepository->getCategories()->get();
 
-        return view('web.backend.category.show_all_category', compact('allCategory'));
+        return view($this->backend . 'category.show_all_category', compact('allCategory'));
     }
 
     /**

@@ -5,8 +5,8 @@ namespace App\Models;
 
 class Player extends Model
 {
-	public $cacheTags = ['player'];
-	public $cachePrefix = 'player_';
+	public array  $cacheTags   = ['player'];
+	public string $cachePrefix = 'player_';
 
 	protected $fillable = [
 		'anime_id',

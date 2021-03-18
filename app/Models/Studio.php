@@ -12,11 +12,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Studio extends Model
 {
-	protected $withCount = [
+	protected     $withCount   = [
 		'getAnime',
 	];
-	public $cacheTags = ['studio'];
-	public $cachePrefix = 'studio_';
+	public array  $cacheTags   = ['studio'];
+	public string $cachePrefix = 'studio_';
 	/**
 	 * Channel constructor.
 	 *

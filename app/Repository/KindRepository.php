@@ -16,13 +16,13 @@ class KindRepository implements KindRepositoryInterfaces
 {
 
 	/**
-	 * @param $kind
+	 * @param  string  $kindUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind)
+	public function getAnime(string $kindUrl)
 	{
-		return Kind::where('url', $kind)
+		return Kind::where('url', $kindUrl)
 			->first();
 	}
 

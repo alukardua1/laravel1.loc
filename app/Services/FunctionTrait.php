@@ -15,7 +15,7 @@ trait FunctionTrait
 	/**
 	 * Проверяет наличие данных в запросе
 	 *
-	 * @param mixed $post
+	 * @param $post
 	 */
 	public function isNotNull($post)
 	{
@@ -69,29 +69,33 @@ trait FunctionTrait
 	public function showComments($comments)
 	{
 		// Изменяем коллекцию.
-		$comments->transform(function ($comment) use ($comments) {
-			// Добавляем к каждому комментарию дочерние комментарии.
-			if ($comment->trashed()) {
-				$comment->description_html = 'комментарий удален';
-			}
-			$comment->children = $comments->where('parent_comment_id', '=', $comment->id);
+		$comments->transform(
+			function ($comment) use ($comments) {
+				// Добавляем к каждому комментарию дочерние комментарии.
+				if ($comment->trashed()) {
+					$comment->description_html = 'комментарий удален';
+				}
+				$comment->children = $comments->where('parent_comment_id', '=', $comment->id);
 
-			return $comment;
-		});
+				return $comment;
+			}
+		);
 
 		// Удаляем из коллекции комментарии у которых есть родители.
-		$comments = $comments->reject(function ($comment) {
-			return $comment->parent_comment_id !== 0;
-		});
+		$comments = $comments->reject(
+			function ($comment) {
+				return $comment->parent_comment_id !== 0;
+			}
+		);
 
 		return $comments->sortByDesc('created_at');
 	}
 
 	/**
-	 * @param $formRequest
-	 * @param $id
+	 * @param       $formRequest
+	 * @param  int  $id
 	 */
-	public function setOtherLink($formRequest, $id)
+	public function setOtherLink($formRequest, int $id)
 	{
 		foreach ($formRequest['otherLink_title'] as $key => $value) {
 			if ($formRequest['otherLink_url'][$key]) {
@@ -105,10 +109,10 @@ trait FunctionTrait
 	}
 
 	/**
-	 * @param $formRequest
-	 * @param $id
+	 * @param       $formRequest
+	 * @param  int  $id
 	 */
-	public function setPlayer($formRequest, $id)
+	public function setPlayer($formRequest, int $id)
 	{
 		foreach ($formRequest['player_name'] as $key => $value) {
 			if ($formRequest['player_url'][$key]) {
@@ -122,12 +126,12 @@ trait FunctionTrait
 	}
 
 	/**
-	 * @param $requestCheck
-	 * @param $name
+	 * @param          $requestCheck
+	 * @param  string  $name
 	 *
 	 * @return int
 	 */
-	protected function check($requestCheck, $name)
+	protected function check($requestCheck, string $name): int
 	{
 		if (!isset($requestCheck[$name])) {
 			return 0;

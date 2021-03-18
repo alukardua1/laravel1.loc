@@ -14,8 +14,9 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
  */
 class CategoryRepository implements CategoryRepositoryInterfaces
 {
+
 	/**
-	 * @return \Illuminate\Database\Eloquent\Builder|mixed
+	 * @return mixed
 	 */
 	public function getCategories()
 	{
@@ -23,12 +24,12 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	}
 
 	/**
-	 * @param $category
+	 * @param  string  $categoryUrl
 	 *
-	 * @return \Illuminate\Database\Eloquent\Builder|mixed
+	 * @return mixed
 	 */
-	public function getCategory($category)
+	public function getCategory(string $categoryUrl)
 	{
-		return Category::where('url', $category);
+		return Category::where('url', $categoryUrl);
 	}
 }

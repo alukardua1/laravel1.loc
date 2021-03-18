@@ -4,8 +4,8 @@ namespace App\Models;
 
 class PersonalMessage extends Model
 {
-	public $cacheTags = ['pm'];
-	public $cachePrefix = 'pm_';
+	public array  $cacheTags   = ['pm'];
+	public string $cachePrefix = 'pm_';
 
     public function __construct(array $attributes = [])
     {

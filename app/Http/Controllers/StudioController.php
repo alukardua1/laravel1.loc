@@ -13,104 +13,34 @@ use Illuminate\Http\Request;
  */
 class StudioController extends Controller
 {
-	protected StudioRepositoryInterfaces $studio;
+	protected StudioRepositoryInterfaces $studioRepository;
 
 	/**
 	 * StudioController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
+	 * @param  StudioRepositoryInterfaces  $studioRepositoryInterfaces
 	 */
 	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->studio = $studioRepositoryInterfaces;
+		$this->studioRepository = $studioRepositoryInterfaces;
 	}
 
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param $studios
+	 * @param string $studiosUrl
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 * @return mixed
 	 */
-	public function index($studios)
+	public function index(string $studiosUrl)
 	{
-		$showStudio = $this->studio->getAnime($studios);
+		$showStudio = $this->studioRepository->getAnime($studiosUrl);
 		$this->isNotNull($showStudio);
 		$title = $showStudio->name;
 		$description = $showStudio->description;
 		$allAnime = $showStudio->getAnime()->paginate($this->paginate);
 
 		return view($this->frontend . 'anime.short', compact('showStudio', 'allAnime', 'title', 'description'));
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Models\Studio  $studio
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show(Studio $studio)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Models\Studio  $studio
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(Studio $studio)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\Studio        $studio
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, Studio $studio)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Models\Studio  $studio
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(Studio $studio)
-	{
-		//
 	}
 }

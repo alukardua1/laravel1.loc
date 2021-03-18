@@ -12,11 +12,11 @@ namespace App\Repository\Interfaces;
 interface TranslateRepositoryInterfaces
 {
 	/**
-	 * @param $kind
+	 * @param  string  $translateUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($kind);
+	public function getAnime(string $translateUrl);
 
 	/**
 	 * @return mixed

@@ -16,18 +16,18 @@ class UserComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepositoryInterfaces
+	 * @param  UserRepositoryInterfaces  $userRepositoryInterfaces
 	 */
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
 		$this->userRepository = $userRepositoryInterfaces;
-		$this->user = $this->menu();
+		$this->user = $this->user();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function user()
 	{
 		return $this->userRepository->getUsers();
 	}

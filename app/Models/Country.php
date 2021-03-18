@@ -16,8 +16,8 @@ class Country extends Model
 		'getAnime',
 	];
 
-	public $cacheTags = ['country'];
-	public $cachePrefix = 'country_';
+	public array  $cacheTags   = ['country'];
+	public string $cachePrefix = 'country_';
 
 	/**
 	 * Country constructor.

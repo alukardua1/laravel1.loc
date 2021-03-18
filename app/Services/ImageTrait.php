@@ -16,7 +16,7 @@ use Str;
  */
 trait ImageTrait
 {
-	private $config = [];
+	private array $config;
 
 	/**
 	 * ImageTrait constructor.
@@ -30,12 +30,12 @@ trait ImageTrait
 	/**
 	 * Загружает постер к записи
 	 *
-	 * @param  Anime    $updateAnime
-	 * @param  Request  $requestForm
+	 * @param $updateAnime
+	 * @param $requestForm
 	 *
 	 * @return mixed
 	 */
-	public function uploadImages(Anime $updateAnime, Request $requestForm)
+	public function uploadImages($updateAnime, $requestForm)
 	{
 		$Extension = $requestForm[$this->config['imgColumns']]->getClientOriginalExtension();//Получает расширение файла
 		if (in_array($Extension, $this->config['extension'])) {

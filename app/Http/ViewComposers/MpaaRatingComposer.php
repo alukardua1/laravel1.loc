@@ -15,18 +15,18 @@ class MpaaRatingComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
+	 * @param  MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
 	 */
 	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
 		$this->mpaaRepository = $mpaaRepositoryInterfaces;
-		$this->mpaa = $this->menu();
+		$this->mpaa = $this->mpaa();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function mpaa()
 	{
 		return $this->mpaaRepository->getMpaa();
 	}

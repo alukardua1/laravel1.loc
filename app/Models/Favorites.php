@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Favorites extends Model
 {
-	public $cacheTags = ['favorites'];
-	public $cachePrefix = 'favorites_';
+	public array  $cacheTags   = ['favorites'];
+	public string $cachePrefix = 'favorites_';
 	/**
 	 * Favorites constructor.
 	 *

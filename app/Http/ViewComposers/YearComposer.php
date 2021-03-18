@@ -14,18 +14,18 @@ class YearComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
+	 * @param  YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
 	 */
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{
 		$this->yearRepository = $yearAiredRepositoryInterfaces;
-		$this->year = $this->menu();
+		$this->year = $this->year();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function year()
 	{
 		return $this->yearRepository->getYearAired()->sortBy('name');
 	}

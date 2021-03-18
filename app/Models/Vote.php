@@ -9,8 +9,8 @@ namespace App\Models;
  */
 class Vote extends Model
 {
-	public $cacheTags = ['vote'];
-	public $cachePrefix = 'vote_';
+	public array  $cacheTags   = ['vote'];
+	public string $cachePrefix = 'vote_';
 	/**
 	 * Vote constructor.
 	 *

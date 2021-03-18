@@ -15,24 +15,24 @@ class PopularComposer
 	/**
 	 * CarouselAnimeComposer constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		$this->animeRepository = $animeRepositoryInterfaces;
-		$this->popular = $this->anime();
+		$this->popular = $this->popular();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function anime()
+	public function popular()
 	{
 		return $this->animeRepository->getPopular(10)->get()->sortByDesc('read_count');
 	}
 
 	/**
-	 * @param  \Illuminate\View\View  $view
+	 * @param  View  $view
 	 */
 	public function compose(View $view)
 	{

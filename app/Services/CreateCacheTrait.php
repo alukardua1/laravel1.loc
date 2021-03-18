@@ -21,15 +21,18 @@ trait CreateCacheTrait
 	 * Создает кэш
 	 *
 	 * @param  string  $key
-	 * @param  mixed   $post
+	 * @param          $post
 	 *
 	 * @return mixed
 	 */
-	public static function setCache($key, $post)
+	public static function setCache(string $key, $post)
 	{
 		$ttl = (int)config('secondConfig.cache_time');
 
-		return Cache::remember($key, $ttl * 86400, function() use ($post) {
+		return Cache::remember(
+			$key,
+			$ttl * 86400,
+			function () use ($post) {
 				return $post;
 			}
 		);

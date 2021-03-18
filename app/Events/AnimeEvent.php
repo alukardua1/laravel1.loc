@@ -10,12 +10,12 @@ class AnimeEvent
 {
     use InteractsWithSockets, SerializesModels;
 
-    public $anime;
+    public Anime $anime;
 
 	/**
 	 * Create a new event instance.
 	 *
-	 * @param  \App\Models\Anime  $anime
+	 * @param  Anime  $anime
 	 */
     public function __construct(Anime $anime)
     {

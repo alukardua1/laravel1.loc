@@ -15,8 +15,8 @@ class Channel extends Model
 		'getAnime',
 	];
 
-	public $cacheTags = ['channel'];
-	public $cachePrefix = 'channel_';
+	public array  $cacheTags   = ['channel'];
+	public string $cachePrefix = 'channel_';
 	/**
 	 * Channel constructor.
 	 *

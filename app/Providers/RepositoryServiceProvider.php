@@ -7,7 +7,7 @@ use App\Repository\CountryRepository;
 use App\Repository\FavoriteRepository;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use App\Repository\Interfaces\CountryRepositoryInterfaces;
-use App\Repository\Interfaces\FavoritesRepositoryInterfaces;
+use App\Repository\Interfaces\FavoriteRepositoryInterfaces;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
@@ -45,7 +45,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(AnimeRepositoryInterfaces::class, AnimeRepository::class);
         $this->app->bind(UserRepositoryInterfaces::class, UserRepository::class);
         $this->app->bind(CategoryRepositoryInterfaces::class, CategoryRepository::class);
-        $this->app->bind(FavoritesRepositoryInterfaces::class, FavoriteRepository::class);
+        $this->app->bind(FavoriteRepositoryInterfaces::class, FavoriteRepository::class);
         $this->app->bind(VoteRepositoryInterface::class, VoteRepository::class);
         $this->app->bind(KindRepositoryInterfaces::class, KindRepository::class);
         $this->app->bind(MpaaRepositoryInterfaces::class, MpaaRepository::class);

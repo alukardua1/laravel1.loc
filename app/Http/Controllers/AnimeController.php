@@ -20,7 +20,7 @@ class AnimeController extends Controller
 	/**
 	 * AnimeController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
@@ -29,7 +29,7 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return mixed
 	 */
 	public function index()
 	{
@@ -38,6 +38,9 @@ class AnimeController extends Controller
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function indexOngoing()
 	{
 		$allAnime = $this->anime->getCustomAnime('ongoing', 1)->paginate($this->paginate);
@@ -47,12 +50,12 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @param  int   $id
-	 * @param  null  $url
+	 * @param  int          $id
+	 * @param  string|null  $url
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 * @return mixed
 	 */
-	public function show(int $id, $url = null)
+	public function show(int $id, string $url = null)
 	{
 		$showAnime = $this->anime->getAnime($id)->first();
 		$this->isNotNull($showAnime);
@@ -82,6 +85,11 @@ class AnimeController extends Controller
 		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus', 'comments', 'related'));
 	}
 
+	/**
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
 	public function search(Request $request)
 	{
 		if ($request->ajax()) {
@@ -99,6 +107,9 @@ class AnimeController extends Controller
 		}
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function animeRss()
 	{
 		$feed = App::make("feed");
@@ -112,7 +123,13 @@ class AnimeController extends Controller
 		return $feed->render('rss');
 	}
 
-	public function setComments($id, CommentRequest $request)
+	/**
+	 * @param  int             $id
+	 * @param  CommentRequest  $request
+	 *
+	 * @return mixed
+	 */
+	public function setComments(int $id, CommentRequest $request)
 	{
 		$requestAnime = $this->anime->setComment($id, $request);
 
@@ -123,7 +140,14 @@ class AnimeController extends Controller
 		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
 	}
 
-	public function deleteComments($id, $commentId, $fullDel = false)
+	/**
+	 * @param  int   $id
+	 * @param  int   $commentId
+	 * @param  bool  $fullDel
+	 *
+	 * @return mixed
+	 */
+	public function deleteComments(int $id, int $commentId, bool $fullDel = false)
 	{
 		$del = $this->anime->delComments($commentId, $fullDel);
 

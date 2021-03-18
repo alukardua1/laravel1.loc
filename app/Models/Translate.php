@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 /**
  * Class Translate
  *
@@ -14,8 +16,8 @@ class Translate extends Model
 		'getAnime',
 	];
 
-	public $cacheTags = ['translate'];
-	public $cachePrefix = 'translate_';
+	public array  $cacheTags   = ['translate'];
+	public string $cachePrefix = 'translate_';
 	/**
 	 * MPAARating constructor.
 	 *
@@ -29,7 +31,7 @@ class Translate extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getAnime()
+	public function getAnime(): BelongsToMany
 	{
 		return $this->belongsToMany(Anime::class)->latest();
 	}

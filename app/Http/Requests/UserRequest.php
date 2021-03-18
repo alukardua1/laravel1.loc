@@ -11,7 +11,7 @@ class UserRequest extends FormRequest
 	 *
 	 * @return bool
 	 */
-	public function authorize()
+	public function authorize(): bool
 	{
 		return auth()->check();
 	}
@@ -21,19 +21,20 @@ class UserRequest extends FormRequest
 	 *
 	 * @return array
 	 */
-	public function rules()
+	public function rules(): array
 	{
 		return [
-			'profile_photo_path' => ['dimensions:width=100,height=100'],
+			'profile_photo_path' => ['dimensions:width=100,height=100', 'image'],
 			'altpass'            => ['sometimes', 'nullable', 'between:8,15', 'regex:/[a-zA-Z0-9_]+/'],
 			'password1'          => ['same:confirm_password', 'different:old_password', 'regex:/[a-zA-Z0-9_]+/', 'sometimes', 'nullable', 'between:8,15',],
 		];
 	}
 
-	public function messages()
+	public function messages(): array
 	{
 		return [
 			'profile_photo_path.dimensions' => 'Аватар должен быть :width х :height..',
+			'profile_photo_path.image'      => 'Аватар должен быть изображением',
 			'altpass.regex'                 => 'Недопустимый формат нового пароля..',
 			'altpass.between'               => 'Старый пароль должен содержать от :min до :max символов..',
 			'password1.regex'               => 'Недопустимый формат нового пароля..',

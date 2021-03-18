@@ -18,7 +18,7 @@ class MPAARatingController extends Controller
 	/**
 	 * MPAARatingController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
+	 * @param  MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
 	 */
 	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
@@ -29,85 +29,18 @@ class MPAARatingController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param $mPAARating
+	 * @param string $mpaaUrl
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+	 * @return mixed
 	 */
-    public function index($mPAARating)
+    public function index(string $mpaaUrl)
     {
-	    $showMpaa = $this->mpaaRepository->getAnime($mPAARating);
+	    $showMpaa = $this->mpaaRepository->getAnime($mpaaUrl);
 	    $this->isNotNull($showMpaa);
 	    $title = $showMpaa->name;
 	    $description = $showMpaa->description;
 	    $allAnime = $showMpaa->getAnime()->paginate($this->paginate);
 
 	    return view($this->frontend . 'anime.short', compact('showMpaa', 'allAnime', 'title', 'description'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MPAARating  $mPAARating
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MPAARating $mPAARating)
-    {
-	    //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MPAARating  $mPAARating
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MPAARating $mPAARating)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MPAARating  $mPAARating
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MPAARating $mPAARating)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MPAARating  $mPAARating
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MPAARating $mPAARating)
-    {
-        //
     }
 }

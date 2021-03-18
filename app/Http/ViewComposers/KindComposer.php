@@ -15,18 +15,18 @@ class KindComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces
+	 * @param  KindRepositoryInterfaces  $kindRepositoryInterfaces
 	 */
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
 		$this->kindRepository = $kindRepositoryInterfaces;
-		$this->kind = $this->menu();
+		$this->kind = $this->kind();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function kind()
 	{
 		return $this->kindRepository->getKind();
 	}

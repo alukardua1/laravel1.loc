@@ -13,26 +13,26 @@ namespace App\Repository\Interfaces;
  *
  * @package App\Repositories\Interfaces
  */
-interface FavoritesRepositoryInterfaces
+interface FavoriteRepositoryInterfaces
 {
     /**
-     * @param $id
+     * @param int $id
      *
      * @return mixed
      */
-    public function favorite($id);
+    public function favorite(int $id);
 
     /**
-     * @param $id
+     * @param int $id
      *
      * @return mixed
      */
-    public function unFavorite($id);
+    public function unFavorite(int $id);
 
 	/**
-	 * @param $user_id
+	 * @param string $login
 	 *
 	 * @return mixed
 	 */
-	public function getFavorite($user_id);
+	public function getFavorite(string $login);
 }

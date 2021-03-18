@@ -11,27 +11,29 @@ use App\Repository\Interfaces\AnimeRepositoryInterfaces;
  */
 class HomeController extends Controller
 {
-	private AnimeRepositoryInterfaces $firstAnime;
+	private AnimeRepositoryInterfaces $animeRepository;
+	private int $limit;
 
 	/**
 	 * HomeController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->firstAnime = $animeRepositoryInterfaces;
+		$this->animeRepository = $animeRepositoryInterfaces;
+		$this->limit = config('secondConfig.limitHomepage');
 	}
 
 	/**
 	 * Вывод постов на главной странице
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return mixed
 	 */
 	public function index()
 	{
-		$ongoing = $this->firstAnime->getFirstPageAnime(5)->get();
+		$ongoing = $this->animeRepository->getFirstPageAnime($this->limit)->get();
 		return view($this->frontend . 'anime.home', compact('ongoing'));
 	}
 }

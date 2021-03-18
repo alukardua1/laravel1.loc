@@ -16,8 +16,8 @@ class Kind extends Model
 		'getAnime',
 	];
 
-	public $cacheTags = ['kind'];
-	public $cachePrefix = 'kind_';
+	public array  $cacheTags   = ['kind'];
+	public string $cachePrefix = 'kind_';
 	/**
 	 * Kind constructor.
 	 *

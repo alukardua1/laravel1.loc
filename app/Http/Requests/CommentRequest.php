@@ -11,7 +11,7 @@ class CommentRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
 	    return auth()->check();
     }
@@ -21,14 +21,14 @@ class CommentRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
 	        'description_html' => ['required', 'min:30'],
         ];
     }
 
-	public function messages()
+	public function messages(): array
 	{
 		return [
 			'description_html.min' => 'Комментарий меньше :min символов не несет смыслового интереса..',

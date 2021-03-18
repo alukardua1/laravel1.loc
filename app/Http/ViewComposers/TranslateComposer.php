@@ -15,18 +15,18 @@ class TranslateComposer
 	/**
 	 * Create a menu composer.
 	 *
-	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces
+	 * @param  TranslateRepositoryInterfaces  $translateRepositoryInterfaces
 	 */
 	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{
 		$this->translateRepository = $translateRepositoryInterfaces;
-		$this->translate = $this->menu();
+		$this->translate = $this->translate();
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function menu()
+	public function translate()
 	{
 		return $this->translateRepository->getTranslate()->sort();
 	}
