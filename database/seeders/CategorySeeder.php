@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Repository\Interfaces\DLEParse;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 class CategorySeeder extends Seeder
 {
     protected $category;
+    protected $createdAt;
 
 	/**
 	 * CategorySeeder constructor.
@@ -23,6 +25,7 @@ class CategorySeeder extends Seeder
 	public function __construct(DLEParse $DLEParse)
     {
         $this->category = $DLEParse;
+        $this->createdAt = Carbon::now();
     }
 
     /**

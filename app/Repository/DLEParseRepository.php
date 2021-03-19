@@ -171,26 +171,28 @@ class DLEParseRepository implements DLEParse
 			}
 			if (array_key_exists('treyler', $xfield1)) {
 				$data = [
-					'anime_id'=>$post->id,
-					'trailer'=>$xfield1['treyler'],
+					'anime_id' => $post->id,
+					'trailer'  => $xfield1['treyler'],
 				];
 				DB::table('trailers')->insert($data);
 			}
 			if (array_key_exists('kodik', $xfield1)) {
-			    $data = [
-			    	'anime_id'=>$post->id,
-				    'name_player'=>'kodik',
-				    'url_player'=>$xfield1['kodik'],
-			    ];
+				$data = [
+					'anime_id'    => $post->id,
+					'name_player' => 'kodik',
+					'url_player'  => $xfield1['kodik'],
+				];
 				DB::table('players')->insert($data);
 			}
-			if (array_key_exists('blokirovat', $xfield1) and ($xfield1['blokirovat']==1)) {
+			if (array_key_exists('blokirovat', $xfield1) and ($xfield1['blokirovat'] == 1)) {
+				$geoBlockId = DB::table('geo_blocks')->where('code', '=', $xfield1['geoblock'])->first();
 				$data = [
-					'anime_id'=>$post->id,
-					'region'=>$xfield1['geoblock'],
-					'copyright_holder'=>'Wakanim',
+					'anime_id'         => $post->id,
+					'region_id'           => $geoBlockId->id,
 				];
+				$copyrightHolder = DB::table('copyright_holders')->where('copyright_holder', '=', 'Wakanim')->first();
 				DB::table('region_blocks')->insert($data);
+				DB::table('anime_copyright_holder')->insert(['anime_id' => $post->id, 'copyright_holder_id' => $copyrightHolder->id]);
 			}
 			if (array_key_exists('kanal', $xfield1)) {
 				$channel = Channel::where('name', $xfield1['kanal'])->first();
@@ -205,10 +207,10 @@ class DLEParseRepository implements DLEParse
 			if (array_key_exists('sezon', $xfield1)) {
 				$yearAired = YearAired::where('name', $xfield1['sezon'])->first();
 				if (!$yearAired) {
-					DB::table('year_aireds')->insert(['name'=>$xfield1['sezon']]);
+					DB::table('year_aireds')->insert(['name' => $xfield1['sezon']]);
 					$yearAired = YearAired::where('name', $xfield1['sezon'])->first();
 				}
-			}else{
+			} else {
 				$yearAired = collect('id');
 				$yearAired->id = 0;
 			}
@@ -250,7 +252,8 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	protected function replaceHTML($text_post){
+	protected function replaceHTML($text_post)
+	{
 		$str_search = [
 			'#<a href="([^"]+)">([^<]+)</a>#',
 			"#<br>#",
@@ -262,8 +265,9 @@ class DLEParseRepository implements DLEParse
 		return preg_replace($str_search, $str_replace, $text_post);
 	}
 
-	protected function replaceBBCode($text_post) {
-		$str_search= array(
+	protected function replaceBBCode($text_post)
+	{
+		$str_search = [
 			"#\\\n#is",
 			"#\[b\](.+?)\[\/b\]#is",
 			"#\[i\](.+?)\[\/i\]#is",
@@ -277,9 +281,9 @@ class DLEParseRepository implements DLEParse
 			"#\[color=(.+?)\](.+?)\[\/color\]#is",
 			"#\[list\](.+?)\[\/list\]#is",
 			"#\[listn](.+?)\[\/listn\]#is",
-			"#\[\*\](.+?)\[\/\*\]#"
-		);
-		$str_replace = array(
+			"#\[\*\](.+?)\[\/\*\]#",
+		];
+		$str_replace = [
 			"<br />",
 			"<b>\\1</b>",
 			"<i>\\1</i>",
@@ -293,8 +297,8 @@ class DLEParseRepository implements DLEParse
 			"<span style='color:\\1'>\\2</span>",
 			"<ul>\\1</ul>",
 			"<ol>\\1</ol>",
-			"<li>\\1</li>"
-		);
+			"<li>\\1</li>",
+		];
 		return preg_replace($str_search, $str_replace, $text_post);
 	}
 
@@ -330,7 +334,7 @@ class DLEParseRepository implements DLEParse
 		$def = '/';
 		$path_info = pathinfo($image);
 		$Extension = $path_info['extension'];
-		$fileName = strtotime($anime->date).'_anime_' . $anime->id. '_' . Str::slug($anime->title) . '.' . $Extension;
+		$fileName = strtotime($anime->date) . '_anime_' . $anime->id . '_' . Str::slug($anime->title) . '.' . $Extension;
 		$pathImg = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';//путь к большой картинке
 		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке
 		$pathImgSave = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';

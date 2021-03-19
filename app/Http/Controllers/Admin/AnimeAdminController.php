@@ -67,7 +67,7 @@ class AnimeAdminController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $currentAnime = $this->animeRepository->getAnime($id)->first();
 
@@ -82,7 +82,7 @@ class AnimeAdminController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
 	   // \Artisan::call('cache:clear');
        $requestAnime = $this->animeRepository->setAnime($request, $id);
@@ -100,7 +100,7 @@ class AnimeAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         //
     }

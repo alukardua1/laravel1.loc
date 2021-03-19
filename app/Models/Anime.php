@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * Class Anime
+ *
+ * @package App\Models
+ */
 class Anime extends Model
 {
 	use AnimeModelTrait;
@@ -59,6 +64,7 @@ class Anime extends Model
 		'getPlayer',
 		'getRegionBlock',
 		'getYear',
+		'getCopyrightHolder',
 	];
 
 	public array  $cacheTags   = ['anime'];
@@ -232,5 +238,13 @@ class Anime extends Model
 	public function getRelationAnime(): BelongsToMany
 	{
 		return $this->belongsToMany($this, 'anime_related', 'anime_id', 'relation_id', 'id', 'id')->latest();
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getCopyrightHolder(): HasMany
+	{
+		return $this->hasMany(CopyrightHolder::class)->latest();
 	}
 }

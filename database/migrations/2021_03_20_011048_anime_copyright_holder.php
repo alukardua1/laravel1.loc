@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegionBlocksTable extends Migration
+class AnimeCopyrightHolder extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateRegionBlocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('region_blocks', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('anime_id');
-            $table->foreignId('region_id');
-            $table->timestamps();
-        });
+	    Schema::create('anime_copyright_holder', function (Blueprint $table) {
+		    $table->id();
+		    $table->foreignId('anime_id');
+		    $table->foreignId('copyright_holder_id');
+		    $table->timestamps();
+	    });
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateRegionBlocksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('region_blocks');
+	    Schema::dropIfExists('anime_copyright_holder');
     }
 }

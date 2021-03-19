@@ -31,7 +31,9 @@ class DatabaseSeeder extends Seeder
 		$this->call(StudiosSeeder::class);
 		$this->call(QualitySeeder::class);
 		$this->call(TranslateSeeder::class);
-		$this->call(AnimeSeeder::class);
+		$this->call(CopyrightHolderSeeder::class);
+		$this->call(GeoBlockSeeder::class);
+		//$this->call(AnimeSeeder::class);
 		//$this->call(AnimeCategorySeeder::class);
 	}
 }

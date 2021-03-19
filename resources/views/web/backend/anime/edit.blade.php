@@ -231,6 +231,22 @@
 				@endforeach
 			</select>
 		</div>
+		<div class="row mb-3">
+			<div class="col-6">
+				<div class="form-check form-switch">
+					<label class="form-check-label" for="region">Регион</label>
+					<select class="js-selectize" aria-label="region" name="region" id="region">
+						@foreach($region as $value)
+							<option value="ru" selected>Россия</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
+			<div class="col-6">
+				<label for="copyright_holder" class="form-label">Правообладатель</label>
+				<input type="text" id="copyright_holder" class="form-control" name="copyright_holder" value="{{$player->url_player}}">
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-4">
 				<div class="form-check form-switch">
