@@ -10,10 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-/**
- * @property mixed title
- * @property mixed id
- */
 class Anime extends Model
 {
 	use AnimeModelTrait;
@@ -219,7 +215,7 @@ class Anime extends Model
 	 */
 	public function getYear(): HasOne
 	{
-		return $this->hasOne(YearAired::class)->latest();
+		return $this->hasOne(YearAired::class, 'id', 'aired_season')->latest();
 	}
 
 	/**

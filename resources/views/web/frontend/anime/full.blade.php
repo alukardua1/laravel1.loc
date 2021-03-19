@@ -2,6 +2,7 @@
 
 @section('title', $showAnime->metatitle)
 @section('description', $showAnime->metatitle)
+@section('keywords', $showAnime->keywords)
 
 @section('error')
 	@if ($errors->any())

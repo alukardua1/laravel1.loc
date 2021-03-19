@@ -17,6 +17,8 @@ class Channel extends Model
 
 	public array  $cacheTags   = ['channel'];
 	public string $cachePrefix = 'channel_';
+
+	protected $touches = ['getAnime'];
 	/**
 	 * Channel constructor.
 	 *

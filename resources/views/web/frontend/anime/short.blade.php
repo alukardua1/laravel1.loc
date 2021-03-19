@@ -1,7 +1,8 @@
 @extends('web.frontend.layout.app')
 
-@section('title', $title ?? env('APP_NAME'))
-@section('description', $description ?? env('APP_DESCRIPTION'))
+@section('title', $title ?? config('secondConfig.nameSite'))
+@section('description', $description ?? config('secondConfig.descriptionSite'))
+@section('keywords', config('secondConfig.keywordsSite'))
 
 @section('category-title')
 	@if(!empty($title))

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Anime;
 use App\Models\Comment;
+use App\Observers\AnimeObserver;
 use App\Observers\CommentObserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,5 +28,6 @@ class ObserverServiceProvider extends ServiceProvider
     public function boot()
     {
         Comment::observe(CommentObserver::class);
+        Anime::observe(AnimeObserver::class);
     }
 }

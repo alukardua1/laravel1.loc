@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="{{ asset('css/selectize.bootstrap4.css') }}">
 	<title>@yield('title')</title>
 	<meta name="description" content="@yield('description')">
+	<meta name="keywords" content="@yield('keywords')">
 </head>
 <body>
 <header>

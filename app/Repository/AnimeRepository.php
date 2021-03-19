@@ -157,10 +157,42 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function setAnime(Request $request, int $id)
 	{
 		$formRequest = $request->all();
-		$update = Anime::findOrNew($id);
-		$this->setOtherLink($formRequest, $id);
-		$this->setPlayer($formRequest, $id);
+		$update = Anime::findOrNew($id, $formRequest);
+		if ($update) {
+			if ($formRequest['category']) {
+				$update->fill($request->except('category'));
+				$update->getCategory()->sync($request['category']);
+			}
+			if ($formRequest['country']) {
+				$update->fill($request->except('country'));
+				$update->getCountry()->sync($request['country']);
+			}
+			if ($formRequest['studios']) {
+				$update->fill($request->except('studios'));
+				$update->getStudio()->sync($request['studios']);
+			}
+			if ($formRequest['quality']) {
+				$update->fill($request->except('quality'));
+				$update->getQuality()->sync($request['quality']);
+			}
+			$this->setOtherLink($formRequest, $id);
+			$this->setPlayer($formRequest, $id);
+			$update->kind_id = $formRequest['kind'];
+			$update->anons = $this->check($formRequest, 'anons');
+			$update->ongoing = $this->check($formRequest, 'ongoing');
+			$update->posted_at = $this->check($formRequest, 'posted_at');
+			$update->posted_rss = $this->check($formRequest, 'posted_rss');
+			$update->comment_at = $this->check($formRequest, 'comment_at');
+			if ($formRequest['channel_id'] == null) {
+				$update->channel_id = 0;
+			}else {
+				$update->channel_id = $formRequest['channel_id'];
+			}
 
-		dd(__METHOD__, $formRequest, $id);
+			return $update->save();
+		}
+
+
+		//dd(__METHOD__, $formRequest, $id, $update, 2222);
 	}
 }
