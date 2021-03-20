@@ -170,7 +170,8 @@
 		</div>
 		<div class="row">
 			<div class="mb-3">
-				<label for="trailer" class="form-label">Трейлер</label> <button class="btn btn-primary btn-sm" type="button" id="addTrailer"><i class="far fa-plus-square"></i></button>
+				<label for="trailer" class="form-label">Трейлер</label>
+				<button class="btn btn-primary btn-sm" type="button" id="addTrailer"><i class="far fa-plus-square"></i></button>
 				@foreach($currentAnime->getTrailer as $trailer)
 					<input type="text" id="trailer[]" class="form-control" name="trailer[]" value="{{$trailer->trailer}}">
 				@endforeach
@@ -179,7 +180,8 @@
 		</div>
 		<div class="row">
 			<div class="mb-3">
-				<label for="player" class="form-label">Плеер</label> <button class="btn btn-primary btn-sm" type="button" id="addPlayer"><i class="far fa-plus-square"></i></button>
+				<label for="player" class="form-label">Плеер</label>
+				<button class="btn btn-primary btn-sm" type="button" id="addPlayer"><i class="far fa-plus-square"></i></button>
 				@foreach($currentAnime->getPlayer as $player)
 					<div class="row">
 						<div class="col-2">
@@ -195,7 +197,8 @@
 		</div>
 		<div class="row">
 			<div class="mb-3">
-				<label for="OtherLink" class="form-label">Ссылки на другие сайты</label> <button class="btn btn-primary btn-sm" type="button" id="addOtherLink"><i class="far fa-plus-square"></i></button>
+				<label for="OtherLink" class="form-label">Ссылки на другие сайты</label>
+				<button class="btn btn-primary btn-sm" type="button" id="addOtherLink"><i class="far fa-plus-square"></i></button>
 				@foreach($currentAnime->getOtherLink as $otherLink)
 					<div class="row">
 						<div class="col-2">
@@ -233,18 +236,20 @@
 		</div>
 		<div class="row mb-3">
 			<div class="col-6">
-				<div class="form-check form-switch">
-					<label class="form-check-label" for="region">Регион</label>
-					<select class="js-selectize" aria-label="region" name="region" id="region">
-						@foreach($region as $value)
-							<option value="ru" selected>Россия</option>
-						@endforeach
-					</select>
-				</div>
+				<label class="form-label" for="region">Регион</label>
+				<select class="js-selectize-multiple" aria-label="region" name="region[]" id="region" multiple>
+					@foreach($geoBlock as $value)
+						<option value="{{$value->code}}" @if ($currentAnime->getRegionBlock->contains($value->id)) selected @endif >{{$value->country}}</option>
+					@endforeach
+				</select>
 			</div>
 			<div class="col-6">
 				<label for="copyright_holder" class="form-label">Правообладатель</label>
-				<input type="text" id="copyright_holder" class="form-control" name="copyright_holder" value="{{$player->url_player}}">
+				<select class="js-selectize-multiple" aria-label="copyright_holder" name="copyright_holder[]" id="copyright_holder" multiple>
+					@foreach($copyrightHolder as $value)
+						<option value="{{$value->id}}" @if ($currentAnime->getCopyrightHolder->contains($value->id)) selected @endif >{{$value->copyright_holder}}</option>
+					@endforeach
+				</select>
 			</div>
 		</div>
 		<div class="row">

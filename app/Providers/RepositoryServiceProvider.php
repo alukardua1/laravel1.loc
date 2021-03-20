@@ -3,11 +3,15 @@
 namespace App\Providers;
 
 use App\Repository\ChannelRepository;
+use App\Repository\CopyrightHolderRepository;
 use App\Repository\CountryRepository;
 use App\Repository\FavoriteRepository;
+use App\Repository\GeoBlockRepository;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
+use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
 use App\Repository\Interfaces\CountryRepositoryInterfaces;
 use App\Repository\Interfaces\FavoriteRepositoryInterfaces;
+use App\Repository\Interfaces\GeoBlockRepositoryInterfaces;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
@@ -34,37 +38,38 @@ use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->app->bind(DLEParse::class, DLEParseRepository::class);
-        $this->app->bind(AnimeRepositoryInterfaces::class, AnimeRepository::class);
-        $this->app->bind(UserRepositoryInterfaces::class, UserRepository::class);
-        $this->app->bind(CategoryRepositoryInterfaces::class, CategoryRepository::class);
-        $this->app->bind(FavoriteRepositoryInterfaces::class, FavoriteRepository::class);
-        $this->app->bind(VoteRepositoryInterface::class, VoteRepository::class);
-        $this->app->bind(KindRepositoryInterfaces::class, KindRepository::class);
-        $this->app->bind(MpaaRepositoryInterfaces::class, MpaaRepository::class);
-        $this->app->bind(TranslateRepositoryInterfaces::class, TranslateRepository::class);
-        $this->app->bind(CountryRepositoryInterfaces::class, CountryRepository::class);
-        $this->app->bind(QualityRepositoryInterfaces::class, QualityRepository::class);
-        $this->app->bind(ChannelRepositoryInterfaces::class, ChannelRepository::class);
-	    $this->app->bind(StudioRepositoryInterfaces::class, StudioRepository::class);
-	    $this->app->bind(YearAiredRepositoryInterfaces::class, YearAiredRepository::class);
+	/**
+	 * Register services.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		$this->app->bind(DLEParse::class, DLEParseRepository::class);
+		$this->app->bind(AnimeRepositoryInterfaces::class, AnimeRepository::class);
+		$this->app->bind(UserRepositoryInterfaces::class, UserRepository::class);
+		$this->app->bind(CategoryRepositoryInterfaces::class, CategoryRepository::class);
+		$this->app->bind(FavoriteRepositoryInterfaces::class, FavoriteRepository::class);
+		$this->app->bind(VoteRepositoryInterface::class, VoteRepository::class);
+		$this->app->bind(KindRepositoryInterfaces::class, KindRepository::class);
+		$this->app->bind(MpaaRepositoryInterfaces::class, MpaaRepository::class);
+		$this->app->bind(TranslateRepositoryInterfaces::class, TranslateRepository::class);
+		$this->app->bind(CountryRepositoryInterfaces::class, CountryRepository::class);
+		$this->app->bind(QualityRepositoryInterfaces::class, QualityRepository::class);
+		$this->app->bind(ChannelRepositoryInterfaces::class, ChannelRepository::class);
+		$this->app->bind(StudioRepositoryInterfaces::class, StudioRepository::class);
+		$this->app->bind(YearAiredRepositoryInterfaces::class, YearAiredRepository::class);
+		$this->app->bind(GeoBlockRepositoryInterfaces::class, GeoBlockRepository::class);
+		$this->app->bind(CopyrightHolderRepositoryInterfaces::class, CopyrightHolderRepository::class);
+	}
 
-    }
-
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
+	/**
+	 * Bootstrap services.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		//
+	}
 }

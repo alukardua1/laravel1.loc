@@ -187,11 +187,19 @@ class DLEParseRepository implements DLEParse
 			if (array_key_exists('blokirovat', $xfield1) and ($xfield1['blokirovat'] == 1)) {
 				$geoBlockId = DB::table('geo_blocks')->where('code', '=', $xfield1['geoblock'])->first();
 				$data = [
-					'anime_id'         => $post->id,
-					'region_id'           => $geoBlockId->id,
+					'anime_id'     => $post->id,
+					'geo_block_id' => $geoBlockId->id,
 				];
-				$copyrightHolder = DB::table('copyright_holders')->where('copyright_holder', '=', 'Wakanim')->first();
-				DB::table('region_blocks')->insert($data);
+				$copyright = explode(', ', $xfield1['copyright']);
+				foreach ($copyright as $value) {
+					if (DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first()) {
+						$copyrightHolder = DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first();
+					} else {
+						DB::table('copyright_holders')->insert(['copyright_holder' => $value]);
+						$copyrightHolder = DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first();
+					}
+				}
+				DB::table('anime_geo_block')->insert($data);
 				DB::table('anime_copyright_holder')->insert(['anime_id' => $post->id, 'copyright_holder_id' => $copyrightHolder->id]);
 			}
 			if (array_key_exists('kanal', $xfield1)) {

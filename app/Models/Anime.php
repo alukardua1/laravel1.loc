@@ -208,12 +208,13 @@ class Anime extends Model
 		return $this->hasMany(Player::class)->latest();
 	}
 
+
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getRegionBlock(): HasMany
+	public function getRegionBlock(): BelongsToMany
 	{
-		return $this->hasMany(RegionBlock::class)->latest();
+		return $this->belongsToMany(GeoBlock::class)->latest();
 	}
 
 	/**
@@ -241,10 +242,10 @@ class Anime extends Model
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getCopyrightHolder(): HasMany
+	public function getCopyrightHolder(): BelongsToMany
 	{
-		return $this->hasMany(CopyrightHolder::class)->latest();
+		return $this->belongsToMany(CopyrightHolder::class)->latest();
 	}
 }

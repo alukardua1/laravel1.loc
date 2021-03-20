@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\Events\AnimeEvent;
 use App\Http\Requests\CommentRequest;
+use Auth;
 use Illuminate\Http\Request;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
@@ -75,6 +76,20 @@ class AnimeController extends Controller
 		 * @todo Придумать как сделать в relations
 		 */
 		$related = $showAnime->load('getCategory.getAnime')->inRandomOrder()->limit(6)->get();
+		if (Auth::user()) {
+		    $groupId = Auth::user()->getGroup->id;
+		}else {
+			$groupId = 0;
+		}
+		if (($showAnime->getRegionBlock->isNotEmpty())and(!in_array($groupId, [1,2]))) {
+			foreach ($showAnime->getRegionBlock as $item)
+			{
+				$regionBlock[] = $item->code;
+			}
+			$regionBlockString = implode(',', $regionBlock);
+		}else{
+			$regionBlockString = '';
+		}
 
 		event(new AnimeEvent($showAnime));
 
@@ -82,7 +97,7 @@ class AnimeController extends Controller
 			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
 		}
 
-		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus', 'comments', 'related'));
+		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus', 'comments', 'related', 'regionBlockString'));
 	}
 
 	/**

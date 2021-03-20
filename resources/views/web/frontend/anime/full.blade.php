@@ -26,8 +26,10 @@
 						:post={{ $showAnime->id }} :favorited={{ $showAnime->favorited() ? 'true' : 'false' }}>
 				</favorite>
 			@endif
-			@if (Auth::user()->getGroup->is_dashboard)
-				<a target="_blank" href="{{route('editAnimeAdmin', $showAnime->id)}}" type="button" class="btn btn-danger editing"><i class="far fa-edit"></i></a>
+			@if(Auth::user())
+				@if (Auth::user()->getGroup->is_dashboard)
+					<a target="_blank" href="{{route('editAnimeAdmin', $showAnime->id)}}" type="button" class="btn btn-danger editing"><i class="far fa-edit"></i></a>
+				@endif
 			@endif
 		</div>
 		<div class="inform">
@@ -99,8 +101,11 @@
 									   aria-selected="true">{{$player->name_player}}</a>
 								</li>
 								<div class="embed-responsive embed-responsive-16by9">
-									<iframe class="embed-responsive-item" src="{{$player->url_player}}" frameborder="0" allowfullscreen
-											allow="autoplay *; fullscreen *"></iframe>
+									<iframe class="embed-responsive-item" src="{{$player->url_player}}
+											@if ($regionBlockString and ($player->name_player == 'kodik'))
+													?geoblock={{$regionBlockString}}
+											@endif"
+											frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>
 								</div>
 							@endforeach
 						</ul>
