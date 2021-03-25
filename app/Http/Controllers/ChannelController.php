@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Channel;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 /**
@@ -31,9 +34,9 @@ class ChannelController extends Controller
 	 *
 	 * @param string $channelUrl
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-    public function index(string $channelUrl)
+    public function index(string $channelUrl): View|Factory|Application
     {
 	    $showChannel = $this->channelRepository->getAnime($channelUrl);
 	    $this->isNotNull($showChannel);

@@ -11,12 +11,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Quality extends Model
 {
+	public array  $cacheTags   = ['quality'];
+	public string $cachePrefix = 'quality_';
+
 	protected $withCount = [
 		'getAnime',
 	];
 
-	public array  $cacheTags   = ['quality'];
-	public string $cachePrefix = 'quality_';
+	protected $fillable = [];
+
 	/**
 	 * Quality constructor.
 	 *

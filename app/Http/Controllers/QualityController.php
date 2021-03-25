@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Quality;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 /**
@@ -29,11 +32,11 @@ class QualityController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param string $qualityUrl
+	 * @param  string  $qualityUrl
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $qualityUrl)
+	public function index(string $qualityUrl): View|Factory|Application
 	{
 		$showQuality = $this->qualityRepository->getAnime($qualityUrl);
 		$this->isNotNull($showQuality);

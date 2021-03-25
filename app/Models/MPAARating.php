@@ -12,12 +12,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class MPAARating extends Model
 {
+	public array  $cacheTags   = ['mpaa'];
+	public string $cachePrefix = 'mpaa_';
+
 	protected $withCount = [
 		'getAnime',
 	];
 
-	public array  $cacheTags   = ['mpaa'];
-	public string $cachePrefix = 'mpaa_';
+	protected $fillable = [];
 
 	/**
 	 * MPAARating constructor.

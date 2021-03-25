@@ -6,6 +6,10 @@ use App;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -35,9 +39,9 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $login)
+	public function show(string $login): View|Factory|Application
 	{
 		$currentUser = $this->userRepository->getUser($login);
 		$currentUser->created = $currentUser->created_at;
@@ -49,9 +53,9 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function showComment(string $login)
+	public function showComment(string $login): View|Factory|Application
 	{
 		$currentUser = $this->userRepository->getUser($login);
 		$this->isNotNull($currentUser);
@@ -66,9 +70,9 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function edit(string $login)
+	public function edit(string $login): View|Factory|Application
 	{
 		$currentUser = $this->userRepository->getUser($login);
 
@@ -79,9 +83,9 @@ class UserController extends Controller
 	 * @param  string                          $login
 	 * @param  UserRequest  $request
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(string $login, UserRequest $request)
+	public function update(string $login, UserRequest $request): RedirectResponse
 	{
 		unset($request['login'], $request['email']);
 		$requestUser = $this->userRepository->setUsers($request, $login);
@@ -96,9 +100,9 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function showAnime(string $login)
+	public function showAnime(string $login): View|Factory|Application
 	{
 		$currentUser = $this->userRepository->getUser($login);
 		$this->isNotNull($currentUser);
@@ -114,7 +118,7 @@ class UserController extends Controller
 	 *
 	 * @return mixed
 	 */
-	public function userRss(string $login)
+	public function userRss(string $login): mixed
 	{
 		$feed = App::make("feed");
 		$feed->setCache($this->timeCacheRss, 'laravelFeedKey');

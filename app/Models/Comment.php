@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Comment
  *
+ * @property int   user_id
+ * @property mixed description_html
+ * @property int parent_comment_id
  * @package App\Models
  */
 class Comment extends Model

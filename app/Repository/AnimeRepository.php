@@ -23,7 +23,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(int $id)
+	public function getAnime(int $id): mixed
 	{
 		return Anime::where('id', $id);
 	}
@@ -33,7 +33,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAllAnime(bool $isAdmin = false)
+	public function getAllAnime(bool $isAdmin = false): mixed
 	{
 		if ($isAdmin) {
 			return Anime::orderBy('updated_at', 'DESC');
@@ -48,7 +48,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getFirstPageAnime(int $limit)
+	public function getFirstPageAnime(int $limit): mixed
 	{
 		return Anime::where('ongoing', 1)
 			->limit($limit)
@@ -61,7 +61,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getCustomAnime(string $columns, string $custom)
+	public function getCustomAnime(string $columns, string $custom): mixed
 	{
 		return Anime::where($columns, $custom)
 			->orderBy('updated_at', 'DESC');
@@ -72,7 +72,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAnons(int $limit)
+	public function getAnons(int $limit): mixed
 	{
 		return Anime::where('anons', 1)
 			->limit($limit)
@@ -84,7 +84,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getPopular(int $limit)
+	public function getPopular(int $limit): mixed
 	{
 		return Anime::limit($limit);
 	}
@@ -95,7 +95,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getSearchAnime(Request $request, int $limit = 5)
+	public function getSearchAnime(Request $request, int $limit = 5): mixed
 	{
 		return Anime::where('name', 'LIKE', "%{$request->search}%")
 			->orWhere('english', 'LIKE', "%{$request->search}%")
@@ -108,12 +108,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int                       $id
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int      $id
+	 * @param  Request  $request
 	 *
 	 * @return mixed
 	 */
-	public function setComment(int $id, Request $request)
+	public function setComment(int $id, Request $request): mixed
 	{
 		$validated = $request->validated();
 		return Comment::create($request->all());
@@ -126,7 +126,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 * @throws \Exception
 	 * @return mixed
 	 */
-	public function delComments(int $id, bool $fullDel)
+	public function delComments(int $id, bool $fullDel): mixed
 	{
 		$deleteComment = Comment::withTrashed()->where('id', $id)->first();
 		$deleteParentComment = Comment::withTrashed()->where('parent_comment_id', $id)->get();
@@ -149,12 +149,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int                       $id
+	 * @param  Request  $request
+	 * @param  int      $id
 	 *
 	 * @return mixed
 	 */
-	public function setAnime(Request $request, int $id)
+	public function setAnime(Request $request, int $id): mixed
 	{
 		$formRequest = $request->all();
 		$update = Anime::findOrNew($id, $formRequest);
@@ -185,14 +185,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			$update->comment_at = $this->check($formRequest, 'comment_at');
 			if ($formRequest['channel_id'] == null) {
 				$update->channel_id = 0;
-			}else {
+			} else {
 				$update->channel_id = $formRequest['channel_id'];
 			}
 
 			return $update->save();
 		}
-
-
 		//dd(__METHOD__, $formRequest, $id, $update, 2222);
 	}
 }

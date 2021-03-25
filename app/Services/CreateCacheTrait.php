@@ -25,7 +25,7 @@ trait CreateCacheTrait
 	 *
 	 * @return mixed
 	 */
-	public static function setCache(string $key, $post)
+	public static function setCache(string $key, $post): mixed
 	{
 		$ttl = (int)config('secondConfig.cache_time');
 

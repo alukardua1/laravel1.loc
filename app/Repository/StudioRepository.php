@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\Studio;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
+use Illuminate\Http\Request;
 
 /**
  * Class StudioRepository
@@ -20,7 +21,7 @@ class StudioRepository implements StudioRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(string $studioUrl)
+	public function getAnime(string $studioUrl): mixed
 	{
 		return Studio::where('url', $studioUrl)
 			->first();
@@ -29,8 +30,19 @@ class StudioRepository implements StudioRepositoryInterfaces
 	/**
 	 * @return mixed
 	 */
-	public function getStudio()
+	public function getStudio(): mixed
 	{
 		return Studio::get();
+	}
+
+	/**
+	 * @param  string   $name
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setStudio(string $name, Request $request): mixed
+	{
+		// TODO: Implement setStudio() method.
 	}
 }

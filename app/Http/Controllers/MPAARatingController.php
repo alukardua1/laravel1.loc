@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\MPAARating;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 /**
@@ -29,11 +32,11 @@ class MPAARatingController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param string $mpaaUrl
+	 * @param  string  $mpaaUrl
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-    public function index(string $mpaaUrl)
+    public function index(string $mpaaUrl): View|Factory|Application
     {
 	    $showMpaa = $this->mpaaRepository->getAnime($mpaaUrl);
 	    $this->isNotNull($showMpaa);

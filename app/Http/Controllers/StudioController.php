@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Studio;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 /**
@@ -29,11 +32,11 @@ class StudioController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param string $studiosUrl
+	 * @param  string  $studiosUrl
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $studiosUrl)
+	public function index(string $studiosUrl): View|Factory|Application
 	{
 		$showStudio = $this->studioRepository->getAnime($studiosUrl);
 		$this->isNotNull($showStudio);

@@ -135,25 +135,25 @@ class DLEParseRepository implements DLEParse
 			$this->createAnimeCategory($post->category, $post->id);
 			if (array_key_exists('url_world_art', $xfield1)) {
 				$link['anime_id'] = $post->id;
-				$link['title'] = 'world-art';
+				$link['title'] = 'World-Art';
 				$link['url'] = $xfield1['url_world_art'];
 				DB::table('other_links')->insert($link);
 			}
 			if (array_key_exists('shikimori_id', $xfield1)) {
 				$link['anime_id'] = $post->id;
-				$link['title'] = 'shikimori';
+				$link['title'] = 'Shikimori';
 				$link['url'] = 'https://shikimori.one/animes/' . $xfield1['shikimori_id'];
 				DB::table('other_links')->insert($link);
 			}
 			if (array_key_exists('myanimelist-id', $xfield1)) {
 				$link['anime_id'] = $post->id;
-				$link['title'] = 'myanimelist';
+				$link['title'] = 'MyAnimeList';
 				$link['url'] = 'https://myanimelist.net/anime/' . $xfield1['myanimelist-id'];
 				DB::table('other_links')->insert($link);
 			}
 			if (array_key_exists('kinopoisk_id', $xfield1)) {
 				$link['anime_id'] = $post->id;
-				$link['title'] = 'kinopoisk';
+				$link['title'] = 'Kinopoisk';
 				$link['url'] = 'https://www.kinopoisk.ru/series/' . $xfield1['kinopoisk_id'];
 				DB::table('other_links')->insert($link);
 			}
@@ -179,7 +179,7 @@ class DLEParseRepository implements DLEParse
 			if (array_key_exists('kodik', $xfield1)) {
 				$data = [
 					'anime_id'    => $post->id,
-					'name_player' => 'kodik',
+					'name_player' => 'Kodik',
 					'url_player'  => $xfield1['kodik'],
 				];
 				DB::table('players')->insert($data);

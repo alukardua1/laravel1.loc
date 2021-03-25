@@ -4,6 +4,8 @@
 namespace App\Repository\Interfaces;
 
 
+use Illuminate\Http\Request;
+
 /**
  * Interface ChannelRepositoryInterfaces
  *
@@ -12,14 +14,22 @@ namespace App\Repository\Interfaces;
 interface ChannelRepositoryInterfaces
 {
 	/**
-	 * @param string $channelUrl
+	 * @param  string  $channelUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(string $channelUrl);
+	public function getAnime(string $channelUrl): mixed;
 
 	/**
 	 * @return mixed
 	 */
-	public function getChannel();
+	public function getChannel(): mixed;
+
+	/**
+	 * @param  string   $url
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setChannel(string $url, Request $request): mixed;
 }

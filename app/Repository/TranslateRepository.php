@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\Translate;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
+use Illuminate\Http\Request;
 
 /**
  * Class TranslateRepository
@@ -19,7 +20,7 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAnime($translateUrl)
+	public function getAnime($translateUrl): mixed
 	{
 		return Translate::where('url', $translateUrl)
 			->first();
@@ -28,8 +29,19 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	/**
 	 * @return mixed
 	 */
-	public function getTranslate()
+	public function getTranslate(): mixed
 	{
 		return Translate::get();
+	}
+
+	/**
+	 * @param  string                    $name
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setTranslate(string $name, Request $request): mixed
+	{
+		// TODO: Implement setTranslate() method.
 	}
 }

@@ -20,19 +20,19 @@ interface FavoriteRepositoryInterfaces
      *
      * @return mixed
      */
-    public function favorite(int $id);
+    public function favorite(int $id): mixed;
 
     /**
      * @param int $id
      *
      * @return mixed
      */
-    public function unFavorite(int $id);
+    public function unFavorite(int $id): mixed;
 
 	/**
 	 * @param string $login
 	 *
 	 * @return mixed
 	 */
-	public function getFavorite(string $login);
+	public function getFavorite(string $login): mixed;
 }

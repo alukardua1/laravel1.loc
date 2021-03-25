@@ -3,6 +3,11 @@
 namespace App\Models;
 
 
+/**
+ * Class Player
+ *
+ * @package App\Models
+ */
 class Player extends Model
 {
 	public array  $cacheTags   = ['player'];
@@ -13,7 +18,13 @@ class Player extends Model
 		'name_player',
 		'url_player'
 	];
-    public function __construct(array $attributes = [])
+
+	/**
+	 * Player constructor.
+	 *
+	 * @param  array  $attributes
+	 */
+	public function __construct(array $attributes = [])
     {
 	    parent::__construct($attributes);
     }

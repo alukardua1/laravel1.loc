@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 /**
  * Class HomeController
@@ -29,9 +32,9 @@ class HomeController extends Controller
 	/**
 	 * Вывод постов на главной странице
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index()
+	public function index(): View|Factory|Application
 	{
 		$ongoing = $this->animeRepository->getFirstPageAnime($this->limit)->get();
 		return view($this->frontend . 'anime.home', compact('ongoing'));

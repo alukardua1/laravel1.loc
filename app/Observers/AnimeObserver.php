@@ -9,6 +9,7 @@ use Str;
 class AnimeObserver
 {
 	use FunctionTrait;
+
 	/**
 	 * Handle the Anime "created" event.
 	 *
@@ -33,6 +34,9 @@ class AnimeObserver
 		//
 	}
 
+	/**
+	 * @param  \App\Models\Anime  $anime
+	 */
 	public function saving(Anime $anime)
 	{
 		$translateArr = $anime->getTranslate()->get()->toArray();

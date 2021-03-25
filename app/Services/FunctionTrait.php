@@ -23,6 +23,8 @@ trait FunctionTrait
 	}
 
 	/**
+	 * Формирование RSS потока
+	 *
 	 * @param          $feed
 	 * @param          $posts
 	 * @param  string  $title
@@ -30,7 +32,7 @@ trait FunctionTrait
 	 *
 	 * @return mixed
 	 */
-	public function getRss($feed, $posts, $title = '', $description = '')
+	public function getRss($feed, $posts, $title = '', $description = ''): mixed
 	{
 		$feed->title = $title ?? '☆AnimeFree☆ - смотреть аниме в русской озвучке';
 		$feed->description = $description ?? '☆AnimeFree☆ - смотреть аниме на русском без регистрации';
@@ -62,11 +64,13 @@ trait FunctionTrait
 	}
 
 	/**
+	 * Формирование комментариев
+	 *
 	 * @param $comments
 	 *
 	 * @return mixed
 	 */
-	public function showComments($comments)
+	public function showComments($comments): mixed
 	{
 		// Изменяем коллекцию.
 		$comments->transform(
@@ -92,6 +96,8 @@ trait FunctionTrait
 	}
 
 	/**
+	 * Запись в базу ссылок
+	 *
 	 * @param       $formRequest
 	 * @param  int  $id
 	 */
@@ -109,6 +115,8 @@ trait FunctionTrait
 	}
 
 	/**
+	 * запись в базу плееров
+	 *
 	 * @param       $formRequest
 	 * @param  int  $id
 	 */
@@ -126,6 +134,8 @@ trait FunctionTrait
 	}
 
 	/**
+	 * Проверка input[type=check]
+	 *
 	 * @param          $requestCheck
 	 * @param  string  $name
 	 *
@@ -143,18 +153,14 @@ trait FunctionTrait
 	 * Создает ключевые слова для поста
 	 *
 	 * @param       $contents
-	 * @param int   $symbol
-	 * @param int   $words
+	 * @param  int  $symbol
+	 * @param  int  $words
 	 *
-	 * @return false|string
+	 * @return string
 	 */
-	private function seoKeywords($contents, $symbol = 5, $words = 35)
+	private function seoKeywords($contents, $symbol = 5, $words = 35): string
 	{
-		$contents = @preg_replace(
-			["'<[\/\!]*?[^<>]*?>'si", "'([\r\n])[\s]+'si", "'&[a-z0-9]{1,6};'si", "'( +)'si"],
-			["", "\\1 ", " ", " "],
-			strip_tags($contents)
-		);
+		$contents = @preg_replace(["'<[\/\!]*?[^<>]*?>'si", "'([\r\n])[\s]+'si", "'&[a-z0-9]{1,6};'si", "'( +)'si"], ["", "\\1 ", " ", " "], strip_tags($contents));
 		$rearray = [
 			"~",
 			"!",

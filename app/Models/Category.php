@@ -11,12 +11,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Category extends Model
 {
+	public array  $cacheTags   = ['category'];
+	public string $cachePrefix = 'category_';
+
 	protected $withCount = [
 		'getAnime',
 	];
 
-	public array  $cacheTags   = ['category'];
-	public string $cachePrefix = 'category_';
+	protected $fillable = [];
 
 	/**
 	 * Category constructor.

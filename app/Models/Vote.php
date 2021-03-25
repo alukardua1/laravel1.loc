@@ -11,6 +11,7 @@ class Vote extends Model
 {
 	public array  $cacheTags   = ['vote'];
 	public string $cachePrefix = 'vote_';
+
 	/**
 	 * Vote constructor.
 	 *

@@ -26,7 +26,7 @@ class UserRepository implements UserRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getUser(string $login)
+	public function getUser(string $login): mixed
 	{
 		return User::where('login', $login)
 			->firstOrFail();
@@ -35,7 +35,7 @@ class UserRepository implements UserRepositoryInterfaces
 	/**
 	 * @return mixed
 	 */
-	public function getUsers()
+	public function getUsers(): mixed
 	{
 		return User::get();
 	}
@@ -45,7 +45,7 @@ class UserRepository implements UserRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getPM(string $login)
+	public function getPM(string $login): mixed
 	{
 		dd(__METHOD__, Auth::id(), 11);
 	}
@@ -56,7 +56,7 @@ class UserRepository implements UserRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function setUsers(Request $request, string $login)
+	public function setUsers(Request $request, string $login): mixed
 	{
 		if ($request->user()) {
 			$updateUser = User::where('login', $login)->first();

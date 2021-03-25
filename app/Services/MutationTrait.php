@@ -38,7 +38,7 @@ trait MutationTrait
 	 *
 	 * @return mixed
 	 */
-	public function blockPlayer($anime)
+	public function blockPlayer($anime): mixed
 	{
 		if ($anime->blocking == 1) {
 			$anime->player = null;
@@ -114,6 +114,8 @@ trait MutationTrait
 	}
 
 	/**
+	 * Формирует вывод голосов
+	 *
 	 * @param $vote
 	 *
 	 * @return array

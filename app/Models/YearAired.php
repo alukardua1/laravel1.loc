@@ -11,12 +11,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class YearAired extends Model
 {
+	public array  $cacheTags   = ['year'];
+	public string $cachePrefix = 'year_';
+
 	protected $withCount = [
 		'getAnime',
 	];
 
-	public array  $cacheTags   = ['year'];
-	public string $cachePrefix = 'year_';
+	protected $fillable = [];
 
 	/**
 	 * YearAired constructor.

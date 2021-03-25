@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 /**
  * Class CategoryController
@@ -28,9 +31,9 @@ class CategoryController extends Controller
 	/**
 	 * @param string $categoryUrl
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $categoryUrl)
+	public function index(string $categoryUrl): View|Factory|Application
 	{
 		$currentCategory = $this->categoryRepository->getCategory($categoryUrl)->first();
 		$this->isNotNull($currentCategory);

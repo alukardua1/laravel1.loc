@@ -13,6 +13,9 @@ class Group extends Model
 {
 	public array  $cacheTags   = ['group'];
 	public string $cachePrefix = 'group_';
+
+	protected $fillable = [];
+
 	/**
 	 * Group constructor.
 	 *

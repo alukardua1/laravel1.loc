@@ -4,6 +4,8 @@
 namespace App\Repository\Interfaces;
 
 
+use Illuminate\Http\Request;
+
 /**
  * Interface KindRepositoryInterfaces
  *
@@ -12,14 +14,22 @@ namespace App\Repository\Interfaces;
 interface KindRepositoryInterfaces
 {
 	/**
-	 * @param string $kindUrl
+	 * @param  string  $kindUrl
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(string $kindUrl);
+	public function getAnime(string $kindUrl): mixed;
 
 	/**
 	 * @return mixed
 	 */
-	public function getKind();
+	public function getKind(): mixed;
+
+	/**
+	 * @param  string   $name
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setKind(string $name, Request $request): mixed;
 }

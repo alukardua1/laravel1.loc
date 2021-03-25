@@ -19,19 +19,19 @@ interface UserRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getUser(string $login);
+	public function getUser(string $login): mixed;
 
 	/**
 	 * @return mixed
 	 */
-	public function getUsers();
+	public function getUsers(): mixed;
 
 	/**
 	 * @param  string  $login
 	 *
 	 * @return mixed
 	 */
-	public function getPM(string $login);
+	public function getPM(string $login): mixed;
 
 	/**
 	 * @param  Request  $request
@@ -39,5 +39,5 @@ interface UserRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function setUsers(Request $request, string $login);
+	public function setUsers(Request $request, string $login): mixed;
 }

@@ -101,11 +101,7 @@
 									   aria-selected="true">{{$player->name_player}}</a>
 								</li>
 								<div class="embed-responsive embed-responsive-16by9">
-									<iframe class="embed-responsive-item" src="{{$player->url_player}}
-											@if ($regionBlockString and ($player->name_player == 'kodik'))
-													?geoblock={{$regionBlockString}}
-											@endif"
-											frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>
+									<iframe class="embed-responsive-item" src="{{$player->url_player}}@if ($regionBlockString and (strcasecmp($player->name_player, 'kodik') == 0))?geoblock={{$regionBlockString}}@endif" frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>
 								</div>
 							@endforeach
 						</ul>

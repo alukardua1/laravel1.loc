@@ -13,11 +13,21 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 /**
  * Class Anime
  *
+ * @property string       name
+ * @property mixed        episodes_aired
+ * @property string       metatitle
+ * @property string       url
+ * @property mixed        description_html
+ * @property mixed|string keywords
+ * @property mixed        description
  * @package App\Models
  */
 class Anime extends Model
 {
 	use AnimeModelTrait;
+
+	public array  $cacheTags   = ['anime'];
+	public string $cachePrefix = 'anime_';
 
 	protected $fillable = [
 		'name',
@@ -66,9 +76,6 @@ class Anime extends Model
 		'getYear',
 		'getCopyrightHolder',
 	];
-
-	public array  $cacheTags   = ['anime'];
-	public string $cachePrefix = 'anime_';
 
 	/**
 	 * Anime constructor.

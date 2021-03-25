@@ -12,12 +12,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Country extends Model
 {
+	public array  $cacheTags   = ['country'];
+	public string $cachePrefix = 'country_';
+
+	protected $fillable = [];
+
 	protected $withCount = [
 		'getAnime',
 	];
-
-	public array  $cacheTags   = ['country'];
-	public string $cachePrefix = 'country_';
 
 	/**
 	 * Country constructor.

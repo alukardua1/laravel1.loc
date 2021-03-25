@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\Channel;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
+use Illuminate\Http\Request;
 
 /**
  * Class ChannelRepository
@@ -20,7 +21,7 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(string $channelUrl)
+	public function getAnime(string $channelUrl): mixed
 	{
 		return Channel::where('url', $channelUrl)
 			->first();
@@ -29,8 +30,19 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	/**
 	 * @return mixed
 	 */
-	public function getChannel()
+	public function getChannel(): mixed
 	{
 		return Channel::get();
+	}
+
+	/**
+	 * @param  string   $url
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setChannel(string $url, Request $request): mixed
+	{
+		// TODO: Implement setChannel() method.
 	}
 }

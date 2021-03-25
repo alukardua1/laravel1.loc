@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\YearAired;
 use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
+use Illuminate\Http\Request;
 
 /**
  * Class YearAiredRepository
@@ -20,7 +21,7 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(string $yearUrl)
+	public function getAnime(string $yearUrl): mixed
 	{
 		return YearAired::where('name', $yearUrl)
 			->first();
@@ -29,8 +30,19 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	/**
 	 * @return mixed
 	 */
-	public function getYearAired()
+	public function getYearAired(): mixed
 	{
 		return YearAired::get();
+	}
+
+	/**
+	 * @param  string   $name
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setYearAired(string $name, Request $request): mixed
+	{
+		// TODO: Implement setYearAired() method.
 	}
 }

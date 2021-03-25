@@ -20,12 +20,12 @@ interface VoteRepositoryInterface
      *
      * @return mixed
      */
-    public function plusVotes(int $id);
+    public function plusVotes(int $id): mixed;
 
     /**
      * @param int $id
      *
      * @return mixed
      */
-    public function minusVotes(int $id);
+    public function minusVotes(int $id): mixed;
 }

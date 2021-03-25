@@ -24,7 +24,7 @@ class FavoriteRepository implements FavoritesRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function favorite(int $id)
+	public function favorite(int $id): mixed
 	{
 		Auth::user()
 			->favorites()
@@ -36,7 +36,7 @@ class FavoriteRepository implements FavoritesRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function unFavorite(int $id)
+	public function unFavorite(int $id): mixed
 	{
 		Auth::user()
 			->favorites()
@@ -48,7 +48,7 @@ class FavoriteRepository implements FavoritesRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getFavorite(string $login)
+	public function getFavorite(string $login): mixed
 	{
 		return User::where('login', $login)
 			->first();

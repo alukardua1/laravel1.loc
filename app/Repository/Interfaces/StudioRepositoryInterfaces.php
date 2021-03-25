@@ -4,6 +4,8 @@
 namespace App\Repository\Interfaces;
 
 
+use Illuminate\Http\Request;
+
 /**
  * Interface StudioRepositoryInterfaces
  *
@@ -16,10 +18,18 @@ interface StudioRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(string $studioUrl);
+	public function getAnime(string $studioUrl): mixed;
 
 	/**
 	 * @return mixed
 	 */
-	public function getStudio();
+	public function getStudio(): mixed;
+
+	/**
+	 * @param  string   $name
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setStudio(string $name, Request $request): mixed;
 }

@@ -13,6 +13,7 @@ class Favorites extends Model
 {
 	public array  $cacheTags   = ['favorites'];
 	public string $cachePrefix = 'favorites_';
+
 	/**
 	 * Favorites constructor.
 	 *

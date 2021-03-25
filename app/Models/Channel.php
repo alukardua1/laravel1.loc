@@ -11,12 +11,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Channel extends Model
 {
+	public array  $cacheTags   = ['channel'];
+	public string $cachePrefix = 'channel_';
+
 	protected $withCount = [
 		'getAnime',
 	];
 
-	public array  $cacheTags   = ['channel'];
-	public string $cachePrefix = 'channel_';
+	protected $fillable = [];
 
 	protected $touches = ['getAnime'];
 	/**

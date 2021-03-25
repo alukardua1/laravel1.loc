@@ -6,8 +6,14 @@ use App;
 use App\Events\AnimeEvent;
 use App\Http\Requests\CommentRequest;
 use Auth;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
+use Illuminate\Http\Response;
 
 /**
  * Class AnimeController
@@ -30,9 +36,9 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index()
+	public function index(): View|Factory|Application
 	{
 		$allAnime = $this->anime->getAllAnime()->paginate($this->paginate);
 
@@ -40,9 +46,9 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function indexOngoing()
+	public function indexOngoing(): View|Factory|Application
 	{
 		$allAnime = $this->anime->getCustomAnime('ongoing', 1)->paginate($this->paginate);
 		$title = 'Онгоинг';
@@ -54,9 +60,9 @@ class AnimeController extends Controller
 	 * @param  int          $id
 	 * @param  string|null  $url
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(int $id, string $url = null)
+	public function show(int $id, string $url = null): View|Factory|Application
 	{
 		$showAnime = $this->anime->getAnime($id)->first();
 		$this->isNotNull($showAnime);
@@ -103,9 +109,9 @@ class AnimeController extends Controller
 	/**
 	 * @param  Request  $request
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
 	 */
-	public function search(Request $request)
+	public function search(Request $request): Response|ResponseFactory
 	{
 		if ($request->ajax()) {
 			$output = "";
@@ -125,7 +131,7 @@ class AnimeController extends Controller
 	/**
 	 * @return mixed
 	 */
-	public function animeRss()
+	public function animeRss(): mixed
 	{
 		$feed = App::make("feed");
 		$feed->setCache(config('secondConfig.cache_time'), 'laravelFeedKey');
@@ -142,9 +148,9 @@ class AnimeController extends Controller
 	 * @param  int             $id
 	 * @param  CommentRequest  $request
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function setComments(int $id, CommentRequest $request)
+	public function setComments(int $id, CommentRequest $request): RedirectResponse
 	{
 		$requestAnime = $this->anime->setComment($id, $request);
 
@@ -160,9 +166,9 @@ class AnimeController extends Controller
 	 * @param  int   $commentId
 	 * @param  bool  $fullDel
 	 *
-	 * @return mixed
+	 * @return RedirectResponse
 	 */
-	public function deleteComments(int $id, int $commentId, bool $fullDel = false)
+	public function deleteComments(int $id, int $commentId, bool $fullDel = false): RedirectResponse
 	{
 		$del = $this->anime->delComments($commentId, $fullDel);
 

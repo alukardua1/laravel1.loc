@@ -12,12 +12,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Kind extends Model
 {
+	public array  $cacheTags   = ['kind'];
+	public string $cachePrefix = 'kind_';
+
 	protected $withCount = [
 		'getAnime',
 	];
 
-	public array  $cacheTags   = ['kind'];
-	public string $cachePrefix = 'kind_';
+	protected $fillable = [];
+
 	/**
 	 * Kind constructor.
 	 *

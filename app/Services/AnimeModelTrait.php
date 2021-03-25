@@ -19,9 +19,9 @@ trait AnimeModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function setAiredAttribute($value)
+	public function setAiredAttribute($value): string
 	{
 		return $this->attributes['aired'] = (new Carbon($value))->format('d.m.Y');
 	}
@@ -29,9 +29,9 @@ trait AnimeModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function setUpdateAttribute($value)
+	public function setUpdateAttribute($value): string
 	{
 		return $this->attributes['update'] = (new Carbon($value))->format('d.m.Y');
 	}
@@ -39,9 +39,9 @@ trait AnimeModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function setCreateAttribute($value)
+	public function setCreateAttribute($value): string
 	{
 		return $this->attributes['create'] = (new Carbon($value))->format('d.m.Y');
 	}
@@ -49,27 +49,27 @@ trait AnimeModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function setReleasedAttribute($value)
+	public function setReleasedAttribute($value): string
 	{
 		return $this->attributes['released'] = (new Carbon($value))->format('d.m.Y');
 	}
 
 	/**
-	 * @return mixed
+	 * @return array
 	 */
-	public function getVoteAttribute()
+	public function getVoteAttribute(): array
 	{
 		return $this->votePlusMinus($this->getVote()->get());
 	}
 
 	/**
-	 * @todo Временное решение придумать как изменить
+	 * @return string
+	 *@todo Временное решение придумать как изменить
 	 *
-	 * @return mixed
 	 */
-	public function getCategoryAttribute()
+	public function getCategoryAttribute(): string
 	{
 		return $this->categoryMutation($this->getCategory()->get());
 	}
@@ -79,7 +79,7 @@ trait AnimeModelTrait
 	 *
 	 * @return mixed
 	 */
-	public function setCommentsCountAttribute($value)
+	public function setCommentsCountAttribute($value): mixed
 	{
 		return $this->attributes['comments_count'] = $value;
 	}

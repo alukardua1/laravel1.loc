@@ -4,9 +4,32 @@
 namespace App\Repository\Interfaces;
 
 
+use Illuminate\Http\Request;
+
+/**
+ * Interface GeoBlockRepositoryInterfaces
+ *
+ * @package App\Repository\Interfaces
+ */
 interface GeoBlockRepositoryInterfaces
 {
-	public function getAnime(string $geoBlock);
+	/**
+	 * @param  string  $geoBlock
+	 *
+	 * @return mixed
+	 */
+	public function getAnime(string $geoBlock): mixed;
 
-	public function getGeoBlock();
+	/**
+	 * @return mixed
+	 */
+	public function getGeoBlock(): mixed;
+
+	/**
+	 * @param  string   $name
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setGeoBlock(string $name, Request $request): mixed;
 }

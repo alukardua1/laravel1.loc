@@ -12,12 +12,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Translate extends Model
 {
+	public array  $cacheTags   = ['translate'];
+	public string $cachePrefix = 'translate_';
+
 	protected $withCount = [
 		'getAnime',
 	];
 
-	public array  $cacheTags   = ['translate'];
-	public string $cachePrefix = 'translate_';
+	protected $fillable = [];
+
 	/**
 	 * MPAARating constructor.
 	 *

@@ -14,11 +14,11 @@ trait CurlTrait
 	private string $userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.112 Safari/534.30';
 
 	/**
-	 * @param string $url
+	 * @param  string  $url
 	 *
 	 * @return mixed
 	 */
-	public function getCurl(string $url)
+	public function getCurl(string $url): mixed
 	{
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $url);

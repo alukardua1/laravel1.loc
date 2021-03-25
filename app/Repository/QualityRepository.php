@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\Quality;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
+use Illuminate\Http\Request;
 
 /**
  * Class QualityRepository
@@ -20,7 +21,7 @@ class QualityRepository implements QualityRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(string $qualityUrl)
+	public function getAnime(string $qualityUrl): mixed
 	{
 		return Quality::where('url', $qualityUrl)
 			->first();
@@ -29,8 +30,19 @@ class QualityRepository implements QualityRepositoryInterfaces
 	/**
 	 * @return mixed
 	 */
-	public function getQuality()
+	public function getQuality(): mixed
 	{
 		return Quality::get();
+	}
+
+	/**
+	 * @param  string   $name
+	 * @param  Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setQuality(string $name, Request $request): mixed
+	{
+		// TODO: Implement setQuality() method.
 	}
 }

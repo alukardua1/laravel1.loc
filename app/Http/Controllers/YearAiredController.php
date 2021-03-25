@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\YearAired;
 use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 /**
@@ -29,11 +32,11 @@ class YearAiredController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param string $yearUrl
+	 * @param  string  $yearUrl
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-    public function index(string $yearUrl)
+    public function index(string $yearUrl): View|Factory|Application
     {
 	    $showYear = $this->yearAired->getAnime($yearUrl);
 	    $this->isNotNull($showYear);

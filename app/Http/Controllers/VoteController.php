@@ -29,9 +29,9 @@ class VoteController extends Controller
 	/**
 	 * @param int $id
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function plus(int $id)
+	public function plus(int $id): string
 	{
 		$this->voteRepository->plusVotes($id);
 
@@ -41,9 +41,9 @@ class VoteController extends Controller
 	/**
 	 * @param int $id
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function minus(int $id)
+	public function minus(int $id): string
 	{
 		$this->voteRepository->minusVotes($id);
 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Translate;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 /**
@@ -29,11 +32,11 @@ class TranslateController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param string $translateUrl
+	 * @param  string  $translateUrl
 	 *
-	 * @return mixed
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-    public function index(string $translateUrl)
+    public function index(string $translateUrl): View|Factory|Application
     {
 	    $showTranslate = $this->translate->getAnime($translateUrl);
 	    $this->isNotNull($showTranslate);
