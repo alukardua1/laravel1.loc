@@ -19,7 +19,7 @@
 					{{$category->id}}
 				</th>
 				<td>
-					<a href="{{route('editAnimeAdmin', $category->url)}}">{{$category->title}}</a>
+					<a href="{{route('editCategoryAdmin', $category->url)}}">{{$category->title}}</a>
 				</td>
 				<td>
 					{!! $category->posted_at ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-exclamation-circle"></i>' !!}

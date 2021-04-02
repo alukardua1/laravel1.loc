@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UserApiController extends Controller
 {
@@ -55,9 +57,9 @@ class UserApiController extends Controller
 	 * @param        $login
 	 * @param  null  $custom
 	 *
-	 * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+	 * @return JsonResponse|Response
 	 */
-	public function show($login, $custom = null)
+	public function show($login, $custom = null): Response|JsonResponse
 	{
 		$user = $this->userRepository->getUser($login);
 		if (empty($user)) {

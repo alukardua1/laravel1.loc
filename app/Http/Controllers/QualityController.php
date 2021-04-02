@@ -34,7 +34,7 @@ class QualityController extends Controller
 	 *
 	 * @param  string  $qualityUrl
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function index(string $qualityUrl): View|Factory|Application
 	{

@@ -34,7 +34,7 @@ class TranslateController extends Controller
 	 *
 	 * @param  string  $translateUrl
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
     public function index(string $translateUrl): View|Factory|Application
     {

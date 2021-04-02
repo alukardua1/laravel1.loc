@@ -32,7 +32,7 @@ class HomeController extends Controller
 	/**
 	 * Вывод постов на главной странице
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function index(): View|Factory|Application
 	{

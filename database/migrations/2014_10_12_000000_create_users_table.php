@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
 				$table->text('profile_photo_path')->nullable();
 				$table->text('description')->nullable();
 				$table->text('signature')->nullable();
+				$table->boolean('active')->default(1);
 				$table->timestamp('last_login')->default(date('Y-m-d H:i:s'));
 				$table->timestamps();
 			}

@@ -39,7 +39,7 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function show(string $login): View|Factory|Application
 	{
@@ -53,7 +53,7 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function showComment(string $login): View|Factory|Application
 	{
@@ -70,7 +70,7 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function edit(string $login): View|Factory|Application
 	{
@@ -83,7 +83,7 @@ class UserController extends Controller
 	 * @param  string                          $login
 	 * @param  UserRequest  $request
 	 *
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @return RedirectResponse
 	 */
 	public function update(string $login, UserRequest $request): RedirectResponse
 	{
@@ -100,7 +100,7 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function showAnime(string $login): View|Factory|Application
 	{

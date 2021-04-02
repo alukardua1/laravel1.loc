@@ -25,7 +25,7 @@ class FavoritesController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function index(string $login): View|Factory|Application
 	{

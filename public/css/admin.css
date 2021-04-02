@@ -226,3 +226,7 @@ form .card {
 .form-control:disabled, .form-control[readonly] {
 	color: #000;
 }
+
+.list-group-item {
+	padding: 0 !important;
+}

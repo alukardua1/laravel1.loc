@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Repository\AnimeRepository;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -19,7 +20,7 @@ class AnimeApiController extends Controller
 	/**
 	 * AnimeApiController constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
@@ -30,9 +31,9 @@ class AnimeApiController extends Controller
 	/**
 	 * Вывод всех аниме
 	 *
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
-	public function index()
+	public function index(): JsonResponse
 	{
 		$anime = $this->apiAnimeRepository->getAllAnime()->paginate($this->paginate);
 		$anime = $this->animeAllMutations($anime);
@@ -43,11 +44,11 @@ class AnimeApiController extends Controller
 	/**
 	 * Вывод аниме по $id
 	 *
-	 * @param int $id
+	 * @param  int  $id
 	 *
-	 * @return array|\Illuminate\Http\JsonResponse
+	 * @return JsonResponse
 	 */
-	public function show(int $id)
+	public function show(int $id): JsonResponse
 	{
 		$thisAnime = $this->apiAnimeRepository->getAnime($id)->first();
 		if (empty($thisAnime)) {

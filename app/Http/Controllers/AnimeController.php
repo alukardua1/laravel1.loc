@@ -36,7 +36,7 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function index(): View|Factory|Application
 	{
@@ -46,7 +46,7 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function indexOngoing(): View|Factory|Application
 	{
@@ -60,9 +60,9 @@ class AnimeController extends Controller
 	 * @param  int          $id
 	 * @param  string|null  $url
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
-	public function show(int $id, string $url = null): View|Factory|Application
+	public function show(int $id, string $url = null)
 	{
 		$showAnime = $this->anime->getAnime($id)->first();
 		$this->isNotNull($showAnime);
@@ -109,7 +109,7 @@ class AnimeController extends Controller
 	/**
 	 * @param  Request  $request
 	 *
-	 * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
+	 * @return Response|ResponseFactory
 	 */
 	public function search(Request $request): Response|ResponseFactory
 	{
@@ -148,7 +148,7 @@ class AnimeController extends Controller
 	 * @param  int             $id
 	 * @param  CommentRequest  $request
 	 *
-	 * @return \Illuminate\Http\RedirectResponse
+	 * @return RedirectResponse
 	 */
 	public function setComments(int $id, CommentRequest $request): RedirectResponse
 	{

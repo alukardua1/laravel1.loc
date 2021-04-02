@@ -34,7 +34,7 @@ class ChannelController extends Controller
 	 *
 	 * @param string $channelUrl
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
     public function index(string $channelUrl): View|Factory|Application
     {

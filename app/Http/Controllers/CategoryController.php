@@ -31,7 +31,7 @@ class CategoryController extends Controller
 	/**
 	 * @param string $categoryUrl
 	 *
-	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+	 * @return View|Factory|Application
 	 */
 	public function index(string $categoryUrl): View|Factory|Application
 	{
