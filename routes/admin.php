@@ -16,6 +16,7 @@ Route::group(
 	function () {
 		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 		Route::get('/anime', [AnimeAdminController::class, 'index'])->name('showAllAnimeAdmin');
+		Route::get('/anime/add', [AnimeAdminController::class, 'create'])->name('createAnimeAdmin');
 		Route::get('/anime/{id}/edit', [AnimeAdminController::class, 'edit'])->name('editAnimeAdmin');
 		Route::post('/anime/{id}/update', [AnimeAdminController::class, 'update'])->name('updateAnimeAdmin');
 

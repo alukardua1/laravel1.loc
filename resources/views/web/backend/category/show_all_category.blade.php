@@ -3,6 +3,9 @@
 @section('title', 'Редактирование категорий')
 
 @section('content')
+	<div>
+		<a class="btn btn-primary" href="#" type="button">Добавить</a>
+	</div>
 	<table class="table table-dark table-striped table-sm">
 		<thead>
 		<tr>
