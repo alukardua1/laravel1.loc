@@ -14,22 +14,28 @@ use Illuminate\Http\Request;
 interface TranslateRepositoryInterfaces
 {
 	/**
-	 * @param  string  $translateUrl
+	 * Получает озвучивание по названию
+	 *
+	 * @param  string  $translateUrl  Урл озвучмвания
 	 *
 	 * @return mixed
 	 */
 	public function getAnime(string $translateUrl): mixed;
 
 	/**
+	 * Получает все озвучивания
+	 *
 	 * @return mixed
 	 */
 	public function getTranslate(): mixed;
 
 	/**
-	 * @param  string                    $name
-	 * @param  Request  $request
+	 * Добавление/обновление озвучивания
+	 *
+	 * @param  string   $translateUrl  Урл озвучмвания
+	 * @param  Request  $request       Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setTranslate(string $name, Request $request): mixed;
+	public function setTranslate(string $translateUrl, Request $request): mixed;
 }

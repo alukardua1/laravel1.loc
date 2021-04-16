@@ -14,8 +14,8 @@ use Illuminate\View\View;
  */
 class GeoBlockComposer
 {
-	private                              $geoBlock;
-	private GeoBlockRepositoryInterfaces $geoBlockRepository;
+	protected mixed                        $geoBlock;
+	protected GeoBlockRepositoryInterfaces $geoBlockRepository;
 
 	/**
 	 * GeoBlockComposer constructor.
@@ -31,7 +31,7 @@ class GeoBlockComposer
 	/**
 	 * @return mixed
 	 */
-	public function geoBlock()
+	public function geoBlock(): mixed
 	{
 		return $this->geoBlockRepository->getGeoBlock();
 	}

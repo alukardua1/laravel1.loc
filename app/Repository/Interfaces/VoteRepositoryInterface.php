@@ -16,14 +16,18 @@ namespace App\Repository\Interfaces;
 interface VoteRepositoryInterface
 {
     /**
-     * @param int $id
+     * Нравится
+     *
+     * @param int $id ID записи
      *
      * @return mixed
      */
     public function plusVotes(int $id): mixed;
 
     /**
-     * @param int $id
+     * Не нравится
+     *
+     * @param int $id ID записи
      *
      * @return mixed
      */

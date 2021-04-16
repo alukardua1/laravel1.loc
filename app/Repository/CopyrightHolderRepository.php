@@ -17,7 +17,9 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 {
 
 	/**
-	 * @param  string  $copyrightHolder
+	 * Получает правобладателя по названию
+	 *
+	 * @param  string  $copyrightHolder  Урл правообладателя
 	 *
 	 * @return mixed
 	 */
@@ -27,6 +29,8 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	}
 
 	/**
+	 * Получает всех правообладателей
+	 *
 	 * @return mixed
 	 */
 	public function getCopyrightHolder(): mixed
@@ -35,12 +39,14 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string                    $name
-	 * @param  Request  $request
+	 * Добавление/обновление правообладателя
+	 *
+	 * @param  string   $copyrightHolder Урл правообладателя
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setCopyrightHolder(string $name, Request $request): mixed
+	public function setCopyrightHolder(string $copyrightHolder, Request $request): mixed
 	{
 		// TODO: Implement setCopyrightHolder() method.
 	}

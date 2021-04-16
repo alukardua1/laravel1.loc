@@ -17,7 +17,9 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 {
 
 	/**
-	 * @param  string  $channelUrl
+	 * Получает канал по названию
+	 *
+	 * @param  string  $channelUrl урл канала
 	 *
 	 * @return mixed
 	 */
@@ -28,6 +30,8 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	}
 
 	/**
+	 * Получает все каналы
+	 *
 	 * @return mixed
 	 */
 	public function getChannel(): mixed
@@ -36,12 +40,14 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string   $url
-	 * @param  Request  $request
+	 * Добавление/обновление канала
+	 *
+	 * @param  string   $channelUrl урл канала
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setChannel(string $url, Request $request): mixed
+	public function setChannel(string $channelUrl, Request $request): mixed
 	{
 		// TODO: Implement setChannel() method.
 	}

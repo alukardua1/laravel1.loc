@@ -8,7 +8,7 @@ use Illuminate\View\View;
 
 class YearComposer
 {
-	public                                  $year;
+	protected mixed                         $year;
 	protected YearAiredRepositoryInterfaces $yearRepository;
 
 	/**
@@ -25,7 +25,7 @@ class YearComposer
 	/**
 	 * @return mixed
 	 */
-	public function year()
+	public function year(): mixed
 	{
 		return $this->yearRepository->getYearAired()->sortBy('name');
 	}

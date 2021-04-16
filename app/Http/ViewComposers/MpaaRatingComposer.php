@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class MpaaRatingComposer
 {
-	public                             $mpaa;
+	protected mixed                    $mpaa;
 	protected MpaaRepositoryInterfaces $mpaaRepository;
 
 	/**
@@ -26,7 +26,7 @@ class MpaaRatingComposer
 	/**
 	 * @return mixed
 	 */
-	public function mpaa()
+	public function mpaa(): mixed
 	{
 		return $this->mpaaRepository->getMpaa();
 	}

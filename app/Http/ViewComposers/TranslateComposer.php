@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class TranslateComposer
 {
-	public                                  $translate;
+	protected mixed                         $translate;
 	protected TranslateRepositoryInterfaces $translateRepository;
 
 	/**
@@ -26,7 +26,7 @@ class TranslateComposer
 	/**
 	 * @return mixed
 	 */
-	public function translate()
+	public function translate(): mixed
 	{
 		return $this->translateRepository->getTranslate()->sort();
 	}

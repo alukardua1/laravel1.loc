@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 class TranslateRepository implements TranslateRepositoryInterfaces
 {
 	/**
-	 * @param $translateUrl
+	 * Получает озвучивание по названию
+	 *
+	 * @param  string  $translateUrl  Урл озвучмвания
 	 *
 	 * @return mixed
 	 */
@@ -27,6 +29,8 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	}
 
 	/**
+	 * Получает все озвучивания
+	 *
 	 * @return mixed
 	 */
 	public function getTranslate(): mixed
@@ -35,12 +39,14 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string                    $name
-	 * @param  Request  $request
+	 * Добавление/обновление озвучивания
+	 *
+	 * @param  string   $translateUrl  Урл озвучмвания
+	 * @param  Request  $request       Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setTranslate(string $name, Request $request): mixed
+	public function setTranslate(string $translateUrl, Request $request): mixed
 	{
 		// TODO: Implement setTranslate() method.
 	}

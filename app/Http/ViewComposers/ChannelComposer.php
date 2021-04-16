@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class ChannelComposer
 {
-	public                                $channel;
+	protected mixed                       $channel;
 	protected ChannelRepositoryInterfaces $channelRepository;
 
 	/**
@@ -26,7 +26,7 @@ class ChannelComposer
 	/**
 	 * @return mixed
 	 */
-	public function channel()
+	public function channel(): mixed
 	{
 		return $this->channelRepository->getChannel();
 	}

@@ -4,7 +4,6 @@
 namespace App\Http\ViewComposers;
 
 
-
 use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
 use Illuminate\View\View;
 
@@ -15,8 +14,8 @@ use Illuminate\View\View;
  */
 class CopyrightHolderComposer
 {
-	private                                     $copyrightHolder;
-	private CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
+	protected mixed                               $copyrightHolder;
+	protected CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
 
 	/**
 	 * CopyrightHolderComposer constructor.

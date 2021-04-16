@@ -17,7 +17,9 @@ class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 {
 
 	/**
-	 * @param  string  $geoBlock
+	 * Получает ГеоБлок по коду
+	 *
+	 * @param  string  $geoBlock Код ГеоБлока
 	 *
 	 * @return mixed
 	 */
@@ -27,6 +29,8 @@ class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 	}
 
 	/**
+	 * Получает ГеоБлок
+	 *
 	 * @return mixed
 	 */
 	public function getGeoBlock(): mixed
@@ -35,12 +39,14 @@ class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string   $name
+	 * Добавление/обновление ГеоБлока
+	 *
+	 * @param  string   $geoBlock
 	 * @param  Request  $request
 	 *
 	 * @return mixed
 	 */
-	public function setGeoBlock(string $name, Request $request): mixed
+	public function setGeoBlock(string $geoBlock, Request $request): mixed
 	{
 		// TODO: Implement setGeoBlock() method.
 	}

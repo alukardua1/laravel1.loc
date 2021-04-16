@@ -19,7 +19,9 @@ use Auth;
 class VoteRepository implements VoteRepositoryInterface
 {
 	/**
-	 * @param  int  $id
+	 * Нравится
+	 *
+	 * @param int $id ID записи
 	 *
 	 * @return mixed
 	 */
@@ -31,7 +33,9 @@ class VoteRepository implements VoteRepositoryInterface
 	}
 
 	/**
-	 * @param  int  $id
+	 * Не нравится
+	 *
+	 * @param int $id ID записи
 	 *
 	 * @return mixed
 	 */

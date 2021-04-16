@@ -18,7 +18,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 {
 	use FunctionTrait;
 
-	protected $arrSync = [
+	/**
+	 * Массив для синхронизации
+	 *
+	 * @var array
+	 */
+	protected array $arrSync = [
 		'category'         => 'getCategory',
 		'country'          => 'getCountry',
 		'studios'          => 'getStudio',
@@ -26,7 +31,13 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		'region'           => 'getRegionBlock',
 		'copyright_holder' => 'getCopyrightHolder',
 	];
-	protected $arrCheck = [
+
+	/**
+	 * Массив чекбоксов
+	 *
+	 * @var array
+	 */
+	protected array $arrCheck = [
 		'anons'      => 'anons',
 		'ongoing'    => 'ongoing',
 		'posted_at'  => 'posted_at',
@@ -35,7 +46,9 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	];
 
 	/**
-	 * @param  int  $id
+	 * Получает аниме по ID
+	 *
+	 * @param  int  $id  ID записи
 	 *
 	 * @return mixed
 	 */
@@ -45,7 +58,9 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  bool  $isAdmin
+	 * Получает все аниме с проверкой для админпанели или для сайта
+	 *
+	 * @param  bool  $isAdmin  админ или нет
 	 *
 	 * @return mixed
 	 */
@@ -60,9 +75,13 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int  $limit
+	 * Формирует для главной страницы
+	 *
+	 * @param  int  $limit  количество выводимых записей
 	 *
 	 * @return mixed
+	 * @todo доработать
+	 *
 	 */
 	public function getFirstPageAnime(int $limit): mixed
 	{
@@ -72,8 +91,10 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string  $columns
-	 * @param  string  $custom
+	 * Вывод варимативного
+	 *
+	 * @param  string  $columns  столбец
+	 * @param  string  $custom   строка поиска
 	 *
 	 * @return mixed
 	 */
@@ -84,7 +105,9 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int  $limit
+	 * Вывод анонса
+	 *
+	 * @param  int  $limit  количество выводимых записей
 	 *
 	 * @return mixed
 	 */
@@ -96,7 +119,9 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int  $limit
+	 * Вывод популярного
+	 *
+	 * @param  int  $limit  количество выводимых записей
 	 *
 	 * @return mixed
 	 */
@@ -106,8 +131,10 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  Request  $request
-	 * @param  int      $limit
+	 * Поиск
+	 *
+	 * @param  Request  $request  Запрос
+	 * @param  int      $limit    количество выводимых записей
 	 *
 	 * @return mixed
 	 */
@@ -124,8 +151,10 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int      $id
-	 * @param  Request  $request
+	 * Добавление/обновление комментариев
+	 *
+	 * @param  int      $id       ID записи
+	 * @param  Request  $request  Запрос
 	 *
 	 * @return mixed
 	 */
@@ -136,8 +165,10 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int   $id
-	 * @param  bool  $fullDel
+	 * Удаление комментариев
+	 *
+	 * @param  int   $id       ID записи
+	 * @param  bool  $fullDel  удалить послностью или нет
 	 *
 	 * @throws \Exception
 	 * @return mixed
@@ -165,28 +196,30 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	}
 
 	/**
-	 * @param  Request  $request
-	 * @param  int      $id
+	 * Добавление/обновление аниме
+	 *
+	 * @param  Request  $request  Запрос
+	 * @param  int      $id       ID записи
 	 *
 	 * @return mixed
 	 */
 	public function setAnime(Request $request, int $id): mixed
 	{
 		$formRequest = $request->all();
-		$update = Anime::findOrNew($id, $formRequest);
-		if ($update) {
-			$this->syncRequest($this->arrSync, $update, $request);
+		$updatePost = Anime::findOrNew($id, $formRequest); //если нашли то обновляем, иначе добавляем новую запись
+		if ($updatePost) {
+			$this->syncRequest($this->arrSync, $updatePost, $request);
 			$this->setOtherLink($formRequest, $id);
 			$this->setPlayer($formRequest, $id);
-			$update->kind_id = $formRequest['kind'];
-			$this->checkRequest($this->arrCheck, $formRequest, $update);
+			$updatePost->kind_id = $formRequest['kind'];
+			$this->checkRequest($this->arrCheck, $formRequest, $updatePost);
 			if ($formRequest['channel_id'] == null) {
-				$update->channel_id = 0;
+				$updatePost->channel_id = 0;
 			} else {
-				$update->channel_id = $formRequest['channel_id'];
+				$updatePost->channel_id = $formRequest['channel_id'];
 			}
 
-			return $update->save();
+			return $updatePost->save();
 		}
 	}
 }

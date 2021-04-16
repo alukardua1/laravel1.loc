@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class KindComposer
 {
-	public                             $kind;
+	protected mixed                       $kind;
 	protected KindRepositoryInterfaces $kindRepository;
 
 	/**
@@ -26,7 +26,7 @@ class KindComposer
 	/**
 	 * @return mixed
 	 */
-	public function kind()
+	public function kind(): mixed
 	{
 		return $this->kindRepository->getKind();
 	}

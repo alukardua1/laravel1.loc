@@ -35,7 +35,7 @@ trait ImageTrait
 	 *
 	 * @return mixed
 	 */
-	public function uploadImages($updateAnime, $requestForm)
+	public function uploadImages($updateAnime, $requestForm): mixed
 	{
 		$Extension = $requestForm[$this->config['imgColumns']]->getClientOriginalExtension();//Получает расширение файла
 		if (in_array($Extension, $this->config['extension'])) {

@@ -10,7 +10,7 @@ use Illuminate\View\View;
 
 class UserComposer
 {
-	public                             $user;
+	protected mixed                       $user;
 	protected UserRepositoryInterfaces $userRepository;
 
 	/**
@@ -27,7 +27,7 @@ class UserComposer
 	/**
 	 * @return mixed
 	 */
-	public function user()
+	public function user(): mixed
 	{
 		return $this->userRepository->getUsers();
 	}

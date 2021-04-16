@@ -24,7 +24,16 @@ class AnimeRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'name' => ['required'],
+			'name'     => ['required'],
+			'category' => ['required'],
+		];
+	}
+
+	public function messages(): array
+	{
+		return [
+			'name.required'     => 'Заголовок обязателен',
+			'category.required' => 'Категория обязательна',
 		];
 	}
 }

@@ -17,7 +17,9 @@ class QualityRepository implements QualityRepositoryInterfaces
 {
 
 	/**
-	 * @param $qualityUrl
+	 * Получает качество видео по названию
+	 *
+	 * @param  string  $qualityUrl  Урл качество видео
 	 *
 	 * @return mixed
 	 */
@@ -28,6 +30,8 @@ class QualityRepository implements QualityRepositoryInterfaces
 	}
 
 	/**
+	 * Получает все качество видео
+	 *
 	 * @return mixed
 	 */
 	public function getQuality(): mixed
@@ -36,12 +40,14 @@ class QualityRepository implements QualityRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string   $name
-	 * @param  Request  $request
+	 * Добавление/обновление качества видео
+	 *
+	 * @param  string   $qualityUrl  Урл качество видео
+	 * @param  Request  $request     запрос
 	 *
 	 * @return mixed
 	 */
-	public function setQuality(string $name, Request $request): mixed
+	public function setQuality(string $qualityUrl, Request $request): mixed
 	{
 		// TODO: Implement setQuality() method.
 	}

@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class CountryComposer
 {
-	public                                $country;
+	protected mixed                       $country;
 	protected CountryRepositoryInterfaces $countryRepository;
 
 	/**
@@ -26,7 +26,7 @@ class CountryComposer
 	/**
 	 * @return mixed
 	 */
-	public function country()
+	public function country(): mixed
 	{
 		return $this->countryRepository->getCountry();
 	}

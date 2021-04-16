@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class StudioComposer
 {
-	public                               $studio;
+	protected mixed                      $studio;
 	protected StudioRepositoryInterfaces $studioRepository;
 
 	/**
@@ -26,7 +26,7 @@ class StudioComposer
 	/**
 	 * @return mixed
 	 */
-	public function studio()
+	public function studio(): mixed
 	{
 		return $this->studioRepository->getStudio();
 	}

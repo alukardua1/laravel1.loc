@@ -20,7 +20,9 @@ use Auth;
 class FavoriteRepository implements FavoritesRepositoryInterfaces
 {
 	/**
-	 * @param  int  $id
+	 * Добавляет в избранное
+	 *
+	 * @param int $id ID добавляемой записи
 	 *
 	 * @return mixed
 	 */
@@ -32,7 +34,9 @@ class FavoriteRepository implements FavoritesRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int  $id
+	 * Удаляет из избранного
+	 *
+	 * @param int $id ID добавляемой записи
 	 *
 	 * @return mixed
 	 */
@@ -44,7 +48,9 @@ class FavoriteRepository implements FavoritesRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string  $login
+	 * Получает все избранное пользователя
+	 *
+	 * @param string $login Логин пользователя
 	 *
 	 * @return mixed
 	 */

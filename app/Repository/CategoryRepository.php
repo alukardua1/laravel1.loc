@@ -17,6 +17,8 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 {
 
 	/**
+	 * Получает все категории
+	 *
 	 * @return mixed
 	 */
 	public function getCategories(): mixed
@@ -25,7 +27,9 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string  $categoryUrl
+	 * Получает категорию по названию
+	 *
+	 * @param  string  $categoryUrl Урл категории
 	 *
 	 * @return mixed
 	 */
@@ -35,12 +39,14 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string                    $url
-	 * @param  \Illuminate\Http\Request  $request
+	 * Добавление/обновление категории
+	 *
+	 * @param  string   $categoryUrl Урл категории
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setCategory(string $url, Request $request): mixed
+	public function setCategory(string $categoryUrl, Request $request): mixed
 	{
 		// TODO: Implement setCategory() method.
 	}

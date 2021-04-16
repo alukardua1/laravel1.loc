@@ -15,27 +15,36 @@ use Illuminate\Http\Request;
 interface UserRepositoryInterfaces
 {
 	/**
-	 * @param  string  $login
+	 * Получает пользователя по логину
+	 *
+	 * @param  string  $login Логин пользователя
 	 *
 	 * @return mixed
 	 */
 	public function getUser(string $login): mixed;
 
 	/**
+	 * Получает всех пользователей
+	 *
 	 * @return mixed
 	 */
 	public function getUsers(): mixed;
 
 	/**
-	 * @param  string  $login
+	 * Получает персональные сообщения пользователя
+	 *
+	 * @param  string  $login Логин пользователя
 	 *
 	 * @return mixed
+	 * @todo В разработке
 	 */
 	public function getPM(string $login): mixed;
 
 	/**
-	 * @param  Request  $request
-	 * @param  string   $login
+	 * Добавление/обновление пользователя
+	 *
+	 * @param  Request  $request Запрос
+	 * @param  string   $login Логин пользователя
 	 *
 	 * @return mixed
 	 */

@@ -14,7 +14,7 @@ use Illuminate\View\View;
  */
 class CategoryComposer
 {
-	public                                 $category;
+	protected mixed                           $category;
 	protected CategoryRepositoryInterfaces $categoryRepository;
 
 	/**

@@ -14,22 +14,28 @@ interface CategoryRepositoryInterfaces
 {
 
 	/**
+	 * Получает все категории
+	 *
 	 * @return mixed
 	 */
 	public function getCategories(): mixed;
 
 	/**
-	 * @param  string  $categoryUrl
+	 * Получает категорию по названию
+	 *
+	 * @param  string  $categoryUrl Урл категории
 	 *
 	 * @return mixed
 	 */
 	public function getCategory(string $categoryUrl): mixed;
 
 	/**
-	 * @param  string   $url
-	 * @param  Request  $request
+	 * Добавление/обновление категории
+	 *
+	 * @param  string   $categoryUrl Урл категории
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setCategory(string $url, Request $request): mixed;
+	public function setCategory(string $categoryUrl, Request $request): mixed;
 }

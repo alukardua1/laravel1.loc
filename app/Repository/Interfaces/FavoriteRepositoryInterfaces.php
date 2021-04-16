@@ -16,21 +16,27 @@ namespace App\Repository\Interfaces;
 interface FavoriteRepositoryInterfaces
 {
     /**
-     * @param int $id
+     * Добавляет в избранное
+     *
+     * @param int $id ID добавляемой записи
      *
      * @return mixed
      */
     public function favorite(int $id): mixed;
 
     /**
-     * @param int $id
+     * Удаляет из избранного
+     *
+     * @param int $id ID добавляемой записи
      *
      * @return mixed
      */
     public function unFavorite(int $id): mixed;
 
 	/**
-	 * @param string $login
+	 * Получает все избранное пользователя
+	 *
+	 * @param string $login Логин пользователя
 	 *
 	 * @return mixed
 	 */

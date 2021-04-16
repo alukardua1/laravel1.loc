@@ -17,7 +17,9 @@ class StudioRepository implements StudioRepositoryInterfaces
 {
 
 	/**
-	 * @param  string  $studioUrl
+	 * Получает студию по названию
+	 *
+	 * @param  string  $studioUrl Урл студии
 	 *
 	 * @return mixed
 	 */
@@ -28,6 +30,8 @@ class StudioRepository implements StudioRepositoryInterfaces
 	}
 
 	/**
+	 * Получает все студии
+	 *
 	 * @return mixed
 	 */
 	public function getStudio(): mixed
@@ -36,12 +40,14 @@ class StudioRepository implements StudioRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string   $name
-	 * @param  Request  $request
+	 * Добавление/обновление студии
+	 *
+	 * @param  string   $studioUrl Урл студии
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setStudio(string $name, Request $request): mixed
+	public function setStudio(string $studioUrl, Request $request): mixed
 	{
 		// TODO: Implement setStudio() method.
 	}

@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class PopularComposer
 {
-	protected                           $popular;
+	protected mixed                     $popular;
 	protected AnimeRepositoryInterfaces $animeRepository;
 
 	/**
@@ -26,7 +26,7 @@ class PopularComposer
 	/**
 	 * @return mixed
 	 */
-	public function popular()
+	public function popular(): mixed
 	{
 		return $this->animeRepository->getPopular(10)->get()->sortByDesc('read_count');
 	}

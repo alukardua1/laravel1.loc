@@ -16,7 +16,7 @@ trait FunctionTrait
 	/**
 	 * Проверяет наличие данных в запросе
 	 *
-	 * @param $post
+	 * @param mixed $post запись
 	 */
 	public function isNotNull($post)
 	{
@@ -67,7 +67,7 @@ trait FunctionTrait
 	/**
 	 * Формирование комментариев
 	 *
-	 * @param $comments
+	 * @param mixed $comments Запись
 	 *
 	 * @return mixed
 	 */
@@ -297,7 +297,7 @@ trait FunctionTrait
 	 *
 	 * @return string
 	 */
-	public function showPlayer(mixed $showAnime, array $showPlayerGroup)
+	public function showPlayer(mixed $showAnime, array $showPlayerGroup): string
 	{
 		if (Auth::user()) {
 			$groupId = Auth::user()->getGroup->id;

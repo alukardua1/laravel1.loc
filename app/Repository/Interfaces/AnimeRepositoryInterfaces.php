@@ -16,7 +16,7 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Получает аниме по ID
 	 *
-	 * @param  int  $id
+	 * @param  int  $id  ID записи
 	 *
 	 * @return mixed
 	 */
@@ -25,26 +25,28 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Получает все аниме с проверкой для админпанели или для сайта
 	 *
-	 * @param  bool  $isAdmin
+	 * @param  bool  $isAdmin  админ или нет
 	 *
 	 * @return mixed
 	 */
 	public function getAllAnime(bool $isAdmin = false): mixed;
 
 	/**
-	 * Формирует для главной страницы (в разработке)
+	 * Формирует для главной страницы
 	 *
-	 * @param  int  $limit
+	 * @param  int  $limit  количество выводимых записей
 	 *
 	 * @return mixed
+	 * @todo доработать
+	 *
 	 */
 	public function getFirstPageAnime(int $limit): mixed;
 
 	/**
 	 * Вывод варимативного
 	 *
-	 * @param  string  $columns
-	 * @param  string  $custom
+	 * @param  string  $columns  столбец
+	 * @param  string  $custom   строка поиска
 	 *
 	 * @return mixed
 	 */
@@ -53,7 +55,7 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Вывод анонса
 	 *
-	 * @param  int  $limit
+	 * @param  int  $limit  количество выводимых записей
 	 *
 	 * @return mixed
 	 */
@@ -62,7 +64,7 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Вывод популярного
 	 *
-	 * @param  int  $limit
+	 * @param  int  $limit  количество выводимых записей
 	 *
 	 * @return mixed
 	 */
@@ -71,8 +73,8 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Поиск
 	 *
-	 * @param  Request  $request
-	 * @param  int      $limit
+	 * @param  Request  $request  Запрос
+	 * @param  int      $limit    количество выводимых записей
 	 *
 	 * @return mixed
 	 */
@@ -81,8 +83,8 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Добавление/обновление комментариев
 	 *
-	 * @param  int      $id
-	 * @param  Request  $request
+	 * @param  int      $id       ID записи
+	 * @param  Request  $request  Запрос
 	 *
 	 * @return mixed
 	 */
@@ -91,9 +93,10 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Удаление комментариев
 	 *
-	 * @param  int   $id
-	 * @param  bool  $fullDel
+	 * @param  int   $id       ID записи
+	 * @param  bool  $fullDel  удалить послностью или нет
 	 *
+	 * @throws \Exception
 	 * @return mixed
 	 */
 	public function delComments(int $id, bool $fullDel): mixed;
@@ -101,8 +104,8 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Добавление/обновление аниме
 	 *
-	 * @param  Request  $request
-	 * @param  int      $id
+	 * @param  Request  $request  Запрос
+	 * @param  int      $id       ID записи
 	 *
 	 * @return mixed
 	 */

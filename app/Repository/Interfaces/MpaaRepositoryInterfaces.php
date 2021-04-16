@@ -14,22 +14,28 @@ use Illuminate\Http\Request;
 interface MpaaRepositoryInterfaces
 {
 	/**
-	 * @param  string  $mpaaUrl
+	 * Получает MPAA рейтинг по названию
+	 *
+	 * @param  string  $mpaaUrl Урл MPAA рейтинга
 	 *
 	 * @return mixed
 	 */
 	public function getAnime(string $mpaaUrl): mixed;
 
 	/**
+	 * Получает MPAA рейтинги
+	 *
 	 * @return mixed
 	 */
 	public function getMpaa(): mixed;
 
 	/**
-	 * @param  string   $name
-	 * @param  Request  $request
+	 * Добавление/обновление MPAA рейтинга
+	 *
+	 * @param  string   $mpaaUrl Урл MPAA рейтинга
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setMpaa(string $name, Request $request): mixed;
+	public function setMpaa(string $mpaaUrl, Request $request): mixed;
 }

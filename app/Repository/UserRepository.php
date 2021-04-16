@@ -22,7 +22,9 @@ class UserRepository implements UserRepositoryInterfaces
 	use UsersTrait, FunctionTrait;
 
 	/**
-	 * @param  string  $login
+	 * Получает пользователя по логину
+	 *
+	 * @param  string  $login Логин пользователя
 	 *
 	 * @return mixed
 	 */
@@ -33,6 +35,8 @@ class UserRepository implements UserRepositoryInterfaces
 	}
 
 	/**
+	 * Получает всех пользователей
+	 *
 	 * @return mixed
 	 */
 	public function getUsers(): mixed
@@ -41,9 +45,12 @@ class UserRepository implements UserRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string  $login
+	 * Получает персональные сообщения пользователя
+	 *
+	 * @param  string  $login Логин пользователя
 	 *
 	 * @return mixed
+	 * @todo В разработке
 	 */
 	public function getPM(string $login): mixed
 	{
@@ -51,8 +58,10 @@ class UserRepository implements UserRepositoryInterfaces
 	}
 
 	/**
-	 * @param  Request  $request
-	 * @param  string   $login
+	 * Добавление/обновление пользователя
+	 *
+	 * @param  Request  $request Запрос
+	 * @param  string   $login Логин пользователя
 	 *
 	 * @return mixed
 	 */

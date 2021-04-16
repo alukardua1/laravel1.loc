@@ -14,7 +14,7 @@ use Illuminate\View\View;
  */
 class CarouselAnimeComposer
 {
-	protected                           $carousel;
+	protected mixed                     $carousel;
 	protected AnimeRepositoryInterfaces $animeRepository;
 
 	/**
@@ -31,7 +31,7 @@ class CarouselAnimeComposer
 	/**
 	 * @return mixed
 	 */
-	public function carousel()
+	public function carousel(): mixed
 	{
 		return $this->animeRepository->getFirstPageAnime(100)->get();
 	}

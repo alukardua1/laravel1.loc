@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class QualityComposer
 {
-	public                                $quality;
+	protected mixed                       $quality;
 	protected QualityRepositoryInterfaces $qualityRepository;
 
 	/**
@@ -26,7 +26,7 @@ class QualityComposer
 	/**
 	 * @return mixed
 	 */
-	public function quality()
+	public function quality(): mixed
 	{
 		return $this->qualityRepository->getQuality();
 	}

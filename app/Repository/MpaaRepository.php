@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 class MpaaRepository implements MpaaRepositoryInterfaces
 {
 	/**
-	 * @param  string  $mpaaUrl
+	 * Получает MPAA рейтинг по названию
+	 *
+	 * @param  string  $mpaaUrl Урл MPAA рейтинга
 	 *
 	 * @return mixed
 	 */
@@ -27,6 +29,8 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	}
 
 	/**
+	 * Получает MPAA рейтинги
+	 *
 	 * @return mixed
 	 */
 	public function getMpaa(): mixed
@@ -35,12 +39,14 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string   $name
-	 * @param  Request  $request
+	 * Добавление/обновление MPAA рейтинга
+	 *
+	 * @param  string   $mpaaUrl Урл MPAA рейтинга
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setMpaa(string $name, Request $request): mixed
+	public function setMpaa(string $mpaaUrl, Request $request): mixed
 	{
 		// TODO: Implement setMpaa() method.
 	}

@@ -14,22 +14,28 @@ use Illuminate\Http\Request;
 interface KindRepositoryInterfaces
 {
 	/**
-	 * @param  string  $kindUrl
+	 * Получает тип по названию
+	 *
+	 * @param  string  $kindUrl Урл типа
 	 *
 	 * @return mixed
 	 */
 	public function getAnime(string $kindUrl): mixed;
 
 	/**
+	 * Получает все типы
+	 *
 	 * @return mixed
 	 */
 	public function getKind(): mixed;
 
 	/**
-	 * @param  string   $name
-	 * @param  Request  $request
+	 * Добавление/обновление типа
+	 *
+	 * @param  string   $kindUrl Урл типа
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setKind(string $name, Request $request): mixed;
+	public function setKind(string $kindUrl, Request $request): mixed;
 }

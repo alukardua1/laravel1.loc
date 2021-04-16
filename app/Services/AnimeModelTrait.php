@@ -66,7 +66,7 @@ trait AnimeModelTrait
 
 	/**
 	 * @return string
-	 *@todo Временное решение придумать как изменить
+	 * @todo Временное решение придумать как изменить
 	 *
 	 */
 	public function getCategoryAttribute(): string

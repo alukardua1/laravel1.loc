@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class AnonsComposer
 {
-	protected                           $anons;
+	protected mixed                     $anons;
 	protected AnimeRepositoryInterfaces $animeRepository;
 
 	/**
@@ -26,7 +26,7 @@ class AnonsComposer
 	/**
 	 * @return mixed
 	 */
-	public function anons()
+	public function anons(): mixed
 	{
 		return $this->animeRepository->getAnons(100)->get();
 	}

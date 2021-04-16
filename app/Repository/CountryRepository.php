@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 class CountryRepository implements CountryRepositoryInterfaces
 {
 	/**
-	 * @param  string  $countryUrl
+	 * Получает страну по названию
+	 *
+	 * @param  string  $countryUrl Урл страны
 	 *
 	 * @return mixed
 	 */
@@ -27,6 +29,8 @@ class CountryRepository implements CountryRepositoryInterfaces
 	}
 
 	/**
+	 * Получает все страны
+	 *
 	 * @return mixed
 	 */
 	public function getCountry(): mixed
@@ -35,12 +39,14 @@ class CountryRepository implements CountryRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string   $url
-	 * @param  Request  $request
+	 * Добавление/обновление страны
+	 *
+	 * @param  string   $countryUrl Урл страны
+	 * @param  Request  $request Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setCountry(string $url, Request $request): mixed
+	public function setCountry(string $countryUrl, Request $request): mixed
 	{
 		// TODO: Implement setCountry() method.
 	}
