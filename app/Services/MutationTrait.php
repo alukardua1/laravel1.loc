@@ -32,22 +32,6 @@ trait MutationTrait
 	}
 
 	/**
-	 * Блокировка плеера
-	 *
-	 * @param $anime
-	 *
-	 * @return mixed
-	 */
-	public function blockPlayer($anime): mixed
-	{
-		if ($anime->blocking == 1) {
-			$anime->player = null;
-			$anime->blockText = 'Анме заблокировано по просьбе правообладателя';
-		}
-		return $anime;
-	}
-
-	/**
 	 * Формирование сеанса показа
 	 *
 	 * @param $broadcast

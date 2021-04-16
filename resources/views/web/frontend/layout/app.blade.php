@@ -41,12 +41,6 @@
 			<div class="form-group" id="q_search">
 				<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="search" name="search">
 			</div>
-			{{--			<form class="d-flex" id="q_search" method="post">--}}
-			{{--				<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="story" name="story">--}}
-			{{--				<input type="hidden" name="do" value="search">--}}
-			{{--				<input type="hidden" name="subaction" value="search">--}}
-			{{--				--}}{{--				<button class="btn btn-outline-success" type="submit">Поиск</button>--}}
-			{{--			</form>--}}
 		</div>
 		@endnot_available
 		<div class="content">

@@ -18,6 +18,22 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 {
 	use FunctionTrait;
 
+	protected $arrSync = [
+		'category'         => 'getCategory',
+		'country'          => 'getCountry',
+		'studios'          => 'getStudio',
+		'quality'          => 'getQuality',
+		'region'           => 'getRegionBlock',
+		'copyright_holder' => 'getCopyrightHolder',
+	];
+	protected $arrCheck = [
+		'anons'      => 'anons',
+		'ongoing'    => 'ongoing',
+		'posted_at'  => 'posted_at',
+		'posted_rss' => 'posted_rss',
+		'comment_at' => 'comment_at',
+	];
+
 	/**
 	 * @param  int  $id
 	 *
@@ -159,30 +175,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		$formRequest = $request->all();
 		$update = Anime::findOrNew($id, $formRequest);
 		if ($update) {
-			if ($formRequest['category']) {
-				$update->fill($request->except('category'));
-				$update->getCategory()->sync($request['category']);
-			}
-			if ($formRequest['country']) {
-				$update->fill($request->except('country'));
-				$update->getCountry()->sync($request['country']);
-			}
-			if ($formRequest['studios']) {
-				$update->fill($request->except('studios'));
-				$update->getStudio()->sync($request['studios']);
-			}
-			if ($formRequest['quality']) {
-				$update->fill($request->except('quality'));
-				$update->getQuality()->sync($request['quality']);
-			}
+			$this->syncRequest($this->arrSync, $update, $request);
 			$this->setOtherLink($formRequest, $id);
 			$this->setPlayer($formRequest, $id);
 			$update->kind_id = $formRequest['kind'];
-			$update->anons = $this->check($formRequest, 'anons');
-			$update->ongoing = $this->check($formRequest, 'ongoing');
-			$update->posted_at = $this->check($formRequest, 'posted_at');
-			$update->posted_rss = $this->check($formRequest, 'posted_rss');
-			$update->comment_at = $this->check($formRequest, 'comment_at');
+			$this->checkRequest($this->arrCheck, $formRequest, $update);
 			if ($formRequest['channel_id'] == null) {
 				$update->channel_id = 0;
 			} else {
@@ -191,6 +188,5 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 
 			return $update->save();
 		}
-		//dd(__METHOD__, $formRequest, $id, $update, 2222);
 	}
 }

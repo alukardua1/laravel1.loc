@@ -239,7 +239,7 @@
 				<label class="form-label" for="region">Регион</label>
 				<select class="js-selectize-multiple" aria-label="region" name="region[]" id="region" multiple>
 					@foreach($geoBlock as $value)
-						<option value="{{$value->code}}" @if ($currentAnime->getRegionBlock->contains($value->id)) selected @endif >{{$value->country}}</option>
+						<option value="{{$value->id}}" @if ($currentAnime->getRegionBlock->contains($value->id)) selected @endif >{{$value->country}}</option>
 					@endforeach
 				</select>
 			</div>

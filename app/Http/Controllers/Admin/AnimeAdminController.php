@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
+use App\Services\ParseShikimori;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -19,6 +20,7 @@ use Illuminate\Http\Response;
  */
 class AnimeAdminController extends Controller
 {
+	use ParseShikimori;
 	protected AnimeRepositoryInterfaces $animeRepository;
 
 	/**
@@ -88,6 +90,8 @@ class AnimeAdminController extends Controller
 	public function edit(int $id): Factory|View|Response|Application
 	{
 		$currentAnime = $this->animeRepository->getAnime($id)->first();
+
+		//dd(__METHOD__, $this->getShikimori('//shikimori.one/animes/34566'));
 
 		return view($this->backend . 'anime.edit', compact('currentAnime'));
 	}

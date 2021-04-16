@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\Events\AnimeEvent;
 use App\Http\Requests\CommentRequest;
-use Auth;
+use App\Services\FunctionTrait;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -22,7 +22,15 @@ use Illuminate\Http\Response;
  */
 class AnimeController extends Controller
 {
+	use FunctionTrait;
+
 	private AnimeRepositoryInterfaces $anime;
+
+	private array $showPlayerGroup;
+	private array $attributeArr = [
+		'aired'    => 'aired_on',
+		'released' => 'released_on',
+	];
 
 	/**
 	 * AnimeController constructor.
@@ -33,6 +41,7 @@ class AnimeController extends Controller
 	{
 		parent::__construct();
 		$this->anime = $animeRepositoryInterfaces;
+		$this->showPlayerGroup = config('secondConfig.showPlayerGroup');
 	}
 
 	/**
@@ -66,15 +75,11 @@ class AnimeController extends Controller
 	{
 		$showAnime = $this->anime->getAnime($id)->first();
 		$this->isNotNull($showAnime);
-		$this->blockPlayer($showAnime);
 		$plus = $showAnime->vote['plus'];
 		$minus = -$showAnime->vote['minus'];
 		$showAnime->broadcastTitle = $this->broadcast($showAnime->broadcast);
 		$showAnime->seasonAired = $this->seasonAired($showAnime->aired_on);
-		$showAnime->aired = $showAnime->aired_on;
-		if ($showAnime->released_on) {
-			$showAnime->released = $showAnime->released_on;
-		}
+		$this->setAttributes($this->attributeArr, $showAnime);
 		$comments = $this->showComments($showAnime->getComments()->withTrashed()->get());
 		$showAnime->comments_count = $showAnime->getComments()->count();
 		/**
@@ -82,20 +87,9 @@ class AnimeController extends Controller
 		 * @todo Придумать как сделать в relations
 		 */
 		$related = $showAnime->load('getCategory.getAnime')->inRandomOrder()->limit(6)->get();
-		if (Auth::user()) {
-		    $groupId = Auth::user()->getGroup->id;
-		}else {
-			$groupId = 0;
-		}
-		if (($showAnime->getRegionBlock->isNotEmpty())and(!in_array($groupId, [1,2]))) {
-			foreach ($showAnime->getRegionBlock as $item)
-			{
-				$regionBlock[] = $item->code;
-			}
-			$regionBlockString = implode(',', $regionBlock);
-		}else{
-			$regionBlockString = '';
-		}
+
+		$this->showPlayer($showAnime, $this->showPlayerGroup);
+		$regionBlockString = $this->showPlayer($showAnime, $this->showPlayerGroup);
 
 		event(new AnimeEvent($showAnime));
 

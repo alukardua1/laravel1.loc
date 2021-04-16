@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\OtherLink;
 use App\Models\Player;
+use Auth;
 
 /**
  * Trait FunctionTrait
@@ -271,5 +272,73 @@ trait FunctionTrait
 		}
 
 		return substr($keywords, 1);
+	}
+
+	/**
+	 * Добавляет аттрибуты
+	 * @param  array  $attributeArr
+	 * @param  mixed  $showAnime
+	 */
+	public function setAttributes(array $attributeArr, mixed $showAnime)
+	{
+		foreach ($attributeArr as $key=>$value)
+		{
+			if ($showAnime->$value) {
+				$showAnime->$key = $showAnime->$value;
+			}
+		}
+	}
+
+	/**
+	 * Добавляет регион блокировки
+	 *
+	 * @param  mixed  $showAnime
+	 * @param  array  $showPlayerGroup
+	 *
+	 * @return string
+	 */
+	public function showPlayer(mixed $showAnime, array $showPlayerGroup)
+	{
+		if (Auth::user()) {
+			$groupId = Auth::user()->getGroup->id;
+		} else {
+			$groupId = 0;
+		}
+		if (($showAnime->getRegionBlock->isNotEmpty()) and (!in_array($groupId, $showPlayerGroup))) {
+			foreach ($showAnime->getRegionBlock as $item) {
+				$regionBlock[] = $item->code;
+			}
+			return implode(',', $regionBlock);
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * проверяет checked
+	 * @param  array  $arrCheck массив [поле => модель]
+	 * @param  mixed  $formRequest
+	 * @param  mixed  $update обновляемая запись
+	 */
+	private function checkRequest(array $arrCheck, mixed $formRequest, mixed $update)
+	{
+		foreach ($arrCheck as $key => $value) {
+			$update->$key = $this->check($formRequest, $value);
+		}
+	}
+
+	/**
+	 * Синхронизация моделей
+	 *
+	 * @param  array  $arrSync  массив [поле => модель]
+	 * @param  mixed  $update   обновляемая запись
+	 * @param  mixed  $request
+	 */
+	protected function syncRequest(array $arrSync, mixed $update, mixed $request)
+	{
+		foreach ($arrSync as $key => $value) {
+			$update->fill($request->except($key));
+			$update->$value()->sync($request[$key]);
+		}
 	}
 }
