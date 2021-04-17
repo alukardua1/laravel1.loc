@@ -63,7 +63,7 @@ class LoginController extends Controller
 
 	public function showLoginForm()
 	{
-		return abort(404);
+		return redirect()->route('home');
 	}
 
 	public function logout(Request $request)

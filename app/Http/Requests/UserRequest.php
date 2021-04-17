@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
 		return [
 			'profile_photo_path' => ['dimensions:width=100,height=100', 'image'],
 			'altpass'            => ['sometimes', 'nullable', 'between:8,15', 'regex:/[a-zA-Z0-9_]+/'],
-			'password1'          => ['same:confirm_password', 'different:old_password', 'regex:/[a-zA-Z0-9_]+/', 'sometimes', 'nullable', 'between:8,15',],
+			'password1'          => ['same:password2', 'different:altpass', 'regex:/[a-zA-Z0-9_]+/', 'sometimes', 'nullable', 'between:8,15',],
 		];
 	}
 

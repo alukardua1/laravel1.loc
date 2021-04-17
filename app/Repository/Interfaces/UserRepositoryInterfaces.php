@@ -43,10 +43,10 @@ interface UserRepositoryInterfaces
 	/**
 	 * Добавление/обновление пользователя
 	 *
-	 * @param  Request  $request Запрос
-	 * @param  string   $login Логин пользователя
+	 * @param  Request      $request  Запрос
+	 * @param  string|null  $login    Логин пользователя
 	 *
 	 * @return mixed
 	 */
-	public function setUsers(Request $request, string $login): mixed;
+	public function setUsers(Request $request, string $login = null): mixed;
 }

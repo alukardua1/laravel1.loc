@@ -10,6 +10,7 @@ use App\Repository\Interfaces\UserRepositoryInterfaces;
 use App\Services\FunctionTrait;
 use App\Services\UsersTrait;
 use Auth;
+use Hash;
 use Illuminate\Http\Request;
 
 /**
@@ -24,7 +25,7 @@ class UserRepository implements UserRepositoryInterfaces
 	/**
 	 * Получает пользователя по логину
 	 *
-	 * @param  string  $login Логин пользователя
+	 * @param  string  $login  Логин пользователя
 	 *
 	 * @return mixed
 	 */
@@ -47,7 +48,7 @@ class UserRepository implements UserRepositoryInterfaces
 	/**
 	 * Получает персональные сообщения пользователя
 	 *
-	 * @param  string  $login Логин пользователя
+	 * @param  string  $login  Логин пользователя
 	 *
 	 * @return mixed
 	 * @todo В разработке
@@ -60,19 +61,22 @@ class UserRepository implements UserRepositoryInterfaces
 	/**
 	 * Добавление/обновление пользователя
 	 *
-	 * @param  Request  $request Запрос
-	 * @param  string   $login Логин пользователя
+	 * @param  Request      $request  Запрос
+	 * @param  string|null  $login    Логин пользователя
 	 *
 	 * @return mixed
 	 */
-	public function setUsers(Request $request, string $login): mixed
+	public function setUsers(Request $request, string $login = null): mixed
 	{
-		if ($request->user()) {
-			$updateUser = User::where('login', $login)->first();
-			$requestForm = $request->all();
-			$requestForm['country_id'] = $requestForm['land'];
+		$requestForm = $request->all();
+		$requestForm['password'] = Hash::make($requestForm['password1']);
+		$updateUser = User::updateOrCreate(['login' => $login], $requestForm);
+		if ($updateUser) {
+			if (!empty($requestForm['land'])) {
+				$requestForm['country_id'] = $requestForm['land'];
+			}
 
-			if ($requestForm['altpass']) {
+			if (!empty($requestForm['altpass'])) {
 				$this->updatePasswords($updateUser, $requestForm);
 			}
 
@@ -90,9 +94,9 @@ class UserRepository implements UserRepositoryInterfaces
 
 			$validated = $request->validated();
 
-			User::flushQueryCache(['user']);
+			//User::flushQueryCache(['user']);
 
-			return $updateUser->update($requestForm);
+			return $updateUser->save();
 		}
 	}
 }
