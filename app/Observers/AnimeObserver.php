@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Http\Requests\AnimeRequest;
 use App\Models\Anime;
 use App\Services\FunctionTrait;
 use Str;
@@ -23,6 +24,16 @@ class AnimeObserver
 	}
 
 	/**
+	 * Отслеживание добавления записи
+	 *
+	 * @param  \App\Models\Anime  $anime
+	 */
+	public function creating(Anime $anime)
+	{
+		$this->saving($anime);
+	}
+
+	/**
 	 * Handle the Anime "updated" event.
 	 *
 	 * @param  \App\Models\Anime  $anime
@@ -35,17 +46,36 @@ class AnimeObserver
 	}
 
 	/**
+	 * Отслеживание обновления записи
+	 *
 	 * @param  \App\Models\Anime  $anime
 	 */
 	public function saving(Anime $anime)
 	{
+		$year = '';
+		$episode = '';
+		//$translate = [];
 		$translateArr = $anime->getTranslate()->get()->toArray();
-		foreach ($translateArr as $item) {
-			$translate[] = $item['name'];
+		if (!empty($translateArr)) {
+			foreach ($translateArr as $item) {
+					$translate[] = $item['name'];
+			}
+		}else{
+			$translate[] = ' в озвучке не указана';
 		}
 		$translate = implode(', ', $translate);
+		$translate = ' серия в озвучке ' . $translate;
 
-		$metatitle = $anime->name . ' ' . $anime->getYear()->first()->name . ' года ' . $anime->episodes_aired . ' серия в озвучке ' . $translate;
+		if ($anime->getYear()->first()) {
+		    $year = $anime->getYear()->first()->name .  ' года ';
+		}
+
+		if ($anime->episodes_aired) {
+		    $episode = $anime->episodes_aired . ' серия ';
+		}
+		$anime->russian = $anime->name;
+
+		$metatitle = $anime->name . ' ' . $year . $episode . $translate;
 		$url = $anime->name . ' ' . $anime->episodes_aired . ' серия';
 		$anime->metatitle = $metatitle;
 		$anime->url = Str::slug($url);

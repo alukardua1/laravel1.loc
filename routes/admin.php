@@ -18,8 +18,10 @@ Route::group(
 
 		Route::get('/anime', [AnimeAdminController::class, 'index'])->name('showAllAnimeAdmin');
 		Route::get('/anime/add', [AnimeAdminController::class, 'create'])->name('createAnimeAdmin');
+		Route::post('/anime/add', [AnimeAdminController::class, 'store'])->name('storeAnimeAdmin');
 		Route::get('/anime/{id}/edit', [AnimeAdminController::class, 'edit'])->name('editAnimeAdmin');
 		Route::post('/anime/{id}/update', [AnimeAdminController::class, 'update'])->name('updateAnimeAdmin');
+		Route::get('/anime/{id}/delete', [AnimeAdminController::class, 'destroy'])->name('deleteAnimeAdmin');
 
 		Route::get('/category', [CategoryAdminController::class, 'index'])->name('showAllCategoryAdmin');
 		Route::get('/category/add', [CategoryAdminController::class, 'create'])->name('addCategoryAdmin');

@@ -104,10 +104,19 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Добавление/обновление аниме
 	 *
-	 * @param  Request  $request  Запрос
-	 * @param  int      $id       ID записи
+	 * @param  Request   $request  Запрос
+	 * @param  int|null  $id       ID записи
 	 *
 	 * @return mixed
 	 */
-	public function setAnime(Request $request, int $id): mixed;
+	public function setAnime(Request $request, int $id = null): mixed;
+
+	/**
+	 * Удаляет текущую запись
+	 *
+	 * @param  int  $id
+	 *
+	 * @return mixed
+	 */
+	public function destroyAnime(int $id): mixed;
 }

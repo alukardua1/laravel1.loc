@@ -3,7 +3,7 @@
 @section('title', 'Добавление')
 
 @section('content')
-	<form action="#" class="bg-dark p-3" method="post" multiple>
+	<form action="{{route('storeAnimeAdmin')}}" class="bg-dark p-3" method="post" multiple>
 		@csrf
 		<div class="input-group mb-3">
 			<label for="name" class="input-group-text">Заголовок</label>
@@ -49,10 +49,15 @@
 				</select>
 			</div>
 			<div class="col-4">
-				<label for="kind" class="form-label">Выберите тип</label>
-				<select class="js-selectize" aria-label="kind" name="kind" id="kind">
+				<label for="kind_id" class="form-label">Выберите тип</label>
+				<select class="js-selectize" aria-label="kind_id" name="kind_id" id="kind_id">
 					@foreach($kind as $value)
-						<option value="{{$value->id}}">{{$value->full_name}}</option>
+						@if ($loop->first)
+							<option value="{{$value->id}}" selected>{{$value->full_name}}</option>
+						@else
+							<option value="{{$value->id}}">{{$value->full_name}}</option>
+						@endif
+
 					@endforeach
 				</select>
 			</div>
@@ -184,6 +189,21 @@
 						</div>
 					</div>
 				<div id="OtherLink"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="mb-3">
+				<label for="translate" class="form-label">Озвучивание</label>
+				<select class="js-selectize-multiple" multiple aria-label="translate" name="translate[]" id="translate">
+					@foreach($translate as $value)
+						@if (Auth::user()->id === $value->id)
+							<option value="{{$value->id}}" selected>{{$value->name}}</option>
+						@else
+							<option value="{{$value->id}}">{{$value->name}}</option>
+						@endif
+
+					@endforeach
+				</select>
 			</div>
 		</div>
 		<div class="row mb-3">

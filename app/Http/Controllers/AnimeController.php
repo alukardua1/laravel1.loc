@@ -160,6 +160,7 @@ class AnimeController extends Controller
 	 * @param  int   $commentId
 	 * @param  bool  $fullDel
 	 *
+	 * @throws \Exception
 	 * @return RedirectResponse
 	 */
 	public function deleteComments(int $id, int $commentId, bool $fullDel = false): RedirectResponse

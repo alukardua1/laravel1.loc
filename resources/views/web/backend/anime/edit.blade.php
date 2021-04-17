@@ -49,8 +49,8 @@
 				</select>
 			</div>
 			<div class="col-4">
-				<label for="kind" class="form-label">Выберите тип</label>
-				<select class="js-selectize" aria-label="kind" name="kind" id="kind">
+				<label for="kind_id" class="form-label">Выберите тип</label>
+				<select class="js-selectize" aria-label="kind_id" name="kind_id" id="kind_id">
 					@foreach($kind as $value)
 						<option value="{{$value->id}}" @if($currentAnime->getKind->id == $value->id) selected @endif>{{$value->full_name}}</option>
 					@endforeach
@@ -210,6 +210,16 @@
 					</div>
 				@endforeach
 				<div id="OtherLink"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="mb-3">
+				<label for="translate" class="form-label">Озвучивание</label>
+				<select class="js-selectize-multiple" multiple aria-label="translate" name="translate[]" id="translate">
+					@foreach($translate as $value)
+						<option value="{{$value->id}}" @if($currentAnime->getTranslate->contains($value->id)) selected @endif>{{$value->name}}</option>
+					@endforeach
+				</select>
 			</div>
 		</div>
 		<div class="row mb-3">

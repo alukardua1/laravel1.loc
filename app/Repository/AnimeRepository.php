@@ -30,6 +30,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		'quality'          => 'getQuality',
 		'region'           => 'getRegionBlock',
 		'copyright_holder' => 'getCopyrightHolder',
+		'translate'        => 'getTranslate',
 	];
 
 	/**
@@ -198,28 +199,44 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	/**
 	 * Добавление/обновление аниме
 	 *
-	 * @param  Request  $request  Запрос
-	 * @param  int      $id       ID записи
+	 * @param  Request   $request  Запрос
+	 * @param  int|null  $id       ID записи
 	 *
 	 * @return mixed
 	 */
-	public function setAnime(Request $request, int $id): mixed
+	public function setAnime(Request $request, int $id = null): mixed
 	{
 		$formRequest = $request->all();
-		$updatePost = Anime::findOrNew($id, $formRequest); //если нашли то обновляем, иначе добавляем новую запись
+		$updatePost = Anime::firstOrCreate(['id' => $id], $formRequest); //если нашли то обновляем, иначе добавляем новую запись
 		if ($updatePost) {
-			$this->syncRequest($this->arrSync, $updatePost, $request);
-			$this->setOtherLink($formRequest, $id);
-			$this->setPlayer($formRequest, $id);
-			$updatePost->kind_id = $formRequest['kind'];
-			$this->checkRequest($this->arrCheck, $formRequest, $updatePost);
 			if ($formRequest['channel_id'] == null) {
-				$updatePost->channel_id = 0;
-			} else {
-				$updatePost->channel_id = $formRequest['channel_id'];
+				$formRequest['channel_id'] = 0;
+			}
+
+			$this->syncRequest($this->arrSync, $updatePost, $request);
+			if (!empty($formRequest->otherLink_title)) {
+				$this->setOtherLink($formRequest, $id);
+			}
+			if (!empty($formRequest->player_name)) {
+				$this->setPlayer($formRequest, $id);
 			}
 
 			return $updatePost->save();
+		}
+	}
+
+	/**
+	 * Удаляет текущую запись
+	 *
+	 * @param  int  $id
+	 *
+	 * @return mixed
+	 */
+	public function destroyAnime(int $id): mixed
+	{
+		$del = Anime::findOrFail($id, ['*']);
+		if ($del) {
+		    return $del->forceDelete();
 		}
 	}
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AnimeRequest;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use App\Services\ParseShikimori;
 use Illuminate\Contracts\Foundation\Application;
@@ -59,13 +60,19 @@ class AnimeAdminController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Http\Requests\AnimeRequest  $animeRequest
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(AnimeRequest $animeRequest)
 	{
-		//
+		$requestAnime = $this->animeRepository->setAnime($animeRequest);
+
+		if ($requestAnime) {
+			return redirect()->route('showAllAnimeAdmin');
+		}
+
+		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
 	}
 
 	/**
@@ -99,15 +106,15 @@ class AnimeAdminController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int                       $id
+	 * @param  \App\Http\Requests\AnimeRequest  $animeRequest
+	 * @param  int                              $id
 	 *
 	 * @return RedirectResponse|Response
 	 */
-	public function update(Request $request, int $id): Response|RedirectResponse
+	public function update(AnimeRequest $animeRequest, int $id): Response|RedirectResponse
 	{
 		// \Artisan::call('cache:clear');
-		$requestAnime = $this->animeRepository->setAnime($request, $id);
+		$requestAnime = $this->animeRepository->setAnime($animeRequest, $id);
 
 		if ($requestAnime) {
 			return redirect()->route('editAnimeAdmin', $id);
@@ -121,11 +128,15 @@ class AnimeAdminController extends Controller
 	 *
 	 * @param  int  $id
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
 	 */
 	public function destroy(int $id)
 	{
-		//
+		$delete = $this->animeRepository->destroyAnime($id);
+
+		if ($delete) {
+		    return back();
+		}
 	}
 
 	/**

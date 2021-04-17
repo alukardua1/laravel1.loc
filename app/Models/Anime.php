@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * Class Anime
  *
  * @property string       name
+ * @property string       russian
  * @property mixed        episodes_aired
  * @property string       metatitle
  * @property string       url
@@ -52,6 +53,8 @@ class Anime extends Model
 		'posted_at',
 		'comment_at',
 		'broadcast',
+		'user_id',
+		'kind_id',
 	];
 
 	protected $withCount = [

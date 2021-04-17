@@ -56,7 +56,7 @@
 				</td>
 				<td>
 					<a href="{{route('editAnimeAdmin', $anime->id)}}"><i class="far fa-edit"></i></a>
-					<a href="#"><i class="far fa-trash-alt"></i></a>
+					<a href="{{route('deleteAnimeAdmin',  $anime->id)}}"><i class="far fa-trash-alt"></i></a>
 				</td>
 			</tr>
 		@endforeach
