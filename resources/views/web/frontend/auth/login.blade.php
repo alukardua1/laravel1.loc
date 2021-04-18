@@ -8,8 +8,6 @@
 			{{ csrf_field() }}
 			<button class="btn btn-outline-light logout">Выйти <i class="fas fa-sign-in ml-1"></i></button>
 		</form>
-<!--		<a href="{{route('logout')}}" type="button" class="btn btn-outline-light logout disabled"
-		   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти <i class="fas fa-sign-in ml-1"></i></a>-->
 		<ul class="urls">
 			@admin_link
 			<li><a target="_blank" href="{{route('dashboard')}}">Админпанель</a></li>
@@ -17,6 +15,7 @@
 			<li><a href="{{route('currentUser', Auth::user()->login)}}">Мой профиль</a></li>
 			<li><a href="{{route('favorite', Auth::user()->login)}}">Закладки<span>{{Auth::user()->favorites_count}}</span></a></li>
 			<li><a href="{{route('PM', Auth::user()->login)}}">Сообщения<span>{{Auth::user()->not_read_message}} из {{Auth::user()->p_m_count}}</span></a></li>
+			<li><a href="{{route('tableOrder')}}">Стол заказов</a></li>
 		</ul>
 	</div>
 @else

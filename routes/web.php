@@ -14,6 +14,7 @@ use App\Http\Controllers\ParseDbDLEController;
 use App\Http\Controllers\PersonalMessageController;
 use App\Http\Controllers\QualityController;
 use App\Http\Controllers\StudioController;
+use App\Http\Controllers\TableOrderController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoteController;
@@ -72,6 +73,18 @@ Route::group(
 Route::group(
 	['prefix' => 'blog'],
 	function () {
+	}
+);
+
+Route::group(
+	[
+		'prefix'     => 'order',
+		'middleware' => ['auth'],
+	],
+	function () {
+		Route::get('/', [TableOrderController::class, 'index'])->name('tableOrder');
+		Route::get('/{id}/edit', [TableOrderController::class, 'edit'])->name('tableOrderEdit')->middleware('is_admin');
+		Route::get('/add', [TableOrderController::class, 'create'])->name('tableOrderAdd');
 	}
 );
 

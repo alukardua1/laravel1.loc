@@ -16,6 +16,7 @@ use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
+use App\Repository\Interfaces\TableOrderRepositoryInterfaces;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 use App\Repository\Interfaces\VoteRepositoryInterface;
 use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
@@ -23,6 +24,7 @@ use App\Repository\KindRepository;
 use App\Repository\MpaaRepository;
 use App\Repository\QualityRepository;
 use App\Repository\StudioRepository;
+use App\Repository\TableOrderRepository;
 use App\Repository\TranslateRepository;
 use App\Repository\VoteRepository;
 use App\Repository\AnimeRepository;
@@ -38,6 +40,7 @@ use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
+
 	/**
 	 * Register services.
 	 *
@@ -61,6 +64,7 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(YearAiredRepositoryInterfaces::class, YearAiredRepository::class);
 		$this->app->bind(GeoBlockRepositoryInterfaces::class, GeoBlockRepository::class);
 		$this->app->bind(CopyrightHolderRepositoryInterfaces::class, CopyrightHolderRepository::class);
+		$this->app->bind(TableOrderRepositoryInterfaces::class, TableOrderRepository::class);
 	}
 
 	/**
