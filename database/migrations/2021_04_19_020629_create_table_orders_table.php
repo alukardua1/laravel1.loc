@@ -16,6 +16,7 @@ class CreateTableOrdersTable extends Migration
         Schema::create('table_orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->text('status')->default('Ожидает');
             $table->string('name_rus');
             $table->string('name_origin');
             $table->string('year');

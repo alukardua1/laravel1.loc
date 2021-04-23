@@ -85,6 +85,7 @@ Route::group(
 		Route::get('/', [TableOrderController::class, 'index'])->name('tableOrder');
 		Route::get('/{id}/edit', [TableOrderController::class, 'edit'])->name('tableOrderEdit')->middleware('is_admin');
 		Route::get('/add', [TableOrderController::class, 'create'])->name('tableOrderAdd');
+		Route::post('/add', [TableOrderController::class, 'store'])->name('tableOrderStore');
 	}
 );
 
