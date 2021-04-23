@@ -4,6 +4,8 @@
 namespace App\Repository;
 
 
+use App\Http\Requests\TableOrderRequest;
+use App\Models\TableOrder;
 use App\Models\User;
 use App\Repository\Interfaces\TableOrderRepositoryInterfaces;
 use Request;
@@ -16,24 +18,38 @@ use Request;
 class TableOrderRepository implements TableOrderRepositoryInterfaces
 {
 	/**
-	 * @param  \App\Models\User  $user
-	 * @param  int|null          $id
+	 * @param  int|null  $id
+	 * @param  int|null  $user_id
 	 *
 	 * @return mixed|void
 	 */
-	public function get(User $user, int $id = null)
+	public function get(int $id = null, int $user_id = null)
 	{
-		// TODO: Implement get() method.
+		if ($user_id) {
+			return TableOrder::where('user_id', $user_id);
+		} elseif ($id) {
+			return TableOrder::where('id', $id);
+		} else {
+			return TableOrder::all();
+		}
 	}
 
 	/**
-	 * @param  \Request  $request
-	 * @param  int       $user_id
+	 * @param  \App\Http\Requests\TableOrderRequest  $request
+	 * @param  int|null                              $user_id
+	 * @param  int|null                              $id
 	 *
 	 * @return mixed|void
 	 */
-	public function set(Request $request, int $user_id)
+	public function set(TableOrderRequest $request, int $user_id = null, int $id = null)
 	{
-		// TODO: Implement set() method.
+		$formRequest = $request->all();
+		if (!key_exists('user_id', $formRequest)) {
+			$formRequest['user_id'] = $user_id;
+		}
+		$update = TableOrder::firstOrCreate(['id' => $id], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 }

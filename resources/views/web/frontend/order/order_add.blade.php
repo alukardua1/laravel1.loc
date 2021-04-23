@@ -20,12 +20,12 @@
 		@csrf
 		<div class="row mb-3">
 			<div class="col">
-				<label for="name_rus" class="form-label">Русское название <span class="text-danger">*</span></label>
-				<input type="text" class="form-control" id="name_rus" placeholder="Русское название" value="{{old('name_rus')}}" name="name_rus">
+				<label for="name_rus" class="form-label">{{__('main.name_rus')}} <span class="text-danger">*</span></label>
+				<input type="text" class="form-control" id="name_rus" placeholder="{{__('main.name_rus')}}" value="{{old('name_rus')}}" name="name_rus">
 			</div>
 			<div class="col">
-				<label for="name_origin" class="form-label">Оригинальное название <span class="text-danger">*</span></label>
-				<input type="text" class="form-control" id="name_origin" placeholder="Оригинальное название" value="{{old('name_origin')}}" name="name_origin">
+				<label for="name_origin" class="form-label">{{__('main.name_origin')}} <span class="text-danger">*</span></label>
+				<input type="text" class="form-control" id="name_origin" placeholder="{{__('main.name_origin')}}" value="{{old('name_origin')}}" name="name_origin">
 			</div>
 		</div>
 		<div class="mb-3">

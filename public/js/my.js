@@ -12,14 +12,6 @@ $(function () {
 		$('body,html').animate({scrollTop: 0}, 800);
 	})
 });
-/*$('table.pm').addClass("table table-borderless");
-$('input.bbcodes').addClass("btn btn-success");
-$('input[type="checkbox"]').addClass("form-check-input");
-$('input[name="recip"]').addClass("md-form");
-$(document).ready(function() {
-    $('[name="mass_action"]').materialSelect();
-    $('[name="recip"]').materialSelect();
-});*/
 document.addEventListener("DOMContentLoaded", function () {
 	var lazyloadImages;
 
@@ -74,30 +66,6 @@ $(function () {
 		trigger: 'hover'
 	})
 })
-/*$(function () {
-    $('.pop')
-        .hover(function () {
-            $('[data-toggle="tooltip"]').tooltip('dispose')
-                var el = $(this);
-                var newId = el.context.id;
-                //console.log(this)
-                $.post('engine/ajax/poppover.php', {idNews: newId}, function (data) {
-                    //console.log(data)
-                    var result = jQuery.parseJSON(data);
-                    //console.log(result)
-                    var title = result['title'];
-                    var template = '<h5>'+result['title']+'</h5></br>'+result['descr']
-                    $('#' + newId).tooltip({title: template, trigger : 'hover'}).tooltip('show')
-                    //$('#' + newId).attr('data-original-title', template).tooltip('show');
-                })
-            }, function () {
-            $('[data-toggle="tooltip"]').tooltip('dispose')
-            }
-        )
-})*/
-
-/*
-new WOW().init();*/
 
 function setMonth() {
 	var now = new Date(),

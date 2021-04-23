@@ -4,6 +4,7 @@
 namespace App\Repository\Interfaces;
 
 
+use App\Http\Requests\TableOrderRequest;
 use App\Models\User;
 use Request;
 
@@ -15,18 +16,19 @@ use Request;
 interface TableOrderRepositoryInterfaces
 {
 	/**
-	 * @param  \App\Models\User  $user
-	 * @param  int|null          $id
+	 * @param  int|null  $id
+	 * @param  int|null  $user_id
 	 *
 	 * @return mixed
 	 */
-	public function get(User $user, int $id = null);
+	public function get(int $id = null, int $user_id = null);
 
 	/**
-	 * @param  Request  $request
-	 * @param  int      $user_id
+	 * @param  \App\Http\Requests\TableOrderRequest  $request
+	 * @param  int|null                              $user_id
+	 * @param  int|null                              $id
 	 *
 	 * @return mixed
 	 */
-	public function set(Request $request, int $user_id);
+	public function set(TableOrderRequest $request, int $user_id = null, int $id = null);
 }
