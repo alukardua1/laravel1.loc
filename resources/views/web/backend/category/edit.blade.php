@@ -1,7 +1,9 @@
 @extends('web.backend.layout.app')
 
-@section('title', 'Редактирование ' . $currentAnime->name)
+@section('title', 'Редактирование ' . $category->title)
 
 @section('content')
-
+	<form action="{{route('updateCategoryAdmin', $category->url)}}" method="post">
+		@csrf
+	</form>
 @endsection

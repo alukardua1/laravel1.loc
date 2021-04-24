@@ -68,11 +68,14 @@ class CategoryAdminController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  string $url
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit($url)
     {
-        dd(__METHOD__, $url);
+    	$category = $this->categoryRepository->getCategory($url)->first();
+
+	    return view($this->backend . 'category.edit', compact('category'));
     }
 
     /**

@@ -3,7 +3,9 @@
 @section('title', __('order.table_order'))
 
 @section('content')
-	<a href="{{route('tableOrderAdd')}}" class="btn btn-primary">Добавить заказ</a>
+	<div class="mb-3">
+		<a href="{{route('tableOrderAdd')}}" class="btn btn-primary">Добавить заказ</a>
+	</div>
 
 	<table id="dtBasicExample" class="table table-dark table-striped" width="100%">
 		<thead>
