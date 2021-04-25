@@ -18,7 +18,14 @@ class Category extends Model
 		'getAnime',
 	];
 
-	protected $fillable = [];
+	protected $fillable = [
+		'title',
+		'url',
+		'description',
+		'description_html',
+		'description_source',
+		'posted_at'
+	];
 
 	/**
 	 * Category constructor.

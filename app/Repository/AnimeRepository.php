@@ -212,7 +212,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			if ($formRequest['channel_id'] == null) {
 				$formRequest['channel_id'] = 0;
 			}
-
+			$this->checkRequest($this->arrCheck, $formRequest, $updatePost);
 			$this->syncRequest($this->arrSync, $updatePost, $request);
 			if (!empty($formRequest->otherLink_title)) {
 				$this->setOtherLink($formRequest, $id);
@@ -236,7 +236,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	{
 		$del = Anime::findOrFail($id, ['*']);
 		if ($del) {
-		    return $del->forceDelete();
+			return $del->forceDelete();
 		}
 	}
 }

@@ -25,6 +25,7 @@ Route::group(
 
 		Route::get('/category', [CategoryAdminController::class, 'index'])->name('showAllCategoryAdmin');
 		Route::get('/category/add', [CategoryAdminController::class, 'create'])->name('addCategoryAdmin');
+		Route::post('/category/add', [CategoryAdminController::class, 'store'])->name('storeCategoryAdmin');
 		Route::get('/category/{id}/edit', [CategoryAdminController::class, 'edit'])->name('editCategoryAdmin');
 		Route::post('/category/{id}/update', [CategoryAdminController::class, 'update'])->name('updateCategoryAdmin');
 

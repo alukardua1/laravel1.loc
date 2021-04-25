@@ -3,6 +3,7 @@
 
 namespace App\Repository\Interfaces;
 
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 
 /**
@@ -16,9 +17,11 @@ interface CategoryRepositoryInterfaces
 	/**
 	 * Получает все категории
 	 *
+	 * @param  bool|false  $isAdmin
+	 *
 	 * @return mixed
 	 */
-	public function getCategories(): mixed;
+	public function getCategories(bool $isAdmin = false): mixed;
 
 	/**
 	 * Получает категорию по названию
@@ -32,10 +35,10 @@ interface CategoryRepositoryInterfaces
 	/**
 	 * Добавление/обновление категории
 	 *
-	 * @param  string   $categoryUrl Урл категории
-	 * @param  Request  $request Запрос
+	 * @param  string|null                         $categoryUrl  Урл категории
+	 * @param  \App\Http\Requests\CategoryRequest  $request      Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setCategory(string $categoryUrl, Request $request): mixed;
+	public function setCategory(CategoryRequest $request, string $categoryUrl = null): mixed;
 }
