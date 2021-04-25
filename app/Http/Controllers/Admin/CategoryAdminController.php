@@ -103,14 +103,18 @@ class CategoryAdminController extends Controller
 	    return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  string  $url
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+    public function destroy(string $url)
     {
-        //
+        $delete = $this->categoryRepository->delCategory($url);
+        if ($delete) {
+	        return back();
+        }
     }
 }

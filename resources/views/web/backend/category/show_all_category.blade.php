@@ -29,7 +29,7 @@
 				</td>
 				<td>
 					<i class="far fa-edit"></i>
-					<i class="far fa-trash-alt"></i>
+					<a href="{{route('deleteCategoryAdmin', $category->url)}}"><i class="far fa-trash-alt"></i></a>
 				</td>
 			</tr>
 		@endforeach

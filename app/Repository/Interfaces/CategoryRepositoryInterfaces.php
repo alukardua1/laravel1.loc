@@ -41,4 +41,11 @@ interface CategoryRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function setCategory(CategoryRequest $request, string $categoryUrl = null): mixed;
+
+	/**
+	 * @param  string  $categoryUrl
+	 *
+	 * @return mixed
+	 */
+	public function delCategory(string $categoryUrl);
 }

@@ -28,6 +28,7 @@ Route::group(
 		Route::post('/category/add', [CategoryAdminController::class, 'store'])->name('storeCategoryAdmin');
 		Route::get('/category/{id}/edit', [CategoryAdminController::class, 'edit'])->name('editCategoryAdmin');
 		Route::post('/category/{id}/update', [CategoryAdminController::class, 'update'])->name('updateCategoryAdmin');
+		Route::get('/category/{id}/delete', [CategoryAdminController::class, 'destroy'])->name('deleteCategoryAdmin');
 
 	}
 );

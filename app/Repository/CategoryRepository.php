@@ -70,4 +70,12 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 			return $update->save();
 		}
 	}
+
+	public function delCategory(string $categoryUrl)
+	{
+		$del = Category::where('url', $categoryUrl)->firstOrFail();
+		if ($del) {
+			return $del->forceDelete();
+		}
+	}
 }

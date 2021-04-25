@@ -17,6 +17,10 @@
 			<label for="description_html" class="input-group-text">Описание категории</label>
 			<textarea class="form-control ckeditor" id="description_html" name="description_html" rows="3"></textarea>
 		</div>
+		<div class="form-check form-switch">
+			<input name="posted_at" class="form-check-input" type="checkbox" id="posted_at" value="1">
+			<label class="form-check-label" for="posted_at">Опубликовать</label>
+		</div>
 		<div>
 			<button type="submit" class="btn btn-success">Сохранить</button>
 		</div>
