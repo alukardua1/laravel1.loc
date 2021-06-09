@@ -76,7 +76,7 @@ trait ApiTrait
 				],
 				'name'     => $item->name,
 				'russian'  => $item->russian,
-				'url'      => '/anime/' . $item->url,
+				'url'      => '/anime/' . $item->id . '-' . $item->url,
 				'category' => $this->animeCategory($item->getCategory),
 				'kind'     => [
 					'name'       => $item->getKind->name,
@@ -121,20 +121,23 @@ trait ApiTrait
 	public function animeOneMutations($anime): array
 	{
 		return [
-			'id'       => $anime->id,
-			'image'    => [
+			'id'               => $anime->id,
+			'image'            => [
 				'original' => $anime->original_img,
 				'preview'  => $anime->preview_img,
 			],
-			'name'     => $anime->name,
-			'russian'  => $anime->russian,
-			'url'      => '/anime/' . $anime->url,
-			'category' => $this->animeCategory($anime->getCategory),
-			'kind'     => [
+			'name'             => $anime->name,
+			'russian'          => $anime->russian,
+			'url'              => '/anime/' . $anime->id . '-' . $anime->url,
+			'category'         => $this->animeCategory($anime->getCategory),
+			'kind'             => [
 				'name'       => $anime->getKind->name,
 				'full_name'  => $anime->getKind->full_name,
 				'short_name' => $anime->getKind->short_name,
 			],
+			'status'           => $anime->status,
+			'description'      => $anime->description,
+			'description_html' => $anime->description_html,
 		];
 	}
 }

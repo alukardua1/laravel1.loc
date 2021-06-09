@@ -337,7 +337,6 @@ trait FunctionTrait
 	protected function syncRequest(array $arrSync, mixed $update, mixed $request)
 	{
 		foreach ($arrSync as $key => $value) {
-			//dd(__METHOD__, $update->$value()->sync($request[$key]));
 			$update->fill($request->except($key));
 			$update->$value()->sync($request[$key]);
 		}

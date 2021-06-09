@@ -67,14 +67,17 @@ class DLEParseRepository implements DLEParse
 			case 'released':
 				$result['anons'] = 0;
 				$result['ongoing'] = 0;
+				$result['released'] = 1;
 				break;
 			case 'ongoing':
 				$result['ongoing'] = 1;
 				$result['anons'] = 0;
+				$result['released'] = 0;
 				break;
 			case 'anons':
 				$result['anons'] = 1;
 				$result['ongoing'] = 0;
+				$result['released'] = 0;
 				break;
 		}
 
@@ -230,6 +233,7 @@ class DLEParseRepository implements DLEParse
 				'preview_img'        => $image['preview_img'],
 				'anons'              => $this->status($xfield1['status'])['anons'],
 				'ongoing'            => $this->status($xfield1['status'])['ongoing'],
+				'released'           => $this->status($xfield1['status'])['released'],
 				'metatitle'          => $post->metatitle,
 				'keywords'           => $post->keywords,
 				'name'               => $post->title,

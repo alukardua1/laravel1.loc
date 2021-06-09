@@ -42,6 +42,7 @@ class CreateAnimesTable extends Migration
             $table->text('description_source')->nullable();
             $table->boolean('anons')->default(0);
             $table->boolean('ongoing')->default(0);
+            $table->boolean('released')->default(1);
             $table->boolean('posted_at')->default(1);
             $table->boolean('posted_rss')->default(1);
             $table->boolean('comment_at')->default(1);

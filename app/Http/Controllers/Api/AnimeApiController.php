@@ -44,13 +44,14 @@ class AnimeApiController extends Controller
 	/**
 	 * Вывод аниме по $id
 	 *
-	 * @param  int  $id
+	 * @param  string  $id
 	 *
 	 * @return JsonResponse
 	 */
-	public function show(int $id): JsonResponse
+	public function show(string $id): JsonResponse
 	{
-		$thisAnime = $this->apiAnimeRepository->getAnime($id)->first();
+		$slug = explode('-', $id);
+		$thisAnime = $this->apiAnimeRepository->getAnime($slug[0])->first();
 		if (empty($thisAnime)) {
 			return response()->json($this->error404());
 		}
