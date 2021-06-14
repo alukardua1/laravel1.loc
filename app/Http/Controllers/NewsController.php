@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Repository\Interfaces\NewsRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-	public function __construct()
+	private NewsRepositoryInterfaces  $newsRepository;
+
+	public function __construct(NewsRepositoryInterfaces $newsRepositoryInterfaces)
 	{
+		$this->newsRepository = $newsRepositoryInterfaces;
 		parent::__construct();
 	}
 

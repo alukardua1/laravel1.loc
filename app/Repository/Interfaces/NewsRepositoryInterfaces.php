@@ -6,7 +6,7 @@ namespace App\Repository\Interfaces;
 
 interface NewsRepositoryInterfaces
 {
-	public function getNewsAll();
+	public function getNewsAll($limit = null);
 
 	public function getNews(int $id);
 

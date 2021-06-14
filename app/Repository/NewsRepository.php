@@ -4,19 +4,24 @@
 namespace App\Repository;
 
 
+use App\Models\News;
 use App\Repository\Interfaces\NewsRepositoryInterfaces;
 
 class NewsRepository implements NewsRepositoryInterfaces
 {
 
-	public function getNewsAll()
+	public function getNewsAll($limit = null)
 	{
-		// TODO: Implement getNewsAll() method.
+		if ($limit) {
+		    return News::limit($limit)
+			    ->orderBy('updated_at', 'DESC');
+		}
+		return  News::orderBy('updated_at', 'DESC');
 	}
 
 	public function getNews(int $id)
 	{
-		// TODO: Implement getNews() method.
+		return News::where($id);
 	}
 
 	public function setNews(\Request $request, int $id = null)

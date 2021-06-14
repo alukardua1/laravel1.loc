@@ -16,7 +16,7 @@ class CreateTrailersTable extends Migration
         Schema::create('trailers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anime_id');
-            $table->string('trailer');
+            $table->string('url_trailer');
             $table->timestamps();
         });
     }
