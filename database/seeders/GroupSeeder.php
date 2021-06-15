@@ -26,6 +26,11 @@ class GroupSeeder extends Seeder
 				'is_dashboard' => 1,
 			],
 			[
+				'title'        => 'Журналист',
+				'color'        => 'green',
+				'is_dashboard' => 1,
+			],
+			[
 				'title'        => 'Модератор',
 				'color'        => 'green',
 				'is_dashboard' => 1,

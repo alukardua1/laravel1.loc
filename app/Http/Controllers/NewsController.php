@@ -19,11 +19,13 @@ class NewsController extends Controller
 	/**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
-     */
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
     public function index()
     {
-        //
+        $news = $this->newsRepository->getNewsAll()->paginate($this->paginate);
+
+        return view($this->frontend . 'news/short_news', compact('news'));
     }
 
     /**
@@ -47,15 +49,18 @@ class NewsController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function show(News $news)
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
+    public function show(int $id)
     {
-        //
+	    $news = $this->newsRepository->getNews($id)->get();
+
+	    return view($this->frontend . 'news/full_news', compact('news'));
     }
 
     /**

@@ -14,6 +14,7 @@ use App\Repository\Interfaces\FavoriteRepositoryInterfaces;
 use App\Repository\Interfaces\GeoBlockRepositoryInterfaces;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
+use App\Repository\Interfaces\NewsRepositoryInterfaces;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
 use App\Repository\Interfaces\TableOrderRepositoryInterfaces;
@@ -23,6 +24,7 @@ use App\Repository\Interfaces\VoteRepositoryInterface;
 use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
 use App\Repository\KindRepository;
 use App\Repository\MpaaRepository;
+use App\Repository\NewsRepository;
 use App\Repository\QualityRepository;
 use App\Repository\StudioRepository;
 use App\Repository\TableOrderRepository;
@@ -68,6 +70,7 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(CopyrightHolderRepositoryInterfaces::class, CopyrightHolderRepository::class);
 		$this->app->bind(TableOrderRepositoryInterfaces::class, TableOrderRepository::class);
 		$this->app->bind(VideoHostRepositoryInterfaces::class, VideoHostRepository::class);
+		$this->app->bind(NewsRepositoryInterfaces::class, NewsRepository::class);
 	}
 
 	/**

@@ -128,7 +128,7 @@ class AnimeAdminController extends Controller
 	 *
 	 * @param  int  $id
 	 *
-	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function destroy(int $id)
 	{

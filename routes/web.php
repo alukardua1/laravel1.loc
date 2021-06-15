@@ -10,6 +10,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MPAARatingController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ParseDbDLEController;
 use App\Http\Controllers\PersonalMessageController;
 use App\Http\Controllers\QualityController;
@@ -67,6 +68,8 @@ Route::group(
 Route::group(
 	['prefix' => 'news'],
 	function () {
+		Route::get('/', [NewsController::class, 'index'])->name('newsAll');
+		Route::get('/{id}-{url?}', [NewsController::class, 'show'])->name('showNews')->where('id', '[0-9]+');
 	}
 );
 
