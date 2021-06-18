@@ -175,7 +175,7 @@ class DLEParseRepository implements DLEParse
 			if (array_key_exists('treyler', $xfield1)) {
 				$data = [
 					'anime_id' => $post->id,
-					'trailer'  => $xfield1['treyler'],
+					'url_trailer'  => $xfield1['treyler'],
 				];
 				DB::table('trailers')->insert($data);
 			}

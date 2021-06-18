@@ -44,9 +44,11 @@ class CreateAnimesTable extends Migration
             $table->boolean('ongoing')->default(0);
             $table->boolean('released')->default(1);
             $table->boolean('posted_at')->default(1);
+            $table->boolean('posted_main_page')->default(1);
             $table->boolean('posted_rss')->default(1);
             $table->boolean('comment_at')->default(1);
             $table->string('read_count')->default(0);
+            $table->string('reason_edit')->nullable();
             $table->timestamps();
         });
     }
