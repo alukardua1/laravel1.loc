@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\OtherLink;
 use App\Models\Player;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Trait FunctionTrait
@@ -16,7 +17,7 @@ trait FunctionTrait
 	/**
 	 * Проверяет наличие данных в запросе
 	 *
-	 * @param mixed $post запись
+	 * @param  mixed  $post  запись
 	 */
 	public function isNotNull($post)
 	{
@@ -67,7 +68,7 @@ trait FunctionTrait
 	/**
 	 * Формирование комментариев
 	 *
-	 * @param mixed $comments Запись
+	 * @param  mixed  $comments  Запись
 	 *
 	 * @return mixed
 	 */
@@ -276,13 +277,13 @@ trait FunctionTrait
 
 	/**
 	 * Добавляет аттрибуты
+	 *
 	 * @param  array  $attributeArr
 	 * @param  mixed  $showAnime
 	 */
 	public function setAttributes(array $attributeArr, mixed $showAnime)
 	{
-		foreach ($attributeArr as $key=>$value)
-		{
+		foreach ($attributeArr as $key => $value) {
 			if ($showAnime->$value) {
 				$showAnime->$key = $showAnime->$value;
 			}
@@ -316,9 +317,10 @@ trait FunctionTrait
 
 	/**
 	 * проверяет checked
-	 * @param  array  $arrCheck массив [поле => модель]
+	 *
+	 * @param  array  $arrCheck  массив [поле => модель]
 	 * @param  mixed  $formRequest
-	 * @param  mixed  $update обновляемая запись
+	 * @param  mixed  $update    обновляемая запись
 	 */
 	private function checkRequest(array $arrCheck, mixed $formRequest, mixed $update)
 	{
@@ -340,5 +342,22 @@ trait FunctionTrait
 			$update->fill($request->except($key));
 			$update->$value()->sync($request[$key]);
 		}
+	}
+
+	/**
+	 * @param  mixed   $request    Запрос
+	 * @param  string  $route      Маршрут
+	 * @param  string  $textError  Текст выводимой ошибки
+	 * @param  null    $id         ID записи
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function ifErrorAddUpdate(mixed $request, string $route, string $textError, $id = null): RedirectResponse
+	{
+		if ($request) {
+			return redirect()->route($route, $id);
+		}
+
+		return back()->withErrors(['msg' => $textError])->withInput();
 	}
 }

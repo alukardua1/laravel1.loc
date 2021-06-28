@@ -64,15 +64,17 @@ class AnimeAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
 	 */
-	public function store(AnimeRequest $animeRequest)
+	public function store(AnimeRequest $animeRequest): Response|RedirectResponse
 	{
 		$requestAnime = $this->animeRepository->setAnime($animeRequest);
 
-		if ($requestAnime) {
+		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения');
+
+		/*if ($requestAnime) {
 			return redirect()->route('showAllAnimeAdmin');
 		}
 
-		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
+		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();*/
 	}
 
 	/**
@@ -116,11 +118,13 @@ class AnimeAdminController extends Controller
 		// \Artisan::call('cache:clear');
 		$requestAnime = $this->animeRepository->setAnime($animeRequest, $id);
 
-		if ($requestAnime) {
+		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения', $id);
+
+		/*if ($requestAnime) {
 			return redirect()->route('editAnimeAdmin', $id);
 		}
 
-		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
+		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();*/
 	}
 
 	/**

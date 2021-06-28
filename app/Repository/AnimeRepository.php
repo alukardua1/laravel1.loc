@@ -72,6 +72,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		}
 
 		return Anime::where('posted_at', 1)
+			->where('posted_main_page', 1)
 			->orderBy('updated_at', 'DESC');
 	}
 

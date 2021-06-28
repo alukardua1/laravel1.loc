@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
 		$data = [
 			[
 				'login'             => 'admin',
-				'name'              => '',
+				'name'              => 'Alukard Nosferatu',
 				'group_id'          => '1',
 				'country_id'        => 1,
 				'email'             => 'prizrack30@gmail.com',
