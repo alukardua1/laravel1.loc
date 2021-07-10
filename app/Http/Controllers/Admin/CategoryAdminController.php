@@ -53,11 +53,8 @@ class CategoryAdminController extends Controller
     public function store(CategoryRequest $request)
     {
 	    $update = $this->categoryRepository->setCategory($request);
-	    if ($update) {
-		    return redirect()->route('showAllCategoryAdmin');
-	    }
 
-	    return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
+	    return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin','Ошибка сохранения');
     }
 
     /**
@@ -96,11 +93,8 @@ class CategoryAdminController extends Controller
     public function update(CategoryRequest $request, string $url)
     {
         $update = $this->categoryRepository->setCategory($request, $url);
-        if ($update) {
-            return redirect()->route('showAllCategoryAdmin');
-        }
 
-	    return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
+	    return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin','Ошибка сохранения');
     }
 
 	/**

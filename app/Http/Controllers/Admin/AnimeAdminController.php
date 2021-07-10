@@ -18,6 +18,7 @@ use Illuminate\Http\Response;
  * Class AnimeAdminController
  *
  * @package App\Http\Controllers\Admin
+ * @todo К франшизе (если есть фильмы) добавить между какими сериями идет сюжет фильма
  */
 class AnimeAdminController extends Controller
 {
@@ -69,12 +70,6 @@ class AnimeAdminController extends Controller
 		$requestAnime = $this->animeRepository->setAnime($animeRequest);
 
 		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения');
-
-		/*if ($requestAnime) {
-			return redirect()->route('showAllAnimeAdmin');
-		}
-
-		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();*/
 	}
 
 	/**
@@ -119,12 +114,6 @@ class AnimeAdminController extends Controller
 		$requestAnime = $this->animeRepository->setAnime($animeRequest, $id);
 
 		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения', $id);
-
-		/*if ($requestAnime) {
-			return redirect()->route('editAnimeAdmin', $id);
-		}
-
-		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();*/
 	}
 
 	/**

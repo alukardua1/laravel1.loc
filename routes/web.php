@@ -131,4 +131,5 @@ Route::group(
 		Route::get('/{category}', [CategoryController::class, 'index'])->name('currentCategory');
 	}
 );
+
 Auth::routes();
