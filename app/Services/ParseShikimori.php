@@ -13,10 +13,10 @@ trait ParseShikimori
 {
 	use CurlTrait;
 
-	protected $shikimoriData;
-	protected $shikimoriID;
-	protected $shikimoriApiUrl      = 'https://shikimori.one/api/animes/';
-	protected $shikimoriOtherMethod = ['roles', 'similar', 'related', 'franchise', 'external_links'];
+	protected mixed  $shikimoriData;
+	protected string $shikimoriID;
+	protected string $shikimoriApiUrl      = 'https://shikimori.one/api/animes/';
+	protected array  $shikimoriOtherMethod = ['roles', 'similar', 'related', 'franchise', 'external_links'];
 
 	/**
 	 * Получает данные с шикимори
