@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AnimeAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserAdminController;
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 	return Inertia::render('Dashboard');
@@ -30,5 +31,7 @@ Route::group(
 		Route::post('/category/{id}/update', [CategoryAdminController::class, 'update'])->name('updateCategoryAdmin');
 		Route::get('/category/{id}/delete', [CategoryAdminController::class, 'destroy'])->name('deleteCategoryAdmin');
 
+		Route::get('/user', [UserAdminController::class, 'index'])->name('usersAdmin');
+		Route::get('/user/{login}', [UserAdminController::class, 'show'])->name('showUserAdmin');
 	}
 );

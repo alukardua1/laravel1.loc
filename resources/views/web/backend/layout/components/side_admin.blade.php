@@ -75,7 +75,7 @@
 				<div class="collapse" id="user">
 					<ul class="list-group list-group-flush bg-dark">
 						<li class="list-group-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="{{route('usersAdmin')}}">
 								<span data-feather="user"></span>
 								Все пользователи
 							</a>

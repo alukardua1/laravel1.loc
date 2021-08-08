@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\AnimeRepositoryInterfaces;
+use App\Repository\Interfaces\UserRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -14,6 +16,16 @@ use Illuminate\Contracts\View\View;
  */
 class DashboardController extends Controller
 {
+	protected mixed $animeRepository;
+	protected mixed $userRepository;
+
+	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces, UserRepositoryInterfaces $userRepositoryInterfaces)
+	{
+		parent::__construct();
+		$this->animeRepository = $animeRepositoryInterfaces;
+		$this->userRepository = $userRepositoryInterfaces;
+	}
+
 	/**
 	 * Главная страница админки
 	 *
@@ -21,6 +33,8 @@ class DashboardController extends Controller
 	 */
 	public function index(): Factory|View|Application
 	{
-		return view($this->backend . 'layout.components.home');
+		$animeCount = $this->animeRepository->countAnime();
+
+		return view($this->backend . 'layout.components.home', compact('animeCount'));
 	}
 }

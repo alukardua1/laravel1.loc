@@ -3,12 +3,12 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.49.1.
+ * Generated for Laravel 8.53.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
- * @see https://github.com/barryvdh/laravel-ide-helper
+ * @see    https://github.com/barryvdh/laravel-ide-helper
  */
 
     namespace Illuminate\Support\Facades { 
@@ -2651,13 +2651,15 @@
                         /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
                         return $instance->compileEchos($value);
         }
-                    /**
-         * Apply the echo handler for the value if it exists.
-         *
-         * @param $value string
-         * @return string 
-         * @static 
-         */ 
+
+	        /**
+	         * Apply the echo handler for the value if it exists.
+	         *
+	         * @param  string  $value
+	         *
+	         * @return string
+	         * @static
+	         */
         public static function applyEchoHandler($value)
         {
                         /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
@@ -5806,27 +5808,45 @@
                     /**
          * Write the contents of a file, replacing it atomically if it already exists.
          *
-         * @param string $path
-         * @param string $content
-         * @return void 
-         * @static 
-         */ 
-        public static function replace($path, $content)
-        {
-                        /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        $instance->replace($path, $content);
-        }
-                    /**
-         * Prepend to a file.
-         *
-         * @param string $path
-         * @param string $data
-         * @return int 
-         * @static 
-         */ 
-        public static function prepend($path, $data)
-        {
-                        /** @var \Illuminate\Filesystem\Filesystem $instance */
+         * @param string               $path
+                     * @param  string  $content
+                     * @return void
+                     * @static
+                     */
+	        public static function replace($path, $content)
+	        {
+		        /** @var \Illuminate\Filesystem\Filesystem $instance */
+		        $instance->replace($path, $content);
+	        }
+
+	        /**
+	         * Replace a given string within a given file.
+	         *
+	         * @param  array|string  $search
+	         * @param  array|string  $replace
+	         * @param  string        $path
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function replaceInFile($search, $replace, $path)
+	        {
+		        /** @var \Illuminate\Filesystem\Filesystem $instance */
+		        $instance->replaceInFile($search, $replace, $path);
+	        }
+
+	        /**
+	         * Prepend to a file.
+	         *
+	         * @param  string  $path
+	         * @param  string  $data
+	         *
+	         * @return int
+	         * @static
+	         */
+	        public static function prepend($path, $data)
+	        {
+		        /** @var \Illuminate\Filesystem\Filesystem $instance */
                         return $instance->prepend($path, $data);
         }
                     /**
@@ -10605,18 +10625,20 @@
                         /** @var \Illuminate\Http\Request $instance */
                         return $instance->hasAny($keys);
         }
-                    /**
-         * Apply the callback if the request contains the given input item key.
-         *
-         * @param string $key
-         * @param callable $callback
-         * @return $this|mixed 
-         * @static 
-         */ 
-        public static function whenHas($key, $callback)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->whenHas($key, $callback);
+
+	        /**
+	         * Apply the callback if the request contains the given input item key.
+	         *
+	         * @param  string         $key
+	         * @param  callable       $callback
+	         * @param  callable|null  $default
+	         * @return $this|mixed
+	         * @static
+	         */
+	        public static function whenHas($key, $callback, $default = null)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->whenHas($key, $callback, $default);
         }
                     /**
          * Determine if the request contains a non-empty value for an input item.
@@ -10654,18 +10676,20 @@
                         /** @var \Illuminate\Http\Request $instance */
                         return $instance->anyFilled($keys);
         }
-                    /**
-         * Apply the callback if the request contains a non-empty value for the given input item key.
-         *
-         * @param string $key
-         * @param callable $callback
-         * @return $this|mixed 
-         * @static 
-         */ 
-        public static function whenFilled($key, $callback)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->whenFilled($key, $callback);
+
+	        /**
+	         * Apply the callback if the request contains a non-empty value for the given input item key.
+	         *
+	         * @param  string         $key
+	         * @param  callable       $callback
+	         * @param  callable|null  $default
+	         * @return $this|mixed
+	         * @static
+	         */
+	        public static function whenFilled($key, $callback, $default = null)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->whenFilled($key, $callback, $default);
         }
                     /**
          * Determine if the request is missing a given input item key.
@@ -13733,17 +13757,76 @@
                         /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
                         $instance->flushCache();
         }
-                    /**
-         * Get the Flysystem driver.
-         *
-         * @return \League\Flysystem\FilesystemInterface 
-         * @static 
-         */ 
-        public static function getDriver()
-        {
-                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
-                        return $instance->getDriver();
-        }
+
+	        /**
+	         * Get the Flysystem driver.
+	         *
+	         * @return \League\Flysystem\FilesystemInterface
+	         * @static
+	         */
+	        public static function getDriver()
+	        {
+		        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+		        return $instance->getDriver();
+	        }
+
+	        /**
+	         * Register a custom macro.
+	         *
+	         * @param  string           $name
+	         * @param  object|callable  $macro
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function macro($name, $macro)
+	        {
+		        \Illuminate\Filesystem\FilesystemAdapter::macro($name, $macro);
+	        }
+
+	        /**
+	         * Mix another object into the class.
+	         *
+	         * @param  object  $mixin
+	         * @param  bool    $replace
+	         *
+	         * @throws \ReflectionException
+	         * @static
+	         * @return void
+	         */
+	        public static function mixin($mixin, $replace = true)
+	        {
+		        \Illuminate\Filesystem\FilesystemAdapter::mixin($mixin, $replace);
+	        }
+
+	        /**
+	         * Checks if macro is registered.
+	         *
+	         * @param  string  $name
+	         *
+	         * @return bool
+	         * @static
+	         */
+	        public static function hasMacro($name)
+	        {
+		        return \Illuminate\Filesystem\FilesystemAdapter::hasMacro($name);
+	        }
+
+	        /**
+	         * Dynamically handle calls to the class.
+	         *
+	         * @param  string  $method
+	         * @param  array   $parameters
+	         *
+	         * @throws \BadMethodCallException
+	         * @static
+	         * @return mixed
+	         */
+	        public static function macroCall($method, $parameters)
+	        {
+		        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+		        return $instance->macroCall($method, $parameters);
+	        }
          
     }
             /**
@@ -14313,27 +14396,41 @@
         }
                     /**
          * Register a custom validator message replacer.
-         *
-         * @param string $rule
-         * @param \Closure|string $replacer
-         * @return void 
-         * @static 
-         */ 
-        public static function replacer($rule, $replacer)
-        {
-                        /** @var \Illuminate\Validation\Factory $instance */
-                        $instance->replacer($rule, $replacer);
-        }
-                    /**
-         * Set the Validator instance resolver.
-         *
-         * @param \Closure $resolver
-         * @return void 
-         * @static 
-         */ 
-        public static function resolver($resolver)
-        {
-                        /** @var \Illuminate\Validation\Factory $instance */
+                     *
+                     * @param  string           $rule
+                     * @param  \Closure|string  $replacer
+                     * @return void
+                     * @static
+                     */
+	        public static function replacer($rule, $replacer)
+	        {
+		        /** @var \Illuminate\Validation\Factory $instance */
+		        $instance->replacer($rule, $replacer);
+	        }
+
+	        /**
+	         * Indicate that unvalidated array keys should be excluded, even if the parent array was validated.
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function excludeUnvalidatedArrayKeys()
+	        {
+		        /** @var \Illuminate\Validation\Factory $instance */
+		        $instance->excludeUnvalidatedArrayKeys();
+	        }
+
+	        /**
+	         * Set the Validator instance resolver.
+	         *
+	         * @param  \Closure  $resolver
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function resolver($resolver)
+	        {
+		        /** @var \Illuminate\Validation\Factory $instance */
                         $instance->resolver($resolver);
         }
                     /**
@@ -17595,16 +17692,15 @@ namespace  {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->simplePaginate($perPage, $columns, $pageName, $page);
             }
-             
-                /**
-             * Paginate the given query into a cursor paginator.
-             *
-             * @param int|null $perPage
-             * @param array $columns
-             * @param string $cursorName
-             * @param string|null $cursor
-             * @return \Illuminate\Contracts\Pagination\CursorPaginator 
-             * @throws \Illuminate\Pagination\CursorPaginationException
+
+	            /**
+	             * Paginate the given query into a cursor paginator.
+	             *
+	             * @param  int|null                                   $perPage
+	             * @param  array                                      $columns
+	             * @param  string                                     $cursorName
+	             * @param  \Illuminate\Pagination\Cursor|string|null  $cursor
+	             * @return \Illuminate\Contracts\Pagination\CursorPaginator
              * @static 
              */ 
             public static function cursorPaginate($perPage = null, $columns = [], $cursorName = 'cursor', $cursor = null)
@@ -18407,16 +18503,16 @@ namespace  {
             public static function tap($callback)
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->tap($callback);
+	            return $instance->tap($callback);
             }
-             
-                /**
-             * Apply the callback if the given "value" is truthy.
-             *
-             * @param mixed $value
-             * @param callable $callback
-             * @param callable|null $default
-             * @return mixed 
+
+	            /**
+	             * Apply the callback if the given "value" is truthy.
+	             *
+	             * @param  mixed         $value
+	             * @param  callable      $callback
+	             * @param  callable|null $default
+             * @return $this|mixed 
              * @static 
              */ 
             public static function when($value, $callback, $default = null)
@@ -18424,14 +18520,14 @@ namespace  {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->when($value, $callback, $default);
             }
-             
-                /**
-             * Apply the callback if the given "value" is falsy.
-             *
-             * @param mixed $value
-             * @param callable $callback
-             * @param callable|null $default
-             * @return mixed 
+
+	            /**
+	             * Apply the callback if the given "value" is falsy.
+	             *
+	             * @param  mixed         $value
+	             * @param  callable      $callback
+	             * @param  callable|null $default
+             * @return $this|mixed 
              * @static 
              */ 
             public static function unless($value, $callback, $default = null)
@@ -18521,15 +18617,16 @@ namespace  {
             public static function addSelect($column)
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->addSelect($column);
+	            return $instance->addSelect($column);
             }
-             
-                /**
-             * Force the query to only return distinct results.
-             *
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
+
+	            /**
+	             * Force the query to only return distinct results.
+	             *
+	             * @param  mixed  $distinct
+	             * @return \Illuminate\Database\Query\Builder
+	             * @static
+	             */
             public static function distinct()
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
@@ -19633,12 +19730,12 @@ namespace  {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->orderBy($column, $direction);
             }
-             
-                /**
-             * Add a descending "order by" clause to the query.
-             *
-             * @param string $column
-             * @return \Illuminate\Database\Query\Builder 
+
+	            /**
+	             * Add a descending "order by" clause to the query.
+	             *
+	             * @param  \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string  $column
+	             * @return \Illuminate\Database\Query\Builder
              * @static 
              */ 
             public static function orderByDesc($column)
@@ -19769,13 +19866,13 @@ namespace  {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->forPageAfterId($perPage, $lastId, $column);
             }
-             
-                /**
-             * Remove all existing orders and optionally add a new order.
-             *
-             * @param string|null $column
-             * @param string $direction
-             * @return \Illuminate\Database\Query\Builder 
+
+	            /**
+	             * Remove all existing orders and optionally add a new order.
+	             *
+	             * @param  \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string|null  $column
+	             * @param  string                                                                                         $direction
+	             * @return \Illuminate\Database\Query\Builder
              * @static 
              */ 
             public static function reorder($column = null, $direction = 'asc')

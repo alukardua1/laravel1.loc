@@ -23,6 +23,13 @@ interface AnimeRepositoryInterfaces
 	public function getAnime(int $id): mixed;
 
 	/**
+	 * Получает количество аниме
+	 *
+	 * @return mixed
+	 */
+	public function countAnime(): mixed;
+
+	/**
 	 * Получает все аниме с проверкой для админпанели или для сайта
 	 *
 	 * @param  bool  $isAdmin  админ или нет

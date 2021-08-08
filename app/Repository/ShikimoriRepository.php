@@ -5,6 +5,7 @@ namespace App\Repository;
 
 
 use App\Repository\Interfaces\ShikimoriInterfacesRepository;
+use App\Services\CurlTrait;
 
 /**
  * Class ShikimoriRepository
@@ -14,6 +15,7 @@ use App\Repository\Interfaces\ShikimoriInterfacesRepository;
  */
 class ShikimoriRepository implements ShikimoriInterfacesRepository
 {
+	use CurlTrait;
 
 	/**
 	 * @var string|\Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
@@ -35,6 +37,7 @@ class ShikimoriRepository implements ShikimoriInterfacesRepository
 	 */
 	public function getShikimori(string $id)
 	{
+		$shikiData = $this->getCurl($id);
 		// TODO: Implement getShikimori() method.
 	}
 }

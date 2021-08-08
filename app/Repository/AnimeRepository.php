@@ -76,6 +76,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			->orderBy('updated_at', 'DESC');
 	}
 
+	public function countAnime(): mixed
+	{
+		return Anime::where('posted_at', 1)->count();
+	}
+
 	/**
 	 * Формирует для главной страницы
 	 *

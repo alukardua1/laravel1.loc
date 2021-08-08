@@ -71,16 +71,16 @@ class CategoryAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  string $url
+     * @param  string  $url
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($url)
-    {
-    	$category = $this->categoryRepository->getCategory($url)->first();
+	public function edit(string $url)
+	{
+		$category = $this->categoryRepository->getCategory($url)->first();
 
-	    return view($this->backend . 'category.edit', compact('category'));
-    }
+		return view($this->backend . 'category.edit', compact('category'));
+	}
 
 	/**
 	 * Update the specified resource in storage.

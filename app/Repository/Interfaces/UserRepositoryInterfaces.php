@@ -17,18 +17,11 @@ interface UserRepositoryInterfaces
 	/**
 	 * Получает пользователя по логину
 	 *
-	 * @param  string  $login Логин пользователя
+	 * @param  string|null  $login  Логин пользователя
 	 *
 	 * @return mixed
 	 */
-	public function getUser(string $login): mixed;
-
-	/**
-	 * Получает всех пользователей
-	 *
-	 * @return mixed
-	 */
-	public function getUsers(): mixed;
+	public function getUser(string $login = null): mixed;
 
 	/**
 	 * Получает персональные сообщения пользователя
