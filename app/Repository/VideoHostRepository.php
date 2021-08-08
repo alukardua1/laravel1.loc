@@ -5,6 +5,7 @@ namespace App\Repository;
 
 
 use App\Repository\Interfaces\VideoHostRepositoryInterfaces;
+use App\Services\CurlTrait;
 
 /**
  * Class VideoHostRepository
@@ -13,6 +14,9 @@ use App\Repository\Interfaces\VideoHostRepositoryInterfaces;
  */
 class VideoHostRepository implements VideoHostRepositoryInterfaces
 {
+
+	use CurlTrait;
+
 	private mixed  $config;
 	private string $token;
 	private int    $limit              = 50;

@@ -42,4 +42,13 @@ interface UserRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function setUsers(Request $request, string $login = null): mixed;
+
+	/**
+	 * Удаление Пользователя
+	 *
+	 * @param  string  $login
+	 *
+	 * @return mixed
+	 */
+	public function destroyUser(string $login): mixed;
 }

@@ -27,7 +27,7 @@ class RegisterController extends Controller
 
 	use RegistersUsers;
 
-	protected $userRepository;
+	protected UserRepositoryInterfaces $userRepository;
 
 	/**
 	 * Where to redirect users after registration.

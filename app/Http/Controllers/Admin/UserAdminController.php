@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
 use Illuminate\Http\Request;
 
@@ -31,17 +32,8 @@ class UserAdminController extends Controller
 	public function index()
 	{
 		$allUser = $this->userRepository->getUser();
-		dd(__METHOD__, $allUser);
-		return view($this->backend . 'user.index', compact($allUser));
-	}
 
-	/**
-	 * @param  string  $login
-	 */
-	public function show(string $login)
-	{
-		$user = $this->userRepository->getUser($login);
-		dd(__METHOD__, $user);
+		return view($this->backend . 'user.index', compact($allUser));
 	}
 
 	/**
@@ -51,44 +43,50 @@ class UserAdminController extends Controller
 	 */
 	public function create()
 	{
-		//
+		return view($this->backend . 'user.add');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \App\Http\Requests\CategoryRequest  $request
+	 * @param  \App\Http\Requests\UserRequest  $request
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function store(Request $request)
+	public function store(UserRequest $request)
 	{
-		//
+		$requestUser = $this->userRepository->setUsers($request);
+
+		return $this->ifErrorAddUpdate($requestUser, 'editUserAdmin', 'Ошибка сохранения');
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  string  $url
+	 * @param  string  $login
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function edit(string $url)
+	public function edit(string $login)
 	{
-		//
+		$user = $this->userRepository->getUser($login);
+
+		return view($this->backend . 'user.edit', compact('user'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \App\Http\Requests\CategoryRequest  $request
-	 * @param  string                              $login
+	 * @param  \App\Http\Requests\UserRequest  $request
+	 * @param  string                          $login
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(Request $request, string $login)
+	public function update(UserRequest $request, string $login)
 	{
-		//
+		$requestAnime = $this->userRepository->setUsers($request, $login);
+
+		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения', $login);
 	}
 
 	/**
@@ -100,6 +98,10 @@ class UserAdminController extends Controller
 	 */
 	public function destroy(string $login)
 	{
-		//
+		$delete = $this->userRepository->destroyUser($login);
+
+		if ($delete) {
+			return back();
+		}
 	}
 }

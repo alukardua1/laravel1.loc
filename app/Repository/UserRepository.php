@@ -93,4 +93,17 @@ class UserRepository implements UserRepositoryInterfaces
 			return $updateUser->save();
 		}
 	}
+
+	/**
+	 * @param  string  $login
+	 *
+	 * @return mixed
+	 */
+	public function destroyUser(string $login): mixed
+	{
+		$del = User::findOrFail($login, ['*']);
+		if ($del) {
+			return $del->forceDelete();
+		}
+	}
 }

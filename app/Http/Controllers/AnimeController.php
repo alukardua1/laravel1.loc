@@ -45,6 +45,8 @@ class AnimeController extends Controller
 	}
 
 	/**
+	 * Все записи
+	 *
 	 * @return View|Factory|Application
 	 */
 	public function index(): View|Factory|Application
@@ -66,6 +68,8 @@ class AnimeController extends Controller
 	}
 
 	/**
+	 * Показ записи
+	 *
 	 * @param  int          $id
 	 * @param  string|null  $url
 	 *
@@ -101,6 +105,8 @@ class AnimeController extends Controller
 	}
 
 	/**
+	 * Поиск
+	 *
 	 * @param  Request  $request
 	 *
 	 * @return Response|ResponseFactory
@@ -123,6 +129,8 @@ class AnimeController extends Controller
 	}
 
 	/**
+	 * Вывод RSS
+	 *
 	 * @return mixed
 	 */
 	public function animeRss(): mixed
@@ -139,6 +147,8 @@ class AnimeController extends Controller
 	}
 
 	/**
+	 * Добавление комментария
+	 *
 	 * @param  int             $id
 	 * @param  CommentRequest  $request
 	 *
@@ -156,14 +166,15 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @param  int   $id
+	 * Удаление комментария
+	 *
 	 * @param  int   $commentId
 	 * @param  bool  $fullDel
 	 *
 	 * @throws \Exception
 	 * @return RedirectResponse
 	 */
-	public function deleteComments(int $id, int $commentId, bool $fullDel = false): RedirectResponse
+	public function deleteComments(int $commentId, bool $fullDel = false): RedirectResponse
 	{
 		$del = $this->anime->delComments($commentId, $fullDel);
 
