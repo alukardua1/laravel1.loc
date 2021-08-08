@@ -31,9 +31,9 @@ class UserAdminController extends Controller
 	 */
 	public function index()
 	{
-		$allUser = $this->userRepository->getUser();
+		$allUser = $this->userRepository->getUser()->paginate($this->paginate);
 
-		return view($this->backend . 'user.index', compact($allUser));
+		return view($this->backend . 'users.index', compact('allUser'));
 	}
 
 	/**
@@ -43,7 +43,7 @@ class UserAdminController extends Controller
 	 */
 	public function create()
 	{
-		return view($this->backend . 'user.add');
+		return view($this->backend . 'users.add');
 	}
 
 	/**
@@ -69,9 +69,10 @@ class UserAdminController extends Controller
 	 */
 	public function edit(string $login)
 	{
+		dd(__METHOD__, $login);
 		$user = $this->userRepository->getUser($login);
 
-		return view($this->backend . 'user.edit', compact('user'));
+		return view($this->backend . 'users.edit', compact('user'));
 	}
 
 	/**

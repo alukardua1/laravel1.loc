@@ -36,7 +36,7 @@ class UserRepository implements UserRepositoryInterfaces
 				->firstOrFail();
 		}
 
-		return User::get();
+		return User::orderBy('id', 'ASC');
 	}
 
 	/**
@@ -63,7 +63,9 @@ class UserRepository implements UserRepositoryInterfaces
 	public function setUsers(Request $request, string $login = null): mixed
 	{
 		$requestForm = $request->all();
-		$requestForm['password'] = Hash::make($requestForm['password1']);
+		if ($requestForm['password1']) {
+			$requestForm['password'] = Hash::make($requestForm['password1']);
+		}
 		$updateUser = User::updateOrCreate(['login' => $login], $requestForm);
 		if ($updateUser) {
 			if (!empty($requestForm['land'])) {
@@ -101,7 +103,8 @@ class UserRepository implements UserRepositoryInterfaces
 	 */
 	public function destroyUser(string $login): mixed
 	{
-		$del = User::findOrFail($login, ['*']);
+		$del = User::where('login', $login)->firstOrFail();
+
 		if ($del) {
 			return $del->forceDelete();
 		}

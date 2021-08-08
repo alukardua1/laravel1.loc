@@ -262,6 +262,10 @@
 				</select>
 			</div>
 		</div>
+		<div class="row mb-3">
+			<label class="form-label" for="reason_edit">Причина редактирования</label>
+			<input id="reason_edit" name="reason_edit" type="text" class="form-control" value="{{$currentAnime->reason_edit}}">
+		</div>
 		<div class="row">
 			<div class="col-4">
 				<div class="form-check form-switch">

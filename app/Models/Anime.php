@@ -55,6 +55,7 @@ class Anime extends Model
 		'broadcast',
 		'user_id',
 		'kind_id',
+		'reason_edit',
 	];
 
 	protected $withCount = [

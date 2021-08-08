@@ -52,8 +52,8 @@ Route::group(
 				Route::get('/add', [UserAdminController::class, 'create'])->name('addUserAdmin');
 				Route::post('/add', [UserAdminController::class, 'store'])->name('storeUserAdmin');
 				Route::get('/{login}/edit', [UserAdminController::class, 'edit'])->name('editUserAdmin');
-				Route::post('/{login}/update', [CategoryAdminController::class, 'update'])->name('updateUserAdmin');
-				Route::get('/{login}/delete', [CategoryAdminController::class, 'destroy'])->name('deleteUserAdmin');
+				Route::post('/{login}/update', [UserAdminController::class, 'update'])->name('updateUserAdmin');
+				Route::get('/{login}/delete', [UserAdminController::class, 'destroy'])->name('deleteUserAdmin');
 			}
 		);
 		Route::group(

@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
 				$table->text('description')->nullable();
 				$table->text('signature')->nullable();
 				$table->boolean('active')->default(1);
+				$table->timestamp('register')->default(date('Y-m-d H:i:s'));
 				$table->timestamp('last_login')->default(date('Y-m-d H:i:s'));
 				$table->timestamps();
 			}
