@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.53.1.
+ * Generated for Laravel 8.54.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2641,16 +2641,16 @@
         }
                     /**
          * Compile Blade echos into valid PHP.
-         *
-         * @param string $value
-         * @return string 
-         * @static 
-         */ 
-        public static function compileEchos($value)
-        {
-                        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
-                        return $instance->compileEchos($value);
-        }
+                     *
+                     * @param  string  $value
+                     * @return string
+                     * @static
+                     */
+	        public static function compileEchos($value)
+	        {
+		        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
+		        return $instance->compileEchos($value);
+	        }
 
 	        /**
 	         * Apply the echo handler for the value if it exists.
@@ -2660,13 +2660,13 @@
 	         * @return string
 	         * @static
 	         */
-        public static function applyEchoHandler($value)
-        {
-                        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
-                        return $instance->applyEchoHandler($value);
+	        public static function applyEchoHandler($value)
+	        {
+		        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
+		        return $instance->applyEchoHandler($value);
+	        }
+
         }
-         
-    }
             /**
      * 
      *
@@ -5797,22 +5797,24 @@
          * @param string $path
          * @param string $contents
          * @param bool $lock
-         * @return int|bool 
-         * @static 
-         */ 
-        public static function put($path, $contents, $lock = false)
-        {
-                        /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        return $instance->put($path, $contents, $lock);
-        }
-                    /**
-         * Write the contents of a file, replacing it atomically if it already exists.
-         *
-         * @param string               $path
-                     * @param  string  $content
-                     * @return void
+         * @return int|bool
                      * @static
                      */
+	        public static function put($path, $contents, $lock = false)
+	        {
+		        /** @var \Illuminate\Filesystem\Filesystem $instance */
+		        return $instance->put($path, $contents, $lock);
+	        }
+
+	        /**
+	         * Write the contents of a file, replacing it atomically if it already exists.
+	         *
+	         * @param  string  $path
+	         * @param  string  $content
+	         *
+	         * @return void
+	         * @static
+	         */
 	        public static function replace($path, $content)
 	        {
 		        /** @var \Illuminate\Filesystem\Filesystem $instance */
@@ -5847,16 +5849,17 @@
 	        public static function prepend($path, $data)
 	        {
 		        /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        return $instance->prepend($path, $data);
-        }
-                    /**
-         * Append to a file.
-         *
-         * @param string $path
-         * @param string $data
-         * @return int 
-         * @static 
-         */ 
+		        return $instance->prepend($path, $data);
+	        }
+
+	        /**
+	         * Append to a file.
+	         *
+	         * @param  string  $path
+	         * @param  string  $data
+	         * @return int
+	         * @static
+	         */
         public static function append($path, $data)
         {
                         /** @var \Illuminate\Filesystem\Filesystem $instance */
@@ -10615,16 +10618,16 @@
         }
                     /**
          * Determine if the request contains any of the given inputs.
-         *
-         * @param string|array $keys
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasAny($keys)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->hasAny($keys);
-        }
+                     *
+                     * @param  string|array  $keys
+                     * @return bool
+                     * @static
+                     */
+	        public static function hasAny($keys)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->hasAny($keys);
+	        }
 
 	        /**
 	         * Apply the callback if the request contains the given input item key.
@@ -10632,6 +10635,7 @@
 	         * @param  string         $key
 	         * @param  callable       $callback
 	         * @param  callable|null  $default
+	         *
 	         * @return $this|mixed
 	         * @static
 	         */
@@ -10639,15 +10643,17 @@
 	        {
 		        /** @var \Illuminate\Http\Request $instance */
 		        return $instance->whenHas($key, $callback, $default);
-        }
-                    /**
-         * Determine if the request contains a non-empty value for an input item.
-         *
-         * @param string|array $key
-         * @return bool 
-         * @static 
-         */ 
-        public static function filled($key)
+	        }
+
+	        /**
+	         * Determine if the request contains a non-empty value for an input item.
+	         *
+	         * @param  string|array  $key
+	         *
+	         * @return bool
+	         * @static
+	         */
+	        public static function filled($key)
         {
                         /** @var \Illuminate\Http\Request $instance */
                         return $instance->filled($key);
@@ -10666,16 +10672,16 @@
         }
                     /**
          * Determine if the request contains a non-empty value for any of the given inputs.
-         *
-         * @param string|array $keys
-         * @return bool 
-         * @static 
-         */ 
-        public static function anyFilled($keys)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->anyFilled($keys);
-        }
+                     *
+                     * @param  string|array  $keys
+                     * @return bool
+                     * @static
+                     */
+	        public static function anyFilled($keys)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->anyFilled($keys);
+	        }
 
 	        /**
 	         * Apply the callback if the request contains a non-empty value for the given input item key.
@@ -10683,6 +10689,7 @@
 	         * @param  string         $key
 	         * @param  callable       $callback
 	         * @param  callable|null  $default
+	         *
 	         * @return $this|mixed
 	         * @static
 	         */
@@ -10690,14 +10697,15 @@
 	        {
 		        /** @var \Illuminate\Http\Request $instance */
 		        return $instance->whenFilled($key, $callback, $default);
-        }
-                    /**
-         * Determine if the request is missing a given input item key.
-         *
-         * @param string|array $key
-         * @return bool 
-         * @static 
-         */ 
+	        }
+
+	        /**
+	         * Determine if the request is missing a given input item key.
+	         *
+	         * @param  string|array  $key
+	         * @return bool
+	         * @static
+	         */
         public static function missing($key)
         {
                         /** @var \Illuminate\Http\Request $instance */
@@ -13746,17 +13754,18 @@
                         /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
                         return $instance->deleteDirectory($directory);
         }
-                    /**
-         * Flush the Flysystem cache.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function flushCache()
-        {
-                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
-                        $instance->flushCache();
-        }
+
+	        /**
+	         * Flush the Flysystem cache.
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function flushCache()
+	        {
+		        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+		        $instance->flushCache();
+	        }
 
 	        /**
 	         * Get the Flysystem driver.
@@ -13826,7 +13835,7 @@
 	        {
 		        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
 		        return $instance->macroCall($method, $parameters);
-	        }
+        }
          
     }
             /**
@@ -14382,26 +14391,28 @@
         }
                     /**
          * Register a custom dependent validator extension.
-         *
-         * @param string $rule
-         * @param \Closure|string $extension
-         * @param string|null $message
-         * @return void 
-         * @static 
-         */ 
-        public static function extendDependent($rule, $extension, $message = null)
-        {
-                        /** @var \Illuminate\Validation\Factory $instance */
-                        $instance->extendDependent($rule, $extension, $message);
-        }
-                    /**
-         * Register a custom validator message replacer.
                      *
                      * @param  string           $rule
-                     * @param  \Closure|string  $replacer
+                     * @param  \Closure|string  $extension
+                     * @param  string|null      $message
                      * @return void
                      * @static
                      */
+	        public static function extendDependent($rule, $extension, $message = null)
+	        {
+		        /** @var \Illuminate\Validation\Factory $instance */
+		        $instance->extendDependent($rule, $extension, $message);
+	        }
+
+	        /**
+	         * Register a custom validator message replacer.
+	         *
+	         * @param  string           $rule
+	         * @param  \Closure|string  $replacer
+	         *
+	         * @return void
+	         * @static
+	         */
 	        public static function replacer($rule, $replacer)
 	        {
 		        /** @var \Illuminate\Validation\Factory $instance */
@@ -14431,12 +14442,13 @@
 	        public static function resolver($resolver)
 	        {
 		        /** @var \Illuminate\Validation\Factory $instance */
-                        $instance->resolver($resolver);
-        }
-                    /**
-         * Get the Translator implementation.
-         *
-         * @return \Illuminate\Contracts\Translation\Translator 
+		        $instance->resolver($resolver);
+	        }
+
+	        /**
+	         * Get the Translator implementation.
+	         *
+	         * @return \Illuminate\Contracts\Translation\Translator
          * @static 
          */ 
         public static function getTranslator()
@@ -17679,19 +17691,19 @@ namespace  {
              
                 /**
              * Paginate the given query into a simple paginator.
-             *
-             * @param int|null $perPage
-             * @param array $columns
-             * @param string $pageName
-             * @param int|null $page
-             * @return \Illuminate\Contracts\Pagination\Paginator 
-             * @static 
-             */ 
-            public static function simplePaginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->simplePaginate($perPage, $columns, $pageName, $page);
-            }
+                 *
+                 * @param  int|null  $perPage
+                 * @param  array     $columns
+                 * @param  string    $pageName
+                 * @param  int|null  $page
+                 * @return \Illuminate\Contracts\Pagination\Paginator
+                 * @static
+                 */
+	            public static function simplePaginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->simplePaginate($perPage, $columns, $pageName, $page);
+	            }
 
 	            /**
 	             * Paginate the given query into a cursor paginator.
@@ -17700,13 +17712,14 @@ namespace  {
 	             * @param  array                                      $columns
 	             * @param  string                                     $cursorName
 	             * @param  \Illuminate\Pagination\Cursor|string|null  $cursor
+	             *
 	             * @return \Illuminate\Contracts\Pagination\CursorPaginator
-             * @static 
-             */ 
-            public static function cursorPaginate($perPage = null, $columns = [], $cursorName = 'cursor', $cursor = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->cursorPaginate($perPage, $columns, $cursorName, $cursor);
+	             * @static
+	             */
+	            public static function cursorPaginate($perPage = null, $columns = [], $cursorName = 'cursor', $cursor = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->cursorPaginate($perPage, $columns, $cursorName, $cursor);
             }
              
                 /**
@@ -18490,49 +18503,52 @@ namespace  {
             public static function baseSole($columns = [])
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->baseSole($columns);
+	            return $instance->baseSole($columns);
             }
-             
-                /**
-             * Pass the query to a given callback.
-             *
-             * @param callable $callback
-             * @return \Illuminate\Database\Eloquent\Builder|static 
-             * @static 
-             */ 
-            public static function tap($callback)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-	            return $instance->tap($callback);
-            }
+
+	            /**
+	             * Pass the query to a given callback.
+	             *
+	             * @param  callable  $callback
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function tap($callback)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->tap($callback);
+	            }
 
 	            /**
 	             * Apply the callback if the given "value" is truthy.
 	             *
-	             * @param  mixed         $value
-	             * @param  callable      $callback
-	             * @param  callable|null $default
-             * @return $this|mixed 
-             * @static 
-             */ 
-            public static function when($value, $callback, $default = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->when($value, $callback, $default);
-            }
+	             * @param  mixed          $value
+	             * @param  callable       $callback
+	             * @param  callable|null  $default
+	             *
+	             * @return $this|mixed
+	             * @static
+	             */
+	            public static function when($value, $callback, $default = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->when($value, $callback, $default);
+	            }
 
 	            /**
 	             * Apply the callback if the given "value" is falsy.
 	             *
-	             * @param  mixed         $value
-	             * @param  callable      $callback
-	             * @param  callable|null $default
-             * @return $this|mixed 
-             * @static 
-             */ 
-            public static function unless($value, $callback, $default = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+	             * @param  mixed          $value
+	             * @param  callable       $callback
+	             * @param  callable|null  $default
+	             *
+	             * @return $this|mixed
+	             * @static
+	             */
+	            public static function unless($value, $callback, $default = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->unless($value, $callback, $default);
             }
              
@@ -18604,34 +18620,36 @@ namespace  {
             public static function fromRaw($expression, $bindings = [])
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->fromRaw($expression, $bindings);
+	            return $instance->fromRaw($expression, $bindings);
             }
-             
-                /**
-             * Add a new select column to the query.
-             *
-             * @param array|mixed $column
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function addSelect($column)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-	            return $instance->addSelect($column);
-            }
+
+	            /**
+	             * Add a new select column to the query.
+	             *
+	             * @param  array|mixed  $column
+	             *
+	             * @return \Illuminate\Database\Query\Builder
+	             * @static
+	             */
+	            public static function addSelect($column)
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->addSelect($column);
+	            }
 
 	            /**
 	             * Force the query to only return distinct results.
 	             *
 	             * @param  mixed  $distinct
+	             *
 	             * @return \Illuminate\Database\Query\Builder
 	             * @static
 	             */
-            public static function distinct()
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->distinct();
-            }
+	            public static function distinct()
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->distinct();
+	            }
              
                 /**
              * Set the table which the query is targeting.
@@ -19715,32 +19733,34 @@ namespace  {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->orHavingRaw($sql, $bindings);
             }
-             
-                /**
-             * Add an "order by" clause to the query.
-             *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
-             * @param string $direction
-             * @return \Illuminate\Database\Query\Builder 
-             * @throws \InvalidArgumentException
-             * @static 
-             */ 
-            public static function orderBy($column, $direction = 'asc')
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->orderBy($column, $direction);
-            }
+
+	            /**
+	             * Add an "order by" clause to the query.
+	             *
+	             * @param  \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string  $column
+	             * @param  string                                                                                    $direction
+	             *
+	             * @throws \InvalidArgumentException
+	             * @static
+	             * @return \Illuminate\Database\Query\Builder
+	             */
+	            public static function orderBy($column, $direction = 'asc')
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->orderBy($column, $direction);
+	            }
 
 	            /**
 	             * Add a descending "order by" clause to the query.
 	             *
 	             * @param  \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string  $column
+	             *
 	             * @return \Illuminate\Database\Query\Builder
-             * @static 
-             */ 
-            public static function orderByDesc($column)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
+	             * @static
+	             */
+	            public static function orderByDesc($column)
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->orderByDesc($column);
             }
              
@@ -19849,35 +19869,37 @@ namespace  {
             public static function forPageBeforeId($perPage = 15, $lastId = 0, $column = 'id')
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->forPageBeforeId($perPage, $lastId, $column);
+	            return $instance->forPageBeforeId($perPage, $lastId, $column);
             }
-             
-                /**
-             * Constrain the query to the next "page" of results after a given ID.
-             *
-             * @param int $perPage
-             * @param int|null $lastId
-             * @param string $column
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function forPageAfterId($perPage = 15, $lastId = 0, $column = 'id')
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->forPageAfterId($perPage, $lastId, $column);
-            }
+
+	            /**
+	             * Constrain the query to the next "page" of results after a given ID.
+	             *
+	             * @param  int       $perPage
+	             * @param  int|null  $lastId
+	             * @param  string    $column
+	             *
+	             * @return \Illuminate\Database\Query\Builder
+	             * @static
+	             */
+	            public static function forPageAfterId($perPage = 15, $lastId = 0, $column = 'id')
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->forPageAfterId($perPage, $lastId, $column);
+	            }
 
 	            /**
 	             * Remove all existing orders and optionally add a new order.
 	             *
 	             * @param  \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string|null  $column
 	             * @param  string                                                                                         $direction
+	             *
 	             * @return \Illuminate\Database\Query\Builder
-             * @static 
-             */ 
-            public static function reorder($column = null, $direction = 'asc')
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
+	             * @static
+	             */
+	            public static function reorder($column = null, $direction = 'asc')
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->reorder($column, $direction);
             }
              

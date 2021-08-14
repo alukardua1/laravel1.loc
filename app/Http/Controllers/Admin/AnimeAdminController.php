@@ -69,7 +69,7 @@ class AnimeAdminController extends Controller
 	{
 		$requestAnime = $this->animeRepository->setAnime($animeRequest);
 
-		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения');
+		return $this->ifErrorAddUpdate($requestAnime, 'showAllAnimeAdmin', 'Ошибка сохранения');
 	}
 
 	/**

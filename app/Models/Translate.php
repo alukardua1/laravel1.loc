@@ -38,4 +38,9 @@ class Translate extends Model
 	{
 		return $this->belongsToMany(Anime::class)->latest();
 	}
+
+	public function getTableOrder()
+	{
+		return $this->belongsToMany(TableOrder::class)->latest();
+	}
 }

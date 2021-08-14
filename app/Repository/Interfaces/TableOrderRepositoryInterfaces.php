@@ -21,14 +21,13 @@ interface TableOrderRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function get(int $id = null, int $user_id = null);
+	public function get(int $id = null, int $user_id = null): mixed;
 
 	/**
 	 * @param  \App\Http\Requests\TableOrderRequest  $request
-	 * @param  int|null                              $user_id
 	 * @param  int|null                              $id
 	 *
 	 * @return mixed
 	 */
-	public function set(TableOrderRequest $request, int $user_id = null, int $id = null);
+	public function set(TableOrderRequest $request, int $id = null): mixed;
 }

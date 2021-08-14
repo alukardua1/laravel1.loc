@@ -29,7 +29,7 @@ class UserComposer
 	 */
 	public function user(): mixed
 	{
-		return $this->userRepository->getUser();
+		return $this->userRepository->getUser()->get();
 	}
 
 	/**

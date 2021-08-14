@@ -25,7 +25,7 @@ class TableOrderController extends Controller
 	 */
 	public function index()
 	{
-		$allTableOrder = $this->tableOrderRepository->get(null, \Auth::user()->id)->paginate($this->paginate);
+		$allTableOrder = $this->tableOrderRepository->get(null, \Auth::id())->paginate($this->paginate);
 		return view($this->frontend . 'order.order_show', compact('allTableOrder'));
 	}
 
@@ -48,8 +48,7 @@ class TableOrderController extends Controller
 	 */
 	public function store(TableOrderRequest $request)
 	{
-		$user_id = \Auth::user()->id;
-		$tableOrder = $this->tableOrderRepository->set($request, $user_id);
+		$tableOrder = $this->tableOrderRepository->set($request);
 		if ($tableOrder) {
 			return redirect()->route('tableOrder');
 		}
@@ -60,13 +59,14 @@ class TableOrderController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\TableOrder  $tableOrder
+	 * @param  int  $id
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show(TableOrder $tableOrder)
+	public function show(int $id)
 	{
-		//
+		$tableOrderShow = $this->tableOrderRepository->get($id, \Auth::id())->first();
+		return view($this->frontend . 'order.order_edit', compact('tableOrderShow'));
 	}
 
 	/**
@@ -92,12 +92,12 @@ class TableOrderController extends Controller
 	 * @param  \App\Http\Requests\TableOrderRequest  $request
 	 * @param                                        $id
 	 *
-	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 * @todo доработать
 	 */
 	public function update(TableOrderRequest $request, $id)
 	{
-		$tableOrder = $this->tableOrderRepository->set($request, null, $id);
+		$tableOrder = $this->tableOrderRepository->set($request, $id);
 		if ($tableOrder) {
 			return redirect()->route('tableOrder');
 		}

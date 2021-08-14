@@ -27,7 +27,7 @@
 			<tr>
 				<td>{{$value->id}}</td>
 				<td>{{$value->status}}</td>
-				<td>{{$value->name_rus}} / {{$value->name_origin}}</td>
+				<td><a href="{{route('tableOrderShow', $value->id)}}">{{$value->name_rus}} / {{$value->name_origin}}</a></td>
 				<td>{{$value->getTranslate->name}}</td>
 				<td>
 					@if ($value->wa_url)

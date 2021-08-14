@@ -23,7 +23,11 @@ class TableOrder extends Model
 		'imdb_url',
 		'shikimori_url',
 		'translate_id',
-		'download_url'
+		'download_url',
+	];
+
+	protected $appends = [
+		'getTranslate',
 	];
 
 	/**

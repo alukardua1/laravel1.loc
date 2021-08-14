@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 /**
@@ -23,7 +24,7 @@ class DatabaseSeeder extends Seeder
 		$this->call(CountrySeeder::class);
 		$this->call(GroupSeeder::class);
 		$this->call(UsersSeeder::class);
-		\App\Models\User::factory(10)->create();
+		User::factory(10)->create();
 		$this->call(KindSeeder::class);
 		$this->call(CategorySeeder::class);
 		$this->call(RatingSeeder::class);

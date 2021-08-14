@@ -18,6 +18,7 @@
 @section('content')
 	<form action="{{route('tableOrderStore')}}" method="post">
 		@csrf
+		<input type="hidden" id="user_id" name="user_id" value="{{Auth::id()}}">
 		<div class="row mb-3">
 			<div class="col">
 				<label for="name_rus" class="form-label">{{__('main.name_rus')}} <span class="text-danger">*</span></label>

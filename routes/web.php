@@ -86,7 +86,9 @@ Route::group(
 	],
 	function () {
 		Route::get('/', [TableOrderController::class, 'index'])->name('tableOrder');
-		Route::get('/{id}/edit', [TableOrderController::class, 'edit'])->name('tableOrderEdit')->middleware('is_admin');
+		Route::get('/{id}', [TableOrderController::class, 'show'])->name('tableOrderShow')->where('id', '[0-9]+');
+		Route::get('/{id}/edit', [TableOrderController::class, 'edit'])->name('tableOrderEdit')->middleware('is_admin')->where('id', '[0-9]+');
+		Route::post('/{id}/update', [TableOrderController::class, 'update'])->name('tableOrderUpdate')->where('id', '[0-9]+');
 		Route::get('/add', [TableOrderController::class, 'create'])->name('tableOrderAdd');
 		Route::post('/add', [TableOrderController::class, 'store'])->name('tableOrderStore');
 	}
