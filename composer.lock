@@ -116,19 +116,19 @@
             "time": "2021-06-18T13:26:35+00:00"
         },
         {
-            "name": "brick/math",
-            "version": "0.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/brick/math.git",
-                "reference": "dff976c2f3487d42c1db75a3b180e2b9f0e72ce0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/dff976c2f3487d42c1db75a3b180e2b9f0e72ce0",
-                "reference": "dff976c2f3487d42c1db75a3b180e2b9f0e72ce0",
-                "shasum": ""
-            },
+		  "name": "brick/math",
+		  "version": "0.9.3",
+		  "source": {
+			"type": "git",
+			"url": "https://github.com/brick/math.git",
+			"reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae"
+		  },
+		  "dist": {
+			"type": "zip",
+			"url": "https://api.github.com/repos/brick/math/zipball/ca57d18f028f84f777b2168cd1911b0dee2343ae",
+			"reference": "ca57d18f028f84f777b2168cd1911b0dee2343ae",
+			"shasum": ""
+		  },
             "require": {
                 "ext-json": "*",
                 "php": "^7.1 || ^8.0"
@@ -136,7 +136,7 @@
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
                 "phpunit/phpunit": "^7.5.15 || ^8.5 || ^9.0",
-                "vimeo/psalm": "4.3.2"
+			  "vimeo/psalm": "4.9.2"
             },
             "type": "library",
             "autoload": {
@@ -161,15 +161,19 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.9.2"
+			  "source": "https://github.com/brick/math/tree/0.9.3"
             },
             "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2021-01-20T22:51:39+00:00"
+			  {
+				"url": "https://github.com/BenMorel",
+				"type": "github"
+			  },
+			  {
+				"url": "https://tidelift.com/funding/github/packagist/brick/math",
+				"type": "tidelift"
+			  }
+			],
+		  "time": "2021-08-15T20:50:18+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -189,16 +193,16 @@
                 "phpunit/phpunit": "^7 | ^8 | ^9",
                 "squizlabs/php_codesniffer": "^3.4"
             },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DASPRiD\\Enum\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
+		  "type": "library",
+		  "autoload": {
+			"psr-4": {
+			  "DASPRiD\\Enum\\": "src/"
+			}
+		  },
+		  "notification-url": "https://packagist.org/downloads/",
+		  "license": [
+			"BSD-2-Clause"
+		  ],
 		  "authors": [
 			{
 			  "name": "Ben Scholzen 'DASPRiD'",
@@ -220,16 +224,16 @@
 		},
 	  {
 		"name": "dflydev/dot-access-data",
-		"version": "v3.0.0",
+		"version": "v3.0.1",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/dflydev/dflydev-dot-access-data.git",
-		  "reference": "e04ff030d24a33edc2421bef305e32919dd78fc3"
+		  "reference": "0992cc19268b259a39e86f296da5f0677841f42c"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/e04ff030d24a33edc2421bef305e32919dd78fc3",
-		  "reference": "e04ff030d24a33edc2421bef305e32919dd78fc3",
+		  "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/0992cc19268b259a39e86f296da5f0677841f42c",
+		  "reference": "0992cc19268b259a39e86f296da5f0677841f42c",
 		  "shasum": ""
 		},
 		"require": {
@@ -289,9 +293,9 @@
 		],
 		"support": {
 		  "issues": "https://github.com/dflydev/dflydev-dot-access-data/issues",
-		  "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.0"
+		  "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.1"
 		},
-		"time": "2021-01-01T22:08:42+00:00"
+		"time": "2021-08-13T13:06:58+00:00"
 	  },
 	  {
 		"name": "doctrine/inflector",
@@ -314,16 +318,16 @@
 		  "doctrine/coding-standard": "^7.0",
 		  "phpstan/phpstan": "^0.11",
 		  "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
+		  "phpstan/phpstan-strict-rules": "^0.11",
+		  "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+		},
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-master": "2.0.x-dev"
+		  }
+		},
+		"autoload": {
                 "psr-4": {
                     "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
                 }
@@ -936,16 +940,16 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
+		  "license": [
+			"MIT"
+		  ],
+		  "authors": [
+			{
+			  "name": "Michael Dowling",
+			  "email": "mtdowling@gmail.com",
+			  "homepage": "https://github.com/mtdowling"
+			}
+		  ],
 		  "description": "Guzzle promises library",
 		  "keywords": [
 			"promise"
@@ -1029,16 +1033,16 @@
 		  "stream",
 		  "uri",
 		  "url"
-            ],
-            "support": {
-                "issues": "https://github.com/guzzle/psr7/issues",
-			  "source": "https://github.com/guzzle/psr7/tree/2.0.0"
-            },
+		],
+		"support": {
+		  "issues": "https://github.com/guzzle/psr7/issues",
+		  "source": "https://github.com/guzzle/psr7/tree/2.0.0"
+		},
 		"time": "2021-06-30T20:03:07+00:00"
-        },
-        {
-            "name": "inertiajs/inertia-laravel",
-            "version": "v0.3.6",
+	  },
+	  {
+		"name": "inertiajs/inertia-laravel",
+		"version": "v0.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inertiajs/inertia-laravel.git",
@@ -1080,26 +1084,26 @@
                 {
                     "name": "Jonathan Reinink",
                     "email": "jonathan@reinink.ca",
-                    "homepage": "https://reinink.ca"
-                }
-            ],
-            "description": "The Laravel adapter for Inertia.js.",
-            "keywords": [
-                "inertia",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/inertiajs/inertia-laravel/issues",
-			  "source": "https://github.com/inertiajs/inertia-laravel/tree/v0.3.6"
-			},
-		  "funding": [
-			{
-			  "url": "https://github.com/reinink",
-			  "type": "github"
-			}
-		  ],
-		  "time": "2021-01-08T13:16:40+00:00"
+				  "homepage": "https://reinink.ca"
+				}
+			],
+		"description": "The Laravel adapter for Inertia.js.",
+		"keywords": [
+		  "inertia",
+		  "laravel"
+		],
+		"support": {
+		  "issues": "https://github.com/inertiajs/inertia-laravel/issues",
+		  "source": "https://github.com/inertiajs/inertia-laravel/tree/v0.3.6"
 		},
+		"funding": [
+		  {
+			"url": "https://github.com/reinink",
+			"type": "github"
+		  }
+		],
+		"time": "2021-01-08T13:16:40+00:00"
+	  },
 	  {
 		"name": "intervention/image",
 		"version": "2.6.1",
@@ -1129,35 +1133,35 @@
 		  "intervention/imagecache": "Caching extension for the Intervention Image library"
 		},
 		"type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Intervention\\Image\\ImageServiceProvider"
-                    ],
-                    "aliases": {
-                        "Image": "Intervention\\Image\\Facades\\Image"
+		"extra": {
+		  "branch-alias": {
+			"dev-master": "2.4-dev"
+		  },
+		  "laravel": {
+			"providers": [
+			  "Intervention\\Image\\ImageServiceProvider"
+			],
+			"aliases": {
+			  "Image": "Intervention\\Image\\Facades\\Image"
                     }
                 }
             },
-            "autoload": {
-                "psr-4": {
-                    "Intervention\\Image\\": "src/Intervention/Image"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-			  {
-				"name": "Oliver Vogel",
-				"email": "oliver@olivervogel.com",
-				"homepage": "http://olivervogel.com/"
-			  }
-			],
+		"autoload": {
+		  "psr-4": {
+			"Intervention\\Image\\": "src/Intervention/Image"
+		  }
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Oliver Vogel",
+			"email": "oliver@olivervogel.com",
+			"homepage": "http://olivervogel.com/"
+		  }
+		],
 		"description": "Image handling and manipulation library with support for Laravel integration",
 		"homepage": "http://image.intervention.io/",
 		"keywords": [
@@ -1198,16 +1202,16 @@
 		  "reference": "b963dee47429a49c9669981cfa9a8362ce209278",
 		  "shasum": ""
 		},
-            "require": {
-                "ext-json": "*",
-                "php": ">=5.6",
-                "psr/log": "1.*"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Clockwork\\Support\\Laravel\\ClockworkServiceProvider"
+		"require": {
+		  "ext-json": "*",
+		  "php": ">=5.6",
+		  "psr/log": "1.*"
+		},
+		"type": "library",
+		"extra": {
+		  "laravel": {
+			"providers": [
+			  "Clockwork\\Support\\Laravel\\ClockworkServiceProvider"
                     ],
                     "aliases": {
                         "Clockwork": "Clockwork\\Support\\Laravel\\Facade"
@@ -1388,20 +1392,20 @@
             ],
             "time": "2020-06-13T08:05:20+00:00"
         },
-        {
-            "name": "laravel/fortify",
-            "version": "v1.7.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/fortify.git",
-                "reference": "3e187b3a440f6d41c3b4599ca5d6167a52289a4e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/3e187b3a440f6d41c3b4599ca5d6167a52289a4e",
-                "reference": "3e187b3a440f6d41c3b4599ca5d6167a52289a4e",
-                "shasum": ""
-            },
+	  {
+		"name": "laravel/fortify",
+		"version": "v1.8.0",
+		"source": {
+		  "type": "git",
+		  "url": "https://github.com/laravel/fortify.git",
+		  "reference": "84649d53465bb4eae1b09357c98ceef56a41b680"
+		},
+		"dist": {
+		  "type": "zip",
+		  "url": "https://api.github.com/repos/laravel/fortify/zipball/84649d53465bb4eae1b09357c98ceef56a41b680",
+		  "reference": "84649d53465bb4eae1b09357c98ceef56a41b680",
+		  "shasum": ""
+		},
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
                 "ext-json": "*",
@@ -1431,38 +1435,38 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Backend controllers and scaffolding for Laravel authentication.",
-		  "keywords": [
-			"auth",
-			"laravel"
-		  ],
-		  "support": {
-			"issues": "https://github.com/laravel/fortify/issues",
-			"source": "https://github.com/laravel/fortify"
-		  },
-		  "time": "2021-06-29T16:14:35+00:00"
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Taylor Otwell",
+			"email": "taylor@laravel.com"
+		  }
+		],
+		"description": "Backend controllers and scaffolding for Laravel authentication.",
+		"keywords": [
+		  "auth",
+		  "laravel"
+		],
+		"support": {
+		  "issues": "https://github.com/laravel/fortify/issues",
+		  "source": "https://github.com/laravel/fortify"
 		},
+		"time": "2021-08-10T17:23:06+00:00"
+	  },
 	  {
 		"name": "laravel/framework",
-		"version": "v8.54.0",
+		"version": "v8.55.0",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/laravel/framework.git",
-		  "reference": "7b88554cd1aeb52b7f82689bf244182e7a81894b"
+		  "reference": "997e2aa23e9103137715018ae926c52f8a1703f2"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/laravel/framework/zipball/7b88554cd1aeb52b7f82689bf244182e7a81894b",
-		  "reference": "7b88554cd1aeb52b7f82689bf244182e7a81894b",
+		  "url": "https://api.github.com/repos/laravel/framework/zipball/997e2aa23e9103137715018ae926c52f8a1703f2",
+		  "reference": "997e2aa23e9103137715018ae926c52f8a1703f2",
 		  "shasum": ""
 		},
 		"require": {
@@ -1493,16 +1497,16 @@
 		  "symfony/var-dumper": "^5.1.4",
 		  "tijsverkoyen/css-to-inline-styles": "^2.2.2",
 		  "vlucas/phpdotenv": "^5.2",
-                "voku/portable-ascii": "^1.4.8"
-            },
-            "conflict": {
-                "tightenco/collect": "<5.5.33"
-            },
-            "provide": {
-                "psr/container-implementation": "1.0"
-            },
-            "replace": {
-                "illuminate/auth": "self.version",
+		  "voku/portable-ascii": "^1.4.8"
+		},
+		"conflict": {
+		  "tightenco/collect": "<5.5.33"
+		},
+		"provide": {
+		  "psr/container-implementation": "1.0"
+		},
+		"replace": {
+		  "illuminate/auth": "self.version",
                 "illuminate/broadcasting": "self.version",
                 "illuminate/bus": "self.version",
                 "illuminate/cache": "self.version",
@@ -1525,57 +1529,57 @@
                 "illuminate/pagination": "self.version",
                 "illuminate/pipeline": "self.version",
                 "illuminate/queue": "self.version",
-                "illuminate/redis": "self.version",
-                "illuminate/routing": "self.version",
-                "illuminate/session": "self.version",
-                "illuminate/support": "self.version",
-                "illuminate/testing": "self.version",
-                "illuminate/translation": "self.version",
-                "illuminate/validation": "self.version",
-                "illuminate/view": "self.version"
-            },
-            "require-dev": {
-			  "aws/aws-sdk-php": "^3.186.4",
-			  "doctrine/dbal": "^2.6|^3.0",
-			  "filp/whoops": "^2.8",
-			  "guzzlehttp/guzzle": "^6.5.5|^7.0.1",
-			  "league/flysystem-cached-adapter": "^1.0",
-			  "mockery/mockery": "^1.4.2",
-			  "orchestra/testbench-core": "^6.23",
-			  "pda/pheanstalk": "^4.0",
-			  "phpunit/phpunit": "^8.5.8|^9.3.3",
-			  "predis/predis": "^1.1.2",
-			  "symfony/cache": "^5.1.4"
-			},
-            "suggest": {
-			  "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage and SES mail driver (^3.186.4).",
-			  "brianium/paratest": "Required to run tests in parallel (^6.0).",
-			  "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6|^3.0).",
-			  "ext-ftp": "Required to use the Flysystem FTP driver.",
-			  "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
-			  "ext-memcached": "Required to use the memcache cache driver.",
-			  "ext-pcntl": "Required to use all features of the queue worker.",
-			  "ext-posix": "Required to use all features of the queue worker.",
-			  "ext-redis": "Required to use the Redis cache and queue drivers (^4.0|^5.0).",
-			  "fakerphp/faker": "Required to use the eloquent factory builder (^1.9.1).",
-			  "filp/whoops": "Required for friendly error pages in development (^2.8).",
-			  "guzzlehttp/guzzle": "Required to use the HTTP Client, Mailgun mail driver and the ping methods on schedules (^6.5.5|^7.0.1).",
-			  "laravel/tinker": "Required to use the tinker console command (^2.0).",
-			  "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (^1.0).",
-			  "league/flysystem-cached-adapter": "Required to use the Flysystem cache (^1.0).",
-			  "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0).",
-			  "mockery/mockery": "Required to use mocking (^1.4.2).",
-			  "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
-			  "pda/pheanstalk": "Required to use the beanstalk queue driver (^4.0).",
-			  "phpunit/phpunit": "Required to use assertions and run tests (^8.5.8|^9.3.3).",
-			  "predis/predis": "Required to use the predis connector (^1.1.2).",
-                "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0).",
-                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0|^5.0|^6.0).",
-                "symfony/cache": "Required to PSR-6 cache bridge (^5.1.4).",
-                "symfony/filesystem": "Required to enable support for relative symbolic links (^5.1.4).",
-                "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0).",
-                "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
-            },
+		  "illuminate/redis": "self.version",
+		  "illuminate/routing": "self.version",
+		  "illuminate/session": "self.version",
+		  "illuminate/support": "self.version",
+		  "illuminate/testing": "self.version",
+		  "illuminate/translation": "self.version",
+		  "illuminate/validation": "self.version",
+		  "illuminate/view": "self.version"
+		},
+		"require-dev": {
+		  "aws/aws-sdk-php": "^3.189.0",
+		  "doctrine/dbal": "^2.6|^3.0",
+		  "filp/whoops": "^2.8",
+		  "guzzlehttp/guzzle": "^6.5.5|^7.0.1",
+		  "league/flysystem-cached-adapter": "^1.0",
+		  "mockery/mockery": "^1.4.2",
+		  "orchestra/testbench-core": "^6.23",
+		  "pda/pheanstalk": "^4.0",
+		  "phpunit/phpunit": "^8.5.8|^9.3.3",
+		  "predis/predis": "^1.1.2",
+		  "symfony/cache": "^5.1.4"
+		},
+		"suggest": {
+		  "aws/aws-sdk-php": "Required to use the SQS queue driver, DynamoDb failed job storage and SES mail driver (^3.189.0).",
+		  "brianium/paratest": "Required to run tests in parallel (^6.0).",
+		  "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6|^3.0).",
+		  "ext-ftp": "Required to use the Flysystem FTP driver.",
+		  "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
+		  "ext-memcached": "Required to use the memcache cache driver.",
+		  "ext-pcntl": "Required to use all features of the queue worker.",
+		  "ext-posix": "Required to use all features of the queue worker.",
+		  "ext-redis": "Required to use the Redis cache and queue drivers (^4.0|^5.0).",
+		  "fakerphp/faker": "Required to use the eloquent factory builder (^1.9.1).",
+		  "filp/whoops": "Required for friendly error pages in development (^2.8).",
+		  "guzzlehttp/guzzle": "Required to use the HTTP Client, Mailgun mail driver and the ping methods on schedules (^6.5.5|^7.0.1).",
+		  "laravel/tinker": "Required to use the tinker console command (^2.0).",
+		  "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (^1.0).",
+		  "league/flysystem-cached-adapter": "Required to use the Flysystem cache (^1.0).",
+		  "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0).",
+		  "mockery/mockery": "Required to use mocking (^1.4.2).",
+		  "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
+		  "pda/pheanstalk": "Required to use the beanstalk queue driver (^4.0).",
+		  "phpunit/phpunit": "Required to use assertions and run tests (^8.5.8|^9.3.3).",
+		  "predis/predis": "Required to use the predis connector (^1.1.2).",
+		  "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0).",
+		  "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0|^5.0|^6.0).",
+		  "symfony/cache": "Required to PSR-6 cache bridge (^5.1.4).",
+		  "symfony/filesystem": "Required to enable support for relative symbolic links (^5.1.4).",
+		  "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0).",
+		  "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
+		},
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1599,16 +1603,16 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "The Laravel Framework.",
-            "homepage": "https://laravel.com",
+			  "MIT"
+			],
+		"authors": [
+		  {
+			"name": "Taylor Otwell",
+			"email": "taylor@laravel.com"
+		  }
+		],
+		"description": "The Laravel Framework.",
+		"homepage": "https://laravel.com",
 		"keywords": [
 		  "framework",
 		  "laravel"
@@ -1617,20 +1621,20 @@
 		  "issues": "https://github.com/laravel/framework/issues",
 		  "source": "https://github.com/laravel/framework"
 		},
-		"time": "2021-08-10T14:25:51+00:00"
+		"time": "2021-08-17T14:13:34+00:00"
 	  },
 	  {
 		"name": "laravel/jetstream",
-		"version": "v2.3.14",
+		"version": "v2.3.15",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/laravel/jetstream.git",
-		  "reference": "7446fc7c6e62457bf37fef22e0a0e96956dee089"
+		  "reference": "6318fc4a734ef894f38d0298f2dee42f7ee0e90c"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/laravel/jetstream/zipball/7446fc7c6e62457bf37fef22e0a0e96956dee089",
-		  "reference": "7446fc7c6e62457bf37fef22e0a0e96956dee089",
+		  "url": "https://api.github.com/repos/laravel/jetstream/zipball/6318fc4a734ef894f38d0298f2dee42f7ee0e90c",
+		  "reference": "6318fc4a734ef894f38d0298f2dee42f7ee0e90c",
 		  "shasum": ""
 		},
 		"require": {
@@ -1638,7 +1642,6 @@
 		  "illuminate/support": "^8.0",
 		  "jenssegers/agent": "^2.6",
 		  "laravel/fortify": "^1.6.1",
-		  "league/commonmark": "^1.3|^2.0",
 		  "php": "^7.3|^8.0"
 		},
 		"require-dev": {
@@ -1651,16 +1654,16 @@
 		"type": "library",
 		"extra": {
 		  "branch-alias": {
-                    "dev-master": "2.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Jetstream\\JetstreamServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
+			"dev-master": "2.x-dev"
+		  },
+		  "laravel": {
+			"providers": [
+			  "Laravel\\Jetstream\\JetstreamServiceProvider"
+			]
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
                     "Laravel\\Jetstream\\": "src/"
                 }
             },
@@ -1684,7 +1687,7 @@
                 "issues": "https://github.com/laravel/jetstream/issues",
                 "source": "https://github.com/laravel/jetstream"
             },
-		"time": "2021-07-28T10:12:38+00:00"
+		"time": "2021-08-17T15:53:22+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -1856,16 +1859,16 @@
                     "Illuminate\\Foundation\\Auth\\": "auth-backend/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
+		  "notification-url": "https://packagist.org/downloads/",
+		  "license": [
+			"MIT"
+		  ],
+		  "authors": [
+			{
+			  "name": "Taylor Otwell",
+			  "email": "taylor@laravel.com"
+			}
+		  ],
 		  "description": "Laravel UI utilities and presets.",
 		  "keywords": [
 			"laravel",
@@ -1878,21 +1881,21 @@
 		},
 	  {
 		"name": "league/commonmark",
-		"version": "2.0.1",
+		"version": "2.0.2",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/thephpleague/commonmark.git",
-		  "reference": "0d57f20aa03129ee7ef5f690e634884315d4238c"
+		  "reference": "2df87709f44b0dd733df86aef0830dce9b1f0f13"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/0d57f20aa03129ee7ef5f690e634884315d4238c",
-		  "reference": "0d57f20aa03129ee7ef5f690e634884315d4238c",
+		  "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2df87709f44b0dd733df86aef0830dce9b1f0f13",
+		  "reference": "2df87709f44b0dd733df86aef0830dce9b1f0f13",
 		  "shasum": ""
 		},
 		"require": {
 		  "ext-mbstring": "*",
-		  "league/config": "^1.1",
+		  "league/config": "^1.1.1",
 		  "php": "^7.4 || ^8.0",
 		  "psr/event-dispatcher": "^1.0",
 		  "symfony/polyfill-php80": "^1.15"
@@ -1985,24 +1988,24 @@
 			"type": "tidelift"
 		  }
 		],
-		"time": "2021-07-31T19:15:22+00:00"
+		"time": "2021-08-14T14:06:04+00:00"
 	  },
 	  {
 		"name": "league/config",
-		"version": "v1.1.0",
+		"version": "v1.1.1",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/thephpleague/config.git",
-		  "reference": "20d42d88f12a76ff862e17af4f14a5a4bbfd0925"
+		  "reference": "a9d39eeeb6cc49d10a6e6c36f22c4c1f4a767f3e"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/thephpleague/config/zipball/20d42d88f12a76ff862e17af4f14a5a4bbfd0925",
-		  "reference": "20d42d88f12a76ff862e17af4f14a5a4bbfd0925",
+		  "url": "https://api.github.com/repos/thephpleague/config/zipball/a9d39eeeb6cc49d10a6e6c36f22c4c1f4a767f3e",
+		  "reference": "a9d39eeeb6cc49d10a6e6c36f22c4c1f4a767f3e",
 		  "shasum": ""
 		},
 		"require": {
-		  "dflydev/dot-access-data": "^3.0",
+		  "dflydev/dot-access-data": "^3.0.1",
 		  "nette/schema": "^1.2",
 		  "php": "^7.4 || ^8.0"
 		},
@@ -2067,20 +2070,20 @@
 			"type": "github"
 		  }
 		],
-		"time": "2021-06-19T15:52:37+00:00"
+		"time": "2021-08-14T12:15:32+00:00"
 	  },
 	  {
 		"name": "league/flysystem",
-		"version": "1.1.4",
+		"version": "1.1.5",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/thephpleague/flysystem.git",
-		  "reference": "f3ad69181b8afed2c9edf7be5a2918144ff4ea32"
+		  "reference": "18634df356bfd4119fe3d6156bdb990c414c14ea"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3ad69181b8afed2c9edf7be5a2918144ff4ea32",
-		  "reference": "f3ad69181b8afed2c9edf7be5a2918144ff4ea32",
+		  "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/18634df356bfd4119fe3d6156bdb990c414c14ea",
+		  "reference": "18634df356bfd4119fe3d6156bdb990c414c14ea",
 		  "shasum": ""
 		},
 		"require": {
@@ -2088,16 +2091,16 @@
 		  "league/mime-type-detection": "^1.3",
 		  "php": "^7.2.5 || ^8.0"
 		},
-            "conflict": {
-                "league/flysystem-sftp": "<1.0.6"
-            },
-            "require-dev": {
-                "phpspec/prophecy": "^1.11.1",
-                "phpunit/phpunit": "^8.5.8"
-            },
-            "suggest": {
-                "ext-ftp": "Allows you to use FTP server storage",
-                "ext-openssl": "Allows you to use FTPS server storage",
+		"conflict": {
+		  "league/flysystem-sftp": "<1.0.6"
+		},
+		"require-dev": {
+		  "phpspec/prophecy": "^1.11.1",
+		  "phpunit/phpunit": "^8.5.8"
+		},
+		"suggest": {
+		  "ext-ftp": "Allows you to use FTP server storage",
+		  "ext-openssl": "Allows you to use FTPS server storage",
                 "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
                 "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
                 "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
@@ -2153,7 +2156,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/1.1.4"
+			  "source": "https://github.com/thephpleague/flysystem/tree/1.1.5"
             },
             "funding": [
                 {
@@ -2161,7 +2164,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-06-23T21:56:05+00:00"
+		"time": "2021-08-17T13:49:42+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -2261,18 +2264,18 @@
                 }
             ],
             "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
-            "homepage": "https://github.com/serbanghita/Mobile-Detect",
-            "keywords": [
-                "detect mobile devices",
-                "mobile",
-                "mobile detect",
-                "mobile detector",
-                "php mobile detect"
-            ],
-            "support": {
-                "issues": "https://github.com/serbanghita/Mobile-Detect/issues",
-			  "source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.37"
-			},
+		  "homepage": "https://github.com/serbanghita/Mobile-Detect",
+		  "keywords": [
+			"detect mobile devices",
+			"mobile",
+			"mobile detect",
+			"mobile detector",
+			"php mobile detect"
+		  ],
+		  "support": {
+			"issues": "https://github.com/serbanghita/Mobile-Detect/issues",
+			"source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.37"
+		  },
 		  "funding": [
 			{
 			  "url": "https://github.com/serbanghita",
@@ -2328,16 +2331,16 @@
 		  "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
 		  "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
 		  "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
-                "php-console/php-console": "Allow sending log messages to Google Chrome",
-                "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.x-dev"
-                }
-            },
+		  "php-console/php-console": "Allow sending log messages to Google Chrome",
+		  "rollbar/rollbar": "Allow sending log messages to Rollbar",
+		  "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+		},
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-main": "2.x-dev"
+		  }
+		},
             "autoload": {
                 "psr-4": {
                     "Monolog\\": "src/Monolog"
@@ -2357,24 +2360,24 @@
             "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
             "homepage": "https://github.com/Seldaek/monolog",
             "keywords": [
-                "log",
-                "logging",
-                "psr-3"
-            ],
-            "support": {
-                "issues": "https://github.com/Seldaek/monolog/issues",
-			  "source": "https://github.com/Seldaek/monolog/tree/2.3.2"
-            },
-            "funding": [
-                {
-				  "url": "https://github.com/Seldaek",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
-				"type": "tidelift"
-			  }
+			  "log",
+			  "logging",
+			  "psr-3"
 			],
+		"support": {
+		  "issues": "https://github.com/Seldaek/monolog/issues",
+		  "source": "https://github.com/Seldaek/monolog/tree/2.3.2"
+		},
+		"funding": [
+		  {
+			"url": "https://github.com/Seldaek",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-23T07:42:52+00:00"
 	  },
 	  {
@@ -2408,26 +2411,26 @@
 		  "phpunit/phpunit": "^7.5.20 || ^8.5.14",
 		  "squizlabs/php_codesniffer": "^3.4"
 		},
-            "bin": [
-                "bin/carbon"
-            ],
-            "type": "library",
-            "extra": {
-			  "branch-alias": {
-				"dev-3.x": "3.x-dev",
-				"dev-master": "2.x-dev"
-			  },
-			  "laravel": {
-				"providers": [
-				  "Carbon\\Laravel\\ServiceProvider"
-				]
-			  },
-			  "phpstan": {
-				"includes": [
-				  "extension.neon"
-				]
-			  }
-            },
+		"bin": [
+		  "bin/carbon"
+		],
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-3.x": "3.x-dev",
+			"dev-master": "2.x-dev"
+		  },
+		  "laravel": {
+			"providers": [
+			  "Carbon\\Laravel\\ServiceProvider"
+			]
+		  },
+		  "phpstan": {
+			"includes": [
+			  "extension.neon"
+			]
+		  }
+		},
             "autoload": {
                 "psr-4": {
                     "Carbon\\": "src/Carbon/"
@@ -2439,16 +2442,16 @@
             ],
             "authors": [
                 {
-                    "name": "Brian Nesbitt",
-                    "email": "brian@nesbot.com",
-                    "homepage": "https://markido.com"
-                },
-                {
-                    "name": "kylekatarnls",
-                    "homepage": "https://github.com/kylekatarnls"
-                }
-            ],
-            "description": "An API extension for DateTime that supports 281 different languages.",
+				  "name": "Brian Nesbitt",
+				  "email": "brian@nesbot.com",
+				  "homepage": "https://markido.com"
+				},
+			  {
+				"name": "kylekatarnls",
+				"homepage": "https://github.com/kylekatarnls"
+			  }
+			],
+		"description": "An API extension for DateTime that supports 281 different languages.",
 		"homepage": "https://carbon.nesbot.com",
 		"keywords": [
 		  "date",
@@ -2535,16 +2538,16 @@
 	  },
 	  {
 		"name": "nette/utils",
-		"version": "v3.2.2",
+		"version": "v3.2.3",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/nette/utils.git",
-		  "reference": "967cfc4f9a1acd5f1058d76715a424c53343c20c"
+		  "reference": "5c36cc1ba9bb6abb8a9e425cf054e0c3fd5b9822"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/nette/utils/zipball/967cfc4f9a1acd5f1058d76715a424c53343c20c",
-		  "reference": "967cfc4f9a1acd5f1058d76715a424c53343c20c",
+		  "url": "https://api.github.com/repos/nette/utils/zipball/5c36cc1ba9bb6abb8a9e425cf054e0c3fd5b9822",
+		  "reference": "5c36cc1ba9bb6abb8a9e425cf054e0c3fd5b9822",
 		  "shasum": ""
 		},
 		"require": {
@@ -2614,9 +2617,9 @@
 		],
 		"support": {
 		  "issues": "https://github.com/nette/utils/issues",
-		  "source": "https://github.com/nette/utils/tree/v3.2.2"
+		  "source": "https://github.com/nette/utils/tree/v3.2.3"
 		},
-		"time": "2021-03-03T22:53:25+00:00"
+		"time": "2021-08-16T21:05:00+00:00"
 	  },
 	  {
 		"name": "nikic/php-parser",
@@ -2642,16 +2645,16 @@
 		},
 		"bin": [
 		  "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
+		],
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-master": "4.9-dev"
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
+			"PhpParser\\": "lib/PhpParser"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3048,16 +3051,16 @@
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Client\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+			},
+		  "autoload": {
+			"psr-4": {
+			  "Psr\\Http\\Client\\": "src/"
+			}
+		  },
+		  "notification-url": "https://packagist.org/downloads/",
+		  "license": [
+			"MIT"
+		  ],
 		  "authors": [
 			{
 			  "name": "PHP-FIG",
@@ -3153,16 +3156,16 @@
 		"extra": {
 		  "branch-alias": {
 			"dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
+			"Psr\\Http\\Message\\": "src/"
+		  }
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
             ],
             "authors": [
                 {
@@ -3385,19 +3388,19 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "src/getallheaders.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ralph Khattar",
-				  "email": "ralph.khattar@gmail.com"
-				}
-			],
+				  "src/getallheaders.php"
+				]
+			},
+		  "notification-url": "https://packagist.org/downloads/",
+		  "license": [
+			"MIT"
+		  ],
+		  "authors": [
+			{
+			  "name": "Ralph Khattar",
+			  "email": "ralph.khattar@gmail.com"
+			}
+		  ],
 		  "description": "A polyfill for getallheaders.",
 		  "support": {
 			"issues": "https://github.com/ralouphie/getallheaders/issues",
@@ -3481,105 +3484,105 @@
 			"url": "https://tidelift.com/funding/github/packagist/ramsey/collection",
 			"type": "tidelift"
 		  }
-            ],
+		],
 		"time": "2021-08-06T03:41:06+00:00"
-        },
+	  },
 	  {
 		"name": "ramsey/uuid",
-		"version": "4.2.0",
+		"version": "4.2.1",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/ramsey/uuid.git",
-		  "reference": "7231612a5221f5524d3575bebdce20eeef8547a1"
+		  "reference": "fe665a03df4f056aa65af552a96e1976df8c8dae"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/ramsey/uuid/zipball/7231612a5221f5524d3575bebdce20eeef8547a1",
-		  "reference": "7231612a5221f5524d3575bebdce20eeef8547a1",
+		  "url": "https://api.github.com/repos/ramsey/uuid/zipball/fe665a03df4f056aa65af552a96e1976df8c8dae",
+		  "reference": "fe665a03df4f056aa65af552a96e1976df8c8dae",
 		  "shasum": ""
 		},
-            "require": {
-                "brick/math": "^0.8 || ^0.9",
-                "ext-json": "*",
-                "php": "^7.2 || ^8",
-                "ramsey/collection": "^1.0",
-                "symfony/polyfill-ctype": "^1.8"
-            },
-            "replace": {
-                "rhumsaa/uuid": "self.version"
-            },
-            "require-dev": {
-			  "captainhook/captainhook": "^5.10",
-			  "captainhook/plugin-composer": "^5.3",
-			  "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-			  "doctrine/annotations": "^1.8",
-			  "ergebnis/composer-normalize": "^2.15",
-			  "mockery/mockery": "^1.3",
-			  "moontoast/math": "^1.1",
-			  "paragonie/random-lib": "^2",
-			  "php-mock/php-mock": "^2.2",
-			  "php-mock/php-mock-mockery": "^1.3",
-			  "php-parallel-lint/php-parallel-lint": "^1.1",
-			  "phpbench/phpbench": "^1.0",
-			  "phpstan/extension-installer": "^1.0",
-			  "phpstan/phpstan": "^0.12",
-			  "phpstan/phpstan-mockery": "^0.12",
-			  "phpstan/phpstan-phpunit": "^0.12",
-			  "phpunit/phpunit": "^8.5 || ^9",
-			  "slevomat/coding-standard": "^7.0",
-			  "squizlabs/php_codesniffer": "^3.5",
-			  "vimeo/psalm": "^4.9"
-			},
-            "suggest": {
-                "ext-bcmath": "Enables faster math with arbitrary-precision integers using BCMath.",
-                "ext-ctype": "Enables faster processing of character classification using ctype functions.",
-                "ext-gmp": "Enables faster math with arbitrary-precision integers using GMP.",
-                "ext-uuid": "Enables the use of PeclUuidTimeGenerator and PeclUuidRandomGenerator.",
-                "paragonie/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
-                "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
-            },
-            "type": "library",
-            "extra": {
-			  "branch-alias": {
-				"dev-main": "4.x-dev"
-			  },
-			  "captainhook": {
-				"force-install": true
-			  }
-			},
-            "autoload": {
-                "psr-4": {
-                    "Ramsey\\Uuid\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
+		"require": {
+		  "brick/math": "^0.8 || ^0.9",
+		  "ext-json": "*",
+		  "php": "^7.2 || ^8",
+		  "ramsey/collection": "^1.0",
+		  "symfony/polyfill-ctype": "^1.8"
+		},
+		"replace": {
+		  "rhumsaa/uuid": "self.version"
+		},
+		"require-dev": {
+		  "captainhook/captainhook": "^5.10",
+		  "captainhook/plugin-composer": "^5.3",
+		  "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+		  "doctrine/annotations": "^1.8",
+		  "ergebnis/composer-normalize": "^2.15",
+		  "mockery/mockery": "^1.3",
+		  "moontoast/math": "^1.1",
+		  "paragonie/random-lib": "^2",
+		  "php-mock/php-mock": "^2.2",
+		  "php-mock/php-mock-mockery": "^1.3",
+		  "php-parallel-lint/php-parallel-lint": "^1.1",
+		  "phpbench/phpbench": "^1.0",
+		  "phpstan/extension-installer": "^1.0",
+		  "phpstan/phpstan": "^0.12",
+		  "phpstan/phpstan-mockery": "^0.12",
+		  "phpstan/phpstan-phpunit": "^0.12",
+		  "phpunit/phpunit": "^8.5 || ^9",
+		  "slevomat/coding-standard": "^7.0",
+		  "squizlabs/php_codesniffer": "^3.5",
+		  "vimeo/psalm": "^4.9"
+		},
+		"suggest": {
+		  "ext-bcmath": "Enables faster math with arbitrary-precision integers using BCMath.",
+		  "ext-ctype": "Enables faster processing of character classification using ctype functions.",
+		  "ext-gmp": "Enables faster math with arbitrary-precision integers using GMP.",
+		  "ext-uuid": "Enables the use of PeclUuidTimeGenerator and PeclUuidRandomGenerator.",
+		  "paragonie/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
+		  "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
+		},
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-main": "4.x-dev"
+		  },
+		  "captainhook": {
+			"force-install": true
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
+			"Ramsey\\Uuid\\": "src/"
+		  },
+		  "files": [
+			"src/functions.php"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
                 "MIT"
             ],
             "description": "A PHP library for generating and working with universally unique identifiers (UUIDs).",
-            "keywords": [
-                "guid",
-                "identifier",
-                "uuid"
-            ],
-            "support": {
-                "issues": "https://github.com/ramsey/uuid/issues",
-			  "source": "https://github.com/ramsey/uuid/tree/4.2.0"
-            },
-            "funding": [
-			  {
-				"url": "https://github.com/ramsey",
-				"type": "github"
-			  },
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
-				"type": "tidelift"
-			  }
-			],
-		"time": "2021-08-06T22:30:43+00:00"
+		"keywords": [
+		  "guid",
+		  "identifier",
+		  "uuid"
+		],
+		"support": {
+		  "issues": "https://github.com/ramsey/uuid/issues",
+		  "source": "https://github.com/ramsey/uuid/tree/4.2.1"
+		},
+		"funding": [
+		  {
+			"url": "https://github.com/ramsey",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
+			"type": "tidelift"
+		  }
+		],
+		"time": "2021-08-11T01:06:55+00:00"
 	  },
 	  {
 		"name": "rennokki/laravel-eloquent-query-cache",
@@ -3605,16 +3608,16 @@
 		  "orchestra/database": "^5.0|^6.0",
 		  "orchestra/testbench": "^5.0|^6.0"
 		},
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Rennokki\\QueryCache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
+		"type": "library",
+		"autoload": {
+		  "psr-4": {
+			"Rennokki\\QueryCache\\": "src/"
+		  }
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "Apache-2.0"
+		],
             "authors": [
                 {
                     "name": "Alex Renoki",
@@ -3770,24 +3773,24 @@
             "description": "Swiftmailer, free feature-rich PHP mailer",
             "homepage": "https://swiftmailer.symfony.com",
             "keywords": [
-                "email",
-                "mail",
-                "mailer"
-            ],
-            "support": {
-                "issues": "https://github.com/swiftmailer/swiftmailer/issues",
-                "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.2.7"
-            },
-            "funding": [
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/swiftmailer/swiftmailer",
-				"type": "tidelift"
-			  }
+			  "email",
+			  "mail",
+			  "mailer"
 			],
+		  "support": {
+			"issues": "https://github.com/swiftmailer/swiftmailer/issues",
+			"source": "https://github.com/swiftmailer/swiftmailer/tree/v6.2.7"
+		  },
+		  "funding": [
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/swiftmailer/swiftmailer",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-03-09T12:30:35+00:00"
 		},
 	  {
@@ -3843,16 +3846,16 @@
 		"autoload": {
 		  "psr-4": {
 			"Symfony\\Component\\Console\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
+		  },
+		  "exclude-from-classmap": [
+			"/Tests/"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
                 {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
@@ -3869,24 +3872,24 @@
                 "command line",
                 "console",
                 "terminal"
-            ],
-            "support": {
-			  "source": "https://github.com/symfony/console/tree/v5.3.6"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		"support": {
+		  "source": "https://github.com/symfony/console/tree/v5.3.6"
+		},
+		"funding": [
+		  {
+			"url": "https://symfony.com/sponsor",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/fabpot",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-27T19:10:22+00:00"
 	  },
 	  {
@@ -3917,16 +3920,16 @@
 		  ]
 		},
 		"notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Jean-François Simon",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Fabien Potencier",
+			"email": "fabien@symfony.com"
+		  },
+		  {
+			"name": "Jean-François Simon",
                     "email": "jeanfrancois.simon@sensiolabs.com"
                 },
                 {
@@ -4002,24 +4005,24 @@
                 }
             ],
             "description": "A generic function and convention to trigger deprecation notices",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v2.4.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
-			],
+		  "homepage": "https://symfony.com",
+		  "support": {
+			"source": "https://github.com/symfony/deprecation-contracts/tree/v2.4.0"
+		  },
+		  "funding": [
+			{
+			  "url": "https://symfony.com/sponsor",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-03-23T23:28:01+00:00"
 		},
 	  {
@@ -4051,16 +4054,16 @@
 		  "psr-4": {
 			"Symfony\\Component\\ErrorHandler\\": ""
 		  },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
+		  "exclude-from-classmap": [
+			"/Tests/"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
@@ -4070,24 +4073,24 @@
                 }
             ],
             "description": "Provides tools to manage errors and ease debugging PHP code",
-            "homepage": "https://symfony.com",
-            "support": {
-			  "source": "https://github.com/symfony/error-handler/tree/v5.3.4"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
-			],
+		"homepage": "https://symfony.com",
+		"support": {
+		  "source": "https://github.com/symfony/error-handler/tree/v5.3.4"
+		},
+		"funding": [
+		  {
+			"url": "https://symfony.com/sponsor",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/fabpot",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-23T15:55:36+00:00"
 	  },
 	  {
@@ -4137,16 +4140,16 @@
 			"Symfony\\Component\\EventDispatcher\\": ""
 		  },
 		  "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
+			"/Tests/"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
                 {
@@ -4234,24 +4237,24 @@
                 "interfaces",
                 "interoperability",
                 "standards"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v2.4.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		  "support": {
+			"source": "https://github.com/symfony/event-dispatcher-contracts/tree/v2.4.0"
+		  },
+		  "funding": [
+			{
+			  "url": "https://symfony.com/sponsor",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-03-23T23:28:01+00:00"
 		},
 	  {
@@ -4282,16 +4285,16 @@
 		  ]
 		},
 		"notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Fabien Potencier",
+			"email": "fabien@symfony.com"
+		  },
+		  {
+			"name": "Symfony Community",
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
@@ -4374,24 +4377,24 @@
                 "interfaces",
                 "interoperability",
                 "standards"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/http-client-contracts/tree/v2.4.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		  "support": {
+			"source": "https://github.com/symfony/http-client-contracts/tree/v2.4.0"
+		  },
+		  "funding": [
+			{
+			  "url": "https://symfony.com/sponsor",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-04-11T23:07:08+00:00"
 		},
 	  {
@@ -4418,16 +4421,16 @@
 		  "predis/predis": "~1.0",
 		  "symfony/cache": "^4.4|^5.0",
 		  "symfony/expression-language": "^4.4|^5.0",
-                "symfony/mime": "^4.4|^5.0"
-            },
-            "suggest": {
-                "symfony/mime": "To use the file extension guesser"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\HttpFoundation\\": ""
-                },
+		  "symfony/mime": "^4.4|^5.0"
+		},
+		"suggest": {
+		  "symfony/mime": "To use the file extension guesser"
+		},
+		"type": "library",
+		"autoload": {
+		  "psr-4": {
+			"Symfony\\Component\\HttpFoundation\\": ""
+		  },
                 "exclude-from-classmap": [
                     "/Tests/"
                 ]
@@ -4447,24 +4450,24 @@
                 }
             ],
             "description": "Defines an object-oriented layer for the HTTP specification",
-            "homepage": "https://symfony.com",
-            "support": {
-			  "source": "https://github.com/symfony/http-foundation/tree/v5.3.6"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
-			],
+		"homepage": "https://symfony.com",
+		"support": {
+		  "source": "https://github.com/symfony/http-foundation/tree/v5.3.6"
+		},
+		"funding": [
+		  {
+			"url": "https://symfony.com/sponsor",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/fabpot",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-27T17:08:17+00:00"
 	  },
 	  {
@@ -4503,16 +4506,16 @@
 		  "symfony/form": "<5.0",
 		  "symfony/http-client": "<5.0",
 		  "symfony/mailer": "<5.0",
-                "symfony/messenger": "<5.0",
-                "symfony/translation": "<5.0",
-                "symfony/twig-bridge": "<5.0",
-                "symfony/validator": "<5.0",
-                "twig/twig": "<2.13"
-            },
-            "provide": {
-			  "psr/log-implementation": "1.0|2.0"
-            },
-            "require-dev": {
+		  "symfony/messenger": "<5.0",
+		  "symfony/translation": "<5.0",
+		  "symfony/twig-bridge": "<5.0",
+		  "symfony/validator": "<5.0",
+		  "twig/twig": "<2.13"
+		},
+		"provide": {
+		  "psr/log-implementation": "1.0|2.0"
+		},
+		"require-dev": {
                 "psr/cache": "^1.0|^2.0|^3.0",
                 "symfony/browser-kit": "^4.4|^5.0",
                 "symfony/config": "^5.0",
@@ -4559,24 +4562,24 @@
                 }
             ],
             "description": "Provides a structured process for converting a Request into a Response",
-            "homepage": "https://symfony.com",
-            "support": {
-			  "source": "https://github.com/symfony/http-kernel/tree/v5.3.6"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
-			],
+		"homepage": "https://symfony.com",
+		"support": {
+		  "source": "https://github.com/symfony/http-kernel/tree/v5.3.6"
+		},
+		"funding": [
+		  {
+			"url": "https://symfony.com/sponsor",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/fabpot",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-29T07:06:27+00:00"
 	  },
 	  {
@@ -4603,16 +4606,16 @@
 		"conflict": {
 		  "egulias/email-validator": "~3.0.0",
 		  "phpdocumentor/reflection-docblock": "<3.2.2",
-                "phpdocumentor/type-resolver": "<1.4.0",
-                "symfony/mailer": "<4.4"
-            },
-            "require-dev": {
-                "egulias/email-validator": "^2.1.10|^3.1",
-                "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
-                "symfony/dependency-injection": "^4.4|^5.0",
-                "symfony/property-access": "^4.4|^5.1",
-                "symfony/property-info": "^4.4|^5.1",
-                "symfony/serializer": "^5.2"
+		  "phpdocumentor/type-resolver": "<1.4.0",
+		  "symfony/mailer": "<4.4"
+		},
+		"require-dev": {
+		  "egulias/email-validator": "^2.1.10|^3.1",
+		  "phpdocumentor/reflection-docblock": "^3.0|^4.0|^5.0",
+		  "symfony/dependency-injection": "^4.4|^5.0",
+		  "symfony/property-access": "^4.4|^5.1",
+		  "symfony/property-info": "^4.4|^5.1",
+		  "symfony/serializer": "^5.2"
             },
             "type": "library",
             "autoload": {
@@ -4801,24 +4804,24 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-iconv/tree/v1.23.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		  "support": {
+			"source": "https://github.com/symfony/polyfill-iconv/tree/v1.23.0"
+		  },
+		  "funding": [
+			{
+			  "url": "https://symfony.com/sponsor",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-05-27T09:27:20+00:00"
 		},
 	  {
@@ -4845,16 +4848,16 @@
 		"extra": {
 		  "branch-alias": {
 			"dev-main": "1.23-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
-                },
+		  },
+		  "thanks": {
+			"name": "symfony/polyfill",
+			"url": "https://github.com/symfony/polyfill"
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
+			"Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+		  },
                 "files": [
                     "bootstrap.php"
                 ]
@@ -5053,24 +5056,24 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.23.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		  "support": {
+			"source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.23.0"
+		  },
+		  "funding": [
+			{
+			  "url": "https://symfony.com/sponsor",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-02-19T12:13:01+00:00"
 		},
 	  {
@@ -5097,16 +5100,16 @@
 		"extra": {
 		  "branch-alias": {
 			"dev-main": "1.23-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                },
+		  },
+		  "thanks": {
+			"name": "symfony/polyfill",
+			"url": "https://github.com/symfony/polyfill"
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
+			"Symfony\\Polyfill\\Mbstring\\": ""
+		  },
                 "files": [
                     "bootstrap.php"
                 ]
@@ -5288,24 +5291,24 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php73/tree/v1.23.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		  "support": {
+			"source": "https://github.com/symfony/polyfill-php73/tree/v1.23.0"
+		  },
+		  "funding": [
+			{
+			  "url": "https://symfony.com/sponsor",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-02-19T12:13:01+00:00"
 		},
 	  {
@@ -5332,16 +5335,16 @@
 		  },
 		  "thanks": {
 			"name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ],
+			"url": "https://github.com/symfony/polyfill"
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
+			"Symfony\\Polyfill\\Php80\\": ""
+		  },
+		  "files": [
+			"bootstrap.php"
+		  ],
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -5359,19 +5362,19 @@
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-			  "portable",
-			  "shim"
+			  {
+				"name": "Symfony Community",
+				"homepage": "https://symfony.com/contributors"
+			  }
 			],
+		"description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
+		"homepage": "https://symfony.com",
+		"keywords": [
+		  "compatibility",
+		  "polyfill",
+		  "portable",
+		  "shim"
+		],
 		"support": {
 		  "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.1"
 		},
@@ -5494,16 +5497,16 @@
 			"Symfony\\Component\\Process\\": ""
 		  },
 		  "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
+			"/Tests/"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
                 {
@@ -5512,24 +5515,24 @@
                 }
             ],
             "description": "Executes commands in sub-processes",
-            "homepage": "https://symfony.com",
-            "support": {
-			  "source": "https://github.com/symfony/process/tree/v5.3.4"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
-			],
+		"homepage": "https://symfony.com",
+		"support": {
+		  "source": "https://github.com/symfony/process/tree/v5.3.4"
+		},
+		"funding": [
+		  {
+			"url": "https://symfony.com/sponsor",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/fabpot",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-23T15:54:19+00:00"
 	  },
 	  {
@@ -5576,16 +5579,16 @@
 		"autoload": {
 		  "psr-4": {
 			"Symfony\\Component\\Routing\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
+		  },
+		  "exclude-from-classmap": [
+			"/Tests/"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
                 {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
@@ -5764,24 +5767,24 @@
                 "unicode",
                 "utf-8",
                 "utf8"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/string/tree/v5.3.3"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		  "support": {
+			"source": "https://github.com/symfony/string/tree/v5.3.3"
+		  },
+		  "funding": [
+			{
+			  "url": "https://symfony.com/sponsor",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-06-27T11:44:38+00:00"
 		},
 	  {
@@ -5837,16 +5840,16 @@
 		  "files": [
 			"Resources/functions.php"
 		  ],
-                "psr-4": {
-                    "Symfony\\Component\\Translation\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
+		  "psr-4": {
+			"Symfony\\Component\\Translation\\": ""
+		  },
+		  "exclude-from-classmap": [
+			"/Tests/"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
             ],
             "authors": [
                 {
@@ -5937,24 +5940,24 @@
                 "interfaces",
                 "interoperability",
                 "standards"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/translation-contracts/tree/v2.4.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		  "support": {
+			"source": "https://github.com/symfony/translation-contracts/tree/v2.4.0"
+		  },
+		  "funding": [
+			{
+			  "url": "https://symfony.com/sponsor",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/fabpot",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-03-23T23:28:01+00:00"
 		},
 	  {
@@ -5981,16 +5984,16 @@
 		  "symfony/console": "<4.4"
 		},
 		"require-dev": {
-                "ext-iconv": "*",
-                "symfony/console": "^4.4|^5.0",
-                "symfony/process": "^4.4|^5.0",
-                "twig/twig": "^2.13|^3.0.4"
-            },
-            "suggest": {
-                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
-                "ext-intl": "To show region name in time zone dump",
-                "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
-            },
+		  "ext-iconv": "*",
+		  "symfony/console": "^4.4|^5.0",
+		  "symfony/process": "^4.4|^5.0",
+		  "twig/twig": "^2.13|^3.0.4"
+		},
+		"suggest": {
+		  "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
+		  "ext-intl": "To show region name in time zone dump",
+		  "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
+		},
             "bin": [
                 "Resources/bin/var-dump-server"
             ],
@@ -6025,24 +6028,24 @@
             "keywords": [
                 "debug",
                 "dump"
-            ],
-            "support": {
-			  "source": "https://github.com/symfony/var-dumper/tree/v5.3.6"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
 			],
+		"support": {
+		  "source": "https://github.com/symfony/var-dumper/tree/v5.3.6"
+		},
+		"funding": [
+		  {
+			"url": "https://symfony.com/sponsor",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/fabpot",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-27T01:56:02+00:00"
 	  },
 	  {
@@ -6069,16 +6072,16 @@
 		"type": "library",
 		"extra": {
 		  "laravel": {
-                    "providers": [
-                        "Tightenco\\Ziggy\\ZiggyServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Tightenco\\Ziggy\\": "src/"
-                }
-            },
+			"providers": [
+			  "Tightenco\\Ziggy\\ZiggyServiceProvider"
+			]
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
+			"Tightenco\\Ziggy\\": "src/"
+		  }
+		},
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -6717,24 +6720,24 @@
                 "tls"
             ],
             "support": {
-                "irc": "irc://irc.freenode.org/composer",
-                "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.2.10"
-            },
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/composer",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/composer/composer",
-				"type": "tidelift"
-			  }
-			],
+			  "irc": "irc://irc.freenode.org/composer",
+			  "issues": "https://github.com/composer/ca-bundle/issues",
+			  "source": "https://github.com/composer/ca-bundle/tree/1.2.10"
+			},
+		  "funding": [
+			{
+			  "url": "https://packagist.com",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/composer",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2021-06-07T13:58:28+00:00"
 		},
 	  {
@@ -6778,16 +6781,16 @@
 		  "ext-zlib": "Allow gzip compression of HTTP requests"
 		},
 		"bin": [
-                "bin/composer"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
+		  "bin/composer"
+		],
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-master": "2.1-dev"
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
                     "Composer\\": "src/Composer"
                 }
             },
@@ -7117,24 +7120,24 @@
                 "validator"
             ],
             "support": {
-                "irc": "irc://irc.freenode.org/composer",
-                "issues": "https://github.com/composer/spdx-licenses/issues",
-                "source": "https://github.com/composer/spdx-licenses/tree/1.5.5"
-            },
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/composer",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/composer/composer",
-				"type": "tidelift"
-			  }
-			],
+			  "irc": "irc://irc.freenode.org/composer",
+			  "issues": "https://github.com/composer/spdx-licenses/issues",
+			  "source": "https://github.com/composer/spdx-licenses/tree/1.5.5"
+			},
+		  "funding": [
+			{
+			  "url": "https://packagist.com",
+			  "type": "custom"
+			},
+			{
+			  "url": "https://github.com/composer",
+			  "type": "github"
+			},
+			{
+			  "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+			  "type": "tidelift"
+			}
+		  ],
 		  "time": "2020-12-03T16:04:16+00:00"
 		},
 	  {
@@ -7161,16 +7164,16 @@
 		},
 		"type": "library",
 		"autoload": {
-                "psr-4": {
-                    "Composer\\XdebugHandler\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
+		  "psr-4": {
+			"Composer\\XdebugHandler\\": "src"
+		  }
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
                     "name": "John Stevenson",
                     "email": "john-stevenson@blueyonder.co.uk"
                 }
@@ -7181,24 +7184,24 @@
                 "performance"
             ],
             "support": {
-                "irc": "irc://irc.freenode.org/composer",
-                "issues": "https://github.com/composer/xdebug-handler/issues",
+			  "irc": "irc://irc.freenode.org/composer",
+			  "issues": "https://github.com/composer/xdebug-handler/issues",
 			  "source": "https://github.com/composer/xdebug-handler/tree/2.0.2"
-            },
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/composer",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/composer/composer",
-				"type": "tidelift"
-			  }
-			],
+			},
+		"funding": [
+		  {
+			"url": "https://packagist.com",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/composer",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/composer/composer",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-31T17:03:58+00:00"
 	  },
 	  {
@@ -7242,16 +7245,16 @@
 		  }
 		},
 		"notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Guilherme Blanco",
+			"email": "guilhermeblanco@gmail.com"
+		  },
+		  {
+			"name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
@@ -7660,18 +7663,18 @@
             "license": [
                 "MIT"
             ],
-            "description": "Send PHP errors to Flare",
-            "homepage": "https://github.com/facade/flare-client-php",
-            "keywords": [
-                "exception",
-                "facade",
-                "flare",
-                "reporting"
-            ],
-            "support": {
-                "issues": "https://github.com/facade/flare-client-php/issues",
-			  "source": "https://github.com/facade/flare-client-php/tree/1.8.1"
-			},
+		  "description": "Send PHP errors to Flare",
+		  "homepage": "https://github.com/facade/flare-client-php",
+		  "keywords": [
+			"exception",
+			"facade",
+			"flare",
+			"reporting"
+		  ],
+		  "support": {
+			"issues": "https://github.com/facade/flare-client-php/issues",
+			"source": "https://github.com/facade/flare-client-php/tree/1.8.1"
+		  },
 		  "funding": [
 			{
 			  "url": "https://github.com/spatie",
@@ -7682,16 +7685,16 @@
 		},
 	  {
 		"name": "facade/ignition",
-		"version": "2.11.2",
+		"version": "2.11.4",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/facade/ignition.git",
-		  "reference": "7c4e7a7da184cd00c7ce6eacc590200bb9672de7"
+		  "reference": "1b8d83c5dac7c5ee8429daf284ce3f19b1d17ea2"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/facade/ignition/zipball/7c4e7a7da184cd00c7ce6eacc590200bb9672de7",
-		  "reference": "7c4e7a7da184cd00c7ce6eacc590200bb9672de7",
+		  "url": "https://api.github.com/repos/facade/ignition/zipball/1b8d83c5dac7c5ee8429daf284ce3f19b1d17ea2",
+		  "reference": "1b8d83c5dac7c5ee8429daf284ce3f19b1d17ea2",
 		  "shasum": ""
 		},
 		"require": {
@@ -7704,16 +7707,16 @@
 		  "php": "^7.2.5|^8.0",
 		  "symfony/console": "^5.0",
 		  "symfony/var-dumper": "^5.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.14",
-                "mockery/mockery": "^1.3",
-                "orchestra/testbench": "^5.0|^6.0",
-                "psalm/plugin-laravel": "^1.2"
-            },
-            "suggest": {
-                "laravel/telescope": "^3.1"
-            },
+		},
+		"require-dev": {
+		  "friendsofphp/php-cs-fixer": "^2.14",
+		  "mockery/mockery": "^1.3",
+		  "orchestra/testbench": "^5.0|^6.0",
+		  "psalm/plugin-laravel": "^1.2"
+		},
+		"suggest": {
+		  "laravel/telescope": "^3.1"
+		},
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -7754,7 +7757,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-		"time": "2021-07-20T14:01:22+00:00"
+		"time": "2021-08-17T11:45:33+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -7789,20 +7792,20 @@
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://flareapp.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Solution contracts for Ignition",
-            "homepage": "https://github.com/facade/ignition-contracts",
-            "keywords": [
-			  "contracts",
-			  "flare",
-			  "ignition"
+			  {
+				"name": "Freek Van der Herten",
+				"email": "freek@spatie.be",
+				"homepage": "https://flareapp.io",
+				"role": "Developer"
+			  }
 			],
+		  "description": "Solution contracts for Ignition",
+		  "homepage": "https://github.com/facade/ignition-contracts",
+		  "keywords": [
+			"contracts",
+			"flare",
+			"ignition"
+		  ],
 		  "support": {
 			"issues": "https://github.com/facade/ignition-contracts/issues",
 			"source": "https://github.com/facade/ignition-contracts/tree/1.0.2"
@@ -7833,16 +7836,16 @@
 		},
 		"require-dev": {
 		  "bamarni/composer-bin-plugin": "^1.4.1",
-                "ext-intl": "*",
-                "symfony/phpunit-bridge": "^4.4 || ^5.2"
-            },
-            "suggest": {
-                "ext-curl": "Required by Faker\\Provider\\Image to download images.",
-                "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
-                "ext-iconv": "Required by Faker\\Provider\\ru_RU\\Text::realText() for generating real Russian text.",
-                "ext-mbstring": "Required for multibyte Unicode string functionality."
-            },
-            "type": "library",
+		  "ext-intl": "*",
+		  "symfony/phpunit-bridge": "^4.4 || ^5.2"
+		},
+		"suggest": {
+		  "ext-curl": "Required by Faker\\Provider\\Image to download images.",
+		  "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
+		  "ext-iconv": "Required by Faker\\Provider\\ru_RU\\Text::realText() for generating real Russian text.",
+		  "ext-mbstring": "Required for multibyte Unicode string functionality."
+		},
+		"type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-main": "v1.15-dev"
@@ -7854,20 +7857,20 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Zaninotto"
-                }
-            ],
-            "description": "Faker is a PHP library that generates fake data for you.",
-            "keywords": [
-			  "data",
-			  "faker",
-			  "fixtures"
-			],
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "François Zaninotto"
+		  }
+		],
+		"description": "Faker is a PHP library that generates fake data for you.",
+		"keywords": [
+		  "data",
+		  "faker",
+		  "fixtures"
+		],
 		"support": {
 		  "issues": "https://github.com/FakerPHP/Faker/issues",
 		  "source": "https://github.com/FakerPHP/Faker/tree/v1.15.0"
@@ -7898,16 +7901,16 @@
 		  "symfony/var-dumper": "^2.6 || ^3.0 || ^4.0 || ^5.0"
 		},
 		"suggest": {
-                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
-                "whoops/soap": "Formats errors as SOAP responses"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.7-dev"
-                }
-            },
-            "autoload": {
+		  "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+		  "whoops/soap": "Formats errors as SOAP responses"
+		},
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-master": "2.7-dev"
+		  }
+		},
+		"autoload": {
                 "psr-4": {
                     "Whoops\\": "src/Whoops/"
                 }
@@ -7976,16 +7979,16 @@
                 "branch-alias": {
                     "dev-master": "2.1-dev"
                 }
-            },
-            "autoload": {
-                "classmap": [
-                    "hamcrest"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
+			},
+		  "autoload": {
+			"classmap": [
+			  "hamcrest"
+			]
+		  },
+		  "notification-url": "https://packagist.org/downloads/",
+		  "license": [
+			"BSD-3-Clause"
+		  ],
 		  "description": "This is the PHP port of Hamcrest Matchers",
 		  "keywords": [
 			"test"
@@ -8020,16 +8023,16 @@
 		},
 		"bin": [
 		  "bin/validate-json"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JsonSchema\\": "src/JsonSchema/"
+		],
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-master": "5.0.x-dev"
+		  }
+		},
+		"autoload": {
+		  "psr-4": {
+			"JsonSchema\\": "src/JsonSchema/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8046,16 +8049,16 @@
                     "email": "justin.rainbow@gmail.com"
                 },
                 {
-                    "name": "Igor Wiedler",
-                    "email": "igor@wiedler.ch"
-                },
-                {
-                    "name": "Robert Schönthal",
-                    "email": "seroscho@googlemail.com"
-                }
-            ],
-            "description": "A library to validate a json schema.",
-            "homepage": "https://github.com/justinrainbow/json-schema",
+				  "name": "Igor Wiedler",
+				  "email": "igor@wiedler.ch"
+				},
+			  {
+				"name": "Robert Schönthal",
+				"email": "seroscho@googlemail.com"
+			  }
+			],
+		"description": "A library to validate a json schema.",
+		"homepage": "https://github.com/justinrainbow/json-schema",
 		"keywords": [
 		  "json",
 		  "schema"
@@ -8068,16 +8071,16 @@
 	  },
 	  {
 		"name": "laravel/sail",
-		"version": "v1.9.0",
+		"version": "v1.10.0",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/laravel/sail.git",
-		  "reference": "3e1aa8679b10ae9210eebfbc2ee5f3600f356702"
+		  "reference": "05cf80b1365a0b556f6c21ed5c71a27971d06ec8"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/laravel/sail/zipball/3e1aa8679b10ae9210eebfbc2ee5f3600f356702",
-		  "reference": "3e1aa8679b10ae9210eebfbc2ee5f3600f356702",
+		  "url": "https://api.github.com/repos/laravel/sail/zipball/05cf80b1365a0b556f6c21ed5c71a27971d06ec8",
+		  "reference": "05cf80b1365a0b556f6c21ed5c71a27971d06ec8",
 		  "shasum": ""
 		},
 		"require": {
@@ -8090,32 +8093,32 @@
 		  "bin/sail"
 		],
 		"type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Sail\\SailServiceProvider"
-                    ]
-                }
-            },
+		"extra": {
+		  "branch-alias": {
+			"dev-master": "1.x-dev"
+		  },
+		  "laravel": {
+			"providers": [
+			  "Laravel\\Sail\\SailServiceProvider"
+			]
+		  }
+		},
             "autoload": {
                 "psr-4": {
                     "Laravel\\Sail\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Docker files for running a basic Laravel application.",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Taylor Otwell",
+			"email": "taylor@laravel.com"
+		  }
+		],
+		"description": "Docker files for running a basic Laravel application.",
 		"keywords": [
 		  "docker",
 		  "laravel"
@@ -8124,7 +8127,7 @@
 		  "issues": "https://github.com/laravel/sail/issues",
 		  "source": "https://github.com/laravel/sail"
 		},
-		"time": "2021-08-03T18:51:44+00:00"
+		"time": "2021-08-17T16:00:47+00:00"
 	  },
 	  {
 		"name": "maximebf/debugbar",
@@ -8150,16 +8153,16 @@
 		},
 		"suggest": {
 		  "kriswallsmith/assetic": "The best way to manage assets",
-                "monolog/monolog": "Log using Monolog",
-                "predis/predis": "Redis storage"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-				  "dev-master": "1.17-dev"
-                }
-            },
-            "autoload": {
+		  "monolog/monolog": "Log using Monolog",
+		  "predis/predis": "Redis storage"
+		},
+		"type": "library",
+		"extra": {
+		  "branch-alias": {
+			"dev-master": "1.17-dev"
+		  }
+		},
+		"autoload": {
                 "psr-4": {
                     "DebugBar\\": "src/DebugBar/"
                 }
@@ -8301,18 +8304,18 @@
             "license": [
                 "MIT"
             ],
-            "description": "Create deep copies (clones) of your objects",
-            "keywords": [
-                "clone",
-                "copy",
-                "duplicate",
-                "object",
-                "object graph"
-            ],
-            "support": {
-                "issues": "https://github.com/myclabs/DeepCopy/issues",
-			  "source": "https://github.com/myclabs/DeepCopy/tree/1.10.2"
-			},
+		  "description": "Create deep copies (clones) of your objects",
+		  "keywords": [
+			"clone",
+			"copy",
+			"duplicate",
+			"object",
+			"object graph"
+		  ],
+		  "support": {
+			"issues": "https://github.com/myclabs/DeepCopy/issues",
+			"source": "https://github.com/myclabs/DeepCopy/tree/1.10.2"
+		  },
 		  "funding": [
 			{
 			  "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
@@ -8323,16 +8326,16 @@
 		},
 	  {
 		"name": "nunomaduro/collision",
-		"version": "v5.6.0",
+		"version": "v5.8.0",
 		"source": {
 		  "type": "git",
 		  "url": "https://github.com/nunomaduro/collision.git",
-		  "reference": "0122ac6b03c75279ef78d1c0ad49725dfc52a8d2"
+		  "reference": "0c3c393462eada1233513664e2d22bb9f69ca393"
 		},
 		"dist": {
 		  "type": "zip",
-		  "url": "https://api.github.com/repos/nunomaduro/collision/zipball/0122ac6b03c75279ef78d1c0ad49725dfc52a8d2",
-		  "reference": "0122ac6b03c75279ef78d1c0ad49725dfc52a8d2",
+		  "url": "https://api.github.com/repos/nunomaduro/collision/zipball/0c3c393462eada1233513664e2d22bb9f69ca393",
+		  "reference": "0c3c393462eada1233513664e2d22bb9f69ca393",
 		  "shasum": ""
 		},
 		"require": {
@@ -8344,7 +8347,7 @@
 		"require-dev": {
 		  "brianium/paratest": "^6.1",
 		  "fideloper/proxy": "^4.4.1",
-		  "friendsofphp/php-cs-fixer": "^2.17.3",
+		  "friendsofphp/php-cs-fixer": "^3.0",
 		  "fruitcake/laravel-cors": "^2.0.3",
 		  "laravel/framework": "^8.0 || ^9.0",
 		  "nunomaduro/larastan": "^0.6.2",
@@ -8363,16 +8366,16 @@
 		},
 		"autoload": {
 		  "psr-4": {
-                    "NunoMaduro\\Collision\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nuno Maduro",
+			"NunoMaduro\\Collision\\": "src/"
+		  }
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Nuno Maduro",
                     "email": "enunomaduro@gmail.com"
                 }
             ],
@@ -8389,25 +8392,25 @@
                 "php",
                 "symfony"
             ],
-            "support": {
-                "issues": "https://github.com/nunomaduro/collision/issues",
-                "source": "https://github.com/nunomaduro/collision"
-            },
-            "funding": [
-                {
-                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/nunomaduro",
-				  "type": "github"
-				},
-			  {
-				"url": "https://www.patreon.com/nunomaduro",
-				"type": "patreon"
-			  }
-			],
-		"time": "2021-07-26T20:39:06+00:00"
+		"support": {
+		  "issues": "https://github.com/nunomaduro/collision/issues",
+		  "source": "https://github.com/nunomaduro/collision"
+		},
+		"funding": [
+		  {
+			"url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/nunomaduro",
+			"type": "github"
+		  },
+		  {
+			"url": "https://www.patreon.com/nunomaduro",
+			"type": "patreon"
+		  }
+		],
+		"time": "2021-08-13T14:23:01+00:00"
 	  },
 	  {
 		"name": "phar-io/manifest",
@@ -8433,16 +8436,16 @@
 		"type": "library",
 		"extra": {
 		  "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
+			"dev-master": "2.0.x-dev"
+		  }
+		},
+		"autoload": {
+		  "classmap": [
+			"src/"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
                 "BSD-3-Clause"
             ],
             "authors": [
@@ -9043,18 +9046,18 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "Utility class for timing",
-            "homepage": "https://github.com/sebastianbergmann/php-timer/",
-            "keywords": [
-                "timer"
-            ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/php-timer/issues",
-			  "source": "https://github.com/sebastianbergmann/php-timer/tree/5.0.3"
-			},
+				  "role": "lead"
+				}
+			],
+		  "description": "Utility class for timing",
+		  "homepage": "https://github.com/sebastianbergmann/php-timer/",
+		  "keywords": [
+			"timer"
+		  ],
+		  "support": {
+			"issues": "https://github.com/sebastianbergmann/php-timer/issues",
+			"source": "https://github.com/sebastianbergmann/php-timer/tree/5.0.3"
+		  },
 		  "funding": [
 			{
 			  "url": "https://github.com/sebastianbergmann",
@@ -9107,16 +9110,16 @@
 		  "sebastian/type": "^2.3.4",
 		  "sebastian/version": "^3.0.2"
 		},
-            "require-dev": {
-                "ext-pdo": "*",
-                "phpspec/prophecy-phpunit": "^2.0.1"
-            },
-            "suggest": {
-                "ext-soap": "*",
-                "ext-xdebug": "*"
-            },
-            "bin": [
-                "phpunit"
+		"require-dev": {
+		  "ext-pdo": "*",
+		  "phpspec/prophecy-phpunit": "^2.0.1"
+		},
+		"suggest": {
+		  "ext-soap": "*",
+		  "ext-xdebug": "*"
+		},
+		"bin": [
+		  "phpunit"
             ],
             "type": "library",
             "extra": {
@@ -10271,16 +10274,16 @@
                     "Seld\\PharUtils\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be"
-                }
-            ],
+		  "notification-url": "https://packagist.org/downloads/",
+		  "license": [
+			"MIT"
+		  ],
+		  "authors": [
+			{
+			  "name": "Jordi Boggiano",
+			  "email": "j.boggiano@seld.be"
+			}
+		  ],
 		  "description": "PHAR file format utilities, for when PHP phars you up",
 		  "keywords": [
 			"phar"
@@ -10315,16 +10318,16 @@
 		"require-dev": {
 		  "symfony/http-kernel": "^3.4|^4.0|^5.0"
 		},
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Debug\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
+		"type": "library",
+		"autoload": {
+		  "psr-4": {
+			"Symfony\\Component\\Debug\\": ""
+		  },
+		  "exclude-from-classmap": [
+			"/Tests/"
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -10339,24 +10342,24 @@
                 }
             ],
             "description": "Provides tools to ease debugging PHP code",
-            "homepage": "https://symfony.com",
-            "support": {
-			  "source": "https://github.com/symfony/debug/tree/v4.4.27"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
-			],
+		"homepage": "https://symfony.com",
+		"support": {
+		  "source": "https://github.com/symfony/debug/tree/v4.4.27"
+		},
+		"funding": [
+		  {
+			"url": "https://symfony.com/sponsor",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/fabpot",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-22T07:21:39+00:00"
 	  },
 	  {
@@ -10388,38 +10391,38 @@
 		  ]
 		},
 		"notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
+		"license": [
+		  "MIT"
+		],
+		"authors": [
+		  {
+			"name": "Fabien Potencier",
+			"email": "fabien@symfony.com"
+		  },
+		  {
+			"name": "Symfony Community",
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Provides basic utilities for the filesystem",
-            "homepage": "https://symfony.com",
-            "support": {
-			  "source": "https://github.com/symfony/filesystem/tree/v5.3.4"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-				  "url": "https://github.com/fabpot",
-				  "type": "github"
-				},
-			  {
-				"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-				"type": "tidelift"
-			  }
-			],
+		"homepage": "https://symfony.com",
+		"support": {
+		  "source": "https://github.com/symfony/filesystem/tree/v5.3.4"
+		},
+		"funding": [
+		  {
+			"url": "https://symfony.com/sponsor",
+			"type": "custom"
+		  },
+		  {
+			"url": "https://github.com/fabpot",
+			"type": "github"
+		  },
+		  {
+			"url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+			"type": "tidelift"
+		  }
+		],
 		"time": "2021-07-21T12:40:44+00:00"
 	  },
 	  {
@@ -10446,16 +10449,16 @@
 		"autoload": {
 		  "classmap": [
 			"src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
+		  ]
+		},
+		"notification-url": "https://packagist.org/downloads/",
+		"license": [
+		  "BSD-3-Clause"
+		],
+		"authors": [
+		  {
+			"name": "Arne Blankerts",
+			"email": "arne@blankerts.de",
                     "role": "Developer"
                 }
             ],

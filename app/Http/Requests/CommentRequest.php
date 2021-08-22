@@ -21,17 +21,20 @@ class CommentRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
-    {
-        return [
-	        'description_html' => ['required', 'min:30'],
-        ];
-    }
+	public function rules(): array
+	{
+		return [
+			'description_html' => ['required', 'min:30'],
+		];
+	}
 
+	/**
+	 * @return string[]
+	 */
 	public function messages(): array
 	{
 		return [
-			'description_html.min' => 'Комментарий меньше :min символов не несет смыслового интереса..',
+			'description_html.min'      => 'Комментарий меньше :min символов не несет смыслового интереса..',
 			'description_html.required' => 'Комментарий не может быть пустым...',
 		];
 	}

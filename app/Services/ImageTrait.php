@@ -40,30 +40,15 @@ trait ImageTrait
 		$Extension = $requestForm[$this->config['imgColumns']]->getClientOriginalExtension();//Получает расширение файла
 		if (in_array($Extension, $this->config['extension'])) {
 			$fileName = strtotime(time()) . '_' . $this->config['imgNamePrefix'] . $updateAnime->id . '_' . $updateAnime->name . '.' . $Extension;// формирует имя файла
-			$pathImg = $this->config['patchImgPublic'] . Str::slug(
-					$updateAnime->title
-				) . $this->config['patchSeparator'];          //путь к большой картинке
-			$pathImgThumb = $pathImg . $this->config['thumb'];//путь к уменьшеной картинке
-			$pathImgSave = $this->config['patchImgStorage'] . Str::slug(
-					$updateAnime->title
-				) . $this->config['patchSeparator'];
+			$pathImg = $this->config['patchImgPublic'] . Str::slug($updateAnime->title) . $this->config['patchSeparator'];                        //путь к большой картинке
+			$pathImgThumb = $pathImg . $this->config['thumb'];                                                                                    //путь к уменьшеной картинке
+			$pathImgSave = $this->config['patchImgStorage'] . Str::slug($updateAnime->title) . $this->config['patchSeparator'];
 			$pathImgSaveThumb = $pathImgSave . $this->config['thumb'];
-
-			Storage::putFileAs($pathImg, $requestForm[$this->config['imgColumns']], $fileName);//запись картинки
-			Storage::putFileAs(
-				$pathImgThumb,
-				$requestForm[$this->config['imgColumns']],
-				$fileName
-			);//запись уменьшеной картинки
-
-			$requestForm[$this->config['imgColumns']] = $fileName;//Запись в базу
+			Storage::putFileAs($pathImg, $requestForm[$this->config['imgColumns']], $fileName);     //запись картинки
+			Storage::putFileAs($pathImgThumb, $requestForm[$this->config['imgColumns']], $fileName);//запись уменьшеной картинки
+			$requestForm[$this->config['imgColumns']] = $fileName;                                  //Запись в базу
 			$img = Image::make($pathImgSave . $fileName);
-			$img->insert(
-				$this->config['watermarkImg'],
-				$this->config['watermarkPosition'],
-				$this->config['watermark']['X'],
-				$this->config['watermark']['Y']
-			);
+			$img->insert($this->config['watermarkImg'], $this->config['watermarkPosition'], $this->config['watermark']['X'], $this->config['watermark']['Y']); //добавляет вотемарк
 			$img->save($pathImgSave . $fileName);
 			$imgThumb = Image::make($pathImgSaveThumb . $fileName);
 			$imgThumb->resize($this->config['img']['Width'], $this->config['img']['Height']);

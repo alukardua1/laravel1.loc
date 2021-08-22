@@ -18,41 +18,41 @@ trait UserModelTrait
 	use HasProfilePhoto;
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
-	public function getFavoritesCountAttribute()
+	public function getFavoritesCountAttribute(): int
 	{
 		return $this->attributes['favorites_count'] = $this->favorites()->count();
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
-	public function getAnimeCountAttribute()
+	public function getAnimeCountAttribute(): int
 	{
 		return $this->attributes['anime_count'] = $this->getAnime()->count();
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
-	public function getCommentsCountAttribute()
+	public function getCommentsCountAttribute(): int
 	{
 		return $this->attributes['comments_count'] = $this->getComments()->count();
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
-	public function getCommentsReplyCountAttribute()
+	public function getCommentsReplyCountAttribute(): int
 	{
 		return $this->attributes['comments_reply_count'] = $this->getComments()->where('user_id', '>', 0)->count();
 	}
 
 	/**
-	 * @return mixed
+	 * @return int
 	 */
-	public function getPMCountAttribute()
+	public function getPMCountAttribute(): int
 	{
 		return $this->attributes['pm_count'] = $this->getPersonalMessageRecipient()->count();
 	}
@@ -68,9 +68,9 @@ trait UserModelTrait
 	/**
 	 * @param $value
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function setLastLoginsAttribute($value)
+	public function setLastLoginsAttribute($value): string
 	{
 		return $this->attributes['last_logins'] = (new Carbon($value))->format('d.m.Y');
 	}
@@ -80,7 +80,7 @@ trait UserModelTrait
 	 *
 	 * @return mixed
 	 */
-	public function setCreatedAttribute($value)
+	public function setCreatedAttribute($value): mixed
 	{
 		return $this->attributes['created'] = (new Carbon($value))->format('d.m.Y');
 	}

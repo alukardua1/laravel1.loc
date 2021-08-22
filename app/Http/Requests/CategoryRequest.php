@@ -21,17 +21,20 @@ class CategoryRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
-        return [
-	        'title'     => ['required'],
-        ];
-    }
+	public function rules()
+	{
+		return [
+			'title' => ['required'],
+		];
+	}
 
+	/**
+	 * @return string[]
+	 */
 	public function messages(): array
 	{
 		return [
-			'title.required'     => 'Заголовок обязателен',
+			'title.required' => 'Заголовок обязателен',
 		];
 	}
 }

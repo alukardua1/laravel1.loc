@@ -25,7 +25,7 @@ trait ParseShikimori
 	 *
 	 * @return mixed
 	 */
-	public function getShikimori($link)
+	public function getShikimori($link): mixed
 	{
 		$this->shikimoriID = $this->getId($link);
 		$this->shikimoriApiUrl = $this->shikimoriApiUrl . $this->shikimoriID;
@@ -41,7 +41,7 @@ trait ParseShikimori
 	 *
 	 * @return mixed
 	 */
-	public function getId($link)
+	public function getId($link): mixed
 	{
 		$linkArr = explode('/', $link);
 

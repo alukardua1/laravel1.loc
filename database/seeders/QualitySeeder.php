@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
  */
 class QualitySeeder extends Seeder
 {
-	protected $kodikRepository;
+	protected DLEParseRepository $kodikRepository;
 
 	/**
 	 * QualitySeeder constructor.

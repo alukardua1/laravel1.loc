@@ -8,17 +8,18 @@ use Illuminate\Queue\SerializesModels;
 
 class AnimeEvent
 {
-    use InteractsWithSockets, SerializesModels;
+	use InteractsWithSockets;
+	use SerializesModels;
 
-    public Anime $anime;
+	public Anime $anime;
 
 	/**
 	 * Create a new event instance.
 	 *
 	 * @param  Anime  $anime
 	 */
-    public function __construct(Anime $anime)
-    {
+	public function __construct(Anime $anime)
+	{
         $this->anime = $anime;
     }
 }

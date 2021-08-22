@@ -25,7 +25,7 @@ trait MutationTrait
 	{
 		$result = [];
 		foreach ($category as $value) {
-			$result[] = "<a href=\"/category/{$value->url}\">{$value->title}</a>";
+			$result[] = "<a href=\"/category/" . $value->url . "\">" . $value->title . "</a>";
 		}
 		$result = implode(' / ', $result);
 		return $result;
@@ -119,11 +119,11 @@ trait MutationTrait
 		}
 		$summ = $result['plus'] + $result['minus'];
 		if ($summ > 0) {
-			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingplus\">+ {$summ}</span>";
+			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingplus\">+ " . $summ . "</span>";
 		}elseif ($summ<0){
-			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingminus\">{$summ}</span>";
+			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingminus\">" . $summ . "</span>";
 		}else {
-			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingzero\">{$summ}</span>";
+			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingzero\">" . $summ . "</span>";
 		}
 
 

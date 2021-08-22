@@ -42,13 +42,18 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	/**
 	 * Добавление/обновление канала
 	 *
-	 * @param  string   $channelUrl урл канала
-	 * @param  Request  $request Запрос
+	 * @param  string   $channelUrl  урл канала
+	 * @param  Request  $request     Запрос
 	 *
 	 * @return mixed
 	 */
 	public function setChannel(string $channelUrl, Request $request): mixed
 	{
 		// TODO: Implement setChannel() method.
+	}
+
+	public function delete(string $channelUrl): mixed
+	{
+		// TODO: Implement delete() method.
 	}
 }

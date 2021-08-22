@@ -6,6 +6,7 @@ use App\Models\OtherLink;
 use App\Models\Player;
 use Auth;
 use Illuminate\Http\RedirectResponse;
+use URL;
 
 /**
  * Trait FunctionTrait
@@ -52,7 +53,7 @@ trait FunctionTrait
 				[
 					'title'       => $post->name,
 					'author'      => $post->getUser->login,
-					'link'        => \URL::to("/anime/{$post->id}-{$post->url}"),
+					'link'        => URL::to("/anime/" . $post->id . "-" . $post->url),
 					'pubdate'     => date("r", strtotime($post->updated_at)),
 					'description' => $post->description,
 					'content'     => $post->description_html,

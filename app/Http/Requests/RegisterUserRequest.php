@@ -27,10 +27,13 @@ class RegisterUserRequest extends FormRequest
 			'login'     => ['required', 'unique:users'],
 			'email'     => ['required', 'unique:users'],
 			'password1' => ['same:password2', 'regex:/[a-zA-Z0-9_]+/', 'sometimes', 'between:8,15', 'required'],
-			'password2' => ['regex:/[a-zA-Z0-9_]+/','between:8,15',  'sometimes', 'required'],
+			'password2' => ['regex:/[a-zA-Z0-9_]+/', 'between:8,15', 'sometimes', 'required'],
 		];
 	}
 
+	/**
+	 * @return string[]
+	 */
 	public function messages(): array
 	{
 		return [

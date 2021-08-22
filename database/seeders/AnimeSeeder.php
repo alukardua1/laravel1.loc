@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Repository\DLEParseRepository;
 use App\Repository\Interfaces\DLEParse;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,11 +14,11 @@ use Illuminate\Support\Facades\DB;
  */
 class AnimeSeeder extends Seeder
 {
-	protected $anime;
+	protected DLEParseRepository $anime;
 
-	public function __construct(DLEParse $DLEParse)
+	public function __construct(DLEParseRepository $DLEParseRepository)
 	{
-		$this->anime = $DLEParse;
+		$this->anime = $DLEParseRepository;
 	}
 
 	/**
@@ -28,8 +29,7 @@ class AnimeSeeder extends Seeder
 	public function run()
 	{
 		$post = $this->anime->parsePost();
-		foreach ($post as $value)
-		{
+		foreach ($post as $value) {
 			DB::table('animes')->insert($value);
 		}
 	}

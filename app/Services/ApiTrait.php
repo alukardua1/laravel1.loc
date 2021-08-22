@@ -41,20 +41,17 @@ trait ApiTrait
 		foreach ($user->favorites as $value) {
 			$favorite[] = $this->animeAllMutations($value);
 		}
-		switch ($custom) {
-			case 'favorite':
-				return $favorite;
-			case null:
-				return [
-					'id'    => $user->id,
-					'login' => $user->login,
-					'name'  => $user->name,
-					'email' => $user->email,
-					'group' => $user->getGroup->title,
-				];
-		}
-
-		return $this->error404();
+		return match ($custom) {
+			'favorite' => $favorite,
+			null => [
+				'id'    => $user->id,
+				'login' => $user->login,
+				'name'  => $user->name,
+				'email' => $user->email,
+				'group' => $user->getGroup->title,
+			],
+			default => $this->error404(),
+		};
 	}
 
 	/**

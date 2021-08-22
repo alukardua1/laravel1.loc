@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.54.0.
+ * Generated for Laravel 8.55.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2631,21 +2631,23 @@
          *
          * @param string|callable $class
          * @param callable|null $handler
-         * @return void 
-         * @static 
-         */ 
-        public static function stringable($class, $handler = null)
-        {
-                        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
-                        $instance->stringable($class, $handler);
-        }
-                    /**
-         * Compile Blade echos into valid PHP.
-                     *
-                     * @param  string  $value
-                     * @return string
+                     * @return void
                      * @static
                      */
+	        public static function stringable($class, $handler = null)
+	        {
+		        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
+		        $instance->stringable($class, $handler);
+	        }
+
+	        /**
+	         * Compile Blade echos into valid PHP.
+	         *
+	         * @param  string  $value
+	         *
+	         * @return string
+	         * @static
+	         */
 	        public static function compileEchos($value)
 	        {
 		        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
@@ -5495,13 +5497,14 @@
                         /** @var \Illuminate\Events\Dispatcher $instance */
                         return $instance->getListeners($eventName);
         }
-                    /**
-         * Register an event listener with the dispatcher.
-         *
-         * @param \Closure|string $listener
-         * @param bool $wildcard
-         * @return \Closure 
-         * @static 
+
+	        /**
+	         * Register an event listener with the dispatcher.
+	         *
+	         * @param  \Closure|string|array  $listener
+	         * @param  bool                   $wildcard
+	         * @return \Closure
+	         * @static
          */ 
         public static function makeListener($listener, $wildcard = false)
         {
@@ -5788,18 +5791,20 @@
          */ 
         public static function hash($path)
         {
-                        /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        return $instance->hash($path);
+	        /** @var \Illuminate\Filesystem\Filesystem $instance */
+	        return $instance->hash($path);
         }
-                    /**
-         * Write the contents of a file.
-         *
-         * @param string $path
-         * @param string $contents
-         * @param bool $lock
-         * @return int|bool
-                     * @static
-                     */
+
+	        /**
+	         * Write the contents of a file.
+	         *
+	         * @param  string  $path
+	         * @param  string  $contents
+	         * @param  bool    $lock
+	         *
+	         * @return int|bool
+	         * @static
+	         */
 	        public static function put($path, $contents, $lock = false)
 	        {
 		        /** @var \Illuminate\Filesystem\Filesystem $instance */
@@ -5857,19 +5862,21 @@
 	         *
 	         * @param  string  $path
 	         * @param  string  $data
+	         *
 	         * @return int
 	         * @static
 	         */
-        public static function append($path, $data)
-        {
-                        /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        return $instance->append($path, $data);
-        }
-                    /**
-         * Get or set UNIX mode of a file or directory.
-         *
-         * @param string $path
-         * @param int|null $mode
+	        public static function append($path, $data)
+	        {
+		        /** @var \Illuminate\Filesystem\Filesystem $instance */
+		        return $instance->append($path, $data);
+	        }
+
+	        /**
+	         * Get or set UNIX mode of a file or directory.
+	         *
+	         * @param  string  $path
+	         * @param int|null $mode
          * @return mixed 
          * @static 
          */ 
@@ -7648,39 +7655,69 @@
         }
                     /**
          * Assert if a mailable was sent based on a truth-test callback.
-         *
-         * @param string|\Closure $mailable
-         * @param callable|int|null $callback
-         * @return void 
-         * @static 
-         */ 
-        public static function assertSent($mailable, $callback = null)
-        {
-                        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
-                        $instance->assertSent($mailable, $callback);
-        }
-                    /**
-         * Determine if a mailable was not sent based on a truth-test callback.
-         *
-         * @param string $mailable
-         * @param callable|null $callback
-         * @return void 
-         * @static 
-         */ 
-        public static function assertNotSent($mailable, $callback = null)
-        {
-                        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
-                        $instance->assertNotSent($mailable, $callback);
-        }
-                    /**
-         * Assert that no mailables were sent.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function assertNothingSent()
-        {
-                        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
+                     *
+                     * @param  string|\Closure    $mailable
+                     * @param  callable|int|null  $callback
+                     * @return void
+                     * @static
+                     */
+	        public static function assertSent($mailable, $callback = null)
+	        {
+		        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
+		        $instance->assertSent($mailable, $callback);
+	        }
+
+	        /**
+	         * Determine if a mailable was not sent or queued to be sent based on a truth-test callback.
+	         *
+	         * @param  string|\Closure  $mailable
+	         * @param  callable|null    $callback
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function assertNotOutgoing($mailable, $callback = null)
+	        {
+		        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
+		        $instance->assertNotOutgoing($mailable, $callback);
+	        }
+
+	        /**
+	         * Determine if a mailable was not sent based on a truth-test callback.
+	         *
+	         * @param  string|\Closure  $mailable
+	         * @param  callable|null    $callback
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function assertNotSent($mailable, $callback = null)
+	        {
+		        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
+		        $instance->assertNotSent($mailable, $callback);
+	        }
+
+	        /**
+	         * Assert that no mailables were sent or queued to be sent.
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function assertNothingOutgoing()
+	        {
+		        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
+		        $instance->assertNothingOutgoing();
+	        }
+
+	        /**
+	         * Assert that no mailables were sent.
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function assertNothingSent()
+	        {
+		        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
                         $instance->assertNothingSent();
         }
                     /**
@@ -7694,12 +7731,13 @@
         public static function assertQueued($mailable, $callback = null)
         {
                         /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
-                        $instance->assertQueued($mailable, $callback);
+	        $instance->assertQueued($mailable, $callback);
         }
-                    /**
-         * Determine if a mailable was not queued based on a truth-test callback.
-         *
-         * @param string $mailable
+
+	        /**
+	         * Determine if a mailable was not queued based on a truth-test callback.
+	         *
+	         * @param  string|\Closure  $mailable
          * @param callable|null $callback
          * @return void 
          * @static 
@@ -7718,13 +7756,14 @@
         public static function assertNothingQueued()
         {
                         /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
-                        $instance->assertNothingQueued();
+	        $instance->assertNothingQueued();
         }
-                    /**
-         * Get all of the mailables matching a truth-test callback.
-         *
-         * @param string $mailable
-         * @param callable|null $callback
+
+	        /**
+	         * Get all of the mailables matching a truth-test callback.
+	         *
+	         * @param  string|\Closure  $mailable
+	         * @param  callable|null $callback
          * @return \Illuminate\Support\Collection 
          * @static 
          */ 
@@ -7743,13 +7782,14 @@
         public static function hasSent($mailable)
         {
                         /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
-                        return $instance->hasSent($mailable);
+	        return $instance->hasSent($mailable);
         }
-                    /**
-         * Get all of the queued mailables matching a truth-test callback.
-         *
-         * @param string $mailable
-         * @param callable|null $callback
+
+	        /**
+	         * Get all of the queued mailables matching a truth-test callback.
+	         *
+	         * @param  string|\Closure  $mailable
+	         * @param  callable|null $callback
          * @return \Illuminate\Support\Collection 
          * @static 
          */ 
@@ -8209,7 +8249,6 @@
             /**
      * 
      *
-     * @method static void popUsing(string $workerName, callable $callback)
      * @see \Illuminate\Queue\QueueManager
      * @see \Illuminate\Queue\Queue
      */ 
@@ -10606,23 +10645,25 @@
         }
                     /**
          * Determine if the request contains a given input item key.
-         *
-         * @param string|array $key
-         * @return bool 
-         * @static 
-         */ 
-        public static function has($key)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->has($key);
-        }
-                    /**
-         * Determine if the request contains any of the given inputs.
                      *
-                     * @param  string|array  $keys
+                     * @param  string|array  $key
                      * @return bool
                      * @static
                      */
+	        public static function has($key)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->has($key);
+	        }
+
+	        /**
+	         * Determine if the request contains any of the given inputs.
+	         *
+	         * @param  string|array  $keys
+	         *
+	         * @return bool
+	         * @static
+	         */
 	        public static function hasAny($keys)
 	        {
 		        /** @var \Illuminate\Http\Request $instance */
@@ -10654,29 +10695,33 @@
 	         * @static
 	         */
 	        public static function filled($key)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->filled($key);
-        }
-                    /**
-         * Determine if the request contains an empty value for an input item.
-         *
-         * @param string|array $key
-         * @return bool 
-         * @static 
-         */ 
-        public static function isNotFilled($key)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->isNotFilled($key);
-        }
-                    /**
-         * Determine if the request contains a non-empty value for any of the given inputs.
-                     *
-                     * @param  string|array  $keys
-                     * @return bool
-                     * @static
-                     */
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->filled($key);
+	        }
+
+	        /**
+	         * Determine if the request contains an empty value for an input item.
+	         *
+	         * @param  string|array  $key
+	         *
+	         * @return bool
+	         * @static
+	         */
+	        public static function isNotFilled($key)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->isNotFilled($key);
+	        }
+
+	        /**
+	         * Determine if the request contains a non-empty value for any of the given inputs.
+	         *
+	         * @param  string|array  $keys
+	         *
+	         * @return bool
+	         * @static
+	         */
 	        public static function anyFilled($keys)
 	        {
 		        /** @var \Illuminate\Http\Request $instance */
@@ -10703,16 +10748,18 @@
 	         * Determine if the request is missing a given input item key.
 	         *
 	         * @param  string|array  $key
+	         *
 	         * @return bool
 	         * @static
 	         */
-        public static function missing($key)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->missing($key);
-        }
-                    /**
-         * Get the keys for all of the input and files.
+	        public static function missing($key)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->missing($key);
+	        }
+
+	        /**
+	         * Get the keys for all of the input and files.
          *
          * @return array 
          * @static 
@@ -13740,20 +13787,22 @@
         public static function makeDirectory($path)
         {
                         /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
-                        return $instance->makeDirectory($path);
+	        return $instance->makeDirectory($path);
         }
-                    /**
-         * Recursively delete a directory.
-         *
-         * @param string $directory
-         * @return bool 
-         * @static 
-         */ 
-        public static function deleteDirectory($directory)
-        {
-                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
-                        return $instance->deleteDirectory($directory);
-        }
+
+	        /**
+	         * Recursively delete a directory.
+	         *
+	         * @param  string  $directory
+	         *
+	         * @return bool
+	         * @static
+	         */
+	        public static function deleteDirectory($directory)
+	        {
+		        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+		        return $instance->deleteDirectory($directory);
+	        }
 
 	        /**
 	         * Flush the Flysystem cache.
@@ -13834,7 +13883,7 @@
 	        public static function macroCall($method, $parameters)
 	        {
 		        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
-		        return $instance->macroCall($method, $parameters);
+                        return $instance->macroCall($method, $parameters);
         }
          
     }
@@ -14375,29 +14424,33 @@
                         /** @var \Illuminate\Validation\Factory $instance */
                         $instance->extend($rule, $extension, $message);
         }
-                    /**
-         * Register a custom implicit validator extension.
-         *
-         * @param string $rule
-         * @param \Closure|string $extension
-         * @param string|null $message
-         * @return void 
-         * @static 
-         */ 
-        public static function extendImplicit($rule, $extension, $message = null)
-        {
-                        /** @var \Illuminate\Validation\Factory $instance */
-                        $instance->extendImplicit($rule, $extension, $message);
-        }
-                    /**
-         * Register a custom dependent validator extension.
-                     *
-                     * @param  string           $rule
-                     * @param  \Closure|string  $extension
-                     * @param  string|null      $message
-                     * @return void
-                     * @static
-                     */
+
+	        /**
+	         * Register a custom implicit validator extension.
+	         *
+	         * @param  string           $rule
+	         * @param  \Closure|string  $extension
+	         * @param  string|null      $message
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function extendImplicit($rule, $extension, $message = null)
+	        {
+		        /** @var \Illuminate\Validation\Factory $instance */
+		        $instance->extendImplicit($rule, $extension, $message);
+	        }
+
+	        /**
+	         * Register a custom dependent validator extension.
+	         *
+	         * @param  string           $rule
+	         * @param  \Closure|string  $extension
+	         * @param  string|null      $message
+	         *
+	         * @return void
+	         * @static
+	         */
 	        public static function extendDependent($rule, $extension, $message = null)
 	        {
 		        /** @var \Illuminate\Validation\Factory $instance */
@@ -14449,11 +14502,11 @@
 	         * Get the Translator implementation.
 	         *
 	         * @return \Illuminate\Contracts\Translation\Translator
-         * @static 
-         */ 
-        public static function getTranslator()
-        {
-                        /** @var \Illuminate\Validation\Factory $instance */
+	         * @static
+	         */
+	        public static function getTranslator()
+	        {
+		        /** @var \Illuminate\Validation\Factory $instance */
                         return $instance->getTranslator();
         }
                     /**
@@ -17675,30 +17728,31 @@ namespace  {
                 /**
              * Paginate the given query.
              *
-             * @param int|null $perPage
-             * @param array $columns
-             * @param string $pageName
-             * @param int|null $page
-             * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
-             * @throws \InvalidArgumentException
-             * @static 
-             */ 
-            public static function paginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->paginate($perPage, $columns, $pageName, $page);
-            }
-             
-                /**
-             * Paginate the given query into a simple paginator.
-                 *
                  * @param  int|null  $perPage
                  * @param  array     $columns
                  * @param  string    $pageName
                  * @param  int|null  $page
-                 * @return \Illuminate\Contracts\Pagination\Paginator
+                 * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+                 * @throws \InvalidArgumentException
                  * @static
                  */
+	            public static function paginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->paginate($perPage, $columns, $pageName, $page);
+	            }
+
+	            /**
+	             * Paginate the given query into a simple paginator.
+	             *
+	             * @param  int|null  $perPage
+	             * @param  array     $columns
+	             * @param  string    $pageName
+	             * @param  int|null  $page
+	             *
+	             * @return \Illuminate\Contracts\Pagination\Paginator
+	             * @static
+	             */
 	            public static function simplePaginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
 	            {
 		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
@@ -17720,10 +17774,10 @@ namespace  {
 	            {
 		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
 		            return $instance->cursorPaginate($perPage, $columns, $cursorName, $cursor);
-            }
-             
-                /**
-             * Save a new model and return the instance.
+	            }
+
+	            /**
+	             * Save a new model and return the instance.
              *
              * @param array $attributes
              * @return \Illuminate\Database\Eloquent\Model|$this 
@@ -18488,30 +18542,31 @@ namespace  {
             public static function first($columns = [])
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->first($columns);
+	            return $instance->first($columns);
             }
-             
-                /**
-             * Execute the query and get the first result if it's the sole matching record.
-             *
-             * @param array|string $columns
-             * @return \Illuminate\Database\Eloquent\Model|object|static|null 
-             * @throws \Illuminate\Database\RecordsNotFoundException
-             * @throws \Illuminate\Database\MultipleRecordsFoundException
-             * @static 
-             */ 
-            public static function baseSole($columns = [])
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-	            return $instance->baseSole($columns);
-            }
+
+	            /**
+	             * Execute the query and get the first result if it's the sole matching record.
+	             *
+	             * @param  array|string  $columns
+	             *
+	             * @throws \Illuminate\Database\RecordsNotFoundException
+	             * @throws \Illuminate\Database\MultipleRecordsFoundException
+	             * @static
+	             * @return \Illuminate\Database\Eloquent\Model|object|static|null
+	             */
+	            public static function baseSole($columns = [])
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->baseSole($columns);
+	            }
 
 	            /**
 	             * Pass the query to a given callback.
 	             *
 	             * @param  callable  $callback
 	             *
-	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @return $this|mixed
 	             * @static
 	             */
 	            public static function tap($callback)
@@ -18549,7 +18604,7 @@ namespace  {
 	            public static function unless($value, $callback, $default = null)
 	            {
 		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->unless($value, $callback, $default);
+		            return $instance->unless($value, $callback, $default);
             }
              
                 /**
@@ -18601,27 +18656,28 @@ namespace  {
              * @param string $as
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
-             * @static 
-             */ 
-            public static function fromSub($query, $as)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->fromSub($query, $as);
-            }
-             
-                /**
-             * Add a raw from clause to the query.
-             *
-             * @param string $expression
-             * @param mixed $bindings
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function fromRaw($expression, $bindings = [])
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-	            return $instance->fromRaw($expression, $bindings);
-            }
+             * @static
+                 */
+	            public static function fromSub($query, $as)
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->fromSub($query, $as);
+	            }
+
+	            /**
+	             * Add a raw from clause to the query.
+	             *
+	             * @param  string  $expression
+	             * @param  mixed   $bindings
+	             *
+	             * @return \Illuminate\Database\Query\Builder
+	             * @static
+	             */
+	            public static function fromRaw($expression, $bindings = [])
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->fromRaw($expression, $bindings);
+	            }
 
 	            /**
 	             * Add a new select column to the query.
@@ -18650,8 +18706,8 @@ namespace  {
 		            /** @var \Illuminate\Database\Query\Builder $instance */
 		            return $instance->distinct();
 	            }
-             
-                /**
+
+	            /**
              * Set the table which the query is targeting.
              *
              * @param \Closure|\Illuminate\Database\Query\Builder|string $table
@@ -19712,27 +19768,28 @@ namespace  {
              * @param array $bindings
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function havingRaw($sql, $bindings = [], $boolean = 'and')
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->havingRaw($sql, $bindings, $boolean);
-            }
-             
-                /**
-             * Add a raw or having clause to the query.
-             *
-             * @param string $sql
-             * @param array $bindings
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function orHavingRaw($sql, $bindings = [])
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->orHavingRaw($sql, $bindings);
-            }
+             * @static
+                 */
+	            public static function havingRaw($sql, $bindings = [], $boolean = 'and')
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->havingRaw($sql, $bindings, $boolean);
+	            }
+
+	            /**
+	             * Add a raw or having clause to the query.
+	             *
+	             * @param  string  $sql
+	             * @param  array   $bindings
+	             *
+	             * @return \Illuminate\Database\Query\Builder
+	             * @static
+	             */
+	            public static function orHavingRaw($sql, $bindings = [])
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->orHavingRaw($sql, $bindings);
+	            }
 
 	            /**
 	             * Add an "order by" clause to the query.
@@ -19849,28 +19906,29 @@ namespace  {
              * @param int $page
              * @param int $perPage
              * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function forPage($page, $perPage = 15)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->forPage($page, $perPage);
-            }
-             
-                /**
-             * Constrain the query to the previous "page" of results before a given ID.
-             *
-             * @param int $perPage
-             * @param int|null $lastId
-             * @param string $column
-             * @return \Illuminate\Database\Query\Builder 
-             * @static 
-             */ 
-            public static function forPageBeforeId($perPage = 15, $lastId = 0, $column = 'id')
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-	            return $instance->forPageBeforeId($perPage, $lastId, $column);
-            }
+             * @static
+                 */
+	            public static function forPage($page, $perPage = 15)
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->forPage($page, $perPage);
+	            }
+
+	            /**
+	             * Constrain the query to the previous "page" of results before a given ID.
+	             *
+	             * @param  int       $perPage
+	             * @param  int|null  $lastId
+	             * @param  string    $column
+	             *
+	             * @return \Illuminate\Database\Query\Builder
+	             * @static
+	             */
+	            public static function forPageBeforeId($perPage = 15, $lastId = 0, $column = 'id')
+	            {
+		            /** @var \Illuminate\Database\Query\Builder $instance */
+		            return $instance->forPageBeforeId($perPage, $lastId, $column);
+	            }
 
 	            /**
 	             * Constrain the query to the next "page" of results after a given ID.

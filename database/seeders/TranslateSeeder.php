@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Repository\DLEParseRepository;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Str;
 
 /**
  * Class TranslateSeeder
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\DB;
  */
 class TranslateSeeder extends Seeder
 {
-	protected $kodikRepository;
+	protected DLEParseRepository $kodikRepository;
 
 	/**
 	 * TranslateSeeder constructor.
@@ -31,13 +32,13 @@ class TranslateSeeder extends Seeder
      */
     public function run()
     {
-       $translate = $this->kodikRepository->parseKodik('https://kodikapi.com/translations/v2?token=16b2ff25feb8e53b0aded1ebb0fff2c1');
+	    $translate = $this->kodikRepository->parseKodik('https://kodikapi.com/translations/v2?token=' . env('KODIK_TOKEN'));
 
        foreach ($translate as $value)
        {
 	       $data[] = [
 		       'name' => $value,
-		       'url'  => \Str::slug($value),
+		       'url'  => Str::slug($value),
 	       ];
        }
 

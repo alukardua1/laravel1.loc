@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Str;
 
 /**
  * Class RatingSeeder
@@ -22,37 +23,37 @@ class RatingSeeder extends Seeder
 		$data = [
 			[
 				'name'        => 'нет',
-				'url'         => \Str::slug('нет'),
+				'url'         => Str::slug('нет'),
 				'description' => 'не указан',
 			],
 			[
 				'name'        => 'G',
-				'url'         => \Str::slug('G'),
+				'url'         => Str::slug('G'),
 				'description' => 'G - Нет возрастных ограничений',
 			],
 			[
 				'name'        => 'PG',
-				'url'         => \Str::slug('PG'),
+				'url'         => Str::slug('PG'),
 				'description' => 'PG - Рекомендуется присутствие родителей',
 			],
 			[
 				'name'        => 'PG-13',
-				'url'         => \Str::slug('PG-13'),
+				'url'         => Str::slug('PG-13'),
 				'description' => 'PG-13 - Детям до 13 лет просмотр не желателен',
 			],
 			[
 				'name'        => 'R-17',
-				'url'         => \Str::slug('R-17'),
+				'url'         => Str::slug('R-17'),
 				'description' => 'R - Лицам до 17 лет обязательно присутствие взрослого',
 			],
 			[
 				'name'        => 'R+',
-				'url'         => \Str::slug('R+'),
+				'url'         => Str::slug('R+'),
 				'description' => 'R+ - Лицам до 17 лет просмотр запрещён',
 			],
 			[
 				'name'        => 'Rx',
-				'url'         => \Str::slug('Rx'),
+				'url'         => Str::slug('Rx'),
 				'description' => 'Rx - Хентай',
 			],
 		];

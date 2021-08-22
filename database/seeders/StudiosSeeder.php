@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
  */
 class StudiosSeeder extends Seeder
 {
-    protected $studiosRepository;
+    protected DLEParseRepository $studiosRepository;
 
 	/**
 	 * StudiosSeeder constructor.

@@ -18,6 +18,8 @@ use Request;
 class TableOrderRepository implements TableOrderRepositoryInterfaces
 {
 	/**
+	 * Выводит записи
+	 *
 	 * @param  int|null  $id
 	 * @param  int|null  $user_id
 	 *
@@ -34,6 +36,8 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	}
 
 	/**
+	 * Сохраняет запись
+	 *
 	 * @param  \App\Http\Requests\TableOrderRequest  $request
 	 * @param  int|null                              $id
 	 *

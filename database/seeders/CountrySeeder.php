@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Repository\DLEParseRepository;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Str;
 
 /**
  * Class CountrySeeder
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\DB;
  */
 class CountrySeeder extends Seeder
 {
-	protected $kodikRepository;
+	protected DLEParseRepository $kodikRepository;
 
 	/**
 	 * CountrySeeder constructor.
@@ -36,7 +37,7 @@ class CountrySeeder extends Seeder
 		foreach ($country as $value) {
 			$data[] = [
 				'name' => $value,
-				'url'  => \Str::slug($value),
+				'url'  => Str::slug($value),
 			];
 		}
 

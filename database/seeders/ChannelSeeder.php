@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
  */
 class ChannelSeeder extends Seeder
 {
-	protected $channelRepository;
+	protected DLEParseRepository $channelRepository;
 
 	/**
 	 * ChannelSeeder constructor.

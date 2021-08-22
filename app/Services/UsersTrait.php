@@ -38,11 +38,7 @@ trait UsersTrait
         $Extension = $requestForm['profile_photo_path']->getClientOriginalExtension();
         $fileName = 'avatar_' . $updateUser->id . '_' . date(time()) . '.' . $Extension;
 
-        Storage::putFileAs(
-	        'avatars/' . $updateUser->login . '/',
-            $requestForm['profile_photo_path'],
-            $fileName
-        );
+        Storage::putFileAs('avatars/' . $updateUser->login . '/', $requestForm['profile_photo_path'], $fileName);
 
         $requestForm['profile_photo_path'] = 'avatars/' . $updateUser->login . '/' . $fileName;
 
@@ -91,24 +87,18 @@ trait UsersTrait
      */
     public function refactoringUser($user): User
     {
-        switch ($user->getGroup->id) {
-            case 1:
-                $user->group = "<p class=\"red-text\">{$user->getGroup->title}</p>";
-                break;
-            case 2:
-                $user->group = "<p class=\"green-text\">{$user->getGroup->title}</p>";
-                break;
-            case 3:
-                $user->group = "<p class=\"brown-text\">{$user->getGroup->title}</p>";
-                break;
-        }
-        $user->age = Carbon::now()->diffInYears($user->date_of_birth);
-        if (!isset($user->name)) {
-            $user->name = 'Не указано';
-        }
-        $user->date_of_birth = Carbon::parse($user->date_of_birth)->format('d.m.Y');
-        $user->register = Carbon::parse($user->created_at)->format('d.m.Y');
+	    $user->group = match ($user->getGroup->id) {
+		    1 => "<p class=\"red-text\">" . $user->getGroup->title . "</p>",
+		    2 => "<p class=\"green-text\">" . $user->getGroup->title . "</p>",
+		    3 => "<p class=\"brown-text\">" . $user->getGroup->title . "</p>",
+	    };
+	    $user->age = Carbon::now()->diffInYears($user->date_of_birth);
+	    if (!isset($user->name)) {
+		    $user->name = 'Не указано';
+	    }
+	    $user->date_of_birth = Carbon::parse($user->date_of_birth)->format('d.m.Y');
+	    $user->register = Carbon::parse($user->created_at)->format('d.m.Y');
 
-        return $user;
+	    return $user;
     }
 }

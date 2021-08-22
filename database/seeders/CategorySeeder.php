@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Repository\DLEParseRepository;
 use App\Repository\Interfaces\DLEParse;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -14,33 +15,32 @@ use Illuminate\Support\Facades\DB;
  */
 class CategorySeeder extends Seeder
 {
-    protected $category;
-    protected $createdAt;
+	protected DLEParseRepository $category;
+	protected Carbon             $createdAt;
 
 	/**
 	 * CategorySeeder constructor.
 	 *
-	 * @param  \App\Repository\Interfaces\DLEParse  $DLEParse
+	 * @param  \App\Repository\DLEParseRepository  $DLEParseRepository
 	 */
-	public function __construct(DLEParse $DLEParse)
-    {
-        $this->category = $DLEParse;
-        $this->createdAt = Carbon::now();
-    }
+	public function __construct(DLEParseRepository $DLEParseRepository)
+	{
+		$this->category = $DLEParseRepository;
+		$this->createdAt = Carbon::now();
+	}
 
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        $categorys = $this->category->parseCategory();
-        foreach ($categorys as $cat)
-        {
-            $data = $cat;
-        }
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		$categorys = $this->category->parseCategory();
+		foreach ($categorys as $cat) {
+			$data = $cat;
+		}
 
-        DB::table('categories')->insert($categorys);
-    }
+		DB::table('categories')->insert($categorys);
+	}
 }
