@@ -36,14 +36,14 @@ class TranslateController extends Controller
 	 *
 	 * @return View|Factory|Application
 	 */
-    public function index(string $translateUrl): View|Factory|Application
-    {
-	    $showTranslate = $this->translate->getAnime($translateUrl);
-	    $this->isNotNull($showTranslate);
-	    $title = $showTranslate->name;
-	    $description = $showTranslate->description;
-	    $allAnime = $showTranslate->getAnime()->paginate($this->paginate);
+	public function index(string $translateUrl): View|Factory|Application
+	{
+		$showTranslate = $this->translate->getAnime($translateUrl);
+		$this->isNotNull($showTranslate);
+		$title = $showTranslate->name;
+		$description = $showTranslate->description;
+		$allAnime = $showTranslate->getAnime()->paginate($this->paginate);
 
-	    return view($this->frontend . 'anime.short', compact('showTranslate', 'allAnime', 'title', 'description'));
-    }
+		return view($this->frontend . 'anime.short', compact('showTranslate', 'allAnime', 'title', 'description'));
+	}
 }

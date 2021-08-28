@@ -36,14 +36,14 @@ class MPAARatingController extends Controller
 	 *
 	 * @return View|Factory|Application
 	 */
-    public function index(string $mpaaUrl): View|Factory|Application
-    {
-	    $showMpaa = $this->mpaaRepository->getAnime($mpaaUrl);
-	    $this->isNotNull($showMpaa);
-	    $title = $showMpaa->name;
-	    $description = $showMpaa->description;
-	    $allAnime = $showMpaa->getAnime()->paginate($this->paginate);
+	public function index(string $mpaaUrl): View|Factory|Application
+	{
+		$showMpaa = $this->mpaaRepository->getAnime($mpaaUrl);
+		$this->isNotNull($showMpaa);
+		$title = $showMpaa->name;
+		$description = $showMpaa->description;
+		$allAnime = $showMpaa->getAnime()->paginate($this->paginate);
 
-	    return view($this->frontend . 'anime.short', compact('showMpaa', 'allAnime', 'title', 'description'));
-    }
+		return view($this->frontend . 'anime.short', compact('showMpaa', 'allAnime', 'title', 'description'));
+	}
 }

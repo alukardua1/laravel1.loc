@@ -80,7 +80,7 @@ class UserController extends Controller
 	}
 
 	/**
-	 * @param  string                          $login
+	 * @param  string       $login
 	 * @param  UserRequest  $request
 	 *
 	 * @return RedirectResponse

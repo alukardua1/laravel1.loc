@@ -36,14 +36,14 @@ class YearAiredController extends Controller
 	 *
 	 * @return View|Factory|Application
 	 */
-    public function index(string $yearUrl): View|Factory|Application
-    {
-	    $showYear = $this->yearAired->getAnime($yearUrl);
-	    $this->isNotNull($showYear);
-	    $title = $showYear->name;
-	    $description = null;
-	    $allAnime = $showYear->getAnime()->paginate($this->paginate);
+	public function index(string $yearUrl): View|Factory|Application
+	{
+		$showYear = $this->yearAired->getAnime($yearUrl);
+		$this->isNotNull($showYear);
+		$title = $showYear->name;
+		$description = null;
+		$allAnime = $showYear->getAnime()->paginate($this->paginate);
 
-	    return view($this->frontend . 'anime.short', compact('showYear', 'allAnime', 'title', 'description'));
-    }
+		return view($this->frontend . 'anime.short', compact('showYear', 'allAnime', 'title', 'description'));
+	}
 }

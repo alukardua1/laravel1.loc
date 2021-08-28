@@ -18,7 +18,7 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	/**
 	 * Получает MPAA рейтинг по названию
 	 *
-	 * @param  string  $mpaaUrl Урл MPAA рейтинга
+	 * @param  string  $mpaaUrl  Урл MPAA рейтинга
 	 *
 	 * @return mixed
 	 */
@@ -41,8 +41,8 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	/**
 	 * Добавление/обновление MPAA рейтинга
 	 *
-	 * @param  string   $mpaaUrl Урл MPAA рейтинга
-	 * @param  Request  $request Запрос
+	 * @param  string   $mpaaUrl  Урл MPAA рейтинга
+	 * @param  Request  $request  Запрос
 	 *
 	 * @return mixed
 	 */

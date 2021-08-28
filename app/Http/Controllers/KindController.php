@@ -32,18 +32,18 @@ class KindController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param string $kindUrl
+	 * @param  string  $kindUrl
 	 *
 	 * @return View|Factory|Application
 	 */
-    public function index(string $kindUrl): View|Factory|Application
-    {
-	    $showKind = $this->kindRepository->getAnime($kindUrl);
-	    $this->isNotNull($showKind);
-	    $title = $showKind->full_name;
-	    $description = $showKind->description;
-	    $allAnime = $showKind->getAnime()->paginate($this->paginate);
+	public function index(string $kindUrl): View|Factory|Application
+	{
+		$showKind = $this->kindRepository->getAnime($kindUrl);
+		$this->isNotNull($showKind);
+		$title = $showKind->full_name;
+		$description = $showKind->description;
+		$allAnime = $showKind->getAnime()->paginate($this->paginate);
 
-	    return view($this->frontend . 'anime.short', compact('showKind', 'allAnime', 'title', 'description'));
-    }
+		return view($this->frontend . 'anime.short', compact('showKind', 'allAnime', 'title', 'description'));
+	}
 }

@@ -22,26 +22,26 @@ class CategoryAdminController extends Controller
 	}
 
 	/**
-     * Display a listing of the resource.
-     *
-     * @return Application|Factory|View|Response
-     */
-    public function index(): View|Factory|Response|Application
-    {
-        $allCategory = $this->categoryRepository->getCategories(true);
+	 * Display a listing of the resource.
+	 *
+	 * @return Application|Factory|View|Response
+	 */
+	public function index(): View|Factory|Response|Application
+	{
+		$allCategory = $this->categoryRepository->getCategories(true);
 
-        return view($this->backend . 'category.show_all_category', compact('allCategory'));
-    }
+		return view($this->backend . 'category.show_all_category', compact('allCategory'));
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create()
-    {
-        return view($this->backend . 'category.add');
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
+	public function create()
+	{
+		return view($this->backend . 'category.add');
+	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -50,20 +50,20 @@ class CategoryAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function store(CategoryRequest $request)
-    {
-	    $update = $this->categoryRepository->setCategory($request);
+	public function store(CategoryRequest $request)
+	{
+		$update = $this->categoryRepository->setCategory($request);
 
-	    return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin','Ошибка сохранения');
-    }
+		return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin', 'Ошибка сохранения');
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  string  $url
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  string  $url
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
 	public function edit(string $url)
 	{
 		$category = $this->categoryRepository->getCategory($url)->first();
@@ -79,12 +79,12 @@ class CategoryAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function update(CategoryRequest $request, string $url)
-    {
-        $update = $this->categoryRepository->setCategory($request, $url);
+	public function update(CategoryRequest $request, string $url)
+	{
+		$update = $this->categoryRepository->setCategory($request, $url);
 
-	    return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin','Ошибка сохранения');
-    }
+		return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin', 'Ошибка сохранения');
+	}
 
 	/**
 	 * Remove the specified resource from storage.
@@ -93,11 +93,11 @@ class CategoryAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-    public function destroy(string $url)
-    {
-        $delete = $this->categoryRepository->delCategory($url);
-        if ($delete) {
-	        return back();
-        }
-    }
+	public function destroy(string $url)
+	{
+		$delete = $this->categoryRepository->delCategory($url);
+		if ($delete) {
+			return back();
+		}
+	}
 }

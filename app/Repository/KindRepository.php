@@ -19,7 +19,7 @@ class KindRepository implements KindRepositoryInterfaces
 	/**
 	 * Получает тип по названию
 	 *
-	 * @param  string  $kindUrl Урл типа
+	 * @param  string  $kindUrl  Урл типа
 	 *
 	 * @return mixed
 	 */
@@ -42,8 +42,8 @@ class KindRepository implements KindRepositoryInterfaces
 	/**
 	 * Добавление/обновление типа
 	 *
-	 * @param  string   $kindUrl Урл типа
-	 * @param  Request  $request Запрос
+	 * @param  string   $kindUrl  Урл типа
+	 * @param  Request  $request  Запрос
 	 *
 	 * @return mixed
 	 */

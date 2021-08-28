@@ -17,12 +17,13 @@ use Illuminate\Http\Response;
 /**
  * Class AnimeAdminController
  *
+ * @todo    К франшизе (если есть фильмы) добавить между какими сериями идет сюжет фильма
  * @package App\Http\Controllers\Admin
- * @todo К франшизе (если есть фильмы) добавить между какими сериями идет сюжет фильма
  */
 class AnimeAdminController extends Controller
 {
 	use ParseShikimori;
+
 	protected AnimeRepositoryInterfaces $animeRepository;
 
 	/**
@@ -55,7 +56,7 @@ class AnimeAdminController extends Controller
 	 */
 	public function create()
 	{
-		return view($this->backend. 'anime.add');
+		return view($this->backend . 'anime.add');
 	}
 
 	/**
@@ -116,7 +117,7 @@ class AnimeAdminController extends Controller
 		$delete = $this->animeRepository->destroyAnime($id);
 
 		if ($delete) {
-		    return back();
+			return back();
 		}
 	}
 

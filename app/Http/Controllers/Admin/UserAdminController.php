@@ -69,7 +69,6 @@ class UserAdminController extends Controller
 	 */
 	public function edit(string $login)
 	{
-		dd(__METHOD__, $login);
 		$user = $this->userRepository->getUser($login);
 
 		return view($this->backend . 'users.edit', compact('user'));

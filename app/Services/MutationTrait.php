@@ -46,11 +46,11 @@ trait MutationTrait
 			case $broadcast >= new DateTime('23:00'):
 			case $broadcast < new DateTime('6:00'):
 				return $broadcast = '[Ночной сеанс]';
-			case $broadcast >= new DateTime('06:00')&& $broadcast < new DateTime('12:00'):
+			case $broadcast >= new DateTime('06:00') && $broadcast < new DateTime('12:00'):
 				return $broadcast = '[Утрений сеанс]';
-			case $broadcast >= new DateTime('12:00')&& $broadcast < new DateTime('18:00'):
+			case $broadcast >= new DateTime('12:00') && $broadcast < new DateTime('18:00'):
 				return $broadcast = '[Дневной сеанс]';
-			case $broadcast >= new DateTime('18:00')&& $broadcast < new DateTime('23:00'):
+			case $broadcast >= new DateTime('18:00') && $broadcast < new DateTime('23:00'):
 				return $broadcast = '[Вечерний сеанс]';
 		}
 	}
@@ -77,7 +77,7 @@ trait MutationTrait
 	/**
 	 * Формирование сезона показа
 	 *
-	 * @param string $aired
+	 * @param  string  $aired
 	 *
 	 * @return string
 	 */
@@ -109,20 +109,19 @@ trait MutationTrait
 		$result['plus'] = 0;
 		$result['minus'] = 0;
 
-		foreach ($vote as $value)
-		{
+		foreach ($vote as $value) {
 			if ($value->votes > 0) {
 				$result['plus'] += $value->votes;
-			}else{
+			} else {
 				$result['minus'] += $value->votes;
 			}
 		}
 		$summ = $result['plus'] + $result['minus'];
 		if ($summ > 0) {
 			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingplus\">+ " . $summ . "</span>";
-		}elseif ($summ<0){
+		} elseif ($summ < 0) {
 			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingminus\">" . $summ . "</span>";
-		}else {
+		} else {
 			$result['rating'] = "<span class=\"ratingtypeplusminus ignore-select ratingzero\">" . $summ . "</span>";
 		}
 

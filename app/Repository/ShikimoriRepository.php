@@ -10,8 +10,8 @@ use App\Services\CurlTrait;
 /**
  * Class ShikimoriRepository
  *
+ * @todo    решить нужен ли
  * @package App\Repository
- * @todo решить нужен ли
  */
 class ShikimoriRepository implements ShikimoriInterfacesRepository
 {

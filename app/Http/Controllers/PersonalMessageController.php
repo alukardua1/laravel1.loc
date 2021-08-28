@@ -20,6 +20,7 @@ class PersonalMessageController extends Controller
 	{
 		parent::__construct();
 	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -27,74 +28,79 @@ class PersonalMessageController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-    public function index(User $user)
-    {
-        dd(__METHOD__, $user);
-    }
+	public function index(User $user)
+	{
+		dd(__METHOD__, $user);
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		//
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		//
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PersonalMessage  $personalMessage
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PersonalMessage $personalMessage)
-    {
-        //
-    }
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  \App\Models\PersonalMessage  $personalMessage
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show(PersonalMessage $personalMessage)
+	{
+		//
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PersonalMessage  $personalMessage
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PersonalMessage $personalMessage)
-    {
-        //
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  \App\Models\PersonalMessage  $personalMessage
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit(PersonalMessage $personalMessage)
+	{
+		//
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PersonalMessage  $personalMessage
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PersonalMessage $personalMessage)
-    {
-        //
-    }
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request     $request
+	 * @param  \App\Models\PersonalMessage  $personalMessage
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, PersonalMessage $personalMessage)
+	{
+		//
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PersonalMessage  $personalMessage
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PersonalMessage $personalMessage)
-    {
-        //
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  \App\Models\PersonalMessage  $personalMessage
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy(PersonalMessage $personalMessage)
+	{
+		//
+	}
 }

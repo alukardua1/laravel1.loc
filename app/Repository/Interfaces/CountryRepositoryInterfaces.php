@@ -38,4 +38,6 @@ interface CountryRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function setCountry(string $countryUrl, Request $request): mixed;
+
+	public function deleteCountry(string $countryUrl);
 }

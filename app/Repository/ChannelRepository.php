@@ -19,7 +19,7 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	/**
 	 * Получает канал по названию
 	 *
-	 * @param  string  $channelUrl урл канала
+	 * @param  string  $channelUrl  урл канала
 	 *
 	 * @return mixed
 	 */

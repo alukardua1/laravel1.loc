@@ -21,7 +21,7 @@ class VoteRepository implements VoteRepositoryInterface
 	/**
 	 * Нравится
 	 *
-	 * @param int $id ID записи
+	 * @param  int  $id  ID записи
 	 *
 	 * @return mixed
 	 */
@@ -35,7 +35,7 @@ class VoteRepository implements VoteRepositoryInterface
 	/**
 	 * Не нравится
 	 *
-	 * @param int $id ID записи
+	 * @param  int  $id  ID записи
 	 *
 	 * @return mixed
 	 */

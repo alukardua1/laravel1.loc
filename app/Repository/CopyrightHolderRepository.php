@@ -41,13 +41,18 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	/**
 	 * Добавление/обновление правообладателя
 	 *
-	 * @param  string   $copyrightHolder Урл правообладателя
-	 * @param  Request  $request Запрос
+	 * @param  string   $copyrightHolder  Урл правообладателя
+	 * @param  Request  $request          Запрос
 	 *
 	 * @return mixed
 	 */
 	public function setCopyrightHolder(string $copyrightHolder, Request $request): mixed
 	{
 		// TODO: Implement setCopyrightHolder() method.
+	}
+
+	public function deleteCopyrightHolder(string $copyrightHolder)
+	{
+		// TODO: Implement deleteCopyrightHolder() method.
 	}
 }

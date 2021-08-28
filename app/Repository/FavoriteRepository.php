@@ -22,7 +22,7 @@ class FavoriteRepository implements FavoriteRepositoryInterfaces
 	/**
 	 * Добавляет в избранное
 	 *
-	 * @param int $id ID добавляемой записи
+	 * @param  int  $id  ID добавляемой записи
 	 *
 	 * @return mixed
 	 */
@@ -36,7 +36,7 @@ class FavoriteRepository implements FavoriteRepositoryInterfaces
 	/**
 	 * Удаляет из избранного
 	 *
-	 * @param int $id ID добавляемой записи
+	 * @param  int  $id  ID добавляемой записи
 	 *
 	 * @return mixed
 	 */
@@ -50,7 +50,7 @@ class FavoriteRepository implements FavoriteRepositoryInterfaces
 	/**
 	 * Получает все избранное пользователя
 	 *
-	 * @param string $login Логин пользователя
+	 * @param  string  $login  Логин пользователя
 	 *
 	 * @return mixed
 	 */

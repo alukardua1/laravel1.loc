@@ -29,7 +29,7 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * @param string $categoryUrl
+	 * @param  string  $categoryUrl
 	 *
 	 * @return View|Factory|Application
 	 */

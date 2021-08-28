@@ -19,8 +19,8 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 {
 	use FunctionTrait;
 
-	private $arrCheck = [
-		'posted_at'  => 'posted_at',
+	private array $arrCheck = [
+		'posted_at' => 'posted_at',
 	];
 
 	/**
@@ -33,7 +33,7 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	public function getCategories(bool $isAdmin = false): mixed
 	{
 		if ($isAdmin) {
-		    return Category::all();
+			return Category::all();
 		}
 		return Category::where('posted_at', '=', 1);
 	}

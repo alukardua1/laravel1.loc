@@ -13,10 +13,10 @@ class NewsRepository implements NewsRepositoryInterfaces
 	public function getNewsAll($limit = null)
 	{
 		if ($limit) {
-		    return News::limit($limit)
-			    ->orderBy('updated_at', 'DESC');
+			return News::limit($limit)
+				->orderBy('updated_at', 'DESC');
 		}
-		return  News::orderBy('updated_at', 'DESC');
+		return News::orderBy('updated_at', 'DESC');
 	}
 
 	public function getNews(int $id)

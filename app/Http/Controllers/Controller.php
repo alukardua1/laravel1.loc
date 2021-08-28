@@ -18,7 +18,12 @@ use Illuminate\Routing\Controller as BaseController;
  */
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, FunctionTrait, ApiTrait, MutationTrait;
+	use ApiTrait;
+	use AuthorizesRequests;
+	use DispatchesJobs;
+	use FunctionTrait;
+	use MutationTrait;
+	use ValidatesRequests;
 
 	protected int $paginate;
 

@@ -27,7 +27,7 @@ class VoteController extends Controller
 	}
 
 	/**
-	 * @param int $id
+	 * @param  int  $id
 	 *
 	 * @return string
 	 */
@@ -39,7 +39,7 @@ class VoteController extends Controller
 	}
 
 	/**
-	 * @param int $id
+	 * @param  int  $id
 	 *
 	 * @return string
 	 */

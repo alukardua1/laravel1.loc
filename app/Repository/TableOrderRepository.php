@@ -27,7 +27,6 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	 */
 	public function get(int $id = null, int $user_id = null): mixed
 	{
-		//dd(__METHOD__, $user_id);
 		if ($id and $user_id) {
 			return TableOrder::where(['id', $id], ['user_id', $user_id]);
 		} else {

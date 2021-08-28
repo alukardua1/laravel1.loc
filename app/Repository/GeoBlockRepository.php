@@ -19,7 +19,7 @@ class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 	/**
 	 * Получает ГеоБлок по коду
 	 *
-	 * @param  string  $geoBlock Код ГеоБлока
+	 * @param  string  $geoBlock  Код ГеоБлока
 	 *
 	 * @return mixed
 	 */

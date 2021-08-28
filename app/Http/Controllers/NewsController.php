@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-	private NewsRepositoryInterfaces  $newsRepository;
+	private NewsRepositoryInterfaces $newsRepository;
 
 	public function __construct(NewsRepositoryInterfaces $newsRepositoryInterfaces)
 	{
@@ -17,16 +17,16 @@ class NewsController extends Controller
 	}
 
 	/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-    public function index()
-    {
-        $news = $this->newsRepository->getNewsAll()->paginate($this->paginate);
+	public function index()
+	{
+		$news = $this->newsRepository->getNewsAll()->paginate($this->paginate);
 
-        return view($this->frontend . 'news/short_news', compact('news'));
-    }
+		return view($this->frontend . 'news/short_news', compact('news'));
+	}
 
 	/**
 	 * Display the specified resource.
@@ -35,44 +35,47 @@ class NewsController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-    public function show(int $id)
-    {
-	    $news = $this->newsRepository->getNews($id)->get();
+	public function show(int $id)
+	{
+		$news = $this->newsRepository->getNews($id)->get();
 
-	    return view($this->frontend . 'news/full_news', compact('news'));
-    }
+		return view($this->frontend . 'news/full_news', compact('news'));
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(News $news)
-    {
-        //
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  \App\Models\News  $news
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit(News $news)
+	{
+		//
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, News $news)
-    {
-        //
-    }
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Models\News          $news
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, News $news)
+	{
+		//
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(News $news)
-    {
-        //
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  \App\Models\News  $news
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy(News $news)
+	{
+		//
+	}
 }
