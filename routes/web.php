@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MPAARatingController;
 use App\Http\Controllers\NewsController;
@@ -33,9 +34,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dle/{id?}', [ParseDbDLEController::class, 'index']);
 Route::get('/', [AnimeController::class, 'index'])->name('home');
+Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('sendFeedback');
 
 Route::group(
 	['prefix' => 'anime'],

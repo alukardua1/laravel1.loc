@@ -3,12 +3,12 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.55.0.
+ * Generated for Laravel 8.58.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
- * @see https://github.com/barryvdh/laravel-ide-helper
+ * @see    https://github.com/barryvdh/laravel-ide-helper
  */
 
     namespace Illuminate\Support\Facades { 
@@ -6725,43 +6725,44 @@
         }
          
     }
-            /**
-     * 
-     *
-     * @method static \Illuminate\Http\Client\PendingRequest accept(string $contentType)
-     * @method static \Illuminate\Http\Client\PendingRequest acceptJson()
-     * @method static \Illuminate\Http\Client\PendingRequest asForm()
-     * @method static \Illuminate\Http\Client\PendingRequest asJson()
-     * @method static \Illuminate\Http\Client\PendingRequest asMultipart()
-     * @method static \Illuminate\Http\Client\PendingRequest async()
-     * @method static \Illuminate\Http\Client\PendingRequest attach(string|array $name, string $contents = '', string|null $filename = null, array $headers = [])
-     * @method static \Illuminate\Http\Client\PendingRequest baseUrl(string $url)
-     * @method static \Illuminate\Http\Client\PendingRequest beforeSending(callable $callback)
-     * @method static \Illuminate\Http\Client\PendingRequest bodyFormat(string $format)
-     * @method static \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
-     * @method static \Illuminate\Http\Client\PendingRequest dd()
-     * @method static \Illuminate\Http\Client\PendingRequest dump()
-     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleep = 0)
-     * @method static \Illuminate\Http\Client\PendingRequest sink(string|resource $to)
-     * @method static \Illuminate\Http\Client\PendingRequest stub(callable $callback)
-     * @method static \Illuminate\Http\Client\PendingRequest timeout(int $seconds)
-     * @method static \Illuminate\Http\Client\PendingRequest withBasicAuth(string $username, string $password)
-     * @method static \Illuminate\Http\Client\PendingRequest withBody(resource|string $content, string $contentType)
-     * @method static \Illuminate\Http\Client\PendingRequest withCookies(array $cookies, string $domain)
-     * @method static \Illuminate\Http\Client\PendingRequest withDigestAuth(string $username, string $password)
-     * @method static \Illuminate\Http\Client\PendingRequest withHeaders(array $headers)
-     * @method static \Illuminate\Http\Client\PendingRequest withMiddleware(callable $middleware)
-     * @method static \Illuminate\Http\Client\PendingRequest withOptions(array $options)
-     * @method static \Illuminate\Http\Client\PendingRequest withToken(string $token, string $type = 'Bearer')
-     * @method static \Illuminate\Http\Client\PendingRequest withUserAgent(string $userAgent)
-     * @method static \Illuminate\Http\Client\PendingRequest withoutRedirecting()
-     * @method static \Illuminate\Http\Client\PendingRequest withoutVerifying()
-     * @method static array pool(callable $callback)
-     * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
-     * @method static \Illuminate\Http\Client\Response get(string $url, array|string|null $query = null)
-     * @method static \Illuminate\Http\Client\Response head(string $url, array|string|null $query = null)
-     * @method static \Illuminate\Http\Client\Response patch(string $url, array $data = [])
-     * @method static \Illuminate\Http\Client\Response post(string $url, array $data = [])
+
+	    /**
+	     *
+	     *
+	     * @method static \Illuminate\Http\Client\PendingRequest accept(string $contentType)
+	     * @method static \Illuminate\Http\Client\PendingRequest acceptJson()
+	     * @method static \Illuminate\Http\Client\PendingRequest asForm()
+	     * @method static \Illuminate\Http\Client\PendingRequest asJson()
+	     * @method static \Illuminate\Http\Client\PendingRequest asMultipart()
+	     * @method static \Illuminate\Http\Client\PendingRequest async()
+	     * @method static \Illuminate\Http\Client\PendingRequest attach(string|array $name, string $contents = '', string|null $filename = null, array $headers = [])
+	     * @method static \Illuminate\Http\Client\PendingRequest baseUrl(string $url)
+	     * @method static \Illuminate\Http\Client\PendingRequest beforeSending(callable $callback)
+	     * @method static \Illuminate\Http\Client\PendingRequest bodyFormat(string $format)
+	     * @method static \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
+	     * @method static \Illuminate\Http\Client\PendingRequest dd()
+	     * @method static \Illuminate\Http\Client\PendingRequest dump()
+	     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleep = 0, ?callable $when = null)
+	     * @method static \Illuminate\Http\Client\PendingRequest sink(string|resource $to)
+	     * @method static \Illuminate\Http\Client\PendingRequest stub(callable $callback)
+	     * @method static \Illuminate\Http\Client\PendingRequest timeout(int $seconds)
+	     * @method static \Illuminate\Http\Client\PendingRequest withBasicAuth(string $username, string $password)
+	     * @method static \Illuminate\Http\Client\PendingRequest withBody(resource|string $content, string $contentType)
+	     * @method static \Illuminate\Http\Client\PendingRequest withCookies(array $cookies, string $domain)
+	     * @method static \Illuminate\Http\Client\PendingRequest withDigestAuth(string $username, string $password)
+	     * @method static \Illuminate\Http\Client\PendingRequest withHeaders(array $headers)
+	     * @method static \Illuminate\Http\Client\PendingRequest withMiddleware(callable $middleware)
+	     * @method static \Illuminate\Http\Client\PendingRequest withOptions(array $options)
+	     * @method static \Illuminate\Http\Client\PendingRequest withToken(string $token, string $type = 'Bearer')
+	     * @method static \Illuminate\Http\Client\PendingRequest withUserAgent(string $userAgent)
+	     * @method static \Illuminate\Http\Client\PendingRequest withoutRedirecting()
+	     * @method static \Illuminate\Http\Client\PendingRequest withoutVerifying()
+	     * @method static array pool(callable $callback)
+	     * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
+	     * @method static \Illuminate\Http\Client\Response get(string $url, array|string|null $query = null)
+	     * @method static \Illuminate\Http\Client\Response head(string $url, array|string|null $query = null)
+	     * @method static \Illuminate\Http\Client\Response patch(string $url, array $data = [])
+	     * @method static \Illuminate\Http\Client\Response post(string $url, array $data = [])
      * @method static \Illuminate\Http\Client\Response put(string $url, array $data = [])
      * @method static \Illuminate\Http\Client\Response send(string $method, string $url, array $options = [])
      * @see \Illuminate\Http\Client\Factory
@@ -9032,47 +9033,65 @@
                     /**
          * Get the full URL for the request.
          *
-         * @return string 
-         * @static 
-         */ 
-        public static function fullUrl()
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->fullUrl();
-        }
-                    /**
-         * Get the full URL for the request with the added query string parameters.
-         *
-         * @param array $query
-         * @return string 
-         * @static 
-         */ 
-        public static function fullUrlWithQuery($query)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->fullUrlWithQuery($query);
-        }
-                    /**
-         * Get the current path info for the request.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function path()
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->path();
-        }
-                    /**
-         * Get the current decoded path info for the request.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function decodedPath()
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->decodedPath();
+         * @return string
+                     * @static
+                     */
+	        public static function fullUrl()
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->fullUrl();
+	        }
+
+	        /**
+	         * Get the full URL for the request with the added query string parameters.
+	         *
+	         * @param  array  $query
+	         *
+	         * @return string
+	         * @static
+	         */
+	        public static function fullUrlWithQuery($query)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->fullUrlWithQuery($query);
+	        }
+
+	        /**
+	         * Get the full URL for the request without the given query string parameters.
+	         *
+	         * @param  array|string  $query
+	         *
+	         * @return string
+	         * @static
+	         */
+	        public static function fullUrlWithoutQuery($keys)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->fullUrlWithoutQuery($keys);
+	        }
+
+	        /**
+	         * Get the current path info for the request.
+	         *
+	         * @return string
+	         * @static
+	         */
+	        public static function path()
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->path();
+	        }
+
+	        /**
+	         * Get the current decoded path info for the request.
+	         *
+	         * @return string
+	         * @static
+	         */
+	        public static function decodedPath()
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->decodedPath();
         }
                     /**
          * Get a segment from the URI (1 based index).
@@ -14944,40 +14963,44 @@
                         /** @var \Illuminate\View\Factory $instance */
                         $instance->startComponentFirst($names, $data);
         }
-                    /**
-         * Render the current component.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function renderComponent()
-        {
-                        /** @var \Illuminate\View\Factory $instance */
-                        return $instance->renderComponent();
-        }
-                    /**
-         * Start the slot rendering process.
-         *
-         * @param string $name
-         * @param string|null $content
-         * @return void 
-         * @throws \InvalidArgumentException
-         * @static 
-         */ 
-        public static function slot($name, $content = null)
-        {
-                        /** @var \Illuminate\View\Factory $instance */
-                        $instance->slot($name, $content);
-        }
-                    /**
-         * Save the slot content for rendering.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function endSlot()
-        {
-                        /** @var \Illuminate\View\Factory $instance */
+
+	        /**
+	         * Render the current component.
+	         *
+	         * @return string
+	         * @static
+	         */
+	        public static function renderComponent()
+	        {
+		        /** @var \Illuminate\View\Factory $instance */
+		        return $instance->renderComponent();
+	        }
+
+	        /**
+	         * Start the slot rendering process.
+	         *
+	         * @param  string       $name
+	         * @param  string|null  $content
+	         * @param  array        $attributes
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function slot($name, $content = null, $attributes = [])
+	        {
+		        /** @var \Illuminate\View\Factory $instance */
+		        $instance->slot($name, $content, $attributes);
+	        }
+
+	        /**
+	         * Save the slot content for rendering.
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function endSlot()
+	        {
+		        /** @var \Illuminate\View\Factory $instance */
                         $instance->endSlot();
         }
                     /**
@@ -18217,50 +18240,122 @@ namespace  {
              * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
              * @param string|array $types
              * @param \Closure|null $callback
-             * @return \Illuminate\Database\Eloquent\Builder|static 
-             * @static 
-             */ 
-            public static function whereDoesntHaveMorph($relation, $types, $callback = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->whereDoesntHaveMorph($relation, $types, $callback);
-            }
-             
-                /**
-             * Add a polymorphic relationship count / exists condition to the query with where clauses and an "or".
-             *
-             * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
-             * @param string|array $types
-             * @param \Closure|null $callback
-             * @return \Illuminate\Database\Eloquent\Builder|static 
-             * @static 
-             */ 
-            public static function orWhereDoesntHaveMorph($relation, $types, $callback = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->orWhereDoesntHaveMorph($relation, $types, $callback);
-            }
-             
-                /**
-             * Add subselect queries to include an aggregate value for a relationship.
-             *
-             * @param mixed $relations
-             * @param string $column
-             * @param string $function
-             * @return \Illuminate\Database\Eloquent\Builder|static 
-             * @static 
-             */ 
-            public static function withAggregate($relations, $column, $function = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->withAggregate($relations, $column, $function);
-            }
-             
-                /**
-             * Add subselect queries to count the relations.
-             *
-             * @param mixed $relations
-             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @return \Illuminate\Database\Eloquent\Builder|static
+                 * @static
+                 */
+	            public static function whereDoesntHaveMorph($relation, $types, $callback = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->whereDoesntHaveMorph($relation, $types, $callback);
+	            }
+
+	            /**
+	             * Add a polymorphic relationship count / exists condition to the query with where clauses and an "or".
+	             *
+	             * @param  \Illuminate\Database\Eloquent\Relations\MorphTo|string  $relation
+	             * @param  string|array                                            $types
+	             * @param  \Closure|null                                           $callback
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function orWhereDoesntHaveMorph($relation, $types, $callback = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->orWhereDoesntHaveMorph($relation, $types, $callback);
+	            }
+
+	            /**
+	             * Add a basic where clause to a relationship query.
+	             *
+	             * @param  string                                                       $relation
+	             * @param  \Closure|string|array|\Illuminate\Database\Query\Expression  $column
+	             * @param  mixed                                                        $operator
+	             * @param  mixed                                                        $value
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function whereRelation($relation, $column, $operator = null, $value = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->whereRelation($relation, $column, $operator, $value);
+	            }
+
+	            /**
+	             * Add an "or where" clause to a relationship query.
+	             *
+	             * @param  string                                                       $relation
+	             * @param  \Closure|string|array|\Illuminate\Database\Query\Expression  $column
+	             * @param  mixed                                                        $operator
+	             * @param  mixed                                                        $value
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function orWhereRelation($relation, $column, $operator = null, $value = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->orWhereRelation($relation, $column, $operator, $value);
+	            }
+
+	            /**
+	             * Add a polymorphic relationship condition to the query with a where clause.
+	             *
+	             * @param  \Illuminate\Database\Eloquent\Relations\MorphTo|string       $relation
+	             * @param  string|array                                                 $types
+	             * @param  \Closure|string|array|\Illuminate\Database\Query\Expression  $column
+	             * @param  mixed                                                        $operator
+	             * @param  mixed                                                        $value
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function whereMorphRelation($relation, $types, $column, $operator = null, $value = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->whereMorphRelation($relation, $types, $column, $operator, $value);
+	            }
+
+	            /**
+	             * Add a polymorphic relationship condition to the query with an "or where" clause.
+	             *
+	             * @param  \Illuminate\Database\Eloquent\Relations\MorphTo|string       $relation
+	             * @param  string|array                                                 $types
+	             * @param  \Closure|string|array|\Illuminate\Database\Query\Expression  $column
+	             * @param  mixed                                                        $operator
+	             * @param  mixed                                                        $value
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function orWhereMorphRelation($relation, $types, $column, $operator = null, $value = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->orWhereMorphRelation($relation, $types, $column, $operator, $value);
+	            }
+
+	            /**
+	             * Add subselect queries to include an aggregate value for a relationship.
+	             *
+	             * @param  mixed   $relations
+	             * @param  string  $column
+	             * @param  string  $function
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function withAggregate($relations, $column, $function = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->withAggregate($relations, $column, $function);
+	            }
+
+	            /**
+	             * Add subselect queries to count the relations.
+	             *
+	             * @param  mixed  $relations
+	             * @return \Illuminate\Database\Eloquent\Builder|static
              * @static 
              */ 
             public static function withCount($relations)
