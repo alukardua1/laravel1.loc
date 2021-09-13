@@ -17,6 +17,7 @@ use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use App\Repository\Interfaces\NewsRepositoryInterfaces;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
+use App\Repository\Interfaces\StaticPageRepositoryInterfaces;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
 use App\Repository\Interfaces\TableOrderRepositoryInterfaces;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
@@ -28,6 +29,7 @@ use App\Repository\KindRepository;
 use App\Repository\MpaaRepository;
 use App\Repository\NewsRepository;
 use App\Repository\QualityRepository;
+use App\Repository\StaticPageRepository;
 use App\Repository\StudioRepository;
 use App\Repository\TableOrderRepository;
 use App\Repository\TranslateRepository;
@@ -74,6 +76,7 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(VideoHostRepositoryInterfaces::class, VideoHostRepository::class);
 		$this->app->bind(NewsRepositoryInterfaces::class, NewsRepository::class);
 		$this->app->bind(JobRepositoryInterfaces::class, JobRepository::class);
+		$this->app->bind(StaticPageRepositoryInterfaces::class, StaticPageRepository::class);
 	}
 
 	/**
