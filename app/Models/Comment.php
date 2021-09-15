@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -49,27 +50,35 @@ class Comment extends Model
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getAnime(): HasOne
+	public function getAnime(): BelongsToMany
 	{
-		return $this->hasOne(Anime::class, 'id', 'anime_id')->latest();
+		return $this->belongsToMany(Anime::class, 'post_comment', 'id', 'anime_id')->latest();
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getUser(): HasOne
+	public function getPost(): BelongsToMany
 	{
-		return $this->hasOne(User::class, 'id', 'user_id')->latest();
+		return $this->belongsToMany(News::class, 'post_comment', 'id', 'post_id')->latest();
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function getAuthorComment(): HasOne
+	public function getUser(): BelongsToMany
 	{
-		return $this->hasOne(User::class, 'id', 'author_id')->latest();
+		return $this->belongsToMany(User::class, 'user_comment', 'id', 'repient_id')->latest();
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function getAuthorComment(): BelongsToMany
+	{
+		return $this->belongsToMany(User::class, 'user_comment', 'id', 'author_id')->latest();
 	}
 
 	/**
