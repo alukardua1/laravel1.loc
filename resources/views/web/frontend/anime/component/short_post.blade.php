@@ -6,7 +6,7 @@
 					 class="card-img lazy shortstory-img" alt="{{$value->name}}"/>
 				<div class="mask rgba-stylish-strong">
 					<div class="update-post">
-						@if($value->updated_at == date('Y-m-d', time()))
+						@if(date('Y-m-d', strtotime($value->updated_at)) == date('Y-m-d', time()))
 							<div class="reason"></div>
 						@endif
 					</div>

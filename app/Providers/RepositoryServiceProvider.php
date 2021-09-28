@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Repository\BannerRepository;
 use App\Repository\ChannelRepository;
 use App\Repository\CopyrightHolderRepository;
 use App\Repository\CountryRepository;
 use App\Repository\FavoriteRepository;
 use App\Repository\GeoBlockRepository;
+use App\Repository\Interfaces\BannerRepositoryInterfaces;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
 use App\Repository\Interfaces\CountryRepositoryInterfaces;
@@ -77,6 +79,7 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(NewsRepositoryInterfaces::class, NewsRepository::class);
 		$this->app->bind(JobRepositoryInterfaces::class, JobRepository::class);
 		$this->app->bind(StaticPageRepositoryInterfaces::class, StaticPageRepository::class);
+		$this->app->bind(BannerRepositoryInterfaces::class, BannerRepository::class);
 	}
 
 	/**

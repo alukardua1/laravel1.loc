@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Repository\Interfaces\BannerRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
 {
+	private BannerRepositoryInterfaces $bannerRepository;
+
+	public function __construct(BannerRepositoryInterfaces $bannerRepositoryInterfaces)
+	{
+		parent::__construct();
+		$this->bannerRepository = $bannerRepositoryInterfaces;
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -42,13 +51,13 @@ class BannerController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Banner  $banner
+	 * @param $nameBanner
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show(Banner $banner)
+	public function show($nameBanner)
 	{
-		//
+		$thisBanner = $this->bannerRepository->getBanner($nameBanner);
 	}
 
 	/**

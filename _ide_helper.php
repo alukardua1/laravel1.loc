@@ -3,12 +3,12 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.58.0.
+ * Generated for Laravel 8.62.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
- * @see https://github.com/barryvdh/laravel-ide-helper
+ * @see    https://github.com/barryvdh/laravel-ide-helper
  */
 
     namespace Illuminate\Support\Facades { 
@@ -126,49 +126,54 @@
                         /** @var \Illuminate\Foundation\Application $instance */
                         return $instance->useAppPath($path);
         }
-                    /**
-         * Get the base path of the Laravel installation.
-         *
-         * @param string $path Optionally, a path to append to the base path
-         * @return string 
-         * @static 
-         */ 
+
+	        /**
+	         * Get the base path of the Laravel installation.
+	         *
+	         * @param  string  $path
+	         *
+	         * @return string
+	         * @static
+	         */
         public static function basePath($path = '')
         {
                         /** @var \Illuminate\Foundation\Application $instance */
                         return $instance->basePath($path);
         }
-                    /**
-         * Get the path to the bootstrap directory.
-         *
-         * @param string $path Optionally, a path to append to the bootstrap path
-         * @return string 
-         * @static 
-         */ 
+
+	        /**
+	         * Get the path to the bootstrap directory.
+	         *
+	         * @param  string  $path
+	         * @return string
+	         * @static
+	         */
         public static function bootstrapPath($path = '')
         {
                         /** @var \Illuminate\Foundation\Application $instance */
                         return $instance->bootstrapPath($path);
         }
-                    /**
-         * Get the path to the application configuration files.
-         *
-         * @param string $path Optionally, a path to append to the config path
-         * @return string 
-         * @static 
-         */ 
+
+	        /**
+	         * Get the path to the application configuration files.
+	         *
+	         * @param  string  $path
+	         * @return string
+	         * @static
+	         */
         public static function configPath($path = '')
         {
                         /** @var \Illuminate\Foundation\Application $instance */
                         return $instance->configPath($path);
         }
-                    /**
-         * Get the path to the database directory.
-         *
-         * @param string $path Optionally, a path to append to the database path
-         * @return string 
-         * @static 
-         */ 
+
+	        /**
+	         * Get the path to the database directory.
+	         *
+	         * @param  string  $path
+	         * @return string
+	         * @static
+	         */
         public static function databasePath($path = '')
         {
                         /** @var \Illuminate\Foundation\Application $instance */
@@ -561,11 +566,13 @@
                         /** @var \Illuminate\Foundation\Application $instance */
                         $instance->booted($callback);
         }
-                    /**
-         * {@inheritdoc}
-         *
-         * @static 
-         */ 
+
+	        /**
+	         * {@inheritdoc}
+	         *
+	         * @return \Symfony\Component\HttpFoundation\Response
+	         * @static
+	         */
         public static function handle($request, $type = 1, $catch = true)
         {
                         /** @var \Illuminate\Foundation\Application $instance */
@@ -929,18 +936,20 @@
                         /** @var \Illuminate\Foundation\Application $instance */
                         return $instance->when($concrete);
         }
-                    /**
-         * Returns true if the container can return an entry for the given identifier.
-         * 
-         * Returns false otherwise.
-         * 
-         * `has($id)` returning true does not mean that `get($id)` will not throw an exception.
-         * It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
-         *
-         * @param string $id Identifier of the entry to look for.
-         * @return bool 
-         * @static 
-         */ 
+
+	        /**
+	         * Returns true if the container can return an entry for the given identifier.
+	         *
+	         * Returns false otherwise.
+	         *
+	         * `has($id)` returning true does not mean that `get($id)` will not throw an exception.
+	         * It does however mean that `get($id)` will not throw a `NotFoundExceptionInterface`.
+	         *
+	         * @return bool
+	         * @param  string  $id  Identifier of the entry to look for.
+	         * @return bool
+	         * @static
+	         */
         public static function has($id)
         {            //Method inherited from \Illuminate\Container\Container         
                         /** @var \Illuminate\Foundation\Application $instance */
@@ -1262,15 +1271,17 @@
                         /** @var \Illuminate\Foundation\Application $instance */
                         return $instance->makeWith($abstract, $parameters);
         }
-                    /**
-         * Finds an entry of the container by its identifier and returns it.
-         *
-         * @param string $id Identifier of the entry to look for.
-         * @throws NotFoundExceptionInterface  No entry was found for **this** identifier.
-         * @throws ContainerExceptionInterface Error while retrieving the entry.
-         * @return mixed Entry.
-         * @static 
-         */ 
+
+	        /**
+	         * Finds an entry of the container by its identifier and returns it.
+	         *
+	         * @return mixed
+	         * @param  string  $id  Identifier of the entry to look for.
+	         * @throws NotFoundExceptionInterface  No entry was found for **this** identifier.
+	         * @throws ContainerExceptionInterface Error while retrieving the entry.
+	         * @return mixed Entry.
+	         * @static
+	         */
         public static function get($id)
         {            //Method inherited from \Illuminate\Container\Container         
                         /** @var \Illuminate\Foundation\Application $instance */
@@ -3405,17 +3416,19 @@
                         /** @var \Illuminate\Cache\Repository $instance */
                         return $instance->many($keys);
         }
-                    /**
-         * Obtains multiple cache items by their unique keys.
-         *
-         * @param \Psr\SimpleCache\iterable $keys A list of keys that can obtained in a single operation.
-         * @param mixed $default Default value to return for keys that do not exist.
-         * @return \Psr\SimpleCache\iterable A list of key => value pairs. Cache keys that do not exist or are stale will have $default as value.
-         * @throws \Psr\SimpleCache\InvalidArgumentException
-         *   MUST be thrown if $keys is neither an array nor a Traversable,
-         *   or if any of the $keys are not a legal value.
-         * @static 
-         */ 
+
+	        /**
+	         * Obtains multiple cache items by their unique keys.
+	         *
+	         * @return \Illuminate\Cache\iterable
+	         * @param  \Psr\SimpleCache\iterable  $keys     A list of keys that can obtained in a single operation.
+	         * @param  mixed                      $default  Default value to return for keys that do not exist.
+	         * @return \Psr\SimpleCache\iterable A list of key => value pairs. Cache keys that do not exist or are stale will have $default as value.
+	         * @throws \Psr\SimpleCache\InvalidArgumentException
+	         *                                              MUST be thrown if $keys is neither an array nor a Traversable,
+	         *                                              or if any of the $keys are not a legal value.
+	         * @static
+	         */
         public static function getMultiple($keys, $default = null)
         {
                         /** @var \Illuminate\Cache\Repository $instance */
@@ -3448,19 +3461,21 @@
                         /** @var \Illuminate\Cache\Repository $instance */
                         return $instance->put($key, $value, $ttl);
         }
-                    /**
-         * Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
-         *
-         * @param string $key The key of the item to store.
-         * @param mixed $value The value of the item to store, must be serializable.
-         * @param null|int|\DateInterval $ttl Optional. The TTL value of this item. If no value is sent and
-         *                                      the driver supports TTL then the library may set a default value
-         *                                      for it or let the driver take care of that.
-         * @return bool True on success and false on failure.
-         * @throws \Psr\SimpleCache\InvalidArgumentException
-         *   MUST be thrown if the $key string is not a legal value.
-         * @static 
-         */ 
+
+	        /**
+	         * Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
+	         *
+	         * @return bool
+	         * @param  string                  $key    The key of the item to store.
+	         * @param  mixed                   $value  The value of the item to store, must be serializable.
+	         * @param  null|int|\DateInterval  $ttl    Optional. The TTL value of this item. If no value is sent and
+	         *                                         the driver supports TTL then the library may set a default value
+	         *                                         for it or let the driver take care of that.
+	         * @return bool True on success and false on failure.
+	         * @throws \Psr\SimpleCache\InvalidArgumentException
+	         *                                         MUST be thrown if the $key string is not a legal value.
+	         * @static
+	         */
         public static function set($key, $value, $ttl = null)
         {
                         /** @var \Illuminate\Cache\Repository $instance */
@@ -3479,19 +3494,21 @@
                         /** @var \Illuminate\Cache\Repository $instance */
                         return $instance->putMany($values, $ttl);
         }
-                    /**
-         * Persists a set of key => value pairs in the cache, with an optional TTL.
-         *
-         * @param \Psr\SimpleCache\iterable $values A list of key => value pairs for a multiple-set operation.
-         * @param null|int|\DateInterval $ttl Optional. The TTL value of this item. If no value is sent and
-         *                                       the driver supports TTL then the library may set a default value
-         *                                       for it or let the driver take care of that.
-         * @return bool True on success and false on failure.
-         * @throws \Psr\SimpleCache\InvalidArgumentException
-         *   MUST be thrown if $values is neither an array nor a Traversable,
-         *   or if any of the $values are not a legal value.
-         * @static 
-         */ 
+
+	        /**
+	         * Persists a set of key => value pairs in the cache, with an optional TTL.
+	         *
+	         * @return bool
+	         * @param  \Psr\SimpleCache\iterable  $values  A list of key => value pairs for a multiple-set operation.
+	         * @param  null|int|\DateInterval     $ttl     Optional. The TTL value of this item. If no value is sent and
+	         *                                             the driver supports TTL then the library may set a default value
+	         *                                             for it or let the driver take care of that.
+	         * @return bool True on success and false on failure.
+	         * @throws \Psr\SimpleCache\InvalidArgumentException
+	         *                                             MUST be thrown if $values is neither an array nor a Traversable,
+	         *                                             or if any of the $values are not a legal value.
+	         * @static
+	         */
         public static function setMultiple($values, $ttl = null)
         {
                         /** @var \Illuminate\Cache\Repository $instance */
@@ -3602,41 +3619,47 @@
                         /** @var \Illuminate\Cache\Repository $instance */
                         return $instance->forget($key);
         }
-                    /**
-         * Delete an item from the cache by its unique key.
-         *
-         * @param string $key The unique cache key of the item to delete.
-         * @return bool True if the item was successfully removed. False if there was an error.
-         * @throws \Psr\SimpleCache\InvalidArgumentException
-         *   MUST be thrown if the $key string is not a legal value.
-         * @static 
-         */ 
+
+	        /**
+	         * Delete an item from the cache by its unique key.
+	         *
+	         * @return bool
+	         * @param  string  $key  The unique cache key of the item to delete.
+	         * @return bool True if the item was successfully removed. False if there was an error.
+	         * @throws \Psr\SimpleCache\InvalidArgumentException
+	         *                       MUST be thrown if the $key string is not a legal value.
+	         * @static
+	         */
         public static function delete($key)
         {
                         /** @var \Illuminate\Cache\Repository $instance */
                         return $instance->delete($key);
         }
-                    /**
-         * Deletes multiple cache items in a single operation.
-         *
-         * @param \Psr\SimpleCache\iterable $keys A list of string-based keys to be deleted.
-         * @return bool True if the items were successfully removed. False if there was an error.
-         * @throws \Psr\SimpleCache\InvalidArgumentException
-         *   MUST be thrown if $keys is neither an array nor a Traversable,
-         *   or if any of the $keys are not a legal value.
-         * @static 
-         */ 
+
+	        /**
+	         * Deletes multiple cache items in a single operation.
+	         *
+	         * @return bool
+	         * @param  \Psr\SimpleCache\iterable  $keys  A list of string-based keys to be deleted.
+	         * @return bool True if the items were successfully removed. False if there was an error.
+	         * @throws \Psr\SimpleCache\InvalidArgumentException
+	         *                                           MUST be thrown if $keys is neither an array nor a Traversable,
+	         *                                           or if any of the $keys are not a legal value.
+	         * @static
+	         */
         public static function deleteMultiple($keys)
         {
                         /** @var \Illuminate\Cache\Repository $instance */
                         return $instance->deleteMultiple($keys);
         }
-                    /**
-         * Wipes clean the entire cache's keys.
-         *
-         * @return bool True on success and false on failure.
-         * @static 
-         */ 
+
+	        /**
+	         * Wipes clean the entire cache's keys.
+	         *
+	         * @return bool
+	         * @return bool True on success and false on failure.
+	         * @static
+	         */
         public static function clear()
         {
                         /** @var \Illuminate\Cache\Repository $instance */
@@ -4760,28 +4783,44 @@
                     /**
          * Log a query in the connection's query log.
          *
-         * @param string $query
-         * @param array $bindings
-         * @param float|null $time
-         * @return void 
-         * @static 
-         */ 
-        public static function logQuery($query, $bindings, $time = null)
-        {            //Method inherited from \Illuminate\Database\Connection         
-                        /** @var \Illuminate\Database\MySqlConnection $instance */
-                        $instance->logQuery($query, $bindings, $time);
-        }
-                    /**
-         * Register a database query listener with the connection.
-         *
-         * @param \Closure $callback
-         * @return void 
-         * @static 
-         */ 
-        public static function listen($callback)
-        {            //Method inherited from \Illuminate\Database\Connection         
-                        /** @var \Illuminate\Database\MySqlConnection $instance */
-                        $instance->listen($callback);
+         * @param string                   $query
+         * @param array                    $bindings
+                     * @param  float|null  $time
+                     * @return void
+                     * @static
+                     */
+	        public static function logQuery($query, $bindings, $time = null)
+	        {            //Method inherited from \Illuminate\Database\Connection
+		        /** @var \Illuminate\Database\MySqlConnection $instance */
+		        $instance->logQuery($query, $bindings, $time);
+	        }
+
+	        /**
+	         * Register a hook to be run just before a database query is executed.
+	         *
+	         * @param  \Closure  $callback
+	         *
+	         * @return \Illuminate\Database\MySqlConnection
+	         * @static
+	         */
+	        public static function beforeExecuting($callback)
+	        {            //Method inherited from \Illuminate\Database\Connection
+		        /** @var \Illuminate\Database\MySqlConnection $instance */
+		        return $instance->beforeExecuting($callback);
+	        }
+
+	        /**
+	         * Register a database query listener with the connection.
+	         *
+	         * @param  \Closure  $callback
+	         *
+	         * @return void
+	         * @static
+	         */
+	        public static function listen($callback)
+	        {            //Method inherited from \Illuminate\Database\Connection
+		        /** @var \Illuminate\Database\MySqlConnection $instance */
+		        $instance->listen($callback);
         }
                     /**
          * Get a new raw query expression.
@@ -7328,10 +7367,11 @@
                         /** @var \Illuminate\Log\LogManager $instance */
                         return $instance->getChannels();
         }
-                    /**
-         * Get the default log driver name.
-         *
-         * @return string 
+
+	        /**
+	         * Get the default log driver name.
+	         *
+	         * @return string|null
          * @static 
          */ 
         public static function getDefaultDriver()
@@ -9298,16 +9338,18 @@
         {
                         return \Illuminate\Http\Request::createFromBase($request);
         }
-                    /**
-         * Clones a request and overrides some of its parameters.
-         *
-         * @param array $query The GET parameters
-         * @param array $request The POST parameters
-         * @param array $attributes The request attributes (parameters parsed from the PATH_INFO, ...)
-         * @param array $cookies The COOKIE parameters
-         * @param array $files The FILES parameters
-         * @param array $server The SERVER parameters
-         * @return static 
+
+	        /**
+	         * Clones a request and overrides some of its parameters.
+	         *
+	         * @return static
+	         * @param  array  $query       The GET parameters
+	         * @param  array  $request     The POST parameters
+	         * @param  array  $attributes  The request attributes (parameters parsed from the PATH_INFO, ...)
+	         * @param  array  $cookies     The COOKIE parameters
+	         * @param  array  $files       The FILES parameters
+	         * @param  array  $server      The SERVER parameters
+	         * @return static
          * @static 
          */ 
         public static function duplicate($query = null, $request = null, $attributes = null, $cookies = null, $files = null, $server = null)
@@ -10771,27 +10813,43 @@
          * 
          * Returns true when value is "1", "true", "on", and "yes". Otherwise, returns false.
          *
-         * @param string|null $key
-         * @param bool $default
-         * @return bool 
-         * @static 
-         */ 
-        public static function boolean($key = null, $default = false)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->boolean($key, $default);
-        }
-                    /**
-         * Get a subset containing the provided keys with values from the input data.
-         *
-         * @param array|mixed $keys
-         * @return array 
-         * @static 
-         */ 
-        public static function only($keys)
-        {
-                        /** @var \Illuminate\Http\Request $instance */
-                        return $instance->only($keys);
+                     * @param  string|null  $key
+                     * @param  bool         $default
+                     * @return bool
+                     * @static
+                     */
+	        public static function boolean($key = null, $default = false)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->boolean($key, $default);
+	        }
+
+	        /**
+	         * Retrieve input from the request as a collection.
+	         *
+	         * @param  string|null  $key
+	         *
+	         * @return \Illuminate\Support\Collection
+	         * @static
+	         */
+	        public static function collect($key = null)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->collect($key);
+	        }
+
+	        /**
+	         * Get a subset containing the provided keys with values from the input data.
+	         *
+	         * @param  array|mixed  $keys
+	         *
+	         * @return array
+	         * @static
+	         */
+	        public static function only($keys)
+	        {
+		        /** @var \Illuminate\Http\Request $instance */
+		        return $instance->only($keys);
         }
                     /**
          * Get all of the input except for a specified array of items.
@@ -11014,15 +11072,16 @@
      * 
      *
      * @see \Illuminate\Contracts\Routing\ResponseFactory
-     */ 
-        class Response {
-                    /**
-         * Create a new response instance.
-         *
-         * @param string $content
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\Response 
+             */
+	    class Response
+	    {
+		    /**
+		     * Create a new response instance.
+		     *
+		     * @param  mixed  $content
+		     * @param  int    $status
+		     * @param  array  $headers
+		     * @return \Illuminate\Http\Response
          * @static 
          */ 
         public static function make($content = '', $status = 200, $headers = [])
@@ -17599,27 +17658,43 @@ namespace  {
              
                 /**
              * Get a single column's value from the first result of a query.
-             *
-             * @param string|\Illuminate\Database\Query\Expression $column
-             * @return mixed 
-             * @static 
-             */ 
-            public static function value($column)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->value($column);
-            }
-             
-                /**
-             * Execute the query as a "select" statement.
-             *
-             * @param array|string $columns
-             * @return \Illuminate\Database\Eloquent\Collection|static[] 
-             * @static 
-             */ 
-            public static function get($columns = [])
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                 *
+                 * @param  string|\Illuminate\Database\Query\Expression  $column
+                 * @return mixed
+                 * @static
+                 */
+	            public static function value($column)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->value($column);
+	            }
+
+	            /**
+	             * Get a single column's value from the first result of the query or throw an exception.
+	             *
+	             * @param  string|\Illuminate\Database\Query\Expression  $column
+	             *
+	             * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+	             * @static
+	             * @return mixed
+	             */
+	            public static function valueOrFail($column)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->valueOrFail($column);
+	            }
+
+	            /**
+	             * Execute the query as a "select" statement.
+	             *
+	             * @param  array|string  $columns
+	             *
+	             * @return \Illuminate\Database\Eloquent\Collection|static[]
+	             * @static
+	             */
+	            public static function get($columns = [])
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->get($columns);
             }
              
@@ -18305,30 +18380,61 @@ namespace  {
                 /**
              * Add a polymorphic relationship condition to the query with an "or where" clause.
              *
-             * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
-             * @param string|array $types
-             * @param \Closure|string|array|\Illuminate\Database\Query\Expression $column
-             * @param mixed $operator
-             * @param mixed $value
-             * @return \Illuminate\Database\Eloquent\Builder|static 
-             * @static 
-             */ 
-            public static function orWhereMorphRelation($relation, $types, $column, $operator = null, $value = null)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->orWhereMorphRelation($relation, $types, $column, $operator, $value);
-            }
-             
-                /**
-             * Add subselect queries to include an aggregate value for a relationship.
-             *
-             * @param mixed $relations
-             * @param string $column
-             * @param string $function
-             * @return \Illuminate\Database\Eloquent\Builder|static 
-             * @static 
-             */ 
-            public static function withAggregate($relations, $column, $function = null)
+             * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string       $relation
+             * @param string|array                                                 $types
+             * @param \Closure|string|array|\Illuminate\Database\Query\Expression  $column
+                 * @param  mixed                                                   $operator
+                 * @param  mixed                                                   $value
+                 * @return \Illuminate\Database\Eloquent\Builder|static
+                 * @static
+                 */
+	            public static function orWhereMorphRelation($relation, $types, $column, $operator = null, $value = null)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->orWhereMorphRelation($relation, $types, $column, $operator, $value);
+	            }
+
+	            /**
+	             * Add a morph-to relationship condition to the query.
+	             *
+	             * @param  \Illuminate\Database\Eloquent\Relations\MorphTo|string  $relation
+	             * @param  \Illuminate\Database\Eloquent\Model|string              $model
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function whereMorphedTo($relation, $model, $boolean = 'and')
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->whereMorphedTo($relation, $model, $boolean);
+	            }
+
+	            /**
+	             * Add a morph-to relationship condition to the query with an "or where" clause.
+	             *
+	             * @param  \Illuminate\Database\Eloquent\Relations\MorphTo|string  $relation
+	             * @param  \Illuminate\Database\Eloquent\Model|string              $model
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function orWhereMorphedTo($relation, $model)
+	            {
+		            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+		            return $instance->orWhereMorphedTo($relation, $model);
+	            }
+
+	            /**
+	             * Add subselect queries to include an aggregate value for a relationship.
+	             *
+	             * @param  mixed   $relations
+	             * @param  string  $column
+	             * @param  string  $function
+	             *
+	             * @return \Illuminate\Database\Eloquent\Builder|static
+	             * @static
+	             */
+	            public static function withAggregate($relations, $column, $function = null)
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->withAggregate($relations, $column, $function);
@@ -19794,28 +19900,28 @@ namespace  {
             public static function orHavingRaw($sql, $bindings = [])
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->orHavingRaw($sql, $bindings);
+	            return $instance->orHavingRaw($sql, $bindings);
             }
-             
-                /**
-             * Add an "order by" clause to the query.
-             *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
-             * @param string $direction
-             * @return \Illuminate\Database\Query\Builder 
+
+	            /**
+	             * Add an "order by" clause to the query.
+	             *
+	             * @param  \Closure|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string  $column
+	             * @param  string                                                                                                                          $direction
+	             * @return \Illuminate\Database\Query\Builder
              * @throws \InvalidArgumentException
              * @static 
              */ 
             public static function orderBy($column, $direction = 'asc')
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->orderBy($column, $direction);
+	            return $instance->orderBy($column, $direction);
             }
-             
-                /**
-             * Add a descending "order by" clause to the query.
-             *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
+
+	            /**
+	             * Add a descending "order by" clause to the query.
+	             *
+	             * @param  \Closure|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
