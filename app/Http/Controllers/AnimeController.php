@@ -18,7 +18,6 @@ use Illuminate\Http\Response;
 /**
  * Class AnimeController
  *
- * @todo    Сделать рассылку при обновлении
  * @package App\Http\Controllers
  */
 class AnimeController extends Controller
@@ -154,7 +153,6 @@ class AnimeController extends Controller
 	 * @param  CommentRequest  $request
 	 *
 	 * @return RedirectResponse
-	 * @todo Сделать рассылку при добавлении комментария пользователям которые подписаны
 	 */
 	public function setComments(int $id, CommentRequest $request): RedirectResponse
 	{
