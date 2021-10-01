@@ -88,7 +88,7 @@ class AnimeController extends Controller
 		$showAnime->comments_count = $showAnime->getComments()->count();
 		/**
 		 * @var $related
-		 * @todo Придумать как сделать в relations
+		 * @todo Придумать как сделать в relations, Перенести в добавить аниме, и записывать в отдельную таблицу
 		 */
 		$related = $showAnime->load('getCategory.getAnime')->inRandomOrder()->limit(6)->get();
 
