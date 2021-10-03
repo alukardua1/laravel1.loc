@@ -3,7 +3,7 @@
 @section('title', 'Редактирование ' . $currentAnime->name)
 
 @section('content')
-	<form action="{{route('updateAnimeAdmin', $currentAnime->id)}}" class="bg-dark p-3" method="post" multiple>
+	<form action="{{route('updateAnimeAdmin', $currentAnime->id)}}" class="bg-dark p-3" method="post" multiple enctype="multipart/form-data">
 		@csrf
 		<div class="input-group mb-3">
 			<label for="name" class="input-group-text">Заголовок</label>
@@ -160,8 +160,8 @@
 			</div>
 		</div>
 		<div class="mb-3">
-			<label for="img" class="form-label">Выберите постер</label>
-			<input class="form-control form-control-sm" name="img" id="img" type="file" accept="image/*">
+			<label for="poster" class="form-label">Выберите постер</label>
+			<input class="form-control form-control-sm" name="poster" id="poster" type="file" accept="image/*">
 			<input type="hidden" id="original_img" name="original_img" value="{{$currentAnime->original_img}}">
 		</div>
 		<div id="descript" class="row mb-3">

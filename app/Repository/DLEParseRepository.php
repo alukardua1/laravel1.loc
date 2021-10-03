@@ -18,6 +18,7 @@ use App\Repository\Interfaces\DLEParse;
 use App\Services\CurlTrait;
 use File;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 use Storage;
 use Str;
 
@@ -346,16 +347,27 @@ class DLEParseRepository implements DLEParse
 		$def = '/';
 		$path_info = pathinfo($image);
 		$Extension = $path_info['extension'];
-		$fileName = strtotime($anime->date) . '_anime_' . $anime->id . '_' . Str::slug($anime->title) . '.' . $Extension;
-		$pathImg = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';//путь к большой картинке
+		$fileName = strtotime($anime->date) . '_anime_' . Str::slug($anime->title) . '.' . 'webp';
+		$pathImg = $def . 'anime/' . Str::slug($anime->title) . '/';                   //путь к большой картинке
 		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке
-		$pathImgSave = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';
-		$pathImgSaveThumb = $pathImgSave . 'thumb';
 
 		$imgName = $pathImg . $fileName;
 		if (!Storage::exists($imgName)) {
 			Storage::putFileAs($pathImg, $image, $fileName);     //запись картинки
 			Storage::putFileAs($pathImgThumb, $image, $fileName);//запись уменьшеной картинки
+
+			$img = Image::make(public_path('storage' . $pathImg . $fileName));
+			$img->encode('webp', 100);
+			$img->resize(1200, null, function ($constraint) {
+				$constraint->aspectRatio();
+			});
+			$img->save(public_path('storage' . $pathImg . $fileName));
+			$imgThumb = Image::make(public_path('storage' . $pathImgThumb . $fileName));
+			$imgThumb->encode('webp', 10);
+			$imgThumb->resize(200, null, function ($constraint) {
+				$constraint->aspectRatio();
+			});
+			$imgThumb->save(public_path('storage' . $pathImgThumb . $fileName));
 		}
 
 		$result = [

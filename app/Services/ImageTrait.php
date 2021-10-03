@@ -49,13 +49,51 @@ trait ImageTrait
 			$requestForm[$this->config['imgColumns']] = $fileName;                                  //Запись в базу
 			$img = Image::make($pathImgSave . $fileName);
 			$img->insert($this->config['watermarkImg'], $this->config['watermarkPosition'], $this->config['watermark']['X'], $this->config['watermark']['Y']); //добавляет вотемарк
+			$img->encode('webp', 90);
+			$img->resize(1200, null, function ($constraint) {
+				$constraint->aspectRatio();
+			});
 			$img->save($pathImgSave . $fileName);
 			$imgThumb = Image::make($pathImgSaveThumb . $fileName);
-			$imgThumb->resize($this->config['img']['Width'], $this->config['img']['Height']);
+			$imgThumb->resize(200, null, function ($constraint) {
+				$constraint->aspectRatio();
+			});
+			$imgThumb->encode('webp', 90);
 			$imgThumb->save($pathImgSaveThumb . $fileName);
 
 			return $requestForm;
 		}
 		return 'error';
+	}
+
+	public function uploadImageNew($anime, $requestForm)
+	{
+		$def = '/';
+		$fileName = strtotime($anime->created_at) . '_anime_' . Str::slug($anime->name) . '.webp';
+		$pathImg = $def . 'anime/' . Str::slug($anime->name) . '/';                    //путь к большой картинке
+		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке
+
+		$imgName = $pathImg . $fileName;
+
+		Storage::putFileAs($pathImg, $requestForm['poster'], $fileName);     //запись картинки
+		Storage::putFileAs($pathImgThumb, $requestForm['poster'], $fileName);//запись уменьшеной картинки
+		dd(__METHOD__, $requestForm, Str::slug($anime->name));
+		$img = Image::make(public_path('storage' . $pathImg . $fileName));
+		$img->encode('webp', 100);
+		$img->resize(1200, null, function ($constraint) {
+			$constraint->aspectRatio();
+		});
+		$img->save(public_path('storage' . $pathImg . $fileName));
+		$imgThumb = Image::make(public_path('storage' . $pathImgThumb . $fileName));
+		$imgThumb->encode('webp', 10);
+		$imgThumb->resize(200, null, function ($constraint) {
+			$constraint->aspectRatio();
+		});
+		$imgThumb->save(public_path('storage' . $pathImgThumb . $fileName));
+
+		return $requestForm = [
+			'original_img' => $pathImg . $fileName,
+			'preview_img'  => $pathImgThumb . $fileName,
+		];
 	}
 }

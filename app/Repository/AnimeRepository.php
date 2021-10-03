@@ -7,7 +7,9 @@ use App\Models\Anime;
 use App\Models\Comment;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use App\Services\FunctionTrait;
+use App\Services\ImageTrait;
 use Illuminate\Http\Request;
+use Webp;
 
 /**
  * Class AnimeRepository
@@ -17,6 +19,7 @@ use Illuminate\Http\Request;
 class AnimeRepository implements AnimeRepositoryInterfaces
 {
 	use FunctionTrait;
+	use ImageTrait;
 
 	/**
 	 * Массив для синхронизации
@@ -225,13 +228,14 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			}
 			$this->checkRequest($this->arrCheck, $formRequest, $updatePost);
 			$this->syncRequest($this->arrSync, $updatePost, $request);
+			$this->uploadImageNew($updatePost, $formRequest);
 			if (!empty($formRequest->otherLink_title)) {
 				$this->setOtherLink($formRequest, $id);
 			}
 			if (!empty($formRequest->player_name)) {
 				$this->setPlayer($formRequest, $id);
 			}
-
+			//dd(__METHOD__, $updatePost, $formRequest, $formRequest['img']);
 			return $updatePost->save();
 		}
 	}

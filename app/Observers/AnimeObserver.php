@@ -58,20 +58,21 @@ class AnimeObserver
 		$translateArr = $anime->getTranslate()->get()->toArray();
 		if (!empty($translateArr)) {
 			foreach ($translateArr as $item) {
-					$translate[] = $item['name'];
+				$item['name'] = str_replace(' / ', ' - ', $item['name']);
+				$translate[] = $item['name'];
 			}
-		}else{
+		} else {
 			$translate[] = ' в озвучке не указана';
 		}
 		$translate = implode(', ', $translate);
 		$translate = ' серия в озвучке ' . $translate;
 
 		if ($anime->getYear()->first()) {
-		    $year = $anime->getYear()->first()->name .  ' года ';
+			$year = $anime->getYear()->first()->name . ' года ';
 		}
 
 		if ($anime->episodes_aired) {
-		    $episode = $anime->episodes_aired . ' серия ';
+			$episode = $anime->episodes_aired . ' серия ';
 		}
 		$anime->russian = $anime->name;
 
