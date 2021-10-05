@@ -20,7 +20,7 @@ class QualityComposer
 	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{
 		$this->qualityRepository = $qualityRepositoryInterfaces;
-		$this->quality = $this->quality();
+		$this->quality = $this->quality()->sortBy('name');
 	}
 
 	/**

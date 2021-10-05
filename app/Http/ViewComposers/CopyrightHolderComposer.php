@@ -31,7 +31,7 @@ class CopyrightHolderComposer
 	/**
 	 * @return mixed
 	 */
-	public function copyrightHolder()
+	public function copyrightHolder(): mixed
 	{
 		return $this->copyrightHolderRepository->getCopyrightHolder();
 	}

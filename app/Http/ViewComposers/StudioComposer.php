@@ -20,7 +20,7 @@ class StudioComposer
 	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
 		$this->studioRepository = $studioRepositoryInterfaces;
-		$this->studio = $this->studio();
+		$this->studio = $this->studio()->sortBy('name');
 	}
 
 	/**

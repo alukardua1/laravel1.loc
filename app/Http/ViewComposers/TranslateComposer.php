@@ -20,7 +20,7 @@ class TranslateComposer
 	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{
 		$this->translateRepository = $translateRepositoryInterfaces;
-		$this->translate = $this->translate();
+		$this->translate = $this->translate()->sortBy('name');
 	}
 
 	/**

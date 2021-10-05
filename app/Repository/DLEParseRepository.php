@@ -115,14 +115,49 @@ class DLEParseRepository implements DLEParse
 		}
 	}
 
-	public function parsePost($id = null)
+	public function dbConnect($id = null)
 	{
-		$i = 0;
 		if ($id) {
 			$posts = DB::connection("mysql2")->table('dle_post')->select(['*'])->where('id', '=', $id)->get();
 		} else {
 			$posts = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
 		}
+
+		return $posts;
+	}
+
+	public function otherLink($post, $xfield, $title)
+	{
+		$link['anime_id'] = $post->id;
+		$link['title'] = $title;
+		$link['url'] = $xfield;
+		DB::table('other_links')->insert($link);
+	}
+
+	public function addLink($xfield, $table, $post, $belongTable, $columsBelong)
+	{
+		$quality = explode(', ', $xfield);
+		foreach ($quality as $value) {
+			$quality1 = DB::table($table)->where('name', $value)->first();
+			if (!$quality1) {
+				$data1 = [
+					'name' => $value,
+					'url'  => Str::slug($value),
+				];
+				DB::table($table)->insert($data1);
+				$quality1 = DB::table($table)->where('name', $value)->first();
+			}
+			$data = [
+				'anime_id'    => $post->id,
+				$columsBelong => $quality1->id,
+			];
+			DB::table($belongTable)->insert($data);
+		}
+	}
+
+	public function parsePost($id = null)
+	{
+		$posts = $this->dbConnect($id);
 		foreach ($posts as $post) {
 			$xfield1 = [];
 			$xfields = explode('||', $post->xfields);
@@ -138,28 +173,25 @@ class DLEParseRepository implements DLEParse
 			$mpaa = MPAARating::where('name', $xfield1['rating'])->first();
 			$this->createAnimeCategory($post->category, $post->id);
 			if (array_key_exists('url_world_art', $xfield1)) {
-				$link['anime_id'] = $post->id;
-				$link['title'] = 'World-Art';
-				$link['url'] = $xfield1['url_world_art'];
-				DB::table('other_links')->insert($link);
+				$this->otherLink($post, $xfield1['url_world_art'], 'World-Art');
 			}
 			if (array_key_exists('shikimori_id', $xfield1)) {
-				$link['anime_id'] = $post->id;
-				$link['title'] = 'Shikimori';
-				$link['url'] = 'https://shikimori.one/animes/' . $xfield1['shikimori_id'];
-				DB::table('other_links')->insert($link);
+				$this->otherLink($post, 'https://shikimori.one/animes/' . $xfield1['shikimori_id'], 'Shikimori');
 			}
 			if (array_key_exists('myanimelist-id', $xfield1)) {
-				$link['anime_id'] = $post->id;
-				$link['title'] = 'MyAnimeList';
-				$link['url'] = 'https://myanimelist.net/anime/' . $xfield1['myanimelist-id'];
-				DB::table('other_links')->insert($link);
+				$this->otherLink($post, 'https://myanimelist.net/anime/' . $xfield1['myanimelist-id'], 'MyAnimeList');
 			}
 			if (array_key_exists('kinopoisk_id', $xfield1)) {
-				$link['anime_id'] = $post->id;
-				$link['title'] = 'Kinopoisk';
-				$link['url'] = 'https://www.kinopoisk.ru/series/' . $xfield1['kinopoisk_id'];
-				DB::table('other_links')->insert($link);
+				$this->otherLink($post, 'https://www.kinopoisk.ru/series/' . $xfield1['kinopoisk_id'], 'Kinopoisk');
+			}
+			if (array_key_exists('quality', $xfield1)) {
+				$this->addLink($xfield1['quality'], 'qualities', $post, 'anime_quality', 'quality_id');
+			}
+			if (array_key_exists('ozvuchka', $xfield1)) {
+				$this->addLink($xfield1['ozvuchka'], 'translates', $post, 'anime_translate', 'translate_id');
+			}
+			if (array_key_exists('proizvodstvo', $xfield1)) {
+				$this->addLink($xfield1['proizvodstvo'], 'countries', $post, 'anime_country', 'country_id');
 			}
 			if (array_key_exists('studiya', $xfield1)) {
 				$this->addBelongs($xfield1['studiya'], $post, 'studio_id', Studio::class, 'anime_studio');
@@ -196,12 +228,10 @@ class DLEParseRepository implements DLEParse
 				];
 				$copyright = explode(', ', $xfield1['copyright']);
 				foreach ($copyright as $value) {
-					if (DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first()) {
-						$copyrightHolder = DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first();
-					} else {
+					if (!DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first()) {
 						DB::table('copyright_holders')->insert(['copyright_holder' => $value]);
-						$copyrightHolder = DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first();
 					}
+					$copyrightHolder = DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first();
 				}
 				DB::table('anime_geo_block')->insert($data);
 				DB::table('anime_copyright_holder')->insert(['anime_id' => $post->id, 'copyright_holder_id' => $copyrightHolder->id]);
@@ -217,10 +247,10 @@ class DLEParseRepository implements DLEParse
 				$mpaa->id = 1;
 			}
 			if (array_key_exists('sezon', $xfield1)) {
-				$yearAired = YearAired::where('name', $xfield1['sezon'])->first();
+				$yearAired = YearAired::where('year', $xfield1['sezon'])->first();
 				if (!$yearAired) {
-					DB::table('year_aireds')->insert(['name' => $xfield1['sezon']]);
-					$yearAired = YearAired::where('name', $xfield1['sezon'])->first();
+					DB::table('year_aireds')->insert(['year' => $xfield1['sezon']]);
+					$yearAired = YearAired::where('year', $xfield1['sezon'])->first();
 				}
 			} else {
 				$yearAired = collect('id');
@@ -259,7 +289,7 @@ class DLEParseRepository implements DLEParse
 				'created_at'         => $post->date,
 				'updated_at'         => $post->date,
 			];
-			var_dump($i++);
+			var_dump($post->id);
 		}
 
 		return $result;
@@ -347,8 +377,8 @@ class DLEParseRepository implements DLEParse
 		$def = '/';
 		$path_info = pathinfo($image);
 		$Extension = $path_info['extension'];
-		$fileName = strtotime($anime->date) . '_anime_' . Str::slug($anime->title) . '.' . 'webp';
-		$pathImg = $def . 'anime/' . Str::slug($anime->title) . '/';                   //путь к большой картинке
+		$fileName = strtotime($anime->date) . '_anime_' . $anime->id . '_' . Str::slug($anime->title) . '.' . 'webp';
+		$pathImg = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';//путь к большой картинке
 		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке
 
 		$imgName = $pathImg . $fileName;
@@ -376,10 +406,6 @@ class DLEParseRepository implements DLEParse
 		];
 
 		return $result;
-	}
-
-	public function parseQualityAnime()
-	{
 	}
 
 	public function parsePostCategory()

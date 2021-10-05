@@ -64,19 +64,19 @@ a {
 }
 
 .winter {
-	background: url('../images/background_winter.jpg') fixed;
+	background: url('../images/background_winter.webp') fixed;
 }
 
 .spring {
-	background: url('../images/background_spring.jpg') fixed;
+	background: url('../images/background_spring.webp') fixed;
 }
 
 .summer {
-	background: url('../images/background_summer.jpg') fixed;
+	background: url('../images/background_summer.webp') fixed;
 }
 
 .autumn {
-	background: url('../images/background_autumn.jpg') fixed;
+	background: url('../images/background_autumn.webp') fixed;
 }
 
 body {

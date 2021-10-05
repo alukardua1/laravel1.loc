@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 	{
 		// \App\Models\User::factory(10)->create();
 
-		$this->call(CountrySeeder::class);
+		//$this->call(CountrySeeder::class);
 		$this->call(GroupSeeder::class);
 		$this->call(UsersSeeder::class);
 		User::factory(10)->create();
@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
 		$this->call(RatingSeeder::class);
 		$this->call(ChannelSeeder::class);
 		$this->call(StudiosSeeder::class);
-		$this->call(QualitySeeder::class);
-		$this->call(TranslateSeeder::class);
+		//$this->call(QualitySeeder::class);
+		//$this->call(TranslateSeeder::class);
 		//$this->call(CopyrightHolderSeeder::class);
 		$this->call(GeoBlockSeeder::class);
 		$this->call(AnimeSeeder::class);

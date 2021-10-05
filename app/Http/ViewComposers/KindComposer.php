@@ -20,7 +20,7 @@ class KindComposer
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
 		$this->kindRepository = $kindRepositoryInterfaces;
-		$this->kind = $this->kind();
+		$this->kind = $this->kind()->sortBy('name');
 	}
 
 	/**

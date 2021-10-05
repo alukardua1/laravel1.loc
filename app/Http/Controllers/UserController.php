@@ -106,7 +106,7 @@ class UserController extends Controller
 	{
 		$currentUser = $this->userRepository->getUser($login);
 		$this->isNotNull($currentUser);
-		$title = "Аниме добавленое пользователем {$currentUser->login}";
+		$title = "Аниме добавленое пользователем $currentUser->login";
 		$description = '';
 		$allAnime = $currentUser->getAnime()->paginate($this->paginate);
 

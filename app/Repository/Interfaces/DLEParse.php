@@ -29,7 +29,5 @@ interface DLEParse
 
 	public function parseKodik($url);
 
-	public function parseQualityAnime();
-
 	public function parseKodikQuality($url);
 }

@@ -14,6 +14,7 @@ class BannerComposer
 	 * CarouselAnimeComposer constructor.
 	 *
 	 * @param  BannerRepositoryInterfaces  $bannerRepositoryInterfaces
+	 * @param                              $banner
 	 */
 	public function __construct(BannerRepositoryInterfaces $bannerRepositoryInterfaces, $banner)
 	{
@@ -23,6 +24,8 @@ class BannerComposer
 	}
 
 	/**
+	 * @param $banner
+	 *
 	 * @return mixed
 	 */
 	public function banner($banner): mixed

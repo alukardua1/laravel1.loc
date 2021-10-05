@@ -66,18 +66,14 @@ trait ImageTrait
 		return 'error';
 	}
 
-	public function uploadImageNew($anime, $requestForm)
+	public function uploadImageNew($anime, $requestForm): array
 	{
 		$def = '/';
-		$fileName = strtotime($anime->created_at) . '_anime_' . Str::slug($anime->name) . '.webp';
-		$pathImg = $def . 'anime/' . Str::slug($anime->name) . '/';                    //путь к большой картинке
+		$fileName = strtotime($anime->created_at) . '_anime_' . $anime->id . '_' . Str::slug($anime->name) . '.webp';
+		$pathImg = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->name) . '/'; //путь к большой картинке
 		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке
-
-		$imgName = $pathImg . $fileName;
-
-		Storage::putFileAs($pathImg, $requestForm['poster'], $fileName);     //запись картинки
-		Storage::putFileAs($pathImgThumb, $requestForm['poster'], $fileName);//запись уменьшеной картинки
-		dd(__METHOD__, $requestForm, Str::slug($anime->name));
+		Storage::putFileAs($pathImg, $requestForm['poster'], $fileName);               //запись картинки
+		Storage::putFileAs($pathImgThumb, $requestForm['poster'], $fileName);          //запись уменьшеной картинки
 		$img = Image::make(public_path('storage' . $pathImg . $fileName));
 		$img->encode('webp', 100);
 		$img->resize(1200, null, function ($constraint) {
