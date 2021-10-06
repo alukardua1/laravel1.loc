@@ -151,7 +151,10 @@ class DLEParseRepository implements DLEParse
 				'anime_id'    => $post->id,
 				$columsBelong => $quality1->id,
 			];
-			DB::table($belongTable)->insert($data);
+			$belong = DB::table($belongTable)->where('anime_id', $post->id)->where($columsBelong, $quality1->id)->first();
+			if (!$belong) {
+				DB::table($belongTable)->insert($data);
+			}
 		}
 	}
 
@@ -194,16 +197,8 @@ class DLEParseRepository implements DLEParse
 				$this->addLink($xfield1['proizvodstvo'], 'countries', $post, 'anime_country', 'country_id');
 			}
 			if (array_key_exists('studiya', $xfield1)) {
-				$this->addBelongs($xfield1['studiya'], $post, 'studio_id', Studio::class, 'anime_studio');
-			}
-			if (array_key_exists('proizvodstvo', $xfield1)) {
-				$this->addBelongs($xfield1['proizvodstvo'], $post, 'country_id', Country::class, 'anime_country');
-			}
-			if (array_key_exists('quality', $xfield1)) {
-				$this->addBelongs($xfield1['quality'], $post, 'quality_id', Quality::class, 'anime_quality');
-			}
-			if (array_key_exists('ozvuchka', $xfield1)) {
-				$this->addBelongs($xfield1['ozvuchka'], $post, 'translate_id', Translate::class, 'anime_translate');
+				//$this->addBelongs($xfield1['studiya'], $post, 'studio_id', Studio::class, 'anime_studio');
+				$this->addLink($xfield1['studiya'], 'studios', $post, 'anime_studio', 'studio_id');
 			}
 			if (array_key_exists('treyler', $xfield1)) {
 				$data = [
@@ -358,10 +353,16 @@ class DLEParseRepository implements DLEParse
 		foreach ($xfieldDle as $value) {
 			$result = $model::where('name', $value)->first();
 			if ($result) {
-				$data[] = ['anime_id' => $post->id, $columns => $result->id];
+				$data = ['anime_id' => $post->id, $columns => $result->id];
+			}
+			dd(__METHOD__, $result);
+			if ($result->id) {
+				$belong = DB::table($table)->where('anime_id', $post->id)->where($columns, $result->id)->first();
+				if (!$belong) {
+					DB::table($table)->insert($data);
+				}
 			}
 		}
-		DB::table($table)->insert($data);
 	}
 
 	private function dates($dates)

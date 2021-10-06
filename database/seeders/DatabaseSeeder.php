@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 		$this->call(CategorySeeder::class);
 		$this->call(RatingSeeder::class);
 		$this->call(ChannelSeeder::class);
-		$this->call(StudiosSeeder::class);
+		//$this->call(StudiosSeeder::class);
 		//$this->call(QualitySeeder::class);
 		//$this->call(TranslateSeeder::class);
 		//$this->call(CopyrightHolderSeeder::class);

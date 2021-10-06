@@ -16,7 +16,6 @@ class CreateStudiosTable extends Migration
         Schema::create('studios', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('filtered_name');
             $table->string('url');
             $table->string('image')->nullable();
             $table->timestamps();

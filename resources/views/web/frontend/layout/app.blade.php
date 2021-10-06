@@ -64,8 +64,8 @@
 		</div>
 	</div>
 </main>
-<footer>
-
+<footer class="container">
+	@include('web.frontend.layout.component.footer')
 </footer>
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/owl.carousel.js') }}"></script>
