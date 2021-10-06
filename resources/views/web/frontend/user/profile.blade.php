@@ -19,7 +19,7 @@
 	<div id="userinfo" class="user-prof">
 		<div class="up-first">
 			<h1 class="nowrap">Пользователь: <span>{{$currentUser->login}}</span></h1>
-			<div class="up-group">Группа: <span class="{{$currentUser->getGroup->color}}">{{$currentUser->getGroup->title}}</span></div>
+			<div class="up-group">Группа: <span style="color: {{$currentUser->getGroup->color}} !important;">{{$currentUser->getGroup->title}}</span></div>
 			<div class="up-img img-box avatar"><img src="{{$currentUser->profile_photo_url}}" alt="{{$currentUser->login}}"/></div>
 			<div class="up-status">
 				@if ($currentUser->is_online)

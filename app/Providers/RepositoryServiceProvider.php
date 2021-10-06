@@ -8,12 +8,14 @@ use App\Repository\CopyrightHolderRepository;
 use App\Repository\CountryRepository;
 use App\Repository\FavoriteRepository;
 use App\Repository\GeoBlockRepository;
+use App\Repository\GroupRepository;
 use App\Repository\Interfaces\BannerRepositoryInterfaces;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
 use App\Repository\Interfaces\CountryRepositoryInterfaces;
 use App\Repository\Interfaces\FavoriteRepositoryInterfaces;
 use App\Repository\Interfaces\GeoBlockRepositoryInterfaces;
+use App\Repository\Interfaces\GroupRepositoryInterfaces;
 use App\Repository\Interfaces\JobRepositoryInterfaces;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
@@ -80,6 +82,7 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(JobRepositoryInterfaces::class, JobRepository::class);
 		$this->app->bind(StaticPageRepositoryInterfaces::class, StaticPageRepository::class);
 		$this->app->bind(BannerRepositoryInterfaces::class, BannerRepository::class);
+		$this->app->bind(GroupRepositoryInterfaces::class, GroupRepository::class);
 	}
 
 	/**

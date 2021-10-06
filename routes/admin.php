@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AnimeAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GroupAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -54,6 +55,14 @@ Route::group(
 				Route::get('/{login}/edit', [UserAdminController::class, 'edit'])->name('editUserAdmin');
 				Route::post('/{login}/update', [UserAdminController::class, 'update'])->name('updateUserAdmin');
 				Route::get('/{login}/delete', [UserAdminController::class, 'destroy'])->name('deleteUserAdmin');
+			}
+		);
+		Route::group(
+			[
+				'prefix' => 'group',
+			],
+			function () {
+				Route::get('/', [GroupAdminController::class, 'index'])->name('groupAdmin');
 			}
 		);
 		Route::group(

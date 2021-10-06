@@ -81,7 +81,7 @@
 							</a>
 						</li>
 						<li class="list-group-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="{{route('groupAdmin')}}">
 								<span data-feather="users"></span>
 								Группы
 							</a>
@@ -90,14 +90,20 @@
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">
-					Отчеты
+				<a class="nav-link" data-toggle="collapse" href="#other_module" role="button" aria-expanded="false" aria-controls="other_module">
+					<span data-feather="other_module"></span>
+					Другие модули
 				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">
-					Integrations
-				</a>
+				<div class="collapse" id="other_module">
+					<ul class="list-group list-group-flush bg-dark">
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								<span data-feather="other_module"></span>
+								Kodik
+							</a>
+						</li>
+					</ul>
+				</div>
 			</li>
 		</ul>
 
