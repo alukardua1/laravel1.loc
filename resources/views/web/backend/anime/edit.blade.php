@@ -173,7 +173,7 @@
 				<label for="trailer" class="form-label">Трейлер</label>
 				<button class="btn btn-primary btn-sm" type="button" id="addTrailer"><i class="far fa-plus-square"></i></button>
 				@foreach($currentAnime->getTrailer as $trailer)
-					<input type="text" id="trailer[]" class="form-control" name="trailer[]" value="{{$trailer->trailer}}">
+					<input type="text" id="trailer[]" class="form-control" name="trailer[]" value="{{$trailer->url_trailer}}">
 				@endforeach
 				<div id="Trailer"></div>
 			</div>

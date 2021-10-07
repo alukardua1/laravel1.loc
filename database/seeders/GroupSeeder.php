@@ -32,12 +32,12 @@ class GroupSeeder extends Seeder
 			],
 			[
 				'title'        => 'Модератор',
-				'color'        => 'green',
+				'color'        => 'blue',
 				'is_dashboard' => 1,
 			],
 			[
 				'title'        => 'Пользователь',
-				'color'        => '#000000',
+				'color'        => 'grey',
 				'is_dashboard' => 0,
 			],
 		];

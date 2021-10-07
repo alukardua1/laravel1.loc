@@ -13,6 +13,11 @@ use Illuminate\Http\Response;
 
 class CategoryAdminController extends Controller
 {
+	/**
+	 * Переменная репозитория
+	 *
+	 * @var \App\Repository\Interfaces\CategoryRepositoryInterfaces
+	 */
 	private CategoryRepositoryInterfaces $categoryRepository;
 
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)

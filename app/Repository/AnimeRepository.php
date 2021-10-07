@@ -228,7 +228,9 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			}
 			$this->checkRequest($this->arrCheck, $formRequest, $updatePost);
 			$this->syncRequest($this->arrSync, $updatePost, $request);
-			$this->uploadImageNew($updatePost, $formRequest);
+			if (array_key_exists('poster', $formRequest)) {
+				$this->uploadImageNew($updatePost, $formRequest);
+			}
 			if (!empty($formRequest->otherLink_title)) {
 				$this->setOtherLink($formRequest, $id);
 			}

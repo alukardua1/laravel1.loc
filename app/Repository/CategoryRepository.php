@@ -71,6 +71,13 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 		}
 	}
 
+	/**
+	 * Удаление категории
+	 *
+	 * @param  string  $categoryUrl  Урл категории
+	 *
+	 * @return mixed|void
+	 */
 	public function delCategory(string $categoryUrl)
 	{
 		$del = Category::where('url', $categoryUrl)->firstOrFail();

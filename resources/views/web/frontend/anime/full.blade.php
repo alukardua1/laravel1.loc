@@ -85,7 +85,7 @@
 									   aria-selected="true">Трейлер {{ $i++ }}</a>
 								</li>
 								<div class="embed-responsive embed-responsive-16by9">
-									<iframe class="embed-responsive-item" src="{{$trailer->trailer}}" allowfullscreen></iframe>
+									<iframe class="embed-responsive-item" src="{{$trailer->url_trailer}}" allowfullscreen></iframe>
 								</div>
 							@endforeach
 						</ul>
@@ -101,7 +101,9 @@
 									   aria-selected="true">{{$player->name_player}}</a>
 								</li>
 								<div class="embed-responsive embed-responsive-16by9">
-									<iframe class="embed-responsive-item" src="{{$player->url_player}}@if ($regionBlockString and (strcasecmp($player->name_player, 'kodik') == 0))?geoblock={{$regionBlockString}}@endif" frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>
+									<iframe class="embed-responsive-item"
+											src="{{$player->url_player}}@if ($regionBlockString and (strcasecmp($player->name_player, 'kodik') == 0))?geoblock={{$regionBlockString}}@endif"
+											frameborder="0" allowfullscreen allow="autoplay *; fullscreen *"></iframe>
 								</div>
 							@endforeach
 						</ul>
@@ -163,7 +165,7 @@
 				Для комментирования <a href="/login">войдите</a> или <a href="/register">зарегистрируйтесь</a> на сайте
 			</div>
 		@endif
-		@if ($comments)
+		@if ($comments && $showAnime->comment_at)
 			<div class="listing mt-3 mb-3">
 				<label>{{$showAnime->comments_count}} @declination($showAnime->comments_count, 'комментарий|комментария|комментариев')</label>
 			</div>
