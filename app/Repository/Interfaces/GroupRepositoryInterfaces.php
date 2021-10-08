@@ -13,9 +13,11 @@ interface GroupRepositoryInterfaces
 
 	/**
 	 * @param  \Request  $request
-	 * @param            $group
+	 * @param  string    $group
 	 *
 	 * @return mixed
 	 */
-	public function setGroup(\Request $request, $group);
+	public function setGroup(\Request $request, string $group);
+
+	public function delGroup($group);
 }

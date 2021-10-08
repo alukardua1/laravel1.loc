@@ -32,6 +32,7 @@ a {
 		width: 100%;
 		height: 200px;
 	}
+
 	/*#carousel, .side, .el1 {
 		display: block;
 	}*/
@@ -1745,13 +1746,17 @@ input, select {
 	vertical-align: middle !important;
 }
 
-.form-textarea > label, .listing > label {
+.form-textarea > label, .listing > label, .faq {
 	display: block;
 	padding: 10px 20px;
 	background-color: #444444;
 	color: #ffffff;
 	font-size: 16px;
 	border-radius: .25rem;
+}
+
+.faq > a:hover {
+	color: #ffffff;
 }
 
 .fieldtr select, .f_textarea, .f_input, .xfields textarea, .xprofile textarea, .tdfield select, .lfield input, .editor input[type="text"], #category, textarea.ui-corner-all, .pm select, .xfields input, .xprofile input, .xfields select, .xprofile select, .mass_comments_action select, .bbeditor select, .textin, select.rating {
@@ -2055,6 +2060,6 @@ a.disabled {
 	padding-inline-start: 0;
 }
 
-.editing{
+.editing {
 	margin-left: 5px;
 }

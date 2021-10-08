@@ -31,11 +31,11 @@ class GroupAdminController extends Controller
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
 	public function create()
 	{
-		//
+		return view($this->backend . 'group.add');
 	}
 
 	/**
@@ -47,55 +47,45 @@ class GroupAdminController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		//
+		dd(__METHOD__, $request);
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  string  $group
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function edit($id)
+	public function edit(string $group)
 	{
-		//
+		$groupEdit = $this->groupRepository->getGroup($group);
+
+		return view($this->backend . 'group.edit', compact('groupEdit'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int                       $id
+	 * @param  string                    $group
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(Request $request, string $group)
 	{
-		//
+		dd(__METHOD__, $request, $group);
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  string  $group
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(string $group)
 	{
-		//
+		dd(__METHOD__, $group);
 	}
 }

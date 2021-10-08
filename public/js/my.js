@@ -151,7 +151,7 @@ $(document).ready(function () {
 	$('.js-selectize').selectize();
 });
 
-function ClassicEditorCk(windows, selector){
+function ClassicEditorCk(windows, selector) {
 	if ($(selector).length) {
 		ClassicEditor.create(windows.querySelector(selector), {
 			toolbar: ['heading', '|', 'bold', 'italic', 'bulletedList', 'numberedList', '|', 'blockQuote', 'undo', 'redo'],

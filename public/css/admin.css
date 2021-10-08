@@ -36,6 +36,14 @@ body {
 	vertical-align: text-bottom;
 }
 
+a.disabled {
+	pointer-events: none;
+!important; /* делаем ссылку некликабельной */
+	cursor: default;
+!important; /* устанавливаем курсор в виде стрелки */
+	color: #999999; /* цвет текста для нективной ссылки */
+}
+
 /*
  * Sidebar
  */
@@ -194,8 +202,18 @@ body {
 	color: #6574cd;
 }
 
-.pagination .page-item .page-link{
-	color: #fff !important;
+.pagination .page-item .page-link {
+	color: #ffffff !important;
+	background-color: transparent;
+}
+
+.page-item.disabled .page-link {
+	background-color: #5a5a5a !important;
+}
+
+.page-item.active .page-link {
+	border-color: #9e6d24;
+	background-color: #9e6d24;
 }
 
 .ck-editor__editable_inline {
@@ -204,7 +222,7 @@ body {
 
 .ck-editor {
 	width: 100% !important;
-	color: #000;
+	color: #000000;
 }
 
 .input-group-text {

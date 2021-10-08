@@ -19,6 +19,9 @@
 					<a class="nav-link" href="/pravoobladatelyam.html">© Правообладателям</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="{{route('faqAll')}}">Faq</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" target="_blank" href="https://vk.com/animefree_ru" title="Мы в вконтакте"><i class="fab fa-vk"></i></a>
 				</li>
 				<li class="nav-item">

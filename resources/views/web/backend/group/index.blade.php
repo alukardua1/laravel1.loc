@@ -4,7 +4,7 @@
 
 @section('content')
 	<div>
-		<a class="btn btn-primary" href="#" type="button">Добавить</a>
+		<a class="btn btn-primary" href="{{route('addGroupAdmin')}}" type="button">Добавить</a>
 	</div>
 	<table class="table table-dark table-striped table-sm">
 		<thead>
@@ -22,14 +22,18 @@
 					{{$group->id}}
 				</th>
 				<td>
-					<a href="#" style="color: {{$group->color}} !important;">{{$group->title}}</a>
+					<a href="{{route('editGroupAdmin', $group->title)}}" style="color: {{$group->color}} !important;">{{$group->title}}</a>
 				</td>
 				<td>
 					{{$group->description}}
 				</td>
 				<td>
-					<a href="#"><i class="far fa-edit"></i></a>
-					<a href="#"><i class="far fa-trash-alt"></i></a>
+					<a href="{{route('editGroupAdmin', $group->title)}}"><i class="far fa-edit"></i></a>
+					@if (in_array($group->id, [1,2,3,4]))
+						<a href="{{route('deleteGroupAdmin', $group->title)}}" class="disabled"><i class="far fa-trash-alt"></i></a>
+					@else
+						<a href="{{route('deleteGroupAdmin', $group->title)}}"><i class="far fa-trash-alt"></i></a>
+					@endif
 				</td>
 			</tr>
 		@endforeach

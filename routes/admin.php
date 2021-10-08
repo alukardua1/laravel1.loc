@@ -63,6 +63,11 @@ Route::group(
 			],
 			function () {
 				Route::get('/', [GroupAdminController::class, 'index'])->name('groupAdmin');
+				Route::get('/add', [GroupAdminController::class, 'create'])->name('addGroupAdmin');
+				Route::post('/add', [GroupAdminController::class, 'store'])->name('storeGroupAdmin');
+				Route::get('/{group}/edit', [GroupAdminController::class, 'edit'])->name('editGroupAdmin');
+				Route::post('/{group}/update', [GroupAdminController::class, 'update'])->name('updateGroupAdmin');
+				Route::get('/{group}/delete', [GroupAdminController::class, 'destroy'])->name('deleteGroupAdmin');
 			}
 		);
 		Route::group(

@@ -15,7 +15,7 @@ class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 	public function getGroup($group = null)
 	{
 		if ($group) {
-			return Group::with('name', $group)->first();
+			return Group::where('title', $group)->first();
 		} else {
 			return Group::orderBy('id', 'ASC');
 		}
@@ -23,10 +23,21 @@ class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 
 	/**
 	 * @param  \Request  $request
-	 * @param            $group
+	 * @param  string    $group
 	 */
-	public function setGroup(\Request $request, $group)
+	public function setGroup(\Request $request, string $group)
 	{
-		// TODO: Implement setGroup() method.
+		$formRequest = $request->all();
+		$updateGroup = Group::firstOrCreate(['title' => $group], $formRequest);
+
+		return $updateGroup->save();
+	}
+
+	public function delGroup($group)
+	{
+		$del = Group::findOrFail($group, ['*']);
+		if ($del) {
+			return $del->forceDelete();
+		}
 	}
 }

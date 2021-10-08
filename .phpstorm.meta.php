@@ -14,7 +14,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -269,7 +268,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -524,7 +522,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -779,7 +776,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -1034,7 +1030,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -1289,7 +1284,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -1544,7 +1538,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -1799,7 +1792,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -2054,7 +2046,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -2309,7 +2300,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -2564,7 +2554,6 @@ namespace PHPSTORM_META {
 		map([
 			    ''                                                               => '@',
 			    'App\Repository\Interfaces\AnimeRepositoryInterfaces'            => \App\Repository\AnimeRepository::class,
-			    'App\Repository\Interfaces\BannerRepositoryInterfaces'           => \App\Repository\BannerRepository::class,
 			    'App\Repository\Interfaces\CategoryRepositoryInterfaces'         => \App\Repository\CategoryRepository::class,
 			    'App\Repository\Interfaces\ChannelRepositoryInterfaces'          => \App\Repository\ChannelRepository::class,
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
@@ -2824,16 +2813,16 @@ namespace PHPSTORM_META {
 	override(\Illuminate\Support\Arr::only(0), type(0));
 	override(\Illuminate\Support\Arr::prepend(0), type(0));
 	override(\Illuminate\Support\Arr::pull(0), elementType(0));
-    override(\Illuminate\Support\Arr::set(0), type(0));
-    override(\Illuminate\Support\Arr::shuffle(0), type(0));
-    override(\Illuminate\Support\Arr::sort(0), type(0));
-    override(\Illuminate\Support\Arr::sortRecursive(0), type(0));
-    override(\Illuminate\Support\Arr::where(0), type(0));
-    override(\array_add(0), type(0));
-    override(\array_except(0), type(0));
-    override(\array_first(0), elementType(0));
-    override(\array_last(0), elementType(0));
-    override(\array_get(0), elementType(0));
+	override(\Illuminate\Support\Arr::set(0), type(0));
+	override(\Illuminate\Support\Arr::shuffle(0), type(0));
+	override(\Illuminate\Support\Arr::sort(0), type(0));
+	override(\Illuminate\Support\Arr::sortRecursive(0), type(0));
+	override(\Illuminate\Support\Arr::where(0), type(0));
+	override(\array_add(0), type(0));
+	override(\array_except(0), type(0));
+	override(\array_first(0), elementType(0));
+	override(\array_last(0), elementType(0));
+	override(\array_get(0), elementType(0));
     override(\array_only(0), type(0));
     override(\array_prepend(0), type(0));
     override(\array_pull(0), elementType(0));

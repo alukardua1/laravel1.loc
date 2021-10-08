@@ -55,6 +55,5 @@ class ComposerServiceProvider extends ServiceProvider
 		View::composer(['web.backend.anime.edit', 'web.backend.anime.add'], StudioComposer::class);
 		View::composer(['web.backend.anime.edit', 'web.backend.anime.add'], GeoBlockComposer::class);
 		View::composer(['web.backend.anime.edit', 'web.backend.anime.add'], CopyrightHolderComposer::class);
-		//View::composer(['*'], BannerComposer::class);
 	}
 }

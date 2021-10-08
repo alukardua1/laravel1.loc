@@ -167,7 +167,7 @@
 					</div>
 
 					<div class="form-submit">
-						<button name="submit" class="btn btn-warning" type="submit">Отправить</button>
+						<button name="submit" class="btn btn-warning" type="submit">@lang('main.success')</button>
 					</div>
 				</div>
 			</form>

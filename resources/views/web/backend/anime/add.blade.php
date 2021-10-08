@@ -266,6 +266,8 @@
 				</div>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-success">Success</button>
+		<div class="form-submit">
+			<button type="submit" class="btn btn-success">@lang('main.success')</button>
+		</div>
 	</form>
 @endsection

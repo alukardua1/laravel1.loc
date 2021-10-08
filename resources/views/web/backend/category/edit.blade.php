@@ -21,8 +21,8 @@
 			<input name="posted_at" class="form-check-input" type="checkbox" id="posted_at" value="1" {{$category->posted_at ? 'checked' : ''}}>
 			<label class="form-check-label" for="posted_at">Опубликовать</label>
 		</div>
-		<div>
-			<button type="submit" class="btn btn-success">Сохранить</button>
+		<div class="form-submit">
+			<button type="submit" class="btn btn-success">@lang('main.success')</button>
 		</div>
 	</form>
 @endsection

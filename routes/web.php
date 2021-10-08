@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\KindController;
@@ -38,6 +39,14 @@ Route::get('/dle/{id?}', [ParseDbDLEController::class, 'index']);
 Route::get('/', [AnimeController::class, 'index'])->name('home');
 Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback');
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('sendFeedback');
+
+Route::group(
+	['prefix' => 'faq'],
+	function () {
+		Route::get('/', [FaqController::class, 'index'])->name('faqAll');
+		Route::get('/{faq}', [FaqController::class, 'view'])->name('faqView');
+	}
+);
 
 Route::group(
 	['prefix' => 'anime'],
@@ -83,7 +92,7 @@ Route::group(
 
 Route::group(
 	[
-		'prefix'     => 'order',
+		'prefix' => 'order',
 		'middleware' => ['auth'],
 	],
 	function () {

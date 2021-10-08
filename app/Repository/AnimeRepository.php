@@ -155,12 +155,13 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getSearchAnime(Request $request, int $limit = 5): mixed
 	{
-		return Anime::where('name', 'LIKE', "%{$request->search}%")
-			->orWhere('english', 'LIKE', "%{$request->search}%")
-			->orWhere('japanese', 'LIKE', "%{$request->search}%")
-			->orWhere('synonyms', 'LIKE', "%{$request->search}%")
-			->orWhere('license_name_ru', 'LIKE', "%{$request->search}%")
-			->orWhere('description', 'LIKE', "%{$request->search}%")
+		$search = $request->search;
+		return Anime::where('name', 'LIKE', "%{$search}%")
+			->orWhere('english', 'LIKE', "%{$search}%")
+			->orWhere('japanese', 'LIKE', "%{$search}%")
+			->orWhere('synonyms', 'LIKE', "%{$search}%")
+			->orWhere('license_name_ru', 'LIKE', "%{$search}%")
+			->orWhere('description', 'LIKE', "%{$search}%")
 			->limit($limit)
 			->get();
 	}
