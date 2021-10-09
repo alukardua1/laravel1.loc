@@ -11,8 +11,9 @@ class FaqRepository implements Interfaces\FaqRepositoryInterfaces
 	{
 		if ($faqUrl) {
 			return Faq::where('url', $faqUrl);
+		} else {
+			return Faq::orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
 		}
-		return Faq::orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
 	}
 
 	public function setFaq(\Request $request, $faqUrl)

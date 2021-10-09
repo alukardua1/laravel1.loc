@@ -23,79 +23,22 @@ class FaqController extends Controller
 	 */
 	public function index()
 	{
-		$allFaq = $this->faqRepository->getFaq()->paginate($this->paginate);
+		$allFaq = $this->faqRepository->getFaq()->paginate(20);
 
 		return view($this->frontend . 'faq.index', compact('allFaq'));
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-		//
-	}
-
-	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Faq  $faq
+	 * @param  string  $faq
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show(Faq $faq)
+	public function show(string $faq)
 	{
-		//
-	}
+		$faqShow = $this->faqRepository->getFaq($faq)->first();
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Models\Faq  $faq
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(Faq $faq)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\Faq           $faq
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, Faq $faq)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Models\Faq  $faq
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(Faq $faq)
-	{
-		//
+		return view($this->frontend . 'faq.show', compact('faqShow'));
 	}
 }

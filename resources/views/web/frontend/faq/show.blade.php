@@ -1,7 +1,7 @@
 @extends('web.frontend.layout.app')
 
-@section('title', 'FAQ')
-@section('description', "Справка")
+@section('title', $faqShow->title)
+@section('description', '')
 
 @section('error')
 	@if ($errors->any())
@@ -17,14 +17,10 @@
 @endsection
 
 @section('content')
-	@foreach($allFaq as $faq)
-		<div class="faq mb-3">
-			<a href="{{route('faqShow', $faq->url)}}">{{$faq->title}}</a>
-		</div>
-	@endforeach
-	@if($allFaq->total() > $allFaq->count())
-		<div class="align-content-center">
-			{{$allFaq->links('web.frontend.vendor.pagination.semantic-ui')}}
-		</div>
-	@endif
+	<div class="text-center">
+		<h1>{{$faqShow->title}}</h1>
+	</div>
+	<div>
+		{!! $faqShow->description !!}
+	</div>
 @endsection

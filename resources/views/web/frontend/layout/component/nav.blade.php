@@ -16,7 +16,7 @@
 					<a class="nav-link" aria-current="page" href="{{route('ongoing')}}">Онгоинги</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/pravoobladatelyam.html">© Правообладателям</a>
+					<a class="nav-link" href="{{route('static_pageShow', 'pravoobladatelyam')}}">© Правообладателям</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{route('faqAll')}}">Faq</a>

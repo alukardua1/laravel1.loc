@@ -16,6 +16,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ParseDbDLEController;
 use App\Http\Controllers\PersonalMessageController;
 use App\Http\Controllers\QualityController;
+use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\TableOrderController;
 use App\Http\Controllers\TranslateController;
@@ -44,7 +45,15 @@ Route::group(
 	['prefix' => 'faq'],
 	function () {
 		Route::get('/', [FaqController::class, 'index'])->name('faqAll');
-		Route::get('/{faq}', [FaqController::class, 'view'])->name('faqView');
+		Route::get('/{faq}', [FaqController::class, 'show'])->name('faqShow');
+	}
+);
+
+Route::group(
+	['prefix' => 'static_page'],
+	function () {
+		Route::get('/', [StaticPageController::class, 'index'])->name('static_pageAll');
+		Route::get('/{static_page}', [StaticPageController::class, 'show'])->name('static_pageShow');
 	}
 );
 

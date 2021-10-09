@@ -17,10 +17,7 @@ class CreateStaticPagesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('url');
-            $table->text('description')->nullable();
             $table->text('description_html');
-            $table->text('description_source')->nullable();
-            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
