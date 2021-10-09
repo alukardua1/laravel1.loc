@@ -20,6 +20,6 @@
 		<h1>{{$staticPage->title}}</h1>
 	</div>
 	<div class="content">
-		{!! $staticPage->description_html !!}
+		{!! $staticPage->description !!}
 	</div>
 @endsection

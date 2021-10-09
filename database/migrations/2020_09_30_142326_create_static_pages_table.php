@@ -17,8 +17,8 @@ class CreateStaticPagesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('url');
-            $table->text('description_html');
-            $table->timestamps();
+	        $table->text('description');
+	        $table->timestamps();
         });
     }
 
