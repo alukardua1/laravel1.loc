@@ -18,6 +18,7 @@ class CreateStaticPagesTable extends Migration
             $table->string('title');
             $table->string('url');
 	        $table->text('description');
+	        $table->boolean('public_at')->default(1);
 	        $table->timestamps();
         });
     }

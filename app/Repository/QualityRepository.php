@@ -15,28 +15,19 @@ use Illuminate\Http\Request;
  */
 class QualityRepository implements QualityRepositoryInterfaces
 {
-
-	/**
-	 * Получает качество видео по названию
-	 *
-	 * @param  string  $qualityUrl  Урл качество видео
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $qualityUrl): mixed
-	{
-		return Quality::where('url', $qualityUrl)
-			->first();
-	}
-
 	/**
 	 * Получает все качество видео
 	 *
+	 * @param  string|null  $qualityUrl
+	 *
 	 * @return mixed
 	 */
-	public function getQuality(): mixed
+	public function getQuality(string $qualityUrl = null): mixed
 	{
-		return Quality::get();
+		if ($qualityUrl) {
+			return Quality::where('url', $qualityUrl);
+		}
+		return Quality::orderBy('name', 'ASC');
 	}
 
 	/**
@@ -50,5 +41,15 @@ class QualityRepository implements QualityRepositoryInterfaces
 	public function setQuality(string $qualityUrl, Request $request): mixed
 	{
 		// TODO: Implement setQuality() method.
+	}
+
+	/**
+	 * @param  string  $qualityUrl
+	 *
+	 * @return mixed
+	 */
+	public function delQuality(string $qualityUrl): mixed
+	{
+		// TODO: Implement delQuality() method.
 	}
 }

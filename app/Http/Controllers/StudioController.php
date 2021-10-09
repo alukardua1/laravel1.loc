@@ -38,7 +38,7 @@ class StudioController extends Controller
 	 */
 	public function index(string $studiosUrl): View|Factory|Application
 	{
-		$showStudio = $this->studioRepository->getAnime($studiosUrl);
+		$showStudio = $this->studioRepository->getStudio($studiosUrl)->first();
 		$this->isNotNull($showStudio);
 		$title = $showStudio->name;
 		$description = $showStudio->description;

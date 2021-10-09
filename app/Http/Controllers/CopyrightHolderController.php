@@ -28,7 +28,7 @@ class CopyrightHolderController extends Controller
 	 */
 	public function index($copyrightHolder): View|Factory|Application
 	{
-		$copyright = $this->copyrightHolderRepository->getAnime($copyrightHolder);
+		$copyright = $this->copyrightHolderRepository->getCopyrightHolder($copyrightHolder)->first();
 		$this->isNotNull($copyright);
 		$title = $copyright->copyright_holder;
 		$allAnime = $copyright->getAnime()->paginate($this->paginate);

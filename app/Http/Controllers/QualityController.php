@@ -38,7 +38,7 @@ class QualityController extends Controller
 	 */
 	public function index(string $qualityUrl): View|Factory|Application
 	{
-		$showQuality = $this->qualityRepository->getAnime($qualityUrl);
+		$showQuality = $this->qualityRepository->getQuality($qualityUrl)->first();
 		$this->isNotNull($showQuality);
 		$title = $showQuality->name;
 		$description = $showQuality->description;

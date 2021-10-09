@@ -14,20 +14,13 @@ use Illuminate\Http\Request;
 interface ChannelRepositoryInterfaces
 {
 	/**
-	 * Получает канал по названию
-	 *
-	 * @param  string  $channelUrl урл канала
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $channelUrl): mixed;
-
-	/**
 	 * Получает все каналы
 	 *
+	 * @param  string|null  $channelUrl
+	 *
 	 * @return mixed
 	 */
-	public function getChannel(): mixed;
+	public function getChannel(string $channelUrl = null): mixed;
 
 	/**
 	 * Добавление/обновление канала
@@ -39,5 +32,10 @@ interface ChannelRepositoryInterfaces
 	 */
 	public function setChannel(string $channelUrl, Request $request): mixed;
 
-	public function delete(string $channelUrl): mixed;
+	/**
+	 * @param  string  $channelUrl
+	 *
+	 * @return mixed
+	 */
+	public function deleteChannel(string $channelUrl): mixed;
 }

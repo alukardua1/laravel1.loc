@@ -14,20 +14,13 @@ use Illuminate\Http\Request;
 interface YearAiredRepositoryInterfaces
 {
 	/**
-	 * Получает год по названию
-	 *
-	 * @param  string  $yearUrl  Урл года
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $yearUrl): mixed;
-
-	/**
 	 * Получает все года
 	 *
+	 * @param  string|null  $yearUrl
+	 *
 	 * @return mixed
 	 */
-	public function getYearAired(): mixed;
+	public function getYearAired(string $yearUrl = null): mixed;
 
 	/**
 	 * Добавление/обновление года
@@ -38,4 +31,6 @@ interface YearAiredRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function setYearAired(string $yearUrl, Request $request): mixed;
+
+	public function delYearAired(string $yearUrl): mixed;
 }

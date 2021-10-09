@@ -30,4 +30,11 @@ interface TableOrderRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function set(TableOrderRequest $request, int $id = null): mixed;
+
+	/**
+	 * @param  int|null  $id
+	 *
+	 * @return mixed
+	 */
+	public function del(int $id = null): mixed;
 }

@@ -51,7 +51,7 @@ class AnimeController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$allAnime = $this->anime->getAllAnime()->paginate($this->paginate);
+		$allAnime = $this->anime->getAnime()->paginate($this->paginate);
 
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
@@ -138,7 +138,7 @@ class AnimeController extends Controller
 		$feed = App::make("feed");
 		$feed->setCache(config('secondConfig.cache_time'), 'laravelFeedKey');
 		if (!$feed->isCached()) {
-			$posts = $this->anime->getAllAnime()->limit(config('secondConfig.limitRss'))->get();
+			$posts = $this->anime->getAnime()->limit(config('secondConfig.limitRss'))->get();
 
 			$feed = $this->getRss($feed, $posts);
 		}

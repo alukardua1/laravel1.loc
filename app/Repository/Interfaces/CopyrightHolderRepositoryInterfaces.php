@@ -14,30 +14,28 @@ use Illuminate\Http\Request;
 interface CopyrightHolderRepositoryInterfaces
 {
 	/**
-	 * Получает правобладателя по названию
-	 *
-	 * @param  string  $copyrightHolder  Урл правообладателя
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $copyrightHolder): mixed;
-
-	/**
 	 * Получает всех правообладателей
 	 *
+	 * @param  string|null  $copyrightHolder
+	 *
 	 * @return mixed
 	 */
-	public function getCopyrightHolder(): mixed;
+	public function getCopyrightHolder(string $copyrightHolder = null): mixed;
 
 	/**
 	 * Добавление/обновление правообладателя
 	 *
-	 * @param  string   $copyrightHolder Урл правообладателя
-	 * @param  Request  $request Запрос
+	 * @param  string   $copyrightHolder  Урл правообладателя
+	 * @param  Request  $request          Запрос
 	 *
 	 * @return mixed
 	 */
 	public function setCopyrightHolder(string $copyrightHolder, Request $request): mixed;
 
+	/**
+	 * @param  string  $copyrightHolder
+	 *
+	 * @return mixed
+	 */
 	public function deleteCopyrightHolder(string $copyrightHolder);
 }

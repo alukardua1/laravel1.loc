@@ -33,7 +33,7 @@ class CategoryAdminController extends Controller
 	 */
 	public function index(): View|Factory|Response|Application
 	{
-		$allCategory = $this->categoryRepository->getCategories(true);
+		$allCategory = $this->categoryRepository->getCategory(null, true);
 
 		return view($this->backend . 'category.show_all_category', compact('allCategory'));
 	}

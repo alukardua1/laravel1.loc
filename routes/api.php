@@ -26,7 +26,7 @@ Route::group(
 	['prefix' => 'anime'],
 	function () {
 		Route::get('/', [AnimeApiController::class, 'index']);
-		Route::get('/{id}', [AnimeApiController::class, 'show']);
+		Route::get('/{id}-{url?}', [AnimeApiController::class, 'show'])->where('id', '[0-9]+');
 	}
 );
 Route::group(

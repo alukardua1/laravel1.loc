@@ -28,7 +28,7 @@ class ChannelComposer
 	 */
 	public function channel(): mixed
 	{
-		return $this->channelRepository->getChannel();
+		return $this->channelRepository->getChannel()->get();
 	}
 
 	/**

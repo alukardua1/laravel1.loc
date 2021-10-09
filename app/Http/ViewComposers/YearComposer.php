@@ -19,7 +19,7 @@ class YearComposer
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{
 		$this->yearRepository = $yearAiredRepositoryInterfaces;
-		$this->year = $this->year()->sortBy('year');
+		$this->year = $this->year();
 	}
 
 	/**
@@ -27,7 +27,7 @@ class YearComposer
 	 */
 	public function year(): mixed
 	{
-		return $this->yearRepository->getYearAired()->sortBy('name');
+		return $this->yearRepository->getYearAired()->get();
 	}
 
 	/**

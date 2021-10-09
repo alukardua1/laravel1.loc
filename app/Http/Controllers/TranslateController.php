@@ -38,7 +38,7 @@ class TranslateController extends Controller
 	 */
 	public function index(string $translateUrl): View|Factory|Application
 	{
-		$showTranslate = $this->translate->getAnime($translateUrl);
+		$showTranslate = $this->translate->getTranslate($translateUrl)->first();
 		$this->isNotNull($showTranslate);
 		$title = $showTranslate->name;
 		$description = $showTranslate->description;

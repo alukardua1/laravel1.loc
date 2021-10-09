@@ -28,7 +28,7 @@ class MpaaRatingComposer
 	 */
 	public function mpaa(): mixed
 	{
-		return $this->mpaaRepository->getMpaa();
+		return $this->mpaaRepository->getMpaa()->get();
 	}
 
 	/**

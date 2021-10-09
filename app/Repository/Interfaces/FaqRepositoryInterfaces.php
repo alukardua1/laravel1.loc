@@ -4,7 +4,26 @@ namespace App\Repository\Interfaces;
 
 interface FaqRepositoryInterfaces
 {
-	public function getFaq($faqUrl = null);
+	/**
+	 * @param  string|null  $faqUrl
+	 * @param  bool         $isAdmin
+	 *
+	 * @return mixed
+	 */
+	public function getFaq(string $faqUrl = null, bool $isAdmin = false): mixed;
 
-	public function setFaq(\Request $request, $faqUrl);
+	/**
+	 * @param  \Request  $request
+	 * @param  string    $faqUrl
+	 *
+	 * @return mixed
+	 */
+	public function setFaq(\Request $request, string $faqUrl): mixed;
+
+	/**
+	 * @param  string  $faqUrl
+	 *
+	 * @return mixed
+	 */
+	public function delFaq(string $faqUrl): mixed;
 }

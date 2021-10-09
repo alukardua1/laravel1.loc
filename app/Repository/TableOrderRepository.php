@@ -51,4 +51,14 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 			return $update->save();
 		}
 	}
+
+	/**
+	 * @param  int|null  $id
+	 *
+	 * @return mixed
+	 */
+	public function del(int $id = null): mixed
+	{
+		// TODO: Implement del() method.
+	}
 }

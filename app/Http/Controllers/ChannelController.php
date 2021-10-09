@@ -38,7 +38,7 @@ class ChannelController extends Controller
 	 */
 	public function index(string $channelUrl): View|Factory|Application
 	{
-		$showChannel = $this->channelRepository->getAnime($channelUrl);
+		$showChannel = $this->channelRepository->getChannel($channelUrl)->first();
 		$this->isNotNull($showChannel);
 		$title = $showChannel->name;
 		$description = $showChannel->description;

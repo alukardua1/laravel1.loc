@@ -14,28 +14,28 @@ use Illuminate\Http\Request;
 interface StudioRepositoryInterfaces
 {
 	/**
-	 * Получает студию по названию
-	 *
-	 * @param  string  $studioUrl Урл студии
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $studioUrl): mixed;
-
-	/**
 	 * Получает все студии
 	 *
+	 * @param  string|null  $studioUrl
+	 *
 	 * @return mixed
 	 */
-	public function getStudio(): mixed;
+	public function getStudio(string $studioUrl = null): mixed;
 
 	/**
 	 * Добавление/обновление студии
 	 *
-	 * @param  string   $studioUrl Урл студии
-	 * @param  Request  $request Запрос
+	 * @param  string   $studioUrl  Урл студии
+	 * @param  Request  $request    Запрос
 	 *
 	 * @return mixed
 	 */
 	public function setStudio(string $studioUrl, Request $request): mixed;
+
+	/**
+	 * @param  string  $studioUrl
+	 *
+	 * @return mixed
+	 */
+	public function delStudio(string $studioUrl): mixed;
 }

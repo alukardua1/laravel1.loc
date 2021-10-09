@@ -20,7 +20,7 @@ class CountryComposer
 	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{
 		$this->countryRepository = $countryRepositoryInterfaces;
-		$this->country = $this->country()->sortBy('name');
+		$this->country = $this->country();
 	}
 
 	/**
@@ -28,7 +28,7 @@ class CountryComposer
 	 */
 	public function country(): mixed
 	{
-		return $this->countryRepository->getCountry();
+		return $this->countryRepository->getCountry()->get();
 	}
 
 	/**

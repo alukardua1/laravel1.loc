@@ -30,6 +30,7 @@ class FavoritesController extends Controller
 	public function index(string $login): View|Factory|Application
 	{
 		$allAnime = $this->favoriteRepository->getFavorite($login)->favorites()->paginate($this->paginate);
+
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
 

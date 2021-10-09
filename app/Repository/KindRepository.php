@@ -15,28 +15,19 @@ use Illuminate\Http\Request;
  */
 class KindRepository implements KindRepositoryInterfaces
 {
-
-	/**
-	 * Получает тип по названию
-	 *
-	 * @param  string  $kindUrl  Урл типа
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $kindUrl): mixed
-	{
-		return Kind::where('url', $kindUrl)
-			->first();
-	}
-
 	/**
 	 * Получает все типы
 	 *
+	 * @param  string|null  $kindUrl
+	 *
 	 * @return mixed
 	 */
-	public function getKind(): mixed
+	public function getKind(string $kindUrl = null): mixed
 	{
-		return Kind::get();
+		if ($kindUrl) {
+			return Kind::where('url', $kindUrl);
+		}
+		return Kind::orderBy('name', 'ASC');
 	}
 
 	/**
@@ -50,5 +41,15 @@ class KindRepository implements KindRepositoryInterfaces
 	public function setKind(string $kindUrl, Request $request): mixed
 	{
 		// TODO: Implement setKind() method.
+	}
+
+	/**
+	 * @param  string  $kindUrl
+	 *
+	 * @return mixed
+	 */
+	public function delKind(string $kindUrl): mixed
+	{
+		// TODO: Implement delKind() method.
 	}
 }

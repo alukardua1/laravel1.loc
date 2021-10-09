@@ -15,28 +15,19 @@ use Illuminate\Http\Request;
  */
 class StudioRepository implements StudioRepositoryInterfaces
 {
-
-	/**
-	 * Получает студию по названию
-	 *
-	 * @param  string  $studioUrl  Урл студии
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $studioUrl): mixed
-	{
-		return Studio::where('url', $studioUrl)
-			->first();
-	}
-
 	/**
 	 * Получает все студии
 	 *
+	 * @param  string|null  $studioUrl
+	 *
 	 * @return mixed
 	 */
-	public function getStudio(): mixed
+	public function getStudio(string $studioUrl = null): mixed
 	{
-		return Studio::get();
+		if ($studioUrl) {
+			return Studio::where('url', $studioUrl);
+		}
+		return Studio::orderBy('name', 'ASC');
 	}
 
 	/**
@@ -50,5 +41,15 @@ class StudioRepository implements StudioRepositoryInterfaces
 	public function setStudio(string $studioUrl, Request $request): mixed
 	{
 		// TODO: Implement setStudio() method.
+	}
+
+	/**
+	 * @param  string  $studioUrl
+	 *
+	 * @return mixed
+	 */
+	public function delStudio(string $studioUrl): mixed
+	{
+		// TODO: Implement delStudio() method.
 	}
 }

@@ -33,7 +33,7 @@ class GeoBlockComposer
 	 */
 	public function geoBlock(): mixed
 	{
-		return $this->geoBlockRepository->getGeoBlock();
+		return $this->geoBlockRepository->getGeoBlock()->get();
 	}
 
 	/**

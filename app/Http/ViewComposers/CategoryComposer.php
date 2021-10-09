@@ -33,7 +33,7 @@ class CategoryComposer
 	 */
 	public function category(): mixed
 	{
-		return $this->categoryRepository->getCategories()->get();
+		return $this->categoryRepository->getCategory()->get();
 	}
 
 	/**

@@ -15,27 +15,19 @@ use Illuminate\Http\Request;
  */
 class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 {
-
-	/**
-	 * Получает ГеоБлок по коду
-	 *
-	 * @param  string  $geoBlock  Код ГеоБлока
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $geoBlock): mixed
-	{
-		return GeoBlock::where('code', $geoBlock);
-	}
-
 	/**
 	 * Получает ГеоБлок
 	 *
+	 * @param  string|null  $geoBlock
+	 *
 	 * @return mixed
 	 */
-	public function getGeoBlock(): mixed
+	public function getGeoBlock(string $geoBlock = null): mixed
 	{
-		return GeoBlock::get();
+		if ($geoBlock) {
+			return GeoBlock::where('code', $geoBlock);
+		}
+		return GeoBlock::orderBy('code', 'ASC');
 	}
 
 	/**
@@ -49,5 +41,10 @@ class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 	public function setGeoBlock(string $geoBlock, Request $request): mixed
 	{
 		// TODO: Implement setGeoBlock() method.
+	}
+
+	public function delGeoBlock(string $geoBlock): mixed
+	{
+		// TODO: Implement delGeoBlock() method.
 	}
 }

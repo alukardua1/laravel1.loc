@@ -16,11 +16,13 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Получает аниме по ID
 	 *
-	 * @param  int  $id  ID записи
+	 * @param  int|null  $id  ID записи
+	 *
+	 * @param  bool      $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(int $id): mixed;
+	public function getAnime(int $id = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Получает количество аниме
@@ -28,15 +30,6 @@ interface AnimeRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function countAnime(): mixed;
-
-	/**
-	 * Получает все аниме с проверкой для админпанели или для сайта
-	 *
-	 * @param  bool  $isAdmin  админ или нет
-	 *
-	 * @return mixed
-	 */
-	public function getAllAnime(bool $isAdmin = false): mixed;
 
 	/**
 	 * Формирует для главной страницы

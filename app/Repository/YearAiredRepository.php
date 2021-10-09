@@ -15,28 +15,19 @@ use Illuminate\Http\Request;
  */
 class YearAiredRepository implements YearAiredRepositoryInterfaces
 {
-
-	/**
-	 * Получает год по названию
-	 *
-	 * @param  string  $yearUrl  Урл года
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $yearUrl): mixed
-	{
-		return YearAired::where('name', $yearUrl)
-			->first();
-	}
-
 	/**
 	 * Получает все года
 	 *
+	 * @param  string|null  $yearUrl
+	 *
 	 * @return mixed
 	 */
-	public function getYearAired(): mixed
+	public function getYearAired(string $yearUrl = null): mixed
 	{
-		return YearAired::get();
+		if ($yearUrl) {
+			return YearAired::where('year', $yearUrl);
+		}
+		return YearAired::orderBy('year', 'ASC');
 	}
 
 	/**
@@ -50,5 +41,10 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	public function setYearAired(string $yearUrl, Request $request): mixed
 	{
 		// TODO: Implement setYearAired() method.
+	}
+
+	public function delYearAired(string $yearUrl): mixed
+	{
+		// TODO: Implement delYearAired() method.
 	}
 }

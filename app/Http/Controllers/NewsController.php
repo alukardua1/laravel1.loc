@@ -23,9 +23,9 @@ class NewsController extends Controller
 	 */
 	public function index()
 	{
-		$news = $this->newsRepository->getNewsAll()->paginate($this->paginate);
+		$news = $this->newsRepository->getNews()->paginate($this->paginate);
 
-		return view($this->frontend . 'news/short_news', compact('news'));
+		return view($this->frontend . 'news.short_news', compact('news'));
 	}
 
 	/**
@@ -39,7 +39,7 @@ class NewsController extends Controller
 	{
 		$news = $this->newsRepository->getNews($id)->get();
 
-		return view($this->frontend . 'news/full_news', compact('news'));
+		return view($this->frontend . 'news.full_news', compact('news'));
 	}
 
 	/**

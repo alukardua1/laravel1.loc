@@ -14,20 +14,13 @@ use Illuminate\Http\Request;
 interface GeoBlockRepositoryInterfaces
 {
 	/**
-	 * Получает ГеоБлок по коду
-	 *
-	 * @param  string  $geoBlock Код ГеоБлока
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $geoBlock): mixed;
-
-	/**
 	 * Получает ГеоБлок
 	 *
+	 * @param  string|null  $geoBlock
+	 *
 	 * @return mixed
 	 */
-	public function getGeoBlock(): mixed;
+	public function getGeoBlock(string $geoBlock = null): mixed;
 
 	/**
 	 * Добавление/обновление ГеоБлока
@@ -38,4 +31,11 @@ interface GeoBlockRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function setGeoBlock(string $geoBlock, Request $request): mixed;
+
+	/**
+	 * @param  string  $geoBlock
+	 *
+	 * @return mixed
+	 */
+	public function delGeoBlock(string $geoBlock): mixed;
 }

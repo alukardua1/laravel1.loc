@@ -7,16 +7,30 @@ use App\Models\Faq;
 class FaqRepository implements Interfaces\FaqRepositoryInterfaces
 {
 
-	public function getFaq($faqUrl = null)
+	/**
+	 * @param  string|null  $faqUrl
+	 * @param  bool         $isAdmin
+	 *
+	 * @return mixed
+	 */
+	public function getFaq(string $faqUrl = null, bool $isAdmin = false): mixed
 	{
 		if ($faqUrl) {
 			return Faq::where('url', $faqUrl);
-		} else {
+		} elseif ($isAdmin) {
 			return Faq::orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
+		} else {
+			return Faq::where('public_at', 1)->orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
 		}
 	}
 
-	public function setFaq(\Request $request, $faqUrl)
+	/**
+	 * @param  \Request  $request
+	 * @param  string    $faqUrl
+	 *
+	 * @return mixed
+	 */
+	public function setFaq(\Request $request, string $faqUrl): mixed
 	{
 		$allRequest = $request->all();
 
@@ -24,5 +38,15 @@ class FaqRepository implements Interfaces\FaqRepositoryInterfaces
 		if ($faqUpdate) {
 			return $faqUpdate->save();
 		}
+	}
+
+	/**
+	 * @param  string  $faqUrl
+	 *
+	 * @return mixed
+	 */
+	public function delFaq(string $faqUrl): mixed
+	{
+		// TODO: Implement delFaq() method.
 	}
 }

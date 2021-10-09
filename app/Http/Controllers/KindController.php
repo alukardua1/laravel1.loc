@@ -38,7 +38,7 @@ class KindController extends Controller
 	 */
 	public function index(string $kindUrl): View|Factory|Application
 	{
-		$showKind = $this->kindRepository->getAnime($kindUrl);
+		$showKind = $this->kindRepository->getKind($kindUrl)->first();
 		$this->isNotNull($showKind);
 		$title = $showKind->full_name;
 		$description = $showKind->description;

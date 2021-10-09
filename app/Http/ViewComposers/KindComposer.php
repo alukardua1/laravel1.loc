@@ -28,7 +28,7 @@ class KindComposer
 	 */
 	public function kind(): mixed
 	{
-		return $this->kindRepository->getKind();
+		return $this->kindRepository->getKind()->get();
 	}
 
 	/**

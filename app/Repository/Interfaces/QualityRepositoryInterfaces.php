@@ -14,20 +14,13 @@ use Illuminate\Http\Request;
 interface QualityRepositoryInterfaces
 {
 	/**
-	 * Получает качество видео по названию
-	 *
-	 * @param  string  $qualityUrl  Урл качество видео
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $qualityUrl): mixed;
-
-	/**
 	 * Получает все качество видео
 	 *
+	 * @param  string|null  $qualityUrl
+	 *
 	 * @return mixed
 	 */
-	public function getQuality(): mixed;
+	public function getQuality(string $qualityUrl = null): mixed;
 
 	/**
 	 * Добавление/обновление качества видео
@@ -38,4 +31,11 @@ interface QualityRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function setQuality(string $qualityUrl, Request $request): mixed;
+
+	/**
+	 * @param  string  $qualityUrl
+	 *
+	 * @return mixed
+	 */
+	public function delQuality(string $qualityUrl): mixed;
 }

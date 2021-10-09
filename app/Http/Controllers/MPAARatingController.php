@@ -38,7 +38,7 @@ class MPAARatingController extends Controller
 	 */
 	public function index(string $mpaaUrl): View|Factory|Application
 	{
-		$showMpaa = $this->mpaaRepository->getAnime($mpaaUrl);
+		$showMpaa = $this->mpaaRepository->getMpaa($mpaaUrl)->first();
 		$this->isNotNull($showMpaa);
 		$title = $showMpaa->name;
 		$description = $showMpaa->description;

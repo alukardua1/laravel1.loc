@@ -18,24 +18,14 @@ class UserApiController extends Controller
 	}
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
 	 * Display the specified resource.
 	 *
-	 * @param        $login
-	 * @param  null  $custom
+	 * @param  string  $login
+	 * @param  null    $custom
 	 *
 	 * @return JsonResponse|Response
 	 */
-	public function show($login, $custom = null): Response|JsonResponse
+	public function show(string $login, mixed $custom = null): Response|JsonResponse
 	{
 		$user = $this->userRepository->getUser($login);
 		if (empty($user)) {

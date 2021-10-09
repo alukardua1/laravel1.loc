@@ -15,27 +15,19 @@ use Illuminate\Http\Request;
  */
 class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 {
-
-	/**
-	 * Получает правобладателя по названию
-	 *
-	 * @param  string  $copyrightHolder  Урл правообладателя
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $copyrightHolder): mixed
-	{
-		return CopyrightHolder::where('copyright_holder', $copyrightHolder);
-	}
-
 	/**
 	 * Получает всех правообладателей
 	 *
+	 * @param  string|null  $copyrightHolder
+	 *
 	 * @return mixed
 	 */
-	public function getCopyrightHolder(): mixed
+	public function getCopyrightHolder(string $copyrightHolder = null): mixed
 	{
-		return CopyrightHolder::get();
+		if ($copyrightHolder) {
+			return CopyrightHolder::where('copyright_holder', $copyrightHolder);
+		}
+		return CopyrightHolder::orderBy('title', 'ASC');
 	}
 
 	/**
@@ -51,6 +43,11 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 		// TODO: Implement setCopyrightHolder() method.
 	}
 
+	/**
+	 * @param  string  $copyrightHolder
+	 *
+	 * @return mixed|void
+	 */
 	public function deleteCopyrightHolder(string $copyrightHolder)
 	{
 		// TODO: Implement deleteCopyrightHolder() method.

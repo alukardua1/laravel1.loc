@@ -16,26 +16,17 @@ use Illuminate\Http\Request;
 class CountryRepository implements CountryRepositoryInterfaces
 {
 	/**
-	 * Получает страну по названию
-	 *
-	 * @param  string  $countryUrl  Урл страны
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $countryUrl): mixed
-	{
-		return Country::where('url', $countryUrl)
-			->first();
-	}
-
-	/**
 	 * Получает все страны
 	 *
 	 * @return mixed
 	 */
-	public function getCountry(): mixed
+	public function getCountry(string $countryUrl = null): mixed
 	{
-		return Country::get();
+		if ($countryUrl) {
+			return Country::where('url', $countryUrl)
+				->first();
+		}
+		return Country::orderBy('name', 'ASC');
 	}
 
 	/**
@@ -51,6 +42,9 @@ class CountryRepository implements CountryRepositoryInterfaces
 		// TODO: Implement setCountry() method.
 	}
 
+	/**
+	 * @param  string  $countryUrl
+	 */
 	public function deleteCountry(string $countryUrl)
 	{
 		// TODO: Implement deleteCountry() method.

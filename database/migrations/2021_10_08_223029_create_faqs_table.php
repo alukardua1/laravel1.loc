@@ -18,6 +18,7 @@ class CreateFaqsTable extends Migration
 			$table->string('url')->unique();
 			$table->string('title')->unique();
 			$table->text('description');
+			$table->boolean('public_at')->default(1);
 			$table->timestamps();
 		});
 	}

@@ -38,7 +38,7 @@ class CountryController extends Controller
 	 */
 	public function index(string $countryUrl): View|Factory|Application
 	{
-		$showCountry = $this->countryRepository->getAnime($countryUrl);
+		$showCountry = $this->countryRepository->getCountry($countryUrl);
 		$this->isNotNull($showCountry);
 		$title = $showCountry->name;
 		$description = $showCountry->description;

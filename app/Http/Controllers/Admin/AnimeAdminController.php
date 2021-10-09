@@ -44,7 +44,7 @@ class AnimeAdminController extends Controller
 	 */
 	public function index(): View|Factory|Response|Application
 	{
-		$showAnime = $this->animeRepository->getAllAnime(true)->paginate(50);
+		$showAnime = $this->animeRepository->getAnime(null, true)->paginate(50);
 
 		return view($this->backend . 'anime.show_all', compact('showAnime'));
 	}

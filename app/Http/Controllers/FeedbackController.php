@@ -31,6 +31,7 @@ class FeedbackController extends Controller
 	{
 		$post = $request->all();
 		Mail::to('admin@anime-free.ru')->send(new FeedbackShipped($post));
+
 		return back();
 	}
 }

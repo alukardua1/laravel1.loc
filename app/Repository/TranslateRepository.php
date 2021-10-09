@@ -16,26 +16,18 @@ use Illuminate\Http\Request;
 class TranslateRepository implements TranslateRepositoryInterfaces
 {
 	/**
-	 * Получает озвучивание по названию
-	 *
-	 * @param  string  $translateUrl  Урл озвучмвания
-	 *
-	 * @return mixed
-	 */
-	public function getAnime($translateUrl): mixed
-	{
-		return Translate::where('url', $translateUrl)
-			->first();
-	}
-
-	/**
 	 * Получает все озвучивания
 	 *
+	 * @param  string|null  $translateUrl
+	 *
 	 * @return mixed
 	 */
-	public function getTranslate(): mixed
+	public function getTranslate(string $translateUrl = null): mixed
 	{
-		return Translate::get();
+		if ($translateUrl) {
+			return Translate::where('url', $translateUrl);
+		}
+		return Translate::orderBy('name', 'ASC');
 	}
 
 	/**
@@ -49,5 +41,10 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	public function setTranslate(string $translateUrl, Request $request): mixed
 	{
 		// TODO: Implement setTranslate() method.
+	}
+
+	public function delTranslate(string $translateUrl): mixed
+	{
+		// TODO: Implement delTranslate() method.
 	}
 }

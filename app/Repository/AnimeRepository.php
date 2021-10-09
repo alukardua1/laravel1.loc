@@ -52,31 +52,22 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	/**
 	 * Получает аниме по ID
 	 *
-	 * @param  int  $id  ID записи
+	 * @param  int|null  $id
+	 * @param  bool      $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getAnime(int $id): mixed
+	public function getAnime(int $id = null, bool $isAdmin = false): mixed
 	{
-		return Anime::where('id', $id);
-	}
-
-	/**
-	 * Получает все аниме с проверкой для админпанели или для сайта
-	 *
-	 * @param  bool  $isAdmin  админ или нет
-	 *
-	 * @return mixed
-	 */
-	public function getAllAnime(bool $isAdmin = false): mixed
-	{
-		if ($isAdmin) {
+		if ($id) {
+			return Anime::where('id', $id);
+		} elseif ($isAdmin) {
 			return Anime::orderBy('updated_at', 'DESC');
+		} else {
+			return Anime::where('posted_at', 1)
+				->where('posted_main_page', 1)
+				->orderBy('updated_at', 'DESC');
 		}
-
-		return Anime::where('posted_at', 1)
-			->where('posted_main_page', 1)
-			->orderBy('updated_at', 'DESC');
 	}
 
 	/**

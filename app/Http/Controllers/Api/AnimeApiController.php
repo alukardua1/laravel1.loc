@@ -33,7 +33,7 @@ class AnimeApiController extends Controller
 	 */
 	public function index(): JsonResponse
 	{
-		$anime = $this->apiAnimeRepository->getAllAnime()->paginate($this->paginate);
+		$anime = $this->apiAnimeRepository->getAnime()->paginate($this->paginate);
 		$anime = $this->animeAllMutations($anime);
 
 		return response()->json($anime);
@@ -42,14 +42,13 @@ class AnimeApiController extends Controller
 	/**
 	 * Вывод аниме по $id
 	 *
-	 * @param  string  $id
+	 * @param  int  $id
 	 *
 	 * @return JsonResponse
 	 */
-	public function show(string $id): JsonResponse
+	public function show(int $id): JsonResponse
 	{
-		$slug = explode('-', $id);
-		$thisAnime = $this->apiAnimeRepository->getAnime($slug[0])->first();
+		$thisAnime = $this->apiAnimeRepository->getAnime($id)->first();
 		if (empty($thisAnime)) {
 			return response()->json($this->error404());
 		}

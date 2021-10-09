@@ -8,11 +8,11 @@ class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 {
 
 	/**
-	 * @param  null  $group
+	 * @param  string|null  $group
 	 *
 	 * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
 	 */
-	public function getGroup($group = null)
+	public function getGroup(string $group = null)
 	{
 		if ($group) {
 			return Group::where('title', $group)->first();
@@ -24,6 +24,8 @@ class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 	/**
 	 * @param  \Request  $request
 	 * @param  string    $group
+	 *
+	 * @return mixed
 	 */
 	public function setGroup(\Request $request, string $group)
 	{
@@ -33,7 +35,12 @@ class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 		return $updateGroup->save();
 	}
 
-	public function delGroup($group)
+	/**
+	 * @param  string  $group
+	 *
+	 * @return mixed|void
+	 */
+	public function delGroup(string $group)
 	{
 		$del = Group::findOrFail($group, ['*']);
 		if ($del) {

@@ -16,26 +16,18 @@ use Illuminate\Http\Request;
 class MpaaRepository implements MpaaRepositoryInterfaces
 {
 	/**
-	 * Получает MPAA рейтинг по названию
-	 *
-	 * @param  string  $mpaaUrl  Урл MPAA рейтинга
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $mpaaUrl): mixed
-	{
-		return MPAARating::where('url', $mpaaUrl)
-			->first();
-	}
-
-	/**
 	 * Получает MPAA рейтинги
 	 *
+	 * @param  string|null  $mpaaUrl
+	 *
 	 * @return mixed
 	 */
-	public function getMpaa(): mixed
+	public function getMpaa(string $mpaaUrl = null): mixed
 	{
-		return MPAARating::get();
+		if ($mpaaUrl) {
+			return MPAARating::where('url', $mpaaUrl);
+		}
+		return MPAARating::orderBy('id', 'ASC');
 	}
 
 	/**
@@ -49,5 +41,15 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	public function setMpaa(string $mpaaUrl, Request $request): mixed
 	{
 		// TODO: Implement setMpaa() method.
+	}
+
+	/**
+	 * @param  string  $mpaaUrl
+	 *
+	 * @return mixed
+	 */
+	public function delMpaa(string $mpaaUrl): mixed
+	{
+		// TODO: Implement delMpaa() method.
 	}
 }

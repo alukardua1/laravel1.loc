@@ -17,20 +17,12 @@ interface CategoryRepositoryInterfaces
 	/**
 	 * Получает все категории
 	 *
-	 * @param  bool|false  $isAdmin
+	 * @param  string|null  $categoryUrl
+	 * @param  bool|false   $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getCategories(bool $isAdmin = false): mixed;
-
-	/**
-	 * Получает категорию по названию
-	 *
-	 * @param  string  $categoryUrl Урл категории
-	 *
-	 * @return mixed
-	 */
-	public function getCategory(string $categoryUrl): mixed;
+	public function getCategory(string $categoryUrl = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление категории
@@ -47,5 +39,5 @@ interface CategoryRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delCategory(string $categoryUrl);
+	public function delCategory(string $categoryUrl): mixed;
 }

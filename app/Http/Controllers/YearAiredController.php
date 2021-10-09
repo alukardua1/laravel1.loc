@@ -38,9 +38,9 @@ class YearAiredController extends Controller
 	 */
 	public function index(string $yearUrl): View|Factory|Application
 	{
-		$showYear = $this->yearAired->getAnime($yearUrl);
+		$showYear = $this->yearAired->getYearAired($yearUrl)->first();
 		$this->isNotNull($showYear);
-		$title = $showYear->name;
+		$title = $showYear->year . ' год выпуска';
 		$description = null;
 		$allAnime = $showYear->getAnime()->paginate($this->paginate);
 

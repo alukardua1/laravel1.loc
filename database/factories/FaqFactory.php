@@ -27,6 +27,7 @@ class FaqFactory extends Factory
 			'url'         => Str::slug($title),
 			'title'       => $title,
 			'description' => $this->faker->realText,
+			'public_at'   => 1,
 		];
 	}
 }

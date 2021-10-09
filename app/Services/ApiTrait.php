@@ -30,12 +30,12 @@ trait ApiTrait
 	/**
 	 * Мутатор Апи пользователя
 	 *
-	 * @param               $user
+	 * @param  mixed        $user
 	 * @param  string|null  $custom
 	 *
 	 * @return array
 	 */
-	public function userMutations($user, string $custom = null): array
+	public function userMutations(mixed $user, string $custom = null): array
 	{
 		$favorite = [];
 		foreach ($user->favorites as $value) {
@@ -57,15 +57,31 @@ trait ApiTrait
 	/**
 	 * Вывод всех аниме
 	 *
-	 * @param $anime
+	 * @param  mixed  $anime
 	 *
 	 * @return array
 	 */
-	public function animeAllMutations($anime): array
+	public function animeAllMutations(mixed $anime): array
 	{
-		$result = [];
+		$cur = $anime->currentPage();
+		$last = $anime->lastPage();
+		if ($cur == 1) {
+			$prev_page = null;
+		} else {
+			$prev_page = $anime->path() . '?page=' . $anime->currentPage() - 1;
+		}
+		if ($last == $cur) {
+			$next_page = null;
+		} else {
+			$next_page = $anime->path() . '?page=' . $anime->currentPage() + 1;
+		}
+		$result = [
+			'total'     => $anime->total(),
+			'prev_page' => $prev_page,
+			'next_page' => $next_page,
+		];
 		foreach ($anime as $item) {
-			$result[] = [
+			$result['result'][] = [
 				'id'       => $item->id,
 				'image'    => [
 					'original' => $item->original_img,

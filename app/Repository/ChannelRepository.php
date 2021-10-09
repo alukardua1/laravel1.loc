@@ -15,28 +15,19 @@ use Illuminate\Http\Request;
  */
 class ChannelRepository implements ChannelRepositoryInterfaces
 {
-
-	/**
-	 * Получает канал по названию
-	 *
-	 * @param  string  $channelUrl  урл канала
-	 *
-	 * @return mixed
-	 */
-	public function getAnime(string $channelUrl): mixed
-	{
-		return Channel::where('url', $channelUrl)
-			->first();
-	}
-
 	/**
 	 * Получает все каналы
 	 *
+	 * @param  string|null  $channelUrl
+	 *
 	 * @return mixed
 	 */
-	public function getChannel(): mixed
+	public function getChannel(string $channelUrl = null): mixed
 	{
-		return Channel::get();
+		if ($channelUrl) {
+			return Channel::where('url', $channelUrl);
+		}
+		return Channel::orderBy('title', 'ASC');
 	}
 
 	/**
@@ -52,7 +43,12 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 		// TODO: Implement setChannel() method.
 	}
 
-	public function delete(string $channelUrl): mixed
+	/**
+	 * @param  string  $channelUrl
+	 *
+	 * @return mixed
+	 */
+	public function deleteChannel(string $channelUrl): mixed
 	{
 		// TODO: Implement delete() method.
 	}

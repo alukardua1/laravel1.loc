@@ -19,7 +19,7 @@ class CategoryApiController extends Controller
 	{
 	}
 
-	public function show($category)
+	public function show(string $category)
 	{
 	}
 }

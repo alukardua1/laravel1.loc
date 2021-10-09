@@ -26,28 +26,19 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	/**
 	 * Получает все категории
 	 *
-	 * @param  bool  $isAdmin
+	 * @param  string|null  $categoryUrl
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getCategories(bool $isAdmin = false): mixed
+	public function getCategory(string $categoryUrl = null, bool $isAdmin = false): mixed
 	{
-		if ($isAdmin) {
+		if ($categoryUrl) {
+			return Category::where('url', $categoryUrl);
+		} elseif ($isAdmin) {
 			return Category::all();
 		}
 		return Category::where('posted_at', '=', 1);
-	}
-
-	/**
-	 * Получает категорию по названию
-	 *
-	 * @param  string  $categoryUrl  Урл категории
-	 *
-	 * @return mixed
-	 */
-	public function getCategory(string $categoryUrl): mixed
-	{
-		return Category::where('url', $categoryUrl);
 	}
 
 	/**
@@ -76,9 +67,9 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	 *
 	 * @param  string  $categoryUrl  Урл категории
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function delCategory(string $categoryUrl)
+	public function delCategory(string $categoryUrl): mixed
 	{
 		$del = Category::where('url', $categoryUrl)->firstOrFail();
 		if ($del) {
