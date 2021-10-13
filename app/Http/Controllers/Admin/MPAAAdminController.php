@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class MPAAAdminController extends Controller
 {
-	public function __construct()
+	protected MpaaRepositoryInterfaces $mpaaRepository;
+
+	/**
+	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
+	 */
+	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->mpaaRepository = $mpaaRepositoryInterfaces;
 	}
 
 	/**

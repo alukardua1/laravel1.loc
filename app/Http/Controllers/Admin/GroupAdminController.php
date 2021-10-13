@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repository\Interfaces\GroupRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class GroupAdminController extends Controller
 {
-	protected $groupRepository;
+	protected GroupRepositoryInterfaces $groupRepository;
 
 	public function __construct(GroupRepositoryInterfaces $groupRepositoryInterfaces)
 	{
@@ -21,7 +25,7 @@ class GroupAdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function index()
+	public function index(): Factory|View|Application
 	{
 		$groupAll = $this->groupRepository->getGroup()->paginate($this->paginate);
 
@@ -33,7 +37,7 @@ class GroupAdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function create()
+	public function create(): View|Factory|Application
 	{
 		return view($this->backend . 'group.add');
 	}
@@ -57,7 +61,7 @@ class GroupAdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function edit(string $group)
+	public function edit(string $group): View|Factory|Application
 	{
 		$groupEdit = $this->groupRepository->getGroup($group);
 
@@ -72,7 +76,7 @@ class GroupAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, string $group)
+	public function update(Request $request, string $group): Response
 	{
 		dd(__METHOD__, $request, $group);
 	}

@@ -17,11 +17,11 @@ trait MutationTrait
 	/**
 	 * Формирование ссылки категорий
 	 *
-	 * @param $category
+	 * @param  array  $category
 	 *
 	 * @return string
 	 */
-	public function categoryMutation($category): string
+	public function categoryMutation(array $category): string
 	{
 		$result = [];
 		foreach ($category as $value) {
@@ -34,11 +34,11 @@ trait MutationTrait
 	/**
 	 * Формирование сеанса показа
 	 *
-	 * @param $broadcast
+	 * @param  string  $broadcast
 	 *
 	 * @return string
 	 */
-	public function broadcast($broadcast): string
+	public function broadcast(string $broadcast): string
 	{
 		$broadcast = new DateTime($broadcast);
 
@@ -100,11 +100,11 @@ trait MutationTrait
 	/**
 	 * Формирует вывод голосов
 	 *
-	 * @param $vote
+	 * @param  mixed  $vote
 	 *
 	 * @return array
 	 */
-	public function votePlusMinus($vote): array
+	public function votePlusMinus(mixed $vote): array
 	{
 		$result['plus'] = 0;
 		$result['minus'] = 0;

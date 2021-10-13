@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\TableOrderRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class TableOrderAdminController extends Controller
 {
-	public function __construct()
+	protected TableOrderRepositoryInterfaces $tableOrderRepository;
+
+	/**
+	 * @param  \App\Repository\Interfaces\TableOrderRepositoryInterfaces  $tableOrderRepositoryInterfaces
+	 */
+	public function __construct(TableOrderRepositoryInterfaces $tableOrderRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->tableOrderRepository = $tableOrderRepositoryInterfaces;
 	}
 
 	/**

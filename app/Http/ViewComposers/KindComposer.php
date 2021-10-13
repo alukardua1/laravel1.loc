@@ -9,18 +9,16 @@ use Illuminate\View\View;
 
 class KindComposer
 {
-	protected mixed                       $kind;
-	protected KindRepositoryInterfaces $kindRepository;
+	private mixed                    $kind;
+	private KindRepositoryInterfaces $kindRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  KindRepositoryInterfaces  $kindRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces
 	 */
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
 		$this->kindRepository = $kindRepositoryInterfaces;
-		$this->kind = $this->kind()->sortBy('name');
+		$this->kind = $this->kind();
 	}
 
 	/**

@@ -14,13 +14,11 @@ use Illuminate\View\View;
  */
 class CategoryComposer
 {
-	protected mixed                           $category;
-	protected CategoryRepositoryInterfaces $categoryRepository;
+	private mixed                        $category;
+	private CategoryRepositoryInterfaces $categoryRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
 	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{

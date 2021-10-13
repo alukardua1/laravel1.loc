@@ -9,13 +9,11 @@ use Illuminate\View\View;
 
 class TranslateComposer
 {
-	protected mixed                         $translate;
-	protected TranslateRepositoryInterfaces $translateRepository;
+	private mixed                         $translate;
+	private TranslateRepositoryInterfaces $translateRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  TranslateRepositoryInterfaces  $translateRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces
 	 */
 	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{

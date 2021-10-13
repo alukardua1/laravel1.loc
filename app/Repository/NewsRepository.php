@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\News;
 use App\Repository\Interfaces\NewsRepositoryInterfaces;
+use Request;
 
 class NewsRepository implements NewsRepositoryInterfaces
 {
@@ -15,7 +16,7 @@ class NewsRepository implements NewsRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getNews(int $id = null, int $limit = null)
+	public function getNews(int $id = null, int $limit = null): mixed
 	{
 		if ($id) {
 			return News::where($id);
@@ -30,9 +31,9 @@ class NewsRepository implements NewsRepositoryInterfaces
 	 * @param  \Request  $request
 	 * @param  int|null  $id
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function setNews(\Request $request, int $id = null)
+	public function setNews(Request $request, int $id = null): mixed
 	{
 		// TODO: Implement setNews() method.
 	}
@@ -40,9 +41,9 @@ class NewsRepository implements NewsRepositoryInterfaces
 	/**
 	 * @param  int  $id
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function delNews(int $id)
+	public function delNews(int $id): mixed
 	{
 		// TODO: Implement delNews() method.
 	}

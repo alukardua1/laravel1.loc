@@ -11,6 +11,9 @@ class UserApiController extends Controller
 {
 	protected UserRepositoryInterfaces $userRepository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepositoryInterfaces
+	 */
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
 		parent::__construct();

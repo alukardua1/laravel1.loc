@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\KindRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class KindAdminController extends Controller
 {
-	public function __construct()
+	protected KindRepositoryInterfaces $kindRepository;
+
+	/**
+	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces
+	 */
+	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
+		$this->kindRepository = $kindRepositoryInterfaces;
 		parent::__construct();
 	}
 

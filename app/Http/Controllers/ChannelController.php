@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Channel;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class ChannelController
@@ -19,9 +17,7 @@ class ChannelController extends Controller
 	private ChannelRepositoryInterfaces $channelRepository;
 
 	/**
-	 * ChannelController constructor.
-	 *
-	 * @param  ChannelRepositoryInterfaces  $channelRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\ChannelRepositoryInterfaces  $channelRepositoryInterfaces
 	 */
 	public function __construct(ChannelRepositoryInterfaces $channelRepositoryInterfaces)
 	{
@@ -34,7 +30,7 @@ class ChannelController extends Controller
 	 *
 	 * @param  string  $channelUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $channelUrl): View|Factory|Application
 	{

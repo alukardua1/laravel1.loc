@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kind;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class KindController
@@ -19,9 +17,7 @@ class KindController extends Controller
 	protected KindRepositoryInterfaces $kindRepository;
 
 	/**
-	 * KindController constructor.
-	 *
-	 * @param  KindRepositoryInterfaces  $kindRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces
 	 */
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
@@ -34,7 +30,7 @@ class KindController extends Controller
 	 *
 	 * @param  string  $kindUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $kindUrl): View|Factory|Application
 	{

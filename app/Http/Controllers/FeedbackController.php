@@ -12,6 +12,9 @@ use Mail;
 
 class FeedbackController extends Controller
 {
+	/**
+	 *
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -27,6 +30,11 @@ class FeedbackController extends Controller
 		return view($this->frontend . 'feedback.index');
 	}
 
+	/**
+	 * @param  \Illuminate\Http\Request  $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
 	public function store(Request $request): RedirectResponse
 	{
 		$post = $request->all();

@@ -9,13 +9,11 @@ use Illuminate\View\View;
 
 class MpaaRatingComposer
 {
-	protected mixed                    $mpaa;
-	protected MpaaRepositoryInterfaces $mpaaRepository;
+	private mixed                    $mpaa;
+	private MpaaRepositoryInterfaces $mpaaRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
 	 */
 	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{

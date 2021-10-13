@@ -9,13 +9,11 @@ use Illuminate\View\View;
 
 class ChannelComposer
 {
-	protected mixed                       $channel;
-	protected ChannelRepositoryInterfaces $channelRepository;
+	private mixed                       $channel;
+	private ChannelRepositoryInterfaces $channelRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  ChannelRepositoryInterfaces  $channelRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\ChannelRepositoryInterfaces  $channelRepositoryInterfaces
 	 */
 	public function __construct(ChannelRepositoryInterfaces $channelRepositoryInterfaces)
 	{

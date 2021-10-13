@@ -11,23 +11,59 @@ namespace App\Repository\Interfaces;
  */
 interface DLEParse
 {
-    public function parseCategory();
+	/**
+	 * @return mixed
+	 */
+	public function parseCategory(): mixed;
 
-    public function parseUser();
+	/**
+	 * @return mixed
+	 */
+	public function parseUser(): mixed;
 
-    public function parsePost($id = null);
+	/**
+	 * @param  int|null  $id
+	 *
+	 * @return mixed
+	 */
+	public function parsePost(int $id = null): mixed;
 
-    public function parsePostCategory();
+	/**
+	 * @return mixed
+	 */
+	public function parsePostCategory(): mixed;
 
-    public function parseComments();
+	/**
+	 * @return mixed
+	 */
+	public function parseComments(): mixed;
 
-    public function parseStudio();
+	/**
+	 * @return mixed
+	 */
+	public function parseStudio(): mixed;
 
-    public function parsePerson();
+	/**
+	 * @return mixed
+	 */
+	public function parsePerson(): mixed;
 
-	public function parseChannel();
+	/**
+	 * @return mixed
+	 */
+	public function parseChannel(): mixed;
 
-	public function parseKodik($url);
+	/**
+	 * @param  string  $url
+	 *
+	 * @return mixed
+	 */
+	public function parseKodik(string $url): mixed;
 
-	public function parseKodikQuality($url);
+	/**
+	 * @param  string  $url
+	 *
+	 * @return mixed
+	 */
+	public function parseKodikQuality(string $url): mixed;
 }

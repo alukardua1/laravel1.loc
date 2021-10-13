@@ -46,9 +46,9 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	/**
 	 * @param  string  $copyrightHolder
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function deleteCopyrightHolder(string $copyrightHolder)
+	public function deleteCopyrightHolder(string $copyrightHolder): mixed
 	{
 		// TODO: Implement deleteCopyrightHolder() method.
 	}

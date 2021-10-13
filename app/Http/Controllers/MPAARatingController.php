@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MPAARating;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class MPAARatingController
@@ -19,9 +17,7 @@ class MPAARatingController extends Controller
 	protected MpaaRepositoryInterfaces $mpaaRepository;
 
 	/**
-	 * MPAARatingController constructor.
-	 *
-	 * @param  MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
 	 */
 	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
@@ -34,7 +30,7 @@ class MPAARatingController extends Controller
 	 *
 	 * @param  string  $mpaaUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $mpaaUrl): View|Factory|Application
 	{

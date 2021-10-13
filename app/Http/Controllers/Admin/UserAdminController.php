@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 /**
  *
  */
 class UserAdminController extends Controller
 {
-	/**
-	 * @var \App\Repository\Interfaces\UserRepositoryInterfaces
-	 */
 	protected UserRepositoryInterfaces $userRepository;
 
 	/**
@@ -29,7 +29,7 @@ class UserAdminController extends Controller
 	/**
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function index()
+	public function index(): View|Factory|Application
 	{
 		$allUser = $this->userRepository->getUser()->paginate($this->paginate);
 
@@ -41,7 +41,7 @@ class UserAdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function create()
+	public function create(): View|Factory|Application
 	{
 		return view($this->backend . 'users.add');
 	}
@@ -53,7 +53,7 @@ class UserAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function store(UserRequest $request)
+	public function store(UserRequest $request): RedirectResponse
 	{
 		$requestUser = $this->userRepository->setUsers($request);
 
@@ -67,7 +67,7 @@ class UserAdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function edit(string $login)
+	public function edit(string $login): View|Factory|Application
 	{
 		$user = $this->userRepository->getUser($login);
 
@@ -82,7 +82,7 @@ class UserAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(UserRequest $request, string $login)
+	public function update(UserRequest $request, string $login): RedirectResponse
 	{
 		$requestAnime = $this->userRepository->setUsers($request, $login);
 
@@ -96,7 +96,7 @@ class UserAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function destroy(string $login)
+	public function destroy(string $login): RedirectResponse
 	{
 		$delete = $this->userRepository->destroyUser($login);
 

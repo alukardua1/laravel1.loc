@@ -2,63 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GeoBlock;
-use Illuminate\Http\Request;
+use App\Repository\Interfaces\GeoBlockRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class GeoBlockController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+	protected GeoBlockRepositoryInterfaces $geoBlockRepository;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\GeoBlock  $geoBlock
-     * @return \Illuminate\Http\Response
-     */
-    public function show(GeoBlock $geoBlock)
-    {
-        //
-    }
+	/**
+	 * @param  \App\Repository\Interfaces\GeoBlockRepositoryInterfaces  $geoBlockRepositoryInterfaces
+	 */
+	public function __construct(GeoBlockRepositoryInterfaces $geoBlockRepositoryInterfaces)
+	{
+		parent::__construct();
+		$this->geoBlockRepository = $geoBlockRepositoryInterfaces;
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\GeoBlock  $geoBlock
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(GeoBlock $geoBlock)
-    {
-        //
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
+	public function index(): View|Factory|Application
+	{
+		$geoBlock = $this->geoBlockRepository->getGeoBlock()->get();
+		$this->isNotNull($geoBlock);
+		$title = $geoBlock->name;
+		$description = $geoBlock->description;
+		$allAnime = $geoBlock->getAnime()->paginate($this->paginate);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\GeoBlock  $geoBlock
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, GeoBlock $geoBlock)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\GeoBlock  $geoBlock
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(GeoBlock $geoBlock)
-    {
-        //
-    }
+		return view($this->frontend . 'anime.short', compact('geoBlock', 'allAnime', 'title', 'description'));
+	}
 }

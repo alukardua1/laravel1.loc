@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Studio;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class StudioController
@@ -19,9 +17,7 @@ class StudioController extends Controller
 	protected StudioRepositoryInterfaces $studioRepository;
 
 	/**
-	 * StudioController constructor.
-	 *
-	 * @param  StudioRepositoryInterfaces  $studioRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
 	 */
 	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
@@ -34,7 +30,7 @@ class StudioController extends Controller
 	 *
 	 * @param  string  $studiosUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $studiosUrl): View|Factory|Application
 	{

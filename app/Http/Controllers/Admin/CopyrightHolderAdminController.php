@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class CopyrightHolderAdminController extends Controller
 {
-	public function __construct()
+	protected CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
+
+	public function __construct(CopyrightHolderRepositoryInterfaces $copyrightHolderRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->copyrightHolderRepository = $copyrightHolderRepositoryInterfaces;
 	}
 
 	/**

@@ -10,15 +10,14 @@ use Illuminate\Http\JsonResponse;
  * Class AnimeApiController
  *
  * @package App\Http\Controllers\Api
+ * @mixin Controller
  */
 class AnimeApiController extends Controller
 {
 	protected AnimeRepositoryInterfaces $apiAnimeRepository;
 
 	/**
-	 * AnimeApiController constructor.
-	 *
-	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{

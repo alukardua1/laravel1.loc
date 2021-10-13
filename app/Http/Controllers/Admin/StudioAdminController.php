@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\StudioRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class StudioAdminController extends Controller
 {
-	public function __construct()
+	protected StudioRepositoryInterfaces $studioRepository;
+
+	/**
+	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
+	 */
+	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->studioRepository = $studioRepositoryInterfaces;
 	}
 
 	/**

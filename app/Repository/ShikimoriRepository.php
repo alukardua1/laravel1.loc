@@ -33,9 +33,9 @@ class ShikimoriRepository implements ShikimoriInterfacesRepository
 	/**
 	 * @param  string  $id
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function getShikimori(string $id)
+	public function getShikimori(string $id): mixed
 	{
 		$shikiData = $this->getCurl($id);
 		// TODO: Implement getShikimori() method.

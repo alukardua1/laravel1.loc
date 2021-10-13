@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class ChannelAdminController extends Controller
 {
-	public function __construct()
+	private ChannelRepositoryInterfaces $channelRepository;
+
+	/**
+	 * @param  \App\Repository\Interfaces\ChannelRepositoryInterfaces  $channelRepositoryInterfaces
+	 */
+	public function __construct(ChannelRepositoryInterfaces $channelRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->channelRepository = $channelRepositoryInterfaces;
 	}
 
 	/**

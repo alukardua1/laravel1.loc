@@ -21,11 +21,11 @@ trait CreateCacheTrait
 	 * Создает кэш
 	 *
 	 * @param  string  $key
-	 * @param          $post
+	 * @param  mixed   $post
 	 *
 	 * @return mixed
 	 */
-	public static function setCache(string $key, $post): mixed
+	public static function setCache(string $key, mixed $post): mixed
 	{
 		$ttl = (int)config('secondConfig.cache_time');
 

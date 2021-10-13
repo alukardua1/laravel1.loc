@@ -14,8 +14,8 @@ use Illuminate\View\View;
  */
 class CopyrightHolderComposer
 {
-	protected mixed                               $copyrightHolder;
-	protected CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
+	private mixed                               $copyrightHolder;
+	private CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
 
 	/**
 	 * CopyrightHolderComposer constructor.

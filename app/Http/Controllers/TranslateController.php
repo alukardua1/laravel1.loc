@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Translate;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class TranslateController
@@ -19,9 +17,7 @@ class TranslateController extends Controller
 	protected TranslateRepositoryInterfaces $translate;
 
 	/**
-	 * TranslateController constructor.
-	 *
-	 * @param  TranslateRepositoryInterfaces  $translateRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces
 	 */
 	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{
@@ -34,9 +30,9 @@ class TranslateController extends Controller
 	 *
 	 * @param  string  $translateUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $translateUrl): View|Factory|Application
+	public function index(string $translateUrl): Factory|View|Application
 	{
 		$showTranslate = $this->translate->getTranslate($translateUrl)->first();
 		$this->isNotNull($showTranslate);

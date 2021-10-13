@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class YearAiredAdminController extends Controller
 {
-	public function __construct()
+	protected YearAiredRepositoryInterfaces $yearAired;
+
+	/**
+	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
+	 */
+	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->yearAired = $yearAiredRepositoryInterfaces;
 	}
 
 	/**

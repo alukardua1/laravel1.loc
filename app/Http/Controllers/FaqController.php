@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faq;
 use App\Repository\Interfaces\FaqRepositoryInterfaces;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class FaqController extends Controller
 {
@@ -21,7 +22,7 @@ class FaqController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function index()
+	public function index(): Application|Factory|View
 	{
 		$allFaq = $this->faqRepository->getFaq()->paginate(20);
 
@@ -35,7 +36,7 @@ class FaqController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show(string $faq)
+	public function show(string $faq): View|Factory|Application
 	{
 		$faqShow = $this->faqRepository->getFaq($faq)->first();
 

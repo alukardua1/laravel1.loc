@@ -14,8 +14,8 @@ use Illuminate\View\View;
  */
 class GeoBlockComposer
 {
-	protected mixed                        $geoBlock;
-	protected GeoBlockRepositoryInterfaces $geoBlockRepository;
+	private mixed                        $geoBlock;
+	private GeoBlockRepositoryInterfaces $geoBlockRepository;
 
 	/**
 	 * GeoBlockComposer constructor.

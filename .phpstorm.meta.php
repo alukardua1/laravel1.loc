@@ -19,11 +19,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -273,11 +275,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -527,11 +531,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -781,11 +787,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -1035,11 +1043,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -1289,11 +1299,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -1543,11 +1555,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -1797,11 +1811,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -2051,11 +2067,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -2305,11 +2323,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -2559,11 +2579,13 @@ namespace PHPSTORM_META {
 			    'App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces'  => \App\Repository\CopyrightHolderRepository::class,
 			    'App\Repository\Interfaces\CountryRepositoryInterfaces'          => \App\Repository\CountryRepository::class,
 			    'App\Repository\Interfaces\DLEParse'                             => \App\Repository\DLEParseRepository::class,
+			    'App\Repository\Interfaces\FaqRepositoryInterfaces'              => \App\Repository\FaqRepository::class,
 			    'App\Repository\Interfaces\FavoriteRepositoryInterfaces'         => \App\Repository\FavoriteRepository::class,
 			    'App\Repository\Interfaces\GeoBlockRepositoryInterfaces'         => \App\Repository\GeoBlockRepository::class,
 			    'App\Repository\Interfaces\GroupRepositoryInterfaces'            => \App\Repository\GroupRepository::class,
 			    'App\Repository\Interfaces\JobRepositoryInterfaces'              => \App\Repository\JobRepository::class,
 			    'App\Repository\Interfaces\KindRepositoryInterfaces'             => \App\Repository\KindRepository::class,
+			    'App\Repository\Interfaces\KodikRepositoryInterfaces'            => \App\Repository\KodikRepository::class,
 			    'App\Repository\Interfaces\MpaaRepositoryInterfaces'             => \App\Repository\MpaaRepository::class,
 			    'App\Repository\Interfaces\NewsRepositoryInterfaces'             => \App\Repository\NewsRepository::class,
 			    'App\Repository\Interfaces\QualityRepositoryInterfaces'          => \App\Repository\QualityRepository::class,
@@ -2823,17 +2845,16 @@ namespace PHPSTORM_META {
 	override(\array_first(0), elementType(0));
 	override(\array_last(0), elementType(0));
 	override(\array_get(0), elementType(0));
-    override(\array_only(0), type(0));
-    override(\array_prepend(0), type(0));
-    override(\array_pull(0), elementType(0));
-    override(\array_set(0), type(0));
-    override(\array_sort(0), type(0));
-    override(\array_sort_recursive(0), type(0));
-    override(\array_where(0), type(0));
-    override(\head(0), elementType(0));
-    override(\last(0), elementType(0));
-    override(\with(0), type(0));
-    override(\tap(0), type(0));
-    override(\optional(0), type(0));
-
+	override(\array_only(0), type(0));
+	override(\array_prepend(0), type(0));
+	override(\array_pull(0), elementType(0));
+	override(\array_set(0), type(0));
+	override(\array_sort(0), type(0));
+	override(\array_sort_recursive(0), type(0));
+	override(\array_where(0), type(0));
+	override(\head(0), elementType(0));
+	override(\last(0), elementType(0));
+	override(\with(0), type(0));
+	override(\tap(0), type(0));
+	override(\optional(0), type(0));
 }

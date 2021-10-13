@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\Events\AnimeEvent;
 use App\Http\Requests\CommentRequest;
+use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use App\Services\FunctionTrait;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -12,7 +13,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Illuminate\Http\Response;
 
 /**
@@ -33,9 +33,7 @@ class AnimeController extends Controller
 	];
 
 	/**
-	 * AnimeController constructor.
-	 *
-	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
@@ -47,9 +45,9 @@ class AnimeController extends Controller
 	/**
 	 * Все записи
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function index(): View|Factory|Application
+	public function index(): Factory|View|Application
 	{
 		$allAnime = $this->anime->getAnime()->paginate($this->paginate);
 
@@ -57,7 +55,7 @@ class AnimeController extends Controller
 	}
 
 	/**
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
 	public function indexOngoing(): View|Factory|Application
 	{
@@ -73,9 +71,9 @@ class AnimeController extends Controller
 	 * @param  int          $id
 	 * @param  string|null  $url
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show(int $id, string $url = null)
+	public function show(int $id, string $url = null): Factory|View|Application
 	{
 		$showAnime = $this->anime->getAnime($id)->first();
 		$this->isNotNull($showAnime);
@@ -109,7 +107,7 @@ class AnimeController extends Controller
 	 *
 	 * @param  Request  $request
 	 *
-	 * @return Response|ResponseFactory
+	 * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
 	 */
 	public function search(Request $request): Response|ResponseFactory
 	{
@@ -152,7 +150,7 @@ class AnimeController extends Controller
 	 * @param  int             $id
 	 * @param  CommentRequest  $request
 	 *
-	 * @return RedirectResponse
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function setComments(int $id, CommentRequest $request): RedirectResponse
 	{
@@ -172,7 +170,7 @@ class AnimeController extends Controller
 	 * @param  bool  $fullDel
 	 *
 	 * @throws \Exception
-	 * @return RedirectResponse
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function deleteComments(int $commentId, bool $fullDel = false): RedirectResponse
 	{

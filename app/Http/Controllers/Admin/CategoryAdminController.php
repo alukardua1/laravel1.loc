@@ -8,18 +8,16 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
 class CategoryAdminController extends Controller
 {
-	/**
-	 * Переменная репозитория
-	 *
-	 * @var \App\Repository\Interfaces\CategoryRepositoryInterfaces
-	 */
 	private CategoryRepositoryInterfaces $categoryRepository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
+	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
 		parent::__construct();
@@ -43,7 +41,7 @@ class CategoryAdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function create()
+	public function create(): Factory|View|Application
 	{
 		return view($this->backend . 'category.add');
 	}
@@ -55,7 +53,7 @@ class CategoryAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function store(CategoryRequest $request)
+	public function store(CategoryRequest $request): RedirectResponse
 	{
 		$update = $this->categoryRepository->setCategory($request);
 
@@ -69,7 +67,7 @@ class CategoryAdminController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function edit(string $url)
+	public function edit(string $url): View|Factory|Application
 	{
 		$category = $this->categoryRepository->getCategory($url)->first();
 
@@ -84,7 +82,7 @@ class CategoryAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(CategoryRequest $request, string $url)
+	public function update(CategoryRequest $request, string $url): RedirectResponse
 	{
 		$update = $this->categoryRepository->setCategory($request, $url);
 
@@ -98,7 +96,7 @@ class CategoryAdminController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function destroy(string $url)
+	public function destroy(string $url): RedirectResponse
 	{
 		$delete = $this->categoryRepository->delCategory($url);
 		if ($delete) {

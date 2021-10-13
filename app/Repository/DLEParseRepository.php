@@ -4,19 +4,12 @@
 namespace App\Repository;
 
 
-use App\Models\Anime;
-use App\Models\Category;
 use App\Models\Channel;
-use App\Models\Country;
-use App\Models\Model;
 use App\Models\MPAARating;
-use App\Models\Quality;
-use App\Models\Studio;
-use App\Models\Translate;
 use App\Models\YearAired;
 use App\Repository\Interfaces\DLEParse;
 use App\Services\CurlTrait;
-use File;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Storage;
@@ -31,9 +24,20 @@ class DLEParseRepository implements DLEParse
 {
 	use CurlTrait;
 
-	public function parseCategory()
+	/**
+	 * @return \Illuminate\Database\Connection|\Illuminate\Database\ConnectionInterface
+	 */
+	protected function getDBDLE()
 	{
-		$categories = DB::connection("mysql2")->table('dle_category')->select(
+		return DB::connection("mysql2");
+	}
+
+	/**
+	 * @return array
+	 */
+	public function parseCategory(): array
+	{
+		$categories = $this->getDBDLE()->table('dle_category')->select(
 			['id', 'name', 'alt_name', 'fulldescr']
 		)->get();
 		foreach ($categories as $value) {
@@ -47,9 +51,12 @@ class DLEParseRepository implements DLEParse
 		return $category;
 	}
 
-	public function parseUser()
+	/**
+	 * @return array
+	 */
+	public function parseUser(): array
 	{
-		$users = DB::connection("mysql2")->table('dle_users')->select(['*'])->get();
+		$users = $this->getDBDLE()->table('dle_users')->select(['*'])->get();
 		foreach ($users as $user) {
 			$result[] = [
 				'id'       => $user->user_id,
@@ -62,7 +69,12 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	private function status($xfieldStatus)
+	/**
+	 * @param  string  $xfieldStatus
+	 *
+	 * @return array
+	 */
+	private function status(string $xfieldStatus): array
 	{
 		switch ($xfieldStatus) {
 			case 'released':
@@ -85,7 +97,12 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	private function kind($tip)
+	/**
+	 * @param  string  $tip
+	 *
+	 * @return int
+	 */
+	private function kind(string $tip): int
 	{
 		switch ($tip) {
 			case 'OVA':
@@ -103,7 +120,11 @@ class DLEParseRepository implements DLEParse
 		}
 	}
 
-	protected function createAnimeCategory($category, $id_anime)
+	/**
+	 * @param  string  $category
+	 * @param  int     $id_anime
+	 */
+	protected function createAnimeCategory(string $category, int $id_anime)
 	{
 		$categ = explode(',', $category);
 		foreach ($categ as $value) {
@@ -115,18 +136,28 @@ class DLEParseRepository implements DLEParse
 		}
 	}
 
-	public function dbConnect($id = null)
+	/**
+	 * @param  int|null  $id
+	 *
+	 * @return \Illuminate\Support\Collection
+	 */
+	public function dbConnect(int $id = null): Collection
 	{
 		if ($id) {
-			$posts = DB::connection("mysql2")->table('dle_post')->select(['*'])->where('id', '=', $id)->get();
+			$posts = $this->getDBDLE()->table('dle_post')->select(['*'])->where('id', '=', $id)->get();
 		} else {
-			$posts = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
+			$posts = $this->getDBDLE()->table('dle_post')->select(['*'])->get();
 		}
 
 		return $posts;
 	}
 
-	public function otherLink($post, $xfield, $title)
+	/**
+	 * @param  mixed   $post
+	 * @param  string  $xfield
+	 * @param  string  $title
+	 */
+	public function otherLink(mixed $post, string $xfield, string $title)
 	{
 		$link['anime_id'] = $post->id;
 		$link['title'] = $title;
@@ -134,7 +165,14 @@ class DLEParseRepository implements DLEParse
 		DB::table('other_links')->insert($link);
 	}
 
-	public function addLink($xfield, $table, $post, $belongTable, $columsBelong)
+	/**
+	 * @param  string  $xfield
+	 * @param  string  $table
+	 * @param  mixed   $post
+	 * @param  string  $belongTable
+	 * @param  string  $columsBelong
+	 */
+	public function addLink(string $xfield, string $table, mixed $post, string $belongTable, string $columsBelong)
 	{
 		$quality = explode(', ', $xfield);
 		foreach ($quality as $value) {
@@ -158,7 +196,12 @@ class DLEParseRepository implements DLEParse
 		}
 	}
 
-	public function parsePost($id = null)
+	/**
+	 * @param  int|null  $id
+	 *
+	 * @return array
+	 */
+	public function parsePost(int $id = null): array
 	{
 		$posts = $this->dbConnect($id);
 		foreach ($posts as $post) {
@@ -197,7 +240,6 @@ class DLEParseRepository implements DLEParse
 				$this->addLink($xfield1['proizvodstvo'], 'countries', $post, 'anime_country', 'country_id');
 			}
 			if (array_key_exists('studiya', $xfield1)) {
-				//$this->addBelongs($xfield1['studiya'], $post, 'studio_id', Studio::class, 'anime_studio');
 				$this->addLink($xfield1['studiya'], 'studios', $post, 'anime_studio', 'studio_id');
 			}
 			if (array_key_exists('treyler', $xfield1)) {
@@ -290,7 +332,12 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	protected function replaceHTML($text_post)
+	/**
+	 * @param  string  $text_post
+	 *
+	 * @return string|string[]|null
+	 */
+	protected function replaceHTML(string $text_post): array|string|null
 	{
 		$str_search = [
 			'#<a href="([^"]+)">([^<]+)</a>#',
@@ -303,7 +350,12 @@ class DLEParseRepository implements DLEParse
 		return preg_replace($str_search, $str_replace, $text_post);
 	}
 
-	protected function replaceBBCode($text_post)
+	/**
+	 * @param  string  $text_post
+	 *
+	 * @return string|string[]|null
+	 */
+	protected function replaceBBCode(string $text_post): array|string|null
 	{
 		$str_search = [
 			"#\\\n#is",
@@ -340,13 +392,25 @@ class DLEParseRepository implements DLEParse
 		return preg_replace($str_search, $str_replace, $text_post);
 	}
 
-	protected function delBBcode($data)
+	/**
+	 * @param  string  $data
+	 *
+	 * @return string|string[]|null
+	 */
+	protected function delBBcode(string $data): array|string|null
 	{
 		$result = preg_replace('/\[[^\]]+\]/', '', $data);
 		return $result;
 	}
 
-	private function addBelongs($xfield, $post, $columns, $model, $table)
+	/**
+	 * @param  string  $xfield
+	 * @param  mixed   $post
+	 * @param  string  $columns
+	 * @param  string  $model
+	 * @param  string  $table
+	 */
+	private function addBelongs(string $xfield, mixed $post, string $columns, string $model, string $table)
 	{
 		$data = [];
 		$xfieldDle = explode(', ', $xfield);
@@ -365,7 +429,12 @@ class DLEParseRepository implements DLEParse
 		}
 	}
 
-	private function dates($dates)
+	/**
+	 * @param  string  $dates
+	 *
+	 * @return false|string|null
+	 */
+	private function dates(string $dates): bool|string|null
 	{
 		if ($dates) {
 			return date('Y-m-d', strtotime($dates));
@@ -373,7 +442,13 @@ class DLEParseRepository implements DLEParse
 		return null;
 	}
 
-	private function imageFunc($anime, $image)
+	/**
+	 * @param  mixed  $anime
+	 * @param  mixed  $image
+	 *
+	 * @return array
+	 */
+	private function imageFunc(mixed $anime, mixed $image): array
 	{
 		$def = '/';
 		$path_info = pathinfo($image);
@@ -409,7 +484,10 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	public function parsePostCategory()
+	/**
+	 * @return array
+	 */
+	public function parsePostCategory(): array
 	{
 		$category = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
 		foreach ($category as $cat) {
@@ -425,7 +503,10 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	public function parseChannel()
+	/**
+	 * @return array
+	 */
+	public function parseChannel(): array
 	{
 		$channel = DB::connection("mysql2")->table('dle_post')->select(['*'])->get();
 
@@ -449,7 +530,13 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	protected function array_unique_key($array, $key)
+	/**
+	 * @param  array   $array
+	 * @param  string  $key
+	 *
+	 * @return array
+	 */
+	protected function array_unique_key(array $array, string $key): array
 	{
 		$tmp = $key_array = [];
 		$i = 0;
@@ -464,17 +551,26 @@ class DLEParseRepository implements DLEParse
 		return $tmp;
 	}
 
-	public function parseComments()
+	/**
+	 * @return mixed
+	 */
+	public function parseComments(): mixed
 	{
 		//$comments = DB::connection("mysql2")->table('dle_comments')->select(['*'])->get();
 	}
 
-	public function parsePerson()
+	/**
+	 * @return mixed
+	 */
+	public function parsePerson(): mixed
 	{
 		// TODO: Implement parsePerson() method.
 	}
 
-	public function parseStudio()
+	/**
+	 * @return array
+	 */
+	public function parseStudio(): array
 	{
 		$url = 'https://shikimori.one/api/studios';
 
@@ -491,7 +587,12 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	public function parseKodik($url)
+	/**
+	 * @param  string  $url
+	 *
+	 * @return array
+	 */
+	public function parseKodik(string $url): array
 	{
 		$result = [];
 		$kodik = $this->getCurl($url);
@@ -503,7 +604,12 @@ class DLEParseRepository implements DLEParse
 		return $result;
 	}
 
-	public function parseKodikQuality($url)
+	/**
+	 * @param  string  $url
+	 *
+	 * @return array
+	 */
+	public function parseKodikQuality(string $url): array
 	{
 		$result = [];
 		$kodik = $this->getCurl($url);

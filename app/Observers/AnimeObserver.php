@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Http\Requests\AnimeRequest;
 use App\Models\Anime;
 use App\Services\FunctionTrait;
 use Str;
@@ -64,8 +63,7 @@ class AnimeObserver
 		} else {
 			$translate[] = ' в озвучке не указана';
 		}
-		$translate = implode(', ', $translate);
-		$translate = ' серия в озвучке ' . $translate;
+		$translate = ' серия в озвучке ' . implode(', ', $translate);
 
 		if ($anime->getYear()->first()) {
 			$year = $anime->getYear()->first()->name . ' года ';

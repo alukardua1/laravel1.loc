@@ -9,6 +9,9 @@ class CategoryApiController extends Controller
 {
 	protected CategoryRepositoryInterfaces $categoryRepository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
+	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
 		parent::__construct();

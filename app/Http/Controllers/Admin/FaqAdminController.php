@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 
 class FaqAdminController extends Controller
 {
-	protected $faqRepository;
+	protected FaqRepositoryInterfaces $faqRepository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\FaqRepositoryInterfaces  $faqRepositoryInterfaces
+	 */
 	public function __construct(FaqRepositoryInterfaces $faqRepositoryInterfaces)
 	{
 		parent::__construct();

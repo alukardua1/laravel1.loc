@@ -10,13 +10,11 @@ use Illuminate\View\View;
 
 class UserComposer
 {
-	protected mixed                       $user;
-	protected UserRepositoryInterfaces $userRepository;
+	private mixed                    $user;
+	private UserRepositoryInterfaces $userRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  UserRepositoryInterfaces  $userRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepositoryInterfaces
 	 */
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{

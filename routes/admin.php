@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AnimeAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GroupAdminController;
+use App\Http\Controllers\Admin\KodikAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -17,11 +18,16 @@ Route::group(
 	],
 	function () {
 		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+		Route::group(
+			['prefix' => 'kodik'],
+			function () {
+				Route::get('/{category?}/{page?}', [KodikAdminController::class, 'index'])->name('kodikBaseList');
+				Route::get('/{options?}/{search?}', [KodikAdminController::class, 'search'])->name('kodikBaseSearch');
+			}
+		);
 
 		Route::group(
-			[
-				'prefix' => 'anime',
-			],
+			['prefix' => 'anime',],
 			function () {
 				Route::get('/', [AnimeAdminController::class, 'index'])->name('showAllAnimeAdmin');
 				Route::get('/add', [AnimeAdminController::class, 'create'])->name('createAnimeAdmin');
@@ -32,9 +38,7 @@ Route::group(
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'category',
-			],
+			['prefix' => 'category',],
 			function () {
 				Route::get('/', [CategoryAdminController::class, 'index'])->name('showAllCategoryAdmin');
 				Route::get('/add', [CategoryAdminController::class, 'create'])->name('addCategoryAdmin');
@@ -45,9 +49,7 @@ Route::group(
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'user',
-			],
+			['prefix' => 'user',],
 			function () {
 				Route::get('/', [UserAdminController::class, 'index'])->name('usersAdmin');
 				Route::get('/add', [UserAdminController::class, 'create'])->name('addUserAdmin');
@@ -58,9 +60,7 @@ Route::group(
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'group',
-			],
+			['prefix' => 'group',],
 			function () {
 				Route::get('/', [GroupAdminController::class, 'index'])->name('groupAdmin');
 				Route::get('/add', [GroupAdminController::class, 'create'])->name('addGroupAdmin');
@@ -71,86 +71,62 @@ Route::group(
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'channel',
-			],
+			['prefix' => 'channel',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'copyright_holder',
-			],
+			['prefix' => 'copyright_holder',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'country',
-			],
+			['prefix' => 'country',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'job',
-			],
+			['prefix' => 'job',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'kind',
-			],
+			['prefix' => 'kind',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'mpaa',
-			],
+			['prefix' => 'mpaa',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'news',
-			],
+			['prefix' => 'news',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'quality',
-			],
+			['prefix' => 'quality',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'studio',
-			],
+			['prefix' => 'studio',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'table_order',
-			],
+			['prefix' => 'table_order',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'translate',
-			],
+			['prefix' => 'translate',],
 			function () {
 			}
 		);
 		Route::group(
-			[
-				'prefix' => 'year_aired',
-			],
+			['prefix' => 'year_aired',],
 			function () {
 			}
 		);

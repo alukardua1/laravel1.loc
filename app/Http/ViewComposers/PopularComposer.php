@@ -9,13 +9,11 @@ use Illuminate\View\View;
 
 class PopularComposer
 {
-	protected mixed                     $popular;
-	protected AnimeRepositoryInterfaces $animeRepository;
+	private mixed                     $popular;
+	private AnimeRepositoryInterfaces $animeRepository;
 
 	/**
-	 * CarouselAnimeComposer constructor.
-	 *
-	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{

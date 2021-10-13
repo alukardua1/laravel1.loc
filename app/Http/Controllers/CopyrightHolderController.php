@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CopyrightHolder;
 use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class CopyrightHolderController extends Controller
 {
@@ -22,11 +20,11 @@ class CopyrightHolderController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param $copyrightHolder
+	 * @param  string  $copyrightHolder
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index($copyrightHolder): View|Factory|Application
+	public function index(string $copyrightHolder): View|Factory|Application
 	{
 		$copyright = $this->copyrightHolderRepository->getCopyrightHolder($copyrightHolder)->first();
 		$this->isNotNull($copyright);

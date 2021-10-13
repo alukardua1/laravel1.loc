@@ -16,6 +16,8 @@ interface KindRepositoryInterfaces
 	/**
 	 * Получает все типы
 	 *
+	 * @param  string|null  $kindUrl
+	 *
 	 * @return mixed
 	 */
 	public function getKind(string $kindUrl = null): mixed;

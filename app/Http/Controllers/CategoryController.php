@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -18,9 +17,7 @@ class CategoryController extends Controller
 	private CategoryRepositoryInterfaces $categoryRepository;
 
 	/**
-	 * CategoryController constructor.
-	 *
-	 * @param  CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
 	 */
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
@@ -31,7 +28,7 @@ class CategoryController extends Controller
 	/**
 	 * @param  string  $categoryUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $categoryUrl): View|Factory|Application
 	{

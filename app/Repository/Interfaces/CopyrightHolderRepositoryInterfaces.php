@@ -37,5 +37,5 @@ interface CopyrightHolderRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function deleteCopyrightHolder(string $copyrightHolder);
+	public function deleteCopyrightHolder(string $copyrightHolder): mixed;
 }

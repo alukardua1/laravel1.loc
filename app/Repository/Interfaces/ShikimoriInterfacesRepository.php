@@ -16,5 +16,5 @@ interface ShikimoriInterfacesRepository
 	 *
 	 * @return mixed
 	 */
-	public function getShikimori(string $id);
+	public function getShikimori(string $id): mixed;
 }

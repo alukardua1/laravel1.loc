@@ -12,9 +12,7 @@ class FavoritesController extends Controller
 	private FavoriteRepositoryInterfaces $favoriteRepository;
 
 	/**
-	 * FavoriteController constructor.
-	 *
-	 * @param  FavoriteRepositoryInterfaces  $favoriteRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\FavoriteRepositoryInterfaces  $favoriteRepositoryInterfaces
 	 */
 	public function __construct(FavoriteRepositoryInterfaces $favoriteRepositoryInterfaces)
 	{
@@ -25,7 +23,7 @@ class FavoritesController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $login): View|Factory|Application
 	{

@@ -2,6 +2,8 @@
 
 namespace App\Repository\Interfaces;
 
+use Request;
+
 interface GroupRepositoryInterfaces
 {
 	/**
@@ -9,7 +11,7 @@ interface GroupRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function getGroup(string $group = null);
+	public function getGroup(string $group = null): mixed;
 
 	/**
 	 * @param  \Request  $request
@@ -17,12 +19,12 @@ interface GroupRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function setGroup(\Request $request, string $group);
+	public function setGroup(Request $request, string $group): mixed;
 
 	/**
 	 * @param  string  $group
 	 *
 	 * @return mixed
 	 */
-	public function delGroup(string $group);
+	public function delGroup(string $group): mixed;
 }

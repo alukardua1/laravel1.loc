@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\YearAired;
 use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class YearAiredController
@@ -19,9 +17,7 @@ class YearAiredController extends Controller
 	protected YearAiredRepositoryInterfaces $yearAired;
 
 	/**
-	 * YearAiredController constructor.
-	 *
-	 * @param  YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
 	 */
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{
@@ -34,7 +30,7 @@ class YearAiredController extends Controller
 	 *
 	 * @param  string  $yearUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $yearUrl): View|Factory|Application
 	{

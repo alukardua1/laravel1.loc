@@ -18,6 +18,8 @@ class CountryRepository implements CountryRepositoryInterfaces
 	/**
 	 * Получает все страны
 	 *
+	 * @param  string|null  $countryUrl
+	 *
 	 * @return mixed
 	 */
 	public function getCountry(string $countryUrl = null): mixed
@@ -44,8 +46,10 @@ class CountryRepository implements CountryRepositoryInterfaces
 
 	/**
 	 * @param  string  $countryUrl
+	 *
+	 * @return mixed
 	 */
-	public function deleteCountry(string $countryUrl)
+	public function deleteCountry(string $countryUrl): mixed
 	{
 		// TODO: Implement deleteCountry() method.
 	}

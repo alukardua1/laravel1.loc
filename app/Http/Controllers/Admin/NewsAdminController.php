@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\NewsRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class NewsAdminController extends Controller
 {
-	public function __construct()
+	private NewsRepositoryInterfaces $newsRepository;
+
+	/**
+	 * @param  \App\Repository\Interfaces\NewsRepositoryInterfaces  $newsRepositoryInterfaces
+	 */
+	public function __construct(NewsRepositoryInterfaces $newsRepositoryInterfaces)
 	{
+		$this->newsRepository = $newsRepositoryInterfaces;
 		parent::__construct();
 	}
 

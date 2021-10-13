@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class QualityAdminController extends Controller
 {
-	public function __construct()
+	protected QualityRepositoryInterfaces $qualityRepository;
+
+	/**
+	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
+	 */
+	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->qualityRepository = $qualityRepositoryInterfaces;
 	}
 
 	/**

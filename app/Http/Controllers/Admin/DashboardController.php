@@ -19,6 +19,10 @@ class DashboardController extends Controller
 	protected mixed $animeRepository;
 	protected mixed $userRepository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces   $userRepositoryInterfaces
+	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces, UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
 		parent::__construct();

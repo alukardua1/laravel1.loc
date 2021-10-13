@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Quality;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class QualityController
@@ -19,9 +17,7 @@ class QualityController extends Controller
 	protected QualityRepositoryInterfaces $qualityRepository;
 
 	/**
-	 * QualityController constructor.
-	 *
-	 * @param  QualityRepositoryInterfaces  $qualityRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
 	 */
 	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{
@@ -34,7 +30,7 @@ class QualityController extends Controller
 	 *
 	 * @param  string  $qualityUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $qualityUrl): View|Factory|Application
 	{

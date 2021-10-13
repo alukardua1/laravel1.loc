@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
 use App\Repository\Interfaces\NewsRepositoryInterfaces;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class NewsController extends Controller
 {
 	private NewsRepositoryInterfaces $newsRepository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\NewsRepositoryInterfaces  $newsRepositoryInterfaces
+	 */
 	public function __construct(NewsRepositoryInterfaces $newsRepositoryInterfaces)
 	{
 		$this->newsRepository = $newsRepositoryInterfaces;
@@ -21,7 +25,7 @@ class NewsController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function index()
+	public function index(): Factory|View|Application
 	{
 		$news = $this->newsRepository->getNews()->paginate($this->paginate);
 
@@ -35,47 +39,10 @@ class NewsController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show(int $id)
+	public function show(int $id): View|Factory|Application
 	{
 		$news = $this->newsRepository->getNews($id)->get();
 
 		return view($this->frontend . 'news.full_news', compact('news'));
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Models\News  $news
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(News $news)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\News          $news
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, News $news)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Models\News  $news
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(News $news)
-	{
-		//
 	}
 }

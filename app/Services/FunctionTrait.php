@@ -28,14 +28,14 @@ trait FunctionTrait
 	/**
 	 * Формирование RSS потока
 	 *
-	 * @param          $feed
-	 * @param          $posts
+	 * @param  mixed   $feed
+	 * @param  mixed   $posts
 	 * @param  string  $title
 	 * @param  string  $description
 	 *
 	 * @return mixed
 	 */
-	public function getRss($feed, $posts, $title = '', $description = ''): mixed
+	public function getRss(mixed $feed, mixed $posts, string $title = '', string $description = ''): mixed
 	{
 		$feed->title = $title ?? '☆AnimeFree☆ - смотреть аниме в русской озвучке';
 		$feed->description = $description ?? '☆AnimeFree☆ - смотреть аниме на русском без регистрации';
@@ -73,7 +73,7 @@ trait FunctionTrait
 	 *
 	 * @return mixed
 	 */
-	public function showComments($comments): mixed
+	public function showComments(mixed $comments): mixed
 	{
 		// Изменяем коллекцию.
 		$comments->transform(
@@ -101,10 +101,10 @@ trait FunctionTrait
 	/**
 	 * Запись в базу ссылок
 	 *
-	 * @param       $formRequest
-	 * @param  int  $id
+	 * @param  mixed  $formRequest
+	 * @param  int    $id
 	 */
-	public function setOtherLink($formRequest, int $id)
+	public function setOtherLink(mixed $formRequest, int $id)
 	{
 		foreach ($formRequest['otherLink_title'] as $key => $value) {
 			if ($formRequest['otherLink_url'][$key]) {
@@ -120,10 +120,10 @@ trait FunctionTrait
 	/**
 	 * запись в базу плееров
 	 *
-	 * @param       $formRequest
-	 * @param  int  $id
+	 * @param  mixed  $formRequest
+	 * @param  int    $id
 	 */
-	public function setPlayer($formRequest, int $id)
+	public function setPlayer(mixed $formRequest, int $id)
 	{
 		foreach ($formRequest['player_name'] as $key => $value) {
 			if ($formRequest['player_url'][$key]) {
@@ -139,12 +139,12 @@ trait FunctionTrait
 	/**
 	 * Проверка input[type=check]
 	 *
-	 * @param          $requestCheck
+	 * @param  mixed   $requestCheck
 	 * @param  string  $name
 	 *
 	 * @return int
 	 */
-	protected function check($requestCheck, string $name): int
+	protected function check(mixed $requestCheck, string $name): int
 	{
 		if (!isset($requestCheck[$name])) {
 			return 0;
@@ -155,13 +155,13 @@ trait FunctionTrait
 	/**
 	 * Создает ключевые слова для поста
 	 *
-	 * @param       $contents
-	 * @param  int  $symbol
-	 * @param  int  $words
+	 * @param  string  $contents
+	 * @param  int     $symbol
+	 * @param  int     $words
 	 *
 	 * @return string
 	 */
-	private function seoKeywords($contents, $symbol = 5, $words = 35): string
+	private function seoKeywords(string $contents, int $symbol = 5, int $words = 35): string
 	{
 		$contents = @preg_replace(["'<[\/\!]*?[^<>]*?>'si", "'([\r\n])[\s]+'si", "'&[a-z0-9]{1,6};'si", "'( +)'si"], ["", "\\1 ", " ", " "], strip_tags($contents));
 		$rearray = [
@@ -361,4 +361,6 @@ trait FunctionTrait
 
 		return back()->withErrors(['msg' => $textError])->withInput();
 	}
+
+
 }

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Group;
+use Request;
 
 class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 {
@@ -10,9 +11,9 @@ class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 	/**
 	 * @param  string|null  $group
 	 *
-	 * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
+	 * @return mixed
 	 */
-	public function getGroup(string $group = null)
+	public function getGroup(string $group = null): mixed
 	{
 		if ($group) {
 			return Group::where('title', $group)->first();
@@ -27,7 +28,7 @@ class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function setGroup(\Request $request, string $group)
+	public function setGroup(Request $request, string $group): mixed
 	{
 		$formRequest = $request->all();
 		$updateGroup = Group::firstOrCreate(['title' => $group], $formRequest);
@@ -38,9 +39,9 @@ class GroupRepository implements Interfaces\GroupRepositoryInterfaces
 	/**
 	 * @param  string  $group
 	 *
-	 * @return mixed|void
+	 * @return mixed
 	 */
-	public function delGroup(string $group)
+	public function delGroup(string $group): mixed
 	{
 		$del = Group::findOrFail($group, ['*']);
 		if ($del) {

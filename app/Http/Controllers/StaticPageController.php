@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StaticPage;
 use App\Repository\Interfaces\StaticPageRepositoryInterfaces;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class StaticPageController extends Controller
 {
@@ -21,7 +23,7 @@ class StaticPageController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function index()
+	public function index(): View|Factory|Application
 	{
 		$allStaticPage = $this->staticPageRepository->getPage()->paginate(20);
 
@@ -31,11 +33,11 @@ class StaticPageController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param $page
+	 * @param  string  $page
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show($page)
+	public function show(string $page): View|Factory|Application
 	{
 		$staticPage = $this->staticPageRepository->getPage($page)->first();
 

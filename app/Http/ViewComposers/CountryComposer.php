@@ -9,13 +9,11 @@ use Illuminate\View\View;
 
 class CountryComposer
 {
-	protected mixed                       $country;
-	protected CountryRepositoryInterfaces $countryRepository;
+	private mixed                       $country;
+	private CountryRepositoryInterfaces $countryRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  CountryRepositoryInterfaces  $countryRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\CountryRepositoryInterfaces  $countryRepositoryInterfaces
 	 */
 	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{

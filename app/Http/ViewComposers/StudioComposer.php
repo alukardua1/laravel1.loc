@@ -9,13 +9,11 @@ use Illuminate\View\View;
 
 class StudioComposer
 {
-	protected mixed                      $studio;
-	protected StudioRepositoryInterfaces $studioRepository;
+	private mixed                      $studio;
+	private StudioRepositoryInterfaces $studioRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  StudioRepositoryInterfaces  $studioRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
 	 */
 	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{

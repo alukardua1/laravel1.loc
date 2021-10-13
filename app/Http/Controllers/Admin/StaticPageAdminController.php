@@ -10,6 +10,9 @@ class StaticPageAdminController extends Controller
 {
 	protected StaticPageRepositoryInterfaces $staticPageRepository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\StaticPageRepositoryInterfaces  $staticPageRepositoryInterfaces
+	 */
 	public function __construct(StaticPageRepositoryInterfaces $staticPageRepositoryInterfaces)
 	{
 		parent::__construct();

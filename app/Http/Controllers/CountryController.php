@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
 use App\Repository\Interfaces\CountryRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 /**
  * Class CountryController
@@ -34,7 +32,7 @@ class CountryController extends Controller
 	 *
 	 * @param  string  $countryUrl
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
 	public function index(string $countryUrl): View|Factory|Application
 	{

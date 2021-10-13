@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App;
 use App\Http\Requests\UserRequest;
-use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 /**
  * Class UserController
@@ -24,9 +22,7 @@ class UserController extends Controller
 	private int                      $timeCacheRss;
 
 	/**
-	 * UserController constructor.
-	 *
-	 * @param  UserRepositoryInterfaces  $userRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepositoryInterfaces
 	 */
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
@@ -39,7 +35,7 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
 	public function show(string $login): View|Factory|Application
 	{
@@ -53,9 +49,9 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function showComment(string $login): View|Factory|Application
+	public function showComment(string $login): Factory|View|Application
 	{
 		$currentUser = $this->userRepository->getUser($login);
 		$this->isNotNull($currentUser);
@@ -70,7 +66,7 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
 	public function edit(string $login): View|Factory|Application
 	{
@@ -83,7 +79,7 @@ class UserController extends Controller
 	 * @param  string       $login
 	 * @param  UserRequest  $request
 	 *
-	 * @return RedirectResponse
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function update(string $login, UserRequest $request): RedirectResponse
 	{
@@ -100,7 +96,7 @@ class UserController extends Controller
 	/**
 	 * @param  string  $login
 	 *
-	 * @return View|Factory|Application
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
 	public function showAnime(string $login): View|Factory|Application
 	{

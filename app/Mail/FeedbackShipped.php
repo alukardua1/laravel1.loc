@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -15,11 +14,9 @@ class FeedbackShipped extends Mailable
 	public array $post;
 
 	/**
-	 * Create a new message instance.
-	 *
-	 * @return void
+	 * @param  mixed  $post
 	 */
-	public function __construct($post)
+	public function __construct(mixed $post)
 	{
 		$this->post = $post;
 	}
@@ -29,7 +26,7 @@ class FeedbackShipped extends Mailable
 	 *
 	 * @return $this
 	 */
-	public function build()
+	public function build(): static
 	{
 		$text = $this->post['message1'];
 		return $this->from($this->post['email'])

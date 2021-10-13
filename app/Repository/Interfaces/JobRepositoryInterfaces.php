@@ -6,10 +6,26 @@ use Illuminate\Http\Request;
 
 interface JobRepositoryInterfaces
 {
-	public function getJob(string $urlJob);
+	/**
+	 * @param  string  $urlJob
+	 *
+	 * @return mixed
+	 */
+	public function getJob(string $urlJob): mixed;
 
-	public function setJob(string $urlJob, Request $request);
+	/**
+	 * @param  string                    $urlJob
+	 * @param  \Illuminate\Http\Request  $request
+	 *
+	 * @return mixed
+	 */
+	public function setJob(string $urlJob, Request $request): mixed;
 
-	public function deleteJob(string $urlJob);
+	/**
+	 * @param  string  $urlJob
+	 *
+	 * @return mixed
+	 */
+	public function deleteJob(string $urlJob): mixed;
 
 }

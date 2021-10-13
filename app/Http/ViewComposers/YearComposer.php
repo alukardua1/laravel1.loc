@@ -8,13 +8,11 @@ use Illuminate\View\View;
 
 class YearComposer
 {
-	protected mixed                         $year;
-	protected YearAiredRepositoryInterfaces $yearRepository;
+	private mixed                         $year;
+	private YearAiredRepositoryInterfaces $yearRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
 	 */
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{

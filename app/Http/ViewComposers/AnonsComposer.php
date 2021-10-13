@@ -9,13 +9,11 @@ use Illuminate\View\View;
 
 class AnonsComposer
 {
-	protected mixed                     $anons;
-	protected AnimeRepositoryInterfaces $animeRepository;
+	private mixed                     $anons;
+	private AnimeRepositoryInterfaces $animeRepository;
 
 	/**
-	 * CarouselAnimeComposer constructor.
-	 *
-	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{

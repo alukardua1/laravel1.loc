@@ -11,8 +11,6 @@ class CommentObserver
 	 * Handle the Comment "created" event.
 	 *
 	 * @param  \App\Models\Comment  $comment
-	 *
-	 * @return void
 	 */
 	public function created(Comment $comment)
 	{

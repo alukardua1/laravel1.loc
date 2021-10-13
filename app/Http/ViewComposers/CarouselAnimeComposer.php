@@ -14,13 +14,11 @@ use Illuminate\View\View;
  */
 class CarouselAnimeComposer
 {
-	protected mixed                     $carousel;
-	protected AnimeRepositoryInterfaces $animeRepository;
+	private mixed                     $carousel;
+	private AnimeRepositoryInterfaces $animeRepository;
 
 	/**
-	 * CarouselAnimeComposer constructor.
-	 *
-	 * @param  AnimeRepositoryInterfaces  $animeRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{

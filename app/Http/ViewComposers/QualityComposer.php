@@ -9,13 +9,11 @@ use Illuminate\View\View;
 
 class QualityComposer
 {
-	protected mixed                       $quality;
-	protected QualityRepositoryInterfaces $qualityRepository;
+	private mixed                       $quality;
+	private QualityRepositoryInterfaces $qualityRepository;
 
 	/**
-	 * Create a menu composer.
-	 *
-	 * @param  QualityRepositoryInterfaces  $qualityRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
 	 */
 	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{

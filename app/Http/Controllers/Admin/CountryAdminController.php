@@ -3,13 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\CountryRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class CountryAdminController extends Controller
 {
-	public function __construct()
+	protected CountryRepositoryInterfaces $countryRepository;
+
+	/**
+	 * CountryController constructor.
+	 *
+	 * @param  CountryRepositoryInterfaces  $countryRepositoryInterfaces
+	 */
+	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->countryRepository = $countryRepositoryInterfaces;
 	}
 
 	/**

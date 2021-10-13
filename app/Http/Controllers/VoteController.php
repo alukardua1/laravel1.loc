@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vote;
 use App\Repository\Interfaces\VoteRepositoryInterface;
-use Illuminate\Http\Request;
 
 /**
  * Class VoteController
@@ -16,9 +14,7 @@ class VoteController extends Controller
 	protected VoteRepositoryInterface $voteRepository;
 
 	/**
-	 * VoteController constructor.
-	 *
-	 * @param  VoteRepositoryInterface  $voteRepositoryInterface
+	 * @param  \App\Repository\Interfaces\VoteRepositoryInterface  $voteRepositoryInterface
 	 */
 	public function __construct(VoteRepositoryInterface $voteRepositoryInterface)
 	{

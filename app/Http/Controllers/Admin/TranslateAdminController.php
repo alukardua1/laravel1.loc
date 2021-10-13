@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 use Illuminate\Http\Request;
 
 class TranslateAdminController extends Controller
 {
-	public function __construct()
+	protected TranslateRepositoryInterfaces $translate;
+
+	/**
+	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces
+	 */
+	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->translate = $translateRepositoryInterfaces;
 	}
 
 	/**
