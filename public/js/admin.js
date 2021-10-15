@@ -53,6 +53,14 @@
 		})
 	}
 })()*/
+function copyID(el) {
+	var copytext = document.createElement('input')
+	copytext.value = el
+	document.body.appendChild(copytext)
+	copytext.select()
+	document.execCommand('copy')
+	document.body.removeChild(copytext)
+}
 
 $('.js-selectize').selectize();
 

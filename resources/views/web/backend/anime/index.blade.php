@@ -4,17 +4,17 @@
 
 @section('content')
 	<div>
-		<a class="btn btn-primary" href="{{route('createAnimeAdmin')}}" type="button">Добавить</a>
+		<a class="btn btn-outline-success" href="{{route('createAnimeAdmin')}}" type="button">Добавить</a>
 	</div>
 	<div class="input-group mb-3">
 		<input type="text" id="name" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="name">
-		<a type="button" class="btn btn-primary btn-sm" id="nameBtn" href="#">Поиск</a>
+		<a type="button" class="btn btn-outline-primary btn-sm" id="nameBtn" href="#">Поиск</a>
 	</div>
 	<div class="alert alert-success" role="alert" id='searchsuggestions' style="display: none"></div>
 	<table class="table table-dark table-striped table-sm">
 		<thead>
 		<tr>
-			<th scope="col">Обновлено / Добавлено</th>
+			<th scope="col">Дата</th>
 			<th scope="col">Название</th>
 			<th scope="col">Просмотров</th>
 			<th scope="col">Комментариев</th>
@@ -27,8 +27,11 @@
 		<tbody>
 		@foreach($showAnime as $anime)
 			<tr>
-				<th scope="row">
-					{{\Carbon\Carbon::parse($anime->updated_at)->format('d.m.Y')}} / {{\Carbon\Carbon::parse($anime->created_at)->format('d.m.Y')}}
+				<th scope="row" class="id_row">
+					<ul class="list-group-flush">
+						<li class="list-group-item">Обновлено: {{\Carbon\Carbon::parse($anime->updated_at)->format('d.m.Y')}}</li>
+						<li class="list-group-item">Добавлено: {{\Carbon\Carbon::parse($anime->created_at)->format('d.m.Y')}}</li>
+					</ul>
 				</th>
 				<td>
 					<a href="{{route('editAnimeAdmin', $anime->id)}}">{{$anime->name}}</a>
@@ -55,8 +58,10 @@
 					{{$anime->getUser->login}}
 				</td>
 				<td>
-					<a href="{{route('editAnimeAdmin', $anime->id)}}"><i class="far fa-edit"></i></a>
-					<a href="{{route('deleteAnimeAdmin',  $anime->id)}}"><i class="far fa-trash-alt"></i></a>
+					<div class="btn-group">
+						<a type="button" class="btn" href="{{route('editAnimeAdmin', $anime->id)}}"><i class="far fa-edit"></i></a>
+						<a type="button" class="btn" href="{{route('deleteAnimeAdmin',  $anime->id)}}"><i class="far fa-trash-alt"></i></a>
+					</div>
 				</td>
 			</tr>
 		@endforeach

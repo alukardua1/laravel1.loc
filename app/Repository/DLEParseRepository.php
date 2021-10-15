@@ -156,13 +156,18 @@ class DLEParseRepository implements DLEParse
 	 * @param  mixed   $post
 	 * @param  string  $xfield
 	 * @param  string  $title
+	 * @param  string  $idLink
 	 */
-	public function otherLink(mixed $post, string $xfield, string $title)
+	public function otherLink(mixed $post, string $xfield, string $title, string $idLink)
 	{
-		$link['anime_id'] = $post->id;
-		$link['title'] = $title;
-		$link['url'] = $xfield;
-		DB::table('other_links')->insert($link);
+		$id = DB::table('other_links')->where('title', $title)->where('id_link', $idLink)->first();
+		if (!$id) {
+			$link['anime_id'] = $post->id;
+			$link['title'] = $title;
+			$link['id_link'] = $idLink;
+			$link['url'] = $xfield;
+			DB::table('other_links')->insert($link);
+		}
 	}
 
 	/**
@@ -219,16 +224,16 @@ class DLEParseRepository implements DLEParse
 			$mpaa = MPAARating::where('name', $xfield1['rating'])->first();
 			$this->createAnimeCategory($post->category, $post->id);
 			if (array_key_exists('url_world_art', $xfield1)) {
-				$this->otherLink($post, $xfield1['url_world_art'], 'World-Art');
+				$this->otherLink($post, $xfield1['url_world_art'], 'World-Art', $xfield1['world-art-id']);
 			}
 			if (array_key_exists('shikimori_id', $xfield1)) {
-				$this->otherLink($post, 'https://shikimori.one/animes/' . $xfield1['shikimori_id'], 'Shikimori');
+				$this->otherLink($post, 'https://shikimori.one/animes/' . $xfield1['shikimori_id'], 'Shikimori', $xfield1['shikimori_id']);
 			}
 			if (array_key_exists('myanimelist-id', $xfield1)) {
-				$this->otherLink($post, 'https://myanimelist.net/anime/' . $xfield1['myanimelist-id'], 'MyAnimeList');
+				$this->otherLink($post, 'https://myanimelist.net/anime/' . $xfield1['myanimelist-id'], 'MyAnimeList', $xfield1['myanimelist-id']);
 			}
 			if (array_key_exists('kinopoisk_id', $xfield1)) {
-				$this->otherLink($post, 'https://www.kinopoisk.ru/series/' . $xfield1['kinopoisk_id'], 'Kinopoisk');
+				$this->otherLink($post, 'https://www.kinopoisk.ru/series/' . $xfield1['kinopoisk_id'], 'Kinopoisk', $xfield1['kinopoisk_id']);
 			}
 			if (array_key_exists('quality', $xfield1)) {
 				$this->addLink($xfield1['quality'], 'qualities', $post, 'anime_quality', 'quality_id');
@@ -430,11 +435,11 @@ class DLEParseRepository implements DLEParse
 	}
 
 	/**
-	 * @param  string  $dates
+	 * @param  mixed  $dates
 	 *
 	 * @return false|string|null
 	 */
-	private function dates(string $dates): bool|string|null
+	private function dates(mixed $dates): bool|string|null
 	{
 		if ($dates) {
 			return date('Y-m-d', strtotime($dates));

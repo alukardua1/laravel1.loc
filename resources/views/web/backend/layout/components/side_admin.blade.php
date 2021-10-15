@@ -97,7 +97,7 @@
 				<div class="collapse" id="other_module">
 					<ul class="list-group list-group-flush bg-dark">
 						<li class="list-group-item">
-							<a class="nav-link" href="{{route('kodikBaseList')}}">
+							<a class="nav-link" href="{{route('kodikBaseList', 'movie')}}">
 								<span data-feather="other_module"></span>
 								Kodik
 							</a>

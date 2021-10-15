@@ -17,11 +17,11 @@ trait MutationTrait
 	/**
 	 * Формирование ссылки категорий
 	 *
-	 * @param  array  $category
+	 * @param  mixed  $category
 	 *
 	 * @return string
 	 */
-	public function categoryMutation(array $category): string
+	public function categoryMutation(mixed $category): string
 	{
 		$result = [];
 		foreach ($category as $value) {
@@ -34,11 +34,11 @@ trait MutationTrait
 	/**
 	 * Формирование сеанса показа
 	 *
-	 * @param  string  $broadcast
+	 * @param  mixed  $broadcast
 	 *
 	 * @return string
 	 */
-	public function broadcast(string $broadcast): string
+	public function broadcast(mixed $broadcast): string
 	{
 		$broadcast = new DateTime($broadcast);
 

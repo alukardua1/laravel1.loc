@@ -11,6 +11,7 @@
 		<tr>
 			<th scope="col">#</th>
 			<th scope="col">Название</th>
+			<th scope="col">Описание</th>
 			<th scope="col">Опубликовано</th>
 			<th scope="col">Действия</th>
 		</tr>
@@ -25,11 +26,16 @@
 					<a href="{{route('editCategoryAdmin', $category->url)}}">{{$category->title}}</a>
 				</td>
 				<td>
+					{!! $category->description !!}
+				</td>
+				<td>
 					{!! $category->posted_at ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-exclamation-circle"></i>' !!}
 				</td>
 				<td>
-					<i class="far fa-edit"></i>
-					<a href="{{route('deleteCategoryAdmin', $category->url)}}"><i class="far fa-trash-alt"></i></a>
+					<div class="btn-group">
+						<a type="button" class="btn" href="{{route('editCategoryAdmin', $category->url)}}"><i class="far fa-edit"></i></a>
+						<a type="button" class="btn" href="{{route('deleteCategoryAdmin', $category->url)}}"><i class="far fa-trash-alt"></i></a>
+					</div>
 				</td>
 			</tr>
 		@endforeach

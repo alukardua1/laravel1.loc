@@ -28,12 +28,14 @@
 					{{$group->description}}
 				</td>
 				<td>
-					<a href="{{route('editGroupAdmin', $group->title)}}"><i class="far fa-edit"></i></a>
-					@if (in_array($group->id, [1,2,3,4]))
-						<a href="{{route('deleteGroupAdmin', $group->title)}}" class="disabled"><i class="far fa-trash-alt"></i></a>
-					@else
-						<a href="{{route('deleteGroupAdmin', $group->title)}}"><i class="far fa-trash-alt"></i></a>
-					@endif
+					<div class="btn-group">
+						<a type="button" class="btn" href="{{route('editGroupAdmin', $group->title)}}"><i class="far fa-edit"></i></a>
+						@if (in_array($group->id, [1,2,3,4]))
+							<a type="button" class="btn disabled" href="{{route('deleteGroupAdmin', $group->title)}}"><i class="far fa-trash-alt"></i></a>
+						@else
+							<a type="button" class="btn" href="{{route('deleteGroupAdmin', $group->title)}}"><i class="far fa-trash-alt"></i></a>
+						@endif
+					</div>
 				</td>
 			</tr>
 		@endforeach

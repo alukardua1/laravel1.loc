@@ -3,21 +3,19 @@
 
 @section('content')
 	<div>
-		<a class="btn btn-primary" href="{{route('addUserAdmin')}}" type="button">Добавить</a>
+		<a class="btn btn-outline-success" href="{{route('addUserAdmin')}}" type="button">Добавить</a>
 	</div>
 	<div class="input-group mb-3">
 		<input type="text" id="name" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="name">
-		<a type="button" class="btn btn-primary btn-sm" id="nameBtn" href="#">Поиск</a>
+		<a type="button" class="btn btn-outline-primary btn-sm" id="nameBtn" href="#">Поиск</a>
 	</div>
 	<div class="alert alert-success" role="alert" id='searchsuggestions' style="display: none"></div>
 	<table class="table table-dark table-striped table-sm">
 		<thead>
 		<tr>
 			<th scope="col">Логин</th>
-			<th scope="col">Дата регистрации</th>
-			<th scope="col">Дата посещения</th>
-			<th scope="col">Количество новостей</th>
-			<th scope="col">Количество просмотров</th>
+			<th scope="col">Дата</th>
+			<th scope="col">Количество</th>
 			<th scope="col">Действия</th>
 		</tr>
 		</thead>
@@ -35,21 +33,23 @@
 						</div>
 					</div>
 				</td>
-				<th>
-					{{$user->register}}
+				<th scope="row" class="id_row">
+					<ul class="list-group-flush">
+						<li class="list-group-item">Регистрации: {{$user->register}}</li>
+						<li class="list-group-item">Посещения: {{$user->last_login}}</li>
+					</ul>
 				</th>
-				<td>
-					{{$user->last_login}}
+				<td class="id_row">
+					<ul class="list-group-flush">
+						<li class="list-group-item">Новостей: 0</li>
+						<li class="list-group-item">Комментариев: 0</li>
+					</ul>
 				</td>
 				<td>
-					0
-				</td>
-				<td>
-					0
-				</td>
-				<td>
-					<a href="{{route('editUserAdmin', $user->login)}}"><i class="far fa-edit"></i></a>
-					<a href="{{route('deleteUserAdmin',  $user->login)}}"><i class="far fa-trash-alt"></i></a>
+					<div class="btn-group">
+						<a type="button" class="btn" href="{{route('editUserAdmin', $user->login)}}"><i class="far fa-edit"></i></a>
+						<a type="button" class="btn" href="{{route('deleteUserAdmin',  $user->login)}}"><i class="far fa-trash-alt"></i></a>
+					</div>
 				</td>
 			</tr>
 		@endforeach

@@ -17,7 +17,8 @@ class CreateOtherLinksTable extends Migration
             $table->id();
             $table->foreignId('anime_id');
             $table->string('title');
-            $table->string('url');
+	        $table->string('id_link');
+	        $table->string('url');
             $table->timestamps();
         });
     }

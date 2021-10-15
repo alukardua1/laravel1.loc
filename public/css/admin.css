@@ -44,6 +44,28 @@ a.disabled {
 	color: #999999; /* цвет текста для нективной ссылки */
 }
 
+th.id_row {
+	font-weight: normal;
+}
+
+th.id_row .list-group-item, td.id_row .list-group-item {
+	background-color: transparent !important;
+	border: none;
+}
+
+.table-dark a.color_add_movie, .table-dark span.color_add_movie {
+	color: #1eff00 !important;
+}
+
+.table-dark a.color_no_movie, .table-dark span.color_no_movie {
+	color: #ff0000 !important;
+}
+
+th.id_row > ul, td.id_row > ul {
+	padding-inline-start: 0;
+	width: max-content;
+}
+
 /*
  * Sidebar
  */

@@ -15,8 +15,8 @@ class CreateCopyrightHoldersTable extends Migration
     {
         Schema::create('copyright_holders', function (Blueprint $table) {
             $table->id();
-	        $table->string('copyright_holder');
-            $table->timestamps();
+	        $table->string('title');
+	        $table->timestamps();
         });
     }
 

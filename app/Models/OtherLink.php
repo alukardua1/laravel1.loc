@@ -15,8 +15,10 @@ class OtherLink extends Model
 	protected $fillable = [
 		'anime_id',
 		'title',
-		'url'
+		'id_link',
+		'url',
 	];
+
 	/**
 	 * OtherLink constructor.
 	 *
@@ -25,5 +27,10 @@ class OtherLink extends Model
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
+	}
+
+	public function getAnime()
+	{
+		return $this->hasMany(Anime::class)->latest();
 	}
 }

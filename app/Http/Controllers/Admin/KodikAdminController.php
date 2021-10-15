@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repository\Interfaces\KodikRepositoryInterfaces;
+use App\Services\KodikTrait;
+use Route;
 
 class KodikAdminController extends Controller
 {
+	use KodikTrait;
+
 	protected KodikRepositoryInterfaces $kodikRepository;
 
 	/**
@@ -25,8 +29,12 @@ class KodikAdminController extends Controller
 	public function index(string $category = null, string $page = null)
 	{
 		$kodik = $this->kodikRepository->listKodik($category, $page);
+		$active = $this->categoryTabActive($category);
+		$button = $kodik['button'];
+		$cat = Route::getCurrentRoute()->parameters();
+		//dd(__METHOD__, $db);
 
-		dd(__METHOD__, $kodik);
+		return view($this->backend . 'kodik.index', compact('kodik', 'active', 'button', 'cat'));
 	}
 
 	/**

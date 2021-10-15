@@ -110,11 +110,37 @@ trait FunctionTrait
 			if ($formRequest['otherLink_url'][$key]) {
 				$formRequest['otherLink'][$key]['anime_id'] = $id;
 				$formRequest['otherLink'][$key]['title'] = $formRequest['otherLink_title'][$key];
+				if ($formRequest['otherLink_title'][$key] == 'World-Art') {
+					$formRequest['otherLink'][$key]['id_link'] = $this->parseWA($formRequest['otherLink_url'][$key]);
+				} else {
+					$formRequest['otherLink'][$key]['id_link'] = $this->parseLink($formRequest['otherLink_url'][$key]);
+				}
 				$formRequest['otherLink'][$key]['url'] = $formRequest['otherLink_url'][$key];
 			}
-			$find = ['anime_id' => $id, 'title' => $formRequest['otherLink'][$key]['title']];
+			$find = ['anime_id' => $id, 'id_link' => $formRequest['otherLink'][$key]['id_link'], 'title' => $formRequest['otherLink'][$key]['title']];
+
 			$OtherLink[] = OtherLink::updateOrCreate($find, $formRequest['otherLink'][$key]);
 		}
+	}
+
+	public function parseLink(string $url)
+	{
+		preg_match("/\d+/", $url, $id);
+
+		return $id[0];
+	}
+
+	/**
+	 * @param  string  $WALink
+	 *
+	 * @return mixed
+	 */
+	public function parseWA(string $WALink)
+	{
+		$wa = parse_url($WALink);
+		parse_str($wa['query'], $id);
+
+		return $id['id'];
 	}
 
 	/**
