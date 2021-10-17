@@ -9,7 +9,7 @@ use App\Models\MPAARating;
 use App\Models\Quality;
 use App\Models\Studio;
 use App\Models\Translate;
-use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Str;
 
 /**
@@ -20,6 +20,7 @@ use Str;
 trait ParseShikimori
 {
 	use CurlTrait;
+	use FunctionTrait;
 
 	protected mixed  $dataShiki;
 	protected string $fieldsStudios = '';
@@ -155,7 +156,7 @@ trait ParseShikimori
 	 */
 	public function parseKodik(string $apiTokens, string $shikimoriId)
 	{
-		$this->dataVideo = $this->getCurl("https://kodikapi.com/search?token={$apiTokens}&shikimori_id={$shikimoriId}&sort=updated_at&order=desc");
+		$this->dataVideo = $this->getCurl("https://kodikapi.com/search?token={$apiTokens}&shikimori_id={$shikimoriId}");
 		$translate = Translate::get();
 		foreach ((array)$this->dataVideo['results'] as $item) {
 			$item['translation']['title'] = str_replace('/', '-', $item['translation']['title']);
@@ -165,8 +166,13 @@ trait ParseShikimori
 			$this->episodes[] = $item['last_episode'] ?? 1;
 			$this->seasoned[] = $item['last_season'] ?? 1;
 		}
-		array_multisort($this->dataVideo['results'], SORT_DESC);
-		$data['updates'] = Carbon::parse($this->dataVideo['results'][0]['updated_at'])->format('Y-m-d H:m:s');
+		array_multisort($this->dataVideo['results'], SORT_ASC);
+		$this->dataVideo['results'] = array_values(
+			Arr::sort($this->dataVideo['results'], function ($value) {
+				return $value['updated_at'];
+			})
+		);
+		$data['updates'] = $this->morfDate(Arr::last($this->dataVideo['results'])['updated_at'], 'Y-m-d H:m:s');
 		$data['translate'] = $this->voiceArr;
 		$data['quality'] = array_unique($this->qualityArr);
 		$data['player_name'][] = 'kodik';

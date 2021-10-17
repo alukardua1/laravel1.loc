@@ -93,7 +93,6 @@ class AnimeController extends Controller
 		$kodik = $this->parseKodik(env('KODIK_TOKEN'), $idShikimori->id_link);
 		$channel_id = ['channel_id' => $showAnime->channel_id];
 		$request = array_merge($shikimori, $shikimoriOtherLink, $kodik, $channel_id);
-
 		if ($kodik['updates'] > Carbon::parse($showAnime->updated_at)->format('Y-m-d H:m:s')) {
 			$request = new Request($request);
 			$this->anime->setAnime($request, $showAnime->id);

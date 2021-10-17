@@ -19,7 +19,10 @@ class Translate extends Model
 		'getAnime',
 	];
 
-	protected $fillable = [];
+	protected $fillable = [
+		'title',
+		'url',
+	];
 
 	/**
 	 * MPAARating constructor.

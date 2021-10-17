@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\OtherLink;
 use App\Models\Player;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use URL;
 
@@ -392,5 +393,9 @@ trait FunctionTrait
 		return back()->withErrors(['msg' => $textError])->withInput();
 	}
 
+	public function morfDate(mixed $date, string $format)
+	{
+		return Carbon::parse($date)->format($format);
+	}
 
 }

@@ -2,13 +2,16 @@
 
 namespace App\Services;
 
+use App\Models\Anime;
+use App\Models\OtherLink;
+use App\Models\Player;
 use Carbon\Carbon;
 use DB;
 
 trait KodikTrait
 {
 	/**
-	 * @param  mixed   $value
+	 * @param  mixed  $value
 	 * @param  string  $type
 	 *
 	 * @return string
@@ -110,7 +113,7 @@ trait KodikTrait
 	{
 		foreach ($json['results'] as $key => $value) {
 			if (array_key_exists('shikimori_id', $value)) {
-				$db = DB::table('other_links')->where('title', 'Shikimori')->where('id_link', 'like', '%' . $value['shikimori_id'])->first();
+				$db = OtherLink::where('title', 'Shikimori')->where('id_link', 'RLIKE', "(^[a-z]?){$value['shikimori_id']}")->first();
 			} else {
 				$db = null;
 			}
@@ -118,8 +121,8 @@ trait KodikTrait
 			$json['results'][$key]['created_at'] = 'Добавлен: ' . $this->mutateDat($value['created_at']);
 			$json['results'][$key]['updated_at'] = 'Обновлен: ' . $this->mutateDat($value['updated_at']);
 			if ($db) {
-				$anime = DB::table('animes')->where('id', $db->anime_id)->first();
-				$player = DB::table('players')->where('anime_id', $db->anime_id)->first();
+				$anime = Anime::where('id', $db->anime_id)->first();
+				$player = Player::where('anime_id', $db->anime_id)->first();
 				$translate = DB::table('anime_translate')->where('anime_id', $db->anime_id)->join('translates', 'anime_translate.translate_id', '=', 'translates.id')->get();
 				$this->isPlayer($player, $key, $db, $anime, $json, $value);
 				$this->isTranslate($translate, $value, $json, $key);
