@@ -9,7 +9,7 @@
 		<li><span>Трансляция: </span>
 			<span>{{$showAnime->broadcast}} {{$showAnime->broadcastTitle}}
 				@if(!empty($showAnime->getChannel))
-					на <a href="{{route('channel', $showAnime->getChannel->url)}}">{{$showAnime->getChannel->name}}</a>
+					на <a href="{{route('channel', $showAnime->getChannel->url)}}">{{$showAnime->getChannel->title}}</a>
 				@endif
 			</span>
 		</li>

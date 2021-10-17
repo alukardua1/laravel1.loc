@@ -219,6 +219,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			}
 			$this->checkRequest($this->arrCheck, $formRequest, $updatePost);
 			$this->syncRequest($this->arrSync, $updatePost, $request);
+
 			if (array_key_exists('poster', $formRequest)) {
 				$this->uploadImageNew($updatePost, $formRequest);
 			}

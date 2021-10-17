@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Kind;
+use App\Models\MPAARating;
 use App\Models\Quality;
 use App\Models\Studio;
 use App\Models\Translate;
@@ -68,7 +69,6 @@ trait ParseShikimori
 		$url = "https://shikimori.one/api/animes/$id";
 		$headers = @get_headers($url);
 		$this->dataShiki = $this->getCurl($url);
-
 		if ($this->shikimoriError($this->dataShiki)) {
 			foreach ((array)$this->dataShiki['studios'] as $key) {
 				$studios[] = Studio::firstOrCreate(['title' => $key['name']], ['title' => $key['name'], 'url' => Str::slug($key['name'])])->id;
@@ -83,7 +83,7 @@ trait ParseShikimori
 				$shiki['japanese'] = $this->dataShiki['japanese'][0];
 			}
 			if ($this->dataShiki['rating']) {
-				//$shiki['rating'] = $this->array_rating[$this->dataShiki['rating']];
+				$shiki['rating_id'] = MPAARating::where('url', $this->dataShiki['rating'])->first()->id;
 			}
 			if ($this->dataShiki['aired_on']) {
 				$shiki['aired_on'] = date('Y-m-d', strtotime($this->dataShiki['aired_on']));

@@ -38,7 +38,7 @@ class Anime extends Model
 		'episodes_aired',
 		'aired_on',
 		'released_on',
-		'rating',
+		'rating_id',
 		'english',
 		'japanese',
 		'synonyms',

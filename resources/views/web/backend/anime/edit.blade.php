@@ -71,7 +71,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-4">
+			<div class="col-3">
 				<label for="country" class="form-label">Выберите страну</label>
 				<select class="js-selectize-multiple" multiple aria-label="country" name="country[]" id="country">
 					@foreach($country as $value)
@@ -84,7 +84,7 @@
 					@endforeach
 				</select>
 			</div>
-			<div class="col-4">
+			<div class="col-3">
 				<label for="studios" class="form-label">Выберите студию</label>
 				<select class="js-selectize-multiple" multiple aria-label="studios" name="studios[]" id="studios">
 					@foreach($studios as $value)
@@ -97,7 +97,7 @@
 					@endforeach
 				</select>
 			</div>
-			<div class="col-4">
+			<div class="col-3">
 				<label for="quality" class="form-label">Выберите качество</label>
 				<select class="js-selectize-multiple" multiple aria-label="quality" name="quality[]" id="quality">
 					@foreach($quality as $value)
@@ -107,6 +107,19 @@
 							<option value="0">нет</option>
 						@endif
 						<option value="{{$value->id}}">{{$value->title}}</option>
+					@endforeach
+				</select>
+			</div>
+			<div class="col-3">
+				<label for="quality" class="form-label">Выберите рейтинг</label>
+				<select class="js-selectize-multiple" multiple aria-label="rating" name="rating[]" id="rating">
+					@foreach($mpaa as $value)
+						@if ($currentAnime->getRating)
+							<option value="{{$value->id}}" @if($currentAnime->getRating->id == $value->id) selected @endif>{{$value->name}}</option>
+						@else
+							<option value="0">нет</option>
+						@endif
+						<option value="{{$value->id}}">{{$value->name}}</option>
 					@endforeach
 				</select>
 			</div>
