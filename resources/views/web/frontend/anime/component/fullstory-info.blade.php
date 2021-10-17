@@ -20,9 +20,9 @@
 			<span>
 			@foreach($showAnime->getStudio as $value)
 					@if ($loop->last)
-						<a href="{{route('studio', $value->url)}}">{{$value->name}}</a>
+						<a href="{{route('studio', $value->url)}}">{{$value->title}}</a>
 					@else
-						<a href="{{route('studio', $value->url)}}">{{$value->name}}</a>,
+						<a href="{{route('studio', $value->url)}}">{{$value->title}}</a>,
 					@endif
 				@endforeach
 		</span>
@@ -34,9 +34,9 @@
 			<span>
 			@foreach($showAnime->getCountry as $value)
 					@if($loop->last)
-						<a href="{{route('country', $value->url)}}">{{$value->name}}</a>
+						<a href="{{route('country', $value->url)}}">{{$value->title}}</a>
 					@else
-						<a href="{{route('country', $value->url)}}">{{$value->name}}</a>,
+						<a href="{{route('country', $value->url)}}">{{$value->title}}</a>,
 					@endif
 				@endforeach
 		</span>
@@ -72,9 +72,9 @@
 		<span>
 			@foreach($showAnime->getQuality as $value)
 				@if ($loop->last)
-					<a href="{{route('quality', $value->url)}}">{{$value->name}}</a>
+					<a href="{{route('quality', $value->url)}}">{{$value->title}}</a>
 				@else
-					<a href="{{route('quality', $value->url)}}">{{$value->name}}</a>,
+					<a href="{{route('quality', $value->url)}}">{{$value->title}}</a>,
 				@endif
 			@endforeach
 		</span>
@@ -86,9 +86,9 @@
 		<span>
 			@foreach($showAnime->getTranslate as $value)
 				@if ($loop->last)
-					<a href="{{route('translate', $value->url)}}">{{$value->name}}</a>
+					<a href="{{route('translate', $value->url)}}">{{$value->title}}</a>
 				@else
-					<a href="{{route('translate', $value->url)}}">{{$value->name}}</a>,
+					<a href="{{route('translate', $value->url)}}">{{$value->title}}</a>,
 				@endif
 			@endforeach
 		</span></li>

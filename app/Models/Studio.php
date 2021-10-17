@@ -19,7 +19,10 @@ class Studio extends Model
 		'getAnime',
 	];
 
-	protected $fillable = [];
+	protected $fillable = [
+		'title',
+		'url',
+	];
 
 	/**
 	 * Channel constructor.

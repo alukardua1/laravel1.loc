@@ -36,7 +36,7 @@ class QualityController extends Controller
 	{
 		$showQuality = $this->qualityRepository->getQuality($qualityUrl)->first();
 		$this->isNotNull($showQuality);
-		$title = $showQuality->name;
+		$title = $showQuality->title;
 		$description = $showQuality->description;
 		$allAnime = $showQuality->getAnime()->paginate($this->paginate);
 

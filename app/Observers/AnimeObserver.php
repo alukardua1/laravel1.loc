@@ -57,8 +57,8 @@ class AnimeObserver
 		$translateArr = $anime->getTranslate()->get()->toArray();
 		if (!empty($translateArr)) {
 			foreach ($translateArr as $item) {
-				$item['name'] = str_replace(' / ', ' - ', $item['name']);
-				$translate[] = $item['name'];
+				$item['title'] = str_replace(' / ', ' - ', $item['title']);
+				$translate[] = $item['title'];
 			}
 		} else {
 			$translate[] = ' в озвучке не указана';

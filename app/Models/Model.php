@@ -6,7 +6,6 @@ use App\Services\MutationTrait;
 use Config;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as BaseModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 
 /**
@@ -16,7 +15,9 @@ use Rennokki\QueryCache\Traits\QueryCacheable;
  */
 class Model extends BaseModel
 {
-	use HasFactory, MutationTrait, QueryCacheable;
+	use HasFactory;
+	use MutationTrait;
+	use QueryCacheable;
 
 	protected $cacheFor;
 	//protected static $flushCacheOnUpdate = true;

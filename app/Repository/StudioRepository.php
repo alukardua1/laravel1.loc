@@ -27,7 +27,7 @@ class StudioRepository implements StudioRepositoryInterfaces
 		if ($studioUrl) {
 			return Studio::where('url', $studioUrl);
 		}
-		return Studio::orderBy('name', 'ASC');
+		return Studio::orderBy('title', 'ASC');
 	}
 
 	/**

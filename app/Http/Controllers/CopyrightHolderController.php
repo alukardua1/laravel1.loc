@@ -28,7 +28,7 @@ class CopyrightHolderController extends Controller
 	{
 		$copyright = $this->copyrightHolderRepository->getCopyrightHolder($copyrightHolder)->first();
 		$this->isNotNull($copyright);
-		$title = $copyright->copyright_holder;
+		$title = $copyright->title;
 		$allAnime = $copyright->getAnime()->paginate($this->paginate);
 
 		return view($this->frontend . 'anime.short', compact('copyright', 'allAnime', 'title'));

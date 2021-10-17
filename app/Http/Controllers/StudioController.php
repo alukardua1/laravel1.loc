@@ -36,7 +36,7 @@ class StudioController extends Controller
 	{
 		$showStudio = $this->studioRepository->getStudio($studiosUrl)->first();
 		$this->isNotNull($showStudio);
-		$title = $showStudio->name;
+		$title = $showStudio->title;
 		$description = $showStudio->description;
 		$allAnime = $showStudio->getAnime()->paginate($this->paginate);
 

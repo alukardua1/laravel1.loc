@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use Carbon\Carbon;
+use DB;
 
 trait KodikTrait
 {
 	/**
-	 * @param  mixed  $value
+	 * @param  mixed   $value
 	 * @param  string  $type
 	 *
 	 * @return string
@@ -77,31 +78,84 @@ trait KodikTrait
 		};
 	}
 
-	public function isPlayer($player, $key, $db, $anime, &$json, $value)
+	/**
+	 * @param  mixed  $player
+	 * @param  int    $key
+	 * @param  mixed  $db
+	 * @param  mixed  $anime
+	 * @param  mixed  $json
+	 * @param  mixed  $value
+	 */
+	public function isPlayer(mixed $player, int $key, mixed $db, mixed $anime, mixed &$json, mixed $value)
 	{
 		if ($player) {
 			$json['results'][$key]['link_update'] = '<a target="_blank" class="color_add_movie" href="' . route(
 					'showAnime',
 					[$db->anime_id, $anime->url]
-				) . '">' . $value['title'] . '/' . $value['title_orig'] . '</a>';
+				) . '">' . $value['title'] . ' / ' . $value['title_orig'] . '</a>';
 		} else {
 			$json['results'][$key]['link_update'] = '<a target="_blank" class="color_no_movie" href="' . route(
 					'showAnime',
 					[$db->anime_id, $anime->url]
-				) . '">' . $value['title'] . '/' . $value['title_orig'] . '</a>';
+				) . '">' . $value['title'] . ' / ' . $value['title_orig'] . '</a>';
 		}
 	}
 
-	public function isTranslate($translate, $value, &$json, $key)
+	/**
+	 * @param  mixed  $json
+	 *
+	 * @return mixed
+	 */
+	public function addRow(mixed $json)
 	{
-		if ($translate->contains('name', $value['translation']['title'])) {
+		foreach ($json['results'] as $key => $value) {
+			if (array_key_exists('shikimori_id', $value)) {
+				$db = DB::table('other_links')->where('title', 'Shikimori')->where('id_link', 'like', '%' . $value['shikimori_id'])->first();
+			} else {
+				$db = null;
+			}
+			$json['results'][$key]['other_link'] = $this->link($value);
+			$json['results'][$key]['created_at'] = 'Добавлен: ' . $this->mutateDat($value['created_at']);
+			$json['results'][$key]['updated_at'] = 'Обновлен: ' . $this->mutateDat($value['updated_at']);
+			if ($db) {
+				$anime = DB::table('animes')->where('id', $db->anime_id)->first();
+				$player = DB::table('players')->where('anime_id', $db->anime_id)->first();
+				$translate = DB::table('anime_translate')->where('anime_id', $db->anime_id)->join('translates', 'anime_translate.translate_id', '=', 'translates.id')->get();
+				$this->isPlayer($player, $key, $db, $anime, $json, $value);
+				$this->isTranslate($translate, $value, $json, $key);
+				$this->isSeries($anime->episodes_aired, $value, $json, $key);
+			} else {
+				$json['results'][$key]['link_update'] = $value['title'] . ' / ' . $value['title_orig'];
+				$json['results'][$key]['translate_update'] = $value['translation']['title'];
+				$json['results'][$key]['last_episode_update'] = $value['last_episode'] ?? 1;
+			}
+		}
+
+		return $json;
+	}
+
+	/**
+	 * @param  mixed  $translate
+	 * @param  mixed  $value
+	 * @param  mixed  $json
+	 * @param  int    $key
+	 */
+	public function isTranslate(mixed $translate, mixed $value, mixed &$json, int $key)
+	{
+		if ($translate->contains('title', $value['translation']['title'])) {
 			$json['results'][$key]['translate_update'] = '<span class="color_add_movie">' . $value['translation']['title'] . '</span>';
 		} else {
 			$json['results'][$key]['translate_update'] = '<span class="color_no_movie">' . $value['translation']['title'] . '</span>';
 		}
 	}
 
-	public function isSeries($series, $value, &$json, $key)
+	/**
+	 * @param  int    $series
+	 * @param  mixed  $value
+	 * @param  mixed  $json
+	 * @param  int    $key
+	 */
+	public function isSeries(int $series, mixed $value, mixed &$json, int $key)
 	{
 		$value['last_episode'] = $value['last_episode'] ?? 1;
 		if ($series >= $value['last_episode']) {

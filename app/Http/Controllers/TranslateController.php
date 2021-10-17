@@ -36,7 +36,7 @@ class TranslateController extends Controller
 	{
 		$showTranslate = $this->translate->getTranslate($translateUrl)->first();
 		$this->isNotNull($showTranslate);
-		$title = $showTranslate->name;
+		$title = $showTranslate->title;
 		$description = $showTranslate->description;
 		$allAnime = $showTranslate->getAnime()->paginate($this->paginate);
 

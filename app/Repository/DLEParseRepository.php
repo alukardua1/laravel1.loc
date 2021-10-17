@@ -181,14 +181,14 @@ class DLEParseRepository implements DLEParse
 	{
 		$quality = explode(', ', $xfield);
 		foreach ($quality as $value) {
-			$quality1 = DB::table($table)->where('name', $value)->first();
+			$quality1 = DB::table($table)->where('title', $value)->first();
 			if (!$quality1) {
 				$data1 = [
-					'name' => $value,
-					'url'  => Str::slug($value),
+					'title' => $value,
+					'url'   => Str::slug($value),
 				];
 				DB::table($table)->insert($data1);
-				$quality1 = DB::table($table)->where('name', $value)->first();
+				$quality1 = DB::table($table)->where('title', $value)->first();
 			}
 			$data = [
 				'anime_id'    => $post->id,
@@ -270,16 +270,16 @@ class DLEParseRepository implements DLEParse
 				];
 				$copyright = explode(', ', $xfield1['copyright']);
 				foreach ($copyright as $value) {
-					if (!DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first()) {
-						DB::table('copyright_holders')->insert(['copyright_holder' => $value]);
+					if (!DB::table('copyright_holders')->where('title', '=', $value)->first()) {
+						DB::table('copyright_holders')->insert(['title' => $value]);
 					}
-					$copyrightHolder = DB::table('copyright_holders')->where('copyright_holder', '=', $value)->first();
+					$copyrightHolder = DB::table('copyright_holders')->where('title', '=', $value)->first();
 				}
 				DB::table('anime_geo_block')->insert($data);
 				DB::table('anime_copyright_holder')->insert(['anime_id' => $post->id, 'copyright_holder_id' => $copyrightHolder->id]);
 			}
 			if (array_key_exists('kanal', $xfield1)) {
-				$channel = Channel::where('name', $xfield1['kanal'])->first();
+				$channel = Channel::where('title', $xfield1['kanal'])->first();
 			} else {
 				$channel = collect('id');
 				$channel->id = 0;
@@ -525,14 +525,13 @@ class DLEParseRepository implements DLEParse
 
 			foreach ($channels as $values) {
 				$result[] = [
-					'name'          => $values,
+					'title'         => $values,
 					'filtered_name' => $values,
 					'url'           => Str::slug($values),
 				];
 			}
 		}
-		$result = $this->array_unique_key($result, 'name');
-		return $result;
+		return $this->array_unique_key($result, 'title');
 	}
 
 	/**

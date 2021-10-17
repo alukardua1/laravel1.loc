@@ -27,7 +27,7 @@ class QualityRepository implements QualityRepositoryInterfaces
 		if ($qualityUrl) {
 			return Quality::where('url', $qualityUrl);
 		}
-		return Quality::orderBy('name', 'ASC');
+		return Quality::orderBy('title', 'ASC');
 	}
 
 	/**

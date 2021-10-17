@@ -28,7 +28,7 @@ class CountryRepository implements CountryRepositoryInterfaces
 			return Country::where('url', $countryUrl)
 				->first();
 		}
-		return Country::orderBy('name', 'ASC');
+		return Country::orderBy('title', 'ASC');
 	}
 
 	/**

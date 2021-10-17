@@ -7,6 +7,8 @@ use App\Events\AnimeEvent;
 use App\Http\Requests\CommentRequest;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use App\Services\FunctionTrait;
+use App\Services\ParseShikimori;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -23,6 +25,7 @@ use Illuminate\Http\Response;
 class AnimeController extends Controller
 {
 	use FunctionTrait;
+	use ParseShikimori;
 
 	private AnimeRepositoryInterfaces $anime;
 
@@ -71,9 +74,9 @@ class AnimeController extends Controller
 	 * @param  int          $id
 	 * @param  string|null  $url
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
 	 */
-	public function show(int $id, string $url = null): Factory|View|Application
+	public function show(int $id, string $url = null): View|Factory|RedirectResponse|Application
 	{
 		$showAnime = $this->anime->getAnime($id)->first();
 		$this->isNotNull($showAnime);
@@ -84,6 +87,16 @@ class AnimeController extends Controller
 		$this->setAttributes($this->attributeArr, $showAnime);
 		$comments = $this->showComments($showAnime->getComments()->withTrashed()->get());
 		$showAnime->comments_count = $showAnime->getComments()->count();
+		$idShikimori = $showAnime->getOtherLink()->where('title', 'shikimori')->first();
+		$shikimori = $this->parseShikimori($idShikimori->id_link);
+		$shikimoriOtherLink = $this->getShikimoriOtherLink($idShikimori->id_link);
+		$kodik = $this->parseKodik(env('KODIK_TOKEN'), $idShikimori->id_link);
+
+		if ($kodik['updates'] > Carbon::parse($showAnime->updated_at)->format('Y-m-d H:m:s')) {
+			$request = array_merge($shikimori, $shikimoriOtherLink, $kodik);
+			$request = new Request($request);
+			$this->anime->setAnime($request, $showAnime->id);
+		}
 		/**
 		 * @var $related
 		 * @todo Придумать как сделать в relations, Перенести в добавить аниме, и записывать в отдельную таблицу

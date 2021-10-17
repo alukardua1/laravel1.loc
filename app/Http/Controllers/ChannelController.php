@@ -36,7 +36,7 @@ class ChannelController extends Controller
 	{
 		$showChannel = $this->channelRepository->getChannel($channelUrl)->first();
 		$this->isNotNull($showChannel);
-		$title = $showChannel->name;
+		$title = $showChannel->title;
 		$description = $showChannel->description;
 		$allAnime = $showChannel->getAnime()->paginate($this->paginate);
 

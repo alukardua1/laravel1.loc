@@ -27,7 +27,7 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 		if ($translateUrl) {
 			return Translate::where('url', $translateUrl);
 		}
-		return Translate::orderBy('name', 'ASC');
+		return Translate::orderBy('title', 'ASC');
 	}
 
 	/**

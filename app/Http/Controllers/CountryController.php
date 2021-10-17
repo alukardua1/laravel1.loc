@@ -38,7 +38,7 @@ class CountryController extends Controller
 	{
 		$showCountry = $this->countryRepository->getCountry($countryUrl);
 		$this->isNotNull($showCountry);
-		$title = $showCountry->name;
+		$title = $showCountry->title;
 		$description = $showCountry->description;
 		$allAnime = $showCountry->getAnime()->paginate($this->paginate);
 

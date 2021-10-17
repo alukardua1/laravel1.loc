@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Services\AnimeModelTrait;
 use Auth;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -49,6 +48,7 @@ class Anime extends Model
 		'description_html',
 		'description_source',
 		'anons',
+		'channel_id',
 		'ongoing',
 		'posted_at',
 		'comment_at',

@@ -36,8 +36,8 @@ class MPAARatingController extends Controller
 	{
 		$showMpaa = $this->mpaaRepository->getMpaa($mpaaUrl)->first();
 		$this->isNotNull($showMpaa);
-		$title = $showMpaa->name;
-		$description = $showMpaa->description;
+		$title = $showMpaa->description;
+		$description = null;
 		$allAnime = $showMpaa->getAnime()->paginate($this->paginate);
 
 		return view($this->frontend . 'anime.short', compact('showMpaa', 'allAnime', 'title', 'description'));

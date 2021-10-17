@@ -61,11 +61,11 @@
 				<select class="js-selectize" aria-label="channel_id" name="channel_id" id="channel_id">
 					@foreach($channel as $value)
 						@if ($currentAnime->getChannel)
-							<option value="{{$value->id}}" @if($currentAnime->getChannel->id == $value->id) selected @endif>{{$value->name}}</option>
+							<option value="{{$value->id}}" @if($currentAnime->getChannel->id == $value->id) selected @endif>{{$value->title}}</option>
 						@else
 							<option value="0">нет</option>
 						@endif
-						<option value="{{$value->id}}">{{$value->name}}</option>
+						<option value="{{$value->id}}">{{$value->title}}</option>
 					@endforeach
 				</select>
 			</div>
@@ -76,7 +76,7 @@
 				<select class="js-selectize-multiple" multiple aria-label="country" name="country[]" id="country">
 					@foreach($country as $value)
 						@if ($currentAnime->getCountry)
-							<option value="{{$value->id}}" @if($currentAnime->getCountry->contains($value->id) == $value->id) selected @endif>{{$value->name}}</option>
+							<option value="{{$value->id}}" @if($currentAnime->getCountry->contains($value->id) == $value->id) selected @endif>{{$value->title}}</option>
 						@else
 							<option value="0">нет</option>
 						@endif
@@ -89,11 +89,11 @@
 				<select class="js-selectize-multiple" multiple aria-label="studios" name="studios[]" id="studios">
 					@foreach($studios as $value)
 						@if ($currentAnime->getStudio)
-							<option value="{{$value->id}}" @if($currentAnime->getStudio->contains($value->id) == $value->id) selected @endif>{{$value->name}}</option>
+							<option value="{{$value->id}}" @if($currentAnime->getStudio->contains($value->id) == $value->id) selected @endif>{{$value->title}}</option>
 						@else
 							<option value="0">нет</option>
 						@endif
-						<option value="{{$value->id}}">{{$value->name}}</option>
+						<option value="{{$value->id}}">{{$value->title}}</option>
 					@endforeach
 				</select>
 			</div>
@@ -102,11 +102,11 @@
 				<select class="js-selectize-multiple" multiple aria-label="quality" name="quality[]" id="quality">
 					@foreach($quality as $value)
 						@if ($currentAnime->getQuality)
-							<option value="{{$value->id}}" @if($currentAnime->getQuality->contains($value->id) == $value->id) selected @endif>{{$value->name}}</option>
+							<option value="{{$value->id}}" @if($currentAnime->getQuality->contains($value->id) == $value->id) selected @endif>{{$value->title}}</option>
 						@else
 							<option value="0">нет</option>
 						@endif
-						<option value="{{$value->id}}">{{$value->name}}</option>
+						<option value="{{$value->id}}">{{$value->title}}</option>
 					@endforeach
 				</select>
 			</div>
@@ -217,7 +217,7 @@
 				<label for="translate" class="form-label">Озвучивание</label>
 				<select class="js-selectize-multiple" multiple aria-label="translate" name="translate[]" id="translate">
 					@foreach($translate as $value)
-						<option value="{{$value->id}}" @if($currentAnime->getTranslate->contains($value->id)) selected @endif>{{$value->name}}</option>
+						<option value="{{$value->id}}" @if($currentAnime->getTranslate->contains($value->id)) selected @endif>{{$value->title}}</option>
 					@endforeach
 				</select>
 			</div>
@@ -257,7 +257,7 @@
 				<label for="copyright_holder" class="form-label">Правообладатель</label>
 				<select class="js-selectize-multiple" aria-label="copyright_holder" name="copyright_holder[]" id="copyright_holder" multiple>
 					@foreach($copyrightHolder as $value)
-						<option value="{{$value->id}}" @if ($currentAnime->getCopyrightHolder->contains($value->id)) selected @endif >{{$value->copyright_holder}}</option>
+						<option value="{{$value->id}}" @if ($currentAnime->getCopyrightHolder->contains($value->id)) selected @endif >{{$value->title}}</option>
 					@endforeach
 				</select>
 			</div>

@@ -352,7 +352,9 @@ trait FunctionTrait
 	private function checkRequest(array $arrCheck, mixed $formRequest, mixed $update)
 	{
 		foreach ($arrCheck as $key => $value) {
-			$update->$key = $this->check($formRequest, $value);
+			if (array_key_exists($key, $formRequest)) {
+				$update->$key = $this->check($formRequest, $value);
+			}
 		}
 	}
 
@@ -366,8 +368,10 @@ trait FunctionTrait
 	protected function syncRequest(array $arrSync, mixed $update, mixed $request)
 	{
 		foreach ($arrSync as $key => $value) {
-			$update->fill($request->except($key));
-			$update->$value()->sync($request[$key]);
+			if (array_key_exists($key, $request->all())) {
+				$update->fill($request->except($key));
+				$update->$value()->sync($request[$key]);
+			}
 		}
 	}
 
