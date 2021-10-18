@@ -8,7 +8,6 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use App\Services\FunctionTrait;
-use Illuminate\Http\Request;
 
 /**
  * Class CategoryRepository
@@ -66,14 +65,18 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	 * Удаление категории
 	 *
 	 * @param  string  $categoryUrl  Урл категории
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delCategory(string $categoryUrl): mixed
+	public function delCategory(string $categoryUrl, bool $fullDel = false): mixed
 	{
 		$del = Category::where('url', $categoryUrl)->firstOrFail();
 		if ($del) {
-			return $del->forceDelete();
+			if ($fullDel) {
+				return $del->forceDelete();
+			}
+			return $del->delete();
 		}
 	}
 }

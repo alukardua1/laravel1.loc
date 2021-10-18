@@ -14,19 +14,15 @@ class CreatePeopleTable extends Migration
     public function up()
     {
         Schema::create('people', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->index();
-            $table->string('russian')->nullable();
-            $table->string('original_img')->nullable();
-            $table->string('preview_img')->nullable();
-            $table->string('url');
-            $table->string('japanese')->nullable();
-            $table->date('birthday');
-            $table->string('website')->nullable();
-            $table->boolean('producer')->default(0);
-            $table->boolean('mangaka')->default(0);
-            $table->boolean('seyu')->default(0);
-            $table->timestamps();
+	        $table->id();
+	        $table->string('name')->index();
+	        $table->string('russian')->nullable();
+	        $table->string('japanese')->nullable();
+	        $table->string('original_img')->default('/images/missing_original.jpg');
+	        $table->string('url');
+	        $table->date('birthday')->nullable();
+	        $table->string('website')->nullable();
+	        $table->timestamps();
         });
     }
 

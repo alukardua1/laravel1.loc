@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 
 class FaqController extends Controller
 {
-	protected FaqRepositoryInterfaces $faqRepository;
+	private FaqRepositoryInterfaces $faqRepository;
 
 	public function __construct(FaqRepositoryInterfaces $faqRepository)
 	{

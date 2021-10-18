@@ -26,7 +26,7 @@ class ChannelAdminController extends Controller
 	 */
 	public function index()
 	{
-		//
+		$channel = $this->channelRepository->getChannel()->paginate($this->paginate);
 	}
 
 	/**

@@ -2,29 +2,30 @@
 
 namespace App\Repository\Interfaces;
 
-use Request;
+use Illuminate\Http\Request;
 
 interface GroupRepositoryInterfaces
 {
 	/**
-	 * @param  string|null  $group
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getGroup(string $group = null): mixed;
+	public function getGroup(string $url = null): mixed;
 
 	/**
-	 * @param  \Request  $request
-	 * @param  string    $group
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setGroup(Request $request, string $group): mixed;
+	public function setGroup(Request $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $group
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delGroup(string $group): mixed;
+	public function delGroup(string $url, bool $fullDel = false): mixed;
 }

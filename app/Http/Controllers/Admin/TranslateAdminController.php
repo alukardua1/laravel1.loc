@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TranslateAdminController extends Controller
 {
-	protected TranslateRepositoryInterfaces $translate;
+	private TranslateRepositoryInterfaces $translate;
 
 	/**
 	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces

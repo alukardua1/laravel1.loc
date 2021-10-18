@@ -1,34 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Repository\Interfaces\PeopleRepositoryInterfaces;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
+use App\Repository\Interfaces\CharacterRepositoryInterfaces;
 use Illuminate\Http\Request;
 
-class PeopleAdminCategory extends Controller
+class CharacterController extends Controller
 {
-	private $peopleRepository;
+	private CharacterRepositoryInterfaces $characterRepository;
 
-	public function __construct(PeopleRepositoryInterfaces $peopleRepositoryInterfaces)
+	public function __construct(CharacterRepositoryInterfaces $characterRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->peopleRepository = $peopleRepositoryInterfaces;
+		$this->characterRepository = $characterRepositoryInterfaces;
 	}
 
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return \Illuminate\Http\Response
 	 */
-	public function index(): View|Factory|Application
+	public function index()
 	{
-		$people = $this->peopleRepository->getPeople()->paginate($this->paginate);
-
-		return view($this->backend . 'people.index', compact('people'));
+		//
 	}
 
 	/**

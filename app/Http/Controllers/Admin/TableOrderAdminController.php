@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TableOrderAdminController extends Controller
 {
-	protected TableOrderRepositoryInterfaces $tableOrderRepository;
+	private TableOrderRepositoryInterfaces $tableOrderRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\TableOrderRepositoryInterfaces  $tableOrderRepositoryInterfaces

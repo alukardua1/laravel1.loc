@@ -4,7 +4,6 @@
 namespace App\Repository\Interfaces;
 
 
-use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 
 /**
@@ -36,8 +35,8 @@ interface UserRepositoryInterfaces
 	/**
 	 * Добавление/обновление пользователя
 	 *
-	 * @param  Request      $request  Запрос
-	 * @param  string|null  $login    Логин пользователя
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $login    Логин пользователя
 	 *
 	 * @return mixed
 	 */
@@ -47,8 +46,9 @@ interface UserRepositoryInterfaces
 	 * Удаление Пользователя
 	 *
 	 * @param  string  $login
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function destroyUser(string $login): mixed;
+	public function destroyUser(string $login, bool $fullDel = false): mixed;
 }

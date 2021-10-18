@@ -16,26 +16,27 @@ interface ChannelRepositoryInterfaces
 	/**
 	 * Получает все каналы
 	 *
-	 * @param  string|null  $channelUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getChannel(string $channelUrl = null): mixed;
+	public function getChannel(string $url = null): mixed;
 
 	/**
 	 * Добавление/обновление канала
 	 *
-	 * @param  string   $channelUrl  урл канала
-	 * @param  Request  $request     Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setChannel(string $channelUrl, Request $request): mixed;
+	public function setChannel(Request $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $channelUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function deleteChannel(string $channelUrl): mixed;
+	public function deleteChannel(string $url, bool $fullDel = false): mixed;
 }

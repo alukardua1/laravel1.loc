@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CopyrightHolderAdminController extends Controller
 {
-	protected CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
+	private CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
 
 	public function __construct(CopyrightHolderRepositoryInterfaces $copyrightHolderRepositoryInterfaces)
 	{

@@ -2,28 +2,31 @@
 
 namespace App\Repository\Interfaces;
 
+use Illuminate\Http\Request;
+
 interface StaticPageRepositoryInterfaces
 {
 	/**
-	 * @param  string|null  $page
+	 * @param  string|null  $url
 	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getPage(string $page = null, bool $isAdmin = false): mixed;
+	public function getPage(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
-	 * @param  \Request  $request
-	 * @param  string    $page
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setPage(\Request $request, string $page): mixed;
+	public function setPage(Request $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $page
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delPage(string $page): mixed;
+	public function delPage(string $url, bool $fullDel = false): mixed;
 }

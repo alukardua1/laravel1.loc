@@ -4,7 +4,6 @@
 namespace App\Repository\Interfaces;
 
 use App\Http\Requests\CategoryRequest;
-use Illuminate\Http\Request;
 
 /**
  * Interface CategoryRepositoryInterfaces
@@ -36,8 +35,9 @@ interface CategoryRepositoryInterfaces
 
 	/**
 	 * @param  string  $categoryUrl
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delCategory(string $categoryUrl): mixed;
+	public function delCategory(string $categoryUrl, bool $fullDel = false): mixed;
 }

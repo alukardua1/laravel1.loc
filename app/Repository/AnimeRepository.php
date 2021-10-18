@@ -237,15 +237,19 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	/**
 	 * Удаляет текущую запись
 	 *
-	 * @param  int  $id
+	 * @param  int   $id
+	 * @param  bool  $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function destroyAnime(int $id): mixed
+	public function destroyAnime(int $id, bool $fullDel = false): mixed
 	{
 		$del = Anime::findOrFail($id, ['*']);
 		if ($del) {
-			return $del->forceDelete();
+			if ($fullDel) {
+				return $del->forceDelete();
+			}
+			return $del->delete();
 		}
 	}
 }

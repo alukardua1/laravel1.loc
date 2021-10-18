@@ -16,26 +16,27 @@ interface QualityRepositoryInterfaces
 	/**
 	 * Получает все качество видео
 	 *
-	 * @param  string|null  $qualityUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getQuality(string $qualityUrl = null): mixed;
+	public function getQuality(string $url = null): mixed;
 
 	/**
 	 * Добавление/обновление качества видео
 	 *
-	 * @param  string   $qualityUrl  Урл качество видео
-	 * @param  Request  $request     запрос
+	 * @param  \Illuminate\Http\Request  $request  запрос
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setQuality(string $qualityUrl, Request $request): mixed;
+	public function setQuality(Request $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $qualityUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delQuality(string $qualityUrl): mixed;
+	public function delQuality(string $url, bool $fullDel = false): mixed;
 }

@@ -24,7 +24,7 @@ class AnimeAdminController extends Controller
 {
 	use ParseShikimori;
 
-	protected AnimeRepositoryInterfaces $animeRepository;
+	private AnimeRepositoryInterfaces $animeRepository;
 
 	/**
 	 * AnimeAdminController constructor.

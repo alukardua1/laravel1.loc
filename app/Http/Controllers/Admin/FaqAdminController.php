@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class FaqAdminController extends Controller
 {
-	protected FaqRepositoryInterfaces $faqRepository;
+	private FaqRepositoryInterfaces $faqRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\FaqRepositoryInterfaces  $faqRepositoryInterfaces

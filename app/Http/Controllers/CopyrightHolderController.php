@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 
 class CopyrightHolderController extends Controller
 {
-	protected CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
+	private CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
 
 	public function __construct(CopyrightHolderRepositoryInterfaces $copyrightHolderRepositoryInterfaces)
 	{

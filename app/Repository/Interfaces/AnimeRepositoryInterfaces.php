@@ -114,9 +114,10 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Удаляет текущую запись
 	 *
-	 * @param  int  $id
+	 * @param  int   $id
+	 * @param  bool  $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function destroyAnime(int $id): mixed;
+	public function destroyAnime(int $id, bool $fullDel = false): mixed;
 }

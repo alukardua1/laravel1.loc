@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class MPAAAdminController extends Controller
 {
-	protected MpaaRepositoryInterfaces $mpaaRepository;
+	private MpaaRepositoryInterfaces $mpaaRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces

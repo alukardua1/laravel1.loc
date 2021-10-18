@@ -18,14 +18,14 @@ class CountryRepository implements CountryRepositoryInterfaces
 	/**
 	 * Получает все страны
 	 *
-	 * @param  string|null  $countryUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getCountry(string $countryUrl = null): mixed
+	public function getCountry(string $url = null): mixed
 	{
-		if ($countryUrl) {
-			return Country::where('url', $countryUrl)
+		if ($url) {
+			return Country::where('url', $url)
 				->first();
 		}
 		return Country::orderBy('title', 'ASC');
@@ -34,22 +34,23 @@ class CountryRepository implements CountryRepositoryInterfaces
 	/**
 	 * Добавление/обновление страны
 	 *
-	 * @param  string   $countryUrl  Урл страны
-	 * @param  Request  $request     Запрос
+	 * @param  string|null  $url
+	 * @param  Request      $request  Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setCountry(string $countryUrl, Request $request): mixed
+	public function setCountry(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setCountry() method.
 	}
 
 	/**
-	 * @param  string  $countryUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function deleteCountry(string $countryUrl): mixed
+	public function deleteCountry(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement deleteCountry() method.
 	}

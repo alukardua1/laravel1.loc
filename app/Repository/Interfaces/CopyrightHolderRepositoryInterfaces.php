@@ -16,26 +16,27 @@ interface CopyrightHolderRepositoryInterfaces
 	/**
 	 * Получает всех правообладателей
 	 *
-	 * @param  string|null  $copyrightHolder
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getCopyrightHolder(string $copyrightHolder = null): mixed;
+	public function getCopyrightHolder(string $url = null): mixed;
 
 	/**
 	 * Добавление/обновление правообладателя
 	 *
-	 * @param  string   $copyrightHolder  Урл правообладателя
-	 * @param  Request  $request          Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setCopyrightHolder(string $copyrightHolder, Request $request): mixed;
+	public function setCopyrightHolder(Request $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $copyrightHolder
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function deleteCopyrightHolder(string $copyrightHolder): mixed;
+	public function deleteCopyrightHolder(string $url, bool $fullDel = false): mixed;
 }

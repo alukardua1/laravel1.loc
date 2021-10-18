@@ -14,7 +14,7 @@ use Illuminate\Contracts\View\View;
  */
 class YearAiredController extends Controller
 {
-	protected YearAiredRepositoryInterfaces $yearAired;
+	private YearAiredRepositoryInterfaces $yearAired;
 
 	/**
 	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces

@@ -14,7 +14,7 @@ use Illuminate\Contracts\View\View;
  */
 class CountryController extends Controller
 {
-	protected CountryRepositoryInterfaces $countryRepository;
+	private CountryRepositoryInterfaces $countryRepository;
 
 	/**
 	 * CountryController constructor.

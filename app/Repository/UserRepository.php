@@ -4,7 +4,6 @@
 namespace App\Repository;
 
 
-use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
 use App\Services\FunctionTrait;
@@ -20,7 +19,8 @@ use Illuminate\Http\Request;
  */
 class UserRepository implements UserRepositoryInterfaces
 {
-	use UsersTrait, FunctionTrait;
+	use FunctionTrait;
+	use UsersTrait;
 
 	/**
 	 * Получает пользователя по логину
@@ -98,15 +98,19 @@ class UserRepository implements UserRepositoryInterfaces
 
 	/**
 	 * @param  string  $login
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function destroyUser(string $login): mixed
+	public function destroyUser(string $login, bool $fullDel = false): mixed
 	{
 		$del = User::where('login', $login)->firstOrFail();
 
 		if ($del) {
-			return $del->forceDelete();
+			if ($fullDel) {
+				return $del->forceDelete();
+			}
+			return $del->delete();
 		}
 	}
 }

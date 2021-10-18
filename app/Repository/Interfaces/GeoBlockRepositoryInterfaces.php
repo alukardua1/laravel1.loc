@@ -16,26 +16,27 @@ interface GeoBlockRepositoryInterfaces
 	/**
 	 * Получает ГеоБлок
 	 *
-	 * @param  string|null  $geoBlock
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getGeoBlock(string $geoBlock = null): mixed;
+	public function getGeoBlock(string $url = null): mixed;
 
 	/**
 	 * Добавление/обновление ГеоБлока
 	 *
-	 * @param  string   $geoBlock
-	 * @param  Request  $request
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setGeoBlock(string $geoBlock, Request $request): mixed;
+	public function setGeoBlock(Request $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $geoBlock
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delGeoBlock(string $geoBlock): mixed;
+	public function delGeoBlock(string $url, bool $fullDel = false): mixed;
 }

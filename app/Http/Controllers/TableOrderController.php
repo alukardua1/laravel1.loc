@@ -15,7 +15,7 @@ use never;
 
 class TableOrderController extends Controller
 {
-	protected TableOrderRepositoryInterfaces $tableOrderRepository;
+	private TableOrderRepositoryInterfaces $tableOrderRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\TableOrderRepositoryInterfaces  $tableOrderRepositoryInterfaces

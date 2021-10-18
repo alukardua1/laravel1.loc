@@ -9,15 +9,10 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class DashboardController
- *
- * @package App\Http\Controllers\Admin
- */
 class DashboardController extends Controller
 {
-	protected mixed $animeRepository;
-	protected mixed $userRepository;
+	private AnimeRepositoryInterfaces $animeRepository;
+	private UserRepositoryInterfaces  $userRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces

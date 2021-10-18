@@ -12,8 +12,11 @@ use Illuminate\Http\Response;
 
 class GroupAdminController extends Controller
 {
-	protected GroupRepositoryInterfaces $groupRepository;
+	private GroupRepositoryInterfaces $groupRepository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\GroupRepositoryInterfaces  $groupRepositoryInterfaces
+	 */
 	public function __construct(GroupRepositoryInterfaces $groupRepositoryInterfaces)
 	{
 		parent::__construct();

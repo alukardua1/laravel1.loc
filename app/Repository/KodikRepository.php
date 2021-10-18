@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
+use App\Repository\Interfaces\KodikRepositoryInterfaces;
 use App\Services\CurlTrait;
 use App\Services\KodikTrait;
 use Config;
 
-class KodikRepository implements Interfaces\KodikRepositoryInterfaces
+class KodikRepository implements KodikRepositoryInterfaces
 {
 	use CurlTrait;
 	use KodikTrait;

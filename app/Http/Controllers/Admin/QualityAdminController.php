@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class QualityAdminController extends Controller
 {
-	protected QualityRepositoryInterfaces $qualityRepository;
+	private QualityRepositoryInterfaces $qualityRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces

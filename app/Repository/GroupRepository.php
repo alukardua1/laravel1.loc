@@ -3,49 +3,54 @@
 namespace App\Repository;
 
 use App\Models\Group;
-use Request;
+use App\Repository\Interfaces\GroupRepositoryInterfaces;
+use Illuminate\Http\Request;
 
-class GroupRepository implements Interfaces\GroupRepositoryInterfaces
+class GroupRepository implements GroupRepositoryInterfaces
 {
 
 	/**
-	 * @param  string|null  $group
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getGroup(string $group = null): mixed
+	public function getGroup(string $url = null): mixed
 	{
-		if ($group) {
-			return Group::where('title', $group)->first();
+		if ($url) {
+			return Group::where('title', $url)->first();
 		} else {
 			return Group::orderBy('id', 'ASC');
 		}
 	}
 
 	/**
-	 * @param  \Request  $request
-	 * @param  string    $group
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setGroup(Request $request, string $group): mixed
+	public function setGroup(Request $request, string $url = null): mixed
 	{
 		$formRequest = $request->all();
-		$updateGroup = Group::firstOrCreate(['title' => $group], $formRequest);
+		$updateGroup = Group::firstOrCreate(['title' => $url], $formRequest);
 
 		return $updateGroup->save();
 	}
 
 	/**
-	 * @param  string  $group
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delGroup(string $group): mixed
+	public function delGroup(string $url, bool $fullDel = false): mixed
 	{
-		$del = Group::findOrFail($group, ['*']);
+		$del = Group::findOrFail($url, ['*']);
 		if ($del) {
-			return $del->forceDelete();
+			if ($fullDel) {
+				return $del->forceDelete();
+			}
+			return $del->delete();
 		}
 	}
 }

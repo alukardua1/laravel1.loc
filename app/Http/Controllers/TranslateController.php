@@ -14,7 +14,7 @@ use Illuminate\Contracts\View\View;
  */
 class TranslateController extends Controller
 {
-	protected TranslateRepositoryInterfaces $translate;
+	private TranslateRepositoryInterfaces $translate;
 
 	/**
 	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces

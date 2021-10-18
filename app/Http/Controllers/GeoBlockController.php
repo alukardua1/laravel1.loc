@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 
 class GeoBlockController extends Controller
 {
-	protected GeoBlockRepositoryInterfaces $geoBlockRepository;
+	private GeoBlockRepositoryInterfaces $geoBlockRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\GeoBlockRepositoryInterfaces  $geoBlockRepositoryInterfaces

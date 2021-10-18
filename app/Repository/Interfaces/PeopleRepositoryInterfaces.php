@@ -6,9 +6,26 @@ use Illuminate\Http\Request;
 
 interface PeopleRepositoryInterfaces
 {
+	/**
+	 * @param  string|null  $url
+	 *
+	 * @return mixed
+	 */
 	public function getPeople(string $url = null): mixed;
 
-	public function setPeople(Request $request, string $url): mixed;
+	/**
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  string|null               $url
+	 *
+	 * @return mixed
+	 */
+	public function setPeople(Request $request, string $url = null): mixed;
 
-	public function delPeople(string $url): mixed;
+	/**
+	 * @param  string  $url
+	 * @param  bool    $fullDel
+	 *
+	 * @return mixed
+	 */
+	public function delPeople(string $url, bool $fullDel = false): mixed;
 }

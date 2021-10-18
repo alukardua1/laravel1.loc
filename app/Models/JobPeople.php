@@ -8,10 +8,15 @@ namespace App\Models;
  *
  * @package App\Models
  */
-class Job extends Model
+class JobPeople extends Model
 {
 	public array  $cacheTags   = ['job'];
 	public string $cachePrefix = 'job_';
+
+	protected $fillable = [
+		'title',
+	];
+
 	/**
 	 * Job constructor.
 	 *

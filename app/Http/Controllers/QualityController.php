@@ -14,7 +14,7 @@ use Illuminate\Contracts\View\View;
  */
 class QualityController extends Controller
 {
-	protected QualityRepositoryInterfaces $qualityRepository;
+	private QualityRepositoryInterfaces $qualityRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces

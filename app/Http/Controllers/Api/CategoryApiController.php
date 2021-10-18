@@ -7,7 +7,7 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 
 class CategoryApiController extends Controller
 {
-	protected CategoryRepositoryInterfaces $categoryRepository;
+	private CategoryRepositoryInterfaces $categoryRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces

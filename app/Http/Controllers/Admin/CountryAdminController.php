@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CountryAdminController extends Controller
 {
-	protected CountryRepositoryInterfaces $countryRepository;
+	private CountryRepositoryInterfaces $countryRepository;
 
 	/**
 	 * CountryController constructor.

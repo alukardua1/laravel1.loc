@@ -14,7 +14,7 @@ use Illuminate\Http\JsonResponse;
  */
 class AnimeApiController extends Controller
 {
-	protected AnimeRepositoryInterfaces $apiAnimeRepository;
+	private AnimeRepositoryInterfaces $apiAnimeRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces

@@ -6,9 +6,7 @@ namespace App\Repository;
 
 use App\Http\Requests\TableOrderRequest;
 use App\Models\TableOrder;
-use App\Models\User;
 use App\Repository\Interfaces\TableOrderRepositoryInterfaces;
-use Request;
 
 /**
  * Class TableOrderRepository
@@ -53,11 +51,12 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int|null  $id
+	 * @param  int   $id
+	 * @param  bool  $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function del(int $id = null): mixed
+	public function del(int $id, bool $fullDel = false): mixed
 	{
 		// TODO: Implement del() method.
 	}

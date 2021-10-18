@@ -16,26 +16,27 @@ interface TranslateRepositoryInterfaces
 	/**
 	 * Получает все озвучивания
 	 *
-	 * @param  string|null  $translateUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getTranslate(string $translateUrl = null): mixed;
+	public function getTranslate(string $url = null): mixed;
 
 	/**
 	 * Добавление/обновление озвучивания
 	 *
-	 * @param  string   $translateUrl  Урл озвучмвания
-	 * @param  Request  $request       Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setTranslate(string $translateUrl, Request $request): mixed;
+	public function setTranslate(Request $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $translateUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delTranslate(string $translateUrl): mixed;
+	public function delTranslate(string $url, bool $fullDel = false): mixed;
 }

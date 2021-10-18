@@ -18,14 +18,14 @@ class KindRepository implements KindRepositoryInterfaces
 	/**
 	 * Получает все типы
 	 *
-	 * @param  string|null  $kindUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getKind(string $kindUrl = null): mixed
+	public function getKind(string $url = null): mixed
 	{
-		if ($kindUrl) {
-			return Kind::where('url', $kindUrl);
+		if ($url) {
+			return Kind::where('url', $url);
 		}
 		return Kind::orderBy('name', 'ASC');
 	}
@@ -33,22 +33,23 @@ class KindRepository implements KindRepositoryInterfaces
 	/**
 	 * Добавление/обновление типа
 	 *
-	 * @param  string   $kindUrl  Урл типа
-	 * @param  Request  $request  Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url      Урл типа
 	 *
 	 * @return mixed
 	 */
-	public function setKind(string $kindUrl, Request $request): mixed
+	public function setKind(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setKind() method.
 	}
 
 	/**
-	 * @param  string  $kindUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delKind(string $kindUrl): mixed
+	public function delKind(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delKind() method.
 	}

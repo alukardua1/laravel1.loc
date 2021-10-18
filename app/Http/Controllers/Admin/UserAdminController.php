@@ -10,12 +10,9 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-/**
- *
- */
 class UserAdminController extends Controller
 {
-	protected UserRepositoryInterfaces $userRepository;
+	private UserRepositoryInterfaces $userRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepository

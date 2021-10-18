@@ -53,7 +53,7 @@ class AnimeObserver
 	{
 		$year = '';
 		$episode = '';
-		//$translate = [];
+		$translate = [];
 		$translateArr = $anime->getTranslate()->get()->toArray();
 		if (!empty($translateArr)) {
 			foreach ($translateArr as $item) {

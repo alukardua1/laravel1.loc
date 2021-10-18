@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\Interfaces\CharacterRepositoryInterfaces;
 use Illuminate\Http\Request;
 
-class JobAdminController extends Controller
+class CharacterAdminController extends Controller
 {
-	public function __construct()
+	private CharacterRepositoryInterfaces $characterRepository;
+
+	/**
+	 * @param  \App\Repository\Interfaces\CharacterRepositoryInterfaces  $characterRepositoryInterfaces
+	 */
+	public function __construct(CharacterRepositoryInterfaces $characterRepositoryInterfaces)
 	{
 		parent::__construct();
+		$this->characterRepository = $characterRepositoryInterfaces;
 	}
 
 	/**
@@ -40,6 +47,18 @@ class JobAdminController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
+	{
+		//
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($id)
 	{
 		//
 	}

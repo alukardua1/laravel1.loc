@@ -11,7 +11,7 @@ use App\Repository\Interfaces\VoteRepositoryInterface;
  */
 class VoteController extends Controller
 {
-	protected VoteRepositoryInterface $voteRepository;
+	private VoteRepositoryInterface $voteRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\VoteRepositoryInterface  $voteRepositoryInterface

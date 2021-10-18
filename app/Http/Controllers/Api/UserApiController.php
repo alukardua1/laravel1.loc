@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 
 class UserApiController extends Controller
 {
-	protected UserRepositoryInterfaces $userRepository;
+	private UserRepositoryInterfaces $userRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepositoryInterfaces

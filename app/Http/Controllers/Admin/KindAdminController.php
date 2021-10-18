@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class KindAdminController extends Controller
 {
-	protected KindRepositoryInterfaces $kindRepository;
+	private KindRepositoryInterfaces $kindRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces

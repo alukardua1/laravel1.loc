@@ -16,26 +16,27 @@ interface CountryRepositoryInterfaces
 	/**
 	 * Получает все страны
 	 *
-	 * @param  string|null  $countryUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getCountry(string $countryUrl = null): mixed;
+	public function getCountry(string $url = null): mixed;
 
 	/**
 	 * Добавление/обновление страны
 	 *
-	 * @param  string   $countryUrl  Урл страны
-	 * @param  Request  $request     Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setCountry(string $countryUrl, Request $request): mixed;
+	public function setCountry(Request $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $countryUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function deleteCountry(string $countryUrl): mixed;
+	public function deleteCountry(string $url, bool $fullDel = false): mixed;
 }

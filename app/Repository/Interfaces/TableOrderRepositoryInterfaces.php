@@ -5,8 +5,6 @@ namespace App\Repository\Interfaces;
 
 
 use App\Http\Requests\TableOrderRequest;
-use App\Models\User;
-use Request;
 
 /**
  * Interface TableOrderRepositoryInterfaces
@@ -32,9 +30,10 @@ interface TableOrderRepositoryInterfaces
 	public function set(TableOrderRequest $request, int $id = null): mixed;
 
 	/**
-	 * @param  int|null  $id
+	 * @param  int   $id
+	 * @param  bool  $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function del(int $id = null): mixed;
+	public function del(int $id, bool $fullDel = false): mixed;
 }

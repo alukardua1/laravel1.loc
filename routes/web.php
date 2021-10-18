@@ -1,9 +1,7 @@
 <?php
 
-use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\Admin\AnimeAdminController;
 use App\Http\Controllers\AnimeController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\CountryController;
@@ -14,6 +12,7 @@ use App\Http\Controllers\KindController;
 use App\Http\Controllers\MPAARatingController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ParseDbDLEController;
+use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\PersonalMessageController;
 use App\Http\Controllers\QualityController;
 use App\Http\Controllers\StaticPageController;
@@ -151,6 +150,13 @@ Route::group(
 	['prefix' => 'category'],
 	function () {
 		Route::get('/{category}', [CategoryController::class, 'index'])->name('currentCategory');
+	}
+);
+Route::group(
+	['prefix' => 'people'],
+	function () {
+		Route::get('/', [PeopleController::class, 'index'])->name('people');
+		Route::get('/{people}', [PeopleController::class, 'show'])->name('showPeople');
 	}
 );
 

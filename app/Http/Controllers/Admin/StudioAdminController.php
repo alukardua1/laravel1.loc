@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class StudioAdminController extends Controller
 {
-	protected StudioRepositoryInterfaces $studioRepository;
+	private StudioRepositoryInterfaces $studioRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces

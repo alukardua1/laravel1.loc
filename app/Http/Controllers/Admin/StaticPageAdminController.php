@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class StaticPageAdminController extends Controller
 {
-	protected StaticPageRepositoryInterfaces $staticPageRepository;
+	private StaticPageRepositoryInterfaces $staticPageRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\StaticPageRepositoryInterfaces  $staticPageRepositoryInterfaces

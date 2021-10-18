@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Models\News;
 use App\Repository\Interfaces\NewsRepositoryInterfaces;
-use Request;
+use Illuminate\Http\Request;
 
 class NewsRepository implements NewsRepositoryInterfaces
 {
@@ -28,8 +28,8 @@ class NewsRepository implements NewsRepositoryInterfaces
 	}
 
 	/**
-	 * @param  \Request  $request
-	 * @param  int|null  $id
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int|null                  $id
 	 *
 	 * @return mixed
 	 */
@@ -39,11 +39,12 @@ class NewsRepository implements NewsRepositoryInterfaces
 	}
 
 	/**
-	 * @param  int  $id
+	 * @param  int   $id
+	 * @param  bool  $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delNews(int $id): mixed
+	public function delNews(int $id, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delNews() method.
 	}

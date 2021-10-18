@@ -18,14 +18,14 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	/**
 	 * Получает MPAA рейтинги
 	 *
-	 * @param  string|null  $mpaaUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getMpaa(string $mpaaUrl = null): mixed
+	public function getMpaa(string $url = null): mixed
 	{
-		if ($mpaaUrl) {
-			return MPAARating::where('url', $mpaaUrl);
+		if ($url) {
+			return MPAARating::where('url', $url);
 		}
 		return MPAARating::orderBy('id', 'ASC');
 	}
@@ -33,22 +33,23 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	/**
 	 * Добавление/обновление MPAA рейтинга
 	 *
-	 * @param  string   $mpaaUrl  Урл MPAA рейтинга
-	 * @param  Request  $request  Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url      Урл MPAA рейтинга
 	 *
 	 * @return mixed
 	 */
-	public function setMpaa(string $mpaaUrl, Request $request): mixed
+	public function setMpaa(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setMpaa() method.
 	}
 
 	/**
-	 * @param  string  $mpaaUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delMpaa(string $mpaaUrl): mixed
+	public function delMpaa(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delMpaa() method.
 	}

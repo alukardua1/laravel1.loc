@@ -11,7 +11,7 @@ class KodikAdminController extends Controller
 {
 	use KodikTrait;
 
-	protected KodikRepositoryInterfaces $kodikRepository;
+	private KodikRepositoryInterfaces $kodikRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\KodikRepositoryInterfaces  $kodikRepositoryInterfaces

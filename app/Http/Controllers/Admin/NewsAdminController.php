@@ -15,8 +15,8 @@ class NewsAdminController extends Controller
 	 */
 	public function __construct(NewsRepositoryInterfaces $newsRepositoryInterfaces)
 	{
-		$this->newsRepository = $newsRepositoryInterfaces;
 		parent::__construct();
+		$this->newsRepository = $newsRepositoryInterfaces;
 	}
 
 	/**

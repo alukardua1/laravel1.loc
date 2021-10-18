@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class YearAiredAdminController extends Controller
 {
-	protected YearAiredRepositoryInterfaces $yearAired;
+	private YearAiredRepositoryInterfaces $yearAired;
 
 	/**
 	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces

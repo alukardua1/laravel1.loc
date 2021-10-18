@@ -3,11 +3,17 @@
 namespace App\Repository;
 
 use App\Models\People;
+use App\Repository\Interfaces\PeopleRepositoryInterfaces;
 use Illuminate\Http\Request;
 
-class PeopleRepository implements Interfaces\PeopleRepositoryInterfaces
+class PeopleRepository implements PeopleRepositoryInterfaces
 {
 
+	/**
+	 * @param  string|null  $url
+	 *
+	 * @return mixed
+	 */
 	public function getPeople(string $url = null): mixed
 	{
 		if ($url) {
@@ -16,12 +22,24 @@ class PeopleRepository implements Interfaces\PeopleRepositoryInterfaces
 		return People::orderBy('id', 'ASC');
 	}
 
-	public function setPeople(Request $request, string $url): mixed
+	/**
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  string|null               $url
+	 *
+	 * @return mixed
+	 */
+	public function setPeople(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setPeople() method.
 	}
 
-	public function delPeople(string $url): mixed
+	/**
+	 * @param  string  $url
+	 * @param  bool    $fullDel
+	 *
+	 * @return mixed
+	 */
+	public function delPeople(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delPeople() method.
 	}

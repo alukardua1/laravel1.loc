@@ -16,21 +16,27 @@ interface YearAiredRepositoryInterfaces
 	/**
 	 * Получает все года
 	 *
-	 * @param  string|null  $yearUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getYearAired(string $yearUrl = null): mixed;
+	public function getYearAired(string $url = null): mixed;
 
 	/**
 	 * Добавление/обновление года
 	 *
-	 * @param  string   $yearUrl  Урл года
-	 * @param  Request  $request  Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setYearAired(string $yearUrl, Request $request): mixed;
+	public function setYearAired(Request $request, string $url = null): mixed;
 
-	public function delYearAired(string $yearUrl): mixed;
+	/**
+	 * @param  string  $url
+	 * @param  bool    $fullDel
+	 *
+	 * @return mixed
+	 */
+	public function delYearAired(string $url, bool $fullDel = false): mixed;
 }

@@ -18,14 +18,14 @@ class QualityRepository implements QualityRepositoryInterfaces
 	/**
 	 * Получает все качество видео
 	 *
-	 * @param  string|null  $qualityUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getQuality(string $qualityUrl = null): mixed
+	public function getQuality(string $url = null): mixed
 	{
-		if ($qualityUrl) {
-			return Quality::where('url', $qualityUrl);
+		if ($url) {
+			return Quality::where('url', $url);
 		}
 		return Quality::orderBy('title', 'ASC');
 	}
@@ -33,22 +33,23 @@ class QualityRepository implements QualityRepositoryInterfaces
 	/**
 	 * Добавление/обновление качества видео
 	 *
-	 * @param  string   $qualityUrl  Урл качество видео
-	 * @param  Request  $request     запрос
+	 * @param  \Illuminate\Http\Request  $request  запрос
+	 * @param  string|null               $url      Урл качество видео
 	 *
 	 * @return mixed
 	 */
-	public function setQuality(string $qualityUrl, Request $request): mixed
+	public function setQuality(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setQuality() method.
 	}
 
 	/**
-	 * @param  string  $qualityUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delQuality(string $qualityUrl): mixed
+	public function delQuality(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delQuality() method.
 	}

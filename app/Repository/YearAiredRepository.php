@@ -18,14 +18,14 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	/**
 	 * Получает все года
 	 *
-	 * @param  string|null  $yearUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getYearAired(string $yearUrl = null): mixed
+	public function getYearAired(string $url = null): mixed
 	{
-		if ($yearUrl) {
-			return YearAired::where('year', $yearUrl);
+		if ($url) {
+			return YearAired::where('year', $url);
 		}
 		return YearAired::orderBy('year', 'ASC');
 	}
@@ -33,17 +33,23 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	/**
 	 * Добавление/обновление года
 	 *
-	 * @param  string   $yearUrl  Урл года
-	 * @param  Request  $request  Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url      Урл года
 	 *
 	 * @return mixed
 	 */
-	public function setYearAired(string $yearUrl, Request $request): mixed
+	public function setYearAired(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setYearAired() method.
 	}
 
-	public function delYearAired(string $yearUrl): mixed
+	/**
+	 * @param  string  $url
+	 * @param  bool    $fullDel
+	 *
+	 * @return mixed
+	 */
+	public function delYearAired(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delYearAired() method.
 	}

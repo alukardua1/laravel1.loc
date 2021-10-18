@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\View;
 class StaticPageController extends Controller
 {
 
-	protected StaticPageRepositoryInterfaces $staticPageRepository;
+	private StaticPageRepositoryInterfaces $staticPageRepository;
 
 	public function __construct(StaticPageRepositoryInterfaces $staticPageRepositoryInterfaces)
 	{

@@ -18,14 +18,14 @@ class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 	/**
 	 * Получает ГеоБлок
 	 *
-	 * @param  string|null  $geoBlock
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getGeoBlock(string $geoBlock = null): mixed
+	public function getGeoBlock(string $url = null): mixed
 	{
-		if ($geoBlock) {
-			return GeoBlock::where('code', $geoBlock);
+		if ($url) {
+			return GeoBlock::where('code', $url);
 		}
 		return GeoBlock::orderBy('code', 'ASC');
 	}
@@ -33,17 +33,23 @@ class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 	/**
 	 * Добавление/обновление ГеоБлока
 	 *
-	 * @param  string   $geoBlock
-	 * @param  Request  $request
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setGeoBlock(string $geoBlock, Request $request): mixed
+	public function setGeoBlock(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setGeoBlock() method.
 	}
 
-	public function delGeoBlock(string $geoBlock): mixed
+	/**
+	 * @param  string  $url
+	 * @param  bool    $fullDel
+	 *
+	 * @return mixed
+	 */
+	public function delGeoBlock(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delGeoBlock() method.
 	}

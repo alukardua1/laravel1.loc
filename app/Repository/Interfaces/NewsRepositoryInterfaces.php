@@ -4,7 +4,7 @@
 namespace App\Repository\Interfaces;
 
 
-use Request;
+use Illuminate\Http\Request;
 
 interface NewsRepositoryInterfaces
 {
@@ -17,17 +17,18 @@ interface NewsRepositoryInterfaces
 	public function getNews(int $id = null, int $limit = null): mixed;
 
 	/**
-	 * @param  \Request  $request
-	 * @param  int|null  $id
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int|null                  $id
 	 *
 	 * @return mixed
 	 */
 	public function setNews(Request $request, int $id = null): mixed;
 
 	/**
-	 * @param  int  $id
+	 * @param  int   $id
+	 * @param  bool  $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delNews(int $id): mixed;
+	public function delNews(int $id, bool $fullDel = false): mixed;
 }

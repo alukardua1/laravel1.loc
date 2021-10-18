@@ -18,14 +18,14 @@ class StudioRepository implements StudioRepositoryInterfaces
 	/**
 	 * Получает все студии
 	 *
-	 * @param  string|null  $studioUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getStudio(string $studioUrl = null): mixed
+	public function getStudio(string $url = null): mixed
 	{
-		if ($studioUrl) {
-			return Studio::where('url', $studioUrl);
+		if ($url) {
+			return Studio::where('url', $url);
 		}
 		return Studio::orderBy('title', 'ASC');
 	}
@@ -33,22 +33,23 @@ class StudioRepository implements StudioRepositoryInterfaces
 	/**
 	 * Добавление/обновление студии
 	 *
-	 * @param  string   $studioUrl  Урл студии
-	 * @param  Request  $request    Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url      Урл студии
 	 *
 	 * @return mixed
 	 */
-	public function setStudio(string $studioUrl, Request $request): mixed
+	public function setStudio(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setStudio() method.
 	}
 
 	/**
-	 * @param  string  $studioUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delStudio(string $studioUrl): mixed
+	public function delStudio(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delStudio() method.
 	}

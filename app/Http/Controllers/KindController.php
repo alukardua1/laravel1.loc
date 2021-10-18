@@ -14,7 +14,7 @@ use Illuminate\Contracts\View\View;
  */
 class KindController extends Controller
 {
-	protected KindRepositoryInterfaces $kindRepository;
+	private KindRepositoryInterfaces $kindRepository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces

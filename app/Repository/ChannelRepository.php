@@ -18,14 +18,14 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	/**
 	 * Получает все каналы
 	 *
-	 * @param  string|null  $channelUrl
+	 * @param  string|null  $url
 	 *
 	 * @return mixed
 	 */
-	public function getChannel(string $channelUrl = null): mixed
+	public function getChannel(string $url = null): mixed
 	{
-		if ($channelUrl) {
-			return Channel::where('url', $channelUrl);
+		if ($url) {
+			return Channel::where('url', $url);
 		}
 		return Channel::orderBy('title', 'ASC');
 	}
@@ -33,22 +33,23 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	/**
 	 * Добавление/обновление канала
 	 *
-	 * @param  string   $channelUrl  урл канала
-	 * @param  Request  $request     Запрос
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  string|null               $url
 	 *
 	 * @return mixed
 	 */
-	public function setChannel(string $channelUrl, Request $request): mixed
+	public function setChannel(Request $request, string $url = null): mixed
 	{
 		// TODO: Implement setChannel() method.
 	}
 
 	/**
-	 * @param  string  $channelUrl
+	 * @param  string  $url
+	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function deleteChannel(string $channelUrl): mixed
+	public function deleteChannel(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delete() method.
 	}
