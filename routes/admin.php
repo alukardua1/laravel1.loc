@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryAdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GroupAdminController;
 use App\Http\Controllers\Admin\KodikAdminController;
+use App\Http\Controllers\Admin\PeopleAdminCategory;
 use App\Http\Controllers\Admin\UserAdminController;
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -68,6 +69,12 @@ Route::group(
 				Route::get('/{group}/edit', [GroupAdminController::class, 'edit'])->name('editGroupAdmin');
 				Route::post('/{group}/update', [GroupAdminController::class, 'update'])->name('updateGroupAdmin');
 				Route::get('/{group}/delete', [GroupAdminController::class, 'destroy'])->name('deleteGroupAdmin');
+			}
+		);
+		Route::group(
+			['prefix' => 'people',],
+			function () {
+				Route::get('/', [PeopleAdminCategory::class, 'index'])->name('peopleAdmin');
 			}
 		);
 		Route::group(

@@ -113,18 +113,18 @@ trait KodikTrait
 	{
 		foreach ($json['results'] as $key => $value) {
 			if (array_key_exists('shikimori_id', $value)) {
-				$db = OtherLink::where('title', 'Shikimori')->where('id_link', 'RLIKE', "(^[a-z]?){$value['shikimori_id']}")->first();
+				$otherLink = OtherLink::where('title', 'Shikimori')->where('id_link', 'RLIKE', "(^[a-z]?){$value['shikimori_id']}$")->first();
 			} else {
-				$db = null;
+				$otherLink = null;
 			}
 			$json['results'][$key]['other_link'] = $this->link($value);
 			$json['results'][$key]['created_at'] = 'Добавлен: ' . $this->mutateDat($value['created_at']);
 			$json['results'][$key]['updated_at'] = 'Обновлен: ' . $this->mutateDat($value['updated_at']);
-			if ($db) {
-				$anime = Anime::where('id', $db->anime_id)->first();
-				$player = Player::where('anime_id', $db->anime_id)->first();
-				$translate = DB::table('anime_translate')->where('anime_id', $db->anime_id)->join('translates', 'anime_translate.translate_id', '=', 'translates.id')->get();
-				$this->isPlayer($player, $key, $db, $anime, $json, $value);
+			if ($otherLink) {
+				$anime = Anime::where('id', $otherLink->anime_id)->first();
+				$player = Player::where('anime_id', $otherLink->anime_id)->first();
+				$translate = DB::table('anime_translate')->where('anime_id', $otherLink->anime_id)->join('translates', 'anime_translate.translate_id', '=', 'translates.id')->get();
+				$this->isPlayer($player, $key, $otherLink, $anime, $json, $value);
 				$this->isTranslate($translate, $value, $json, $key);
 				$this->isSeries($anime->episodes_aired, $value, $json, $key);
 			} else {

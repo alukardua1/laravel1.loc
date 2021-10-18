@@ -1,3 +1,15 @@
+@font-face {
+	font-family: 'CyrillicOld';
+	src: url(../font/GothamPro/GothamPro.ttf);
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'CentSchbook';
+	src: url(../font/CentSchbook/CentSchbook.ttf);
+	font-weight: normal;
+}
+
 @media (min-width: 768px) {
 	.px-md-4 {
 		padding-right: 1.5rem !important;
@@ -16,6 +28,10 @@
 		flex: 0 0 auto;
 		width: 83.333333%;
 	}
+}
+
+.copy-id {
+	cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -51,6 +67,7 @@ th.id_row {
 th.id_row .list-group-item, td.id_row .list-group-item {
 	background-color: transparent !important;
 	border: none;
+	color: #ffffff;
 }
 
 .table-dark a.color_add_movie, .table-dark span.color_add_movie {

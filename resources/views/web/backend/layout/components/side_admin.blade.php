@@ -25,13 +25,18 @@
 							</a>
 						</li>
 						<li class="list-group-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="{{route('peopleAdmin')}}">
 								Люди
 							</a>
 						</li>
 						<li class="list-group-item">
 							<a class="nav-link" href="#">
 								Персонажи
+							</a>
+						</li>
+						<li class="list-group-item">
+							<a class="nav-link" href="#">
+								Студии
 							</a>
 						</li>
 						<li class="list-group-item">

@@ -29,6 +29,7 @@ use App\Repository\Interfaces\KindRepositoryInterfaces;
 use App\Repository\Interfaces\KodikRepositoryInterfaces;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use App\Repository\Interfaces\NewsRepositoryInterfaces;
+use App\Repository\Interfaces\PeopleRepositoryInterfaces;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use App\Repository\Interfaces\StaticPageRepositoryInterfaces;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
@@ -43,6 +44,7 @@ use App\Repository\KindRepository;
 use App\Repository\KodikRepository;
 use App\Repository\MpaaRepository;
 use App\Repository\NewsRepository;
+use App\Repository\PeopleRepository;
 use App\Repository\QualityRepository;
 use App\Repository\StaticPageRepository;
 use App\Repository\StudioRepository;
@@ -88,6 +90,7 @@ class RepositoryServiceProvider extends ServiceProvider
 		$this->app->bind(GroupRepositoryInterfaces::class, GroupRepository::class);
 		$this->app->bind(FaqRepositoryInterfaces::class, FaqRepository::class);
 		$this->app->bind(KodikRepositoryInterfaces::class, KodikRepository::class);
+		$this->app->bind(PeopleRepositoryInterfaces::class, PeopleRepository::class);
 	}
 
 	/**
