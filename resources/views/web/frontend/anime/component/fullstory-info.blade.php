@@ -99,14 +99,30 @@
 			@endforeach
         </span>
 	</li>
-	<li>
-		<span>Другие названия: </span>
-		<span class="other-name">
-			<span itemprop="name">{{$showAnime->synonyms}}</span>
-        	<span itemprop="name">{{$showAnime->japanese}}</span>
-        	<span itemprop="name">{{$showAnime->english}}</span>
+	@if ($showAnime->japanese)
+		<li>
+			<span>По-японски: </span>
+			<span class="other-name">
+			<span itemprop="name">{{$showAnime->japanese}}</span>
     	</span>
-	</li>
+		</li>
+	@endif
+	@if($showAnime->english)
+		<li>
+			<span>По-английски: </span>
+			<span class="other-name">
+			<span itemprop="name">{{$showAnime->english}}</span>
+    	</span>
+		</li>
+	@endif
+	@if($showAnime->synonyms)
+		<li>
+			<span>Другие названия: </span>
+			<span class="other-name">
+			<span itemprop="name">{{$showAnime->synonyms}}</span>
+    	</span>
+		</li>
+	@endif
 	@if ($showAnime->license_name_ru)
 		<li><span>Название лицензии в России: </span><span>{{$showAnime->license_name_ru}}</span></li>
 	@endif

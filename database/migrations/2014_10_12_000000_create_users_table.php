@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
 				$table->text('signature')->nullable();
 				$table->boolean('active')->default(1);
 				$table->boolean('blocked')->default(0);
+				$table->timestamp('blocked_at')->nullable();
 				$table->timestamp('email_verified_at')->nullable();
 				$table->timestamp('register')->default(date('Y-m-d H:i:s'));
 				$table->timestamp('last_login')->default(date('Y-m-d H:i:s'));

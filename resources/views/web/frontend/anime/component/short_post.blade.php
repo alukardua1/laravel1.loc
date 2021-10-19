@@ -3,7 +3,7 @@
 		<div class="card bg-dark text-white">
 			<a href="{{route('showAnime', [$value->id, $value->url])}}">
 				<img itemprop="image" src="{{asset('storage/'.$value->preview_img)}}" data-src="{{asset('storage/'.$value->original_img)}}"
-					 class="card-img lazy shortstory-img" alt="{{$value->name}}"/>
+					 class="card-img lazy shortstory-img" alt="{{$value->russian}}"/>
 				<div class="mask rgba-stylish-strong">
 					<div class="update-post">
 						@if(date('Y-m-d', strtotime($value->updated_at)) == date('Y-m-d', time()))
@@ -11,8 +11,8 @@
 						@endif
 					</div>
 					<h5 class="card-img-overlay">
-						<strong class="card-title title-carousel d-none d-xl-block">{{$value->name}}</strong>
-						<strong class="card-title title-carousel-md d-block d-xl-none">{{$value->name}}</strong>
+						<strong class="card-title title-carousel d-none d-xl-block">{{$value->russian}}</strong>
+						<strong class="card-title title-carousel-md d-block d-xl-none">{{$value->russian}}</strong>
 					</h5>
 					@if($value->episodes_aired)
 						<div class='series @if($value->ongoing) short-online @endif'>

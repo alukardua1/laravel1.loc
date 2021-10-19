@@ -4,9 +4,6 @@
 namespace App\Services;
 
 
-use App\Models\Anime;
-use App\Models\User;
-
 /**
  * Trait ApiTrait
  *
@@ -89,6 +86,9 @@ trait ApiTrait
 				],
 				'name'     => $item->name,
 				'russian'  => $item->russian,
+				'english'  => explode(', ', $item->english),
+				'japanese' => explode(', ', $item->japanese),
+				'synonyms' => explode(', ', $item->synonyms),
 				'url'      => '/anime/' . $item->id . '-' . $item->url,
 				'category' => $this->animeCategory($item->getCategory),
 				'kind'     => [
@@ -141,6 +141,9 @@ trait ApiTrait
 			],
 			'name'             => $anime->name,
 			'russian'          => $anime->russian,
+			'english'          => explode(', ', $anime->english),
+			'japanese'         => explode(', ', $anime->japanese),
+			'synonyms'         => explode(', ', $anime->synonyms),
 			'url'              => '/anime/' . $anime->id . '-' . $anime->url,
 			'category'         => $this->animeCategory($anime->getCategory),
 			'kind'             => [

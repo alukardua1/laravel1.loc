@@ -14,7 +14,10 @@ class AnimeRelated extends Model
 	public array  $cacheTags   = ['anime_related'];
 	public string $cachePrefix = 'anime_related_';
 
-	protected $fillable = [];
+	protected $fillable = [
+		'anime_id',
+		'relation_id',
+	];
 
 	public function __construct(array $attributes = [])
 	{
@@ -24,8 +27,8 @@ class AnimeRelated extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getAnimeRelation(): BelongsTo
+	public function getAnime(): BelongsTo
 	{
-		return $this->belongsTo(Anime::class, 'id', 'relation_id')->latest();
+		return $this->belongsTo(Anime::class, 'relation_id', 'id')->latest();
 	}
 }

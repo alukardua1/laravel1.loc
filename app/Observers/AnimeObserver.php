@@ -72,9 +72,9 @@ class AnimeObserver
 		if ($anime->episodes_aired) {
 			$episode = $anime->episodes_aired . ' серия ';
 		}
-		$anime->russian = $anime->name;
+		//$anime->russian = $anime->russian;
 
-		$metatitle = $anime->name . ' ' . $year . $episode . $translate;
+		$metatitle = $anime->russian . ' ' . $year . $episode . $translate;
 		$url = $anime->name . ' ' . $anime->episodes_aired . ' серия';
 		$anime->metatitle = $metatitle;
 		$anime->url = Str::slug($url);

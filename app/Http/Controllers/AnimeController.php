@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App;
 use App\Events\AnimeEvent;
 use App\Http\Requests\CommentRequest;
+use App\Models\AnimeRelated;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use App\Services\FunctionTrait;
 use App\Services\ParseShikimori;
-use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -88,21 +88,24 @@ class AnimeController extends Controller
 		$comments = $this->showComments($showAnime->getComments()->withTrashed()->get());
 		$showAnime->comments_count = $showAnime->getComments()->count();
 		$idShikimori = $showAnime->getOtherLink()->where('title', 'shikimori')->first();
-		$shikimori = $this->parseShikimori($idShikimori->id_link);
+		$shikimori = $this->parseShikimori($idShikimori->id_link, $showAnime);
 		$shikimoriOtherLink = $this->getShikimoriOtherLink($idShikimori->id_link);
 		$kodik = $this->parseKodik(env('KODIK_TOKEN'), $idShikimori->id_link);
 		$channel_id = ['channel_id' => $showAnime->channel_id];
 		$request = array_merge($shikimori, $shikimoriOtherLink, $kodik, $channel_id);
-		if ($kodik['updates'] > Carbon::parse($showAnime->updated_at)->format('Y-m-d H:m:s')) {
+		if (array_key_exists('update', $request)) {
 			$request = new Request($request);
 			$this->animeRepository->setAnime($request, $showAnime->id);
 		}
-		/**
-		 * @var $related
-		 * @todo Придумать как сделать в relations, Перенести в добавить аниме, и записывать в отдельную таблицу
-		 */
-		$related = $showAnime->load('getCategory.getAnime')->inRandomOrder()->limit(6)->get();
-
+		$related = AnimeRelated::where('anime_id', $showAnime->id)->get();
+		if (count($related) != 6) {
+			$related = $showAnime->load('getCategory.getAnime')->inRandomOrder()->limit(6)->get();
+			foreach ($related as $value) {
+				$result = ['anime_id' => $showAnime->id, 'relation_id' => $value->id];
+				AnimeRelated::create($result);
+			}
+			$related = AnimeRelated::where('anime_id', $showAnime->id)->get();
+		}
 		$this->showPlayer($showAnime, $this->showPlayerGroup);
 		$regionBlockString = $this->showPlayer($showAnime, $this->showPlayerGroup);
 

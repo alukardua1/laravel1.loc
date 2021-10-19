@@ -59,6 +59,8 @@ class User extends Authenticatable
 		'allow_mail',
 		'comments_reply_subscribe',
 		'anime_subscribe',
+		'blocked',
+		'blocked_at',
 	];
 
 	/**

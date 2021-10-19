@@ -202,6 +202,19 @@ class DLEParseRepository implements DLEParse
 	}
 
 	/**
+	 * @param  string  $WALink
+	 *
+	 * @return mixed
+	 */
+	public function parseWA(string $WALink)
+	{
+		$wa = parse_url($WALink);
+		parse_str($wa['query'], $id);
+
+		return $id['id'];
+	}
+
+	/**
 	 * @param  int|null  $id
 	 *
 	 * @return array
@@ -224,7 +237,7 @@ class DLEParseRepository implements DLEParse
 			$mpaa = MPAARating::where('name', $xfield1['rating'])->first();
 			$this->createAnimeCategory($post->category, $post->id);
 			if (array_key_exists('url_world_art', $xfield1)) {
-				$this->otherLink($post, $xfield1['url_world_art'], 'World-Art', $xfield1['world-art-id']);
+				$this->otherLink($post, $xfield1['url_world_art'], 'World-Art', $this->parseWA($xfield1['url_world_art']));
 			}
 			if (array_key_exists('shikimori_id', $xfield1)) {
 				$this->otherLink($post, 'https://shikimori.one/animes/' . $xfield1['shikimori_id'], 'Shikimori', $xfield1['shikimori_id']);

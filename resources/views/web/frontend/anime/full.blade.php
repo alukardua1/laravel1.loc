@@ -20,7 +20,7 @@
 @section('content')
 	<article class="fullstory">
 		<div class="full-title">
-			<h1>{{$showAnime->name}}</h1>
+			<h1>{{$showAnime->russian}}</h1>
 			@if (Auth::check())
 				<favorite
 						:post={{ $showAnime->id }} :favorited={{ $showAnime->favorited() ? 'true' : 'false' }}>
