@@ -32,7 +32,7 @@ class YearAiredController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $yearUrl): View|Factory|Application
+	public function show(string $yearUrl): View|Factory|Application
 	{
 		$showYear = $this->yearAired->getYearAired($yearUrl)->first();
 		$this->isNotNull($showYear);

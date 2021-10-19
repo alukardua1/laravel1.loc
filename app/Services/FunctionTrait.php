@@ -2,11 +2,13 @@
 
 namespace App\Services;
 
+use App\Models\AnimeRelated;
 use App\Models\OtherLink;
 use App\Models\Player;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use URL;
 
 /**
@@ -396,6 +398,42 @@ trait FunctionTrait
 	public function morfDate(mixed $date, string $format)
 	{
 		return Carbon::parse($date)->format($format);
+	}
+
+	/**
+	 * @param  mixed  $showAnime
+	 */
+	public function updatePost(mixed $showAnime)
+	{
+		$extendLink_id = $showAnime->getOtherLink()->where('title', 'shikimori')->first();
+		$shikimori = $this->parseShikimori($extendLink_id->id_link, $showAnime);
+		$extendLink = $this->getShikimoriOtherLink($extendLink_id->id_link);
+		$kodik = $this->parseKodik(env('KODIK_TOKEN'), $extendLink_id->id_link);
+		$channel_id = ['channel_id' => $showAnime->channel_id];
+		$request = array_merge($shikimori, $extendLink, $kodik, $channel_id);
+		if (array_key_exists('update', $request)) {
+			$request = new Request($request);
+			$this->animeRepository->setAnime($request, $showAnime->id);
+		}
+	}
+
+	/**
+	 * @param  mixed  $showAnime
+	 *
+	 * @return mixed
+	 */
+	public function addRelated(mixed $showAnime): mixed
+	{
+		$related = AnimeRelated::where('anime_id', $showAnime->id)->get();
+		if (count($related) != 6) {
+			$related = $showAnime->load('getCategory.getAnime')->inRandomOrder()->limit(6)->get();
+			foreach ($related as $value) {
+				$result = ['anime_id' => $showAnime->id, 'relation_id' => $value->id];
+				AnimeRelated::create($result);
+			}
+			return AnimeRelated::where('anime_id', $showAnime->id)->get();
+		}
+		return $related;
 	}
 
 }

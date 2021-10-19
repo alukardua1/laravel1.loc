@@ -32,14 +32,18 @@ class PeopleController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param $url
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show($url): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$peple = $this->peopleRepository->getPeople($url)->first();
+		$people = $this->peopleRepository->getPeople($url)->first();
+		$this->isNotNull($people);
+		$title = $people->russian;
+		$description = null;
+		$allAnime = $people->getAnime()->paginate($this->paginate);
 
-		return view($this->frontend . 'people.show', compact('peple'));
+		return view($this->frontend . 'people.show', compact('people', 'allAnime', 'title', 'description'));
 	}
 }

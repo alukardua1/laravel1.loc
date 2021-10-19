@@ -30,7 +30,7 @@ class CategoryController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $categoryUrl): View|Factory|Application
+	public function show(string $categoryUrl): View|Factory|Application
 	{
 		$currentCategory = $this->categoryRepository->getCategory($categoryUrl)->first();
 		$this->isNotNull($currentCategory);

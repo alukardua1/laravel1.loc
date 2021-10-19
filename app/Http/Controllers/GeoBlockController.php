@@ -25,7 +25,7 @@ class GeoBlockController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function index(): View|Factory|Application
+	public function show(): View|Factory|Application
 	{
 		$geoBlock = $this->geoBlockRepository->getGeoBlock()->get();
 		$this->isNotNull($geoBlock);

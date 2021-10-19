@@ -32,7 +32,7 @@ class QualityController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $qualityUrl): View|Factory|Application
+	public function show(string $qualityUrl): View|Factory|Application
 	{
 		$showQuality = $this->qualityRepository->getQuality($qualityUrl)->first();
 		$this->isNotNull($showQuality);

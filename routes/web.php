@@ -70,14 +70,14 @@ Route::group(
 Route::group(
 	[],
 	function () {
-		Route::get('channel/{custom}', [ChannelController::class, 'index'])->name('channel');
-		Route::get('studio/{custom}', [StudioController::class, 'index'])->name('studio');
-		Route::get('quality/{custom}', [QualityController::class, 'index'])->name('quality');
-		Route::get('kind/{custom}', [KindController::class, 'index'])->name('kind');
-		Route::get('country/{custom}', [CountryController::class, 'index'])->name('country');
-		Route::get('translate/{custom}', [TranslateController::class, 'index'])->name('translate');
-		Route::get('rating/{custom}', [MPAARatingController::class, 'index'])->name('rating');
-		Route::get('year/{custom}', [YearAiredController::class, 'index'])->name('year');
+		Route::get('channel/{custom}', [ChannelController::class, 'show'])->name('channel');
+		Route::get('studio/{custom}', [StudioController::class, 'show'])->name('studio');
+		Route::get('quality/{custom}', [QualityController::class, 'show'])->name('quality');
+		Route::get('kind/{custom}', [KindController::class, 'show'])->name('kind');
+		Route::get('country/{custom}', [CountryController::class, 'show'])->name('country');
+		Route::get('translate/{custom}', [TranslateController::class, 'show'])->name('translate');
+		Route::get('rating/{custom}', [MPAARatingController::class, 'show'])->name('rating');
+		Route::get('year/{custom}', [YearAiredController::class, 'show'])->name('year');
 		Route::get('ongoing', [AnimeController::class, 'indexOngoing'])->name('ongoing');
 		Route::get('search', [AnimeController::class, 'search'])->name('search');
 		Route::get('searchAdmin', [AnimeAdminController::class, 'search'])->name('searchAdmin');
@@ -149,7 +149,7 @@ Route::group(
 Route::group(
 	['prefix' => 'category'],
 	function () {
-		Route::get('/{category}', [CategoryController::class, 'index'])->name('currentCategory');
+		Route::get('/{category}', [CategoryController::class, 'show'])->name('currentCategory');
 	}
 );
 Route::group(

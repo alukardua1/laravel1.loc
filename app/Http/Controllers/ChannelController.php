@@ -32,7 +32,7 @@ class ChannelController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $channelUrl): View|Factory|Application
+	public function show(string $channelUrl): View|Factory|Application
 	{
 		$showChannel = $this->channelRepository->getChannel($channelUrl)->first();
 		$this->isNotNull($showChannel);

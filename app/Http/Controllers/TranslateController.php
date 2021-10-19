@@ -32,7 +32,7 @@ class TranslateController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $translateUrl): Factory|View|Application
+	public function show(string $translateUrl): Factory|View|Application
 	{
 		$showTranslate = $this->translate->getTranslate($translateUrl)->first();
 		$this->isNotNull($showTranslate);

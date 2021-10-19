@@ -24,7 +24,7 @@ class CopyrightHolderController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $copyrightHolder): View|Factory|Application
+	public function show(string $copyrightHolder): View|Factory|Application
 	{
 		$copyright = $this->copyrightHolderRepository->getCopyrightHolder($copyrightHolder)->first();
 		$this->isNotNull($copyright);

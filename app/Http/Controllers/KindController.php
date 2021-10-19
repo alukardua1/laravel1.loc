@@ -32,7 +32,7 @@ class KindController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $kindUrl): View|Factory|Application
+	public function show(string $kindUrl): View|Factory|Application
 	{
 		$showKind = $this->kindRepository->getKind($kindUrl)->first();
 		$this->isNotNull($showKind);

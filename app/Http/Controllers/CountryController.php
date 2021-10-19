@@ -34,7 +34,7 @@ class CountryController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $countryUrl): View|Factory|Application
+	public function show(string $countryUrl): View|Factory|Application
 	{
 		$showCountry = $this->countryRepository->getCountry($countryUrl);
 		$this->isNotNull($showCountry);

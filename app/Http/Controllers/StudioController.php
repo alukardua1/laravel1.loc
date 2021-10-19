@@ -32,7 +32,7 @@ class StudioController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $studiosUrl): View|Factory|Application
+	public function show(string $studiosUrl): View|Factory|Application
 	{
 		$showStudio = $this->studioRepository->getStudio($studiosUrl)->first();
 		$this->isNotNull($showStudio);

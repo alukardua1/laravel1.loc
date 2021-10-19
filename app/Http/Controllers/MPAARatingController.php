@@ -32,7 +32,7 @@ class MPAARatingController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function index(string $mpaaUrl): View|Factory|Application
+	public function show(string $mpaaUrl): View|Factory|Application
 	{
 		$showMpaa = $this->mpaaRepository->getMpaa($mpaaUrl)->first();
 		$this->isNotNull($showMpaa);
