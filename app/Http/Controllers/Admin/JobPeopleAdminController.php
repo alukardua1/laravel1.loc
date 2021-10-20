@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class JobPeopleAdminController extends Controller
 {
-	private JobPeopleRepositoryInterfaces $jobPeopleRepository;
+	private JobPeopleRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\JobPeopleRepositoryInterfaces  $jobPeopleRepositoryInterfaces
@@ -16,7 +16,7 @@ class JobPeopleAdminController extends Controller
 	public function __construct(JobPeopleRepositoryInterfaces $jobPeopleRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->jobPeopleRepository = $jobPeopleRepositoryInterfaces;
+		$this->repository = $jobPeopleRepositoryInterfaces;
 	}
 
 	/**

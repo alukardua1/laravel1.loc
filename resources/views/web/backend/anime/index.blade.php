@@ -34,7 +34,7 @@
 					</ul>
 				</th>
 				<td>
-					<a href="{{route('editAnimeAdmin', $anime->id)}}">{{$anime->name}} <i class="far fa-edit"></i></a>
+					<a href="{{route('editAnimeAdmin', $anime->id)}}">{{$anime->russian}} / {{$anime->name}} <i class="far fa-edit"></i></a>
 				</td>
 				<td>
 					{{$anime->read_count}}

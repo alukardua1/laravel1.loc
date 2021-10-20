@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 
 class GeoBlockController extends Controller
 {
-	private GeoBlockRepositoryInterfaces $geoBlockRepository;
+	private GeoBlockRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\GeoBlockRepositoryInterfaces  $geoBlockRepositoryInterfaces
@@ -17,7 +17,7 @@ class GeoBlockController extends Controller
 	public function __construct(GeoBlockRepositoryInterfaces $geoBlockRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->geoBlockRepository = $geoBlockRepositoryInterfaces;
+		$this->repository = $geoBlockRepositoryInterfaces;
 	}
 
 	/**
@@ -27,7 +27,7 @@ class GeoBlockController extends Controller
 	 */
 	public function show(): View|Factory|Application
 	{
-		$geoBlock = $this->geoBlockRepository->getGeoBlock()->get();
+		$geoBlock = $this->repository->getGeoBlock()->get();
 		$this->isNotNull($geoBlock);
 		$title = $geoBlock->name;
 		$description = $geoBlock->description;

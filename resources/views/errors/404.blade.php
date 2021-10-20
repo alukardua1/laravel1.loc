@@ -44,7 +44,7 @@
 				<p>
 					<span>Попробуйте вернутся на <a class="text-success font-weight-bold" href="" onclick="history.back();return false;">предыдущую страницу</a>
                         если не помогло, тогда попробуйте вернуться на <a class="text-primary font-weight-bold" href="{{route('home')}}">главную страницу</a>
-                            или свяжитесь с администрацией сайта через форму<a class="text-info font-weight-bold" href="{{route('feedback')}}">обратной связи</a>
+                            или свяжитесь с администрацией сайта через форму<a class="text-info font-weight-bold" href="{{route('indexFeedback')}}">обратной связи</a>
 						  указав адрес ошибки</span>
 				</p>
 			</div>

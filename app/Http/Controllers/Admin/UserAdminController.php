@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 
 class UserAdminController extends Controller
 {
-	private UserRepositoryInterfaces $userRepository;
+	private UserRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepository
@@ -20,7 +20,7 @@ class UserAdminController extends Controller
 	public function __construct(UserRepositoryInterfaces $userRepository)
 	{
 		parent::__construct();
-		$this->userRepository = $userRepository;
+		$this->repository = $userRepository;
 	}
 
 	/**
@@ -28,7 +28,7 @@ class UserAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$allUser = $this->userRepository->getUser()->paginate($this->paginate);
+		$allUser = $this->repository->getUser()->paginate($this->paginate);
 
 		return view($this->backend . 'users.index', compact('allUser'));
 	}
@@ -52,7 +52,7 @@ class UserAdminController extends Controller
 	 */
 	public function store(UserRequest $request): RedirectResponse
 	{
-		$requestUser = $this->userRepository->setUsers($request);
+		$requestUser = $this->repository->setUsers($request);
 
 		return $this->ifErrorAddUpdate($requestUser, 'editUserAdmin', 'Ошибка сохранения');
 	}
@@ -66,7 +66,7 @@ class UserAdminController extends Controller
 	 */
 	public function edit(string $login): View|Factory|Application
 	{
-		$user = $this->userRepository->getUser($login);
+		$user = $this->repository->getUser($login);
 
 		return view($this->backend . 'users.edit', compact('user'));
 	}
@@ -81,7 +81,7 @@ class UserAdminController extends Controller
 	 */
 	public function update(UserRequest $request, string $login): RedirectResponse
 	{
-		$requestAnime = $this->userRepository->setUsers($request, $login);
+		$requestAnime = $this->repository->setUsers($request, $login);
 
 		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения', $login);
 	}
@@ -95,7 +95,7 @@ class UserAdminController extends Controller
 	 */
 	public function destroy(string $login): RedirectResponse
 	{
-		$delete = $this->userRepository->destroyUser($login);
+		$delete = $this->repository->destroyUser($login);
 
 		if ($delete) {
 			return back();

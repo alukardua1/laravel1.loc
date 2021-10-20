@@ -7,12 +7,6 @@
 
 namespace App\Repository\Interfaces;
 
-
-/**
- * Interface FavoritesRepositoryInterface
- *
- * @package App\Repositories\Interfaces
- */
 interface FavoriteRepositoryInterfaces
 {
     /**

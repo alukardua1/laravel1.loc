@@ -19,7 +19,7 @@
 @section('content')
 	@foreach($allFaq as $faq)
 		<div class="faq mb-3">
-			<a href="{{route('faqShow', $faq->url)}}">{{$faq->title}}</a>
+			<a href="{{route('showFaq', $faq->url)}}">{{$faq->title}}</a>
 		</div>
 	@endforeach
 	@if($allFaq->total() > $allFaq->count())

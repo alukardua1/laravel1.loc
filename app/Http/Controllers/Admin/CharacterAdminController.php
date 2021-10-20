@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CharacterRequest;
 use App\Repository\Interfaces\CharacterRepositoryInterfaces;
-use Illuminate\Http\Request;
 
 class CharacterAdminController extends Controller
 {
-	private CharacterRepositoryInterfaces $characterRepository;
+	private CharacterRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\CharacterRepositoryInterfaces  $characterRepositoryInterfaces
@@ -16,7 +16,7 @@ class CharacterAdminController extends Controller
 	public function __construct(CharacterRepositoryInterfaces $characterRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->characterRepository = $characterRepositoryInterfaces;
+		$this->repository = $characterRepositoryInterfaces;
 	}
 
 	/**
@@ -42,11 +42,11 @@ class CharacterAdminController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Http\Requests\CharacterRequest  $request
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(CharacterRequest $request)
 	{
 		//
 	}
@@ -78,12 +78,12 @@ class CharacterAdminController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int                       $id
+	 * @param  \App\Http\Requests\CharacterRequest  $request
+	 * @param  int                                  $id
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(CharacterRequest $request, $id)
 	{
 		//
 	}

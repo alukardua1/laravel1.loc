@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class KindAdminController extends Controller
 {
-	private KindRepositoryInterfaces $kindRepository;
+	private KindRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces
 	 */
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
-		$this->kindRepository = $kindRepositoryInterfaces;
+		$this->repository = $kindRepositoryInterfaces;
 		parent::__construct();
 	}
 

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class FaqAdminController extends Controller
 {
-	private FaqRepositoryInterfaces $faqRepository;
+	private FaqRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\FaqRepositoryInterfaces  $faqRepositoryInterfaces
@@ -16,7 +16,7 @@ class FaqAdminController extends Controller
 	public function __construct(FaqRepositoryInterfaces $faqRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->faqRepository = $faqRepositoryInterfaces;
+		$this->repository = $faqRepositoryInterfaces;
 	}
 
 	/**

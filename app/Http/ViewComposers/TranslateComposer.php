@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class TranslateComposer
 {
-	private mixed                         $translate;
-	private TranslateRepositoryInterfaces $translateRepository;
+	private TranslateRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces
 	 */
 	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{
-		$this->translateRepository = $translateRepositoryInterfaces;
-		$this->translate = $this->translate();
+		$this->repository = $translateRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function translate(): mixed
+	public function view(): mixed
 	{
-		return $this->translateRepository->getTranslate()->get();
+		return $this->repository->getTranslate()->get();
 	}
 
 	/**
@@ -38,6 +36,6 @@ class TranslateComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('translate', $this->translate);
+		$view->with('translate', $this->view());
 	}
 }

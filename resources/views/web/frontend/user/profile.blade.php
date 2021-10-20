@@ -56,9 +56,9 @@
 			<li>Заходил(а): {{$currentUser->last_logins}}</li>
 			<li>
 				<ul class="post-comments fx-row">
-					<li><a target="_blank" href="{{route('currentUserAnime', $currentUser->login)}}">Просмотреть все публикации</a></li>
-					<li><a target="_blank" href="{{route('currentUserRss', $currentUser->login)}}" title="RSS {{$currentUser->login}}">RSS {{$currentUser->login}}</a></li>
-					<li><a target="_blank" href="{{route('currentUserComments', $currentUser->login)}}">Последние комментарии</a></li>
+					<li><a target="_blank" href="{{route('showUserAnime', $currentUser->login)}}">Просмотреть все публикации</a></li>
+					<li><a target="_blank" href="{{route('showUserRss', $currentUser->login)}}" title="RSS {{$currentUser->login}}">RSS {{$currentUser->login}}</a></li>
+					<li><a target="_blank" href="{{route('showUserComments', $currentUser->login)}}">Последние комментарии</a></li>
 				</ul>
 			</li>
 			@if (Auth::user())
@@ -67,7 +67,7 @@
 				@endif
 				<li>
 					Место жительства:
-					<span>{{$currentUser->getCountry->name}}</span>,
+					<span>{{$currentUser->getCountry->title}}</span>,
 					<span>{{$currentUser->city}}</span>
 				</li>
 				<li>О себе: {{$currentUser->description}}</li>
@@ -86,7 +86,7 @@
 	</div>
 	@if (Auth::user())
 		@if((Auth::id() == $currentUser->id) or (Auth::user()->getGroup->id == 1))
-			<form id="userinfo" action="{{route('currentUserUpdate', $currentUser->login)}}" enctype="multipart/form-data" method="POST">
+			<form id="userinfo" action="{{route('updateUser', $currentUser->login)}}" enctype="multipart/form-data" method="POST">
 				@csrf
 				<div id="options" style="display:none; margin-bottom: 30px" class="form-wrap">
 					<h1>Редактирование профиля:</h1>

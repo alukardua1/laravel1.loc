@@ -9,12 +9,12 @@ use Illuminate\Contracts\View\View;
 
 class PeopleController extends Controller
 {
-	private PeopleRepositoryInterfaces $peopleRepository;
+	private PeopleRepositoryInterfaces $repository;
 
 	public function __construct(PeopleRepositoryInterfaces $peopleRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->peopleRepository = $peopleRepositoryInterfaces;
+		$this->repository = $peopleRepositoryInterfaces;
 	}
 
 	/**
@@ -24,7 +24,7 @@ class PeopleController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$people = $this->peopleRepository->getPeople()->pagonate($this->paginate);
+		$people = $this->repository->getPeople()->pagonate($this->paginate);
 
 		return view($this->frontend . 'people.index', compact('people'));
 	}
@@ -38,7 +38,7 @@ class PeopleController extends Controller
 	 */
 	public function show(string $url): View|Factory|Application
 	{
-		$people = $this->peopleRepository->getPeople($url)->first();
+		$people = $this->repository->getPeople($url)->first();
 		$this->isNotNull($people);
 		$title = $people->russian;
 		$description = null;

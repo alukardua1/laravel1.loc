@@ -99,7 +99,7 @@ $('#nameBtn').click(function () {
 	if ($value.length >= 4) {
 		$.ajax({
 			type: 'get',
-			url: '/searchAdmin',
+			url: '/admin/dashboard/anime/searchAnimeAdmin',
 			data: {'search': $value},
 			success: function (data) {
 				$("#searchsuggestions").html(data).fadeIn()

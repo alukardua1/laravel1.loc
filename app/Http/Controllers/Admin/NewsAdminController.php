@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class NewsAdminController extends Controller
 {
-	private NewsRepositoryInterfaces $newsRepository;
+	private NewsRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\NewsRepositoryInterfaces  $newsRepositoryInterfaces
@@ -16,7 +16,7 @@ class NewsAdminController extends Controller
 	public function __construct(NewsRepositoryInterfaces $newsRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->newsRepository = $newsRepositoryInterfaces;
+		$this->repository = $newsRepositoryInterfaces;
 	}
 
 	/**

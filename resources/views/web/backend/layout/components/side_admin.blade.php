@@ -15,17 +15,17 @@
 				<div class="collapse" id="edit">
 					<ul class="list-group list-group-flush bg-dark">
 						<li class="list-group-item">
-							<a class="nav-link" href="{{route('showAllAnimeAdmin')}}">
+							<a class="nav-link" href="{{route('indexAnimeAdmin')}}">
 								Аниме
 							</a>
 						</li>
 						<li class="list-group-item">
-							<a class="nav-link" href="{{route('showAllCategoryAdmin')}}">
+							<a class="nav-link" href="{{route('indexCategoryAdmin')}}">
 								Категории
 							</a>
 						</li>
 						<li class="list-group-item">
-							<a class="nav-link" href="{{route('peopleAdmin')}}">
+							<a class="nav-link" href="{{route('indexPeopleAdmin')}}">
 								Люди
 							</a>
 						</li>
@@ -80,13 +80,13 @@
 				<div class="collapse" id="user">
 					<ul class="list-group list-group-flush bg-dark">
 						<li class="list-group-item">
-							<a class="nav-link" href="{{route('usersAdmin')}}">
+							<a class="nav-link" href="{{route('indexUserAdmin')}}">
 								<span data-feather="user"></span>
 								Все пользователи
 							</a>
 						</li>
 						<li class="list-group-item">
-							<a class="nav-link" href="{{route('groupAdmin')}}">
+							<a class="nav-link" href="{{route('indexGroupAdmin')}}">
 								<span data-feather="users"></span>
 								Группы
 							</a>

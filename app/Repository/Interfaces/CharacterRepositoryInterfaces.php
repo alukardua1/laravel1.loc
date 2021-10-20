@@ -2,7 +2,7 @@
 
 namespace App\Repository\Interfaces;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CharacterRequest;
 
 interface CharacterRepositoryInterfaces
 {
@@ -14,12 +14,12 @@ interface CharacterRepositoryInterfaces
 	public function getCharacter(string $url = null): mixed;
 
 	/**
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  string|null               $url
+	 * @param  \App\Http\Requests\CharacterRequest  $request
+	 * @param  string|null                          $url
 	 *
 	 * @return mixed
 	 */
-	public function setCharacter(Request $request, string $url = null): mixed;
+	public function setCharacter(CharacterRequest $request, string $url = null): mixed;
 
 	/**
 	 * @param  string  $url

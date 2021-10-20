@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class QualityAdminController extends Controller
 {
-	private QualityRepositoryInterfaces $qualityRepository;
+	private QualityRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
@@ -16,7 +16,7 @@ class QualityAdminController extends Controller
 	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->qualityRepository = $qualityRepositoryInterfaces;
+		$this->repository = $qualityRepositoryInterfaces;
 	}
 
 	/**

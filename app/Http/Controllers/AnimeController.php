@@ -16,17 +16,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-/**
- * Class AnimeController
- *
- * @package App\Http\Controllers
- */
 class AnimeController extends Controller
 {
 	use FunctionTrait;
 	use ParseShikimori;
 
-	private AnimeRepositoryInterfaces $animeRepository;
+	private AnimeRepositoryInterfaces $repository;
 
 	private array $showPlayerGroup;
 	private array $attributeArr = [
@@ -40,7 +35,7 @@ class AnimeController extends Controller
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->animeRepository = $animeRepositoryInterfaces;
+		$this->repository = $animeRepositoryInterfaces;
 		$this->showPlayerGroup = config('secondConfig.showPlayerGroup');
 	}
 
@@ -51,7 +46,7 @@ class AnimeController extends Controller
 	 */
 	public function index(): Factory|View|Application
 	{
-		$allAnime = $this->animeRepository->getAnime()->paginate($this->paginate);
+		$allAnime = $this->repository->getAnime()->paginate($this->paginate);
 
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
@@ -61,7 +56,7 @@ class AnimeController extends Controller
 	 */
 	public function indexOngoing(): View|Factory|Application
 	{
-		$allAnime = $this->animeRepository->getCustomAnime('ongoing', 1)->paginate($this->paginate);
+		$allAnime = $this->repository->getCustomAnime('ongoing', 1)->paginate($this->paginate);
 		$title = 'Онгоинг';
 
 		return view($this->frontend . 'anime.short', compact('allAnime', 'title'));
@@ -77,7 +72,7 @@ class AnimeController extends Controller
 	 */
 	public function show(int $id, string $url = null): View|Factory|RedirectResponse|Application
 	{
-		$showAnime = $this->animeRepository->getAnime($id)->first();
+		$showAnime = $this->repository->getAnime($id)->first();
 		$this->isNotNull($showAnime);
 		$plus = $showAnime->vote['plus'];
 		$minus = -$showAnime->vote['minus'];
@@ -102,7 +97,7 @@ class AnimeController extends Controller
 	/**
 	 * Поиск
 	 *
-	 * @param  Request  $request
+	 * @param  \Illuminate\Http\Request  $request
 	 *
 	 * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
 	 */
@@ -110,7 +105,7 @@ class AnimeController extends Controller
 	{
 		if ($request->ajax()) {
 			$output = "";
-			$animeSearch = $this->animeRepository->getSearchAnime($request);
+			$animeSearch = $this->repository->getSearchAnime($request);
 			if ($animeSearch) {
 				foreach ($animeSearch as $key => $value) {
 					$output .= "<a href=\"/anime/{$value->id}-{$value->url}\">
@@ -133,7 +128,7 @@ class AnimeController extends Controller
 		$feed = App::make("feed");
 		$feed->setCache(config('secondConfig.cache_time'), 'laravelFeedKey');
 		if (!$feed->isCached()) {
-			$posts = $this->animeRepository->getAnime()->limit(config('secondConfig.limitRss'))->get();
+			$posts = $this->repository->getAnime()->limit(config('secondConfig.limitRss'))->get();
 
 			$feed = $this->getRss($feed, $posts);
 		}
@@ -149,9 +144,9 @@ class AnimeController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function setComments(int $id, CommentRequest $request): RedirectResponse
+	public function setComments(CommentRequest $request, int $id): RedirectResponse
 	{
-		$requestAnime = $this->animeRepository->setComment($id, $request);
+		$requestAnime = $this->repository->setComment($request, $id);
 
 		if ($requestAnime) {
 			return redirect()->back();
@@ -171,7 +166,7 @@ class AnimeController extends Controller
 	 */
 	public function deleteComments(int $commentId, bool $fullDel = false): RedirectResponse
 	{
-		$del = $this->animeRepository->delComments($commentId, $fullDel);
+		$del = $this->repository->delComments($commentId, $fullDel);
 
 		if ($del) {
 			return redirect()->back();

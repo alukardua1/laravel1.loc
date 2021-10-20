@@ -9,12 +9,12 @@ use Illuminate\Contracts\View\View;
 
 class FaqController extends Controller
 {
-	private FaqRepositoryInterfaces $faqRepository;
+	private FaqRepositoryInterfaces $repository;
 
 	public function __construct(FaqRepositoryInterfaces $faqRepository)
 	{
 		parent::__construct();
-		$this->faqRepository = $faqRepository;
+		$this->repository = $faqRepository;
 	}
 
 	/**
@@ -24,7 +24,7 @@ class FaqController extends Controller
 	 */
 	public function index(): Application|Factory|View
 	{
-		$allFaq = $this->faqRepository->getFaq()->paginate(20);
+		$allFaq = $this->repository->getFaq()->paginate(20);
 
 		return view($this->frontend . 'faq.index', compact('allFaq'));
 	}
@@ -38,7 +38,7 @@ class FaqController extends Controller
 	 */
 	public function show(string $faq): View|Factory|Application
 	{
-		$faqShow = $this->faqRepository->getFaq($faq)->first();
+		$faqShow = $this->repository->getFaq($faq)->first();
 
 		return view($this->frontend . 'faq.show', compact('faqShow'));
 	}

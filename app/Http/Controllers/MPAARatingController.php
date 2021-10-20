@@ -7,14 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class MPAARatingController
- *
- * @package App\Http\Controllers
- */
 class MPAARatingController extends Controller
 {
-	private MpaaRepositoryInterfaces $mpaaRepository;
+	private MpaaRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
@@ -22,7 +17,7 @@ class MPAARatingController extends Controller
 	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->mpaaRepository = $mpaaRepositoryInterfaces;
+		$this->repository = $mpaaRepositoryInterfaces;
 	}
 
 	/**
@@ -34,7 +29,7 @@ class MPAARatingController extends Controller
 	 */
 	public function show(string $mpaaUrl): View|Factory|Application
 	{
-		$showMpaa = $this->mpaaRepository->getMpaa($mpaaUrl)->first();
+		$showMpaa = $this->repository->getMpaa($mpaaUrl)->first();
 		$this->isNotNull($showMpaa);
 		$title = $showMpaa->description;
 		$description = null;

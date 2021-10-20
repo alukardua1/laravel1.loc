@@ -16,7 +16,7 @@
 @endsection
 
 @section('content')
-	<form action="{{route('tableOrderUpdate', $tableOrderShow->id)}}" method="post">
+	<form action="{{route('updateTableOrder', $tableOrderShow->id)}}" method="post">
 		@csrf
 		<input type="hidden" id="user_id" name="user_id" value="{{$tableOrderShow->user_id}}">
 		<div class="row mb-3">

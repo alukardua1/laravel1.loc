@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimeRequest;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
-use App\Services\ParseShikimori;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -14,17 +13,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-/**
- * Class AnimeAdminController
- *
- * @todo    К франшизе (если есть фильмы) добавить между какими сериями идет сюжет фильма
- * @package App\Http\Controllers\Admin
- */
 class AnimeAdminController extends Controller
 {
-	use ParseShikimori;
+	private AnimeRepositoryInterfaces $repository;
 
-	private AnimeRepositoryInterfaces $animeRepository;
+	/**@todo    К франшизе (если есть фильмы) добавить между какими сериями идет сюжет фильма */
 
 	/**
 	 * AnimeAdminController constructor.
@@ -34,7 +27,7 @@ class AnimeAdminController extends Controller
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->animeRepository = $animeRepositoryInterfaces;
+		$this->repository = $animeRepositoryInterfaces;
 	}
 
 	/**
@@ -44,7 +37,7 @@ class AnimeAdminController extends Controller
 	 */
 	public function index(): View|Factory|Response|Application
 	{
-		$showAnime = $this->animeRepository->getAnime(null, true)->paginate(50);
+		$showAnime = $this->repository->getAnime(null, true)->paginate(50);
 
 		return view($this->backend . 'anime.index', compact('showAnime'));
 	}
@@ -68,7 +61,7 @@ class AnimeAdminController extends Controller
 	 */
 	public function store(AnimeRequest $animeRequest): Response|RedirectResponse
 	{
-		$requestAnime = $this->animeRepository->setAnime($animeRequest);
+		$requestAnime = $this->repository->setAnime($animeRequest);
 
 		return $this->ifErrorAddUpdate($requestAnime, 'showAllAnimeAdmin', 'Ошибка сохранения');
 	}
@@ -82,7 +75,7 @@ class AnimeAdminController extends Controller
 	 */
 	public function edit(int $id): Factory|View|Response|Application
 	{
-		$currentAnime = $this->animeRepository->getAnime($id)->first();
+		$currentAnime = $this->repository->getAnime($id)->first();
 
 		//dd(__METHOD__, $this->getShikimori('//shikimori.one/animes/34566'));
 
@@ -100,7 +93,7 @@ class AnimeAdminController extends Controller
 	public function update(AnimeRequest $animeRequest, int $id): Response|RedirectResponse
 	{
 		// \Artisan::call('cache:clear');
-		$requestAnime = $this->animeRepository->setAnime($animeRequest, $id);
+		$requestAnime = $this->repository->setAnime($animeRequest, $id);
 
 		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения', $id);
 	}
@@ -114,8 +107,7 @@ class AnimeAdminController extends Controller
 	 */
 	public function destroy(int $id): RedirectResponse
 	{
-		$delete = $this->animeRepository->destroyAnime($id);
-
+		$delete = $this->repository->destroyAnime($id);
 		if ($delete) {
 			return back();
 		}
@@ -130,7 +122,7 @@ class AnimeAdminController extends Controller
 	{
 		if ($request->ajax()) {
 			$output = "";
-			$animeSearch = $this->animeRepository->getSearchAnime($request);
+			$animeSearch = $this->repository->getSearchAnime($request);
 			if ($animeSearch) {
 				$output .= "<ul class=\"list-group\">";
 				foreach ($animeSearch as $key => $value) {

@@ -10,24 +10,22 @@ use Illuminate\View\View;
 
 class UserComposer
 {
-	private mixed                    $user;
-	private UserRepositoryInterfaces $userRepository;
+	private UserRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepositoryInterfaces
 	 */
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
-		$this->userRepository = $userRepositoryInterfaces;
-		$this->user = $this->user();
+		$this->repository = $userRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function user(): mixed
+	public function view(): mixed
 	{
-		return $this->userRepository->getUser()->get();
+		return $this->repository->getUser()->get();
 	}
 
 	/**
@@ -39,6 +37,6 @@ class UserComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('user', $this->user);
+		$view->with('user', $this->view());
 	}
 }

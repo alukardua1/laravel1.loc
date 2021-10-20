@@ -4,7 +4,7 @@
 
 @section('content')
 	<div class="mb-3">
-		<a href="{{route('tableOrderAdd')}}" class="btn btn-primary">Добавить заказ</a>
+		<a href="{{route('createTableOrder')}}" class="btn btn-primary">Добавить заказ</a>
 	</div>
 
 	<table id="dtBasicExample" class="table table-dark table-striped" width="100%">
@@ -27,7 +27,7 @@
 			<tr>
 				<td>{{$value->id}}</td>
 				<td>{{$value->status}}</td>
-				<td><a href="{{route('tableOrderShow', $value->id)}}">{{$value->name_rus}} / {{$value->name_origin}}</a></td>
+				<td><a href="{{route('showTableOrder', $value->id)}}">{{$value->name_rus}} / {{$value->name_origin}}</a></td>
 				<td>{{$value->getTranslate->name}}</td>
 				<td>
 					@if ($value->wa_url)

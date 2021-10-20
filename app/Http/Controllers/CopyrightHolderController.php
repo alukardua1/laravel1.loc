@@ -9,12 +9,12 @@ use Illuminate\Contracts\View\View;
 
 class CopyrightHolderController extends Controller
 {
-	private CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
+	private CopyrightHolderRepositoryInterfaces $repository;
 
 	public function __construct(CopyrightHolderRepositoryInterfaces $copyrightHolderRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->copyrightHolderRepository = $copyrightHolderRepositoryInterfaces;
+		$this->repository = $copyrightHolderRepositoryInterfaces;
 	}
 
 	/**
@@ -26,7 +26,7 @@ class CopyrightHolderController extends Controller
 	 */
 	public function show(string $copyrightHolder): View|Factory|Application
 	{
-		$copyright = $this->copyrightHolderRepository->getCopyrightHolder($copyrightHolder)->first();
+		$copyright = $this->repository->getCopyrightHolder($copyrightHolder)->first();
 		$this->isNotNull($copyright);
 		$title = $copyright->title;
 		$allAnime = $copyright->getAnime()->paginate($this->paginate);

@@ -4,14 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Repository\Interfaces\VoteRepositoryInterface;
 
-/**
- * Class VoteController
- *
- * @package App\Http\Controllers
- */
 class VoteController extends Controller
 {
-	private VoteRepositoryInterface $voteRepository;
+	private VoteRepositoryInterface $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\VoteRepositoryInterface  $voteRepositoryInterface
@@ -19,7 +14,7 @@ class VoteController extends Controller
 	public function __construct(VoteRepositoryInterface $voteRepositoryInterface)
 	{
 		parent::__construct();
-		$this->voteRepository = $voteRepositoryInterface;
+		$this->repository = $voteRepositoryInterface;
 	}
 
 	/**
@@ -29,7 +24,7 @@ class VoteController extends Controller
 	 */
 	public function plus(int $id): string
 	{
-		$this->voteRepository->plusVotes($id);
+		$this->repository->plusVotes($id);
 
 		return url()->previous();
 	}
@@ -41,7 +36,7 @@ class VoteController extends Controller
 	 */
 	public function minus(int $id): string
 	{
-		$this->voteRepository->minusVotes($id);
+		$this->repository->minusVotes($id);
 
 		return url()->previous();
 	}

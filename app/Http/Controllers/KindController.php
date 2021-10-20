@@ -7,21 +7,16 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class KindController
- *
- * @package App\Http\Controllers
- */
 class KindController extends Controller
 {
-	private KindRepositoryInterfaces $kindRepository;
+	private KindRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces
 	 */
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
-		$this->kindRepository = $kindRepositoryInterfaces;
+		$this->repository = $kindRepositoryInterfaces;
 		parent::__construct();
 	}
 
@@ -34,7 +29,7 @@ class KindController extends Controller
 	 */
 	public function show(string $kindUrl): View|Factory|Application
 	{
-		$showKind = $this->kindRepository->getKind($kindUrl)->first();
+		$showKind = $this->repository->getKind($kindUrl)->first();
 		$this->isNotNull($showKind);
 		$title = $showKind->full_name;
 		$description = $showKind->description;

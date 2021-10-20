@@ -6,12 +6,12 @@ use App\Repository\Interfaces\JobPeopleRepositoryInterfaces;
 
 class JobPeopleController extends Controller
 {
-	private JobPeopleRepositoryInterfaces $jobPeopleRepository;
+	private JobPeopleRepositoryInterfaces $repository;
 
 	public function __construct(JobPeopleRepositoryInterfaces $jobPeopleRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->jobPeopleRepository = $jobPeopleRepositoryInterfaces;
+		$this->repository = $jobPeopleRepositoryInterfaces;
 	}
 
 	public function index()

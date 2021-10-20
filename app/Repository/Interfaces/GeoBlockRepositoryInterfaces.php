@@ -6,11 +6,6 @@ namespace App\Repository\Interfaces;
 
 use Illuminate\Http\Request;
 
-/**
- * Interface GeoBlockRepositoryInterfaces
- *
- * @package App\Repository\Interfaces
- */
 interface GeoBlockRepositoryInterfaces
 {
 	/**

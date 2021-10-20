@@ -16,7 +16,7 @@
 @endsection
 
 @section('content')
-	<form action="{{route('tableOrderStore')}}" method="post">
+	<form action="{{route('storeTableOrder')}}" method="post">
 		@csrf
 		<input type="hidden" id="user_id" name="user_id" value="{{Auth::id()}}">
 		<div class="row mb-3">

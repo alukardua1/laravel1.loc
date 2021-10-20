@@ -10,12 +10,12 @@ use Illuminate\Contracts\View\View;
 class StaticPageController extends Controller
 {
 
-	private StaticPageRepositoryInterfaces $staticPageRepository;
+	private StaticPageRepositoryInterfaces $repository;
 
 	public function __construct(StaticPageRepositoryInterfaces $staticPageRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->staticPageRepository = $staticPageRepositoryInterfaces;
+		$this->repository = $staticPageRepositoryInterfaces;
 	}
 
 	/**
@@ -25,7 +25,7 @@ class StaticPageController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$allStaticPage = $this->staticPageRepository->getPage()->paginate(20);
+		$allStaticPage = $this->repository->getPage()->paginate(20);
 
 		return view($this->frontend . 'static_page.index', compact('allStaticPage'));
 	}
@@ -39,7 +39,7 @@ class StaticPageController extends Controller
 	 */
 	public function show(string $page): View|Factory|Application
 	{
-		$staticPage = $this->staticPageRepository->getPage($page)->first();
+		$staticPage = $this->repository->getPage($page)->first();
 
 		return view($this->frontend . 'static_page.show', compact('staticPage'));
 	}

@@ -8,15 +8,14 @@ use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 
 class CustomAnimeComposer
 {
-	private mixed                     $custom;
-	private AnimeRepositoryInterfaces $animeRepository;
+	private AnimeRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->animeRepository = $animeRepositoryInterfaces;
+		$this->repository = $animeRepositoryInterfaces;
 	}
 
 	/**
@@ -26,9 +25,9 @@ class CustomAnimeComposer
 	 *
 	 * @return mixed
 	 */
-	public function anime(string $columns, string $custom, int $limit): mixed
+	public function view(string $columns, string $custom, int $limit): mixed
 	{
-		return $this->animeRepository->getCustomAnime($columns, $custom)->limit($limit)->get();
+		return $this->repository->getCustomAnime($columns, $custom)->limit($limit)->get();
 	}
 
 	/**

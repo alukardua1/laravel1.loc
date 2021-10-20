@@ -6,11 +6,6 @@ namespace App\Repository\Interfaces;
 
 use App\Http\Requests\TableOrderRequest;
 
-/**
- * Interface TableOrderRepositoryInterfaces
- *
- * @package App\Repository\Interfaces
- */
 interface TableOrderRepositoryInterfaces
 {
 	/**

@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 
 class UserApiController extends Controller
 {
-	private UserRepositoryInterfaces $userRepository;
+	private UserRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\UserRepositoryInterfaces  $userRepositoryInterfaces
@@ -17,7 +17,7 @@ class UserApiController extends Controller
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->userRepository = $userRepositoryInterfaces;
+		$this->repository = $userRepositoryInterfaces;
 	}
 
 	/**
@@ -30,7 +30,7 @@ class UserApiController extends Controller
 	 */
 	public function show(string $login, mixed $custom = null): Response|JsonResponse
 	{
-		$user = $this->userRepository->getUser($login);
+		$user = $this->repository->getUser($login);
 		if (empty($user)) {
 			return response()->json($this->error404());
 		}

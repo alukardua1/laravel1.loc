@@ -8,24 +8,22 @@ use Illuminate\View\View;
 
 class YearComposer
 {
-	private mixed                         $year;
-	private YearAiredRepositoryInterfaces $yearRepository;
+	private YearAiredRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
 	 */
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{
-		$this->yearRepository = $yearAiredRepositoryInterfaces;
-		$this->year = $this->year();
+		$this->repository = $yearAiredRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function year(): mixed
+	public function view(): mixed
 	{
-		return $this->yearRepository->getYearAired()->get();
+		return $this->repository->getYearAired()->get();
 	}
 
 	/**
@@ -37,6 +35,6 @@ class YearComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('year', $this->year);
+		$view->with('year', $this->view());
 	}
 }

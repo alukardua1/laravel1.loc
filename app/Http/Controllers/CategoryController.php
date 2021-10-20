@@ -7,14 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class CategoryController
- *
- * @package App\Http\Controllers
- */
 class CategoryController extends Controller
 {
-	private CategoryRepositoryInterfaces $categoryRepository;
+	private CategoryRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
@@ -22,7 +17,7 @@ class CategoryController extends Controller
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->categoryRepository = $categoryRepositoryInterfaces;
+		$this->repository = $categoryRepositoryInterfaces;
 	}
 
 	/**
@@ -32,7 +27,7 @@ class CategoryController extends Controller
 	 */
 	public function show(string $categoryUrl): View|Factory|Application
 	{
-		$currentCategory = $this->categoryRepository->getCategory($categoryUrl)->first();
+		$currentCategory = $this->repository->getCategory($categoryUrl)->first();
 		$this->isNotNull($currentCategory);
 		$title = $currentCategory->title;
 		$description = $currentCategory->description;

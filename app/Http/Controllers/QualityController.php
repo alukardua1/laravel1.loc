@@ -7,14 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class QualityController
- *
- * @package App\Http\Controllers
- */
 class QualityController extends Controller
 {
-	private QualityRepositoryInterfaces $qualityRepository;
+	private QualityRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
@@ -22,7 +17,7 @@ class QualityController extends Controller
 	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->qualityRepository = $qualityRepositoryInterfaces;
+		$this->repository = $qualityRepositoryInterfaces;
 	}
 
 	/**
@@ -34,7 +29,7 @@ class QualityController extends Controller
 	 */
 	public function show(string $qualityUrl): View|Factory|Application
 	{
-		$showQuality = $this->qualityRepository->getQuality($qualityUrl)->first();
+		$showQuality = $this->repository->getQuality($qualityUrl)->first();
 		$this->isNotNull($showQuality);
 		$title = $showQuality->title;
 		$description = $showQuality->description;

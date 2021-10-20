@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-	<form action="{{route('sendFeedback')}}" method="POST">
+	<form action="{{route('storeFeedback')}}" method="POST">
 		@csrf
 		<label for="name">Заголовок</label>
 		<input type="text" class="form-control" name="name" id="name">

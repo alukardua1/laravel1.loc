@@ -4,7 +4,7 @@
 
 @section('content')
 	<div>
-		<a class="btn btn-primary" href="{{route('addGroupAdmin')}}" type="button">Добавить</a>
+		<a class="btn btn-primary" href="{{route('createGroupAdmin')}}" type="button">Добавить</a>
 	</div>
 	<table class="table table-dark table-striped table-sm">
 		<thead>

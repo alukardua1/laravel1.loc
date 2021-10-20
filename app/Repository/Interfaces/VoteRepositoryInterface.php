@@ -7,12 +7,6 @@
 
 namespace App\Repository\Interfaces;
 
-
-/**
- * Interface VoteRepositoryInterface
- *
- * @package App\Repositories\Interfaces
- */
 interface VoteRepositoryInterface
 {
     /**

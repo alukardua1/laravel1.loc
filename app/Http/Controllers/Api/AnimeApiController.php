@@ -6,15 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Illuminate\Http\JsonResponse;
 
-/**
- * Class AnimeApiController
- *
- * @package App\Http\Controllers\Api
- * @mixin Controller
- */
 class AnimeApiController extends Controller
 {
-	private AnimeRepositoryInterfaces $apiAnimeRepository;
+	private AnimeRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
@@ -22,7 +16,7 @@ class AnimeApiController extends Controller
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->apiAnimeRepository = $animeRepositoryInterfaces;
+		$this->repository = $animeRepositoryInterfaces;
 	}
 
 	/**
@@ -32,7 +26,7 @@ class AnimeApiController extends Controller
 	 */
 	public function index(): JsonResponse
 	{
-		$anime = $this->apiAnimeRepository->getAnime()->paginate($this->paginate);
+		$anime = $this->repository->getAnime()->paginate($this->paginate);
 		$anime = $this->animeAllMutations($anime);
 
 		return response()->json($anime);
@@ -47,7 +41,7 @@ class AnimeApiController extends Controller
 	 */
 	public function show(int $id): JsonResponse
 	{
-		$thisAnime = $this->apiAnimeRepository->getAnime($id)->first();
+		$thisAnime = $this->repository->getAnime($id)->first();
 		if (empty($thisAnime)) {
 			return response()->json($this->error404());
 		}

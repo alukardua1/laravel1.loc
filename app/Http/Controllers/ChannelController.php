@@ -7,14 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class ChannelController
- *
- * @package App\Http\Controllers
- */
 class ChannelController extends Controller
 {
-	private ChannelRepositoryInterfaces $channelRepository;
+	private ChannelRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\ChannelRepositoryInterfaces  $channelRepositoryInterfaces
@@ -22,7 +17,7 @@ class ChannelController extends Controller
 	public function __construct(ChannelRepositoryInterfaces $channelRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->channelRepository = $channelRepositoryInterfaces;
+		$this->repository = $channelRepositoryInterfaces;
 	}
 
 	/**
@@ -34,7 +29,7 @@ class ChannelController extends Controller
 	 */
 	public function show(string $channelUrl): View|Factory|Application
 	{
-		$showChannel = $this->channelRepository->getChannel($channelUrl)->first();
+		$showChannel = $this->repository->getChannel($channelUrl)->first();
 		$this->isNotNull($showChannel);
 		$title = $showChannel->title;
 		$description = $showChannel->description;

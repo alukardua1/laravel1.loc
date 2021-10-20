@@ -4,13 +4,10 @@
 namespace App\Repository\Interfaces;
 
 
+use App\Http\Requests\AnimeRequest;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 
-/**
- * Interface AnimeRepositoryInterfaces
- *
- * @package App\Repository\Interfaces
- */
 interface AnimeRepositoryInterfaces
 {
 	/**
@@ -73,8 +70,8 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Поиск
 	 *
-	 * @param  Request  $request  Запрос
-	 * @param  int      $limit    количество выводимых записей
+	 * @param  \Illuminate\Http\Request  $request  Запрос
+	 * @param  int                       $limit    количество выводимых записей
 	 *
 	 * @return mixed
 	 */
@@ -83,12 +80,12 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Добавление/обновление комментариев
 	 *
-	 * @param  int      $id       ID записи
-	 * @param  Request  $request  Запрос
+	 * @param  int                                $id       ID записи
+	 * @param  \App\Http\Requests\CommentRequest  $request  Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setComment(int $id, Request $request): mixed;
+	public function setComment(CommentRequest $request, int $id): mixed;
 
 	/**
 	 * Удаление комментариев
@@ -104,12 +101,12 @@ interface AnimeRepositoryInterfaces
 	/**
 	 * Добавление/обновление аниме
 	 *
-	 * @param  Request   $request  Запрос
-	 * @param  int|null  $id       ID записи
+	 * @param  \App\Http\Requests\AnimeRequest  $request  Запрос
+	 * @param  int|null                         $id       ID записи
 	 *
 	 * @return mixed
 	 */
-	public function setAnime(Request $request, int $id = null): mixed;
+	public function setAnime(AnimeRequest $request, int $id = null): mixed;
 
 	/**
 	 * Удаляет текущую запись

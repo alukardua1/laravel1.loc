@@ -4,7 +4,7 @@
 
 @section('content')
 	<div class="mb-3">
-		<a class="btn btn-primary" href="{{route('addCategoryAdmin')}}" type="button">Добавить</a>
+		<a class="btn btn-primary" href="{{route('createCategoryAdmin')}}" type="button">Добавить</a>
 	</div>
 	<table class="table table-dark table-striped table-sm">
 		<thead>
@@ -17,24 +17,24 @@
 		</tr>
 		</thead>
 		<tbody>
-		@foreach($allCategory as $category)
+		@foreach($all as $item)
 			<tr>
 				<th scope="row">
-					{{$category->id}}
+					{{$item->id}}
 				</th>
 				<td>
-					<a href="{{route('editCategoryAdmin', $category->url)}}">{{$category->title}}</a>
+					<a href="{{route('editCategoryAdmin', $item->url)}}">{{$item->title}}</a>
 				</td>
 				<td>
-					{!! $category->description !!}
+					{!! $item->description !!}
 				</td>
 				<td>
-					{!! $category->posted_at ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-exclamation-circle"></i>' !!}
+					{!! $item->posted_at ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-exclamation-circle"></i>' !!}
 				</td>
 				<td>
 					<div class="btn-group">
-						<a type="button" class="btn" href="{{route('editCategoryAdmin', $category->url)}}"><i class="far fa-edit"></i></a>
-						<a type="button" class="btn" href="{{route('deleteCategoryAdmin', $category->url)}}"><i class="far fa-trash-alt"></i></a>
+						<a type="button" class="btn" href="{{route('editCategoryAdmin', $item->url)}}"><i class="far fa-edit"></i></a>
+						<a type="button" class="btn" href="{{route('deleteCategoryAdmin', $item->url)}}"><i class="far fa-trash-alt"></i></a>
 					</div>
 				</td>
 			</tr>

@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class KindComposer
 {
-	private mixed                    $kind;
-	private KindRepositoryInterfaces $kindRepository;
+	private KindRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\KindRepositoryInterfaces  $kindRepositoryInterfaces
 	 */
 	public function __construct(KindRepositoryInterfaces $kindRepositoryInterfaces)
 	{
-		$this->kindRepository = $kindRepositoryInterfaces;
-		$this->kind = $this->kind();
+		$this->repository = $kindRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function kind(): mixed
+	public function view(): mixed
 	{
-		return $this->kindRepository->getKind()->get();
+		return $this->repository->getKind()->get();
 	}
 
 	/**
@@ -38,6 +36,6 @@ class KindComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('kind', $this->kind);
+		$view->with('kind', $this->view());
 	}
 }

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CountryAdminController extends Controller
 {
-	private CountryRepositoryInterfaces $countryRepository;
+	private CountryRepositoryInterfaces $repository;
 
 	/**
 	 * CountryController constructor.
@@ -18,7 +18,7 @@ class CountryAdminController extends Controller
 	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->countryRepository = $countryRepositoryInterfaces;
+		$this->repository = $countryRepositoryInterfaces;
 	}
 
 	/**

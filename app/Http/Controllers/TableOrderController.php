@@ -11,11 +11,10 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use never;
 
 class TableOrderController extends Controller
 {
-	private TableOrderRepositoryInterfaces $tableOrderRepository;
+	private TableOrderRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\TableOrderRepositoryInterfaces  $tableOrderRepositoryInterfaces
@@ -23,7 +22,7 @@ class TableOrderController extends Controller
 	public function __construct(TableOrderRepositoryInterfaces $tableOrderRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->tableOrderRepository = $tableOrderRepositoryInterfaces;
+		$this->repository = $tableOrderRepositoryInterfaces;
 	}
 
 	/**
@@ -33,9 +32,9 @@ class TableOrderController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$allTableOrder = $this->tableOrderRepository->get(null, Auth::id())->paginate($this->paginate);
+		$allTableOrder = $this->repository->get(null, Auth::id())->paginate($this->paginate);
 
-		return view($this->frontend . 'order.order_show', compact('allTableOrder'));
+		return view($this->frontend . 'order.show', compact('allTableOrder'));
 	}
 
 	/**
@@ -45,7 +44,7 @@ class TableOrderController extends Controller
 	 */
 	public function create(): View|Factory|Application
 	{
-		return view($this->frontend . 'order.order_add');
+		return view($this->frontend . 'order.add');
 	}
 
 	/**
@@ -57,7 +56,7 @@ class TableOrderController extends Controller
 	 */
 	public function store(TableOrderRequest $request): Response|RedirectResponse
 	{
-		$tableOrder = $this->tableOrderRepository->set($request);
+		$tableOrder = $this->repository->set($request);
 		if ($tableOrder) {
 			return redirect()->route('tableOrder');
 		}
@@ -74,8 +73,8 @@ class TableOrderController extends Controller
 	 */
 	public function show(int $id): View|Factory|Application
 	{
-		$tableOrderShow = $this->tableOrderRepository->get($id, Auth::id())->first();
-		return view($this->frontend . 'order.order_edit', compact('tableOrderShow'));
+		$tableOrderShow = $this->repository->get($id, Auth::id())->first();
+		return view($this->frontend . 'order.edit', compact('tableOrderShow'));
 	}
 
 	/**
@@ -83,13 +82,13 @@ class TableOrderController extends Controller
 	 *
 	 * @param  int  $id
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\never
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function edit(int $id): View|Factory|never|Application
+	public function edit(int $id): View|Factory|Application
 	{
 		if (in_array(Auth::user()->group_id, [1, 2])) {
-			$currentTableOrder = $this->tableOrderRepository->get($id);
-			return view($this->frontend . 'order.order_edit', compact('currentTableOrder'));
+			$currentTableOrder = $this->repository->get($id);
+			return view($this->frontend . 'order.edit', compact('currentTableOrder'));
 		}
 
 		return abort(404);
@@ -106,7 +105,7 @@ class TableOrderController extends Controller
 	 */
 	public function update(TableOrderRequest $request, int $id): RedirectResponse
 	{
-		$tableOrder = $this->tableOrderRepository->set($request, $id);
+		$tableOrder = $this->repository->set($request, $id);
 		if ($tableOrder) {
 			return redirect()->route('tableOrder');
 		}

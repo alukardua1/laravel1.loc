@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 
 class GroupAdminController extends Controller
 {
-	private GroupRepositoryInterfaces $groupRepository;
+	private GroupRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\GroupRepositoryInterfaces  $groupRepositoryInterfaces
@@ -20,7 +20,7 @@ class GroupAdminController extends Controller
 	public function __construct(GroupRepositoryInterfaces $groupRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->groupRepository = $groupRepositoryInterfaces;
+		$this->repository = $groupRepositoryInterfaces;
 	}
 
 	/**
@@ -30,7 +30,7 @@ class GroupAdminController extends Controller
 	 */
 	public function index(): Factory|View|Application
 	{
-		$groupAll = $this->groupRepository->getGroup()->paginate($this->paginate);
+		$groupAll = $this->repository->getGroup()->paginate($this->paginate);
 
 		return view($this->backend . 'group/index', compact('groupAll'));
 	}
@@ -66,7 +66,7 @@ class GroupAdminController extends Controller
 	 */
 	public function edit(string $group): View|Factory|Application
 	{
-		$groupEdit = $this->groupRepository->getGroup($group);
+		$groupEdit = $this->repository->getGroup($group);
 
 		return view($this->backend . 'group.edit', compact('groupEdit'));
 	}

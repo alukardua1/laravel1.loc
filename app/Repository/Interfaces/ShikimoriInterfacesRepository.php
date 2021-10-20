@@ -3,12 +3,6 @@
 
 namespace App\Repository\Interfaces;
 
-
-/**
- * Interface ShikimoriInterfacesRepository
- *
- * @package App\Repository\Interfaces
- */
 interface ShikimoriInterfacesRepository
 {
 	/**

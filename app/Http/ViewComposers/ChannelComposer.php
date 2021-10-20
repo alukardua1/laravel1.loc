@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class ChannelComposer
 {
-	private mixed                       $channel;
-	private ChannelRepositoryInterfaces $channelRepository;
+	private ChannelRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\ChannelRepositoryInterfaces  $channelRepositoryInterfaces
 	 */
 	public function __construct(ChannelRepositoryInterfaces $channelRepositoryInterfaces)
 	{
-		$this->channelRepository = $channelRepositoryInterfaces;
-		$this->channel = $this->channel();
+		$this->repository = $channelRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function channel(): mixed
+	public function view(): mixed
 	{
-		return $this->channelRepository->getChannel()->get();
+		return $this->repository->getChannel()->get();
 	}
 
 	/**
@@ -38,6 +36,6 @@ class ChannelComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('channel', $this->channel);
+		$view->with('channel', $this->view());
 	}
 }

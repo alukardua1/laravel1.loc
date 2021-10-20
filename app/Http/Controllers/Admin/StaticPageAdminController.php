@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class StaticPageAdminController extends Controller
 {
-	private StaticPageRepositoryInterfaces $staticPageRepository;
+	private StaticPageRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\StaticPageRepositoryInterfaces  $staticPageRepositoryInterfaces
@@ -16,7 +16,7 @@ class StaticPageAdminController extends Controller
 	public function __construct(StaticPageRepositoryInterfaces $staticPageRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->staticPageRepository = $staticPageRepositoryInterfaces;
+		$this->repository = $staticPageRepositoryInterfaces;
 	}
 
 	/**

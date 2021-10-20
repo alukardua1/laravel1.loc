@@ -6,11 +6,6 @@ namespace App\Repository\Interfaces;
 
 use Illuminate\Http\Request;
 
-/**
- * Interface CopyrightHolderRepositoryInterfaces
- *
- * @package App\Repository\Interfaces
- */
 interface CopyrightHolderRepositoryInterfaces
 {
 	/**

@@ -7,15 +7,9 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
 use Illuminate\View\View;
 
-/**
- * Class CopyrightHolderComposer
- *
- * @package App\Http\ViewComposers
- */
 class CopyrightHolderComposer
 {
-	private mixed                               $copyrightHolder;
-	private CopyrightHolderRepositoryInterfaces $copyrightHolderRepository;
+	private CopyrightHolderRepositoryInterfaces $repository;
 
 	/**
 	 * CopyrightHolderComposer constructor.
@@ -24,16 +18,15 @@ class CopyrightHolderComposer
 	 */
 	public function __construct(CopyrightHolderRepositoryInterfaces $copyrightHolderRepositoryInterfaces)
 	{
-		$this->copyrightHolderRepository = $copyrightHolderRepositoryInterfaces;
-		$this->copyrightHolder = $this->copyrightHolder();
+		$this->repository = $copyrightHolderRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function copyrightHolder(): mixed
+	public function view(): mixed
 	{
-		return $this->copyrightHolderRepository->getCopyrightHolder()->get();
+		return $this->repository->getCopyrightHolder()->get();
 	}
 
 	/**
@@ -41,6 +34,6 @@ class CopyrightHolderComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('copyrightHolder', $this->copyrightHolder);
+		$view->with('copyrightHolder', $this->view());
 	}
 }

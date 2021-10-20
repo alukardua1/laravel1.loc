@@ -2,8 +2,8 @@
 
 namespace App\Repository;
 
+use App\Http\Requests\CharacterRequest;
 use App\Repository\Interfaces\CharacterRepositoryInterfaces;
-use Illuminate\Http\Request;
 
 class CharacterRepository implements CharacterRepositoryInterfaces
 {
@@ -19,12 +19,12 @@ class CharacterRepository implements CharacterRepositoryInterfaces
 	}
 
 	/**
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  string|null               $url
+	 * @param  \App\Http\Requests\CharacterRequest  $request
+	 * @param  string|null                          $url
 	 *
 	 * @return mixed
 	 */
-	public function setCharacter(Request $request, string $url = null): mixed
+	public function setCharacter(CharacterRequest $request, string $url = null): mixed
 	{
 		// TODO: Implement setCharacter() method.
 	}

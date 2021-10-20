@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class CountryComposer
 {
-	private mixed                       $country;
-	private CountryRepositoryInterfaces $countryRepository;
+	private CountryRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\CountryRepositoryInterfaces  $countryRepositoryInterfaces
 	 */
 	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{
-		$this->countryRepository = $countryRepositoryInterfaces;
-		$this->country = $this->country();
+		$this->repository = $countryRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function country(): mixed
+	public function view(): mixed
 	{
-		return $this->countryRepository->getCountry()->get();
+		return $this->repository->getCountry()->get();
 	}
 
 	/**
@@ -38,6 +36,6 @@ class CountryComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('country', $this->country);
+		$view->with('country', $this->view());
 	}
 }

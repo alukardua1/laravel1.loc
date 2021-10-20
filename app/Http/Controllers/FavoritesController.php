@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 
 class FavoritesController extends Controller
 {
-	private FavoriteRepositoryInterfaces $favoriteRepository;
+	private FavoriteRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\FavoriteRepositoryInterfaces  $favoriteRepositoryInterfaces
@@ -17,7 +17,7 @@ class FavoritesController extends Controller
 	public function __construct(FavoriteRepositoryInterfaces $favoriteRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->favoriteRepository = $favoriteRepositoryInterfaces;
+		$this->repository = $favoriteRepositoryInterfaces;
 	}
 
 	/**
@@ -27,7 +27,7 @@ class FavoritesController extends Controller
 	 */
 	public function index(string $login): View|Factory|Application
 	{
-		$allAnime = $this->favoriteRepository->getFavorite($login)->favorites()->paginate($this->paginate);
+		$allAnime = $this->repository->getFavorite($login)->favorites()->paginate($this->paginate);
 
 		return view($this->frontend . 'anime.short', compact('allAnime'));
 	}
@@ -41,7 +41,7 @@ class FavoritesController extends Controller
 	 */
 	public function add(int $id): string
 	{
-		$this->favoriteRepository->favorite($id);
+		$this->repository->favorite($id);
 
 		return url()->previous();
 	}
@@ -55,7 +55,7 @@ class FavoritesController extends Controller
 	 */
 	public function delete(int $id): string
 	{
-		$this->favoriteRepository->unFavorite($id);
+		$this->repository->unFavorite($id);
 
 		return url()->previous();
 	}

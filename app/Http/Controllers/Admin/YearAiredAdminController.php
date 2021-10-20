@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class YearAiredAdminController extends Controller
 {
-	private YearAiredRepositoryInterfaces $yearAired;
+	private YearAiredRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
@@ -16,7 +16,7 @@ class YearAiredAdminController extends Controller
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->yearAired = $yearAiredRepositoryInterfaces;
+		$this->repository = $yearAiredRepositoryInterfaces;
 	}
 
 	/**

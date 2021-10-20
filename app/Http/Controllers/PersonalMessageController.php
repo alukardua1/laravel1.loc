@@ -6,11 +6,6 @@ use App\Models\PersonalMessage;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-/**
- * Class PersonalMessageController
- *
- * @package App\Http\Controllers
- */
 class PersonalMessageController extends Controller
 {
 	/**

@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class PopularComposer
 {
-	private mixed                     $popular;
-	private AnimeRepositoryInterfaces $animeRepository;
+	private AnimeRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->animeRepository = $animeRepositoryInterfaces;
-		$this->popular = $this->popular();
+		$this->repository = $animeRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function popular(): mixed
+	public function view(): mixed
 	{
-		return $this->animeRepository->getPopular(10)->get()->sortByDesc('read_count');
+		return $this->repository->getPopular(10)->get()->sortByDesc('read_count');
 	}
 
 	/**
@@ -34,6 +32,6 @@ class PopularComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeAnons', $this->popular);
+		$view->with('animeAnons', $this->view());
 	}
 }

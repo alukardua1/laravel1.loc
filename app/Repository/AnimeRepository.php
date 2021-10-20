@@ -3,6 +3,8 @@
 
 namespace App\Repository;
 
+use App\Http\Requests\AnimeRequest;
+use App\Http\Requests\CommentRequest;
 use App\Models\Anime;
 use App\Models\Comment;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
@@ -159,12 +161,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	/**
 	 * Добавление/обновление комментариев
 	 *
-	 * @param  int      $id       ID записи
-	 * @param  Request  $request  Запрос
+	 * @param  \App\Http\Requests\CommentRequest  $request  Запрос
+	 * @param  int                                $id       ID записи
 	 *
 	 * @return mixed
 	 */
-	public function setComment(int $id, Request $request): mixed
+	public function setComment(CommentRequest $request, int $id): mixed
 	{
 		$validated = $request->validated();
 		return Comment::create($request->all());
@@ -204,12 +206,12 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	/**
 	 * Добавление/обновление аниме
 	 *
-	 * @param  Request   $request  Запрос
-	 * @param  int|null  $id       ID записи
+	 * @param  \App\Http\Requests\AnimeRequest  $request  Запрос
+	 * @param  int|null                         $id       ID записи
 	 *
 	 * @return mixed
 	 */
-	public function setAnime(Request $request, int $id = null): mixed
+	public function setAnime(AnimeRequest $request, int $id = null): mixed
 	{
 		$formRequest = $request->all();
 		$updatePost = Anime::firstOrCreate(['id' => $id], $formRequest); //если нашли то обновляем, иначе добавляем новую запись

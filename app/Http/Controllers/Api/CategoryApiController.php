@@ -7,7 +7,7 @@ use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 
 class CategoryApiController extends Controller
 {
-	private CategoryRepositoryInterfaces $categoryRepository;
+	private CategoryRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
@@ -15,7 +15,7 @@ class CategoryApiController extends Controller
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->categoryRepository = $categoryRepositoryInterfaces;
+		$this->repository = $categoryRepositoryInterfaces;
 	}
 
 	public function index()

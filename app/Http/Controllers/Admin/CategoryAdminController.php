@@ -13,7 +13,7 @@ use Illuminate\Http\Response;
 
 class CategoryAdminController extends Controller
 {
-	private CategoryRepositoryInterfaces $categoryRepository;
+	private CategoryRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\CategoryRepositoryInterfaces  $categoryRepositoryInterfaces
@@ -21,7 +21,7 @@ class CategoryAdminController extends Controller
 	public function __construct(CategoryRepositoryInterfaces $categoryRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->categoryRepository = $categoryRepositoryInterfaces;
+		$this->repository = $categoryRepositoryInterfaces;
 	}
 
 	/**
@@ -31,9 +31,9 @@ class CategoryAdminController extends Controller
 	 */
 	public function index(): View|Factory|Response|Application
 	{
-		$allCategory = $this->categoryRepository->getCategory(null, true);
+		$all = $this->repository->getCategory(null, true);
 
-		return view($this->backend . 'category.index', compact('allCategory'));
+		return view($this->backend . 'category.index', compact('all'));
 	}
 
 	/**
@@ -55,9 +55,9 @@ class CategoryAdminController extends Controller
 	 */
 	public function store(CategoryRequest $request): RedirectResponse
 	{
-		$update = $this->categoryRepository->setCategory($request);
+		$add = $this->repository->setCategory($request);
 
-		return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin', 'Ошибка сохранения');
+		return $this->ifErrorAddUpdate($add, 'showAllCategoryAdmin', 'Ошибка сохранения');
 	}
 
 	/**
@@ -69,9 +69,9 @@ class CategoryAdminController extends Controller
 	 */
 	public function edit(string $url): View|Factory|Application
 	{
-		$category = $this->categoryRepository->getCategory($url)->first();
+		$edit = $this->repository->getCategory($url)->first();
 
-		return view($this->backend . 'category.edit', compact('category'));
+		return view($this->backend . 'category.edit', compact('edit'));
 	}
 
 	/**
@@ -84,7 +84,7 @@ class CategoryAdminController extends Controller
 	 */
 	public function update(CategoryRequest $request, string $url): RedirectResponse
 	{
-		$update = $this->categoryRepository->setCategory($request, $url);
+		$update = $this->repository->setCategory($request, $url);
 
 		return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin', 'Ошибка сохранения');
 	}
@@ -98,7 +98,7 @@ class CategoryAdminController extends Controller
 	 */
 	public function destroy(string $url): RedirectResponse
 	{
-		$delete = $this->categoryRepository->delCategory($url);
+		$delete = $this->repository->delCategory($url);
 		if ($delete) {
 			return back();
 		}

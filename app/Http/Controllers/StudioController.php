@@ -7,14 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class StudioController
- *
- * @package App\Http\Controllers
- */
 class StudioController extends Controller
 {
-	private StudioRepositoryInterfaces $studioRepository;
+	private StudioRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
@@ -22,7 +17,7 @@ class StudioController extends Controller
 	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->studioRepository = $studioRepositoryInterfaces;
+		$this->repository = $studioRepositoryInterfaces;
 	}
 
 	/**
@@ -34,7 +29,7 @@ class StudioController extends Controller
 	 */
 	public function show(string $studiosUrl): View|Factory|Application
 	{
-		$showStudio = $this->studioRepository->getStudio($studiosUrl)->first();
+		$showStudio = $this->repository->getStudio($studiosUrl)->first();
 		$this->isNotNull($showStudio);
 		$title = $showStudio->title;
 		$description = $showStudio->description;

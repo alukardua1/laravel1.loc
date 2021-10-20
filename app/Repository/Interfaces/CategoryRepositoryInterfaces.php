@@ -5,11 +5,6 @@ namespace App\Repository\Interfaces;
 
 use App\Http\Requests\CategoryRequest;
 
-/**
- * Interface CategoryRepositoryInterfaces
- *
- * @package App\Repository\Interfaces
- */
 interface CategoryRepositoryInterfaces
 {
 

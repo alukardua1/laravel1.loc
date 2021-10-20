@@ -11,7 +11,7 @@ class KodikAdminController extends Controller
 {
 	use KodikTrait;
 
-	private KodikRepositoryInterfaces $kodikRepository;
+	private KodikRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\KodikRepositoryInterfaces  $kodikRepositoryInterfaces
@@ -19,7 +19,7 @@ class KodikAdminController extends Controller
 	public function __construct(KodikRepositoryInterfaces $kodikRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->kodikRepository = $kodikRepositoryInterfaces;
+		$this->repository = $kodikRepositoryInterfaces;
 	}
 
 	/**
@@ -28,11 +28,10 @@ class KodikAdminController extends Controller
 	 */
 	public function index(string $category = null, string $page = null)
 	{
-		$kodik = $this->kodikRepository->listKodik($category, $page);
+		$kodik = $this->repository->listKodik($category, $page);
 		$active = $this->categoryTabActive($category);
 		$button = $kodik['button'];
 		$cat = Route::getCurrentRoute()->parameters();
-		//dd(__METHOD__, $db);
 
 		return view($this->backend . 'kodik.index', compact('kodik', 'active', 'button', 'cat'));
 	}
@@ -43,7 +42,7 @@ class KodikAdminController extends Controller
 	 */
 	public function search(string $optionsSearch, string $search)
 	{
-		$kodik = $this->kodikRepository->searchKodik($optionsSearch, $search);
+		$kodik = $this->repository->searchKodik($optionsSearch, $search);
 
 		dd(__METHOD__, $kodik);
 	}

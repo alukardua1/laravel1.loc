@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class StudioComposer
 {
-	private mixed                      $studio;
-	private StudioRepositoryInterfaces $studioRepository;
+	private StudioRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
 	 */
 	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
-		$this->studioRepository = $studioRepositoryInterfaces;
-		$this->studio = $this->studio();
+		$this->repository = $studioRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function studio(): mixed
+	public function view(): mixed
 	{
-		return $this->studioRepository->getStudio()->get();
+		return $this->repository->getStudio()->get();
 	}
 
 	/**
@@ -38,6 +36,6 @@ class StudioComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('studios', $this->studio);
+		$view->with('studios', $this->view());
 	}
 }

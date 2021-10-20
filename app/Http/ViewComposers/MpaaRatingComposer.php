@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class MpaaRatingComposer
 {
-	private mixed                    $mpaa;
-	private MpaaRepositoryInterfaces $mpaaRepository;
+	private MpaaRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
 	 */
 	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
-		$this->mpaaRepository = $mpaaRepositoryInterfaces;
-		$this->mpaa = $this->mpaa();
+		$this->repository = $mpaaRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function mpaa(): mixed
+	public function view(): mixed
 	{
-		return $this->mpaaRepository->getMpaa()->get();
+		return $this->repository->getMpaa()->get();
 	}
 
 	/**
@@ -38,6 +36,6 @@ class MpaaRatingComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('mpaa', $this->mpaa);
+		$view->with('mpaa', $this->view());
 	}
 }

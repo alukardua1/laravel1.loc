@@ -7,14 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class CountryController
- *
- * @package App\Http\Controllers
- */
 class CountryController extends Controller
 {
-	private CountryRepositoryInterfaces $countryRepository;
+	private CountryRepositoryInterfaces $repository;
 
 	/**
 	 * CountryController constructor.
@@ -24,7 +19,7 @@ class CountryController extends Controller
 	public function __construct(CountryRepositoryInterfaces $countryRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->countryRepository = $countryRepositoryInterfaces;
+		$this->repository = $countryRepositoryInterfaces;
 	}
 
 	/**
@@ -36,7 +31,7 @@ class CountryController extends Controller
 	 */
 	public function show(string $countryUrl): View|Factory|Application
 	{
-		$showCountry = $this->countryRepository->getCountry($countryUrl);
+		$showCountry = $this->repository->getCountry($countryUrl);
 		$this->isNotNull($showCountry);
 		$title = $showCountry->title;
 		$description = $showCountry->description;

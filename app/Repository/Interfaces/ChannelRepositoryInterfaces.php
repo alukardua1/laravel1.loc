@@ -4,13 +4,8 @@
 namespace App\Repository\Interfaces;
 
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ChannelRequest;
 
-/**
- * Interface ChannelRepositoryInterfaces
- *
- * @package App\Repository\Interfaces
- */
 interface ChannelRepositoryInterfaces
 {
 	/**
@@ -25,12 +20,12 @@ interface ChannelRepositoryInterfaces
 	/**
 	 * Добавление/обновление канала
 	 *
-	 * @param  \Illuminate\Http\Request  $request  Запрос
-	 * @param  string|null               $url
+	 * @param  \App\Http\Requests\ChannelRequest  $request  Запрос
+	 * @param  string|null                        $url
 	 *
 	 * @return mixed
 	 */
-	public function setChannel(Request $request, string $url = null): mixed;
+	public function setChannel(ChannelRequest $request, string $url = null): mixed;
 
 	/**
 	 * @param  string  $url

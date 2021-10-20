@@ -7,15 +7,9 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\GeoBlockRepositoryInterfaces;
 use Illuminate\View\View;
 
-/**
- * Class GeoBlockComposer
- *
- * @package App\Http\ViewComposers
- */
 class GeoBlockComposer
 {
-	private mixed                        $geoBlock;
-	private GeoBlockRepositoryInterfaces $geoBlockRepository;
+	private GeoBlockRepositoryInterfaces $repository;
 
 	/**
 	 * GeoBlockComposer constructor.
@@ -24,16 +18,15 @@ class GeoBlockComposer
 	 */
 	public function __construct(GeoBlockRepositoryInterfaces $geoBlockRepositoryInterfaces)
 	{
-		$this->geoBlockRepository = $geoBlockRepositoryInterfaces;
-		$this->geoBlock = $this->geoBlock();
+		$this->repository = $geoBlockRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function geoBlock(): mixed
+	public function view(): mixed
 	{
-		return $this->geoBlockRepository->getGeoBlock()->get();
+		return $this->repository->getGeoBlock()->get();
 	}
 
 	/**
@@ -41,6 +34,6 @@ class GeoBlockComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('geoBlock', $this->geoBlock);
+		$view->with('geoBlock', $this->view());
 	}
 }

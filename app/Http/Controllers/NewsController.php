@@ -9,14 +9,14 @@ use Illuminate\Contracts\View\View;
 
 class NewsController extends Controller
 {
-	private NewsRepositoryInterfaces $newsRepository;
+	private NewsRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\NewsRepositoryInterfaces  $newsRepositoryInterfaces
 	 */
 	public function __construct(NewsRepositoryInterfaces $newsRepositoryInterfaces)
 	{
-		$this->newsRepository = $newsRepositoryInterfaces;
+		$this->repository = $newsRepositoryInterfaces;
 		parent::__construct();
 	}
 
@@ -27,7 +27,7 @@ class NewsController extends Controller
 	 */
 	public function index(): Factory|View|Application
 	{
-		$news = $this->newsRepository->getNews()->paginate($this->paginate);
+		$news = $this->repository->getNews()->paginate($this->paginate);
 
 		return view($this->frontend . 'news.short_news', compact('news'));
 	}
@@ -41,7 +41,7 @@ class NewsController extends Controller
 	 */
 	public function show(int $id): View|Factory|Application
 	{
-		$news = $this->newsRepository->getNews($id)->get();
+		$news = $this->repository->getNews($id)->get();
 
 		return view($this->frontend . 'news.full_news', compact('news'));
 	}

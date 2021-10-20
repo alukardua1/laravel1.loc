@@ -30,19 +30,20 @@ Route::group(
 		Route::group(
 			['prefix' => 'anime',],
 			function () {
-				Route::get('/', [AnimeAdminController::class, 'index'])->name('showAllAnimeAdmin');
+				Route::get('/', [AnimeAdminController::class, 'index'])->name('indexAnimeAdmin');
 				Route::get('/add', [AnimeAdminController::class, 'create'])->name('createAnimeAdmin');
 				Route::post('/add', [AnimeAdminController::class, 'store'])->name('storeAnimeAdmin');
 				Route::get('/{id}/edit', [AnimeAdminController::class, 'edit'])->name('editAnimeAdmin');
 				Route::post('/{id}/update', [AnimeAdminController::class, 'update'])->name('updateAnimeAdmin');
 				Route::get('/{id}/delete', [AnimeAdminController::class, 'destroy'])->name('deleteAnimeAdmin');
+				Route::get('/searchAnimeAdmin', [AnimeAdminController::class, 'search'])->name('searchAnimeAdmin');
 			}
 		);
 		Route::group(
 			['prefix' => 'category',],
 			function () {
-				Route::get('/', [CategoryAdminController::class, 'index'])->name('showAllCategoryAdmin');
-				Route::get('/add', [CategoryAdminController::class, 'create'])->name('addCategoryAdmin');
+				Route::get('/', [CategoryAdminController::class, 'index'])->name('indexCategoryAdmin');
+				Route::get('/add', [CategoryAdminController::class, 'create'])->name('createCategoryAdmin');
 				Route::post('/add', [CategoryAdminController::class, 'store'])->name('storeCategoryAdmin');
 				Route::get('/{id}/edit', [CategoryAdminController::class, 'edit'])->name('editCategoryAdmin');
 				Route::post('/{id}/update', [CategoryAdminController::class, 'update'])->name('updateCategoryAdmin');
@@ -52,8 +53,8 @@ Route::group(
 		Route::group(
 			['prefix' => 'user',],
 			function () {
-				Route::get('/', [UserAdminController::class, 'index'])->name('usersAdmin');
-				Route::get('/add', [UserAdminController::class, 'create'])->name('addUserAdmin');
+				Route::get('/', [UserAdminController::class, 'index'])->name('indexUserAdmin');
+				Route::get('/add', [UserAdminController::class, 'create'])->name('createUserAdmin');
 				Route::post('/add', [UserAdminController::class, 'store'])->name('storeUserAdmin');
 				Route::get('/{login}/edit', [UserAdminController::class, 'edit'])->name('editUserAdmin');
 				Route::post('/{login}/update', [UserAdminController::class, 'update'])->name('updateUserAdmin');
@@ -63,8 +64,8 @@ Route::group(
 		Route::group(
 			['prefix' => 'group',],
 			function () {
-				Route::get('/', [GroupAdminController::class, 'index'])->name('groupAdmin');
-				Route::get('/add', [GroupAdminController::class, 'create'])->name('addGroupAdmin');
+				Route::get('/', [GroupAdminController::class, 'index'])->name('indexGroupAdmin');
+				Route::get('/add', [GroupAdminController::class, 'create'])->name('createGroupAdmin');
 				Route::post('/add', [GroupAdminController::class, 'store'])->name('storeGroupAdmin');
 				Route::get('/{group}/edit', [GroupAdminController::class, 'edit'])->name('editGroupAdmin');
 				Route::post('/{group}/update', [GroupAdminController::class, 'update'])->name('updateGroupAdmin');
@@ -74,8 +75,8 @@ Route::group(
 		Route::group(
 			['prefix' => 'people',],
 			function () {
-				Route::get('/', [PeopleAdminController::class, 'index'])->name('peopleAdmin');
-				Route::get('/{people}/edit', [PeopleAdminController::class, 'edit'])->name('peopleEditAdmin');
+				Route::get('/', [PeopleAdminController::class, 'index'])->name('indexPeopleAdmin');
+				Route::get('/{people}/edit', [PeopleAdminController::class, 'edit'])->name('editPeopleAdmin');
 			}
 		);
 		Route::group(

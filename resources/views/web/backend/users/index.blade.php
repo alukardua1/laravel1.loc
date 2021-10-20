@@ -3,7 +3,7 @@
 
 @section('content')
 	<div>
-		<a class="btn btn-outline-success" href="{{route('addUserAdmin')}}" type="button">Добавить</a>
+		<a class="btn btn-outline-success" href="{{route('createUserAdmin')}}" type="button">Добавить</a>
 	</div>
 	<div class="input-group mb-3">
 		<input type="text" id="name" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="name">

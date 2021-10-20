@@ -11,12 +11,15 @@ use Illuminate\Http\Request;
 
 class PeopleAdminController extends Controller
 {
-	private PeopleRepositoryInterfaces $peopleRepository;
+	private PeopleRepositoryInterfaces $repository;
 
+	/**
+	 * @param  \App\Repository\Interfaces\PeopleRepositoryInterfaces  $peopleRepositoryInterfaces
+	 */
 	public function __construct(PeopleRepositoryInterfaces $peopleRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->peopleRepository = $peopleRepositoryInterfaces;
+		$this->repository = $peopleRepositoryInterfaces;
 	}
 
 	/**
@@ -26,7 +29,7 @@ class PeopleAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$people = $this->peopleRepository->getPeople()->paginate($this->paginate);
+		$people = $this->repository->getPeople()->paginate($this->paginate);
 
 		return view($this->backend . 'people.index', compact('people'));
 	}

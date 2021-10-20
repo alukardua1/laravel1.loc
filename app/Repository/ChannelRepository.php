@@ -4,9 +4,9 @@
 namespace App\Repository;
 
 
+use App\Http\Requests\ChannelRequest;
 use App\Models\Channel;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
-use Illuminate\Http\Request;
 
 /**
  * Class ChannelRepository
@@ -33,12 +33,12 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	/**
 	 * Добавление/обновление канала
 	 *
-	 * @param  \Illuminate\Http\Request  $request  Запрос
-	 * @param  string|null               $url
+	 * @param  \App\Http\Requests\ChannelRequest  $request  Запрос
+	 * @param  string|null                        $url
 	 *
 	 * @return mixed
 	 */
-	public function setChannel(Request $request, string $url = null): mixed
+	public function setChannel(ChannelRequest $request, string $url = null): mixed
 	{
 		// TODO: Implement setChannel() method.
 	}

@@ -3,12 +3,6 @@
 
 namespace App\Repository\Interfaces;
 
-
-/**
- * Interface VideoHostRepositoryInterfaces
- *
- * @package App\Repository\Interfaces
- */
 interface VideoHostRepositoryInterfaces
 {
 	/**

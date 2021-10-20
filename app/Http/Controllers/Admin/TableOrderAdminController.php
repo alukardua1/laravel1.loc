@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TableOrderAdminController extends Controller
 {
-	private TableOrderRepositoryInterfaces $tableOrderRepository;
+	private TableOrderRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\TableOrderRepositoryInterfaces  $tableOrderRepositoryInterfaces
@@ -16,7 +16,7 @@ class TableOrderAdminController extends Controller
 	public function __construct(TableOrderRepositoryInterfaces $tableOrderRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->tableOrderRepository = $tableOrderRepositoryInterfaces;
+		$this->repository = $tableOrderRepositoryInterfaces;
 	}
 
 	/**

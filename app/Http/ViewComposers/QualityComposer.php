@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class QualityComposer
 {
-	private mixed                       $quality;
-	private QualityRepositoryInterfaces $qualityRepository;
+	private QualityRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\QualityRepositoryInterfaces  $qualityRepositoryInterfaces
 	 */
 	public function __construct(QualityRepositoryInterfaces $qualityRepositoryInterfaces)
 	{
-		$this->qualityRepository = $qualityRepositoryInterfaces;
-		$this->quality = $this->quality();
+		$this->repository = $qualityRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function quality(): mixed
+	public function view(): mixed
 	{
-		return $this->qualityRepository->getQuality()->get();
+		return $this->repository->getQuality()->get();
 	}
 
 	/**
@@ -38,6 +36,6 @@ class QualityComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('quality', $this->quality);
+		$view->with('quality', $this->view());
 	}
 }

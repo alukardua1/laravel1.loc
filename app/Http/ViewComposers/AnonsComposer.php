@@ -9,24 +9,22 @@ use Illuminate\View\View;
 
 class AnonsComposer
 {
-	private mixed                     $anons;
-	private AnimeRepositoryInterfaces $animeRepository;
+	private AnimeRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->animeRepository = $animeRepositoryInterfaces;
-		$this->anons = $this->anons();
+		$this->repository = $animeRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function anons(): mixed
+	public function view(): mixed
 	{
-		return $this->animeRepository->getAnons(100)->get();
+		return $this->repository->getAnons(100)->get();
 	}
 
 	/**
@@ -34,6 +32,6 @@ class AnonsComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeAnons', $this->anons);
+		$view->with('animeAnons', $this->view());
 	}
 }

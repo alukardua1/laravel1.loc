@@ -10,14 +10,9 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-/**
- * Class UserController
- *
- * @package App\Http\Controllers
- */
 class UserController extends Controller
 {
-	private UserRepositoryInterfaces $userRepository;
+	private UserRepositoryInterfaces $repository;
 	private int                      $limitRss;
 	private int                      $timeCacheRss;
 
@@ -27,7 +22,7 @@ class UserController extends Controller
 	public function __construct(UserRepositoryInterfaces $userRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->userRepository = $userRepositoryInterfaces;
+		$this->repository = $userRepositoryInterfaces;
 		$this->limitRss = config('secondConfig.limitRss');
 		$this->timeCacheRss = config('secondConfig.cache_time');
 	}
@@ -39,7 +34,7 @@ class UserController extends Controller
 	 */
 	public function show(string $login): View|Factory|Application
 	{
-		$currentUser = $this->userRepository->getUser($login);
+		$currentUser = $this->repository->getUser($login);
 		$currentUser->created = $currentUser->created_at;
 		$currentUser->last_logins = $currentUser->last_login;
 
@@ -53,7 +48,7 @@ class UserController extends Controller
 	 */
 	public function showComment(string $login): Factory|View|Application
 	{
-		$currentUser = $this->userRepository->getUser($login);
+		$currentUser = $this->repository->getUser($login);
 		$this->isNotNull($currentUser);
 		$title = "Комментарии пользователя {$currentUser->login}";
 		$description = '';
@@ -70,7 +65,7 @@ class UserController extends Controller
 	 */
 	public function edit(string $login): View|Factory|Application
 	{
-		$currentUser = $this->userRepository->getUser($login);
+		$currentUser = $this->repository->getUser($login);
 
 		return view($this->frontend . 'user.edit', compact('currentUser'));
 	}
@@ -84,10 +79,10 @@ class UserController extends Controller
 	public function update(string $login, UserRequest $request): RedirectResponse
 	{
 		unset($request['login'], $request['email']);
-		$requestUser = $this->userRepository->setUsers($request, $login);
+		$requestUser = $this->repository->setUsers($request, $login);
 
 		if ($requestUser) {
-			return redirect()->route('currentUser', $login);
+			return redirect()->route('showUser', $login);
 		}
 
 		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
@@ -100,7 +95,7 @@ class UserController extends Controller
 	 */
 	public function showAnime(string $login): View|Factory|Application
 	{
-		$currentUser = $this->userRepository->getUser($login);
+		$currentUser = $this->repository->getUser($login);
 		$this->isNotNull($currentUser);
 		$title = "Аниме добавленое пользователем $currentUser->login";
 		$description = '';
@@ -119,7 +114,7 @@ class UserController extends Controller
 		$feed = App::make("feed");
 		$feed->setCache($this->timeCacheRss, 'laravelFeedKey');
 		if (!$feed->isCached()) {
-			$currentUser = $this->userRepository->getUser($login);
+			$currentUser = $this->repository->getUser($login);
 			$posts = $currentUser->getAnime()->limit($this->limitRss)->get();
 
 			$feed = $this->getRss($feed, $posts, $currentUser->login);

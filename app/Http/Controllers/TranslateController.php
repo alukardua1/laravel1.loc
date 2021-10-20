@@ -7,14 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class TranslateController
- *
- * @package App\Http\Controllers
- */
 class TranslateController extends Controller
 {
-	private TranslateRepositoryInterfaces $translate;
+	private TranslateRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces
@@ -22,7 +17,7 @@ class TranslateController extends Controller
 	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->translate = $translateRepositoryInterfaces;
+		$this->repository = $translateRepositoryInterfaces;
 	}
 
 	/**
@@ -34,7 +29,7 @@ class TranslateController extends Controller
 	 */
 	public function show(string $translateUrl): Factory|View|Application
 	{
-		$showTranslate = $this->translate->getTranslate($translateUrl)->first();
+		$showTranslate = $this->repository->getTranslate($translateUrl)->first();
 		$this->isNotNull($showTranslate);
 		$title = $showTranslate->title;
 		$description = $showTranslate->description;

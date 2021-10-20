@@ -8,11 +8,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class HomeController
- *
- * @package App\Http\Controllers
- */
 class HomeController extends Controller
 {
 	private AnimeRepositoryInterfaces $animeRepository;

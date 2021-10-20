@@ -16,10 +16,10 @@
 					<a class="nav-link" aria-current="page" href="{{route('ongoing')}}">Онгоинги</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{route('static_pageShow', 'pravoobladatelyam')}}">© Правообладателям</a>
+					<a class="nav-link" href="{{route('showStaticPage', 'pravoobladatelyam')}}">© Правообладателям</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{route('faqAll')}}">Faq</a>
+					<a class="nav-link" href="{{route('indexFaq')}}">Faq</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" target="_blank" href="https://vk.com/animefree_ru" title="Мы в вконтакте"><i class="fab fa-vk"></i></a>

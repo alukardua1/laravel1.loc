@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class MPAAAdminController extends Controller
 {
-	private MpaaRepositoryInterfaces $mpaaRepository;
+	private MpaaRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\MpaaRepositoryInterfaces  $mpaaRepositoryInterfaces
@@ -16,7 +16,7 @@ class MPAAAdminController extends Controller
 	public function __construct(MpaaRepositoryInterfaces $mpaaRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->mpaaRepository = $mpaaRepositoryInterfaces;
+		$this->repository = $mpaaRepositoryInterfaces;
 	}
 
 	/**

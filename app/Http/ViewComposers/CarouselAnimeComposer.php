@@ -7,31 +7,24 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Illuminate\View\View;
 
-/**
- * Class CarouselAnimeComposer
- *
- * @package App\Http\ViewComposers
- */
 class CarouselAnimeComposer
 {
-	private mixed                     $carousel;
-	private AnimeRepositoryInterfaces $animeRepository;
+	private AnimeRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
 	 */
 	public function __construct(AnimeRepositoryInterfaces $animeRepositoryInterfaces)
 	{
-		$this->animeRepository = $animeRepositoryInterfaces;
-		$this->carousel = $this->carousel();
+		$this->repository = $animeRepositoryInterfaces;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function carousel(): mixed
+	public function view(): mixed
 	{
-		return $this->animeRepository->getFirstPageAnime(100)->get();
+		return $this->repository->getFirstPageAnime(100)->get();
 	}
 
 	/**
@@ -39,6 +32,6 @@ class CarouselAnimeComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeCarousel', $this->carousel);
+		$view->with('animeCarousel', $this->view());
 	}
 }

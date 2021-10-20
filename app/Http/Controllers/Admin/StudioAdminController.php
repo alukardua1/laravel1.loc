@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class StudioAdminController extends Controller
 {
-	private StudioRepositoryInterfaces $studioRepository;
+	private StudioRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\StudioRepositoryInterfaces  $studioRepositoryInterfaces
@@ -16,7 +16,7 @@ class StudioAdminController extends Controller
 	public function __construct(StudioRepositoryInterfaces $studioRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->studioRepository = $studioRepositoryInterfaces;
+		$this->repository = $studioRepositoryInterfaces;
 	}
 
 	/**

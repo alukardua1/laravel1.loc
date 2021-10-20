@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class CharacterController extends Controller
 {
-	private CharacterRepositoryInterfaces $characterRepository;
+	private CharacterRepositoryInterfaces $repository;
 
 	public function __construct(CharacterRepositoryInterfaces $characterRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->characterRepository = $characterRepositoryInterfaces;
+		$this->repository = $characterRepositoryInterfaces;
 	}
 
 	/**

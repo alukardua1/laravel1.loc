@@ -7,14 +7,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
-/**
- * Class YearAiredController
- *
- * @package App\Http\Controllers
- */
 class YearAiredController extends Controller
 {
-	private YearAiredRepositoryInterfaces $yearAired;
+	private YearAiredRepositoryInterfaces $repository;
 
 	/**
 	 * @param  \App\Repository\Interfaces\YearAiredRepositoryInterfaces  $yearAiredRepositoryInterfaces
@@ -22,7 +17,7 @@ class YearAiredController extends Controller
 	public function __construct(YearAiredRepositoryInterfaces $yearAiredRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->yearAired = $yearAiredRepositoryInterfaces;
+		$this->repository = $yearAiredRepositoryInterfaces;
 	}
 
 	/**
@@ -34,7 +29,7 @@ class YearAiredController extends Controller
 	 */
 	public function show(string $yearUrl): View|Factory|Application
 	{
-		$showYear = $this->yearAired->getYearAired($yearUrl)->first();
+		$showYear = $this->repository->getYearAired($yearUrl)->first();
 		$this->isNotNull($showYear);
 		$title = $showYear->year . ' год выпуска';
 		$description = null;
