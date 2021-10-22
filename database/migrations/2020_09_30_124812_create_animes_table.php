@@ -27,7 +27,7 @@ class CreateAnimesTable extends Migration
 	        $table->string('russian')->index();
 	        $table->string('english')->nullable()->index();
 	        $table->string('japanese')->nullable()->index();
-	        $table->string('synonyms')->nullable()->index();
+	        $table->text('synonyms')->nullable();
 	        $table->string('license_name_ru')->nullable()->index();
 	        $table->text('original_img')->nullable();
 	        $table->text('preview_img')->nullable();

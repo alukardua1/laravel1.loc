@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.64.0.
+ * Generated for Laravel 8.65.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2346,6 +2346,20 @@ namespace Illuminate\Support\Facades {
 		{
 			/** @var \Illuminate\Auth\SessionGuard $instance */
 			return $instance->viaRemember();
+		}
+
+		/**
+		 * Set the number of minutes the remember me cookie should be valid for.
+		 *
+		 * @param  int  $minutes
+		 *
+		 * @return \Illuminate\Auth\SessionGuard
+		 * @static
+		 */
+		public static function setRememberDuration($minutes)
+		{
+			/** @var \Illuminate\Auth\SessionGuard $instance */
+			return $instance->setRememberDuration($minutes);
 		}
 
 		/**
@@ -9219,6 +9233,22 @@ namespace Illuminate\Support\Facades {
 		}
 
 		/**
+		 * Assert if a notification was sent on-demand based on a truth-test callback.
+		 *
+		 * @param  string|\Closure  $notification
+		 * @param  callable|null    $callback
+		 *
+		 * @throws \Exception
+		 * @static
+		 * @return void
+		 */
+		public static function assertSentOnDemand($notification, $callback = null)
+		{
+			/** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
+			$instance->assertSentOnDemand($notification, $callback);
+		}
+
+		/**
 		 * Assert if a notification was sent based on a truth-test callback.
 		 *
 		 * @param  mixed            $notifiable
@@ -9233,6 +9263,21 @@ namespace Illuminate\Support\Facades {
 		{
 			/** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
 			$instance->assertSentTo($notifiable, $notification, $callback);
+		}
+
+		/**
+		 * Assert if a notification was sent on-demand a number of times.
+		 *
+		 * @param  string  $notification
+		 * @param  int     $times
+		 *
+		 * @return void
+		 * @static
+		 */
+		public static function assertSentOnDemandTimes($notification, $times = 1)
+		{
+			/** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
+			$instance->assertSentOnDemandTimes($notification, $times);
 		}
 
 		/**
@@ -12299,7 +12344,7 @@ namespace Illuminate\Support\Facades {
 		/**
 		 * Retrieve input from the request as a collection.
 		 *
-		 * @param  string|null  $key
+		 * @param  array|string|null  $key
 		 *
 		 * @return \Illuminate\Support\Collection
 		 * @static
@@ -19339,27 +19384,28 @@ namespace Jenssegers\Agent\Facades {
 		 * Method gets the mobile detection rules + utilities.
 		 *
 		 * The reason this is separate is because utilities rules
-         * don't necessary imply mobile. This method is used inside
-         * the new $detect->is('stuff') method.
-         *
-         * @deprecated since version 2.6.9
-         * @return array All the rules + extended.
-         * @static
-         */
-        public static function getMobileDetectionRulesExtended()
-        {            //Method inherited from \Mobile_Detect
-                        /** @var \Jenssegers\Agent\Agent $instance */
-                        return $instance->getMobileDetectionRulesExtended();
-        }
-                    /**
-         * Check the HTTP headers for signs of mobile.
-         *
-         * This is the fastest mobile check possible; it's used
-                     * inside isMobile() method.
-                     *
-                     * @return bool
-                     * @static
-                     */
+		 * don't necessary imply mobile. This method is used inside
+		 * the new $detect->is('stuff') method.
+		 *
+		 * @deprecated since version 2.6.9
+		 * @return array All the rules + extended.
+		 * @static
+		 */
+		public static function getMobileDetectionRulesExtended()
+		{            //Method inherited from \Mobile_Detect
+			/** @var \Jenssegers\Agent\Agent $instance */
+			return $instance->getMobileDetectionRulesExtended();
+		}
+
+		/**
+		 * Check the HTTP headers for signs of mobile.
+		 *
+		 * This is the fastest mobile check possible; it's used
+		 * inside isMobile() method.
+		 *
+		 * @return bool
+		 * @static
+		 */
 		public static function checkHttpHeadersForMobile()
 		{            //Method inherited from \Mobile_Detect
 			/** @var \Jenssegers\Agent\Agent $instance */
@@ -23003,16 +23049,16 @@ namespace {
 		public static function insertOrIgnore($values)
 		{
 			/** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->insertOrIgnore($values);
-            }
-             
-                /**
-             * Insert a new record and get the value of the primary key.
-             *
-             * @param array $values
-             * @param string|null $sequence
-             * @return int 
-             * @static 
+			return $instance->insertOrIgnore($values);
+		}
+
+		/**
+		 * Insert a new record and get the value of the primary key.
+		 *
+		 * @param  array        $values
+		 * @param  string|null  $sequence
+		 * @return int
+		 * @static
              */ 
             public static function insertGetId($values, $sequence = null)
             {
@@ -23032,6 +23078,19 @@ namespace {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->insertUsing($columns, $query);
+            }
+             
+                /**
+             * Update records in a PostgreSQL database using the update from syntax.
+             *
+             * @param array $values
+             * @return int 
+             * @static 
+             */ 
+            public static function updateFrom($values)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->updateFrom($values);
             }
              
                 /**

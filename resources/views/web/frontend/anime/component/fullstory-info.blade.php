@@ -2,14 +2,14 @@
 	<li>
 		<span>Тип: </span>
 		<span>
-			<a href="{{route('kind', $showAnime->getKind->url)}}">{{$showAnime->getKind->name}}</a> ({{$showAnime->episodes}} эп.) {{$showAnime->duration}} мин.
+			<a href="{{route('showKind', $showAnime->getKind->url)}}">{{$showAnime->getKind->name}}</a> ({{$showAnime->episodes}} эп.) {{$showAnime->duration}} мин.
 		</span>
 	</li>
 	@if ($showAnime->broadcast)
 		<li><span>Трансляция: </span>
 			<span>{{$showAnime->broadcast}} {{$showAnime->broadcastTitle}}
 				@if(!empty($showAnime->getChannel))
-					на <a href="{{route('channel', $showAnime->getChannel->url)}}">{{$showAnime->getChannel->title}}</a>
+					на <a href="{{route('showChannel', $showAnime->getChannel->url)}}">{{$showAnime->getChannel->title}}</a>
 				@endif
 			</span>
 		</li>
@@ -20,9 +20,9 @@
 			<span>
 			@foreach($showAnime->getStudio as $value)
 					@if ($loop->last)
-						<a href="{{route('studio', $value->url)}}">{{$value->title}}</a>
+						<a href="{{route('showStudio', $value->url)}}">{{$value->title}}</a>
 					@else
-						<a href="{{route('studio', $value->url)}}">{{$value->title}}</a>,
+						<a href="{{route('showStudio', $value->url)}}">{{$value->title}}</a>,
 					@endif
 				@endforeach
 		</span>
@@ -34,9 +34,9 @@
 			<span>
 			@foreach($showAnime->getCountry as $value)
 					@if($loop->last)
-						<a href="{{route('country', $value->url)}}">{{$value->title}}</a>
+						<a href="{{route('showCountry', $value->url)}}">{{$value->title}}</a>
 					@else
-						<a href="{{route('country', $value->url)}}">{{$value->title}}</a>,
+						<a href="{{route('showCountry', $value->url)}}">{{$value->title}}</a>,
 					@endif
 				@endforeach
 		</span>
@@ -62,7 +62,7 @@
 		<li>
 			<span>Рейтинг MPAA: </span>
 			<span>
-				<a href="{{route('rating', $showAnime->getRating->url)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$showAnime->getRating->description}}">
+				<a href="{{route('showRating', $showAnime->getRating->url)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$showAnime->getRating->description}}">
 					{{$showAnime->getRating->name}}
 				</a>
 			</span>
@@ -72,9 +72,9 @@
 		<span>
 			@foreach($showAnime->getQuality as $value)
 				@if ($loop->last)
-					<a href="{{route('quality', $value->url)}}">{{$value->title}}</a>
+					<a href="{{route('showQuality', $value->url)}}">{{$value->title}}</a>
 				@else
-					<a href="{{route('quality', $value->url)}}">{{$value->title}}</a>,
+					<a href="{{route('showQuality', $value->url)}}">{{$value->title}}</a>,
 				@endif
 			@endforeach
 		</span>
@@ -86,9 +86,9 @@
 		<span>
 			@foreach($showAnime->getTranslate as $value)
 				@if ($loop->last)
-					<a href="{{route('translate', $value->url)}}">{{$value->title}}</a>
+					<a href="{{route('showTranslate', $value->url)}}">{{$value->title}}</a>
 				@else
-					<a href="{{route('translate', $value->url)}}">{{$value->title}}</a>,
+					<a href="{{route('showTranslate', $value->url)}}">{{$value->title}}</a>,
 				@endif
 			@endforeach
 		</span></li>

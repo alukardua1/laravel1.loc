@@ -81,7 +81,7 @@ class AnimeController extends Controller
 		$this->setAttributes($this->attributeArr, $showAnime);
 		$comments = $this->showComments($showAnime->getComments()->withTrashed()->get());
 		$showAnime->comments_count = $showAnime->getComments()->count();
-		$this->updatePost($showAnime);
+		$this->updatePost($showAnime, $this->repository);
 		$related = $this->addRelated($showAnime);
 		$this->showPlayer($showAnime, $this->showPlayerGroup);
 		$regionBlockString = $this->showPlayer($showAnime, $this->showPlayerGroup);
