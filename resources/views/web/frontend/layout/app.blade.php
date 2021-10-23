@@ -33,7 +33,7 @@
 	<div class="main-content">
 		@not_available('showAnime')
 		<div id="carousel" class="owl-carousel owl-theme">
-			@include('web.frontend.anime.component.carousel')
+			@each('web.frontend.layout.component.carousel', $carousel, 'value')
 		</div>
 		@endnot_available
 		@not_available('showAnime')

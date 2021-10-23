@@ -23,18 +23,15 @@ class MPAARatingController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param  string  $mpaaUrl
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $mpaaUrl): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$showMpaa = $this->repository->getMpaa($mpaaUrl)->first();
-		$this->isNotNull($showMpaa);
-		$title = $showMpaa->description;
-		$description = null;
-		$allAnime = $showMpaa->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getMpaa($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('showMpaa', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

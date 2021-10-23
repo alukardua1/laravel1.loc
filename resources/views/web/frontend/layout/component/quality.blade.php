@@ -1,5 +1,3 @@
-@foreach($quality as $item)
-	<li>
-		<a href="{{ route('showQuality', $item->url) }}">{{ $item->title }} <span>{{$item->get_anime_count}}</span></a>
-	</li>
-@endforeach
+<li>
+	<a href="{{ route('showQuality', $value->url) }}">{{ $value->title }} <span>{{$value->get_anime_count}}</span></a>
+</li>

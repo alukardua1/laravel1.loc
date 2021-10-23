@@ -61,24 +61,20 @@ class AnimeObserver
 				$translate[] = $item['title'];
 			}
 		} else {
-			$translate[] = ' в озвучке не указана';
+			$translate[] = ' без озвучивания';
 		}
 		$translate = ' серия в озвучке ' . implode(', ', $translate);
-
 		if ($anime->getYear()->first()) {
-			$year = $anime->getYear()->first()->name . ' года ';
+			$year = $anime->getYear()->first()->year . ' года ';
 		}
-
 		if ($anime->episodes_aired) {
 			$episode = $anime->episodes_aired . ' серия ';
 		}
-		//$anime->russian = $anime->russian;
-
 		$metatitle = $anime->russian . ' ' . $year . $episode . $translate;
 		$url = $anime->name . ' ' . $anime->episodes_aired . ' серия';
 		$anime->metatitle = $metatitle;
 		$anime->url = Str::slug($url);
-		$description = strip_tags($anime->description_html);
+		$description = strip_tags($anime->description);
 		$anime->keywords = $this->seoKeywords($description);
 		$anime->description = $description;
 	}

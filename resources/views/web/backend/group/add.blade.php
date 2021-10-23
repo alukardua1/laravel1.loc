@@ -13,8 +13,8 @@
 			<input type="color" name="color" id="color" class="form-control form-control-color" value="">
 		</div>
 		<div class="input-group" id="descript">
-			<label for="description_html" class="form-label">Описание</label>
-			<textarea class="form-control ckeditor" name="description_html" id="description_html" cols="30" rows="10"></textarea>
+			<label for="description" class="form-label">Описание</label>
+			<textarea class="form-control ckeditor" name="description" id="description" cols="30" rows="10"></textarea>
 		</div>
 		<div class="form-check form-switch">
 			<input type="checkbox" name="is_dashboard" id="is_dashboard" class="form-check-input" value="1" checked>

@@ -45,8 +45,6 @@ class Anime extends Model
 		'license_name_ru',
 		'duration',
 		'description',
-		'description_html',
-		'description_source',
 		'anons',
 		'channel_id',
 		'ongoing',
@@ -56,6 +54,7 @@ class Anime extends Model
 		'user_id',
 		'kind_id',
 		'reason_edit',
+		'next_episode_at',
 	];
 
 	protected $withCount = [

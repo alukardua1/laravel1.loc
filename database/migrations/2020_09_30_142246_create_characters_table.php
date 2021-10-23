@@ -23,8 +23,6 @@ class CreateCharactersTable extends Migration
             $table->string('altname');
             $table->string('japanese')->nullable();
             $table->text('description')->nullable();
-            $table->text('description_html')->nullable();
-            $table->text('description_source')->nullable();
             $table->timestamps();
         });
     }

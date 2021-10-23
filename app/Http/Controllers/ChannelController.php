@@ -23,18 +23,15 @@ class ChannelController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param  string  $channelUrl
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $channelUrl): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$showChannel = $this->repository->getChannel($channelUrl)->first();
-		$this->isNotNull($showChannel);
-		$title = $showChannel->title;
-		$description = $showChannel->description;
-		$allAnime = $showChannel->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getChannel($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('showChannel', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

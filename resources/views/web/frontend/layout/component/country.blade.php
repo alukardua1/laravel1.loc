@@ -1,5 +1,3 @@
-@foreach($country as $item)
-	<li>
-		<a href="{{ route('showCountry', $item->url) }}">{{ $item->title }} <span>{{$item->get_anime_count}}</span></a>
-	</li>
-@endforeach
+<li>
+	<a href="{{ route('showCountry', $value->url) }}">{{ $value->title }} <span>{{$value->get_anime_count}}</span></a>
+</li>

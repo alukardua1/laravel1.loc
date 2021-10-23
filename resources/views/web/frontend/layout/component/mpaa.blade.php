@@ -1,5 +1,3 @@
-@foreach($mpaa as $item)
-	<li>
-		<a href="{{ route('showRating', $item->url) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$item->description}}">{{ $item->name }} <span>{{$item->get_anime_count}}</span></a>
-	</li>
-@endforeach
+<li>
+	<a href="{{ route('showRating', $value->url) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$value->description}}">{{ $value->name }} <span>{{$value->get_anime_count}}</span></a>
+</li>

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Http\Requests\AnimeRequest;
 use App\Models\AnimeRelated;
+use App\Models\Model;
 use App\Models\OtherLink;
 use App\Models\Player;
 use Auth;
@@ -126,6 +127,11 @@ trait FunctionTrait
 		}
 	}
 
+	/**
+	 * @param  string  $url
+	 *
+	 * @return mixed
+	 */
 	public function parseLink(string $url)
 	{
 		preg_match("/\d+/", $url, $id);
@@ -395,6 +401,12 @@ trait FunctionTrait
 		return back()->withErrors(['msg' => $textError])->withInput();
 	}
 
+	/**
+	 * @param  mixed   $date
+	 * @param  string  $format
+	 *
+	 * @return string
+	 */
 	public function morfDate(mixed $date, string $format)
 	{
 		return Carbon::parse($date)->format($format);
@@ -435,6 +447,21 @@ trait FunctionTrait
 			return AnimeRelated::where('anime_id', $showAnime->id)->get();
 		}
 		return $related;
+	}
+
+	/**
+	 * @param  \App\Models\Model  $show
+	 *
+	 * @return array
+	 */
+	public function views(Model $show)
+	{
+		$this->isNotNull($show);
+		$result['title'] = $show->title;
+		$result['description'] = $show->description;
+		$result['content'] = $show->getAnime()->paginate($this->paginate);
+
+		return $result;
 	}
 
 }

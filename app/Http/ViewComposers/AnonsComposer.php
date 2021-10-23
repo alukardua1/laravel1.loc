@@ -32,6 +32,6 @@ class AnonsComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeAnons', $this->view());
+		$view->with('anons', $this->view());
 	}
 }

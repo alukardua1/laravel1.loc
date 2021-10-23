@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
 				$table->text('profile_photo_path')->nullable();
 				$table->text('description')->nullable();
 				$table->text('signature')->nullable();
+				$table->text('blocked_reason')->nullable();
 				$table->boolean('active')->default(1);
 				$table->boolean('blocked')->default(0);
 				$table->timestamp('blocked_at')->nullable();

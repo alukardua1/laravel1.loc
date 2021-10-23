@@ -18,8 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->string('url');
             $table->text('description')->nullable();
-            $table->text('description_html')->nullable();
-            $table->text('description_source')->nullable();
             $table->boolean('posted_at')->default(1);
             $table->timestamps();
         });

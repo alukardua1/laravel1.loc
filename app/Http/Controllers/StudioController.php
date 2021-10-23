@@ -23,18 +23,15 @@ class StudioController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param  string  $studiosUrl
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $studiosUrl): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$showStudio = $this->repository->getStudio($studiosUrl)->first();
-		$this->isNotNull($showStudio);
-		$title = $showStudio->title;
-		$description = $showStudio->description;
-		$allAnime = $showStudio->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getStudio($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('showStudio', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

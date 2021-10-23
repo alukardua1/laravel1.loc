@@ -32,6 +32,6 @@ class PopularComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeAnons', $this->view());
+		$view->with('popular', $this->view());
 	}
 }

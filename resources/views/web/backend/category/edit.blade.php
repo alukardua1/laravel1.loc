@@ -14,8 +14,8 @@
 			<input type="text" name="url" id="url" class="form-control" placeholder="Урл категории" aria-label="Урл категории" aria-describedby="url" value="{{$edit->url}}">
 		</div>
 		<div id="descript" class="input-group mb-3">
-			<label for="description_html" class="input-group-text">Описание категории</label>
-			<textarea class="form-control ckeditor" id="description_html" name="description_html" rows="3">{{$edit->description}}</textarea>
+			<label for="description" class="input-group-text">Описание категории</label>
+			<textarea class="form-control ckeditor" id="description" name="description" rows="3">{{$edit->description}}</textarea>
 		</div>
 		<div class="form-check form-switch">
 			<input name="posted_at" class="form-check-input" type="checkbox" id="posted_at" value="1" {{$edit->posted_at ? 'checked' : ''}}>

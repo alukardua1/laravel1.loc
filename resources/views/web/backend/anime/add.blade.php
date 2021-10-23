@@ -150,14 +150,14 @@
 			<input type="hidden" id="original_img" name="original_img" value="">
 		</div>
 		<div id="descript" class="row mb-3">
-			<label for="description_html" class="form-label">Описание</label>
-			<textarea class="form-control ckeditor" id="description_html" name="description_html" rows="3"></textarea>
+			<label for="description" class="form-label">Описание</label>
+			<textarea class="form-control ckeditor" id="description" name="description" rows="3"></textarea>
 		</div>
 		<div class="row">
 			<div class="mb-3">
 				<label for="trailer" class="form-label">Трейлер</label>
 				<button class="btn btn-primary btn-sm" type="button" id="addTrailer"><i class="far fa-plus-square"></i></button>
-					<input type="text" id="trailer[]" class="form-control" name="trailer[]" value="">
+				<input type="text" id="trailer[]" class="form-control" name="trailer[]" value="">
 				<div id="Trailer"></div>
 			</div>
 		</div>

@@ -46,9 +46,9 @@ class AnimeController extends Controller
 	 */
 	public function index(): Factory|View|Application
 	{
-		$allAnime = $this->repository->getAnime()->paginate($this->paginate);
+		$views['content'] = $this->repository->getAnime()->paginate($this->paginate);
 
-		return view($this->frontend . 'anime.short', compact('allAnime'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 
 	/**
@@ -56,10 +56,10 @@ class AnimeController extends Controller
 	 */
 	public function indexOngoing(): View|Factory|Application
 	{
-		$allAnime = $this->repository->getCustomAnime('ongoing', 1)->paginate($this->paginate);
-		$title = 'Онгоинг';
+		$views['content'] = $this->repository->getCustomAnime('ongoing', 1)->paginate($this->paginate);
+		$views['title'] = 'Аниме которые сейчас выходят в Японии';
 
-		return view($this->frontend . 'anime.short', compact('allAnime', 'title'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 
 	/**
@@ -72,26 +72,26 @@ class AnimeController extends Controller
 	 */
 	public function show(int $id, string $url = null): View|Factory|RedirectResponse|Application
 	{
-		$showAnime = $this->repository->getAnime($id)->first();
-		$this->isNotNull($showAnime);
-		$plus = $showAnime->vote['plus'];
-		$minus = -$showAnime->vote['minus'];
-		$showAnime->broadcastTitle = $this->broadcast($showAnime->broadcast);
-		$showAnime->seasonAired = $this->seasonAired($showAnime->aired_on);
-		$this->setAttributes($this->attributeArr, $showAnime);
-		$comments = $this->showComments($showAnime->getComments()->withTrashed()->get());
-		$showAnime->comments_count = $showAnime->getComments()->count();
-		$this->updatePost($showAnime, $this->repository);
-		$related = $this->addRelated($showAnime);
-		$this->showPlayer($showAnime, $this->showPlayerGroup);
-		$regionBlockString = $this->showPlayer($showAnime, $this->showPlayerGroup);
-		event(new AnimeEvent($showAnime));
+		$show = $this->repository->getAnime($id)->first();
+		$this->isNotNull($show);
+		$plus = $show->vote['plus'];
+		$minus = -$show->vote['minus'];
+		$show->broadcastTitle = $this->broadcast($show->broadcast);
+		$show->seasonAired = $this->seasonAired($show->aired_on);
+		$this->setAttributes($this->attributeArr, $show);
+		$comments = $this->showComments($show->getComments()->withTrashed()->get());
+		$show->comments_count = $show->getComments()->count();
+		$this->updatePost($show, $this->repository); // @todo сделать очереди задач
+		$related = $this->addRelated($show);
+		$this->showPlayer($show, $this->showPlayerGroup);
+		$regionBlockString = $this->showPlayer($show, $this->showPlayerGroup);
+		event(new AnimeEvent($show));
 
-		if ($url !== $showAnime->url) {
-			return redirect('/anime/' . $showAnime->id . '-' . $showAnime->url, 301);
+		if ($url !== $show->url) {
+			return redirect('/anime/' . $show->id . '-' . $show->url, 301);
 		}
 
-		return view($this->frontend . 'anime.full', compact('showAnime', 'plus', 'minus', 'comments', 'related', 'regionBlockString'));
+		return view($this->frontend . 'anime.full', compact('show', 'plus', 'minus', 'comments', 'related', 'regionBlockString'));
 	}
 
 	/**

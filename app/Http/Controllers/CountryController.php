@@ -25,18 +25,15 @@ class CountryController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param  string  $countryUrl
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $countryUrl): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$showCountry = $this->repository->getCountry($countryUrl);
-		$this->isNotNull($showCountry);
-		$title = $showCountry->title;
-		$description = $showCountry->description;
-		$allAnime = $showCountry->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getCountry($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('showCountry', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

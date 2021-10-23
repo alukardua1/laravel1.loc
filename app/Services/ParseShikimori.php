@@ -114,6 +114,10 @@ trait ParseShikimori
 				$shiki['released_on'] = date('Y-m-d', strtotime($this->dataShiki['released_on']));
 				$shiki['update'] = true;
 			}
+			if (date('c', strtotime($this->dataShiki['next_episode_at'])) != date('c', strtotime($anime->next_episode_at))) {
+				$shiki['next_episode_at'] = date('Y-m-d H:i:s', strtotime($this->dataShiki['next_episode_at']));
+				$shiki['update'] = true;
+			}
 			if ($this->dataShiki['episodes'] != $anime->episodes) {
 				$shiki['episodes'] = $this->dataShiki['episodes'];
 				$shiki['update'] = true;

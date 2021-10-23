@@ -28,6 +28,8 @@ interface YearAiredRepositoryInterfaces
 	public function setYearAired(Request $request, string $url = null): mixed;
 
 	/**
+	 * Удаление
+	 *
 	 * @param  string  $url
 	 * @param  bool    $fullDel
 	 *

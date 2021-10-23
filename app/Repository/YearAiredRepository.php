@@ -44,6 +44,8 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	}
 
 	/**
+	 * Удаляет
+	 *
 	 * @param  string  $url
 	 * @param  bool    $fullDel
 	 *

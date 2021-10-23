@@ -19,10 +19,8 @@ class CreateCommentsTable extends Migration
             $table->foreignId('parent_comment_id')->default(0);
             $table->foreignId('user_id')->default(0);
             $table->foreignId('author_id');
-            $table->text('description')->nullable();
-            $table->text('description_html');
-            $table->text('description_source')->nullable();
-            $table->string('rating')->default(0);
+	        $table->text('description');
+	        $table->string('rating')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

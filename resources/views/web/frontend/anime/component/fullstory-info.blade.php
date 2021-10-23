@@ -2,23 +2,23 @@
 	<li>
 		<span>Тип: </span>
 		<span>
-			<a href="{{route('showKind', $showAnime->getKind->url)}}">{{$showAnime->getKind->name}}</a> ({{$showAnime->episodes}} эп.) {{$showAnime->duration}} мин.
+			<a href="{{route('showKind', $show->getKind->url)}}">{{$show->getKind->name}}</a> ({{$show->episodes}} эп.) {{$show->duration}} мин.
 		</span>
 	</li>
-	@if ($showAnime->broadcast)
+	@if ($show->broadcast)
 		<li><span>Трансляция: </span>
-			<span>{{$showAnime->broadcast}} {{$showAnime->broadcastTitle}}
-				@if(!empty($showAnime->getChannel))
-					на <a href="{{route('showChannel', $showAnime->getChannel->url)}}">{{$showAnime->getChannel->title}}</a>
+			<span>{{$show->broadcast}} {{$show->broadcastTitle}}
+				@if(!empty($show->getChannel))
+					на <a href="{{route('showChannel', $show->getChannel->url)}}">{{$show->getChannel->title}}</a>
 				@endif
 			</span>
 		</li>
 	@endif
-	@if ($showAnime->getStudio)
+	@if ($show->getStudio)
 		<li>
 			<span>Студия: </span>
 			<span>
-			@foreach($showAnime->getStudio as $value)
+			@foreach($show->getStudio as $value)
 					@if ($loop->last)
 						<a href="{{route('showStudio', $value->url)}}">{{$value->title}}</a>
 					@else
@@ -28,11 +28,11 @@
 		</span>
 		</li>
 	@endif
-	<li><span>Сезон: </span> <span>{{$showAnime->seasonAired}}</span></li>
-	@if ($showAnime->getCountry)
+	<li><span>Сезон: </span> <span>{{$show->seasonAired}}</span></li>
+	@if ($show->getCountry)
 		<li><span>Страна: </span>
 			<span>
-			@foreach($showAnime->getCountry as $value)
+			@foreach($show->getCountry as $value)
 					@if($loop->last)
 						<a href="{{route('showCountry', $value->url)}}">{{$value->title}}</a>
 					@else
@@ -44,33 +44,33 @@
 	@endif
 	<li>
 		<span>Жанр: </span><span>
-			{!! $showAnime->category !!}
+			{!! $show->category !!}
 		</span>
 	</li>
 	<li>
 		<span>Выпуск: </span>
 		<span>
-			@if ($showAnime->aired)
-				c {{$showAnime->aired}}
+			@if ($show->aired)
+				c {{$show->aired}}
 			@endif
-			@if ($showAnime->released)
-				по {{$showAnime->released}}
+			@if ($show->released)
+				по {{$show->released}}
 			@endif
 		</span>
 	</li>
-	@if ($showAnime->getRating)
+	@if ($show->getRating)
 		<li>
 			<span>Рейтинг MPAA: </span>
 			<span>
-				<a href="{{route('showRating', $showAnime->getRating->url)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$showAnime->getRating->description}}">
-					{{$showAnime->getRating->name}}
+				<a href="{{route('showRating', $show->getRating->url)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$show->getRating->description}}">
+					{{$show->getRating->name}}
 				</a>
 			</span>
 		</li>
 	@endif
 	<li><span>Качество видео: </span>
 		<span>
-			@foreach($showAnime->getQuality as $value)
+			@foreach($show->getQuality as $value)
 				@if ($loop->last)
 					<a href="{{route('showQuality', $value->url)}}">{{$value->title}}</a>
 				@else
@@ -84,7 +84,7 @@
 	<li><span>Автор оригинала: </span><span>[xfvalue_avtor-originala]</span></li>
 	<li><span>Озвучка: </span>
 		<span>
-			@foreach($showAnime->getTranslate as $value)
+			@foreach($show->getTranslate as $value)
 				@if ($loop->last)
 					<a href="{{route('showTranslate', $value->url)}}">{{$value->title}}</a>
 				@else
@@ -94,36 +94,36 @@
 		</span></li>
 	<li><span>На других сайтах: </span>
 		<span class="other-title">
-			@foreach($showAnime->getOtherLink as $value)
+			@foreach($show->getOtherLink as $value)
 				<a itemprop="url" href="{{$value->url}}" target="_blank" rel="nofollow">{{$value->title}}</a>
 			@endforeach
         </span>
 	</li>
-	@if ($showAnime->japanese)
+	@if ($show->japanese)
 		<li>
 			<span>По-японски: </span>
 			<span class="other-name">
-			<span itemprop="name">{{$showAnime->japanese}}</span>
+			<span itemprop="name">{{$show->japanese}}</span>
     	</span>
 		</li>
 	@endif
-	@if($showAnime->english)
+	@if($show->english)
 		<li>
 			<span>По-английски: </span>
 			<span class="other-name">
-			<span itemprop="name">{{$showAnime->english}}</span>
+			<span itemprop="name">{{$show->english}}</span>
     	</span>
 		</li>
 	@endif
-	@if($showAnime->synonyms)
+	@if($show->synonyms)
 		<li>
 			<span>Другие названия: </span>
 			<span class="other-name">
-			<span itemprop="name">{{$showAnime->synonyms}}</span>
+			<span itemprop="name">{{$show->synonyms}}</span>
     	</span>
 		</li>
 	@endif
-	@if ($showAnime->license_name_ru)
-		<li><span>Название лицензии в России: </span><span>{{$showAnime->license_name_ru}}</span></li>
+	@if ($show->license_name_ru)
+		<li><span>Название лицензии в России: </span><span>{{$show->license_name_ru}}</span></li>
 	@endif
 </ul>

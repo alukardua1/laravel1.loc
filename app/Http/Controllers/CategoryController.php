@@ -21,18 +21,15 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * @param  string  $categoryUrl
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $categoryUrl): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$currentCategory = $this->repository->getCategory($categoryUrl)->first();
-		$this->isNotNull($currentCategory);
-		$title = $currentCategory->title;
-		$description = $currentCategory->description;
-		$allAnime = $currentCategory->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getCategory($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('currentCategory', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

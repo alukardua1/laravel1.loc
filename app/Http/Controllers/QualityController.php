@@ -23,18 +23,15 @@ class QualityController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param  string  $qualityUrl
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $qualityUrl): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$showQuality = $this->repository->getQuality($qualityUrl)->first();
-		$this->isNotNull($showQuality);
-		$title = $showQuality->title;
-		$description = $showQuality->description;
-		$allAnime = $showQuality->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getQuality($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('showQuality', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

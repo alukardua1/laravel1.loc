@@ -17,7 +17,7 @@
 					По жанрам
 				</div>
 				<ul class="genre">
-					@include('web.frontend.layout.component.menu')
+					@each('web.frontend.layout.component.category', $category, 'value')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -25,7 +25,7 @@
 					По типам
 				</div>
 				<ul class="collapse genre" id="tip">
-					@include('web.frontend.layout.component.kind')
+					@each('web.frontend.layout.component.kind', $kind, 'value')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -33,7 +33,7 @@
 					По рейтингу
 				</div>
 				<ul class="collapse genre" id="rating">
-					@include('web.frontend.layout.component.mpaa')
+					@each('web.frontend.layout.component.mpaa', $mpaa, 'value')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -41,7 +41,7 @@
 					По озвучкам
 				</div>
 				<ul class="collapse genre" id="scoring">
-					@include('web.frontend.layout.component.translate')
+					@each('web.frontend.layout.component.translate', $translate, 'value')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -49,7 +49,7 @@
 					По годам
 				</div>
 				<ul class="collapse genre season" id="season">
-					@include('web.frontend.layout.component.year')
+					@each('web.frontend.layout.component.year', $year, 'value')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -57,7 +57,7 @@
 					По странам
 				</div>
 				<ul class="collapse genre" id="country">
-					@include('web.frontend.layout.component.country')
+					@each('web.frontend.layout.component.country', $country, 'value')
 				</ul>
 			</div>
 			<div class="cat-slave">
@@ -65,7 +65,7 @@
 					По качеству
 				</div>
 				<ul class="collapse genre" id="quality">
-					@include('web.frontend.layout.component.quality')
+					@each('web.frontend.layout.component.quality', $quality, 'value')
 				</ul>
 			</div>
 		</div>
@@ -74,7 +74,7 @@
 				Популярное
 			</div>
 			<div class="soon">
-				@include('web.frontend.anime.component.popular')
+				@each('web.frontend.layout.component.popular', $popular, 'value')
 			</div>
 		</div>
 		<div class="side-cat">
@@ -82,7 +82,7 @@
 				Скоро на AF
 			</div>
 			<div class="soon">
-				@include('web.frontend.anime.component.anons')
+				@each('web.frontend.layout.component.anons', $anons, 'value')
 			</div>
 		</div>
 		<div class="side-cat">

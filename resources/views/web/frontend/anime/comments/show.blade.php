@@ -28,7 +28,7 @@
 					<span>{{$comment->getAuthorComment->comments_reply_count}} @declination($comment->getAuthorComment->comments_reply_count, 'ответ|ответа|ответов')</span>
 				</div>
 				<div class="comm">
-					{!! $comment->description_html !!}
+					{!! $comment->description !!}
 				</div>
 				@if ($comment->getAuthorComment->signature)
 					<p class="signature mb-10">
@@ -60,7 +60,7 @@
 					<div id="edit_quote_reply_comment-{{$comment->id}}" style="display: none">
 						<form action="{{route('addCommentAnime', $comment->getAnime->id)}}" method="POST">
 							@csrf
-							<textarea class="form-control ckeditor" name="description_html" id="description_html-{{$comment->id}}" cols="30" rows="10"></textarea>
+							<textarea class="form-control ckeditor" name="description" id="description-{{$comment->id}}" cols="30" rows="10"></textarea>
 							<input type="hidden" name="parent_comment_id" value="{{$comment->parent}}">
 							<input name="anime_id" type="hidden" value="{{$comment->getAnime->id}}">
 							<input name="author_id" type="hidden" value="{{Auth::user()->id}}">

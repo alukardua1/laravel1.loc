@@ -20,17 +20,15 @@ class CopyrightHolderController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param  string  $copyrightHolder
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $copyrightHolder): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$copyright = $this->repository->getCopyrightHolder($copyrightHolder)->first();
-		$this->isNotNull($copyright);
-		$title = $copyright->title;
-		$allAnime = $copyright->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getCopyrightHolder($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('copyright', 'allAnime', 'title'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

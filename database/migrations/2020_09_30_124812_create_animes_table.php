@@ -39,9 +39,8 @@ class CreateAnimesTable extends Migration
 	        $table->string('reason_edit')->nullable();
 	        $table->date('aired_on')->nullable();
 	        $table->date('released_on')->nullable();
+	        $table->dateTime('next_episode_at')->nullable();
 	        $table->text('description')->nullable();
-	        $table->text('description_html')->nullable();
-	        $table->text('description_source')->nullable();
 	        $table->boolean('anons')->default(0);
 	        $table->boolean('ongoing')->default(0);
 	        $table->boolean('released')->default(1);

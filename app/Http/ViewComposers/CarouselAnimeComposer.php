@@ -32,6 +32,6 @@ class CarouselAnimeComposer
 	 */
 	public function compose(View $view)
 	{
-		$view->with('animeCarousel', $this->view());
+		$view->with('carousel', $this->view());
 	}
 }

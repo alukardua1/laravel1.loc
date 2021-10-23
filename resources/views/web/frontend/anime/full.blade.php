@@ -1,8 +1,8 @@
 @extends('web.frontend.layout.app')
 
-@section('title', $showAnime->metatitle)
-@section('description', $showAnime->metatitle)
-@section('keywords', $showAnime->keywords)
+@section('title', $show->metatitle)
+@section('description', $show->metatitle)
+@section('keywords', $show->keywords)
 
 @section('error')
 	@if ($errors->any())
@@ -20,27 +20,27 @@
 @section('content')
 	<article class="fullstory">
 		<div class="full-title">
-			<h1>{{$showAnime->russian}}</h1>
+			<h1>{{$show->russian}}</h1>
 			@if (Auth::check())
 				<favorite
-						:post={{ $showAnime->id }} :favorited={{ $showAnime->favorited() ? 'true' : 'false' }}>
+						:post={{ $show->id }} :favorited={{ $show->favorited() ? 'true' : 'false' }}>
 				</favorite>
 			@endif
 			@if(Auth::user())
 				@if (Auth::user()->getGroup->is_dashboard)
-					<a target="_blank" href="{{route('editAnimeAdmin', $showAnime->id)}}" type="button" class="btn btn-danger editing"><i class="far fa-edit"></i></a>
+					<a target="_blank" href="{{route('editAnimeAdmin', $show->id)}}" type="button" class="btn btn-danger editing"><i class="far fa-edit"></i></a>
 				@endif
 			@endif
 		</div>
 		<div class="inform">
 			<div class="poster">
 				<div class="view">
-					<img itemprop="image" src="{{asset('storage/'.$showAnime->preview_img)}}"
-						 data-src="{{asset('storage/'.$showAnime->original_img)}}" class="card-img lazy" alt="{title}">
+					<img itemprop="image" src="{{asset('storage/'.$show->preview_img)}}"
+						 data-src="{{asset('storage/'.$show->original_img)}}" class="card-img lazy" alt="{title}">
 					@if (Auth::check())
 						<div class="rating-full">
 							<div class="col-md-12">
-								<votes :post={{ $showAnime->id }} :votes={{ $showAnime->votes() ? 'true' : 'false' }} :count_plus={{$plus}} :count_minus={{$minus}}></votes>
+								<votes :post={{ $show->id }} :votes={{ $show->votes() ? 'true' : 'false' }} :count_plus={{$plus}} :count_minus={{$minus}}></votes>
 							</div>
 						</div>
 					@endif
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 			<div class="full-description">
-				<i class="fas fa-file-alt"></i> {!! $showAnime->description_html !!}
+				<i class="fas fa-file-alt"></i> {!! $show->description !!}
 			</div>
 			@include('web.frontend.anime.component.fullstory-info')
 		</div>
@@ -60,26 +60,26 @@
 		</div>
 		<div class="player">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				@if($showAnime->getTrailer->isNotEmpty())
+				@if($show->getTrailer->isNotEmpty())
 					<li class="nav-item" role="presentation">
 						<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
 						   aria-selected="true">Трейлер</a>
 					</li>
 				@endif
-				@if ($showAnime->getPlayer->isNotEmpty())
+				@if ($show->getPlayer->isNotEmpty())
 					<li class="nav-item" role="presentation">
-						<a class="nav-link @if($showAnime->getTrailer->isEmpty()) active @endif" id="player-tab" data-toggle="tab" href="#player"
+						<a class="nav-link @if($show->getTrailer->isEmpty()) active @endif" id="player-tab" data-toggle="tab" href="#player"
 						   role="tab"
 						   aria-controls="player" aria-selected="false">Плеер</a>
 					</li>
 				@endif
 			</ul>
 			<div class="tab-content" id="myTabContent">
-				@if($showAnime->getTrailer->isNotEmpty())
+				@if($show->getTrailer->isNotEmpty())
 					<div class="tab-pane fade show active" id="trailer" role="tabpanel" aria-labelledby="trailer-tab">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<?php $i = 1 ?>
-							@foreach($showAnime->getTrailer as $trailer)
+							@foreach($show->getTrailer as $trailer)
 								<li class="nav-item" role="presentation">
 									<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
 									   aria-selected="true">Трейлер {{ $i++ }}</a>
@@ -91,11 +91,11 @@
 						</ul>
 					</div>
 				@endif
-				@if($showAnime->getPlayer->isNotEmpty())
-					<div class="tab-pane fade @if($showAnime->getTrailer->isEmpty())show active @endif" id="player" role="tabpanel"
+				@if($show->getPlayer->isNotEmpty())
+					<div class="tab-pane fade @if($show->getTrailer->isEmpty())show active @endif" id="player" role="tabpanel"
 						 aria-labelledby="player-tab">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							@foreach($showAnime->getPlayer as $player)
+							@foreach($show->getPlayer as $player)
 								<li class="nav-item" role="presentation">
 									<a class="nav-link active" id="trailer-tab" data-toggle="tab" href="#trailer" role="tab" aria-controls="trailer"
 									   aria-selected="true">{{$player->name_player}}</a>
@@ -141,13 +141,13 @@
 			</div>
 		</div>
 		@if (Auth::user())
-			@if ($showAnime->comment_at)
-				<form action="{{route('addCommentAnime', $showAnime->id)}}" method="POST">
+			@if ($show->comment_at)
+				<form action="{{route('addCommentAnime', $show->id)}}" method="POST">
 					@csrf
 					<div id="comments" class="add-comment form-textarea mb-3">
 						<label for="addComment">Добавить комментарий</label>
 						<textarea class="form-control ckeditor" name="description_html" id="addComment" cols="30" rows="10"></textarea>
-						<input name="anime_id" type="hidden" value="{{$showAnime->id}}">
+						<input name="anime_id" type="hidden" value="{{$show->id}}">
 						<input name="author_id" type="hidden" value="{{Auth::user()->id}}">
 					</div>
 					<div class="btn-group" role="group" aria-label="Basic example">
@@ -165,9 +165,9 @@
 				Для комментирования <a href="/login">войдите</a> или <a href="/register">зарегистрируйтесь</a> на сайте
 			</div>
 		@endif
-		@if ($comments && $showAnime->comment_at)
+		@if ($comments && $show->comment_at)
 			<div class="listing mt-3 mb-3">
-				<label>{{$showAnime->comments_count}} @declination($showAnime->comments_count, 'комментарий|комментария|комментариев')</label>
+				<label>{{$show->comments_count}} @declination($show->comments_count, 'комментарий|комментария|комментариев')</label>
 			</div>
 			<div class="comment">
 				@include('web.frontend.anime.comments.area', $comments)

@@ -178,8 +178,8 @@
 			<input type="hidden" id="original_img" name="original_img" value="{{$currentAnime->original_img}}">
 		</div>
 		<div id="descript" class="row mb-3">
-			<label for="description_html" class="form-label">Описание</label>
-			<textarea class="form-control ckeditor" id="description_html" name="description_html" rows="3">{{$currentAnime->description_html}}</textarea>
+			<label for="description" class="form-label">Описание</label>
+			<textarea class="form-control ckeditor" id="description" name="description" rows="3">{{$currentAnime->description}}</textarea>
 		</div>
 		<div class="row">
 			<div class="mb-3">

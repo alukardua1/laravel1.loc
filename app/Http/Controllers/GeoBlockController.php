@@ -23,16 +23,15 @@ class GeoBlockController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
+	 * @param  string  $url
+	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show(): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$geoBlock = $this->repository->getGeoBlock()->get();
-		$this->isNotNull($geoBlock);
-		$title = $geoBlock->name;
-		$description = $geoBlock->description;
-		$allAnime = $geoBlock->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getGeoBlock($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('geoBlock', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

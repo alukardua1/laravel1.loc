@@ -23,18 +23,15 @@ class YearAiredController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param  string  $yearUrl
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	 */
-	public function show(string $yearUrl): View|Factory|Application
+	public function show(string $url): View|Factory|Application
 	{
-		$showYear = $this->repository->getYearAired($yearUrl)->first();
-		$this->isNotNull($showYear);
-		$title = $showYear->year . ' год выпуска';
-		$description = null;
-		$allAnime = $showYear->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getYearAired($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'anime.short', compact('showYear', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

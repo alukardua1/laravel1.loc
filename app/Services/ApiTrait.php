@@ -134,26 +134,27 @@ trait ApiTrait
 	public function animeOneMutations($anime): array
 	{
 		return [
-			'id'               => $anime->id,
-			'image'            => [
+			'id'          => $anime->id,
+			'image'       => [
 				'original' => $anime->original_img,
 				'preview'  => $anime->preview_img,
 			],
-			'name'             => $anime->name,
-			'russian'          => $anime->russian,
-			'english'          => explode(', ', $anime->english),
-			'japanese'         => explode(', ', $anime->japanese),
-			'synonyms'         => explode(', ', $anime->synonyms),
-			'url'              => '/anime/' . $anime->id . '-' . $anime->url,
-			'category'         => $this->animeCategory($anime->getCategory),
-			'kind'             => [
+			'name'        => $anime->name,
+			'russian'     => $anime->russian,
+			'english'     => explode(', ', $anime->english),
+			'japanese'    => explode(', ', $anime->japanese),
+			'synonyms'    => explode(', ', $anime->synonyms),
+			'url'         => '/anime/' . $anime->id . '-' . $anime->url,
+			'category'    => $this->animeCategory($anime->getCategory),
+			'kind'        => [
 				'name'       => $anime->getKind->name,
 				'full_name'  => $anime->getKind->full_name,
 				'short_name' => $anime->getKind->short_name,
 			],
-			'status'           => $anime->status,
-			'description'      => $anime->description,
-			'description_html' => $anime->description_html,
+			'status'      => $anime->status,
+			'anons'       => (bool)$anime->anons,
+			'ongoing'     => (bool)$anime->ongoing,
+			'description' => $anime->description,
 		];
 	}
 }

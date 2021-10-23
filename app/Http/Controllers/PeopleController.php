@@ -38,12 +38,9 @@ class PeopleController extends Controller
 	 */
 	public function show(string $url): View|Factory|Application
 	{
-		$people = $this->repository->getPeople($url)->first();
-		$this->isNotNull($people);
-		$title = $people->russian;
-		$description = null;
-		$allAnime = $people->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getPeople($url)->first();
+		$views = $this->views($show);
 
-		return view($this->frontend . 'people.show', compact('people', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 }

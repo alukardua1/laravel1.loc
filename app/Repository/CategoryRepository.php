@@ -35,7 +35,7 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 		if ($categoryUrl) {
 			return Category::where('url', $categoryUrl);
 		} elseif ($isAdmin) {
-			return Category::all();
+			return Category::orderBy('title', 'DESC');
 		}
 		return Category::where('posted_at', '=', 1);
 	}

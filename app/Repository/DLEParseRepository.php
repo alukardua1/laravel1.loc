@@ -318,31 +318,29 @@ class DLEParseRepository implements DLEParse
 				'original_img'       => $image['original_img'],
 				'preview_img'        => $image['preview_img'],
 				'anons'              => $this->status($xfield1['status'])['anons'],
-				'ongoing'            => $this->status($xfield1['status'])['ongoing'],
-				'released'           => $this->status($xfield1['status'])['released'],
-				'metatitle'          => $post->metatitle,
-				'keywords'           => $post->keywords,
-				'name'               => $post->title,
-				'russian'            => $post->title,
-				'url'                => $post->alt_name,
-				'kind_id'            => $kind,
-				'channel_id'         => $channel->id,
-				'broadcast'          => $xfield1['broadcast'][0][0] ?? null,
-				'aired_season'       => $yearAired->id,
-				'episodes'           => $xfield1['serias-col'] ?? null,
-				'episodes_aired'     => $xfield1['seriya'] ?? null,
-				'aired_on'           => $this->dates($xfield1['data-vypuska'] ?? null),
-				'released_on'        => $this->dates($xfield1['data-okonchaniya'] ?? null),
-				'rating_id'          => $mpaa->id,
-				'english'            => $xfield1['po-angliyski'] ?? null,
-				'japanese'           => $xfield1['po-yaponski'] ?? null,
-				'synonyms'           => $xfield1['nazvanie-romadzi'] ?? null,
-				'duration'           => $xfield1['dlitelnost'] ?? null,
-				'description'        => strip_tags($post->short_story),
-				'description_html'   => $post->short_story,
-				'description_source' => $this->replaceHTML($post->short_story),
-				'created_at'         => $post->date,
-				'updated_at'         => $post->date,
+				'ongoing'        => $this->status($xfield1['status'])['ongoing'],
+				'released'       => $this->status($xfield1['status'])['released'],
+				'metatitle'      => $post->metatitle,
+				'keywords'       => $post->keywords,
+				'name'           => $post->title,
+				'russian'        => $post->title,
+				'url'            => $post->alt_name,
+				'kind_id'        => $kind,
+				'channel_id'     => $channel->id,
+				'broadcast'      => $xfield1['broadcast'][0][0] ?? null,
+				'aired_season'   => $yearAired->id,
+				'episodes'       => $xfield1['serias-col'] ?? null,
+				'episodes_aired' => $xfield1['seriya'] ?? null,
+				'aired_on'       => $this->dates($xfield1['data-vypuska'] ?? null),
+				'released_on'    => $this->dates($xfield1['data-okonchaniya'] ?? null),
+				'rating_id'      => $mpaa->id,
+				'english'        => $xfield1['po-angliyski'] ?? null,
+				'japanese'       => $xfield1['po-yaponski'] ?? null,
+				'synonyms'       => $xfield1['nazvanie-romadzi'] ?? null,
+				'duration'       => $xfield1['dlitelnost'] ?? null,
+				'description'    => $post->short_story,
+				'created_at'     => $post->date,
+				'updated_at'     => $post->date,
 			];
 			var_dump($post->id);
 		}
@@ -530,17 +528,16 @@ class DLEParseRepository implements DLEParse
 
 		foreach ($channel as $value) {
 			$xfields = explode('||', $value->xfields);
-			foreach ($xfields as $value) {
-				$xfield = explode('|', $value);
+			foreach ($xfields as $values) {
+				$xfield = explode('|', $values);
 				$xfield1[$xfield['0']] = $xfield['1'];
 			}
 			$channels = explode(', ', $xfield1['kanal']);
 
 			foreach ($channels as $values) {
 				$result[] = [
-					'title'         => $values,
-					'filtered_name' => $values,
-					'url'           => Str::slug($values),
+					'title' => $values,
+					'url'   => Str::slug($values),
 				];
 			}
 		}
