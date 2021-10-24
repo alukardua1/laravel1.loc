@@ -92,15 +92,15 @@ trait ParseShikimori
 				$shiki['update'] = true;
 			}
 			if (implode(', ', $this->dataShiki['english']) != $anime->english) {
-				$shiki['english'] = implode(', ', $this->dataShiki['english']);
+				$shiki['english'] = implode('|', $this->dataShiki['english']);
 				$shiki['update'] = true;
 			}
 			if (implode(', ', $this->dataShiki['synonyms']) != $anime->synonyms) {
-				$shiki['synonyms'] = implode(', ', $this->dataShiki['synonyms']);
+				$shiki['synonyms'] = implode('|', $this->dataShiki['synonyms']);
 				$shiki['update'] = true;
 			}
 			if (implode(', ', $this->dataShiki['japanese']) != $anime->japanese) {
-				$shiki['japanese'] = implode(', ', $this->dataShiki['japanese']);
+				$shiki['japanese'] = implode('|', $this->dataShiki['japanese']);
 				$shiki['update'] = true;
 			}
 			if ($this->dataShiki['rating']) {

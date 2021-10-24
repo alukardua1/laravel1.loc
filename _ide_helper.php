@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.65.0.
+ * Generated for Laravel 8.67.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3487,6 +3487,18 @@ namespace Illuminate\Support\Facades {
 		{
 			/** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
 			$instance->assertNotDispatched($command, $callback);
+		}
+
+		/**
+		 * Assert that no jobs were dispatched.
+		 *
+		 * @return void
+		 * @static
+		 */
+		public static function assertNothingDispatched()
+		{
+			/** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
+			$instance->assertNothingDispatched();
 		}
 
 		/**
@@ -8368,6 +8380,20 @@ namespace Illuminate\Support\Facades {
 	 */
 	class Log
 	{
+		/**
+		 * Build an on-demand log channel.
+		 *
+		 * @param  array  $config
+		 *
+		 * @return \Psr\Log\LoggerInterface
+		 * @static
+		 */
+		public static function build($config)
+		{
+			/** @var \Illuminate\Log\LogManager $instance */
+			return $instance->build($config);
+		}
+
 		/**
 		 * Create a new, on-demand aggregate logger instance.
 		 *
@@ -23057,18 +23083,19 @@ namespace {
 		 *
 		 * @param  array        $values
 		 * @param  string|null  $sequence
+		 *
 		 * @return int
 		 * @static
-             */ 
-            public static function insertGetId($values, $sequence = null)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->insertGetId($values, $sequence);
-            }
-             
-                /**
-             * Insert new records into the table using a subquery.
-             *
+		 */
+		public static function insertGetId($values, $sequence = null)
+		{
+			/** @var \Illuminate\Database\Query\Builder $instance */
+			return $instance->insertGetId($values, $sequence);
+		}
+
+		/**
+		 * Insert new records into the table using a subquery.
+		 *
              * @param array $columns
              * @param \Closure|\Illuminate\Database\Query\Builder|string $query
              * @return int 

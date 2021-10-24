@@ -119,7 +119,9 @@
 		<li>
 			<span>Другие названия: </span>
 			<span class="other-name">
-			<span itemprop="name">{{$show->synonyms}}</span>
+				@foreach(explode('|', $show->synonyms) as $value)
+					<span>{{$value}}</span><br/>
+				@endforeach
     	</span>
 		</li>
 	@endif

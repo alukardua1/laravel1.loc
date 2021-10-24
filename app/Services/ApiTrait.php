@@ -105,11 +105,11 @@ trait ApiTrait
 	/**
 	 * Создание массива категорий для Api
 	 *
-	 * @param $category
+	 * @param  mixed  $category
 	 *
 	 * @return array
 	 */
-	private function animeCategory($category): array
+	private function animeCategory(mixed $category): array
 	{
 		$result = [];
 		foreach ($category as $value) {
@@ -117,6 +117,23 @@ trait ApiTrait
 				'id'    => $value->id,
 				'title' => $value->title,
 				'url'   => '/' . $value->url . '/',
+			];
+		}
+
+		return $result;
+	}
+
+	/**
+	 * @param  mixed  $studio
+	 *
+	 * @return array
+	 */
+	private function studio(mixed $studio)
+	{
+		foreach ($studio as $item) {
+			$result[] = [
+				'id'    => $item->id,
+				'title' => $item->title,
 			];
 		}
 
@@ -134,27 +151,30 @@ trait ApiTrait
 	public function animeOneMutations($anime): array
 	{
 		return [
-			'id'          => $anime->id,
-			'image'       => [
+			'id'              => $anime->id,
+			'image'           => [
 				'original' => $anime->original_img,
 				'preview'  => $anime->preview_img,
 			],
-			'name'        => $anime->name,
-			'russian'     => $anime->russian,
-			'english'     => explode(', ', $anime->english),
-			'japanese'    => explode(', ', $anime->japanese),
-			'synonyms'    => explode(', ', $anime->synonyms),
-			'url'         => '/anime/' . $anime->id . '-' . $anime->url,
-			'category'    => $this->animeCategory($anime->getCategory),
-			'kind'        => [
+			'name'            => $anime->name,
+			'russian'         => $anime->russian,
+			'english'         => explode('|', $anime->english),
+			'japanese'        => explode('|', $anime->japanese),
+			'synonyms'        => explode('|', $anime->synonyms),
+			'url'             => '/anime/' . $anime->id . '-' . $anime->url,
+			'category'        => $this->animeCategory($anime->getCategory),
+			'kind'            => [
 				'name'       => $anime->getKind->name,
 				'full_name'  => $anime->getKind->full_name,
 				'short_name' => $anime->getKind->short_name,
 			],
-			'status'      => $anime->status,
-			'anons'       => (bool)$anime->anons,
-			'ongoing'     => (bool)$anime->ongoing,
-			'description' => $anime->description,
+			'status'          => $anime->status,
+			'anons'           => (bool)$anime->anons,
+			'ongoing'         => (bool)$anime->ongoing,
+			'description'     => $anime->description,
+			'updated_at'      => date('c', strtotime($anime->updated_at)),
+			'next_episode_at' => date('c', strtotime($anime->next_episode_at)),
+			'studios'         => $this->studio($anime->getStudio),
 		];
 	}
 }
