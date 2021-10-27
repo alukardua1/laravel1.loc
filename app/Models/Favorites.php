@@ -37,6 +37,6 @@ class Favorites extends Model
 	 */
 	public function getAnime(): BelongsTo
 	{
-		return $this->belongsTo(Anime::class);
+		return $this->belongsTo(Anime::class)->latest();
 	}
 }

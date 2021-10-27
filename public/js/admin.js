@@ -92,7 +92,7 @@ function ClassicEditorCk(windows, selector) {
 	}
 }
 
-ClassicEditorCk(window['descript'], '#description_html');
+ClassicEditorCk(window['descript'], '#description');
 
 $('#nameBtn').click(function () {
 	var $value = $("#name").val();

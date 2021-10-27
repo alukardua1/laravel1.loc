@@ -77,7 +77,7 @@ class AnimeController extends Controller
 		$plus = $show->vote['plus'];
 		$minus = -$show->vote['minus'];
 		$show->broadcastTitle = $this->broadcast($show->broadcast);
-		$show->seasonAired = $this->seasonAired($show->aired_on);
+		$show->seasonAired = $show->aired_on ? $this->seasonAired($show->aired_on) : null;
 		$this->setAttributes($this->attributeArr, $show);
 		$comments = $this->showComments($show->getComments()->withTrashed()->get());
 		$show->comments_count = $show->getComments()->count();

@@ -78,6 +78,7 @@ class Anime extends Model
 		'getRegionBlock',
 		'getYear',
 		'getCopyrightHolder',
+		'getOtherLink',
 	];
 
 	/**

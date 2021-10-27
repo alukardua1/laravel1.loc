@@ -31,7 +31,7 @@ class CategoryAdminController extends Controller
 	 */
 	public function index(): View|Factory|Response|Application
 	{
-		$all = $this->repository->getCategory(null, true);
+		$all = $this->repository->getCategory(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'category.index', compact('all'));
 	}
@@ -57,7 +57,7 @@ class CategoryAdminController extends Controller
 	{
 		$add = $this->repository->setCategory($request);
 
-		return $this->ifErrorAddUpdate($add, 'showAllCategoryAdmin', 'Ошибка сохранения');
+		return $this->ifErrorAddUpdate($add, 'indexCategoryAdmin', 'Ошибка сохранения');
 	}
 
 	/**
@@ -86,7 +86,7 @@ class CategoryAdminController extends Controller
 	{
 		$update = $this->repository->setCategory($request, $url);
 
-		return $this->ifErrorAddUpdate($update, 'showAllCategoryAdmin', 'Ошибка сохранения');
+		return $this->ifErrorAddUpdate($update, 'indexCategoryAdmin', 'Ошибка сохранения');
 	}
 
 	/**

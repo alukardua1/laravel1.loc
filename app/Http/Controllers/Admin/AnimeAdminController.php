@@ -55,13 +55,13 @@ class AnimeAdminController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \App\Http\Requests\AnimeRequest  $animeRequest
+	 * @param  \App\Http\Requests\AnimeRequest  $request
 	 *
 	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
 	 */
-	public function store(AnimeRequest $animeRequest): Response|RedirectResponse
+	public function store(AnimeRequest $request): Response|RedirectResponse
 	{
-		$requestAnime = $this->repository->setAnime($animeRequest);
+		$requestAnime = $this->repository->setAnime($request);
 
 		return $this->ifErrorAddUpdate($requestAnime, 'showAllAnimeAdmin', 'Ошибка сохранения');
 	}
@@ -85,17 +85,17 @@ class AnimeAdminController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \App\Http\Requests\AnimeRequest  $animeRequest
+	 * @param  \App\Http\Requests\AnimeRequest  $request
 	 * @param  int                              $id
 	 *
 	 * @return RedirectResponse|Response
 	 */
-	public function update(AnimeRequest $animeRequest, int $id): Response|RedirectResponse
+	public function update(AnimeRequest $request, int $id): Response|RedirectResponse
 	{
 		// \Artisan::call('cache:clear');
-		$requestAnime = $this->repository->setAnime($animeRequest, $id);
+		$requestAnime = $this->repository->setAnime($request, $id);
 
-		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения', $id);
+		return $this->ifErrorAddUpdate($requestAnime, 'indexAnimeAdmin', 'Ошибка сохранения', $id);
 	}
 
 	/**

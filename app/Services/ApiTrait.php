@@ -86,16 +86,18 @@ trait ApiTrait
 				],
 				'name'     => $item->name,
 				'russian'  => $item->russian,
-				'english'  => explode(', ', $item->english),
-				'japanese' => explode(', ', $item->japanese),
-				'synonyms' => explode(', ', $item->synonyms),
+				'japanese' => explode('|', $item->japanese),
 				'url'      => '/anime/' . $item->id . '-' . $item->url,
 				'category' => $this->animeCategory($item->getCategory),
+				'episodes' => $item->episodes ?? null,
 				'kind'     => [
 					'name'       => $item->getKind->name,
 					'full_name'  => $item->getKind->full_name,
 					'short_name' => $item->getKind->short_name,
 				],
+				'anons'    => (bool)$item->anons,
+				'ongoing'  => (bool)$item->ongoing,
+				'released' => (bool)$item->released,
 			];
 		}
 
@@ -114,9 +116,8 @@ trait ApiTrait
 		$result = [];
 		foreach ($category as $value) {
 			$result[] = [
-				'id'    => $value->id,
-				'title' => $value->title,
-				'url'   => '/' . $value->url . '/',
+				'russian' => $value->title,
+				'english' => $value->english,
 			];
 		}
 
@@ -130,10 +131,11 @@ trait ApiTrait
 	 */
 	private function studio(mixed $studio)
 	{
+		$result = [];
 		foreach ($studio as $item) {
 			$result[] = [
-				'id'    => $item->id,
 				'title' => $item->title,
+				'url'   => '/' . $item->url . '/',
 			];
 		}
 
@@ -163,18 +165,57 @@ trait ApiTrait
 			'synonyms'        => explode('|', $anime->synonyms),
 			'url'             => '/anime/' . $anime->id . '-' . $anime->url,
 			'category'        => $this->animeCategory($anime->getCategory),
+			'episodes'        => $anime->episodes ?? null,
+			'episodes_aired'  => $anime->episodes_aired ?? null,
+			'aired_on'        => $anime->aired_on,
+			'released_on'     => $anime->released_on,
+			'broadcast'       => $anime->broadcast ?? null,
+			'channel'         => $anime->getChannel->title ?? null,
 			'kind'            => [
 				'name'       => $anime->getKind->name,
 				'full_name'  => $anime->getKind->full_name,
 				'short_name' => $anime->getKind->short_name,
 			],
-			'status'          => $anime->status,
 			'anons'           => (bool)$anime->anons,
 			'ongoing'         => (bool)$anime->ongoing,
+			'released'        => (bool)$anime->released,
 			'description'     => $anime->description,
 			'updated_at'      => date('c', strtotime($anime->updated_at)),
 			'next_episode_at' => date('c', strtotime($anime->next_episode_at)),
 			'studios'         => $this->studio($anime->getStudio),
+			'license_name_ru' => $anime->license_name_ru,
+			'videos'          => $this->video($anime->getTrailer),
+			'other_links'     => $this->otherLink($anime->getOtherLink),
 		];
+	}
+
+	private function otherLink(mixed $link)
+	{
+		$result = [];
+		foreach ($link as $item) {
+			$result[] = [
+				'title' => $item->title,
+				'url'   => $item->url,
+			];
+		}
+
+		return $result;
+	}
+
+	/**
+	 * @param  mixed  $video
+	 *
+	 * @return array
+	 */
+	private function video(mixed $video)
+	{
+		$result = [];
+		foreach ($video as $item) {
+			$result[] = [
+				'url' => $item->url_trailer,
+			];
+		}
+
+		return $result;
 	}
 }

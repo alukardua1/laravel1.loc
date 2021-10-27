@@ -45,9 +45,9 @@ Route::group(
 				Route::get('/', [CategoryAdminController::class, 'index'])->name('indexCategoryAdmin');
 				Route::get('/add', [CategoryAdminController::class, 'create'])->name('createCategoryAdmin');
 				Route::post('/add', [CategoryAdminController::class, 'store'])->name('storeCategoryAdmin');
-				Route::get('/{id}/edit', [CategoryAdminController::class, 'edit'])->name('editCategoryAdmin');
-				Route::post('/{id}/update', [CategoryAdminController::class, 'update'])->name('updateCategoryAdmin');
-				Route::get('/{id}/delete', [CategoryAdminController::class, 'destroy'])->name('deleteCategoryAdmin');
+				Route::get('/{category}/edit', [CategoryAdminController::class, 'edit'])->name('editCategoryAdmin');
+				Route::post('/{category}/update', [CategoryAdminController::class, 'update'])->name('updateCategoryAdmin');
+				Route::get('/{category}/delete', [CategoryAdminController::class, 'destroy'])->name('deleteCategoryAdmin');
 			}
 		);
 		Route::group(

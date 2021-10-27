@@ -214,16 +214,16 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function setAnime(AnimeRequest $request, int $id = null): mixed
 	{
 		$formRequest = $request->all();
-		$updatePost = Anime::firstOrCreate(['id' => $id], $formRequest); //если нашли то обновляем, иначе добавляем новую запись
-		if ($updatePost) {
+		$update = Anime::updateOrCreate(['id' => $id], $formRequest); //если нашли то обновляем, иначе добавляем новую запись
+		if ($update) {
 			if ($formRequest['channel_id'] == null) {
 				$formRequest['channel_id'] = 0;
 			}
-			$this->checkRequest($this->arrCheck, $formRequest, $updatePost);
-			$this->syncRequest($this->arrSync, $updatePost, $request);
+			$this->checkRequest($this->arrCheck, $formRequest, $update);
+			$this->syncRequest($this->arrSync, $update, $request);
 
 			if (array_key_exists('poster', $formRequest)) {
-				$this->uploadImageNew($updatePost, $formRequest);
+				$this->uploadImageNew($update, $formRequest);
 			}
 			if (!empty($formRequest['otherLink_title'])) {
 				$this->setOtherLink($formRequest, $id);
@@ -232,7 +232,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 				$this->setPlayer($formRequest, $id);
 			}
 
-			return $updatePost->save();
+			return $update->save();
 		}
 	}
 

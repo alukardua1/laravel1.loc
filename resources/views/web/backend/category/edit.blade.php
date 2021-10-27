@@ -10,8 +10,8 @@
 			<input type="text" name="title" id="title" class="form-control" placeholder="Заголовок" aria-label="Заголовок" aria-describedby="title" value="{{$edit->title}}">
 		</div>
 		<div class="input-group mb-3">
-			<label for="url" class="input-group-text">Урл категории</label>
-			<input type="text" name="url" id="url" class="form-control" placeholder="Урл категории" aria-label="Урл категории" aria-describedby="url" value="{{$edit->url}}">
+			<label for="english" class="input-group-text">На английском</label>
+			<input type="text" name="english" id="english" class="form-control" placeholder="На английском" aria-label="На английском" aria-describedby="english" value="{{$edit->english}}">
 		</div>
 		<div id="descript" class="input-group mb-3">
 			<label for="description" class="input-group-text">Описание категории</label>

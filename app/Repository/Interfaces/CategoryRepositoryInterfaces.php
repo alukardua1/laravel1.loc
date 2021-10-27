@@ -11,28 +11,28 @@ interface CategoryRepositoryInterfaces
 	/**
 	 * Получает все категории
 	 *
-	 * @param  string|null  $categoryUrl
+	 * @param  string|null  $url
 	 * @param  bool|false   $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getCategory(string $categoryUrl = null, bool $isAdmin = false): mixed;
+	public function getCategory(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление категории
 	 *
-	 * @param  string|null                         $categoryUrl  Урл категории
-	 * @param  \App\Http\Requests\CategoryRequest  $request      Запрос
+	 * @param  \App\Http\Requests\CategoryRequest  $request  Запрос
+	 * @param  string|null                         $url
 	 *
 	 * @return mixed
 	 */
-	public function setCategory(CategoryRequest $request, string $categoryUrl = null): mixed;
+	public function setCategory(CategoryRequest $request, string $url = null): mixed;
 
 	/**
-	 * @param  string  $categoryUrl
+	 * @param  string  $url
 	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delCategory(string $categoryUrl, bool $fullDel = false): mixed;
+	public function delCategory(string $url, bool $fullDel = false): mixed;
 }

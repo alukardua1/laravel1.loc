@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class CopyrightHolder
@@ -27,5 +28,13 @@ class CopyrightHolder extends Model
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getAnime(): HasMany
+	{
+		return $this->hasMany(Anime::class)->latest();
 	}
 }

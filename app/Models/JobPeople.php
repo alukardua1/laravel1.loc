@@ -26,4 +26,9 @@ class JobPeople extends Model
 	{
 		parent::__construct($attributes);
 	}
+
+	public function getPeople()
+	{
+		return $this->belongsToMany(People::class)->latest();
+	}
 }

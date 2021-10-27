@@ -25,17 +25,17 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	/**
 	 * Получает все категории
 	 *
-	 * @param  string|null  $categoryUrl
+	 * @param  string|null  $url
 	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getCategory(string $categoryUrl = null, bool $isAdmin = false): mixed
+	public function getCategory(string $url = null, bool $isAdmin = false): mixed
 	{
-		if ($categoryUrl) {
-			return Category::where('url', $categoryUrl);
+		if ($url) {
+			return Category::where('url', $url);
 		} elseif ($isAdmin) {
-			return Category::orderBy('title', 'DESC');
+			return Category::orderBy('id', 'ASC');
 		}
 		return Category::where('posted_at', '=', 1);
 	}
@@ -43,20 +43,21 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	/**
 	 * Добавление/обновление категории
 	 *
-	 * @param  string|null                         $categoryUrl  Урл категории
-	 * @param  \App\Http\Requests\CategoryRequest  $request      Запрос
+	 * @param  string|null                         $url      Урл категории
+	 * @param  \App\Http\Requests\CategoryRequest  $request  Запрос
 	 *
 	 * @return mixed
 	 */
-	public function setCategory(CategoryRequest $request, string $categoryUrl = null): mixed
+	public function setCategory(CategoryRequest $request, string $url = null): mixed
 	{
 		$formRequest = $request->all();
-		if (!$categoryUrl) {
-			$categoryUrl = $formRequest['url'];
+		if (!$url) {
+			$url = $formRequest['url'];
 		}
-		$update = Category::firstOrCreate(['url' => $categoryUrl], $formRequest);
+		$update = Category::updateOrCreate(['url' => $url], $formRequest);
 		if ($update) {
 			$this->checkRequest($this->arrCheck, $formRequest, $update);
+
 			return $update->save();
 		}
 	}
@@ -64,14 +65,14 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	/**
 	 * Удаление категории
 	 *
-	 * @param  string  $categoryUrl  Урл категории
+	 * @param  string  $url  Урл категории
 	 * @param  bool    $fullDel
 	 *
 	 * @return mixed
 	 */
-	public function delCategory(string $categoryUrl, bool $fullDel = false): mixed
+	public function delCategory(string $url, bool $fullDel = false): mixed
 	{
-		$del = Category::where('url', $categoryUrl)->firstOrFail();
+		$del = Category::where('url', $url)->firstOrFail();
 		if ($del) {
 			if ($fullDel) {
 				return $del->forceDelete();

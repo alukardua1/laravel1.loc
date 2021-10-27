@@ -103,7 +103,9 @@
 		<li>
 			<span>По-японски: </span>
 			<span class="other-name">
-			<span itemprop="name">{{$show->japanese}}</span>
+				@foreach(explode('|', $show->japanese) as $value)
+					<span>{{$value}}</span><br/>
+				@endforeach
     	</span>
 		</li>
 	@endif
@@ -111,7 +113,9 @@
 		<li>
 			<span>По-английски: </span>
 			<span class="other-name">
-			<span itemprop="name">{{$show->english}}</span>
+			@foreach(explode('|', $show->english) as $value)
+					<span>{{$value}}</span><br/>
+				@endforeach
     	</span>
 		</li>
 	@endif

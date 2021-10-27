@@ -2063,3 +2063,18 @@ a.disabled {
 .editing {
 	margin-left: 5px;
 }
+
+.title {
+	font-family: impact, sans-serif;
+	font-size: 36pt;
+	color: #ff0000;
+	background-color: transparent;
+}
+
+.textshadow {
+	text-shadow: .1rem .1rem #c1c1c1;
+}
+
+.card {
+	border: 0;
+}

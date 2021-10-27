@@ -8,6 +8,13 @@ class People extends Model
 	public string $cachePrefix = 'people_';
 
 	protected $fillable = [
+		'name',
+		'english',
+		'japanese',
+		'img',
+		'url',
+		'birthday',
+		'website',
 	];
 
 	/**
@@ -23,5 +30,10 @@ class People extends Model
 	public function getAnime()
 	{
 		return $this->hasMany(Anime::class)->latest();
+	}
+
+	public function getJobs()
+	{
+		return $this->belongsToMany(JobPeople::class)->latest();
 	}
 }

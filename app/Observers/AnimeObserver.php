@@ -41,7 +41,6 @@ class AnimeObserver
 	 */
 	public function updated(Anime $anime)
 	{
-		//
 	}
 
 	/**

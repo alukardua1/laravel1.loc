@@ -11,6 +11,7 @@
 		<tr>
 			<th scope="col">#</th>
 			<th scope="col">Название</th>
+			<th scope="col">На английском</th>
 			<th scope="col">Описание</th>
 			<th scope="col">Опубликовано</th>
 			<th scope="col">Действия</th>
@@ -24,6 +25,11 @@
 				</th>
 				<td>
 					<a href="{{route('editCategoryAdmin', $item->url)}}">{{$item->title}}</a>
+				</td>
+				<td>
+					@if ($item->english)
+						<a href="{{route('editCategoryAdmin', $item->url)}}">{{$item->english}}</a>
+					@endif
 				</td>
 				<td>
 					{!! $item->description !!}

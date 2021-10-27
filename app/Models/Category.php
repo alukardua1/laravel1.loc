@@ -20,11 +20,10 @@ class Category extends Model
 
 	protected $fillable = [
 		'title',
+		'english',
 		'url',
 		'description',
-		'description_html',
-		'description_source',
-		'posted_at'
+		'posted_at',
 	];
 
 	/**

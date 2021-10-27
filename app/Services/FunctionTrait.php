@@ -385,14 +385,14 @@ trait FunctionTrait
 	}
 
 	/**
-	 * @param  mixed   $request    Запрос
-	 * @param  string  $route      Маршрут
-	 * @param  string  $textError  Текст выводимой ошибки
-	 * @param  null    $id         ID записи
+	 * @param  mixed       $request    Запрос
+	 * @param  string      $route      Маршрут
+	 * @param  string      $textError  Текст выводимой ошибки
+	 * @param  mixed|null  $id         ID записи
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function ifErrorAddUpdate(mixed $request, string $route, string $textError, $id = null): RedirectResponse
+	public function ifErrorAddUpdate(mixed $request, string $route, string $textError, mixed $id = null): RedirectResponse
 	{
 		if ($request) {
 			return redirect()->route($route, $id);
