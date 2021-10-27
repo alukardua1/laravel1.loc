@@ -18,7 +18,7 @@
 		</tr>
 		</thead>
 		<tbody>
-		@foreach($all as $item)
+		@foreach($index as $item)
 			<tr>
 				<th scope="row">
 					{{$item->id}}

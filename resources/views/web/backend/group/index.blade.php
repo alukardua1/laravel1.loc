@@ -1,6 +1,6 @@
 @extends('web.backend.layout.app')
 
-@section('title', 'Редактирование новостей опубликованных на сайте')
+@section('title', 'Редактирование групп пользователей')
 
 @section('content')
 	<div>
@@ -16,24 +16,24 @@
 		</tr>
 		</thead>
 		<tbody>
-		@foreach($groupAll as $group)
+		@foreach($index as $item)
 			<tr>
 				<th scope="row">
-					{{$group->id}}
+					{{$item->id}}
 				</th>
 				<td>
-					<a href="{{route('editGroupAdmin', $group->title)}}" style="color: {{$group->color}} !important;">{{$group->title}}</a>
+					<a href="{{route('editGroupAdmin', $item->title)}}" style="color: {{$item->color}} !important;">{{$item->title}}</a>
 				</td>
 				<td>
-					{{$group->description}}
+					{{$item->description}}
 				</td>
 				<td>
 					<div class="btn-group">
-						<a type="button" class="btn" href="{{route('editGroupAdmin', $group->title)}}"><i class="far fa-edit"></i></a>
-						@if (in_array($group->id, [1,2,3,4]))
-							<a type="button" class="btn disabled" href="{{route('deleteGroupAdmin', $group->title)}}"><i class="far fa-trash-alt"></i></a>
+						<a type="button" class="btn" href="{{route('editGroupAdmin', $item->title)}}"><i class="far fa-edit"></i></a>
+						@if (in_array($item->id, [1,2,3,4]))
+							<a type="button" class="btn disabled" href="{{route('deleteGroupAdmin', $item->title)}}"><i class="far fa-trash-alt"></i></a>
 						@else
-							<a type="button" class="btn" href="{{route('deleteGroupAdmin', $group->title)}}"><i class="far fa-trash-alt"></i></a>
+							<a type="button" class="btn" href="{{route('deleteGroupAdmin', $item->title)}}"><i class="far fa-trash-alt"></i></a>
 						@endif
 					</div>
 				</td>
@@ -42,8 +42,8 @@
 		</tbody>
 	</table>
 	<!--Pagination-->
-	@if($groupAll->total() > $groupAll->count())
-		{{ $groupAll->links('web.frontend.vendor.pagination.bootstrap-4') }}
+	@if($index->total() > $index->count())
+		{{ $index->links('web.frontend.vendor.pagination.bootstrap-4') }}
 	@endif
 	<!--Pagination-->
 @endsection

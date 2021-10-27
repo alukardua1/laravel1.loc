@@ -7,8 +7,8 @@ use App\Repository\Interfaces\GroupRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class GroupAdminController extends Controller
 {
@@ -30,9 +30,9 @@ class GroupAdminController extends Controller
 	 */
 	public function index(): Factory|View|Application
 	{
-		$groupAll = $this->repository->getGroup()->paginate($this->paginate);
+		$index = $this->repository->getGroup()->paginate($this->paginate);
 
-		return view($this->backend . 'group/index', compact('groupAll'));
+		return view($this->backend . 'group/index', compact('index'));
 	}
 
 	/**
@@ -50,49 +50,56 @@ class GroupAdminController extends Controller
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function store(Request $request)
+	public function store(Request $request): RedirectResponse
 	{
-		dd(__METHOD__, $request);
+		$store = $this->repository->setGroup($request);
+
+		return $this->ifErrorAddUpdate($store, 'indexGroupAdmin', 'Ошибка сохранения');
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  string  $group
+	 * @param  string  $url
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function edit(string $group): View|Factory|Application
+	public function edit(string $url): View|Factory|Application
 	{
-		$groupEdit = $this->repository->getGroup($group);
+		$edit = $this->repository->getGroup($url);
 
-		return view($this->backend . 'group.edit', compact('groupEdit'));
+		return view($this->backend . 'group.edit', compact('edit'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
-	 * @param  string                    $group
+	 * @param  string                    $url
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(Request $request, string $group): Response
+	public function update(Request $request, string $url): RedirectResponse
 	{
-		dd(__METHOD__, $request, $group);
+		$update = $this->repository->setGroup($request, $url);
+
+		return $this->ifErrorAddUpdate($update, 'indexGroupAdmin', 'Ошибка сохранения', $url);
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  string  $group
+	 * @param  string  $url
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function destroy(string $group)
+	public function destroy(string $url): RedirectResponse
 	{
-		dd(__METHOD__, $group);
+		$delete = $this->repository->deleteGroup($url);
+		if ($delete) {
+			return back();
+		}
 	}
 }

@@ -39,7 +39,7 @@ class PeopleRepository implements PeopleRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delPeople(string $url, bool $fullDel = false): mixed
+	public function deletePeople(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delPeople() method.
 	}

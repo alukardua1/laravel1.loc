@@ -8,6 +8,7 @@ use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ChannelAdminController extends Controller
 {
@@ -29,9 +30,9 @@ class ChannelAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$channel = $this->repository->getChannel()->paginate($this->paginate);
+		$index = $this->repository->getChannel()->paginate($this->paginate);
 
-		return view($this->backend . 'channel.index', compact($channel));
+		return view($this->backend . 'channel.index', compact('index'));
 	}
 
 	/**
@@ -49,11 +50,13 @@ class ChannelAdminController extends Controller
 	 *
 	 * @param  \App\Http\Requests\ChannelRequest  $request
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function store(ChannelRequest $request)
+	public function store(ChannelRequest $request): RedirectResponse
 	{
-		//
+		$store = $this->repository->setChannel($request);
+
+		return $this->ifErrorAddUpdate($store, 'indexChannelAdmin', 'Ошибка сохранения');
 	}
 
 	/**
@@ -61,11 +64,13 @@ class ChannelAdminController extends Controller
 	 *
 	 * @param  string  $url
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function edit(string $url)
+	public function edit(string $url): View|Factory|Application
 	{
-		//
+		$edit = $this->repository->getChannel($url)->first();
+
+		return view($this->backend . 'channel.edit', compact('edit'));
 	}
 
 	/**
@@ -74,11 +79,13 @@ class ChannelAdminController extends Controller
 	 * @param  \App\Http\Requests\ChannelRequest  $request
 	 * @param  string                             $url
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function update(ChannelRequest $request, string $url)
+	public function update(ChannelRequest $request, string $url): RedirectResponse
 	{
-		//
+		$update = $this->repository->setChannel($request, $url);
+
+		return $this->ifErrorAddUpdate($update, 'indexChannelAdmin', 'Ошибка сохранения');
 	}
 
 	/**
@@ -86,10 +93,13 @@ class ChannelAdminController extends Controller
 	 *
 	 * @param  string  $url
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function destroy(string $url)
+	public function destroy(string $url): RedirectResponse
 	{
-		//
+		$delete = $this->repository->deleteChannel($url);
+		if ($delete) {
+			return back();
+		}
 	}
 }

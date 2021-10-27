@@ -35,5 +35,5 @@ interface YearAiredRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delYearAired(string $url, bool $fullDel = false): mixed;
+	public function deleteYearAired(string $url, bool $fullDel = false): mixed;
 }

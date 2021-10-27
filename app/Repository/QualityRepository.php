@@ -49,7 +49,7 @@ class QualityRepository implements QualityRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delQuality(string $url, bool $fullDel = false): mixed
+	public function deleteQuality(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delQuality() method.
 	}

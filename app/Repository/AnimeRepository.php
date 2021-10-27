@@ -244,7 +244,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function destroyAnime(int $id, bool $fullDel = false): mixed
+	public function deleteAnime(int $id, bool $fullDel = false): mixed
 	{
 		$del = Anime::findOrFail($id, ['*']);
 		if ($del) {

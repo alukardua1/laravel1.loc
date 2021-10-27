@@ -14,7 +14,7 @@ interface TableOrderRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function get(int $id = null, int $user_id = null): mixed;
+	public function getTable(int $id = null, int $user_id = null): mixed;
 
 	/**
 	 * @param  \App\Http\Requests\TableOrderRequest  $request
@@ -22,7 +22,7 @@ interface TableOrderRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function set(TableOrderRequest $request, int $id = null): mixed;
+	public function setTable(TableOrderRequest $request, int $id = null): mixed;
 
 	/**
 	 * @param  int   $id
@@ -30,5 +30,5 @@ interface TableOrderRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function del(int $id, bool $fullDel = false): mixed;
+	public function deleteTable(int $id, bool $fullDel = false): mixed;
 }

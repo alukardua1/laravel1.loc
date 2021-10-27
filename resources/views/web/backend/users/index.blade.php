@@ -20,23 +20,23 @@
 		</tr>
 		</thead>
 		<tbody>
-		@foreach($allUser as $user)
+		@foreach($index as $item)
 			<tr>
 				<td>
 					<div class="row">
-						<div class="col-4"><img src="{{$user->profile_photo_path}}" alt="{{$user->login}}"></div>
+						<div class="col-4"><img src="{{$item->profile_photo_path}}" alt="{{$item->login}}"></div>
 						<div class="col">
-							<h6><a href="{{route('editUserAdmin', $user->login)}}">{{$user->login}}</a></h6>
-							<span style="color: {{$user->getGroup->color}}">
-							{{$user->getGroup->title}}
+							<h6><a href="{{route('editUserAdmin', $item->login)}}">{{$item->login}}</a></h6>
+							<span style="color: {{$item->getGroup->color}}">
+							{{$item->getGroup->title}}
 							</span>
 						</div>
 					</div>
 				</td>
 				<th scope="row" class="id_row">
 					<ul class="list-group-flush">
-						<li class="list-group-item">Регистрации: {{$user->register}}</li>
-						<li class="list-group-item">Посещения: {{$user->last_login}}</li>
+						<li class="list-group-item">Регистрации: {{$item->register}}</li>
+						<li class="list-group-item">Посещения: {{$item->last_login}}</li>
 					</ul>
 				</th>
 				<td class="id_row">
@@ -47,8 +47,8 @@
 				</td>
 				<td>
 					<div class="btn-group">
-						<a type="button" class="btn" href="{{route('editUserAdmin', $user->login)}}"><i class="far fa-edit"></i></a>
-						<a type="button" class="btn" href="{{route('deleteUserAdmin',  $user->login)}}"><i class="far fa-trash-alt"></i></a>
+						<a type="button" class="btn" href="{{route('editUserAdmin', $item->login)}}"><i class="far fa-edit"></i></a>
+						<a type="button" class="btn" href="{{route('deleteUserAdmin',  $item->login)}}"><i class="far fa-trash-alt"></i></a>
 					</div>
 				</td>
 			</tr>
@@ -56,8 +56,8 @@
 		</tbody>
 	</table>
 	<!--Pagination-->
-	@if($allUser->total() > $allUser->count())
-		{{ $allUser->links('web.frontend.vendor.pagination.bootstrap-4') }}
+	@if($index->total() > $index->count())
+		{{ $index->links('web.frontend.vendor.pagination.bootstrap-4') }}
 	@endif
 	<!--Pagination-->
 @endsection

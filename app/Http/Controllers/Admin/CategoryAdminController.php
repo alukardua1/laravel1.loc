@@ -31,9 +31,9 @@ class CategoryAdminController extends Controller
 	 */
 	public function index(): View|Factory|Response|Application
 	{
-		$all = $this->repository->getCategory(null, true)->paginate($this->paginate);
+		$index = $this->repository->getCategory(null, true)->paginate($this->paginate);
 
-		return view($this->backend . 'category.index', compact('all'));
+		return view($this->backend . 'category.index', compact('index'));
 	}
 
 	/**
@@ -55,9 +55,9 @@ class CategoryAdminController extends Controller
 	 */
 	public function store(CategoryRequest $request): RedirectResponse
 	{
-		$add = $this->repository->setCategory($request);
+		$store = $this->repository->setCategory($request);
 
-		return $this->ifErrorAddUpdate($add, 'indexCategoryAdmin', 'Ошибка сохранения');
+		return $this->ifErrorAddUpdate($store, 'indexCategoryAdmin', 'Ошибка сохранения');
 	}
 
 	/**
@@ -98,7 +98,7 @@ class CategoryAdminController extends Controller
 	 */
 	public function destroy(string $url): RedirectResponse
 	{
-		$delete = $this->repository->delCategory($url);
+		$delete = $this->repository->deleteCategory($url);
 		if ($delete) {
 			return back();
 		}

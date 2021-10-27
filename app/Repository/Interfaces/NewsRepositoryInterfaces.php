@@ -30,5 +30,5 @@ interface NewsRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delNews(int $id, bool $fullDel = false): mixed;
+	public function deleteNews(int $id, bool $fullDel = false): mixed;
 }

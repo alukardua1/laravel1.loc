@@ -53,6 +53,8 @@
 		})
 	}
 })()*/
+feather.replace()
+
 function copyID(el) {
 	var copytext = document.createElement('input')
 	copytext.value = el

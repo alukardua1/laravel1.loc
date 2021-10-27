@@ -22,22 +22,22 @@ class GroupSeeder extends Seeder
 		$data = [
 			[
 				'title'        => 'Администратор',
-				'color'        => 'red',
+				'color'        => '#ff0000',
 				'is_dashboard' => 1,
 			],
 			[
 				'title'        => 'Журналист',
-				'color'        => 'green',
+				'color'        => '#00ff00',
 				'is_dashboard' => 1,
 			],
 			[
 				'title'        => 'Модератор',
-				'color'        => 'blue',
+				'color'        => '#0000ff',
 				'is_dashboard' => 1,
 			],
 			[
 				'title'        => 'Пользователь',
-				'color'        => 'grey',
+				'color'        => '#707070',
 				'is_dashboard' => 0,
 			],
 		];

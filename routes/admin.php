@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AnimeAdminController;
 use App\Http\Controllers\Admin\CategoryAdminController;
+use App\Http\Controllers\Admin\ChannelAdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GroupAdminController;
 use App\Http\Controllers\Admin\KodikAdminController;
@@ -82,6 +83,12 @@ Route::group(
 		Route::group(
 			['prefix' => 'channel',],
 			function () {
+				Route::get('/', [ChannelAdminController::class, 'index'])->name('indexChannelAdmin');
+				Route::get('/add', [ChannelAdminController::class, 'create'])->name('createChannelAdmin');
+				Route::post('/add', [ChannelAdminController::class, 'store'])->name('storeChannelAdmin');
+				Route::get('/{channel}/edit', [ChannelAdminController::class, 'edit'])->name('editChannelAdmin');
+				Route::post('/{channel}/update', [ChannelAdminController::class, 'update'])->name('updateChannelAdmin');
+				Route::get('/{channel}/delete', [ChannelAdminController::class, 'destroy'])->name('deleteChannelAdmin');
 			}
 		);
 		Route::group(

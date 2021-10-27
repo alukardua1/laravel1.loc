@@ -23,7 +23,7 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function get(int $id = null, int $user_id = null): mixed
+	public function getTable(int $id = null, int $user_id = null): mixed
 	{
 		if ($id and $user_id) {
 			return TableOrder::where(['id', $id], ['user_id', $user_id]);
@@ -40,7 +40,7 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function set(TableOrderRequest $request, int $id = null): mixed
+	public function setTable(TableOrderRequest $request, int $id = null): mixed
 	{
 		$formRequest = $request->all();
 		$update = TableOrder::firstOrCreate(['id' => $id], $formRequest);
@@ -56,7 +56,7 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function del(int $id, bool $fullDel = false): mixed
+	public function deleteTable(int $id, bool $fullDel = false): mixed
 	{
 		// TODO: Implement del() method.
 	}

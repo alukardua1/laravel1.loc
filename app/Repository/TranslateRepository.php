@@ -49,7 +49,7 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delTranslate(string $url, bool $fullDel = false): mixed
+	public function deleteTranslate(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delTranslate() method.
 	}

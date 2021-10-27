@@ -27,5 +27,5 @@ interface GroupRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delGroup(string $url, bool $fullDel = false): mixed;
+	public function deleteGroup(string $url, bool $fullDel = false): mixed;
 }

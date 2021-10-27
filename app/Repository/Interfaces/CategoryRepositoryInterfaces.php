@@ -34,5 +34,5 @@ interface CategoryRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delCategory(string $url, bool $fullDel = false): mixed;
+	public function deleteCategory(string $url, bool $fullDel = false): mixed;
 }

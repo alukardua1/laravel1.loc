@@ -116,5 +116,5 @@ interface AnimeRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function destroyAnime(int $id, bool $fullDel = false): mixed;
+	public function deleteAnime(int $id, bool $fullDel = false): mixed;
 }

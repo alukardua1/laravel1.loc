@@ -102,15 +102,14 @@ class UserRepository implements UserRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function destroyUser(string $login, bool $fullDel = false): mixed
+	public function deleteUser(string $login, bool $fullDel = false): mixed
 	{
-		$del = User::where('login', $login)->firstOrFail();
-
-		if ($del) {
+		$delete = User::findOrFail($login, ['*']);
+		if ($delete) {
 			if ($fullDel) {
-				return $del->forceDelete();
+				return $delete->forceDelete();
 			}
-			return $del->delete();
+			return $delete->delete();
 		}
 	}
 }

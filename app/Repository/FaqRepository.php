@@ -36,7 +36,7 @@ class FaqRepository implements FaqRepositoryInterfaces
 	{
 		$allRequest = $request->all();
 
-		$faqUpdate = Faq::firstOrCreate(['url', $url], $allRequest);
+		$faqUpdate = Faq::updateOrCreate(['url', $url], $allRequest);
 		if ($faqUpdate) {
 			return $faqUpdate->save();
 		}
@@ -48,8 +48,14 @@ class FaqRepository implements FaqRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delFaq(string $url, bool $fullDel = false): mixed
+	public function deleteFaq(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delFaq() method.
+		$delete = Faq::findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

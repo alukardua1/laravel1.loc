@@ -33,5 +33,5 @@ interface StudioRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delStudio(string $url, bool $fullDel = false): mixed;
+	public function deleteStudio(string $url, bool $fullDel = false): mixed;
 }

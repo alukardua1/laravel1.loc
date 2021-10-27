@@ -70,14 +70,14 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delCategory(string $url, bool $fullDel = false): mixed
+	public function deleteCategory(string $url, bool $fullDel = false): mixed
 	{
-		$del = Category::where('url', $url)->firstOrFail();
-		if ($del) {
+		$delete = Category::findOrFail($url, ['*']);
+		if ($delete) {
 			if ($fullDel) {
-				return $del->forceDelete();
+				return $delete->forceDelete();
 			}
-			return $del->delete();
+			return $delete->delete();
 		}
 	}
 }

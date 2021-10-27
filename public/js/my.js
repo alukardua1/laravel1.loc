@@ -1,5 +1,7 @@
 $("#carousel").owlCarousel({loop: true, items: 8, nav: true, dots: false, autoplay: true});
 
+feather.replace()
+
 $(function () {
 	$(window).scroll(function () {
 		if ($(this).scrollTop() !== 0) {

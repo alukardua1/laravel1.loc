@@ -32,7 +32,7 @@ class TableOrderController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$allTableOrder = $this->repository->get(null, Auth::id())->paginate($this->paginate);
+		$allTableOrder = $this->repository->getTable(null, Auth::id())->paginate($this->paginate);
 
 		return view($this->frontend . 'order.show', compact('allTableOrder'));
 	}
@@ -56,7 +56,7 @@ class TableOrderController extends Controller
 	 */
 	public function store(TableOrderRequest $request): Response|RedirectResponse
 	{
-		$tableOrder = $this->repository->set($request);
+		$tableOrder = $this->repository->setTable($request);
 		if ($tableOrder) {
 			return redirect()->route('tableOrder');
 		}
@@ -73,7 +73,8 @@ class TableOrderController extends Controller
 	 */
 	public function show(int $id): View|Factory|Application
 	{
-		$tableOrderShow = $this->repository->get($id, Auth::id())->first();
+		$tableOrderShow = $this->repository->getTable($id, Auth::id())->first();
+
 		return view($this->frontend . 'order.edit', compact('tableOrderShow'));
 	}
 
@@ -87,7 +88,8 @@ class TableOrderController extends Controller
 	public function edit(int $id): View|Factory|Application
 	{
 		if (in_array(Auth::user()->group_id, [1, 2])) {
-			$currentTableOrder = $this->repository->get($id);
+			$currentTableOrder = $this->repository->getTable($id);
+
 			return view($this->frontend . 'order.edit', compact('currentTableOrder'));
 		}
 
@@ -105,7 +107,7 @@ class TableOrderController extends Controller
 	 */
 	public function update(TableOrderRequest $request, int $id): RedirectResponse
 	{
-		$tableOrder = $this->repository->set($request, $id);
+		$tableOrder = $this->repository->setTable($request, $id);
 		if ($tableOrder) {
 			return redirect()->route('tableOrder');
 		}

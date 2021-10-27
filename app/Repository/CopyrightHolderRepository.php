@@ -25,7 +25,7 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	public function getCopyrightHolder(string $url = null): mixed
 	{
 		if ($url) {
-			return CopyrightHolder::where('copyright_holder', $url);
+			return CopyrightHolder::where('title', $url);
 		}
 		return CopyrightHolder::orderBy('title', 'ASC');
 	}

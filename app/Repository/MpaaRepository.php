@@ -49,7 +49,7 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delMpaa(string $url, bool $fullDel = false): mixed
+	public function deleteMpaa(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delMpaa() method.
 	}

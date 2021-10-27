@@ -45,5 +45,5 @@ interface UserRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function destroyUser(string $login, bool $fullDel = false): mixed;
+	public function deleteUser(string $login, bool $fullDel = false): mixed;
 }

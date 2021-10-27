@@ -32,9 +32,10 @@ class GroupRepository implements GroupRepositoryInterfaces
 	public function setGroup(Request $request, string $url = null): mixed
 	{
 		$formRequest = $request->all();
-		$updateGroup = Group::firstOrCreate(['title' => $url], $formRequest);
-
-		return $updateGroup->save();
+		$updateGroup = Group::updateOrCreate(['title' => $url], $formRequest);
+		if ($updateGroup) {
+			return $updateGroup->save();
+		}
 	}
 
 	/**
@@ -43,14 +44,14 @@ class GroupRepository implements GroupRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delGroup(string $url, bool $fullDel = false): mixed
+	public function deleteGroup(string $url, bool $fullDel = false): mixed
 	{
-		$del = Group::findOrFail($url, ['*']);
-		if ($del) {
+		$delete = Group::findOrFail($url, ['*']);
+		if ($delete) {
 			if ($fullDel) {
-				return $del->forceDelete();
+				return $delete->forceDelete();
 			}
-			return $del->delete();
+			return $delete->delete();
 		}
 	}
 }

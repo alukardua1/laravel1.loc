@@ -27,5 +27,5 @@ interface CharacterRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delCharacter(string $url, bool $fullDel = false): mixed;
+	public function deleteCharacter(string $url, bool $fullDel = false): mixed;
 }

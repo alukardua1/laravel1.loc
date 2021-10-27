@@ -43,7 +43,7 @@ class StaticPageRepository implements StaticPageRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delPage(string $url, bool $fullDel = false): mixed
+	public function deletePage(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delPage() method.
 	}

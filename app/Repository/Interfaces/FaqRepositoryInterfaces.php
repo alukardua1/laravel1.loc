@@ -28,5 +28,5 @@ interface FaqRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delFaq(string $url, bool $fullDel = false): mixed;
+	public function deleteFaq(string $url, bool $fullDel = false): mixed;
 }

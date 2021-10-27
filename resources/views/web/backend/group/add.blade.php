@@ -4,6 +4,7 @@
 
 @section('content')
 	<form action="{{route('storeCategoryAdmin')}}" class="bg-dark p-3" method="post">
+		@csrf
 		<div class="input-group">
 			<label for="title" class="form-label">Наименование</label>
 			<input type="text" name="title" id="title" class="form-control" value="">

@@ -28,9 +28,9 @@ class UserAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$allUser = $this->repository->getUser()->paginate($this->paginate);
+		$index = $this->repository->getUser()->paginate($this->paginate);
 
-		return view($this->backend . 'users.index', compact('allUser'));
+		return view($this->backend . 'users.index', compact('index'));
 	}
 
 	/**
@@ -52,9 +52,9 @@ class UserAdminController extends Controller
 	 */
 	public function store(UserRequest $request): RedirectResponse
 	{
-		$requestUser = $this->repository->setUsers($request);
+		$store = $this->repository->setUsers($request);
 
-		return $this->ifErrorAddUpdate($requestUser, 'editUserAdmin', 'Ошибка сохранения');
+		return $this->ifErrorAddUpdate($store, 'indexUserAdmin', 'Ошибка сохранения');
 	}
 
 	/**
@@ -66,9 +66,9 @@ class UserAdminController extends Controller
 	 */
 	public function edit(string $login): View|Factory|Application
 	{
-		$user = $this->repository->getUser($login);
+		$edit = $this->repository->getUser($login);
 
-		return view($this->backend . 'users.edit', compact('user'));
+		return view($this->backend . 'users.edit', compact('edit'));
 	}
 
 	/**
@@ -81,9 +81,9 @@ class UserAdminController extends Controller
 	 */
 	public function update(UserRequest $request, string $login): RedirectResponse
 	{
-		$requestAnime = $this->repository->setUsers($request, $login);
+		$update = $this->repository->setUsers($request, $login);
 
-		return $this->ifErrorAddUpdate($requestAnime, 'editAnimeAdmin', 'Ошибка сохранения', $login);
+		return $this->ifErrorAddUpdate($update, 'indexUserAdmin', 'Ошибка сохранения', $login);
 	}
 
 	/**
@@ -95,7 +95,7 @@ class UserAdminController extends Controller
 	 */
 	public function destroy(string $login): RedirectResponse
 	{
-		$delete = $this->repository->destroyUser($login);
+		$delete = $this->repository->deleteUser($login);
 
 		if ($delete) {
 			return back();

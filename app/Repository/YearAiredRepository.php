@@ -51,7 +51,7 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delYearAired(string $url, bool $fullDel = false): mixed
+	public function deleteYearAired(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delYearAired() method.
 	}

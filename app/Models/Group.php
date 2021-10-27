@@ -14,7 +14,12 @@ class Group extends Model
 	public array  $cacheTags   = ['group'];
 	public string $cachePrefix = 'group_';
 
-	protected $fillable = [];
+	protected $fillable = [
+		'title',
+		'description',
+		'color',
+		'is_dashboard',
+	];
 
 	/**
 	 * Group constructor.

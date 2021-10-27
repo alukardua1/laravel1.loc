@@ -35,7 +35,7 @@ class CharacterRepository implements CharacterRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delCharacter(string $url, bool $fullDel = false): mixed
+	public function deleteCharacter(string $url, bool $fullDel = false): mixed
 	{
 		// TODO: Implement delCharacter() method.
 	}
