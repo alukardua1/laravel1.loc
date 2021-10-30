@@ -3,11 +3,6 @@
 namespace App\Models;
 
 
-/**
- * Class Job
- *
- * @package App\Models
- */
 class JobPeople extends Model
 {
 	public array  $cacheTags   = ['job'];

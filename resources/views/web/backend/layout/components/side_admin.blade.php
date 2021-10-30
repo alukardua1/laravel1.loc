@@ -11,8 +11,9 @@
 				<div class="accordion" id="accordionExample">
 					<div class="accordion-item-nav">
 						<h2 class="accordion-header" id="headingOne">
-							<a class="accordion-button accordion-button-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+							<a class="accordion-button accordion-button-link nav-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
 							   aria-controls="collapseOne">
+								<span data-feather="edit"></span>
 								Редактирование
 							</a>
 						</h2>
@@ -80,8 +81,9 @@
 					</div>
 					<div class="accordion-item-nav">
 						<h2 class="accordion-header" id="headingTwo">
-							<a class="accordion-button accordion-button-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+							<a class="accordion-button accordion-button-link nav-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
 							   aria-controls="collapseTwo">
+								<span data-feather="user"></span>
 								Пользователи
 							</a>
 						</h2>
@@ -106,8 +108,9 @@
 					</div>
 					<div class="accordion-item-nav">
 						<h2 class="accordion-header" id="headingThree">
-							<a class="accordion-button accordion-button-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+							<a class="accordion-button accordion-button-link nav-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
 							   aria-controls="collapseThree">
+								<span data-feather="archive"></span>
 								Другие модули
 							</a>
 						</h2>

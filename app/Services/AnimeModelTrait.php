@@ -1,16 +1,9 @@
 <?php
 
-
 namespace App\Services;
-
 
 use Carbon\Carbon;
 
-/**
- * Trait AnimeModelTrait
- *
- * @package App\Services
- */
 trait AnimeModelTrait
 {
 

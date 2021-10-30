@@ -1,35 +1,23 @@
 <?php
-/**
- * Copyright (c) by anime-free
- * Date: 2020.
- * User: Alukardua
- */
 
 namespace App\Services;
 
-
+use App\Models\User;
 use Carbon\Carbon;
 use Hash;
-use Lang;
 use Storage;
-use App\Models\User;
 
-/**
- * Trait UsersTrait
- *
- * @package App\Traits
- */
 trait UsersTrait
 {
 	/**
 	 * Загружает аватар в профиль
 	 *
-	 * @param $updateUser
-	 * @param $requestForm
+	 * @param  mixed  $updateUser
+	 * @param  mixed  $requestForm
 	 *
 	 * @return mixed
 	 */
-	public function uploadAvatar($updateUser, $requestForm): array
+	public function uploadAvatar(mixed $updateUser, mixed $requestForm): array
 	{
 		if (file_exists('storage/' . $updateUser->profile_photo_path)) {
 			$requestForm = $this->deleteAvatar($updateUser, $requestForm);
@@ -48,12 +36,12 @@ trait UsersTrait
 	/**
 	 * Удаляет текущий аватар
 	 *
-	 * @param $updateUser
-	 * @param $requestForm
+	 * @param  mixed  $updateUser
+	 * @param  mixed  $requestForm
 	 *
 	 * @return array
 	 */
-	private function deleteAvatar($updateUser, $requestForm): array
+	private function deleteAvatar(mixed $updateUser, mixed $requestForm): array
 	{
 		Storage::delete($updateUser->profile_photo_path);
 		if (isset($requestForm['del_foto'])) {
@@ -66,12 +54,12 @@ trait UsersTrait
 	/**
 	 * Обновляет пароль
 	 *
-	 * @param $updateUser
-	 * @param $requestForm
+	 * @param  mixed  $updateUser
+	 * @param  mixed  $requestForm
 	 *
 	 * @return string
 	 */
-	public function updatePasswords($updateUser, &$requestForm): string
+	public function updatePasswords(mixed $updateUser, mixed &$requestForm): string
 	{
 		if (Hash::check($requestForm['altpass'], $updateUser['password1'])) {
 			return $requestForm['password1'] = Hash::make($requestForm['password2']);
@@ -81,17 +69,12 @@ trait UsersTrait
 	}
 
 	/**
-	 * @param $user
+	 * @param  mixed  $user
 	 *
 	 * @return mixed
 	 */
-	public function refactoringUser($user): User
+	public function refactoringUser(mixed $user): User
 	{
-		$user->group = match ($user->getGroup->id) {
-			1 => "<p class=\"red-text\">" . $user->getGroup->title . "</p>",
-			2 => "<p class=\"green-text\">" . $user->getGroup->title . "</p>",
-			3 => "<p class=\"brown-text\">" . $user->getGroup->title . "</p>",
-		};
 		$user->age = Carbon::now()->diffInYears($user->date_of_birth);
 		if (!isset($user->name)) {
 			$user->name = 'Не указано';

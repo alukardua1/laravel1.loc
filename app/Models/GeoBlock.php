@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class GeoBlock
- *
- * @package App\Models
- */
 class GeoBlock extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
 	public array  $cacheTags   = ['geo_block'];
 	public string $cachePrefix = 'geo_block_';
 
-	protected $fillable = [];
+	protected $fillable = [
+		'code',
+		'country',
+	];
 
 	/**
 	 * GeoBlock constructor.

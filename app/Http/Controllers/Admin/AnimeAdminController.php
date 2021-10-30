@@ -17,7 +17,9 @@ class AnimeAdminController extends Controller
 {
 	private AnimeRepositoryInterfaces $repository;
 
-	/**@todo    К франшизе (если есть фильмы) добавить между какими сериями идет сюжет фильма */
+	/**
+	 * @todo К франшизе (если есть фильмы) добавить между какими сериями идет сюжет фильма
+	 */
 
 	/**
 	 * AnimeAdminController constructor.

@@ -117,4 +117,18 @@ interface AnimeRepositoryInterfaces
 	 * @return mixed
 	 */
 	public function deleteAnime(int $id, bool $fullDel = false): mixed;
+
+	/**
+	 * @param  int  $id
+	 *
+	 * @return mixed
+	 */
+	public function franchise(int $id): mixed;
+
+	/**
+	 * @param  int  $id
+	 *
+	 * @return mixed
+	 */
+	public function chronology(int $id): mixed;
 }

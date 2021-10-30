@@ -4,11 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * Class Group
- *
- * @package App\Models
- */
 class Group extends Model
 {
 	public array  $cacheTags   = ['group'];
@@ -19,6 +14,10 @@ class Group extends Model
 		'description',
 		'color',
 		'is_dashboard',
+	];
+
+	protected $withCount = [
+		'getUser',
 	];
 
 	/**

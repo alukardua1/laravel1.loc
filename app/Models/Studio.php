@@ -5,11 +5,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-/**
- * Class Studio
- *
- * @package App\Models
- */
 class Studio extends Model
 {
 	public array  $cacheTags   = ['studio'];

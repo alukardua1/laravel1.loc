@@ -1,18 +1,11 @@
 <?php
 
-
 namespace App\Services;
-
 
 use Cache;
 use Carbon\Carbon;
-use \Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Jetstream\HasProfilePhoto;
 
-/**
- * Trait UserModelTrait
- *
- * @package App\Services
- */
 trait UserModelTrait
 {
 	use HasProfilePhoto;

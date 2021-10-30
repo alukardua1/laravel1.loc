@@ -2,17 +2,14 @@
 
 namespace App\Models;
 
-/**
- * Class RegionBlock
- *
- * @package App\Models
- */
 class RegionBlock extends Model
 {
 	public array  $cacheTags   = ['regionblock'];
 	public string $cachePrefix = 'regionblock_';
 
-	protected $fillable = [];
+	protected $fillable = [
+
+	];
 
 	/**
 	 * RegionBlock constructor.
@@ -20,7 +17,7 @@ class RegionBlock extends Model
 	 * @param  array  $attributes
 	 */
 	public function __construct(array $attributes = [])
-    {
-	    parent::__construct($attributes);
-    }
+	{
+		parent::__construct($attributes);
+	}
 }

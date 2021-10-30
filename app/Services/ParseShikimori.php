@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Services;
-
 
 use App\Models\Kind;
 use App\Models\MPAARating;
@@ -13,17 +11,12 @@ use App\Models\Translate;
 use Illuminate\Support\Arr;
 use Str;
 
-/**
- * Trait ParseShikimori
- *
- * @package App\Services
- */
 trait ParseShikimori
 {
 	use CurlTrait;
 	use FunctionTrait;
 
-	private mixed  $dataShiki;
+	private array  $dataShiki     = [];
 	private string $fieldsStudios = '';
 	private array  $voiceArr      = [];
 	private string $voice         = '';
@@ -91,15 +84,15 @@ trait ParseShikimori
 				$shiki['name'] = $this->dataShiki['name'];
 				$shiki['update'] = true;
 			}
-			if (implode(', ', $this->dataShiki['english']) != $anime->english) {
+			if (implode('|', $this->dataShiki['english']) != $anime->english) {
 				$shiki['english'] = implode('|', $this->dataShiki['english']);
 				$shiki['update'] = true;
 			}
-			if (implode(', ', $this->dataShiki['synonyms']) != $anime->synonyms) {
+			if (implode('|', $this->dataShiki['synonyms']) != $anime->synonyms) {
 				$shiki['synonyms'] = implode('|', $this->dataShiki['synonyms']);
 				$shiki['update'] = true;
 			}
-			if (implode(', ', $this->dataShiki['japanese']) != $anime->japanese) {
+			if (implode('|', $this->dataShiki['japanese']) != $anime->japanese) {
 				$shiki['japanese'] = implode('|', $this->dataShiki['japanese']);
 				$shiki['update'] = true;
 			}

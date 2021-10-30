@@ -9,19 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-/**
- * Class Anime
- *
- * @property string       name
- * @property string       russian
- * @property mixed        episodes_aired
- * @property string       metatitle
- * @property string       url
- * @property mixed        description_html
- * @property mixed|string keywords
- * @property mixed        description
- * @package App\Models
- */
 class Anime extends Model
 {
 	use AnimeModelTrait;
@@ -79,6 +66,7 @@ class Anime extends Model
 		'getYear',
 		'getCopyrightHolder',
 		'getOtherLink',
+		'getFranchise',
 	];
 
 	/**
@@ -258,5 +246,13 @@ class Anime extends Model
 	public function getCopyrightHolder(): BelongsToMany
 	{
 		return $this->belongsToMany(CopyrightHolder::class)->latest();
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function getFranchise(): BelongsTo
+	{
+		return $this->belongsTo(Franchise::class, 'id', 'source_id')->latest();
 	}
 }

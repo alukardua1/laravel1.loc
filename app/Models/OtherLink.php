@@ -2,11 +2,6 @@
 
 namespace App\Models;
 
-/**
- * Class OtherLink
- *
- * @package App\Models
- */
 class OtherLink extends Model
 {
 	public array  $cacheTags   = ['otherlink'];

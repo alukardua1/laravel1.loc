@@ -7,14 +7,8 @@
 
 namespace App\Services;
 
-
 use Cache;
 
-/**
- * Trait CreateCacheTrait
- *
- * @package App\Helpers
- */
 trait CreateCacheTrait
 {
 	/**

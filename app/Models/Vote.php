@@ -2,11 +2,6 @@
 
 namespace App\Models;
 
-/**
- * Class Vote
- *
- * @package App\Models
- */
 class Vote extends Model
 {
 	public array  $cacheTags   = ['vote'];

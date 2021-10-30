@@ -4,11 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-/**
- * Class Quality
- *
- * @package App\Models
- */
 class Quality extends Model
 {
 	public array  $cacheTags   = ['quality'];
@@ -18,7 +13,10 @@ class Quality extends Model
 		'getAnime',
 	];
 
-	protected $fillable = [];
+	protected $fillable = [
+		'title',
+		'url',
+	];
 
 	/**
 	 * Quality constructor.

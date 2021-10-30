@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * Class CopyrightHolder
- *
- * @package App\Models
- */
 class CopyrightHolder extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
 	public array  $cacheTags   = ['copyright_holder'];
 	public string $cachePrefix = 'copyright_holder_';
 
-	protected $fillable = [];
+	protected $fillable = [
+		'title',
+	];
 
 	/**
 	 * CopyrightHolder constructor.

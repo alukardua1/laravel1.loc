@@ -1,14 +1,7 @@
 <?php
 
-
 namespace App\Services;
 
-
-/**
- * Trait ApiTrait
- *
- * @package App\Traits
- */
 trait ApiTrait
 {
 	/**
@@ -80,7 +73,7 @@ trait ApiTrait
 		foreach ($anime as $item) {
 			$result['result'][] = [
 				'id'       => $item->id,
-				'image'    => [
+				'poster' => [
 					'original' => $item->original_img,
 					'preview'  => $item->preview_img,
 				],
@@ -154,7 +147,7 @@ trait ApiTrait
 	{
 		return [
 			'id'              => $anime->id,
-			'image'           => [
+			'poster' => [
 				'original' => $anime->original_img,
 				'preview'  => $anime->preview_img,
 			],

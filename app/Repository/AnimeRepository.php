@@ -254,4 +254,24 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 			return $del->delete();
 		}
 	}
+
+	/**
+	 * @param  int  $id
+	 *
+	 * @return mixed
+	 */
+	public function franchise(int $id): mixed
+	{
+		// TODO: Implement franchise() method.
+	}
+
+	/**
+	 * @param  int  $id
+	 *
+	 * @return mixed
+	 */
+	public function chronology(int $id): mixed
+	{
+		// TODO: Implement chronology() method.
+	}
 }

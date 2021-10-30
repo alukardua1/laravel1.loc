@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-/**
- * Class Trailer
- *
- * @package App\Models
- */
 class Trailer extends Model
 {
 	public array  $cacheTags   = ['trailer'];
 	public string $cachePrefix = 'trailer_';
 
-	protected $fillable = [];
+	protected $fillable = [
+		'anime_id',
+		'url_trailer',
+	];
 
 	/**
 	 * Trailer constructor.
@@ -20,7 +18,7 @@ class Trailer extends Model
 	 * @param  array  $attributes
 	 */
 	public function __construct(array $attributes = [])
-    {
-	    parent::__construct($attributes);
-    }
+	{
+		parent::__construct($attributes);
+	}
 }

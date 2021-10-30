@@ -5,11 +5,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * Class MPAARating
- *
- * @package App\Models
- */
 class MPAARating extends Model
 {
 	public array  $cacheTags   = ['mpaa'];
@@ -19,7 +14,11 @@ class MPAARating extends Model
 		'getAnime',
 	];
 
-	protected $fillable = [];
+	protected $fillable = [
+		'name',
+		'url',
+		'description',
+	];
 
 	/**
 	 * MPAARating constructor.

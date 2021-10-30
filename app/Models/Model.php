@@ -8,18 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 
-/**
- * Class Model
- *
- * @package App\Models
- */
 class Model extends BaseModel
 {
 	use HasFactory;
 	use MutationTrait;
 	use QueryCacheable;
 
-	protected $cacheFor;
+	protected int|float $cacheFor;
 	//protected static $flushCacheOnUpdate = true;
 
 	/**
@@ -28,8 +23,8 @@ class Model extends BaseModel
 	 * @param  array  $attributes
 	 */
 	public function __construct(array $attributes = [])
-    {
-	    parent::__construct($attributes);
-	    $this->cacheFor = Config::get('secondConfig.cache_time') * 1440;
-    }
+	{
+		parent::__construct($attributes);
+		$this->cacheFor = Config::get('secondConfig.cache_time') * 1440; //Получает из конфига время жизни кэша в секундах
+	}
 }

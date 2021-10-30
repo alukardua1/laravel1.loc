@@ -6,9 +6,14 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class AuthenticateAdmin extends Middleware
 {
+	/**
+	 * @param  \Illuminate\Http\Request  $request
+	 *
+	 * @return string|null
+	 */
 	protected function redirectTo($request)
 	{
-		if (! $request->expectsJson()) {
+		if (!$request->expectsJson()) {
 			return route('home');
 		}
 	}

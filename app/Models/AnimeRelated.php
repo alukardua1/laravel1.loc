@@ -4,11 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * Class AnimeRelated
- *
- * @package App\Models
- */
 class AnimeRelated extends Model
 {
 	public array  $cacheTags   = ['anime_related'];

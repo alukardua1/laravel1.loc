@@ -4,11 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * Class Favorites
- *
- * @package App\Models
- */
 class Favorites extends Model
 {
 	public array  $cacheTags   = ['favorites'];

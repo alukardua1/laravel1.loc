@@ -92,6 +92,17 @@ Route::group(
 			}
 		);
 		Route::group(
+			['prefix' => 'character',],
+			function () {
+				Route::get('/', [ChannelAdminController::class, 'index'])->name('indexCharacterAdmin');
+				Route::get('/add', [ChannelAdminController::class, 'create'])->name('createCharacterAdmin');
+				Route::post('/add', [ChannelAdminController::class, 'store'])->name('storeCharacterAdmin');
+				Route::get('/{character}/edit', [ChannelAdminController::class, 'edit'])->name('editCharacterAdmin');
+				Route::post('/{character}/update', [ChannelAdminController::class, 'update'])->name('updateCharacterAdmin');
+				Route::get('/{character}/delete', [ChannelAdminController::class, 'destroy'])->name('deleteCharacterAdmin');
+			}
+		);
+		Route::group(
 			['prefix' => 'copyright_holder',],
 			function () {
 			}

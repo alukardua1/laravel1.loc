@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.67.0.
+ * Generated for Laravel 8.68.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -23096,16 +23096,17 @@ namespace {
 		/**
 		 * Insert new records into the table using a subquery.
 		 *
-             * @param array $columns
-             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
-             * @return int 
-             * @static 
-             */ 
-            public static function insertUsing($columns, $query)
-            {
-                                /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->insertUsing($columns, $query);
-            }
+		 * @param  array                                               $columns
+		 * @param  \Closure|\Illuminate\Database\Query\Builder|string  $query
+		 *
+		 * @return int
+		 * @static
+		 */
+		public static function insertUsing($columns, $query)
+		{
+			/** @var \Illuminate\Database\Query\Builder $instance */
+			return $instance->insertUsing($columns, $query);
+		}
              
                 /**
              * Update records in a PostgreSQL database using the update from syntax.

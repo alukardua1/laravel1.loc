@@ -12,11 +12,6 @@ use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use URL;
 
-/**
- * Trait FunctionTrait
- *
- * @package App\Services
- */
 trait FunctionTrait
 {
 	/**

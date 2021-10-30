@@ -2,17 +2,6 @@
 
 namespace App\Models;
 
-
-/**
- * Class PersonalMessage
- *
- * @property int    author_id
- * @property int    recipient_id
- * @property string title
- * @property mixed  description
- *
- * @package App\Models
- */
 class PersonalMessage extends Model
 {
 	public array  $cacheTags   = ['pm'];

@@ -1,17 +1,10 @@
 <?php
 
-
 namespace App\Services;
-
 
 use DateTime;
 use Illuminate\Support\Collection;
 
-/**
- * Trait MutationTrait
- *
- * @package App\Services
- */
 trait MutationTrait
 {
 	/**

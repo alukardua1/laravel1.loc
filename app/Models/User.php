@@ -17,11 +17,6 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 
-/**
- * Class User
- *
- * @package App\Models
- */
 class User extends Authenticatable
 {
 	use UserModelTrait;
@@ -34,7 +29,7 @@ class User extends Authenticatable
 	use MutationTrait;
 
 
-	protected $cacheFor;
+	protected mixed $cacheFor;
 
 	public array  $cacheTags   = ['user'];
 	public string $cachePrefix = 'user_';
@@ -98,6 +93,9 @@ class User extends Authenticatable
 		$this->cacheFor = Config::get('secondConfig.cache_time');
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function isAdmin(): bool
 	{
 		return $this->getGroup->is_dashboard === 1;
@@ -135,21 +133,33 @@ class User extends Authenticatable
 		return $this->belongsToMany(Anime::class, 'votes')->latest()->withTimestamps();
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function getPersonalMessageAuthor(): HasMany
 	{
 		return $this->hasMany(PersonalMessage::class, 'author_id')->latest();
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function getPersonalMessageRecipient(): HasMany
 	{
 		return $this->hasMany(PersonalMessage::class, 'recipient_id')->latest();
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
 	public function getCountry(): HasOne
 	{
 		return $this->hasOne(Country::class, 'id', 'country_id')->latest();
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function getComments(): BelongsTo
 	{
 		return $this->belongsTo(Comment::class, 'id', 'author_id')->latest();

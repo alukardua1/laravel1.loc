@@ -2,12 +2,6 @@
 
 namespace App\Models;
 
-
-/**
- * Class Player
- *
- * @package App\Models
- */
 class Player extends Model
 {
 	public array  $cacheTags   = ['player'];

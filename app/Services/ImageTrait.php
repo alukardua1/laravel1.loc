@@ -1,19 +1,11 @@
 <?php
 
-
 namespace App\Services;
 
-use App\Models\Anime;
-use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Storage;
 use Str;
 
-/**
- * Trait ImageTrait
- *
- * @package App\Services
- */
 trait ImageTrait
 {
 	private array $config;

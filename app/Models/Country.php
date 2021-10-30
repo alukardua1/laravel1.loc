@@ -5,17 +5,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-/**
- * Class Country
- *
- * @package App\Models
- */
 class Country extends Model
 {
 	public array  $cacheTags   = ['country'];
 	public string $cachePrefix = 'country_';
 
-	protected $fillable = [];
+	protected $fillable = [
+		'title',
+		'url',
+	];
 
 	protected $withCount = [
 		'getAnime',

@@ -5,11 +5,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * Class Kind
- *
- * @package App\Models
- */
 class Kind extends Model
 {
 	public array  $cacheTags   = ['kind'];
@@ -19,7 +14,12 @@ class Kind extends Model
 		'getAnime',
 	];
 
-	protected $fillable = [];
+	protected $fillable = [
+		'name',
+		'full_name',
+		'short_name',
+		'url',
+	];
 
 	/**
 	 * Kind constructor.
@@ -27,9 +27,9 @@ class Kind extends Model
 	 * @param  array  $attributes
 	 */
 	public function __construct(array $attributes = [])
-    {
-	    parent::__construct($attributes);
-    }
+	{
+		parent::__construct($attributes);
+	}
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany

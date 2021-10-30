@@ -4,11 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * Class Channel
- *
- * @package App\Models
- */
 class Channel extends Model
 {
 	public array  $cacheTags   = ['channel'];
