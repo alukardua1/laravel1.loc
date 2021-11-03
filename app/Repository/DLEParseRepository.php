@@ -593,9 +593,8 @@ class DLEParseRepository implements DLEParse
 
 		foreach ($studios as $studio) {
 			$result[] = [
-				'name'          => $studio['name'],
-				'filtered_name' => $studio['filtered_name'],
-				'url'           => Str::slug($studio['name']),
+				'title' => htmlspecialchars($studio['name']),
+				'url'   => Str::slug($studio['name']),
 			];
 		}
 

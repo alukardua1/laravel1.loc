@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
+use App\Services\UserModelTrait;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -12,6 +13,8 @@ use Illuminate\Http\RedirectResponse;
 
 class UserAdminController extends Controller
 {
+	use UserModelTrait;
+
 	private UserRepositoryInterfaces $repository;
 
 	/**

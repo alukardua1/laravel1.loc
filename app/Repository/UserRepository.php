@@ -75,7 +75,6 @@ class UserRepository implements UserRepositoryInterfaces
 			if (!empty($requestForm['altpass'])) {
 				$this->updatePasswords($updateUser, $requestForm);
 			}
-
 			$requestForm['allow_mail'] = $this->check($requestForm, 'allow_mail');
 			$requestForm['comments_reply_subscribe'] = $this->check($requestForm, 'comments_reply_subscribe');
 			$requestForm['anime_subscribe'] = $this->check($requestForm, 'anime_subscribe');

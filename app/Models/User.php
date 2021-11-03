@@ -56,6 +56,7 @@ class User extends Authenticatable
 		'anime_subscribe',
 		'blocked',
 		'blocked_at',
+		'birthday',
 	];
 
 	/**

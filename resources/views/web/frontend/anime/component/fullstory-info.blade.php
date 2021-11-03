@@ -20,9 +20,9 @@
 			<span>
 			@foreach($show->getStudio as $value)
 					@if ($loop->last)
-						<a href="{{route('showStudio', $value->url)}}">{{$value->title}}</a>
+						<a href="{{route('showStudio', $value->url)}}">{!! $value->title !!}</a>
 					@else
-						<a href="{{route('showStudio', $value->url)}}">{{$value->title}}</a>,
+						<a href="{{route('showStudio', $value->url)}}">{!! $value->title !!}</a>,
 					@endif
 				@endforeach
 		</span>

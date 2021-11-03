@@ -56,9 +56,13 @@
 			<li>Заходил(а): {{$currentUser->last_logins}}</li>
 			<li>
 				<ul class="post-comments fx-row">
-					<li><a target="_blank" href="{{route('showUserAnime', $currentUser->login)}}">Просмотреть все публикации</a></li>
+					@if (Auth::user())
+						<li><a target="_blank" href="{{route('showUserAnime', $currentUser->login)}}">Просмотреть все публикации</a></li>
+					@endif
 					<li><a target="_blank" href="{{route('showUserRss', $currentUser->login)}}" title="RSS {{$currentUser->login}}">RSS {{$currentUser->login}}</a></li>
-					<li><a target="_blank" href="{{route('showUserComments', $currentUser->login)}}">Последние комментарии</a></li>
+					@if (Auth::user())
+						<li><a target="_blank" href="{{route('showUserComments', $currentUser->login)}}">Последние комментарии</a></li>
+					@endif
 				</ul>
 			</li>
 			@if (Auth::user())
@@ -69,6 +73,10 @@
 					Место жительства:
 					<span>{{$currentUser->getCountry->title}}</span>,
 					<span>{{$currentUser->city}}</span>
+				</li>
+				<li>
+					Дата рождения:
+					<span>{{$currentUser->birthdayShow}}</span>
 				</li>
 				<li>О себе: {{$currentUser->description}}</li>
 				@if ($currentUser->signature)
@@ -117,6 +125,11 @@
 					<div class="form-item clearfix">
 						<label for="city">Город:</label>
 						<input class="form-control form-control-sm" id="city" type="text" name="city" value="{{$currentUser->city}}" placeholder="Город"/>
+					</div>
+					<div class="form-item clearfix">
+						<label for="birthday">Дата рождения (нужна для показа контента 18+):</label>
+						<input class="form-control form-control-sm" id="birthday" type="date" name="birthday" value="{{$currentUser->birthday}}"
+							   placeholder="Дата рождения (нужна для показа контента 18+)"/>
 					</div>
 					<div class="form-item clearfix">
 						<label for="altpass">Старый пароль:</label>

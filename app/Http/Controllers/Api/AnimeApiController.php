@@ -9,6 +9,7 @@ use Illuminate\Http\JsonResponse;
 class AnimeApiController extends Controller
 {
 	private AnimeRepositoryInterfaces $repository;
+	private array                     $headers = ['Content-Type' => 'application/json; charset=UTF-8'];
 
 	/**
 	 * @param  \App\Repository\Interfaces\AnimeRepositoryInterfaces  $animeRepositoryInterfaces
@@ -47,6 +48,6 @@ class AnimeApiController extends Controller
 		}
 		$thisAnime = $this->animeOneMutations($thisAnime);
 
-		return response()->json($thisAnime);
+		return response()->json($thisAnime, 200, $this->headers);
 	}
 }

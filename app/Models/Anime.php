@@ -67,6 +67,7 @@ class Anime extends Model
 		'getCopyrightHolder',
 		'getOtherLink',
 		'getFranchise',
+		'getPeople',
 	];
 
 	/**
@@ -77,6 +78,14 @@ class Anime extends Model
 	public function __construct(array $attributes = [])
 	{
 		parent::__construct($attributes);
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function getPeople(): BelongsTo
+	{
+		return $this->belongsTo(People::class)->latest();
 	}
 
 	/**

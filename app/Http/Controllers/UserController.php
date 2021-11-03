@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\Http\Requests\UserRequest;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -37,6 +38,7 @@ class UserController extends Controller
 		$currentUser = $this->repository->getUser($login);
 		$currentUser->created = $currentUser->created_at;
 		$currentUser->last_logins = $currentUser->last_login;
+		$currentUser->birthdayShow = Carbon::parse($currentUser->birthday)->format('d.m.Y');
 
 		return view($this->frontend . 'user.profile', compact('currentUser'));
 	}
@@ -50,7 +52,7 @@ class UserController extends Controller
 	{
 		$currentUser = $this->repository->getUser($login);
 		$this->isNotNull($currentUser);
-		$title = "Комментарии пользователя {$currentUser->login}";
+		$title = "Комментарии пользователя $currentUser->login";
 		$description = '';
 
 		$allComments = $currentUser->getComments()->paginate($this->paginate);
@@ -95,13 +97,13 @@ class UserController extends Controller
 	 */
 	public function showAnime(string $login): View|Factory|Application
 	{
-		$currentUser = $this->repository->getUser($login);
-		$this->isNotNull($currentUser);
-		$title = "Аниме добавленое пользователем $currentUser->login";
-		$description = '';
-		$allAnime = $currentUser->getAnime()->paginate($this->paginate);
+		$show = $this->repository->getUser($login);
+		$this->isNotNull($show);
+		$views['title'] = "Аниме добавленое пользователем $show->login";
+		$views['description'] = '';
+		$views['content'] = $show->getAnime()->paginate($this->paginate);
 
-		return view($this->frontend . 'anime.short', compact('currentUser', 'allAnime', 'title', 'description'));
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 
 	/**
