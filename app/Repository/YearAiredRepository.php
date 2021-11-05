@@ -6,15 +6,18 @@ namespace App\Repository;
 
 use App\Models\YearAired;
 use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-/**
- * Class YearAiredRepository
- *
- * @package App\Repository
- */
 class YearAiredRepository implements YearAiredRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(YearAired $yearAired)
+	{
+		$this->model = $yearAired;
+	}
+
 	/**
 	 * Получает все года
 	 *
@@ -25,9 +28,9 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	public function getYearAired(string $url = null): mixed
 	{
 		if ($url) {
-			return YearAired::where('year', $url);
+			return $this->model->where('year', $url);
 		}
-		return YearAired::orderBy('year', 'ASC');
+		return $this->model->orderBy('year', 'ASC');
 	}
 
 	/**
@@ -40,7 +43,11 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	 */
 	public function setYearAired(Request $request, string $url = null): mixed
 	{
-		// TODO: Implement setYearAired() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -53,6 +60,12 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	 */
 	public function deleteYearAired(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delYearAired() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

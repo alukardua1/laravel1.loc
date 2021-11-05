@@ -3,10 +3,18 @@
 namespace App\Repository;
 
 use App\Http\Requests\CharacterRequest;
+use App\Models\Character;
 use App\Repository\Interfaces\CharacterRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 
 class CharacterRepository implements CharacterRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(Character $character)
+	{
+		$this->model = $character;
+	}
 
 	/**
 	 * @param  string|null  $url
@@ -15,7 +23,10 @@ class CharacterRepository implements CharacterRepositoryInterfaces
 	 */
 	public function getCharacter(string $url = null): mixed
 	{
-		// TODO: Implement getCharacter() method.
+		if ($url) {
+			return $this->model->where('url', $url);
+		}
+		return $this->model->orderBy('title', 'ASC');
 	}
 
 	/**
@@ -26,7 +37,11 @@ class CharacterRepository implements CharacterRepositoryInterfaces
 	 */
 	public function setCharacter(CharacterRequest $request, string $url = null): mixed
 	{
-		// TODO: Implement setCharacter() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -37,6 +52,12 @@ class CharacterRepository implements CharacterRepositoryInterfaces
 	 */
 	public function deleteCharacter(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delCharacter() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

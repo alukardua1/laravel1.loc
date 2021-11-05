@@ -15,11 +15,11 @@ class Comment extends Model
 	public string $cachePrefix = 'comments_';
 
 	protected $fillable = [
-	'anime_id',
-	'parent_comment_id',
-	'user_id',
-	'author_id',
-	'description_html'
+		'anime_id',
+		'parent_comment_id',
+		'user_id',
+		'author_id',
+		'description_html',
 	];
 
 	/**
@@ -28,9 +28,9 @@ class Comment extends Model
 	 * @param  array  $attributes
 	 */
 	public function __construct(array $attributes = [])
-    {
-	    parent::__construct($attributes);
-    }
+	{
+		parent::__construct($attributes);
+	}
 
 	/**
 	 * @return string

@@ -12,11 +12,6 @@ use App\Models\User;
 use App\Repository\Interfaces\FavoriteRepositoryInterfaces;
 use Auth;
 
-/**
- * Class FavoriteRepository
- *
- * @package App\Repositories
- */
 class FavoriteRepository implements FavoriteRepositoryInterfaces
 {
 	/**

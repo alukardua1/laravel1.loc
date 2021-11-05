@@ -6,15 +6,18 @@ namespace App\Repository;
 
 use App\Models\Quality;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-/**
- * Class QualityRepository
- *
- * @package App\Repository
- */
 class QualityRepository implements QualityRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(Quality $quality)
+	{
+		$this->model = $quality;
+	}
+
 	/**
 	 * Получает все качество видео
 	 *
@@ -25,9 +28,9 @@ class QualityRepository implements QualityRepositoryInterfaces
 	public function getQuality(string $url = null): mixed
 	{
 		if ($url) {
-			return Quality::where('url', $url);
+			return $this->model->where('url', $url);
 		}
-		return Quality::orderBy('title', 'ASC');
+		return $this->model->orderBy('title', 'ASC');
 	}
 
 	/**
@@ -40,7 +43,11 @@ class QualityRepository implements QualityRepositoryInterfaces
 	 */
 	public function setQuality(Request $request, string $url = null): mixed
 	{
-		// TODO: Implement setQuality() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -51,6 +58,12 @@ class QualityRepository implements QualityRepositoryInterfaces
 	 */
 	public function deleteQuality(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delQuality() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

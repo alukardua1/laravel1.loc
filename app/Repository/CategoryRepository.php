@@ -8,6 +8,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use App\Services\FunctionTrait;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class CategoryRepository
@@ -18,9 +19,16 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 {
 	use FunctionTrait;
 
+	private Model $model;
+
 	private array $arrCheck = [
 		'posted_at' => 'posted_at',
 	];
+
+	public function __construct(Category $category)
+	{
+		$this->model = $category;
+	}
 
 	/**
 	 * Получает все категории
@@ -33,11 +41,11 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	public function getCategory(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
-			return Category::where('url', $url);
+			return $this->model->where('url', $url);
 		} elseif ($isAdmin) {
-			return Category::orderBy('id', 'ASC');
+			return $this->model->orderBy('id', 'ASC');
 		}
-		return Category::where('posted_at', '=', 1);
+		return $this->model->where('posted_at', '=', 1);
 	}
 
 	/**
@@ -54,7 +62,7 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 		if (!$url) {
 			$url = $formRequest['url'];
 		}
-		$update = Category::updateOrCreate(['url' => $url], $formRequest);
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
 		if ($update) {
 			$this->checkRequest($this->arrCheck, $formRequest, $update);
 
@@ -72,7 +80,7 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 	 */
 	public function deleteCategory(string $url, bool $fullDel = false): mixed
 	{
-		$delete = Category::findOrFail($url, ['*']);
+		$delete = $this->model->findOrFail($url, ['*']);
 		if ($delete) {
 			if ($fullDel) {
 				return $delete->forceDelete();

@@ -4,10 +4,17 @@ namespace App\Repository;
 
 use App\Models\Faq;
 use App\Repository\Interfaces\FaqRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class FaqRepository implements FaqRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(Faq $faq)
+	{
+		$this->model = $faq;
+	}
 
 	/**
 	 * @param  string|null  $url
@@ -18,11 +25,11 @@ class FaqRepository implements FaqRepositoryInterfaces
 	public function getFaq(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
-			return Faq::where('url', $url);
+			return $this->model->where('url', $url);
 		} elseif ($isAdmin) {
-			return Faq::orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
+			return $this->model->orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
 		} else {
-			return Faq::where('public_at', 1)->orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
+			return $this->model->where('public_at', 1)->orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
 		}
 	}
 
@@ -34,11 +41,11 @@ class FaqRepository implements FaqRepositoryInterfaces
 	 */
 	public function setFaq(Request $request, string $url = null): mixed
 	{
-		$allRequest = $request->all();
+		$formRequest = $request->all();
 
-		$faqUpdate = Faq::updateOrCreate(['url', $url], $allRequest);
-		if ($faqUpdate) {
-			return $faqUpdate->save();
+		$update = $this->model->updateOrCreate(['url', $url], $formRequest);
+		if ($update) {
+			return $update->save();
 		}
 	}
 
@@ -50,7 +57,7 @@ class FaqRepository implements FaqRepositoryInterfaces
 	 */
 	public function deleteFaq(string $url, bool $fullDel = false): mixed
 	{
-		$delete = Faq::findOrFail($url, ['*']);
+		$delete = $this->model->findOrFail($url, ['*']);
 		if ($delete) {
 			if ($fullDel) {
 				return $delete->forceDelete();

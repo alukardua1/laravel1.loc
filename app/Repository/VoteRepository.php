@@ -11,11 +11,6 @@ namespace App\Repository;
 use App\Repository\Interfaces\VoteRepositoryInterface;
 use Auth;
 
-/**
- * Class VoteRepository
- *
- * @package App\Repositories
- */
 class VoteRepository implements VoteRepositoryInterface
 {
 	/**

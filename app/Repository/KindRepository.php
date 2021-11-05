@@ -6,15 +6,18 @@ namespace App\Repository;
 
 use App\Models\Kind;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-/**
- * Class KindRepository
- *
- * @package App\Repository
- */
 class KindRepository implements KindRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(Kind $kind)
+	{
+		$this->model = $kind;
+	}
+
 	/**
 	 * Получает все типы
 	 *
@@ -25,9 +28,9 @@ class KindRepository implements KindRepositoryInterfaces
 	public function getKind(string $url = null): mixed
 	{
 		if ($url) {
-			return Kind::where('url', $url);
+			return $this->model->where('url', $url);
 		}
-		return Kind::orderBy('name', 'ASC');
+		return $this->model->orderBy('name', 'ASC');
 	}
 
 	/**
@@ -40,7 +43,11 @@ class KindRepository implements KindRepositoryInterfaces
 	 */
 	public function setKind(Request $request, string $url = null): mixed
 	{
-		// TODO: Implement setKind() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -51,6 +58,12 @@ class KindRepository implements KindRepositoryInterfaces
 	 */
 	public function delKind(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delKind() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

@@ -6,15 +6,18 @@ namespace App\Repository;
 
 use App\Models\MPAARating;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-/**
- * Class MpaaRepository
- *
- * @package App\Repository
- */
 class MpaaRepository implements MpaaRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(MPAARating $MPAARating)
+	{
+		$this->model = $MPAARating;
+	}
+
 	/**
 	 * Получает MPAA рейтинги
 	 *
@@ -25,9 +28,9 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	public function getMpaa(string $url = null): mixed
 	{
 		if ($url) {
-			return MPAARating::where('url', $url);
+			return $this->model->where('url', $url);
 		}
-		return MPAARating::orderBy('id', 'ASC');
+		return $this->model->orderBy('id', 'ASC');
 	}
 
 	/**
@@ -40,7 +43,11 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	 */
 	public function setMpaa(Request $request, string $url = null): mixed
 	{
-		// TODO: Implement setMpaa() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -51,6 +58,12 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	 */
 	public function deleteMpaa(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delMpaa() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

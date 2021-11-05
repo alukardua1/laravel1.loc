@@ -7,14 +7,17 @@ namespace App\Repository;
 use App\Http\Requests\TableOrderRequest;
 use App\Models\TableOrder;
 use App\Repository\Interfaces\TableOrderRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class TableOrderRepository
- *
- * @package App\Repository
- */
 class TableOrderRepository implements TableOrderRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(TableOrder $tableOrder)
+	{
+		$this->model = $tableOrder;
+	}
+
 	/**
 	 * Выводит записи
 	 *
@@ -26,9 +29,9 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	public function getTable(int $id = null, int $user_id = null): mixed
 	{
 		if ($id and $user_id) {
-			return TableOrder::where(['id', $id], ['user_id', $user_id]);
+			return $this->model->where(['id', $id], ['user_id', $user_id]);
 		} else {
-			return TableOrder::where('user_id', $user_id);
+			return $this->model->where('user_id', $user_id);
 		}
 	}
 
@@ -43,7 +46,7 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	public function setTable(TableOrderRequest $request, int $id = null): mixed
 	{
 		$formRequest = $request->all();
-		$update = TableOrder::firstOrCreate(['id' => $id], $formRequest);
+		$update = $this->model->firstOrCreate(['id' => $id], $formRequest);
 
 		if ($update) {
 			return $update->save();
@@ -58,6 +61,12 @@ class TableOrderRepository implements TableOrderRepositoryInterfaces
 	 */
 	public function deleteTable(int $id, bool $fullDel = false): mixed
 	{
-		// TODO: Implement del() method.
+		$delete = $this->model->findOrFail($id, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

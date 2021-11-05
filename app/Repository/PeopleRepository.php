@@ -4,10 +4,17 @@ namespace App\Repository;
 
 use App\Models\People;
 use App\Repository\Interfaces\PeopleRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class PeopleRepository implements PeopleRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(People $people)
+	{
+		$this->model = $people;
+	}
 
 	/**
 	 * @param  string|null  $url
@@ -17,9 +24,9 @@ class PeopleRepository implements PeopleRepositoryInterfaces
 	public function getPeople(string $url = null): mixed
 	{
 		if ($url) {
-			return People::where('url', $url);
+			return $this->model->where('url', $url);
 		}
-		return People::orderBy('id', 'ASC');
+		return $this->model->orderBy('id', 'ASC');
 	}
 
 	/**
@@ -30,7 +37,11 @@ class PeopleRepository implements PeopleRepositoryInterfaces
 	 */
 	public function setPeople(Request $request, string $url = null): mixed
 	{
-		// TODO: Implement setPeople() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -41,6 +52,12 @@ class PeopleRepository implements PeopleRepositoryInterfaces
 	 */
 	public function deletePeople(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delPeople() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

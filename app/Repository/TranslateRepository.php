@@ -6,15 +6,18 @@ namespace App\Repository;
 
 use App\Models\Translate;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-/**
- * Class TranslateRepository
- *
- * @package App\Repository
- */
 class TranslateRepository implements TranslateRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(Translate $translate)
+	{
+		$this->model = $translate;
+	}
+
 	/**
 	 * Получает все озвучивания
 	 *
@@ -25,9 +28,9 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	public function getTranslate(string $url = null): mixed
 	{
 		if ($url) {
-			return Translate::where('url', $url);
+			return $this->model->where('url', $url);
 		}
-		return Translate::orderBy('title', 'ASC');
+		return $this->model->orderBy('title', 'ASC');
 	}
 
 	/**
@@ -40,7 +43,11 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	 */
 	public function setTranslate(Request $request, string $url = null): mixed
 	{
-		// TODO: Implement setTranslate() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -51,6 +58,12 @@ class TranslateRepository implements TranslateRepositoryInterfaces
 	 */
 	public function deleteTranslate(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delTranslate() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

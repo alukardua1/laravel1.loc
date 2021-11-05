@@ -6,15 +6,18 @@ namespace App\Repository;
 
 use App\Models\CopyrightHolder;
 use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-/**
- * Class CopyrightHolderRepository
- *
- * @package App\Repository
- */
 class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(CopyrightHolder $copyrightHolder)
+	{
+		$this->model = $copyrightHolder;
+	}
+
 	/**
 	 * Получает всех правообладателей
 	 *
@@ -25,9 +28,9 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	public function getCopyrightHolder(string $url = null): mixed
 	{
 		if ($url) {
-			return CopyrightHolder::where('title', $url);
+			return $this->model->where('title', $url);
 		}
-		return CopyrightHolder::orderBy('title', 'ASC');
+		return $this->model->orderBy('title', 'ASC');
 	}
 
 	/**
@@ -40,7 +43,11 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	 */
 	public function setCopyrightHolder(Request $request, string $url = null): mixed
 	{
-		// TODO: Implement setCopyrightHolder() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -51,6 +58,12 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	 */
 	public function deleteCopyrightHolder(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement deleteCopyrightHolder() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

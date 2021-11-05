@@ -7,6 +7,7 @@ namespace App\Repository;
 use App\Http\Requests\ChannelRequest;
 use App\Models\Channel;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ChannelRepository
@@ -15,6 +16,14 @@ use App\Repository\Interfaces\ChannelRepositoryInterfaces;
  */
 class ChannelRepository implements ChannelRepositoryInterfaces
 {
+
+	private Model $model;
+
+	public function __construct(Channel $channel)
+	{
+		$this->model = $channel;
+	}
+
 	/**
 	 * Получает все каналы
 	 *
@@ -25,9 +34,9 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	public function getChannel(string $url = null): mixed
 	{
 		if ($url) {
-			return Channel::where('url', $url);
+			return $this->model->where('url', $url);
 		}
-		return Channel::orderBy('title', 'ASC');
+		return $this->model->orderBy('title', 'ASC');
 	}
 
 	/**
@@ -40,7 +49,11 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	 */
 	public function setChannel(ChannelRequest $request, string $url = null): mixed
 	{
-		// TODO: Implement setChannel() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -51,6 +64,12 @@ class ChannelRepository implements ChannelRepositoryInterfaces
 	 */
 	public function deleteChannel(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delete() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

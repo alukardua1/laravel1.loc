@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class People extends Model
 {
 	public array  $cacheTags   = ['people'];
@@ -27,13 +30,27 @@ class People extends Model
 		parent::__construct($attributes);
 	}
 
-	public function getAnime()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getAnime(): HasMany
 	{
 		return $this->hasMany(Anime::class)->latest();
 	}
 
-	public function getJobs()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function getJobs(): BelongsToMany
 	{
 		return $this->belongsToMany(JobPeople::class)->latest();
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function getCharacter(): BelongsToMany
+	{
+		return $this->belongsToMany(Character::class)->latest();
 	}
 }

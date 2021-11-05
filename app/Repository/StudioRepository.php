@@ -6,15 +6,18 @@ namespace App\Repository;
 
 use App\Models\Studio;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-/**
- * Class StudioRepository
- *
- * @package App\Repository
- */
 class StudioRepository implements StudioRepositoryInterfaces
 {
+	private Model $model;
+
+	public function __construct(Studio $studio)
+	{
+		$this->model = $studio;
+	}
+
 	/**
 	 * Получает все студии
 	 *
@@ -25,9 +28,9 @@ class StudioRepository implements StudioRepositoryInterfaces
 	public function getStudio(string $url = null): mixed
 	{
 		if ($url) {
-			return Studio::where('url', $url);
+			return $this->model->where('url', $url);
 		}
-		return Studio::orderBy('title', 'ASC');
+		return $this->model->orderBy('title', 'ASC');
 	}
 
 	/**
@@ -40,7 +43,11 @@ class StudioRepository implements StudioRepositoryInterfaces
 	 */
 	public function setStudio(Request $request, string $url = null): mixed
 	{
-		// TODO: Implement setStudio() method.
+		$formRequest = $request->all();
+		$update = $this->model->updateOrCreate(['url' => $url], $formRequest);
+		if ($update) {
+			return $update->save();
+		}
 	}
 
 	/**
@@ -51,6 +58,12 @@ class StudioRepository implements StudioRepositoryInterfaces
 	 */
 	public function deleteStudio(string $url, bool $fullDel = false): mixed
 	{
-		// TODO: Implement delStudio() method.
+		$delete = $this->model->findOrFail($url, ['*']);
+		if ($delete) {
+			if ($fullDel) {
+				return $delete->forceDelete();
+			}
+			return $delete->delete();
+		}
 	}
 }

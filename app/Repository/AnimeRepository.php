@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use App\Services\FunctionTrait;
 use App\Services\ImageTrait;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
@@ -21,6 +22,8 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 {
 	use FunctionTrait;
 	use ImageTrait;
+
+	private Model $model;
 
 	/**
 	 * Массив для синхронизации
@@ -50,6 +53,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		'comment_at' => 'comment_at',
 	];
 
+	public function __construct(Anime $anime)
+	{
+		$this->model = $anime;
+	}
+
 	/**
 	 * Получает аниме по ID
 	 *
@@ -61,11 +69,11 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getAnime(int $id = null, bool $isAdmin = false): mixed
 	{
 		if ($id) {
-			return Anime::where('id', $id);
+			return $this->model->where('id', $id);
 		} elseif ($isAdmin) {
-			return Anime::orderBy('updated_at', 'DESC');
+			return $this->model->orderBy('updated_at', 'DESC');
 		} else {
-			return Anime::where('posted_at', 1)
+			return $this->model->where('posted_at', 1)
 				->where('posted_main_page', 1)
 				->orderBy('updated_at', 'DESC');
 		}
@@ -78,7 +86,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function countAnime(): mixed
 	{
-		return Anime::where('posted_at', 1)->count();
+		return $this->model->where('posted_at', 1)->count();
 	}
 
 	/**
@@ -92,7 +100,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getFirstPageAnime(int $limit): mixed
 	{
-		return Anime::where('ongoing', 1)
+		return $this->model->where('ongoing', 1)
 			->limit($limit)
 			->orderBy('updated_at', 'DESC');
 	}
@@ -107,7 +115,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getCustomAnime(string $columns, string $custom): mixed
 	{
-		return Anime::where($columns, $custom)
+		return $this->model->where($columns, $custom)
 			->orderBy('updated_at', 'DESC');
 	}
 
@@ -120,7 +128,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getAnons(int $limit): mixed
 	{
-		return Anime::where('anons', 1)
+		return $this->model->where('anons', 1)
 			->limit($limit)
 			->orderBy('read_count', 'DESC');
 	}
@@ -134,7 +142,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function getPopular(int $limit): mixed
 	{
-		return Anime::limit($limit);
+		return $this->model->limit($limit);
 	}
 
 	/**
@@ -148,7 +156,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function getSearchAnime(Request $request, int $limit = 5): mixed
 	{
 		$search = $request->search;
-		return Anime::where('name', 'LIKE', "%{$search}%")
+		return $this->model->where('name', 'LIKE', "%{$search}%")
 			->orWhere('english', 'LIKE', "%{$search}%")
 			->orWhere('japanese', 'LIKE', "%{$search}%")
 			->orWhere('synonyms', 'LIKE', "%{$search}%")
@@ -214,7 +222,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	public function setAnime(AnimeRequest $request, int $id = null): mixed
 	{
 		$formRequest = $request->all();
-		$update = Anime::updateOrCreate(['id' => $id], $formRequest); //если нашли то обновляем, иначе добавляем новую запись
+		$update = $this->model->updateOrCreate(['id' => $id], $formRequest); //если нашли то обновляем, иначе добавляем новую запись
 		if ($update) {
 			if ($formRequest['channel_id'] == null) {
 				$formRequest['channel_id'] = 0;
@@ -246,7 +254,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	 */
 	public function deleteAnime(int $id, bool $fullDel = false): mixed
 	{
-		$del = Anime::findOrFail($id, ['*']);
+		$del = $this->model->findOrFail($id, ['*']);
 		if ($del) {
 			if ($fullDel) {
 				return $del->forceDelete();

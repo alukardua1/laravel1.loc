@@ -10,17 +10,20 @@ use App\Services\FunctionTrait;
 use App\Services\UsersTrait;
 use Auth;
 use Hash;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-/**
- * Class UserRepository
- *
- * @package App\Repository
- */
 class UserRepository implements UserRepositoryInterfaces
 {
 	use FunctionTrait;
 	use UsersTrait;
+
+	private Model $model;
+
+	public function __construct(User $user)
+	{
+		$this->model = $user;
+	}
 
 	/**
 	 * Получает пользователя по логину
@@ -32,11 +35,11 @@ class UserRepository implements UserRepositoryInterfaces
 	public function getUser(string $login = null): mixed
 	{
 		if ($login) {
-			return User::where('login', $login)
+			return $this->model->where('login', $login)
 				->firstOrFail();
 		}
 
-		return User::orderBy('id', 'ASC');
+		return $this->model->orderBy('id', 'ASC');
 	}
 
 	/**
@@ -66,7 +69,7 @@ class UserRepository implements UserRepositoryInterfaces
 		if ($requestForm['password1']) {
 			$requestForm['password'] = Hash::make($requestForm['password1']);
 		}
-		$updateUser = User::updateOrCreate(['login' => $login], $requestForm);
+		$updateUser = $this->model->updateOrCreate(['login' => $login], $requestForm);
 		if ($updateUser) {
 			if (!empty($requestForm['land'])) {
 				$requestForm['country_id'] = $requestForm['land'];
@@ -103,7 +106,7 @@ class UserRepository implements UserRepositoryInterfaces
 	 */
 	public function deleteUser(string $login, bool $fullDel = false): mixed
 	{
-		$delete = User::findOrFail($login, ['*']);
+		$delete = $this->model->findOrFail($login, ['*']);
 		if ($delete) {
 			if ($fullDel) {
 				return $delete->forceDelete();
