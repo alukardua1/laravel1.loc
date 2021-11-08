@@ -78,7 +78,9 @@ Route::group(
 		Route::get('rating/{custom}', [MPAARatingController::class, 'show'])->name('showRating');
 		Route::get('year/{custom}', [YearAiredController::class, 'show'])->name('showYear');
 		Route::get('ongoing', [AnimeController::class, 'indexOngoing'])->name('ongoing');
+		Route::get('anons', [AnimeController::class, 'indexAnons'])->name('anons');
 		Route::get('search', [AnimeController::class, 'search'])->name('search');
+		Route::get('search', [AnimeController::class, 'doSearch'])->name('doSearch');
 	}
 );
 

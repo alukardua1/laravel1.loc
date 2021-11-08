@@ -38,9 +38,11 @@
 		@endnot_available
 		@not_available('showAnime')
 		<div class="search">
-			<div class="form-group" id="q_search">
-				<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="search" name="search">
-			</div>
+			<form action="{{route('doSearch')}}">
+				<div class="form-group" id="q_search">
+					<input class="form-control mr-2" type="search" placeholder="Поиск..." aria-label="Поиск..." id="search" name="search">
+				</div>
+			</form>
 		</div>
 		@endnot_available
 		<div class="content">

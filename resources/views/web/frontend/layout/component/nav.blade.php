@@ -16,6 +16,9 @@
 					<a class="nav-link" aria-current="page" href="{{route('ongoing')}}">Онгоинги</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="{{route('anons')}}">Анонс</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="{{route('showStaticPage', 'pravoobladatelyam')}}">© Правообладателям</a>
 				</li>
 				<li class="nav-item">

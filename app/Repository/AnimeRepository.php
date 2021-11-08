@@ -148,22 +148,25 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 	/**
 	 * Поиск
 	 *
-	 * @param  Request  $request  Запрос
-	 * @param  int      $limit    количество выводимых записей
+	 * @param  Request   $request  Запрос
+	 * @param  int|null  $limit    количество выводимых записей
 	 *
 	 * @return mixed
 	 */
-	public function getSearchAnime(Request $request, int $limit = 5): mixed
+	public function getSearchAnime(Request $request, int|null $limit = 5): mixed
 	{
 		$search = $request->search;
-		return $this->model->where('name', 'LIKE', "%{$search}%")
+		$result = $this->model->where('name', 'LIKE', "%{$search}%")
 			->orWhere('english', 'LIKE', "%{$search}%")
 			->orWhere('japanese', 'LIKE', "%{$search}%")
 			->orWhere('synonyms', 'LIKE', "%{$search}%")
 			->orWhere('license_name_ru', 'LIKE', "%{$search}%")
-			->orWhere('description', 'LIKE', "%{$search}%")
-			->limit($limit)
-			->get();
+			->orWhere('description', 'LIKE', "%{$search}%");
+		if ($limit) {
+			return $result->limit($limit);
+		} else {
+			return $result;
+		}
 	}
 
 	/**

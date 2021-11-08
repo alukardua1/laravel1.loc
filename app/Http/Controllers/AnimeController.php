@@ -62,6 +62,14 @@ class AnimeController extends Controller
 		return view($this->frontend . 'anime.short', compact('views'));
 	}
 
+	public function indexAnons()
+	{
+		$views['content'] = $this->repository->getCustomAnime('anons', 1)->paginate($this->paginate);
+		$views['title'] = 'Анонс';
+
+		return view($this->frontend . 'anime.short', compact('views'));
+	}
+
 	/**
 	 * Показ записи
 	 *
@@ -105,7 +113,7 @@ class AnimeController extends Controller
 	{
 		if ($request->ajax()) {
 			$output = "";
-			$animeSearch = $this->repository->getSearchAnime($request);
+			$animeSearch = $this->repository->getSearchAnime($request)->get();
 			if ($animeSearch) {
 				foreach ($animeSearch as $key => $value) {
 					$output .= "<a href=\"/anime/{$value->id}-{$value->url}\">
@@ -116,6 +124,14 @@ class AnimeController extends Controller
 				return Response($output);
 			}
 		}
+	}
+
+	public function doSearch(Request $request): Factory|View|Application
+	{
+		$views['content'] = $this->repository->getSearchAnime($request, null)->paginate($this->paginate);
+		$views['title'] = 'Все аниме где упоминается "' . $request->all()['search'] . '"';
+
+		return view($this->frontend . 'anime.short', compact('views'));
 	}
 
 	/**
