@@ -4,9 +4,12 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Translate extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['translate'];
 	public string $cachePrefix = 'translate_';
 
@@ -37,7 +40,10 @@ class Translate extends Model
 		return $this->belongsToMany(Anime::class)->latest();
 	}
 
-	public function getTableOrder()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function getTableOrder(): BelongsToMany
 	{
 		return $this->belongsToMany(TableOrder::class)->latest();
 	}

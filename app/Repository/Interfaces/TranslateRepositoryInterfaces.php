@@ -12,10 +12,11 @@ interface TranslateRepositoryInterfaces
 	 * Получает все озвучивания
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getTranslate(string $url = null): mixed;
+	public function getTranslate(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление озвучивания

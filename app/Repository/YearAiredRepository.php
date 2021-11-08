@@ -22,13 +22,16 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	 * Получает все года
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getYearAired(string $url = null): mixed
+	public function getYearAired(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
-			return $this->model->where('year', $url);
+			return $this->model->where('url', $url);
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('year', 'ASC')->withTrashed();
 		}
 		return $this->model->orderBy('year', 'ASC');
 	}

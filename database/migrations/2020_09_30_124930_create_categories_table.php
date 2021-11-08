@@ -20,6 +20,7 @@ class CreateCategoriesTable extends Migration
 	        $table->string('url');
 	        $table->text('description')->nullable();
 	        $table->boolean('posted_at')->default(1);
+	        $table->softDeletes();
 	        $table->timestamps();
         });
     }

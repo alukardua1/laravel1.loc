@@ -8,10 +8,11 @@ interface CharacterRepositoryInterfaces
 {
 	/**
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getCharacter(string $url = null): mixed;
+	public function getCharacter(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * @param  \App\Http\Requests\CharacterRequest  $request

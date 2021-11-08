@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class YearAired extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['year'];
 	public string $cachePrefix = 'year_';
 

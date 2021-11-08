@@ -12,10 +12,11 @@ interface KindRepositoryInterfaces
 	 * Получает все типы
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getKind(string $url = null): mixed;
+	public function getKind(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление типа

@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\User;
 use Carbon\Carbon;
 use Hash;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 trait UsersTrait
 {
@@ -26,10 +26,10 @@ trait UsersTrait
 		$Extension = $requestForm['profile_photo_path']->getClientOriginalExtension();
 		$fileName = 'avatar_' . $updateUser->id . '_' . date(time()) . '.' . $Extension;
 
-		Storage::putFileAs('avatars/' . $updateUser->login . '/', $requestForm['profile_photo_path'], $fileName);
+		Storage::putFileAs('/avatars/' . $updateUser->login . '/', $requestForm['profile_photo_path'], $fileName);
 
 		$requestForm['profile_photo_path'] = 'avatars/' . $updateUser->login . '/' . $fileName;
-
+		dd(__METHOD__, $fileName, $requestForm);
 		return $requestForm;
 	}
 

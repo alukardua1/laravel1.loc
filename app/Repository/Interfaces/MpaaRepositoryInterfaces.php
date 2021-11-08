@@ -12,10 +12,11 @@ interface MpaaRepositoryInterfaces
 	 * Получает MPAA рейтинги
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getMpaa(string $url = null): mixed;
+	public function getMpaa(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление MPAA рейтинга

@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GeoBlock extends Model
 {
-	use HasFactory;
+	use SoftDeletes;
 
 	public array  $cacheTags   = ['geo_block'];
 	public string $cachePrefix = 'geo_block_';

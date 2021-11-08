@@ -19,6 +19,7 @@ class CreateGroupsTable extends Migration
 	        $table->string('color')->default('grey');
 	        $table->text('description')->nullable();
 	        $table->boolean('is_dashboard')->default(0);
+	        $table->softDeletes();
 	        $table->timestamps();
         });
     }

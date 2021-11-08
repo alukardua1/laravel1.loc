@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class PersonalMessage extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['pm'];
 	public string $cachePrefix = 'pm_';
 

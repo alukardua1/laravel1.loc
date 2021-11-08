@@ -22,7 +22,8 @@ class CreatePersonalMessagesTable extends Migration
             $table->text('description');
             $table->boolean('is_read')->default(0);
             $table->date('date_read')->nullable();
-            $table->timestamps();
+	        $table->softDeletes();
+	        $table->timestamps();
         });
     }
 

@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CopyrightHolder extends Model
 {
-	use HasFactory;
+	use SoftDeletes;
 
 	public array  $cacheTags   = ['copyright_holder'];
 	public string $cachePrefix = 'copyright_holder_';

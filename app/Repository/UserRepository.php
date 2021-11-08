@@ -29,14 +29,16 @@ class UserRepository implements UserRepositoryInterfaces
 	 * Получает пользователя по логину
 	 *
 	 * @param  string|null  $login  Логин пользователя
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getUser(string $login = null): mixed
+	public function getUser(string $login = null, bool $isAdmin = false): mixed
 	{
 		if ($login) {
-			return $this->model->where('login', $login)
-				->firstOrFail();
+			return $this->model->where('login', $login)->firstOrFail();
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('id', 'ASC')->withTrashed();
 		}
 
 		return $this->model->orderBy('id', 'ASC');

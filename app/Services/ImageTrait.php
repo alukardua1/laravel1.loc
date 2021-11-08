@@ -66,7 +66,7 @@ trait ImageTrait
 		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке
 		Storage::putFileAs($pathImg, $requestForm['poster'], $fileName);               //запись картинки
 		Storage::putFileAs($pathImgThumb, $requestForm['poster'], $fileName);          //запись уменьшеной картинки
-		$img = Image::make(public_path('storage' . $pathImg . $fileName));
+		/*$img = Image::make(public_path('storage' . $pathImg . $fileName));
 		$img->encode('webp', 100);
 		$img->resize(1200, null, function ($constraint) {
 			$constraint->aspectRatio();
@@ -77,11 +77,23 @@ trait ImageTrait
 		$imgThumb->resize(200, null, function ($constraint) {
 			$constraint->aspectRatio();
 		});
-		$imgThumb->save(public_path('storage' . $pathImgThumb . $fileName));
+		$imgThumb->save(public_path('storage' . $pathImgThumb . $fileName));*/
+		$this->imgResize('storage' . $pathImg, $fileName, 'webp', 100, 1200);
+		$this->imgResize('storage' . $pathImgThumb, $fileName, 'webp', 10, 200);
 
 		return $requestForm = [
 			'original_img' => $pathImg . $fileName,
 			'preview_img'  => $pathImgThumb . $fileName,
 		];
+	}
+
+	private function imgResize(string $patch, string $fileName, string $fileFormat, int $quality, int $width = null, int $height = null)
+	{
+		$img = Image::make(public_path($patch . $fileName));
+		$img->encode($fileFormat, $quality);
+		$img->resize($width, $height, function ($constraint) {
+			$constraint->aspectRatio();
+		});
+		$img->save(public_path($patch . $fileName));
 	}
 }

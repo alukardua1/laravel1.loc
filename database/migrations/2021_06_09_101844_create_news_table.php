@@ -22,6 +22,7 @@ class CreateNewsTable extends Migration
 				$table->string('url');
 				$table->text('description');
 				$table->string('source')->nullable();
+				$table->softDeletes();
 				$table->timestamps();
 			}
 		);

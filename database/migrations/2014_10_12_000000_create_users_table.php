@@ -41,6 +41,7 @@ class CreateUsersTable extends Migration
 				$table->timestamp('email_verified_at')->nullable();
 				$table->timestamp('register')->default(date('Y-m-d H:i:s'));
 				$table->timestamp('last_login')->default(date('Y-m-d H:i:s'));
+				$table->softDeletes();
 				$table->timestamps();
 			}
 		);

@@ -18,7 +18,8 @@ class CreateStudiosTable extends Migration
 	        $table->string('title');
 	        $table->string('url');
             $table->string('image')->nullable();
-            $table->timestamps();
+	        $table->softDeletes();
+	        $table->timestamps();
         });
     }
 

@@ -17,7 +17,8 @@ class CreateGeoBlocksTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('country');
-            $table->timestamps();
+	        $table->softDeletes();
+	        $table->timestamps();
         });
     }
 

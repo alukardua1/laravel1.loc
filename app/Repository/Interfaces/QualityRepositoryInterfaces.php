@@ -12,10 +12,11 @@ interface QualityRepositoryInterfaces
 	 * Получает все качество видео
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getQuality(string $url = null): mixed;
+	public function getQuality(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление качества видео

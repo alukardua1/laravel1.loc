@@ -71,7 +71,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
 		if ($id) {
 			return $this->model->where('id', $id);
 		} elseif ($isAdmin) {
-			return $this->model->orderBy('updated_at', 'DESC');
+			return $this->model->orderBy('updated_at', 'DESC')->withTrashed();
 		} else {
 			return $this->model->where('posted_at', 1)
 				->where('posted_main_page', 1)

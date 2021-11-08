@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.68.1.
+ * Generated for Laravel 8.69.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -23107,16 +23107,17 @@ namespace {
 			/** @var \Illuminate\Database\Query\Builder $instance */
 			return $instance->insertUsing($columns, $query);
 		}
-             
-                /**
-             * Update records in a PostgreSQL database using the update from syntax.
-             *
-             * @param array $values
-             * @return int 
-             * @static 
-             */ 
-            public static function updateFrom($values)
-            {
+
+		/**
+		 * Update records in a PostgreSQL database using the update from syntax.
+		 *
+		 * @param  array  $values
+		 *
+		 * @return int
+		 * @static
+		 */
+		public static function updateFrom($values)
+		{
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->updateFrom($values);
             }

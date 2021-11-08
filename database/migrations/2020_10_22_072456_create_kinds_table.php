@@ -20,7 +20,8 @@ class CreateKindsTable extends Migration
             $table->string('short_name');
             $table->string('url');
             $table->text('description')->nullable();
-            $table->timestamps();
+	        $table->softDeletes();
+	        $table->timestamps();
         });
     }
 

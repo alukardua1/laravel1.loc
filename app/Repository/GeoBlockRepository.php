@@ -22,13 +22,16 @@ class GeoBlockRepository implements GeoBlockRepositoryInterfaces
 	 * Получает ГеоБлок
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getGeoBlock(string $url = null): mixed
+	public function getGeoBlock(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
-			return $this->model->where('code', $url);
+			return $this->model->where('url', $url);
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('code', 'ASC')->withTrashed();
 		}
 		return $this->model->orderBy('code', 'ASC');
 	}

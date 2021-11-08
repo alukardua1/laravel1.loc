@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Channel extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['channel'];
 	public string $cachePrefix = 'channel_';
 

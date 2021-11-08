@@ -12,10 +12,11 @@ interface StudioRepositoryInterfaces
 	 * Получает все студии
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getStudio(string $url = null): mixed;
+	public function getStudio(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление студии

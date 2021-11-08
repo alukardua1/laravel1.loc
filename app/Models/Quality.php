@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Quality extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['quality'];
 	public string $cachePrefix = 'quality_';
 

@@ -8,10 +8,11 @@ interface JobPeopleRepositoryInterfaces
 {
 	/**
 	 * @param  string  $url
+	 * @param  bool    $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getJobPeople(string $url): mixed;
+	public function getJobPeople(string $url, bool $isAdmin = false): mixed;
 
 	/**
 	 * @param  \Illuminate\Http\Request  $request

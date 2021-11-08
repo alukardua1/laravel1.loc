@@ -12,10 +12,11 @@ interface ChannelRepositoryInterfaces
 	 * Получает все каналы
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getChannel(string $url = null): mixed;
+	public function getChannel(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление канала

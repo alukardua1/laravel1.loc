@@ -22,13 +22,16 @@ class StudioRepository implements StudioRepositoryInterfaces
 	 * Получает все студии
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getStudio(string $url = null): mixed
+	public function getStudio(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
 			return $this->model->where('url', $url);
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('title', 'ASC')->withTrashed();
 		}
 		return $this->model->orderBy('title', 'ASC');
 	}

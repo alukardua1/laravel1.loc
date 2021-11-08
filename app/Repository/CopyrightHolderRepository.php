@@ -22,13 +22,16 @@ class CopyrightHolderRepository implements CopyrightHolderRepositoryInterfaces
 	 * Получает всех правообладателей
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getCopyrightHolder(string $url = null): mixed
+	public function getCopyrightHolder(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
-			return $this->model->where('title', $url);
+			return $this->model->where('url', $url);
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('title', 'ASC')->withTrashed();
 		}
 		return $this->model->orderBy('title', 'ASC');
 	}

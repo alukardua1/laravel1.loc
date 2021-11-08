@@ -16,6 +16,7 @@ class CreateJobPeopleTable extends Migration
 		Schema::create('job_people', function (Blueprint $table) {
 			$table->id();
 			$table->string('title');
+			$table->softDeletes();
 			$table->timestamps();
 		});
     }

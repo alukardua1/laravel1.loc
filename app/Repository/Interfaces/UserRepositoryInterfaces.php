@@ -12,10 +12,11 @@ interface UserRepositoryInterfaces
 	 * Получает пользователя по логину
 	 *
 	 * @param  string|null  $login  Логин пользователя
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getUser(string $login = null): mixed;
+	public function getUser(string $login = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Получает персональные сообщения пользователя

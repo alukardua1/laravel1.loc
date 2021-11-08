@@ -8,10 +8,11 @@ interface PeopleRepositoryInterfaces
 {
 	/**
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getPeople(string $url = null): mixed;
+	public function getPeople(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * @param  \Illuminate\Http\Request  $request

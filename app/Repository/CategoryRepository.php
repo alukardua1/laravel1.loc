@@ -43,7 +43,7 @@ class CategoryRepository implements CategoryRepositoryInterfaces
 		if ($url) {
 			return $this->model->where('url', $url);
 		} elseif ($isAdmin) {
-			return $this->model->orderBy('id', 'ASC');
+			return $this->model->orderBy('id', 'ASC')->withTrashed();
 		}
 		return $this->model->where('posted_at', '=', 1);
 	}

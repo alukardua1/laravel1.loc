@@ -4,9 +4,12 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Country extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['country'];
 	public string $cachePrefix = 'country_';
 

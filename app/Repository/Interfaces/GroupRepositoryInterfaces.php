@@ -8,10 +8,11 @@ interface GroupRepositoryInterfaces
 {
 	/**
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getGroup(string $url = null): mixed;
+	public function getGroup(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * @param  \Illuminate\Http\Request  $request

@@ -2,6 +2,9 @@
 
 namespace App\Services;
 
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+
 trait ApiTrait
 {
 	/**
@@ -20,12 +23,12 @@ trait ApiTrait
 	/**
 	 * Мутатор Апи пользователя
 	 *
-	 * @param  mixed        $user
-	 * @param  string|null  $custom
+	 * @param  \Illuminate\Database\Eloquent\Model  $user
+	 * @param  string|null                          $custom
 	 *
 	 * @return array
 	 */
-	public function userMutations(mixed $user, string $custom = null): array
+	public function userMutations(Model $user, string $custom = null): array
 	{
 		$favorite = [];
 		foreach ($user->favorites as $value) {
@@ -47,11 +50,11 @@ trait ApiTrait
 	/**
 	 * Вывод всех аниме
 	 *
-	 * @param  mixed  $anime
+	 * @param  \Illuminate\Database\Eloquent\Model  $anime
 	 *
 	 * @return array
 	 */
-	public function animeAllMutations(mixed $anime): array
+	public function animeAllMutations(Model $anime): array
 	{
 		$cur = $anime->currentPage();
 		$last = $anime->lastPage();
@@ -73,7 +76,7 @@ trait ApiTrait
 		foreach ($anime as $item) {
 			$result['result'][] = [
 				'id'       => $item->id,
-				'poster' => [
+				'poster'   => [
 					'original' => $item->original_img,
 					'preview'  => $item->preview_img,
 				],
@@ -100,11 +103,11 @@ trait ApiTrait
 	/**
 	 * Создание массива категорий для Api
 	 *
-	 * @param  mixed  $category
+	 * @param  \Illuminate\Database\Eloquent\Collection  $category
 	 *
 	 * @return array
 	 */
-	private function animeCategory(mixed $category): array
+	private function animeCategory(Collection $category): array
 	{
 		$result = [];
 		foreach ($category as $value) {
@@ -118,11 +121,11 @@ trait ApiTrait
 	}
 
 	/**
-	 * @param  mixed  $studio
+	 * @param  \Illuminate\Database\Eloquent\Collection  $studio
 	 *
 	 * @return array
 	 */
-	private function studio(mixed $studio)
+	private function studio(Collection $studio): array
 	{
 		$result = [];
 		foreach ($studio as $item) {
@@ -138,16 +141,15 @@ trait ApiTrait
 	/**
 	 * Мутатор Апи аниме
 	 *
-	 * @param $anime
+	 * @param  \Illuminate\Database\Eloquent\Model  $anime
 	 *
 	 * @return array
-	 * @todo Разобратся почему такая ошибка
 	 */
-	public function animeOneMutations($anime): array
+	public function animeOneMutations(Model $anime): array
 	{
 		return [
 			'id'              => $anime->id,
-			'poster' => [
+			'poster'          => [
 				'original' => $anime->original_img,
 				'preview'  => $anime->preview_img,
 			],
@@ -182,7 +184,12 @@ trait ApiTrait
 		];
 	}
 
-	private function otherLink(mixed $link)
+	/**
+	 * @param  \Illuminate\Database\Eloquent\Collection  $link
+	 *
+	 * @return array
+	 */
+	private function otherLink(Collection $link): array
 	{
 		$result = [];
 		foreach ($link as $item) {
@@ -196,11 +203,11 @@ trait ApiTrait
 	}
 
 	/**
-	 * @param  mixed  $video
+	 * @param  \Illuminate\Database\Eloquent\Collection  $video
 	 *
 	 * @return array
 	 */
-	private function video(mixed $video)
+	private function video(Collection $video): array
 	{
 		$result = [];
 		foreach ($video as $item) {

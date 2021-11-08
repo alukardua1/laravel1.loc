@@ -12,10 +12,11 @@ interface CopyrightHolderRepositoryInterfaces
 	 * Получает всех правообладателей
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getCopyrightHolder(string $url = null): mixed;
+	public function getCopyrightHolder(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление правообладателя

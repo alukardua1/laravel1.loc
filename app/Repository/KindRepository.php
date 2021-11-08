@@ -22,13 +22,16 @@ class KindRepository implements KindRepositoryInterfaces
 	 * Получает все типы
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getKind(string $url = null): mixed
+	public function getKind(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
 			return $this->model->where('url', $url);
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('name', 'ASC')->withTrashed();
 		}
 		return $this->model->orderBy('name', 'ASC');
 	}

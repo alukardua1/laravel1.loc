@@ -28,6 +28,7 @@ class CreateTableOrdersTable extends Migration
 				$table->string('shikimori_url')->nullable();
 				$table->foreignId('translate_id');
 				$table->text('download_url');
+				$table->softDeletes();
 				$table->timestamps();
 			}
 		);

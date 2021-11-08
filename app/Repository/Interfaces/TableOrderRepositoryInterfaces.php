@@ -11,10 +11,11 @@ interface TableOrderRepositoryInterfaces
 	/**
 	 * @param  int|null  $id
 	 * @param  int|null  $user_id
+	 * @param  bool      $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getTable(int $id = null, int $user_id = null): mixed;
+	public function getTable(int $id = null, int $user_id = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * @param  \App\Http\Requests\TableOrderRequest  $request

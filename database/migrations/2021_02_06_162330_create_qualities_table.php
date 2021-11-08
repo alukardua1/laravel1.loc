@@ -17,7 +17,8 @@ class CreateQualitiesTable extends Migration
             $table->id();
 	        $table->string('title');
 	        $table->string('url');
-            $table->timestamps();
+	        $table->softDeletes();
+	        $table->timestamps();
         });
     }
 

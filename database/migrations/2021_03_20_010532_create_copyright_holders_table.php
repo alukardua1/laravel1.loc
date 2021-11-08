@@ -16,6 +16,7 @@ class CreateCopyrightHoldersTable extends Migration
         Schema::create('copyright_holders', function (Blueprint $table) {
             $table->id();
 	        $table->string('title');
+	        $table->softDeletes();
 	        $table->timestamps();
         });
     }

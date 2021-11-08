@@ -4,9 +4,12 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Kind extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['kind'];
 	public string $cachePrefix = 'kind_';
 

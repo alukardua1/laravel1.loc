@@ -27,7 +27,7 @@ class StaticPageRepository implements StaticPageRepositoryInterfaces
 		if ($url) {
 			return $this->model->where('url', $url);
 		} elseif ($isAdmin) {
-			return $this->model->sortBy('created_at', 'DESC');
+			return $this->model->sortBy('created_at', 'DESC')->withTrashed();
 		} else {
 			return $this->model->where('public_at', 1)->sortBy('created_at', 'DESC');
 		}

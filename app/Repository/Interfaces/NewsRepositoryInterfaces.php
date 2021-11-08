@@ -11,10 +11,11 @@ interface NewsRepositoryInterfaces
 	/**
 	 * @param  int|null  $id
 	 * @param  int|null  $limit
+	 * @param  bool      $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getNews(int $id = null, int $limit = null): mixed;
+	public function getNews(int $id = null, int $limit = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * @param  \Illuminate\Http\Request  $request

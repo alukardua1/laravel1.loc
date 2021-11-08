@@ -27,7 +27,7 @@ class FaqRepository implements FaqRepositoryInterfaces
 		if ($url) {
 			return $this->model->where('url', $url);
 		} elseif ($isAdmin) {
-			return $this->model->orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
+			return $this->model->orderBy('created_at', 'DESC')->select(['id', 'title', 'url'])->withTrashed();
 		} else {
 			return $this->model->where('public_at', 1)->orderBy('created_at', 'DESC')->select(['id', 'title', 'url']);
 		}

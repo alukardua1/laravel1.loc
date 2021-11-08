@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['category'];
 	public string $cachePrefix = 'category_';
 

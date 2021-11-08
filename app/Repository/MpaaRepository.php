@@ -22,13 +22,16 @@ class MpaaRepository implements MpaaRepositoryInterfaces
 	 * Получает MPAA рейтинги
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getMpaa(string $url = null): mixed
+	public function getMpaa(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
 			return $this->model->where('url', $url);
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('id', 'ASC')->withTrashed();
 		}
 		return $this->model->orderBy('id', 'ASC');
 	}

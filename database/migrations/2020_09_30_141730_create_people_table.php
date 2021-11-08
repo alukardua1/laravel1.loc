@@ -22,6 +22,7 @@ class CreatePeopleTable extends Migration
 	        $table->string('url');
 	        $table->date('birthday')->nullable();
 	        $table->string('website')->nullable();
+	        $table->softDeletes();
 	        $table->timestamps();
         });
     }

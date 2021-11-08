@@ -17,17 +17,19 @@ class JobPeopleRepository implements JobPeopleRepositoryInterfaces
 	}
 
 	/**
-	 * @param  string  $url
+	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getJobPeople(string $url): mixed
+	public function getJobPeople(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
-			return $this->model->where('title', $url)->first();
-		} else {
-			return $this->model->orderBy('id', 'ASC');
+			return $this->model->where('url', $url);
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('id', 'ASC')->withTrashed();
 		}
+		return $this->model->orderBy('id', 'ASC');
 	}
 
 	/**

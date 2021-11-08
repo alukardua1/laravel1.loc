@@ -21,16 +21,18 @@ class NewsRepository implements NewsRepositoryInterfaces
 	/**
 	 * @param  int|null  $id
 	 * @param  int|null  $limit
+	 * @param  bool      $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getNews(int $id = null, int $limit = null): mixed
+	public function getNews(int $id = null, int $limit = null, bool $isAdmin = false): mixed
 	{
 		if ($id) {
 			return $this->model->where($id);
 		} elseif ($limit) {
-			return $this->model->limit($limit)
-				->orderBy('updated_at', 'DESC');
+			return $this->model->limit($limit)->orderBy('updated_at', 'DESC');
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('updated_at', 'DESC')->withTrashed();
 		}
 		return $this->model->orderBy('updated_at', 'DESC');
 	}

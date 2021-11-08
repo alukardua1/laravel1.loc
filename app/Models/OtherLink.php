@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class OtherLink extends Model
 {
 	public array  $cacheTags   = ['otherlink'];
@@ -24,7 +26,10 @@ class OtherLink extends Model
 		parent::__construct($attributes);
 	}
 
-	public function getAnime()
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function getAnime(): HasMany
 	{
 		return $this->hasMany(Anime::class)->latest();
 	}

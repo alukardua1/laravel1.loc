@@ -19,7 +19,7 @@ trait FunctionTrait
 	 *
 	 * @param  mixed  $post  запись
 	 */
-	public function isNotNull($post)
+	public function isNotNull(mixed $post)
 	{
 		abort_if(empty($post), 404);
 	}
@@ -127,7 +127,7 @@ trait FunctionTrait
 	 *
 	 * @return mixed
 	 */
-	public function parseLink(string $url)
+	public function parseLink(string $url): mixed
 	{
 		preg_match("/\d+/", $url, $id);
 
@@ -139,7 +139,7 @@ trait FunctionTrait
 	 *
 	 * @return mixed
 	 */
-	public function parseWA(string $WALink)
+	public function parseWA(string $WALink): mixed
 	{
 		$wa = parse_url($WALink);
 		parse_str($wa['query'], $id);
@@ -402,7 +402,7 @@ trait FunctionTrait
 	 *
 	 * @return string
 	 */
-	public function morfDate(mixed $date, string $format)
+	public function morfDate(mixed $date, string $format): string
 	{
 		return Carbon::parse($date)->format($format);
 	}
@@ -449,7 +449,7 @@ trait FunctionTrait
 	 *
 	 * @return array
 	 */
-	public function views(Model $show)
+	public function views(Model $show): array
 	{
 		$this->isNotNull($show);
 		$result['title'] = $show->title;

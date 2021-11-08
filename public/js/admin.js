@@ -53,7 +53,6 @@
 		})
 	}
 })()*/
-feather.replace()
 
 function copyID(el) {
 	var copytext = document.createElement('input')
@@ -139,3 +138,4 @@ $('#addOtherLink').click(function () {
 		'</div>'
 	)
 })
+feather.replace();

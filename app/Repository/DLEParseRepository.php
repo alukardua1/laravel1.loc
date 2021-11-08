@@ -9,6 +9,7 @@ use App\Models\MPAARating;
 use App\Models\YearAired;
 use App\Repository\Interfaces\DLEParse;
 use App\Services\CurlTrait;
+use App\Services\ImageTrait;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -23,6 +24,7 @@ use Str;
 class DLEParseRepository implements DLEParse
 {
 	use CurlTrait;
+	use ImageTrait;
 
 	/**
 	 * @return \Illuminate\Database\Connection|\Illuminate\Database\ConnectionInterface
@@ -468,8 +470,6 @@ class DLEParseRepository implements DLEParse
 	private function imageFunc(mixed $anime, mixed $image): array
 	{
 		$def = '/';
-		$path_info = pathinfo($image);
-		$Extension = $path_info['extension'];
 		$fileName = strtotime($anime->date) . '_anime_' . $anime->id . '_' . Str::slug($anime->title) . '.' . 'webp';
 		$pathImg = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';//путь к большой картинке
 		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке

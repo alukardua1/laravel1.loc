@@ -22,13 +22,16 @@ class QualityRepository implements QualityRepositoryInterfaces
 	 * Получает все качество видео
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getQuality(string $url = null): mixed
+	public function getQuality(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
 			return $this->model->where('url', $url);
+		} elseif ($isAdmin) {
+			return $this->model->orderBy('title', 'ASC')->withTrashed();
 		}
 		return $this->model->orderBy('title', 'ASC');
 	}

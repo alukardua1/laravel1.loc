@@ -12,10 +12,11 @@ interface YearAiredRepositoryInterfaces
 	 * Получает все года
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getYearAired(string $url = null): mixed;
+	public function getYearAired(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление года

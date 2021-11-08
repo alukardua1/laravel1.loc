@@ -10,41 +10,41 @@ trait AnimeModelTrait
 	use MutationTrait;
 
 	/**
-	 * @param $value
+	 * @param  string  $value
 	 *
 	 * @return string
 	 */
-	public function setAiredAttribute($value): string
+	public function setAiredAttribute(string $value): string
 	{
 		return $this->attributes['aired'] = (new Carbon($value))->format('d.m.Y');
 	}
 
 	/**
-	 * @param $value
+	 * @param  string  $value
 	 *
 	 * @return string
 	 */
-	public function setUpdateAttribute($value): string
+	public function setUpdateAttribute(string $value): string
 	{
 		return $this->attributes['update'] = (new Carbon($value))->format('d.m.Y');
 	}
 
 	/**
-	 * @param $value
+	 * @param  string  $value
 	 *
 	 * @return string
 	 */
-	public function setCreateAttribute($value): string
+	public function setCreateAttribute(string $value): string
 	{
 		return $this->attributes['create'] = (new Carbon($value))->format('d.m.Y');
 	}
 
 	/**
-	 * @param $value
+	 * @param  string  $value
 	 *
 	 * @return string
 	 */
-	public function setReleasedAttribute($value): string
+	public function setReleasedAttribute(string $value): string
 	{
 		return $this->attributes['released'] = (new Carbon($value))->format('d.m.Y');
 	}
@@ -68,11 +68,11 @@ trait AnimeModelTrait
 	}
 
 	/**
-	 * @param $value
+	 * @param  int  $value
 	 *
-	 * @return mixed
+	 * @return int
 	 */
-	public function setCommentsCountAttribute($value): mixed
+	public function setCommentsCountAttribute(int $value): int
 	{
 		return $this->attributes['comments_count'] = $value;
 	}

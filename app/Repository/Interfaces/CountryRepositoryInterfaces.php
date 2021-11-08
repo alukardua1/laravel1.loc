@@ -12,10 +12,11 @@ interface CountryRepositoryInterfaces
 	 * Получает все страны
 	 *
 	 * @param  string|null  $url
+	 * @param  bool         $isAdmin
 	 *
 	 * @return mixed
 	 */
-	public function getCountry(string $url = null): mixed;
+	public function getCountry(string $url = null, bool $isAdmin = false): mixed;
 
 	/**
 	 * Добавление/обновление страны

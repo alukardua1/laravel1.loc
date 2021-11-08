@@ -3,8 +3,12 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class JobPeople extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['job'];
 	public string $cachePrefix = 'job_';
 
@@ -22,6 +26,9 @@ class JobPeople extends Model
 		parent::__construct($attributes);
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
 	public function getPeople()
 	{
 		return $this->belongsToMany(People::class)->latest();

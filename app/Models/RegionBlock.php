@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class RegionBlock extends Model
 {
+	use SoftDeletes;
+
 	public array  $cacheTags   = ['regionblock'];
 	public string $cachePrefix = 'regionblock_';
 

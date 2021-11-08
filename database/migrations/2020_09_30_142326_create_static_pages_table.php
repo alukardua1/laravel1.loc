@@ -19,6 +19,7 @@ class CreateStaticPagesTable extends Migration
             $table->string('url');
 	        $table->text('description');
 	        $table->boolean('public_at')->default(1);
+	        $table->softDeletes();
 	        $table->timestamps();
         });
     }
