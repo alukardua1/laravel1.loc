@@ -62,6 +62,9 @@ class AnimeController extends Controller
 		return view($this->frontend . 'anime.short', compact('views'));
 	}
 
+	/**
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
 	public function indexAnons()
 	{
 		$views['content'] = $this->repository->getCustomAnime('anons', 1)->paginate($this->paginate);
@@ -126,6 +129,11 @@ class AnimeController extends Controller
 		}
 	}
 
+	/**
+	 * @param  \Illuminate\Http\Request  $request
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+	 */
 	public function doSearch(Request $request): Factory|View|Application
 	{
 		$views['content'] = $this->repository->getSearchAnime($request, null)->paginate($this->paginate);
