@@ -34,5 +34,5 @@ interface GeoBlockRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delGeoBlock(string $url, bool $fullDel = false): mixed;
+	public function deleteGeoBlock(string $url, bool $fullDel = false): mixed;
 }

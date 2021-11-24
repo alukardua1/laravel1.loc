@@ -68,7 +68,7 @@ class CharacterAdminController extends Controller
 	 */
 	public function edit(string $url): View|Factory|Application
 	{
-		$show = $this->repository->getCharacter($url)->first();
+		$edit = $this->repository->getCharacter($url)->first();
 
 		return view($this->backend . 'character.edit', compact('edit'));
 	}

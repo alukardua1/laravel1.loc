@@ -34,5 +34,5 @@ interface KindRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delKind(string $url, bool $fullDel = false): mixed;
+	public function deleteKind(string $url, bool $fullDel = false): mixed;
 }

@@ -3,24 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repository\Interfaces\TranslateRepositoryInterfaces;
+use App\Repository\Interfaces\GeoBlockRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class TranslateAdminController extends Controller
+class GeoBlockAdminController extends Controller
 {
-	private TranslateRepositoryInterfaces $repository;
+	private GeoBlockRepositoryInterfaces $repository;
 
 	/**
-	 * @param  \App\Repository\Interfaces\TranslateRepositoryInterfaces  $translateRepositoryInterfaces
+	 * @param  \App\Repository\Interfaces\GeoBlockRepositoryInterfaces  $geoBlockRepositoryInterfaces
 	 */
-	public function __construct(TranslateRepositoryInterfaces $translateRepositoryInterfaces)
+	public function __construct(GeoBlockRepositoryInterfaces $geoBlockRepositoryInterfaces)
 	{
 		parent::__construct();
-		$this->repository = $translateRepositoryInterfaces;
+		$this->repository = $geoBlockRepositoryInterfaces;
 	}
 
 	/**
@@ -30,9 +30,9 @@ class TranslateAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getTranslate()->paginate($this->paginate);
+		$index = $this->repository->getGeoBlock()->paginate($this->paginate);
 
-		return view($this->backend . 'translate.index', compact('index'));
+		return view($this->backend . 'geo.index', compact('index'));
 	}
 
 	/**
@@ -42,7 +42,7 @@ class TranslateAdminController extends Controller
 	 */
 	public function create(): View|Factory|Application
 	{
-		return view($this->backend . 'translate.add');
+		return view($this->backend . 'geo.add');
 	}
 
 	/**
@@ -54,9 +54,9 @@ class TranslateAdminController extends Controller
 	 */
 	public function store(Request $request): RedirectResponse
 	{
-		$store = $this->repository->setTranslate($request);
+		$store = $this->repository->setGeoBlock($request);
 
-		return $this->ifErrorAddUpdate($store, 'indexTranslateAdmin', 'Ошибка сохранения');
+		return $this->ifErrorAddUpdate($store, 'indexGeoAdmin', 'Ошибка сохранения');
 	}
 
 	/**
@@ -68,9 +68,9 @@ class TranslateAdminController extends Controller
 	 */
 	public function edit(string $url): View|Factory|Application
 	{
-		$edit = $this->repository->getTranslate($url)->first();
+		$edit = $this->repository->getGeoBlock($url)->first();
 
-		return view($this->backend . 'translate.edit', compact('edit'));
+		return view($this->backend . 'geo.edit', compact('edit'));
 	}
 
 	/**
@@ -83,9 +83,9 @@ class TranslateAdminController extends Controller
 	 */
 	public function update(Request $request, string $url): RedirectResponse
 	{
-		$update = $this->repository->setTranslate($request, $url);
+		$update = $this->repository->setGeoBlock($request, $url);
 
-		return $this->ifErrorAddUpdate($update, 'indexTranslateAdmin', 'Ошибка сохранения');
+		return $this->ifErrorAddUpdate($update, 'indexGeoAdmin', 'Ошибка сохранения');
 	}
 
 	/**
@@ -97,7 +97,7 @@ class TranslateAdminController extends Controller
 	 */
 	public function destroy(string $url): RedirectResponse
 	{
-		$delete = $this->repository->deleteTranslate($url);
+		$delete = $this->repository->deleteGeoBlock($url);
 		if ($delete) {
 			return back();
 		}

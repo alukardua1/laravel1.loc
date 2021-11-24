@@ -59,7 +59,7 @@ class KindRepository implements KindRepositoryInterfaces
 	 *
 	 * @return mixed
 	 */
-	public function delKind(string $url, bool $fullDel = false): mixed
+	public function deleteKind(string $url, bool $fullDel = false): mixed
 	{
 		$delete = $this->model->findOrFail($url, ['*']);
 		if ($delete) {
