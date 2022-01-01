@@ -10,6 +10,8 @@ use App\Models\YearAired;
 use App\Repository\Interfaces\DLEParse;
 use App\Services\CurlTrait;
 use App\Services\ImageTrait;
+use Illuminate\Database\Connection;
+use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -29,7 +31,7 @@ class DLEParseRepository implements DLEParse
 	/**
 	 * @return \Illuminate\Database\Connection|\Illuminate\Database\ConnectionInterface
 	 */
-	protected function getDBDLE()
+	protected function getDBDLE(): ConnectionInterface|Connection
 	{
 		return DB::connection("mysql2");
 	}
@@ -43,14 +45,14 @@ class DLEParseRepository implements DLEParse
 			['id', 'name', 'alt_name', 'fulldescr']
 		)->get();
 		foreach ($categories as $value) {
-			$category[] = [
+			$result[] = [
 				'id'          => $value->id,
 				'title'       => $value->name,
 				'url'         => $value->alt_name,
 				'description' => $value->fulldescr,
 			];
 		}
-		return $category;
+		return $result;
 	}
 
 	/**
@@ -78,25 +80,11 @@ class DLEParseRepository implements DLEParse
 	 */
 	private function status(string $xfieldStatus): array
 	{
-		switch ($xfieldStatus) {
-			case 'released':
-				$result['anons'] = 0;
-				$result['ongoing'] = 0;
-				$result['released'] = 1;
-				break;
-			case 'ongoing':
-				$result['ongoing'] = 1;
-				$result['anons'] = 0;
-				$result['released'] = 0;
-				break;
-			case 'anons':
-				$result['anons'] = 1;
-				$result['ongoing'] = 0;
-				$result['released'] = 0;
-				break;
-		}
-
-		return $result;
+		return match ($xfieldStatus) {
+			'released' => ['anons' => 0, 'ongoing' => 0, 'released' => 1],
+			'ongoing' => ['anons' => 0, 'ongoing' => 1, 'released' => 0],
+			'anons' => ['anons' => 1, 'ongoing' => 0, 'released' => 0],
+		};
 	}
 
 	/**
@@ -128,13 +116,13 @@ class DLEParseRepository implements DLEParse
 	 */
 	protected function createAnimeCategory(string $category, int $id_anime)
 	{
-		$categ = explode(',', $category);
-		foreach ($categ as $value) {
-			$catAnime = [
+		$categorys = explode(',', $category);
+		foreach ($categorys as $value) {
+			$result = [
 				'anime_id'    => $id_anime,
 				'category_id' => $value,
 			];
-			DB::table('anime_category')->insert($catAnime);
+			DB::table('anime_category')->insert($result);
 		}
 	}
 
@@ -145,10 +133,11 @@ class DLEParseRepository implements DLEParse
 	 */
 	public function dbConnect(int $id = null): Collection
 	{
+		$db = $this->getDBDLE()->table('dle_post')->select(['*']);
 		if ($id) {
-			$posts = $this->getDBDLE()->table('dle_post')->select(['*'])->where('id', '=', $id)->get();
+			$posts = $db->where('id', '=', $id)->get();
 		} else {
-			$posts = $this->getDBDLE()->table('dle_post')->select(['*'])->get();
+			$posts = $db->get();
 		}
 
 		return $posts;
@@ -164,11 +153,8 @@ class DLEParseRepository implements DLEParse
 	{
 		$id = DB::table('other_links')->where('title', $title)->where('id_link', $idLink)->first();
 		if (!$id) {
-			$link['anime_id'] = $post->id;
-			$link['title'] = $title;
-			$link['id_link'] = $idLink;
-			$link['url'] = $xfield;
-			DB::table('other_links')->insert($link);
+			$result = ['anime_id' => $post->id, 'title' => $title, 'id_link' => $idLink, 'url' => $xfield];
+			DB::table('other_links')->insert($result);
 		}
 	}
 
@@ -185,20 +171,20 @@ class DLEParseRepository implements DLEParse
 		foreach ($quality as $value) {
 			$quality1 = DB::table($table)->where('title', $value)->first();
 			if (!$quality1) {
-				$data1 = [
+				$result = [
 					'title' => $value,
 					'url'   => Str::slug($value),
 				];
-				DB::table($table)->insert($data1);
+				DB::table($table)->insert($result);
 				$quality1 = DB::table($table)->where('title', $value)->first();
 			}
-			$data = [
+			$result = [
 				'anime_id'    => $post->id,
 				$columsBelong => $quality1->id,
 			];
 			$belong = DB::table($belongTable)->where('anime_id', $post->id)->where($columsBelong, $quality1->id)->first();
 			if (!$belong) {
-				DB::table($belongTable)->insert($data);
+				DB::table($belongTable)->insert($result);
 			}
 		}
 	}
@@ -345,7 +331,7 @@ class DLEParseRepository implements DLEParse
 				'created_at'      => $post->date,
 				'updated_at'      => $post->date,
 			];
-			var_dump($post->id);
+			var_dump($post->id, $post->title);
 		}
 
 		return $result;
@@ -418,8 +404,7 @@ class DLEParseRepository implements DLEParse
 	 */
 	protected function delBBcode(string $data): array|string|null
 	{
-		$result = preg_replace('/\[[^\]]+\]/', '', $data);
-		return $result;
+		return preg_replace('/\[[^\]]+\]/', '', $data);
 	}
 
 	/**

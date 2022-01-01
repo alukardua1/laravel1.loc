@@ -119,8 +119,8 @@ class AnimeController extends Controller
 			$animeSearch = $this->repository->getSearchAnime($request)->get();
 			if ($animeSearch) {
 				foreach ($animeSearch as $key => $value) {
-					$output .= "<a href=\"/anime/{$value->id}-{$value->url}\">
-					<span class=\"searchheading\">{$value->name}</span>
+					$output .= "<a href='/anime/{$value->id}-{$value->url}'>
+					<span class='searchheading'>{$value->name}</span>
 					<span>{$value->description}</span>
 					</a>";
 				}

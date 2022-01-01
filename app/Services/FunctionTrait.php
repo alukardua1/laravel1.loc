@@ -459,4 +459,22 @@ trait FunctionTrait
 		return $result;
 	}
 
+	public function searchFun($request)
+	{
+		if ($request->ajax()) {
+			$output = "";
+			$search = $this->repository->getSearchAnime($request);
+			if ($search) {
+				$output .= "<ul class=\"list-group\">";
+				foreach ($search as $key => $value) {
+					$output .= "<li class=\"list-group-item\"><a href=\"/anime/{$value->id}/edit\">
+					<span class=\"searchheading\">{$value->name}</span>
+					</a></li>";
+				}
+				$output .= "</ul>";
+				return Response($output);
+			}
+		}
+	}
+
 }

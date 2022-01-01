@@ -250,7 +250,7 @@ trait KodikTrait
 	 *
 	 * @return mixed
 	 */
-	public function parseWA(string $WALink)
+	public function parseWA(string $WALink): mixed
 	{
 		$wa = parse_url($WALink);
 		parse_str($wa['query'], $id);

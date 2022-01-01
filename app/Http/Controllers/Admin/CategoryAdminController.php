@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class CategoryAdminController extends Controller
@@ -102,5 +104,15 @@ class CategoryAdminController extends Controller
 		if ($delete) {
 			return back();
 		}
+	}
+
+	/**
+	 * @param  Request  $request
+	 *
+	 * @return Response|Application|ResponseFactory
+	 */
+	public function search(Request $request): Response|Application|ResponseFactory
+	{
+		return $this->searchFun($request);
 	}
 }

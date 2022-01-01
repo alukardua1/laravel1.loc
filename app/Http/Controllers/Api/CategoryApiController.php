@@ -20,6 +20,10 @@ class CategoryApiController extends Controller
 
 	public function index()
 	{
+		$result = $this->repository->getCategory()->paginate($this->paginate);
+		//$result = $this->animeAllMutations($result);
+
+		return response()->json($result);
 	}
 
 	public function show(string $category)

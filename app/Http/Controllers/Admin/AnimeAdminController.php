@@ -122,19 +122,6 @@ class AnimeAdminController extends Controller
 	 */
 	public function search(Request $request): Response|Application|ResponseFactory
 	{
-		if ($request->ajax()) {
-			$output = "";
-			$animeSearch = $this->repository->getSearchAnime($request);
-			if ($animeSearch) {
-				$output .= "<ul class=\"list-group\">";
-				foreach ($animeSearch as $key => $value) {
-					$output .= "<li class=\"list-group-item\"><a href=\"/anime/{$value->id}/edit\">
-					<span class=\"searchheading\">{$value->name}</span>
-					</a></li>";
-				}
-				$output .= "</ul>";
-				return Response($output);
-			}
-		}
+		return $this->searchFun($request);
 	}
 }
