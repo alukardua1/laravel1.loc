@@ -8,11 +8,8 @@ use Auth;
 use Cache;
 use Config;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-
-use function Symfony\Component\String\u;
 
 class LoginController extends Controller
 {
@@ -46,23 +43,23 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-	protected function redirectTo(): string
-	{
-		return url()->previous();
-	}
+    protected function redirectTo(): string
+    {
+        return url()->previous();
+    }
 
-	public function username()
-	{
-		return Config::get('secondConfig.login_email');
-	}
+    public function username(): mixed
+    {
+        return Config::get('secondConfig.login_email');
+    }
 
-	protected function credentials(Request $request): array
-	{
-		return $request->only($this->username(), 'password');
-	}
+    protected function credentials(Request $request): array
+    {
+        return $request->only($this->username(), 'password');
+    }
 
-	public function showLoginForm()
-	{
+    public function showLoginForm()
+    {
 		return redirect()->route('home');
 	}
 

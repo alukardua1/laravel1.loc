@@ -145,9 +145,9 @@
 				<form action="{{route('addCommentAnime', $show->id)}}" method="POST">
 					@csrf
 					<div id="comments" class="add-comment form-textarea mb-3">
-						<label for="addComment">Добавить комментарий</label>
-						<textarea class="form-control ckeditor" name="description_html" id="addComment" cols="30" rows="10"></textarea>
-						<input name="anime_id" type="hidden" value="{{$show->id}}">
+                        <label for="addComment">Добавить комментарий</label>
+                        <textarea class="form-control ckeditor" name="description" id="addComment" cols="30" rows="10"></textarea>
+                        <input name="anime_id" type="hidden" value="{{$show->id}}">
 						<input name="author_id" type="hidden" value="{{Auth::user()->id}}">
 					</div>
 					<div class="btn-group" role="group" aria-label="Basic example">

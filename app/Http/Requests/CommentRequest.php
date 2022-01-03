@@ -24,8 +24,8 @@ class CommentRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'description_html' => ['required', 'min:30'],
-		];
+            'description' => ['required', 'min:10'],
+        ];
 	}
 
 	/**
@@ -34,8 +34,8 @@ class CommentRequest extends FormRequest
 	public function messages(): array
 	{
 		return [
-			'description_html.min'      => 'Комментарий меньше :min символов не несет смыслового интереса..',
-			'description_html.required' => 'Комментарий не может быть пустым...',
-		];
+            'description.min'      => 'Комментарий меньше :min символов не несет смыслового интереса..',
+            'description.required' => 'Комментарий не может быть пустым...',
+        ];
 	}
 }

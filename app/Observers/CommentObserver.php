@@ -19,8 +19,8 @@ class CommentObserver
 			$pm->author_id = 1;
 			$pm->recipient_id = $comment->user_id;
 			$pm->title = 'Появился новый комментарий';
-			$pm->description = $comment->description_html;
-			$pm->save();
+            $pm->description = $comment->description;
+            $pm->save();
 		}
 
 	}
