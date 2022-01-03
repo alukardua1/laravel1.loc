@@ -14,6 +14,7 @@
 	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap/addons/datatables.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/selectize.bootstrap4.css') }}">
 </head>
 <body>

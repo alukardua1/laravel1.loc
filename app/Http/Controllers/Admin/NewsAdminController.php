@@ -30,7 +30,7 @@ class NewsAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getNews()->paginate($this->paginate);
+		$index = $this->repository->getNews(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'news.index', compact('index'));
 	}

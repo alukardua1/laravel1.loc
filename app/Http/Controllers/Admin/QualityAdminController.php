@@ -30,7 +30,7 @@ class QualityAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getQuality()->paginate($this->paginate);
+		$index = $this->repository->getQuality(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'quality.index', compact('index'));
 	}

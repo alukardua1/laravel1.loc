@@ -30,7 +30,7 @@ class YearAiredAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getYearAired()->paginate($this->paginate);
+		$index = $this->repository->getYearAired(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'year_aired.index', compact('index'));
 	}

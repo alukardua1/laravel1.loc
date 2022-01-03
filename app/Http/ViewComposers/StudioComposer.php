@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\StudioRepositoryInterfaces;
 use Illuminate\View\View;
 
-class StudioComposer
+class StudioComposer extends ComposersAbstract
 {
 	private StudioRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class StudioComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getStudio()->get();
 	}

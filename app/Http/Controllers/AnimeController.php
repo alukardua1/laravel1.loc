@@ -42,7 +42,7 @@ class AnimeController extends Controller
 	/**
 	 * Все записи
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 * @return Application|Factory|View
 	 */
 	public function index(): Factory|View|Application
 	{
@@ -127,6 +127,7 @@ class AnimeController extends Controller
 				return Response($output);
 			}
 		}
+		return Response('Ничего не найдено!!!');
 	}
 
 	/**

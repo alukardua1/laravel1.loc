@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use Illuminate\View\View;
 
-class ChannelComposer
+class ChannelComposer extends ComposersAbstract
 {
 	private ChannelRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class ChannelComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getChannel()->get();
 	}

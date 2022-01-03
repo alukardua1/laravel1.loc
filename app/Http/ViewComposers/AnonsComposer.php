@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Illuminate\View\View;
 
-class AnonsComposer
+class AnonsComposer extends ComposersAbstract
 {
 	private AnimeRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class AnonsComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getAnons(100)->get();
 	}

@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\QualityRepositoryInterfaces;
 use Illuminate\View\View;
 
-class QualityComposer
+class QualityComposer extends ComposersAbstract
 {
 	private QualityRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class QualityComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getQuality()->get();
 	}

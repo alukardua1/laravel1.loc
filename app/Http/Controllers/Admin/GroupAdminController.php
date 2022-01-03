@@ -30,7 +30,7 @@ class GroupAdminController extends Controller
 	 */
 	public function index(): Factory|View|Application
 	{
-		$index = $this->repository->getGroup()->paginate($this->paginate);
+		$index = $this->repository->getGroup(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'group/index', compact('index'));
 	}

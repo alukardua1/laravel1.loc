@@ -30,7 +30,7 @@ class StaticPageAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getPage()->paginate($this->paginate);
+		$index = $this->repository->getPage(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'static_page.index', compact('index'));
 	}

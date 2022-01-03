@@ -30,7 +30,7 @@ class JobPeopleAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getJobPeople()->paginate($this->paginate);
+		$index = $this->repository->getJobPeople(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'job_people.index', compact('index'));
 	}

@@ -8,7 +8,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\UserRepositoryInterfaces;
 use Illuminate\View\View;
 
-class UserComposer
+class UserComposer extends ComposersAbstract
 {
 	private UserRepositoryInterfaces $repository;
 
@@ -23,7 +23,7 @@ class UserComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getUser()->get();
 	}

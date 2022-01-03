@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\CountryRepositoryInterfaces;
 use Illuminate\View\View;
 
-class CountryComposer
+class CountryComposer extends ComposersAbstract
 {
 	private CountryRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class CountryComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getCountry()->get();
 	}

@@ -30,7 +30,7 @@ class TranslateAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getTranslate()->paginate($this->paginate);
+		$index = $this->repository->getTranslate(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'translate.index', compact('index'));
 	}

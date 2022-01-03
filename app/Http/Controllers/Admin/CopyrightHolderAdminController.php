@@ -27,7 +27,7 @@ class CopyrightHolderAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getCopyrightHolder()->paginate($this->paginate);
+		$index = $this->repository->getCopyrightHolder(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'copyright_holder.index', compact('index'));
 	}

@@ -25,45 +25,52 @@
 			</div>
 		</div>
 		<div class="card-body">
-			<table id="dtBasicExample" class="table table-striped table-sm table-dark">
-				<thead>
-				<tr>
-					<th class="th-sm">ID</th>
-					<th class="th-sm">Название</th>
-					<th class="th-sm">Год</th>
-					<th class="th-sm">Серия</th>
-					<th class="th-sm">Озвучивание</th>
-					<th class="th-sm">Качество</th>
-					<th class="th-sm">Дата</th>
-				</tr>
-				</thead>
-				<tbody id="tbody_kodikValue">
-				@foreach($kodik['json'] as $value)
+			@if (is_array($kodik['json']))
+				<table id="dtBasicExample" class="table table-striped table-sm table-dark">
+					<thead>
 					<tr>
-						<th scope="row" class="id_row">
-							<ul class="list-group-flush">
-								@foreach($value['other_link'] as $link)
-									<li class="list-group-item">{!! $link !!}</li>
-								@endforeach
-							</ul>
-						</th>
-						<td>{!! $value['link_update'] !!}</td>
-						<td>{{$value['year']}}</td>
-						<td>{!! $value['last_episode_update'] !!}</td>
-						<td>{!! $value['translate_update'] !!}</td>
-						<td>{{$value['quality']}}</td>
-						<th scope="row" class="id_row">
-							<ul class="list-group-flush">
-								<li class="list-group-item">{{$value['updated_at']}}</li>
-								<li class="list-group-item">{{$value['created_at']}}</li>
-							</ul>
-						</th>
+						<th class="th-sm">ID</th>
+						<th class="th-sm">Название</th>
+						<th class="th-sm">Год</th>
+						<th class="th-sm">Серия</th>
+						<th class="th-sm">Озвучивание</th>
+						<th class="th-sm">Качество</th>
+						<th class="th-sm">Дата</th>
 					</tr>
-				@endforeach
-				</tbody>
-				<tbody id="tbody_result" hidden>
-				</tbody>
-			</table>
+					</thead>
+					<tbody id="tbody_kodikValue">
+
+					@foreach($kodik['json'] as $value)
+						<tr>
+							<th scope="row" class="id_row">
+								<ul class="list-group-flush">
+									@foreach($value['other_link'] as $link)
+										<li class="list-group-item">{!! $link !!}</li>
+									@endforeach
+								</ul>
+							</th>
+							<td>{!! $value['link_update'] !!}</td>
+							<td>{{$value['year']}}</td>
+							<td>{!! $value['last_episode_update'] !!}</td>
+							<td>{!! $value['translate_update'] !!}</td>
+							<td>{{$value['quality']}}</td>
+							<th scope="row" class="id_row">
+								<ul class="list-group-flush">
+									<li class="list-group-item">{{$value['updated_at']}}</li>
+									<li class="list-group-item">{{$value['created_at']}}</li>
+								</ul>
+							</th>
+						</tr>
+					@endforeach
+					</tbody>
+					<tbody id="tbody_result" hidden>
+					</tbody>
+				</table>
+			@else
+				<div class="alert alert-danger" role="alert">
+					{{ $kodik['json']}}
+				</div>
+			@endif
 		</div>
 		<div class="card-footer">
 			<div class="btn-group" role="group">

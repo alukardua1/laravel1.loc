@@ -30,7 +30,7 @@ class CharacterAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getCharacter()->paginate($this->paginate);
+		$index = $this->repository->getCharacter(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'character.index', compact('index'));
 	}

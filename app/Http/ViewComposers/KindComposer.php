@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\KindRepositoryInterfaces;
 use Illuminate\View\View;
 
-class KindComposer
+class KindComposer extends ComposersAbstract
 {
 	private KindRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class KindComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getKind()->get();
 	}

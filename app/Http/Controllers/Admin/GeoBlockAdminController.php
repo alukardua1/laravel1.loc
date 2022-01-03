@@ -30,7 +30,7 @@ class GeoBlockAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getGeoBlock()->paginate($this->paginate);
+		$index = $this->repository->getGeoBlock(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'geo.index', compact('index'));
 	}

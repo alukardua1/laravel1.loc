@@ -7,6 +7,7 @@ use App\Models\OtherLink;
 use App\Models\Player;
 use Carbon\Carbon;
 use DB;
+use Exception;
 
 trait KodikTrait
 {
@@ -58,11 +59,16 @@ trait KodikTrait
 	private function parseLinkKodik(mixed $url): string
 	{
 		$result = parse_url($url);
-		parse_str($result['query'], $id);
-		if (!array_key_exists('page', $id)) {
-			$id['page'] = '/';
+		try {
+			parse_str($result['query'], $id);
+			if (!array_key_exists('page', $id)) {
+				$id['page'] = '/';
+			}
+			return $id['page'];
+		} catch (Exception $e) {
+			$error = 'Error ' . $e->getMessage();
+			return $id['page'] = '';
 		}
-		return $id['page'];
 	}
 
 	/**
@@ -111,27 +117,31 @@ trait KodikTrait
 	 */
 	public function addRow(mixed $json)
 	{
-		foreach ($json['results'] as $key => $value) {
-			if (array_key_exists('shikimori_id', $value)) {
-				$otherLink = OtherLink::where('title', 'Shikimori')->where('id_link', 'RLIKE', "(^[a-z]?){$value['shikimori_id']}$")->first();
-			} else {
-				$otherLink = null;
+		if ($json) {
+			foreach ($json['results'] as $key => $value) {
+				if (array_key_exists('shikimori_id', $value)) {
+					$otherLink = OtherLink::where('title', 'Shikimori')->where('id_link', 'RLIKE', "(^[a-z]?){$value['shikimori_id']}$")->first();
+				} else {
+					$otherLink = null;
+				}
+				$json['results'][$key]['other_link'] = $this->link($value);
+				$json['results'][$key]['created_at'] = 'Добавлен: ' . $this->mutateDat($value['created_at']);
+				$json['results'][$key]['updated_at'] = 'Обновлен: ' . $this->mutateDat($value['updated_at']);
+				if ($otherLink) {
+					$anime = Anime::where('id', $otherLink->anime_id)->first();
+					$player = Player::where('anime_id', $otherLink->anime_id)->first();
+					$translate = DB::table('anime_translate')->where('anime_id', $otherLink->anime_id)->join('translates', 'anime_translate.translate_id', '=', 'translates.id')->get();
+					$this->isPlayer($player, $key, $otherLink, $anime, $json, $value);
+					$this->isTranslate($translate, $value, $json, $key);
+					$this->isSeries($anime->episodes_aired, $value, $json, $key);
+				} else {
+					$json['results'][$key]['link_update'] = $value['title'] . ' / ' . $value['title_orig'];
+					$json['results'][$key]['translate_update'] = $value['translation']['title'];
+					$json['results'][$key]['last_episode_update'] = $value['last_episode'] ?? 1;
+				}
 			}
-			$json['results'][$key]['other_link'] = $this->link($value);
-			$json['results'][$key]['created_at'] = 'Добавлен: ' . $this->mutateDat($value['created_at']);
-			$json['results'][$key]['updated_at'] = 'Обновлен: ' . $this->mutateDat($value['updated_at']);
-			if ($otherLink) {
-				$anime = Anime::where('id', $otherLink->anime_id)->first();
-				$player = Player::where('anime_id', $otherLink->anime_id)->first();
-				$translate = DB::table('anime_translate')->where('anime_id', $otherLink->anime_id)->join('translates', 'anime_translate.translate_id', '=', 'translates.id')->get();
-				$this->isPlayer($player, $key, $otherLink, $anime, $json, $value);
-				$this->isTranslate($translate, $value, $json, $key);
-				$this->isSeries($anime->episodes_aired, $value, $json, $key);
-			} else {
-				$json['results'][$key]['link_update'] = $value['title'] . ' / ' . $value['title_orig'];
-				$json['results'][$key]['translate_update'] = $value['translation']['title'];
-				$json['results'][$key]['last_episode_update'] = $value['last_episode'] ?? 1;
-			}
+		} else {
+			$json['results'] = 'Отсутствует или неверный токен';
 		}
 
 		return $json;

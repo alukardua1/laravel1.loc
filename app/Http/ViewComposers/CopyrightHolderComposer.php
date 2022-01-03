@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\CopyrightHolderRepositoryInterfaces;
 use Illuminate\View\View;
 
-class CopyrightHolderComposer
+class CopyrightHolderComposer extends ComposersAbstract
 {
 	private CopyrightHolderRepositoryInterfaces $repository;
 
@@ -24,7 +24,7 @@ class CopyrightHolderComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getCopyrightHolder()->get();
 	}

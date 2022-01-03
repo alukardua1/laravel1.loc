@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use Illuminate\View\View;
 
-class CategoryComposer
+class CategoryComposer extends ComposersAbstract
 {
 	private CategoryRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class CategoryComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getCategory()->get();
 	}

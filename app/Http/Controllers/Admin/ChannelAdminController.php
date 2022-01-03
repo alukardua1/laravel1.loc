@@ -30,7 +30,7 @@ class ChannelAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getChannel()->paginate($this->paginate);
+		$index = $this->repository->getChannel(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'channel.index', compact('index'));
 	}

@@ -30,7 +30,7 @@ class PeopleAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getPeople()->paginate($this->paginate);
+		$index = $this->repository->getPeople(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'people.index', compact('index'));
 	}

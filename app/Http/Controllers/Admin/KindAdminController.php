@@ -30,7 +30,7 @@ class KindAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getKind()->paginate($this->paginate);
+		$index = $this->repository->getKind(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'kind.index', compact('index'));
 	}

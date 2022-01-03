@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Illuminate\View\View;
 
-class PopularComposer
+class PopularComposer extends ComposersAbstract
 {
 	private AnimeRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class PopularComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getPopular(10)->get()->sortByDesc('read_count');
 	}

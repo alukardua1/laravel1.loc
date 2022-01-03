@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
 use Illuminate\View\View;
 
-class CarouselAnimeComposer
+class CarouselAnimeComposer extends ComposersAbstract
 {
 	private AnimeRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class CarouselAnimeComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getFirstPageAnime(100)->get();
 	}

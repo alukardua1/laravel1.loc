@@ -30,7 +30,7 @@ class StudioAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getStudio()->paginate($this->paginate);
+		$index = $this->repository->getStudio(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'studio.index', compact('index'));
 	}

@@ -31,7 +31,7 @@ class UserAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getUser()->paginate($this->paginate);
+		$index = $this->repository->getUser(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'users.index', compact('index'));
 	}

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 
-class Model extends BaseModel
+abstract class Model extends BaseModel
 {
 	use HasFactory;
 	use MutationTrait;

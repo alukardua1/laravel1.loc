@@ -12,7 +12,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-class Controller extends BaseController
+abstract class Controller extends BaseController
 {
 	use ApiTrait;
 	use AuthorizesRequests;
@@ -22,7 +22,7 @@ class Controller extends BaseController
 	use ValidatesRequests;
 	use ParseShikimori;
 
-	protected int $paginate;
+	protected int    $paginate;
 	protected string $frontend = 'web.frontend.';
 	protected string $backend = 'web.backend.';
 

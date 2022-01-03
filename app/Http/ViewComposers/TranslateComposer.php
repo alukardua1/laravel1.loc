@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\TranslateRepositoryInterfaces;
 use Illuminate\View\View;
 
-class TranslateComposer
+class TranslateComposer extends ComposersAbstract
 {
 	private TranslateRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class TranslateComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getTranslate()->get();
 	}
@@ -32,10 +32,10 @@ class TranslateComposer
 	 *
 	 * @param  View  $view
 	 *
-	 * @return void
+	 * @return \Illuminate\View\View
 	 */
 	public function compose(View $view)
 	{
-		$view->with('translate', $this->view());
+		return $view->with('translate', $this->view());
 	}
 }

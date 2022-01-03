@@ -30,7 +30,7 @@ class MPAAAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getMpaa()->paginate($this->paginate);
+		$index = $this->repository->getMpaa(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'mpaa.index', compact('index'));
 	}

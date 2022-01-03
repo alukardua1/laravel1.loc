@@ -32,7 +32,7 @@ class CountryAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getCountry()->paginate($this->paginate);
+		$index = $this->repository->getCountry(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'country.index', compact('index'));
 	}

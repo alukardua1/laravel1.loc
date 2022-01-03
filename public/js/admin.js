@@ -54,6 +54,11 @@
 	}
 })()*/
 
+$(document).ready(function () {
+	$('#dtBasicExample').DataTable();
+	$('.dataTables_length').addClass('bs-select');
+});
+
 function copyID(el) {
 	var copytext = document.createElement('input')
 	copytext.value = el

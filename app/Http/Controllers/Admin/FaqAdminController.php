@@ -30,7 +30,7 @@ class FaqAdminController extends Controller
 	 */
 	public function index(): View|Factory|Application
 	{
-		$index = $this->repository->getFaq()->paginate($this->paginate);
+		$index = $this->repository->getFaq(null, true)->paginate($this->paginate);
 
 		return view($this->backend . 'faq.index', compact('index'));
 	}

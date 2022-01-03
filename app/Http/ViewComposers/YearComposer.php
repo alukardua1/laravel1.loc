@@ -6,7 +6,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\YearAiredRepositoryInterfaces;
 use Illuminate\View\View;
 
-class YearComposer
+class YearComposer extends ComposersAbstract
 {
 	private YearAiredRepositoryInterfaces $repository;
 
@@ -21,7 +21,7 @@ class YearComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getYearAired()->get();
 	}

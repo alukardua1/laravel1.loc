@@ -7,7 +7,7 @@ namespace App\Http\ViewComposers;
 use App\Repository\Interfaces\MpaaRepositoryInterfaces;
 use Illuminate\View\View;
 
-class MpaaRatingComposer
+class MpaaRatingComposer extends ComposersAbstract
 {
 	private MpaaRepositoryInterfaces $repository;
 
@@ -22,7 +22,7 @@ class MpaaRatingComposer
 	/**
 	 * @return mixed
 	 */
-	public function view(): mixed
+	protected function view(): mixed
 	{
 		return $this->repository->getMpaa()->get();
 	}

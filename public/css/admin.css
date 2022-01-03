@@ -65,6 +65,7 @@ th.id_row {
 }
 
 th.id_row .list-group-item, td.id_row .list-group-item {
+	padding: 0;
 	background-color: transparent !important;
 	border: none;
 	color: #ffffff;

@@ -312,7 +312,7 @@ class DLEParseRepository implements DLEParse
 				'keywords'        => $post->keywords,
 				'name'            => $post->title,
 				'russian'         => $post->title,
-				'url'             => $post->alt_name,
+				'url'             => Str::slug($xfield1['nazvanie-romadzi'] ?? $post->alt_name),
 				'kind_id'         => $kind,
 				'channel_id'      => $channel->id,
 				'broadcast'       => $xfield1['broadcast'][0][0] ?? null,
@@ -446,6 +446,12 @@ class DLEParseRepository implements DLEParse
 		return null;
 	}
 
+	private function delFileAll($filename)
+	{
+		$files = Storage::allFiles($filename);
+		Storage::delete($files);
+	}
+
 	/**
 	 * @param  mixed  $anime
 	 * @param  mixed  $image
@@ -455,12 +461,16 @@ class DLEParseRepository implements DLEParse
 	private function imageFunc(mixed $anime, mixed $image): array
 	{
 		$def = '/';
-		$fileName = strtotime($anime->date) . '_anime_' . $anime->id . '_' . Str::slug($anime->title) . '.' . 'webp';
-		$pathImg = $def . 'anime/' . $anime->id . '_' . Str::slug($anime->title) . '/';//путь к большой картинке
+		$name = $anime->id . '_' . Str::slug($anime->title);
+		$fileName = strtotime($anime->date) . '_anime_' . $name . '.' . 'webp';
+		$pathImg = $def . 'anime/' . $name . '/';                                      //путь к большой картинке
 		$pathImgThumb = $pathImg . 'thumb/';                                           //путь к уменьшеной картинке
 
 		$imgName = $pathImg . $fileName;
 		if (!Storage::exists($imgName)) {
+			$this->delFileAll($pathImg);
+			$this->delFileAll($pathImgThumb);
+
 			Storage::putFileAs($pathImg, $image, $fileName);     //запись картинки
 			Storage::putFileAs($pathImgThumb, $image, $fileName);//запись уменьшеной картинки
 
@@ -470,6 +480,7 @@ class DLEParseRepository implements DLEParse
 				$constraint->aspectRatio();
 			});
 			$img->save(public_path('storage' . $pathImg . $fileName));
+
 			$imgThumb = Image::make(public_path('storage' . $pathImgThumb . $fileName));
 			$imgThumb->encode('webp', 10);
 			$imgThumb->resize(200, null, function ($constraint) {

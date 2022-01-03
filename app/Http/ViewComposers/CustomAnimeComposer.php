@@ -25,7 +25,7 @@ class CustomAnimeComposer
 	 *
 	 * @return mixed
 	 */
-	public function view(string $columns, string $custom, int $limit): mixed
+	protected function view(string $columns, string $custom, int $limit): mixed
 	{
 		return $this->repository->getCustomAnime($columns, $custom)->limit($limit)->get();
 	}
