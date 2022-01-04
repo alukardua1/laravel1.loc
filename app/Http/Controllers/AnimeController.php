@@ -83,26 +83,26 @@ class AnimeController extends Controller
 	 */
 	public function show(int $id, string $url = null): View|Factory|RedirectResponse|Application
 	{
-		$show = $this->repository->getAnime($id)->first();
-		$this->isNotNull($show);
-		$plus = $show->vote['plus'];
-		$minus = -$show->vote['minus'];
-		$show->broadcastTitle = $this->broadcast($show->broadcast);
-		$show->seasonAired = $show->aired_on ? $this->seasonAired($show->aired_on) : null;
-		$this->setAttributes($this->attributeArr, $show);
-		$comments = $this->showComments($show->getComments()->withTrashed()->get());
-		$show->comments_count = $show->getComments()->count();
-		$this->updatePost($show, $this->repository); // @todo сделать очереди задач
-		$related = $this->addRelated($show);
-		$this->showPlayer($show, $this->showPlayerGroup);
-		$regionBlockString = $this->showPlayer($show, $this->showPlayerGroup);
-		event(new AnimeEvent($show));
+        $show = $this->repository->getAnime($id)->first();
+        $this->isNotNull($show);
+        $plus = $show->vote['plus'];
+        $minus = -$show->vote['minus'];
+        $show->broadcastTitle = $this->broadcast($show->broadcast);
+        $show->seasonAired = $show->aired_on ? $this->seasonAired($show->aired_on) : null;
+        $this->setAttributes($this->attributeArr, $show);
+        $comments = $this->showComments($show->getComments()->withTrashed()->get());
+        $show->comments_count = $show->getComments()->withTrashed()->count();
+        $this->updatePost($show, $this->repository); // @todo сделать очереди задач
+        $related = $this->addRelated($show);
+        $this->showPlayer($show, $this->showPlayerGroup);
+        $regionBlockString = $this->showPlayer($show, $this->showPlayerGroup);
+        event(new AnimeEvent($show));
 
-		if ($url !== $show->url) {
-			return redirect('/anime/' . $show->id . '-' . $show->url, 301);
-		}
+        if ($url !== $show->url) {
+            return redirect('/anime/' . $show->id . '-' . $show->url, 301);
+        }
 
-		return view($this->frontend . 'anime.full', compact('show', 'plus', 'minus', 'comments', 'related', 'regionBlockString'));
+        return view($this->frontend . 'anime.full', compact('show', 'plus', 'minus', 'comments', 'related', 'regionBlockString'));
 	}
 
 	/**
@@ -169,35 +169,36 @@ class AnimeController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function setComments(CommentRequest $request, int $id): RedirectResponse
-	{
-		$requestAnime = $this->repository->setComment($request, $id);
+    public function setComments(CommentRequest $request, int $id): RedirectResponse
+    {
+        $requestAnime = $this->repository->setComment($request, $id);
 
-		if ($requestAnime) {
-			return redirect()->back();
-		}
+        if ($requestAnime) {
+            return redirect()->back();
+        }
 
-		return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
-	}
+        return back()->withErrors(['msg' => 'Ошибка сохранения'])->withInput();
+    }
 
-	/**
-	 * Удаление комментария
-	 *
-	 * @param  int   $commentId
-	 * @param  bool  $fullDel
-	 *
-	 * @throws \Exception
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function deleteComments(int $commentId, bool $fullDel = false): RedirectResponse
-	{
-		$del = $this->repository->delComments($commentId, $fullDel);
+    /**
+     * Удаление комментария
+     *
+     * @param  int   $anime_id
+     * @param  int   $commentId
+     * @param  bool  $fullDel
+     *
+     * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deleteComments(int $anime_id, int $commentId, bool $fullDel = false): RedirectResponse
+    {
+        $del = $this->repository->delComments($anime_id, $commentId, $fullDel);
 
-		if ($del) {
-			return redirect()->back();
-		}
+        if ($del) {
+            return redirect()->back();
+        }
 
-		return back()->withErrors(['msg' => 'Ошибка удаления'])->withInput();
-	}
+        return back()->withErrors(['msg' => 'Ошибка удаления'])->withInput();
+    }
 
 }

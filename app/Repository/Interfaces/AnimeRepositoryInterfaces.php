@@ -67,56 +67,57 @@ interface AnimeRepositoryInterfaces
 	 */
 	public function getPopular(int $limit): mixed;
 
-	/**
-	 * Поиск
-	 *
-	 * @param  \Illuminate\Http\Request  $request  Запрос
-	 * @param  int                       $limit    количество выводимых записей
-	 *
-	 * @return mixed
-	 */
-	public function getSearchAnime(Request $request, int $limit = 5): mixed;
+    /**
+     * Поиск
+     *
+     * @param  \Illuminate\Http\Request  $request  Запрос
+     * @param  int                       $limit    количество выводимых записей
+     *
+     * @return mixed
+     */
+    public function getSearchAnime(Request $request, int $limit = 5): mixed;
 
-	/**
-	 * Добавление/обновление комментариев
-	 *
-	 * @param  int                                $id       ID записи
-	 * @param  \App\Http\Requests\CommentRequest  $request  Запрос
-	 *
-	 * @return mixed
-	 */
-	public function setComment(CommentRequest $request, int $id): mixed;
+    /**
+     * Добавление/обновление комментариев
+     *
+     * @param  int                                $id       ID записи
+     * @param  \App\Http\Requests\CommentRequest  $request  Запрос
+     *
+     * @return mixed
+     */
+    public function setComment(CommentRequest $request, int $id): mixed;
 
-	/**
-	 * Удаление комментариев
-	 *
-	 * @param  int   $id       ID записи
-	 * @param  bool  $fullDel  удалить послностью или нет
-	 *
-	 * @throws \Exception
-	 * @return mixed
-	 */
-	public function delComments(int $id, bool $fullDel): mixed;
+    /**
+     * Удаление комментариев
+     *
+     * @param  int   $anime_id
+     * @param  int   $id       ID записи
+     * @param  bool  $fullDel  удалить послностью или нет
+     *
+     * @throws \Exception
+     * @return mixed
+     */
+    public function delComments(int $anime_id, int $id, bool $fullDel = false): mixed;
 
-	/**
-	 * Добавление/обновление аниме
-	 *
-	 * @param  \App\Http\Requests\AnimeRequest  $request  Запрос
-	 * @param  int|null                         $id       ID записи
-	 *
-	 * @return mixed
-	 */
-	public function setAnime(AnimeRequest $request, int $id = null): mixed;
+    /**
+     * Добавление/обновление аниме
+     *
+     * @param  \App\Http\Requests\AnimeRequest  $request  Запрос
+     * @param  int|null                         $id       ID записи
+     *
+     * @return mixed
+     */
+    public function setAnime(AnimeRequest $request, int $id = null): mixed;
 
-	/**
-	 * Удаляет текущую запись
-	 *
-	 * @param  int   $id
-	 * @param  bool  $fullDel
-	 *
-	 * @return mixed
-	 */
-	public function deleteAnime(int $id, bool $fullDel = false): mixed;
+    /**
+     * Удаляет текущую запись
+     *
+     * @param  int   $id
+     * @param  bool  $fullDel
+     *
+     * @return mixed
+     */
+    public function deleteAnime(int $id, bool $fullDel = false): mixed;
 
 	/**
 	 * @param  int  $id
