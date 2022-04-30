@@ -19,7 +19,7 @@ class Anime extends Model
 	public string $cachePrefix = 'anime_';
 
 	protected $fillable = [
-		'name',
+		'title',
 		'russian',
 		'original_img',
 		'preview_img',

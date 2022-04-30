@@ -158,7 +158,7 @@ class AnimeRepository implements AnimeRepositoryInterfaces
     public function getSearchAnime(Request $request, int|null $limit = 5): mixed
     {
         $search = $request->search;
-        $result = $this->model->where('name', 'LIKE', "%{$search}%")
+        $result = $this->model->where('title', 'LIKE', "%{$search}%")
             ->orWhere('english', 'LIKE', "%{$search}%")
             ->orWhere('japanese', 'LIKE', "%{$search}%")
             ->orWhere('synonyms', 'LIKE', "%{$search}%")

@@ -31,7 +31,7 @@
 		</div>
 		<div class="mb-3">
 			<label for="year" class="form-label">Год выпуска <span class="text-danger">*</span></label>
-			<input type="text" class="form-control" id="year" placeholder="Год выпуска" name="year" value="{{$tableOrderShow->year}}">
+			<input type="text" class="form-control" id="title" placeholder="Год выпуска" name="title" value="{{$tableOrderShow->title}}">
 		</div>
 		<div class="row mb-3">
 			<div class="col">

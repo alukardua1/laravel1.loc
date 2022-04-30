@@ -15,7 +15,7 @@ class CreateKindsTable extends Migration
     {
         Schema::create('kinds', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('full_name');
             $table->string('short_name');
             $table->string('url');

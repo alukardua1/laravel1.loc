@@ -222,7 +222,7 @@ class DLEParseRepository implements DLEParse
 				preg_match_all('/[0-5][0-9]:[0-5][0-9]/', $xfield1['translyaciya'], $xfield1['broadcast']);
 			}
 			$image = $this->imageFunc($post, 'http://anime-free.ru/uploads/posts/' . $xfield1['izobrazhenie']);
-			$mpaa = MPAARating::where('name', $xfield1['rating'])->first();
+			$mpaa = MPAARating::where('title', $xfield1['rating'])->first();
 			$this->createAnimeCategory($post->category, $post->id);
 			if (array_key_exists('url_world_art', $xfield1)) {
 				$this->otherLink($post, $xfield1['url_world_art'], 'World-Art', $this->parseWA($xfield1['url_world_art']));
@@ -290,10 +290,10 @@ class DLEParseRepository implements DLEParse
 				$mpaa->id = 1;
 			}
 			if (array_key_exists('sezon', $xfield1)) {
-				$yearAired = YearAired::where('year', $xfield1['sezon'])->first();
+				$yearAired = YearAired::where('title', $xfield1['sezon'])->first();
 				if (!$yearAired) {
-					DB::table('year_aireds')->insert(['year' => $xfield1['sezon']]);
-					$yearAired = YearAired::where('year', $xfield1['sezon'])->first();
+					DB::table('year_aireds')->insert(['title' => $xfield1['sezon']]);
+					$yearAired = YearAired::where('title', $xfield1['sezon'])->first();
 				}
 			} else {
 				$yearAired = collect('id');
@@ -310,7 +310,7 @@ class DLEParseRepository implements DLEParse
 				'released'        => $this->status($xfield1['status'])['released'],
 				'metatitle'       => $post->metatitle,
 				'keywords'        => $post->keywords,
-				'name'            => $post->title,
+				'title'            => $post->title,
 				'russian'         => $post->title,
 				'url'             => Str::slug($xfield1['nazvanie-romadzi'] ?? $post->alt_name),
 				'kind_id'         => $kind,
@@ -423,7 +423,7 @@ class DLEParseRepository implements DLEParse
 			if ($result) {
 				$data = ['anime_id' => $post->id, $columns => $result->id];
 			}
-			dd(__METHOD__, $result);
+
 			if ($result->id) {
 				$belong = DB::table($table)->where('anime_id', $post->id)->where($columns, $result->id)->first();
 				if (!$belong) {

@@ -17,7 +17,7 @@ class YearAired extends Model
 	];
 
 	protected $fillable = [
-		'year',
+		'title',
 	];
 
 	/**

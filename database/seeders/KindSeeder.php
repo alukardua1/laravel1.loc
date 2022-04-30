@@ -21,37 +21,37 @@ class KindSeeder extends Seeder
     {
         $data = [
             [
-                'name'       => 'OVA',
+                'title'       => 'OVA',
                 'url'        => 'ova',
                 'full_name'  => 'Original Video Animation',
                 'short_name' => 'ОВА'
             ],
             [
-                'name'       => 'Movie',
+                'title'       => 'Movie',
                 'url'        => 'movie',
                 'full_name'  => 'Полнометражный фильм',
                 'short_name' => 'Фильм'
             ],
             [
-                'name'       => 'TV',
+                'title'       => 'TV',
                 'url'        => 'tv',
                 'full_name'  => 'Телевизионная версия',
                 'short_name' => 'ТВ'
             ],
             [
-                'name'       => 'ONA',
+                'title'       => 'ONA',
                 'url'        => 'ona',
                 'full_name'  => 'Original net animation',
                 'short_name' => 'Веб'
             ],
             [
-                'name'       => 'Music',
+                'title'       => 'Music',
                 'url'        => 'music',
                 'full_name'  => 'Музыкальное видео',
                 'short_name' => 'Клип'
             ],
             [
-                'name'       => 'Special',
+                'title'       => 'Special',
                 'url'        => 'special',
                 'full_name'  => 'Специальные выпускы',
                 'short_name' => 'Спешл'

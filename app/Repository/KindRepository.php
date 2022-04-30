@@ -31,9 +31,9 @@ class KindRepository implements KindRepositoryInterfaces
 		if ($url) {
 			return $this->model->where('url', $url);
 		} elseif ($isAdmin) {
-			return $this->model->orderBy('name', 'ASC')->withTrashed();
+			return $this->model->orderBy('title', 'ASC')->withTrashed();
 		}
-		return $this->model->orderBy('name', 'ASC');
+		return $this->model->orderBy('title', 'ASC');
 	}
 
 	/**

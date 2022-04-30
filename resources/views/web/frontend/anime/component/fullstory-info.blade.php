@@ -63,7 +63,7 @@
 			<span>Рейтинг MPAA: </span>
 			<span>
 				<a href="{{route('showRating', $show->getRating->url)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{$show->getRating->description}}">
-					{{$show->getRating->name}}
+					{{$show->getRating->title}}
 				</a>
 			</span>
 		</li>

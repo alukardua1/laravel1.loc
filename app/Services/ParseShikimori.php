@@ -80,8 +80,8 @@ trait ParseShikimori
 				$shiki['russian'] = $this->dataShiki['russian'];
 				$shiki['update'] = true;
 			}
-			if ($this->dataShiki['name'] != $anime->name) {
-				$shiki['name'] = $this->dataShiki['name'];
+			if ($this->dataShiki['name'] != $anime->title) {
+				$shiki['title'] = $this->dataShiki['name'];
 				$shiki['update'] = true;
 			}
 			if (implode('|', $this->dataShiki['english']) != $anime->english) {
@@ -126,7 +126,7 @@ trait ParseShikimori
 				$shiki['update'] = true;
 			}
 			if ($this->dataShiki['kind']) {
-				$shiki['kind_id'] = Kind::where('name', $this->dataShiki['kind'])->first()->id;
+				$shiki['kind_id'] = Kind::where('title', $this->dataShiki['kind'])->first()->id;
 			}
 			if ($this->studiosArr) {
 				$shiki['studios'] = $this->studiosArr;

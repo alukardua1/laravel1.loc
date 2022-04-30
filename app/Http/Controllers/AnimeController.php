@@ -47,7 +47,11 @@ class AnimeController extends Controller
 	public function index(): Factory|View|Application
 	{
 		$views['content'] = $this->repository->getAnime()->paginate($this->paginate);
-
+        if ($views['content']->currentPage() !== 1) {
+            $views['page'] = ' >> Страница ' . $views['content']->currentPage();
+        }else{
+            $views['page'] = '';
+        }
 		return view($this->frontend . 'anime.short', compact('views'));
 	}
 

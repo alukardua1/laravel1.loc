@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Repository\AnimeRepository;
-use App\Repository\BannerRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ChannelRepository;
 use App\Repository\CharacterRepository;
@@ -15,7 +14,6 @@ use App\Repository\FavoriteRepository;
 use App\Repository\GeoBlockRepository;
 use App\Repository\GroupRepository;
 use App\Repository\Interfaces\AnimeRepositoryInterfaces;
-use App\Repository\Interfaces\BannerRepositoryInterfaces;
 use App\Repository\Interfaces\CategoryRepositoryInterfaces;
 use App\Repository\Interfaces\ChannelRepositoryInterfaces;
 use App\Repository\Interfaces\CharacterRepositoryInterfaces;

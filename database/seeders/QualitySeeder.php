@@ -36,7 +36,7 @@ class QualitySeeder extends Seeder
 		foreach ($quality as $value)
 		{
 			$data[] = [
-				'name' => $value,
+				'title' => $value,
 				'url'  => \Str::slug($value),
 			];
 		}

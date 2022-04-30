@@ -15,7 +15,7 @@ class CreateYearAiredsTable extends Migration
     {
         Schema::create('year_aireds', function (Blueprint $table) {
             $table->id();
-	        $table->string('year');
+	        $table->string('title');
 	        $table->softDeletes();
 	        $table->timestamps();
         });

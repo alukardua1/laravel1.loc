@@ -23,7 +23,7 @@ class CreateAnimesTable extends Migration
 	        $table->text('metatitle');
 	        $table->text('keywords');
 	        $table->string('url');
-	        $table->string('name')->index();
+	        $table->string('title')->index();
 	        $table->string('russian')->index();
 	        $table->string('english')->nullable()->index();
 	        $table->string('japanese')->nullable()->index();

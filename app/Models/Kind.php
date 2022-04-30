@@ -18,7 +18,7 @@ class Kind extends Model
 	];
 
 	protected $fillable = [
-		'name',
+		'title',
 		'full_name',
 		'short_name',
 		'url',

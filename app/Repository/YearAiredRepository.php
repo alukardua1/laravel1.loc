@@ -29,11 +29,11 @@ class YearAiredRepository implements YearAiredRepositoryInterfaces
 	public function getYearAired(string $url = null, bool $isAdmin = false): mixed
 	{
 		if ($url) {
-			return $this->model->where('url', $url);
+			return $this->model->where('title', $url);
 		} elseif ($isAdmin) {
-			return $this->model->orderBy('year', 'ASC')->withTrashed();
+			return $this->model->orderBy('title', 'ASC')->withTrashed();
 		}
-		return $this->model->orderBy('year', 'ASC');
+		return $this->model->orderBy('title', 'ASC');
 	}
 
 	/**
